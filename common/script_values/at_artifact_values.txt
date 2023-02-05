@@ -1,0 +1,279 @@
+﻿# Difference between the QWA of the scoped artifact
+# and the QWA of the worst artifact of the same type equipped by scope:recipient.
+at_artifact_quality_wealth_average_difference_value = {
+	value = at_artifact_quality_wealth_average_value
+	subtract = at_equipped_artifact_quality_wealth_average_value
+}
+
+# QWA of the worst artifact of the same type as the scoped artifact equipped by scope:recipient.
+at_equipped_artifact_quality_wealth_average_value = {
+	save_temporary_scope_as = artifact
+	value = 0
+	scope:recipient = {
+		if = {
+			limit = {
+				scope:artifact = { artifact_slot_type = primary_armament }
+				any_equipped_character_artifact = {
+					artifact_slot_type = primary_armament
+				}
+			}
+			every_equipped_character_artifact = {
+				limit = { artifact_slot_type = primary_armament }
+				add = at_artifact_quality_wealth_average_value
+			}
+		}
+		else_if = {
+			limit = {
+				scope:artifact = { artifact_slot_type = armor }
+				any_equipped_character_artifact = {
+					artifact_slot_type = armor
+				}
+			}
+			every_equipped_character_artifact = {
+				limit = { artifact_slot_type = armor }
+				add = at_artifact_quality_wealth_average_value
+			}
+		}
+		else_if = {
+			limit = {
+				scope:artifact = { artifact_slot_type = regalia }
+				any_equipped_character_artifact = {
+					artifact_slot_type = regalia
+				}
+			}
+			every_equipped_character_artifact = {
+				limit = { artifact_slot_type = regalia }
+				add = at_artifact_quality_wealth_average_value
+			}
+		}
+		else_if = {
+			limit = {
+				scope:artifact = { artifact_slot_type = helmet }
+				any_equipped_character_artifact = {
+					artifact_slot_type = helmet
+				}
+			}
+			every_equipped_character_artifact = {
+				limit = { artifact_slot_type = helmet }
+				add = at_artifact_quality_wealth_average_value
+			}
+		}
+		else_if = {
+			limit = {
+				scope:artifact = { artifact_slot_type = miscellaneous }
+				any_equipped_character_artifact = {
+					artifact_slot_type = miscellaneous
+					count >= 4
+				}
+			}
+			ordered_equipped_character_artifact = {
+				limit = { artifact_slot_type = miscellaneous }
+				order_by = { value = 100 subtract = at_artifact_quality_wealth_average_value }
+				max = 1
+				add = at_artifact_quality_wealth_average_value
+			}
+		}
+		# TODO Court artifacts
+	}
+}
+
+# Artifact quality and wealth average (QWA).
+# Preferred over artifact_wealth_quality_average_value since some artifacts don't have
+# var:quality or var:wealth, and scope:quality and scope:wealth are usually not set.
+at_artifact_quality_wealth_average_value = {
+	value = at_artifact_quality_value
+	add = at_artifact_wealth_value
+	multiply = 0.5
+}
+
+# Artifact quality. Uses var:quality or scope:quality,
+# falls back to at_artifact_default_quality_wealth_value if neither is set.
+at_artifact_quality_value = {
+	if = {
+		limit = { exists = var:quality }
+		value = var:quality
+	}
+	else_if = {
+		limit = { exists = scope:quality }
+		value = scope:quality
+	}
+	else = {
+		value = at_artifact_default_quality_wealth_value
+	}
+}
+
+# Artifact wealth. Uses var:wealth or scope:wealth,
+# falls back to at_artifact_default_quality_wealth_value if neither is set.
+at_artifact_wealth_value = {
+	if = {
+		limit = { exists = var:wealth }
+		value = var:wealth
+	}
+	else_if = {
+		limit = { exists = scope:wealth }
+		value = scope:wealth
+	}
+	else = {
+		value = at_artifact_default_quality_wealth_value
+	}
+}
+
+# Default artifact quality / wealth value per rarity.
+# Values correspond to set_artifact_rarity_* effects for historical artifacts.
+at_artifact_default_quality_wealth_value = {
+	if = {
+		limit = { rarity = common }
+		value = 15
+	}
+	else_if = {
+		limit = { rarity = masterwork }
+		value = 30
+	}
+	else_if = {
+		limit = { rarity = famed }
+		value = 70
+	}
+	else_if = {
+		limit = { rarity = illustrious }
+		value = 100
+	}
+}
+
+# Artifact repair cost, corresponds to repair_artifact cost.
+at_artifact_repair_cost_value = {
+	value = 25
+	multiply = at_artifact_repair_cost_durability_multiplier
+	multiply = at_artifact_repair_cost_quality_wealth_multiplier
+}
+
+# Durability multiplier for calculating the artifact repair cost.
+at_artifact_repair_cost_durability_multiplier = {
+	value = 1
+	if = {
+		limit = {
+			artifact_durability >= 80
+			artifact_durability < 100
+		}
+		divide = 2
+	}
+	else_if = {
+		limit = {
+			artifact_durability >= 20
+			artifact_durability < 50
+		}
+		multiply = 2
+	}
+	else_if = {
+		limit = {
+			artifact_durability >= 5
+			artifact_durability < 20
+		}
+		multiply = 3
+	}
+	else_if = {
+		limit = {
+			artifact_durability < 5
+		}
+		multiply = 5
+	}
+}
+
+# QWA multiplier for calculating the artifact repair cost.
+at_artifact_repair_cost_quality_wealth_multiplier = {
+	value = 1
+	if = {
+		limit = {
+			at_artifact_quality_wealth_average_value >= 75
+		}
+		multiply = 5
+	}
+	else_if = {
+		limit = {
+			at_artifact_quality_wealth_average_value >= 50
+			at_artifact_quality_wealth_average_value < 75
+		}
+		multiply = 2
+	}
+	else_if = {
+		limit = {
+			at_artifact_quality_wealth_average_value < 25
+		}
+		divide = 2
+	}
+}
+
+# Artifact base price. Calculated by multiplying the potential opinion gain of gifting the artifact
+# by scope:actor to to scope:recipient (gift_artifact_opinion) by the "gold per opinion" ratio from
+# sending money as a gift by scope:actor to scope:recipient (gift_value divided by send_gift_opinion).
+at_artifact_base_price_value = {
+	value = gift_artifact_opinion
+	multiply = gift_value
+	divide = send_gift_opinion
+	multiply = at_artifact_base_price_multiplier
+}
+
+# Artifact ask price. Calculated by correcting the base price by a multiplier based on AI greed.
+at_artifact_ask_price_value = {
+	value = at_artifact_base_price_value
+
+	# Make it higher for the player
+	if = {
+		limit = { scope:actor = { is_ai = no } }
+		multiply = at_artifact_ask_price_player_multiplier
+	}
+
+	# Seller personality multiplier (0.8 to 1.2 based on ai_greed)
+	multiply = {
+		value = scope:recipient.ai_greed
+		multiply = 0.002
+		add = 1
+	}
+}
+
+# Artifact bid price. Calculated by correcting the base price by a multiplier based on AI greed.
+at_artifact_bid_price_value = {
+	value = at_artifact_base_price_value
+
+	# Make it lower for the player
+	if = {
+		limit = { scope:actor = { is_ai = no } }
+		multiply = at_artifact_bid_price_player_multiplier
+	}
+
+	# Buyer personality multiplier (0.8 to 1.2 based on ai_greed)
+	multiply = {
+		value = scope:recipient.ai_greed
+		multiply = -0.002
+		add = 1
+	}
+}
+
+# Artifact ask price minus repair cost value.
+at_artifact_ask_price_minus_repair_cost_value = {
+	value = at_artifact_ask_price_value
+	if = {
+		limit = { artifact_durability < artifact_max_durability }
+		subtract = at_artifact_repair_cost_value
+		min = 0
+	}
+}
+
+# Artifact bid price minus repair cost value.
+at_artifact_bid_price_minus_repair_cost_value = {
+	value = at_artifact_bid_price_value
+	if = {
+		limit = { artifact_durability < artifact_max_durability }
+		subtract = at_artifact_repair_cost_value
+		min = 0
+	}
+}
+
+# Used in localization.
+at_scope_buyer_current_gold_value = {
+	value = scope:buyer.current_gold_value
+}
+
+# Used in localization.
+at_scope_artifact_price_value = {
+	value = scope:artifact_price
+}

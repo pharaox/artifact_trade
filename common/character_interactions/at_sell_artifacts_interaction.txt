@@ -1,0 +1,60 @@
+﻿# Sell some of your artifacts to other rulers that are willing to buy them from you.
+# The selected artifact is saved in the selected_artifact scope:actor variable
+# and the actual selling of that artifact takes place in the at_sell_artifacts_phase2_interaction.
+# Scopes: actor / recipient is the artifact owner (seller), target is the artifact.
+# Human player only.
+at_sell_artifacts_interaction = {
+	category = interaction_category_diplomacy
+	desc = at_sell_artifacts_interaction_desc
+	interface_priority = 60
+	common_interaction = yes
+	needs_recipient_to_open = no
+	icon = artisan_inspiration
+
+	target_type = artifact
+	target_filter = actor_artifacts
+
+	greeting = positive
+	send_name = at_sell_artifacts_interaction
+
+	is_shown = {
+		scope:actor = scope:recipient
+		scope:actor = {
+			has_any_artifact = yes
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		always = yes
+	}
+
+	can_be_picked_artifact = {
+		trigger_if = {
+			limit = {
+				scope:actor = { is_ai = no }
+			}
+			scope:target = { is_equipped = no }
+		}
+		scope:actor = {
+			any_character_artifact = {
+				this = scope:target
+			}
+		}
+	}
+
+	on_accept = {
+		scope:actor = {
+			set_variable = {
+				name = selected_artifact
+				value = scope:target
+			}
+		}
+		open_interaction_window = {
+			interaction = at_sell_artifacts_phase2_interaction
+			actor = scope:actor
+			recipient = scope:recipient
+		}
+	}
+
+	auto_accept = yes
+}

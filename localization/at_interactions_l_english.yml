@@ -1,0 +1,22 @@
+﻿l_english:
+ # at_sell_artifact_interaction
+ at_sell_artifact_interaction: "Sell Artifact"
+ at_sell_artifact_interaction_desc: "Sell an [artifact|E] for [gold|E]"
+
+ # at_sell_artifacts_interaction
+ at_sell_artifacts_interaction: "Sell Artifacts"
+ at_sell_artifacts_interaction_desc: "Sell [artifacts|E] to characters that are willing to buy them"
+
+ # at_sell_artifacts_phase2_interaction
+ at_sell_artifacts_phase2_interaction: "Sell Artifacts (Phase 2)"
+ at_sell_artifacts_phase2_interaction_desc: "Sell a previously selected [artifact|E] to characters that are willing to buy it"
+ recipient_secondary_at_sell_artifacts_phase2_interaction: "Buyer"
+
+ at_target_better_than_currently_equipped_reason: "[target.GetName] is better than what is currently equipped: $VALUE|=+0$"
+ at_target_below_max_durability_reason: "[target.GetName] is below max durability: $VALUE|=+0$"
+ at_target_worth_less_than_repair_cost_reason: "[target.GetName] is worth less than its repair cost: $VALUE|=+0$"
+
+ at_buyer_not_enough_gold_for_artifact_price_tooltip: "Pays #high [gold_i][SCOPE.ScriptValue('at_scope_buyer_current_gold_value')|0]#! to [seller.GetShortUINameNoTooltip] #weak (cannot afford full price of [gold_i][SCOPE.ScriptValue('at_scope_artifact_price_value')|0])#!"
+
+ at_msg_artifact_bought: "Artifact Bought"
+ at_msg_artifact_sold: "Artifact Sold"

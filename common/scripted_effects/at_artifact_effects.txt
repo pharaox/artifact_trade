@@ -1,0 +1,450 @@
+﻿# Transfers the ownership of scope:artifact from scope:seller to scope:buyer
+# and pays PRICE or scope:buyer.current_gold_value  to scope:seller.
+# Sends interface messages to scope:seller and scope:buyer.
+# Used by all buy and sell artifact interactions.
+at_buy_artifact_interaction_effect = {
+	save_scope_value_as = {
+		name = artifact_price
+		value = $PRICE$
+	}
+
+	scope:seller = {
+		send_interface_toast = {
+			type = event_generic_neutral
+			title = at_msg_artifact_sold
+			left_icon = scope:buyer
+			right_icon = scope:artifact
+
+			at_buy_artifact_effect = yes
+		}
+	}
+
+	scope:buyer = {
+		hidden_effect = {
+			send_interface_toast = {
+				type = event_generic_neutral
+				title = at_msg_artifact_bought
+				left_icon = scope:seller
+				right_icon = scope:artifact
+
+				show_as_tooltip = {
+					at_buy_artifact_effect = yes
+				}
+			}
+
+			# Equip artifact if better than what is currently equipped (non-ruler only)
+			at_equip_artifact_non_ruler_effect = yes
+		}
+
+		# Warning tooltips
+		at_sell_artifact_warning_tooltips_effect = yes
+	}
+}
+
+# Transfers the ownership of scope:artifact from scope:seller to scope:buyer
+# and pays scope:artifact_price or scope:buyer.current_gold_value to scope:seller.
+at_buy_artifact_effect = {
+	# Pay price to seller
+	scope:buyer = {
+		if = {
+			limit = {
+				gold >= scope:artifact_price
+			}
+			pay_short_term_gold = {
+				gold = scope:artifact_price
+				target = scope:seller
+			}
+		}
+		else = {
+			custom_tooltip = at_buyer_not_enough_gold_for_artifact_price_tooltip
+			hidden_effect = {
+				pay_short_term_gold = {
+					gold = current_gold_value
+					target = scope:seller
+				}
+			}
+		}
+	}
+
+	# Remove buyer claims (tooltip only)
+	scope:buyer = {
+		if = {
+			limit = {
+				scope:artifact = {
+					can_be_claimed_by = scope:buyer
+				}
+			}
+			if = {
+				limit = {
+					any_personal_claimed_artifact = {
+						this = scope:artifact
+					}
+				}
+				show_as_tooltip = {
+					remove_personal_artifact_claim = scope:artifact
+				}
+			}
+			else = {
+				show_as_tooltip = {
+					remove_house_artifact_claim = scope:artifact
+				}
+			}
+		}
+	}
+
+	# Transfer ownership to buyer
+	scope:artifact = {
+		set_owner = scope:buyer
+	}
+}
+
+# Displays warning tooltips for low durability and useless artifacts.
+at_sell_artifact_warning_tooltips_effect = {
+	if = {
+		limit = {
+			scope:artifact = {
+				artifact_durability <= define:NInventory|ARTIFACT_LOW_DURABILITY
+			}
+		}
+		custom_tooltip = artifact_gift_low_durability_tt
+	}
+	if = {
+		limit = {
+			scope:artifact = {
+				artifact_durability <= define:NInventory|ARTIFACT_VERY_LOW_DURABILITY
+			}
+		}
+		custom_tooltip = artifact_gift_very_low_durability_tt
+	}
+	if = {
+		limit = {
+			scope:artifact = {
+				OR = {
+					AND = {
+						has_variable = banner_house
+						NOT = { var:banner_house = scope:buyer.house }
+					}
+					AND = {
+						has_variable = banner_dynasty
+						NOT = { var:banner_dynasty = scope:buyer.dynasty }
+					}
+				}
+			}
+		}
+		custom_tooltip = artifact_gift_useless_banner_tt
+	}
+	else_if = {
+		limit = {
+			scope:buyer = {
+				NOR = {
+					can_equip_artifact = scope:artifact
+					can_benefit_from_artifact = scope:artifact
+				}
+			}
+		}
+		custom_tooltip = artifact_gift_useless_tt
+	}
+	else_if = {
+		limit = {
+			scope:buyer = {
+				NOT = { can_equip_artifact = scope:artifact }
+			}
+		}
+		custom_tooltip = artifact_gift_equip_tt
+	}
+	else_if = {
+		limit = {
+			scope:buyer = {
+				NOT = { can_benefit_from_artifact = scope:artifact }
+			}
+		}
+		custom_tooltip = artifact_gift_benefit_tt
+	}
+}
+
+# Equips artifact to owner if better than what is currently equipped (non-ruler only).
+at_equip_artifact_non_ruler_effect = {
+	if = {
+		limit = {
+			is_ruler = no
+			trigger_if = {
+				limit = {
+					scope:artifact = {
+						artifact_slot_type = primary_armament
+					}
+				}
+				OR = {
+					NOT = {
+						any_equipped_character_artifact = {
+							artifact_slot_type = primary_armament
+						}
+					}
+					AND = {
+						scope:artifact = {
+							rarity = illustrious
+						}
+						any_equipped_character_artifact = {
+							artifact_slot_type = primary_armament
+							NOT = {
+								rarity = illustrious
+							}
+						}
+					}
+					AND = {
+						scope:artifact = {
+							rarity = famed
+						}
+						any_equipped_character_artifact = {
+							artifact_slot_type = primary_armament
+							NOR = {
+								rarity = illustrious
+								rarity = famed
+							}
+						}
+					}
+					AND = {
+						scope:artifact = {
+							rarity = masterwork
+						}
+						any_equipped_character_artifact = {
+							artifact_slot_type = primary_armament
+							NOR = {
+								rarity = illustrious
+								rarity = famed
+								rarity = masterwork
+							}
+						}
+					}
+					AND = {
+						scope:artifact = {
+							rarity = common
+						}
+						any_equipped_character_artifact = {
+							artifact_slot_type = primary_armament
+							NOR = {
+								rarity = illustrious
+								rarity = famed
+								rarity = masterwork
+								rarity = common
+							}
+						}
+					}
+				}
+			}
+			trigger_if = {
+				limit = {
+					scope:artifact = {
+						artifact_slot_type = armor
+					}
+				}
+				OR = {
+					NOT = {
+						any_equipped_character_artifact = {
+							artifact_slot_type = armor
+						}
+					}
+					AND = {
+						scope:artifact = {
+							rarity = illustrious
+						}
+						any_equipped_character_artifact = {
+							artifact_slot_type = armor
+							NOT = {
+								rarity = illustrious
+							}
+						}
+					}
+					AND = {
+						scope:artifact = {
+							rarity = famed
+						}
+						any_equipped_character_artifact = {
+							artifact_slot_type = armor
+							NOR = {
+								rarity = illustrious
+								rarity = famed
+							}
+						}
+					}
+					AND = {
+						scope:artifact = {
+							rarity = masterwork
+						}
+						any_equipped_character_artifact = {
+							artifact_slot_type = armor
+							NOR = {
+								rarity = illustrious
+								rarity = famed
+								rarity = masterwork
+							}
+						}
+					}
+					AND = {
+						scope:artifact = {
+							rarity = common
+						}
+						any_equipped_character_artifact = {
+							artifact_slot_type = armor
+							NOR = {
+								rarity = illustrious
+								rarity = famed
+								rarity = masterwork
+								rarity = common
+							}
+						}
+					}
+				}
+			}
+			trigger_if = {
+				limit = {
+					scope:artifact = {
+						artifact_slot_type = regalia
+					}
+				}
+				OR = {
+					NOT = {
+						any_equipped_character_artifact = {
+							artifact_slot_type = regalia
+						}
+					}
+					AND = {
+						scope:artifact = {
+							rarity = illustrious
+						}
+						any_equipped_character_artifact = {
+							artifact_slot_type = regalia
+							NOT = {
+								rarity = illustrious
+							}
+						}
+					}
+					AND = {
+						scope:artifact = {
+							rarity = famed
+						}
+						any_equipped_character_artifact = {
+							artifact_slot_type = regalia
+							NOR = {
+								rarity = illustrious
+								rarity = famed
+							}
+						}
+					}
+					AND = {
+						scope:artifact = {
+							rarity = masterwork
+						}
+						any_equipped_character_artifact = {
+							artifact_slot_type = regalia
+							NOR = {
+								rarity = illustrious
+								rarity = famed
+								rarity = masterwork
+							}
+						}
+					}
+					AND = {
+						scope:artifact = {
+							rarity = common
+						}
+						any_equipped_character_artifact = {
+							artifact_slot_type = regalia
+							NOR = {
+								rarity = illustrious
+								rarity = famed
+								rarity = masterwork
+								rarity = common
+							}
+						}
+					}
+				}
+			}
+			trigger_if = {
+				limit = {
+					scope:artifact = {
+						artifact_slot_type = helmet
+					}
+				}
+				OR = {
+					NOT = {
+						any_equipped_character_artifact = {
+							artifact_slot_type = helmet
+						}
+					}
+					AND = {
+						scope:artifact = {
+							rarity = illustrious
+						}
+						any_equipped_character_artifact = {
+							artifact_slot_type = helmet
+							NOT = {
+								rarity = illustrious
+							}
+						}
+					}
+					AND = {
+						scope:artifact = {
+							rarity = famed
+						}
+						any_equipped_character_artifact = {
+							artifact_slot_type = helmet
+							NOR = {
+								rarity = illustrious
+								rarity = famed
+							}
+						}
+					}
+					AND = {
+						scope:artifact = {
+							rarity = masterwork
+						}
+						any_equipped_character_artifact = {
+							artifact_slot_type = helmet
+							NOR = {
+								rarity = illustrious
+								rarity = famed
+								rarity = masterwork
+							}
+						}
+					}
+					AND = {
+						scope:artifact = {
+							rarity = common
+						}
+						any_equipped_character_artifact = {
+							artifact_slot_type = helmet
+							NOR = {
+								rarity = illustrious
+								rarity = famed
+								rarity = masterwork
+								rarity = common
+							}
+						}
+					}
+				}
+			}
+		}
+		scope:artifact = {
+			equip_artifact_to_owner_replace = yes
+		}
+	}
+}
+
+at_get_potential_buyers_or_sellers_effect = {
+	every_neighboring_and_across_water_top_liege_realm_owner = {
+		add_to_list = $LIST$
+	}
+	if = {
+		limit = { exists = top_liege }
+		top_liege = {
+			every_vassal_or_below = {
+				add_to_list = $LIST$
+			}
+		}
+	}
+	else = {
+		every_vassal_or_below = {
+			add_to_list = $LIST$
+		}
+	}
+}

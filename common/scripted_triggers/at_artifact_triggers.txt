@@ -1,0 +1,34 @@
+﻿at_potential_buyer_or_seller_trigger = {
+	$CHARACTER$ = {
+		is_ruler = yes
+	}
+	OR = {
+		any_neighboring_and_across_water_top_liege_realm_owner = {
+			this = $CHARACTER$
+		}
+		trigger_if = {
+			limit = { exists = top_liege }
+			top_liege = {
+				any_vassal_or_below = {
+					this = $CHARACTER$
+				}
+			}
+		}
+		trigger_if = {
+			limit = { NOT = { exists = top_liege } }
+			any_vassal_or_below = {
+				this = $CHARACTER$
+			}
+		}
+	}
+}
+
+at_candidate_to_buy_or_sell_trigger = {
+	is_ai = yes
+	NOT = { this = scope:actor }
+	highest_held_title_tier >= tier_county
+	is_busy_in_events_localised = yes
+	in_diplomatic_range = scope:actor
+	NOT = { is_at_war_with = scope:actor }
+	is_imprisoned = no
+}
