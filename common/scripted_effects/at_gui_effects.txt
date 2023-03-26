@@ -1,0 +1,37 @@
+﻿at_artifacts_window_sort_artifacts_effect = {
+	ordered_in_list = {
+		variable = at_artifacts_window_artifacts
+		order_by = {
+			if = {
+				limit = { ROOT.var:at_artifacts_window_selected_artifact_sort_option = flag:_rarity }
+				value = artifact_rarity
+			}
+			else_if = {
+				limit = { ROOT.var:at_artifacts_window_selected_artifact_sort_option = flag:_durability }
+				value = artifact_durability
+			}
+			if = {
+				limit = {
+					ROOT = { has_variable = at_artifacts_window_is_artifact_sort_order_ascending }
+				}
+				multiply = -1
+			}
+		}
+		max = 1000
+		check_range_bounds = no
+
+		add_to_temporary_list = sorted_artifacts
+	}
+
+	clear_variable_list = at_artifacts_window_artifacts
+	every_in_list = {
+		list = sorted_artifacts
+
+		ROOT = {
+			add_to_variable_list = {
+				name = at_artifacts_window_artifacts
+				target = PREV
+			}
+		}
+	}
+}

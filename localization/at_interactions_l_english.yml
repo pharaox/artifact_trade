@@ -5,14 +5,9 @@
 
  # at_sell_artifacts_interaction
  at_sell_artifacts_interaction: "Sell Artifacts"
- at_sell_artifacts_interaction_desc: "Sell [artifacts|E] to characters that are willing to buy them"
- at_sell_artifacts_interaction_send_name: "Select Artifact to Sell"
-
- # at_sell_artifacts_phase2_interaction
- at_sell_artifacts_phase2_interaction: "Sell Artifacts (Phase 2)"
- at_sell_artifacts_phase2_interaction_desc: "Sell a previously selected [artifact|E] to characters that are willing to buy it"
- at_sell_artifacts_phase2_interaction_send_name: "Sell Artifact"
- recipient_secondary_at_sell_artifacts_phase2_interaction: "Buyer"
+ at_sell_artifacts_interaction_desc: "Sell a previously selected [artifact|E] to characters that are willing to buy it"
+ at_sell_artifacts_interaction_send_name: "Sell Artifact"
+ recipient_secondary_at_sell_artifacts_interaction: "Buyer"
 
  at_reluctant_to_spend_gold_reason: "[recipient.GetSheHe|U] is reluctant to spend [gold|E]: $VALUE|=+0$"
  at_target_better_than_currently_equipped_reason: "[target.GetName] is better than what is currently equipped: $VALUE|=+0$"

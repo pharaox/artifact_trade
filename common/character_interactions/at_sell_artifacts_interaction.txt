@@ -1,7 +1,6 @@
-﻿# Sell some of your artifacts to other rulers that are willing to buy them from you.
-# The selected artifact is saved in the selected_artifact scope:actor variable
-# and the actual selling of that artifact takes place in the at_sell_artifacts_phase2_interaction.
-# Scopes: actor / recipient is the artifact owner (seller), target is the artifact.
+﻿# Sell a previously selected artifact to other rulers that are willing to buy it from you.
+# The previously selected artifact is saved in the at_selected_artifact scope:actor variable.
+# Scopes: actor / recipient is the artifact owner (seller), secondary_recipient is the buyer, target is the artifact.
 # Human player only.
 at_sell_artifacts_interaction = {
 	category = interaction_category_diplomacy
@@ -17,11 +16,34 @@ at_sell_artifacts_interaction = {
 	greeting = positive
 	send_name = at_sell_artifacts_interaction_send_name
 
-	is_shown = {
-		scope:actor = scope:recipient
+	hidden = yes
+
+	populate_recipient_list = {
 		scope:actor = {
-			has_any_artifact = yes
+			at_get_valid_buyers_or_sellers_effect = { LIST = potential_buyers }
 		}
+		every_in_list = {
+			list = potential_buyers
+			limit = {
+				at_candidate_to_sell_artifact_to_trigger = yes
+				scope:actor = {
+					exists = var:at_selected_artifact
+					var:at_selected_artifact = {
+						save_temporary_scope_as = artifact
+					}
+				}
+				save_temporary_opinion_value_as = {
+					name = opinion_of_actor
+					target = scope:actor
+				}
+				at_sell_artifact_ai_accept_value > 0
+			}
+			add_to_list = characters
+		}
+	}
+
+	is_shown = {
+		always = yes
 	}
 
 	is_valid_showing_failures_only = {
@@ -30,29 +52,23 @@ at_sell_artifacts_interaction = {
 
 	can_be_picked_artifact = {
 		scope:actor = {
-			any_character_artifact = {
-				this = scope:target
+			exists = var:at_selected_artifact
+			trigger_if = {
+				limit = {
+					exists = scope:target
+				}
+				var:at_selected_artifact = scope:target
 			}
-		}
-		trigger_if = {
-			limit = {
-				scope:actor = { is_ai = no }
-			}
-			scope:target = { is_equipped = no }
 		}
 	}
 
 	on_accept = {
-		scope:actor = {
-			set_variable = {
-				name = selected_artifact
-				value = scope:target
-			}
-		}
-		open_interaction_window = {
-			interaction = at_sell_artifacts_phase2_interaction
-			actor = scope:actor
-			recipient = scope:recipient
+		scope:actor = { save_scope_as = seller }
+		scope:secondary_recipient = { save_scope_as = buyer }
+		scope:secondary_recipient = { save_scope_as = recipient }
+		scope:target = { save_scope_as = artifact }
+		at_buy_artifact_interaction_effect = {
+			ARTIFACT_PRICE = scope:artifact.at_artifact_bid_price_minus_repair_cost_value
 		}
 	}
 

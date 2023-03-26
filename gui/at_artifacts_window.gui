@@ -1,0 +1,176 @@
+window = {
+	name = "at_artifacts_window"
+	position = { 0 20 }
+	parentanchor = center
+	layer = frontend
+
+	using = Window_Background
+	using = Window_Decoration_Spike
+
+	state = {
+		name = _show
+		using = Animation_FadeIn_Quick
+		using = Sound_WindowShow_Standard
+	}
+
+	state = {
+		name = _hide
+		using = Animation_FadeOut_Quick
+		using = Sound_WindowHide_Standard
+	}
+
+	visible = "[And(GetVariableSystem.HasValue('at_artifacts_window_visible', 'yes'), IsInGame)]"
+
+	vbox = {
+		margin_bottom = 28
+		set_parent_size_to_minimum = yes
+
+		using = Window_Margins
+		using = Window_Background
+
+		header_pattern = {
+			layoutpolicy_horizontal = expanding
+			minimumsize = { 100% 0 }
+
+			blockoverride "header_text"
+			{
+				text = "[SelectLocalization(GetVariableSystem.HasValue('at_artifacts_window_flavor', 'sell'), 'AT_SELL_ARTIFACTS', 'AT_BUY_ARTIFACTS')]"
+			}
+
+			blockoverride "button_close"
+			{
+				onclick = "[GetVariableSystem.Set('at_artifacts_window_visible', 'no')]"
+				onclick = "[GetScriptedGui('at_artifacts_window_close_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+			}
+		}
+
+		vbox = {
+			layoutpolicy_horizontal = expanding
+			layoutpolicy_vertical = expanding
+			margin = { 14 10 }
+
+			hbox = { # artifact sorting
+				layoutpolicy_horizontal = expanding
+				margin = { 10 5 }
+				spacing = 5
+
+				button_standard = {
+					name = "sort_order"
+					size = { 25 25 }
+					tooltip = "ARTIFACT_SORT_ORDER_TOOLTIP"
+					using = tooltip_ne
+					onclick = "[GetScriptedGui('at_artifacts_window_toggle_artifact_sort_order_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+
+					button_icon = {
+						size = { 25 25 }
+						texture = "gfx/interface/icons/flat_icons/sort_icon.dds"
+						framesize = { 66 66 }
+						frame = "[BoolTo1And2(GetPlayer.MakeScope.Var('at_artifacts_window_is_artifact_sort_order_ascending').IsSet)]"
+
+						alwaystransparent = yes
+
+						blockoverride "button_frames"
+						{
+							effectname = "NoHighlight"
+						}
+					}
+				}
+
+				dropdown_menu_standard = {
+					blockoverride "dropdown_properties"
+					{
+						datamodel = "[GetPlayer.MakeScope.GetList('at_artifacts_window_artifact_sort_options')]"
+						onselectionchanged = "[PdxGuiWidget.FindChild('selected_artifact_sort_option').TriggerAnimation('select_artifact_sort_option')]"
+						#selectedindex = "[0]"
+					}
+
+					blockoverride "dropdown_active_item_properties"
+					{
+						name = "selected_artifact_sort_option"
+						text = "[Localize(Concatenate('at', GetPlayer.MakeScope.Var('at_artifacts_window_selected_artifact_sort_option').GetFlagName))]"
+						state = {
+							name = "select_artifact_sort_option"
+							on_start = "[GetScriptedGui('at_artifacts_window_select_artifact_sort_option_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('sort_option', MakeScopeFlag(Scope.GetFlagName)).End)]"
+						}
+					}
+
+					blockoverride "dropdown_item_properties"
+					{
+						text = "[Localize(Concatenate('at', Scope.GetFlagName))]"
+					}
+				}
+
+				expand = {}
+			}
+
+			scrollbox = {
+				layoutpolicy_horizontal = expanding
+				size = { 400 400 }
+
+				blockoverride "scrollbox_content"
+				{
+					vbox = {
+						datamodel = "[GetPlayer.MakeScope.GetList('at_artifacts_window_artifacts')]"
+						layoutpolicy_horizontal = expanding
+						spacing = 10
+
+						item = {
+							widget = {
+								layoutpolicy_horizontal = expanding
+								size = { 360 80 }
+
+								button_standard = {
+									datacontext = "[Scope.Artifact]"
+									datacontext = "[GetScriptedGui('at_artifacts_window_set_selected_artifact_gui')]"
+									size = { 100% 100% }
+
+									onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('artifact', Artifact.MakeScope).End)]"
+
+									down = "[EqualTo_uint32(Artifact.GetID, GetPlayer.MakeScope.Var('at_selected_artifact').Artifact.GetID)]"
+
+									tooltipwidget = {
+										artifact_tooltip = {}
+									}
+
+									hbox = {
+										widget = {
+											size = { 80 80 }
+											alwaystransparent = yes
+
+											button_artifact = {
+												size = { 100% 100% }
+											}
+										}
+
+										text_multi = {
+											layoutpolicy_horizontal = expanding
+											text = "[Artifact.GetNameNoTooltip]"
+											max_width = 250
+											default_format = "#clickable"
+											autoresize = yes
+										}
+
+										expand = {}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		expand = {
+			minimumsize = { 0 10 }
+		}
+
+		button_primary_big = {
+			datacontext = "[GetScriptedGui('at_artifacts_window_send_gui')]"
+			text = "[SelectLocalization(GetVariableSystem.HasValue('at_artifacts_window_flavor', 'sell'), 'AT_SELL_ARTIFACT', 'AT_BUY_ARTIFACT')]"
+			enabled = "[ScriptedGui.IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('flavor', MakeScopeFlag(GetVariableSystem.Get('at_artifacts_window_flavor'))).End)]"
+
+			onclick = "[GetVariableSystem.Set('at_artifacts_window_visible', 'no')]"
+			onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('flavor', MakeScopeFlag(GetVariableSystem.Get('at_artifacts_window_flavor'))).End)]"
+		}
+	}
+}

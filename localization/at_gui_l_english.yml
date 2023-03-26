@@ -1,0 +1,13 @@
+﻿l_english:
+ AT_SELL_ARTIFACTS:0 "Sell Artifacts"
+ AT_SELL_ARTIFACT:0 "Sell Artifact"
+ AT_BUY_ARTIFACTS:0 "Buy Artifacts"
+ AT_BUY_ARTIFACT:0 "Buy Artifact"
+
+ at_type:0 "Type"
+ at_rarity:0 "Rarity"
+ at_durability:0 "Durability"
+
+ at_debug_msg_adding_to_sorted_artifacts: "Adding to sorted_artifacts"
+ at_debug_msg_adding_to_artifacts_window_artifacts: "Adding to artifacts_window_artifacts"
+ at_debug_msg_sorting_artifacts: "Sorting artifacts"

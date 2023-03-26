@@ -1,0 +1,108 @@
+﻿at_artifacts_window_init_gui = {
+	scope = character
+
+	is_valid = {
+		# TODO Adapt to buy artifact
+		has_any_artifact = yes
+	}
+
+	effect = {
+		clear_variable_list = at_artifacts_window_artifact_sort_options
+		add_to_variable_list = { name = at_artifacts_window_artifact_sort_options target = flag:_rarity }
+		add_to_variable_list = { name = at_artifacts_window_artifact_sort_options target = flag:_durability }
+
+		if = {
+			limit = {
+				NOT = { exists = var:at_artifacts_window_selected_artifact_sort_option }
+			}
+			set_variable = {
+				name = at_artifacts_window_selected_artifact_sort_option
+				value = flag:_rarity
+			}
+		}
+
+		# TODO Adapt to buy artifact
+		every_character_artifact = {
+			limit = { is_equipped = no }
+			ROOT = {
+				add_to_variable_list = {
+					name = at_artifacts_window_artifacts
+					target = PREV
+				}
+			}
+		}
+
+		at_artifacts_window_sort_artifacts_effect = yes
+	}
+}
+
+at_artifacts_window_send_gui = {
+	scope = character
+
+	is_valid = {
+		has_variable = at_selected_artifact
+	}
+
+	effect = {
+		clear_variable_list = at_artifacts_window_artifact_sort_options
+		clear_variable_list = at_artifacts_window_artifacts
+
+		# TODO Adapt to buy artifact
+		open_interaction_window = {
+			interaction = at_sell_artifacts_interaction
+			actor = ROOT
+			recipient = ROOT
+		}
+	}
+}
+
+at_artifacts_window_close_gui = {
+	scope = character
+
+	effect = {
+		clear_variable_list = at_artifacts_window_artifact_sort_options
+		clear_variable_list = at_artifacts_window_artifacts
+	}
+}
+
+at_artifacts_window_select_artifact_sort_option_gui = {
+	scope = character
+	saved_scopes = { sort_option }
+
+	effect = {
+		set_variable = {
+			name = at_artifacts_window_selected_artifact_sort_option
+			value = scope:sort_option
+		}
+
+		at_artifacts_window_sort_artifacts_effect = yes
+	}
+}
+
+at_artifacts_window_toggle_artifact_sort_order_gui = {
+	scope = character
+
+	effect = {
+		if = {
+			limit = { has_variable = at_artifacts_window_is_artifact_sort_order_ascending }
+			remove_variable = at_artifacts_window_is_artifact_sort_order_ascending
+		}
+		else = {
+			set_variable = at_artifacts_window_is_artifact_sort_order_ascending
+		}
+
+		at_artifacts_window_sort_artifacts_effect = yes
+	}
+}
+
+at_artifacts_window_set_selected_artifact_gui = {
+	scope = character
+	saved_scopes = { artifact }
+
+	effect = {
+		set_variable = {
+			name = at_selected_artifact
+			value = scope:artifact
+		}
+	}
+}
