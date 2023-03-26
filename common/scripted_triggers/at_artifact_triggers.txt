@@ -1,34 +1,65 @@
-﻿at_potential_buyer_or_seller_trigger = {
-	$CHARACTER$ = {
-		is_ruler = yes
-	}
-	OR = {
-		any_neighboring_and_across_water_top_liege_realm_owner = {
-			this = $CHARACTER$
-		}
-		trigger_if = {
-			limit = { exists = top_liege }
-			top_liege = {
-				any_vassal_or_below = {
-					this = $CHARACTER$
-				}
-			}
-		}
-		trigger_if = {
-			limit = { NOT = { exists = top_liege } }
-			any_vassal_or_below = {
-				this = $CHARACTER$
-			}
-		}
-	}
-}
-
-at_candidate_to_buy_or_sell_trigger = {
-	is_ai = yes
+﻿at_candidate_to_interact_with_trigger = {
 	NOT = { this = scope:actor }
 	highest_held_title_tier >= tier_county
 	is_busy_in_events_localised = yes
 	in_diplomatic_range = scope:actor
 	NOT = { is_at_war_with = scope:actor }
 	is_imprisoned = no
+}
+
+at_candidate_to_sell_artifact_to_trigger = {
+	at_candidate_to_interact_with_trigger = yes
+	is_ai = yes
+	short_term_gold > 1
+}
+
+at_candidate_to_buy_artifact_from_trigger = {
+	at_candidate_to_interact_with_trigger = yes
+	is_ai = yes
+}
+
+at_valid_buyer_or_seller_trigger = {
+	is_ruler = yes
+	save_temporary_scope_as = ruler
+	OR = {
+		# Liege or vassals in the same realm
+		trigger_if = {
+			limit = { exists = top_liege }
+			trigger_if = {
+				limit = { $PARTY$ = { exists = top_liege } }
+				$PARTY$.top_liege = top_liege
+			}
+			trigger_else = {
+				top_liege = $PARTY$
+			}
+		}
+		trigger_else = {
+			$PARTY$ = { exists = top_liege }
+			$PARTY$.top_liege = this
+		}
+
+		# Neighboring rulers
+		$PARTY$ = {
+			OR = {
+				any_neighboring_and_across_water_top_liege_realm_owner = {
+					this = scope:ruler
+				}
+				any_neighboring_and_across_water_realm_same_rank_owner = {
+					this = scope:ruler
+				}
+			}
+		}
+
+		# Rulers within trading range
+		AND = {
+			is_landed = yes
+			$PARTY$ = { is_landed = yes }
+			capital_province = {
+				squared_distance = {
+					target = $PARTY$.capital_province
+					value <= $PARTY$.at_artifact_trading_range_value
+				}
+			}
+		}
+	}
 }

@@ -14,22 +14,29 @@ at_sell_artifacts_phase2_interaction = {
 	target_filter = actor_artifacts
 
 	greeting = positive
-	send_name = at_sell_artifacts_phase2_interaction
+	send_name = at_sell_artifacts_phase2_interaction_send_name
 
 	hidden = yes
 
 	populate_recipient_list = {
 		scope:actor = {
-			at_get_potential_buyers_or_sellers_effect = { LIST = potential_buyers }
+			at_get_valid_buyers_or_sellers_effect = { LIST = potential_buyers }
 		}
 		every_in_list = {
 			list = potential_buyers
 			limit = {
-				at_candidate_to_buy_or_sell_trigger = yes
+				at_candidate_to_sell_artifact_to_trigger = yes
 				scope:actor = {
 					exists = var:selected_artifact
-					# TODO
+					var:selected_artifact = {
+						save_temporary_scope_as = artifact
+					}
 				}
+				save_temporary_opinion_value_as = {
+					name = opinion_of_actor
+					target = scope:actor
+				}
+				at_sell_artifact_ai_accept_value > 0
 			}
 			add_to_list = characters
 		}
@@ -44,17 +51,25 @@ at_sell_artifacts_phase2_interaction = {
 	}
 
 	can_be_picked_artifact = {
-		trigger_if = {
-			limit = { exists = scope:target }
-			scope:actor = {
-				exists = var:selected_artifact
+		scope:actor = {
+			exists = var:selected_artifact
+			trigger_if = {
+				limit = {
+					exists = scope:target
+				}
 				var:selected_artifact = scope:target
 			}
 		}
 	}
 
 	on_accept = {
-		# TODO
+		scope:actor = { save_scope_as = seller }
+		scope:secondary_recipient = { save_scope_as = buyer }
+		scope:secondary_recipient = { save_scope_as = recipient }
+		scope:target = { save_scope_as = artifact }
+		at_buy_artifact_interaction_effect = {
+			ARTIFACT_PRICE = scope:artifact.at_artifact_bid_price_minus_repair_cost_value
+		}
 	}
 
 	auto_accept = yes

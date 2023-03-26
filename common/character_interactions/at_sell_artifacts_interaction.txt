@@ -15,7 +15,7 @@ at_sell_artifacts_interaction = {
 	target_filter = actor_artifacts
 
 	greeting = positive
-	send_name = at_sell_artifacts_interaction
+	send_name = at_sell_artifacts_interaction_send_name
 
 	is_shown = {
 		scope:actor = scope:recipient
@@ -29,16 +29,16 @@ at_sell_artifacts_interaction = {
 	}
 
 	can_be_picked_artifact = {
+		scope:actor = {
+			any_character_artifact = {
+				this = scope:target
+			}
+		}
 		trigger_if = {
 			limit = {
 				scope:actor = { is_ai = no }
 			}
 			scope:target = { is_equipped = no }
-		}
-		scope:actor = {
-			any_character_artifact = {
-				this = scope:target
-			}
 		}
 	}
 

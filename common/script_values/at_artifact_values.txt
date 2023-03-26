@@ -1,80 +1,82 @@
 ﻿# Difference between the QWA of the scoped artifact
-# and the QWA of the worst artifact of the same type equipped by scope:recipient.
+# and the QWA of the worst artifact of the same type equipped by scope:buyer.
 at_artifact_quality_wealth_average_difference_value = {
 	value = at_artifact_quality_wealth_average_value
 	subtract = at_equipped_artifact_quality_wealth_average_value
 }
 
-# QWA of the worst artifact of the same type as the scoped artifact equipped by scope:recipient.
+# QWA of the worst artifact of the same type as the scoped artifact equipped by scope:buyer.
 at_equipped_artifact_quality_wealth_average_value = {
 	save_temporary_scope_as = artifact
+	value = scope:buyer.at_character_equipped_artifact_quality_wealth_average_value
+}
+
+at_character_equipped_artifact_quality_wealth_average_value = {
 	value = 0
-	scope:recipient = {
-		if = {
-			limit = {
-				scope:artifact = { artifact_slot_type = primary_armament }
-				any_equipped_character_artifact = {
-					artifact_slot_type = primary_armament
-				}
-			}
-			every_equipped_character_artifact = {
-				limit = { artifact_slot_type = primary_armament }
-				add = at_artifact_quality_wealth_average_value
+	if = {
+		limit = {
+			scope:artifact = { artifact_slot_type = primary_armament }
+			any_equipped_character_artifact = {
+				artifact_slot_type = primary_armament
 			}
 		}
-		else_if = {
-			limit = {
-				scope:artifact = { artifact_slot_type = armor }
-				any_equipped_character_artifact = {
-					artifact_slot_type = armor
-				}
-			}
-			every_equipped_character_artifact = {
-				limit = { artifact_slot_type = armor }
-				add = at_artifact_quality_wealth_average_value
-			}
+		every_equipped_character_artifact = {
+			limit = { artifact_slot_type = primary_armament }
+			add = at_artifact_quality_wealth_average_value
 		}
-		else_if = {
-			limit = {
-				scope:artifact = { artifact_slot_type = regalia }
-				any_equipped_character_artifact = {
-					artifact_slot_type = regalia
-				}
-			}
-			every_equipped_character_artifact = {
-				limit = { artifact_slot_type = regalia }
-				add = at_artifact_quality_wealth_average_value
-			}
-		}
-		else_if = {
-			limit = {
-				scope:artifact = { artifact_slot_type = helmet }
-				any_equipped_character_artifact = {
-					artifact_slot_type = helmet
-				}
-			}
-			every_equipped_character_artifact = {
-				limit = { artifact_slot_type = helmet }
-				add = at_artifact_quality_wealth_average_value
-			}
-		}
-		else_if = {
-			limit = {
-				scope:artifact = { artifact_slot_type = miscellaneous }
-				any_equipped_character_artifact = {
-					artifact_slot_type = miscellaneous
-					count >= 4
-				}
-			}
-			ordered_equipped_character_artifact = {
-				limit = { artifact_slot_type = miscellaneous }
-				order_by = { value = 100 subtract = at_artifact_quality_wealth_average_value }
-				max = 1
-				add = at_artifact_quality_wealth_average_value
-			}
-		}
-		# TODO Court artifacts
 	}
+	else_if = {
+		limit = {
+			scope:artifact = { artifact_slot_type = armor }
+			any_equipped_character_artifact = {
+				artifact_slot_type = armor
+			}
+		}
+		every_equipped_character_artifact = {
+			limit = { artifact_slot_type = armor }
+			add = at_artifact_quality_wealth_average_value
+		}
+	}
+	else_if = {
+		limit = {
+			scope:artifact = { artifact_slot_type = regalia }
+			any_equipped_character_artifact = {
+				artifact_slot_type = regalia
+			}
+		}
+		every_equipped_character_artifact = {
+			limit = { artifact_slot_type = regalia }
+			add = at_artifact_quality_wealth_average_value
+		}
+	}
+	else_if = {
+		limit = {
+			scope:artifact = { artifact_slot_type = helmet }
+			any_equipped_character_artifact = {
+				artifact_slot_type = helmet
+			}
+		}
+		every_equipped_character_artifact = {
+			limit = { artifact_slot_type = helmet }
+			add = at_artifact_quality_wealth_average_value
+		}
+	}
+	else_if = {
+		limit = {
+			scope:artifact = { artifact_slot_type = miscellaneous }
+			any_equipped_character_artifact = {
+				artifact_slot_type = miscellaneous
+				count >= 4
+			}
+		}
+		ordered_equipped_character_artifact = {
+			limit = { artifact_slot_type = miscellaneous }
+			order_by = { value = 100 subtract = at_artifact_quality_wealth_average_value }
+			max = 1
+			add = at_artifact_quality_wealth_average_value
+		}
+	}
+	# TODO Court artifacts
 }
 
 # Artifact quality and wealth average (QWA).
@@ -144,6 +146,7 @@ at_artifact_repair_cost_value = {
 	value = 25
 	multiply = at_artifact_repair_cost_durability_multiplier
 	multiply = at_artifact_repair_cost_quality_wealth_multiplier
+	floor = yes
 }
 
 # Durability multiplier for calculating the artifact repair cost.
@@ -218,16 +221,25 @@ at_artifact_ask_price_value = {
 
 	# Make it higher for the player
 	if = {
-		limit = { scope:actor = { is_ai = no } }
+		limit = {
+			exists = scope:actor
+			scope:actor = { is_ai = no }
+		}
 		multiply = at_artifact_ask_price_player_multiplier
 	}
 
 	# Seller personality multiplier (0.8 to 1.2 based on ai_greed)
-	multiply = {
-		value = scope:recipient.ai_greed
-		multiply = 0.002
-		add = 1
+	if = {
+		limit = { exists = scope:seller }
+		multiply = {
+			value = scope:seller.ai_greed
+			multiply = 0.002
+			add = 1
+		}
 	}
+
+	floor = yes
+	min = 1
 }
 
 # Artifact bid price. Calculated by correcting the base price by a multiplier based on AI greed.
@@ -236,16 +248,25 @@ at_artifact_bid_price_value = {
 
 	# Make it lower for the player
 	if = {
-		limit = { scope:actor = { is_ai = no } }
+		limit = {
+			exists = scope:actor
+			scope:actor = { is_ai = no }
+		}
 		multiply = at_artifact_bid_price_player_multiplier
 	}
 
 	# Buyer personality multiplier (0.8 to 1.2 based on ai_greed)
-	multiply = {
-		value = scope:recipient.ai_greed
-		multiply = -0.002
-		add = 1
+	if = {
+		limit = { exists = scope:buyer }
+		multiply = {
+			value = scope:buyer.ai_greed
+			multiply = -0.002
+			add = 1
+		}
 	}
+
+	floor = yes
+	min = 1
 }
 
 # Artifact ask price minus repair cost value.
@@ -254,7 +275,7 @@ at_artifact_ask_price_minus_repair_cost_value = {
 	if = {
 		limit = { artifact_durability < artifact_max_durability }
 		subtract = at_artifact_repair_cost_value
-		min = 0
+		min = 1
 	}
 }
 
@@ -264,13 +285,163 @@ at_artifact_bid_price_minus_repair_cost_value = {
 	if = {
 		limit = { artifact_durability < artifact_max_durability }
 		subtract = at_artifact_repair_cost_value
-		min = 0
+		min = 1
+	}
+}
+
+at_sell_artifact_ai_accept_value = {
+	save_temporary_scope_as = buyer
+	value = -50
+
+	# Avoid spending money if at war
+	if = {
+		limit = {
+			is_at_war = yes
+		}
+		add = -50
+	}
+
+	# Artifact claims
+	if = {
+		limit = {
+			scope:artifact = { can_be_claimed_by = scope:buyer }
+		}
+		add = at_ai_positive_claim_impact_value
+	}
+
+	# Difference between the QWA of the target artifact
+	# and the QWA of the worst artifact of the same type equipped by the buyer (0 to PIV)
+	if = {
+		limit = {
+			scope:artifact.at_artifact_quality_wealth_average_difference_value > 0
+		}
+		add = {
+			value = scope:artifact.at_artifact_quality_wealth_average_difference_value
+			divide = 100
+			multiply = at_ai_positive_qwa_difference_impact_value
+		}
+	}
+
+	# Artifact durability (0 to NIV)
+	if = {
+		limit = {
+			scope:artifact.artifact_durability < scope:artifact.artifact_max_durability
+		}
+		add = {
+			value = scope:artifact.artifact_max_durability
+			subtract = scope:artifact.artifact_durability
+			divide = scope:artifact.artifact_max_durability
+			multiply = at_ai_negative_durability_impact_value
+		}
+	}
+
+	# TODO Artifact modifiers and recipient lifestyle
+
+	# Useless, not relevant, unwanted, or cursed artifacts
+	if = {
+		limit = {
+			NOT = { can_equip_artifact = scope:artifact }
+		}
+		add = -100
+	}
+	if = {
+		limit = {
+			NOT = { can_benefit_from_artifact = scope:artifact }
+		}
+		add = -50
+	}
+	if = {
+		limit = {
+			scope:artifact = { has_variable = unwanted_artifact }
+		}
+		add = -500
+	}
+	if = {
+		limit = {
+			scope:artifact = { has_variable = cursed_artifact }
+		}
+		add = -1000
+	}
+
+	# Dynasty banner
+	if = {
+		limit = {
+			exists = scope:artifact.var:banner_dynasty
+			exists = scope:buyer.dynasty
+			scope:buyer = scope:artifact.var:banner_dynasty.dynast
+		}
+		add = 50
+	}
+
+	# Useless banner
+	if = {
+		limit = {
+			OR = {
+				exists = scope:artifact.var:banner_dynasty
+				exists = scope:artifact.var:banner_house
+			}
+			exists = scope:buyer.house
+			trigger_if = {
+				limit = { exists = scope:artifact.var:banner_dynasty }
+				NOT = { scope:artifact.var:banner_dynasty = scope:buyer.dynasty }
+			}
+			trigger_else = {
+				NOT = { scope:artifact.var:banner_house = scope:buyer.house }
+			}
+		}
+		add = -100
+	}
+
+	# TODO Price (PIV if price < minor_gold_value, NIV if price > major_gold_value)
+
+	# Opinion of actor
+	add = {
+		value = scope:opinion_of_actor
+		multiply = at_buy_sell_artifact_ai_opinion_multiplier
+		floor = yes
+	}
+
+	# Avoid doing business with rivals or nemesises
+	if = {
+		limit = {
+			has_relation_rival = scope:actor
+		}
+		add = -100
+	}
+	if = {
+		limit = {
+			has_relation_nemesis = scope:actor
+		}
+		add = -200
+	}
+}
+
+# Artifact trading range, depends on title tier.
+at_artifact_trading_range_value = {
+	if = {
+		limit = { highest_held_title_tier = tier_empire }
+		value = squared_distance_almost_massive
+	}
+	else_if = {
+		limit = { highest_held_title_tier = tier_kingdom }
+		value = squared_distance_huge
+	}
+	else_if = {
+		limit = { highest_held_title_tier = tier_duchy }
+		value = squared_distance_large
+	}
+	else_if = {
+		limit = { highest_held_title_tier = tier_county }
+		value = squared_distance_medium
+	}
+	else = {
+		value = squared_distance_small
 	}
 }
 
 # Used in localization.
 at_scope_buyer_current_gold_value = {
-	value = scope:buyer.current_gold_value
+	value = scope:buyer.short_term_gold
 }
 
 # Used in localization.
