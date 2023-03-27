@@ -19,7 +19,7 @@ window = {
 		using = Sound_WindowHide_Standard
 	}
 
-	visible = "[And(GetVariableSystem.HasValue('at_artifacts_window_visible', 'yes'), IsInGame)]"
+	visible = "[GetVariableSystem.HasValue('at_artifacts_window_visible', 'yes')]"
 
 	vbox = {
 		margin_bottom = 28
@@ -34,7 +34,7 @@ window = {
 
 			blockoverride "header_text"
 			{
-				text = "[SelectLocalization(GetVariableSystem.HasValue('at_artifacts_window_flavor', 'sell'), 'AT_SELL_ARTIFACTS', 'AT_BUY_ARTIFACTS')]"
+				text = "[SelectLocalization(GetVariableSystem.HasValue('at_artifacts_window_flavor', 'sell'), 'AT_SELL_ARTIFACTS', SelectLocalization(GetVariableSystem.HasValue('at_artifacts_window_flavor', 'buy'), 'AT_BUY_ARTIFACTS', 'AT_FIND_ARTIFACTS'))]"
 			}
 
 			blockoverride "button_close"
@@ -168,6 +168,7 @@ window = {
 
 		button_primary_big = {
 			datacontext = "[GetScriptedGui('at_artifacts_window_send_gui')]"
+			visible = "[Not(GetVariableSystem.HasValue('at_artifacts_window_flavor', 'find'))]"
 			text = "[SelectLocalization(GetVariableSystem.HasValue('at_artifacts_window_flavor', 'sell'), 'AT_SELL_ARTIFACT', 'AT_BUY_ARTIFACT')]"
 			enabled = "[ScriptedGui.IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('flavor', MakeScopeFlag(GetVariableSystem.Get('at_artifacts_window_flavor'))).End)]"
 

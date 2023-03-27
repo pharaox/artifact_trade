@@ -2,8 +2,10 @@
 	scope = character
 
 	is_valid = {
-		# TODO Adapt to different flavors
-		has_any_artifact = yes
+		trigger_if = {
+			limit = { scope:flavor = flag:sell }
+			has_any_artifact = yes
+		}
 	}
 
 	effect = {
@@ -22,10 +24,7 @@
 			}
 		}
 
-		# TODO Adapt to different flavors
-		every_character_artifact = {
-			add_to_temporary_list = artifacts
-		}
+		at_artifacts_window_get_artifacts_effect = { LIST = artifacts }
 		at_artifacts_window_sort_artifacts_effect = { LIST = artifacts }
 	}
 }
@@ -41,11 +40,13 @@ at_artifacts_window_send_gui = {
 		clear_variable_list = at_artifacts_window_artifact_sort_options
 		clear_variable_list = at_artifacts_window_artifacts
 
-		# TODO Adapt to different flavors
-		open_interaction_window = {
-			interaction = at_sell_artifacts_interaction
-			actor = ROOT
-			recipient = ROOT
+		if = {
+			limit = { scope:flavor = flag:sell }
+			open_interaction_window = {
+				interaction = at_sell_artifacts_interaction
+				actor = ROOT
+				recipient = ROOT
+			}
 		}
 	}
 }
@@ -69,10 +70,7 @@ at_artifacts_window_select_artifact_sort_option_gui = {
 			value = scope:sort_option
 		}
 
-		# TODO Adapt to different flavors
-		every_character_artifact = {
-			add_to_temporary_list = artifacts
-		}
+		at_artifacts_window_get_artifacts_effect = { LIST = artifacts }
 		at_artifacts_window_sort_artifacts_effect = { LIST = artifacts }
 	}
 }
@@ -89,10 +87,7 @@ at_artifacts_window_toggle_artifact_sort_order_gui = {
 			set_variable = at_artifacts_window_is_artifact_sort_order_ascending
 		}
 
-		# TODO Adapt to different flavors
-		every_character_artifact = {
-			add_to_temporary_list = artifacts
-		}
+		at_artifacts_window_get_artifacts_effect = { LIST = artifacts }
 		at_artifacts_window_sort_artifacts_effect = { LIST = artifacts }
 	}
 }

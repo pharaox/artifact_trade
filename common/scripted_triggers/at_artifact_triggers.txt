@@ -1,20 +1,20 @@
 ﻿at_candidate_to_interact_with_trigger = {
-	NOT = { this = scope:actor }
+	NOT = { this = $PARTY$ }
 	highest_held_title_tier >= tier_county
 	is_busy_in_events_localised = yes
-	in_diplomatic_range = scope:actor
-	NOT = { is_at_war_with = scope:actor }
+	in_diplomatic_range = $PARTY$
+	NOT = { is_at_war_with = $PARTY$ }
 	is_imprisoned = no
 }
 
 at_candidate_to_sell_artifact_to_trigger = {
-	at_candidate_to_interact_with_trigger = yes
+	at_candidate_to_interact_with_trigger = { PARTY = $PARTY$ }
 	is_ai = yes
 	short_term_gold > 1
 }
 
 at_candidate_to_buy_artifact_from_trigger = {
-	at_candidate_to_interact_with_trigger = yes
+	at_candidate_to_interact_with_trigger = { PARTY = $PARTY$ }
 	is_ai = yes
 }
 

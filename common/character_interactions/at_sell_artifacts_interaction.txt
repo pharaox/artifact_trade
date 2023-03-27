@@ -25,7 +25,7 @@ at_sell_artifacts_interaction = {
 		every_in_list = {
 			list = potential_buyers
 			limit = {
-				at_candidate_to_sell_artifact_to_trigger = yes
+				at_candidate_to_sell_artifact_to_trigger = { PARTY = scope:actor }
 				scope:actor = {
 					exists = var:at_selected_artifact
 					var:at_selected_artifact = {

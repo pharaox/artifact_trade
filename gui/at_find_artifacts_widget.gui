@@ -1,0 +1,31 @@
+widget = {
+	name = "at_find_artifacts_widget"
+	parentanchor = bottom|right
+	widgetanchor = bottom|right
+	position = { -690 0 }
+	size = { 55 55 }
+	visible = yes
+	layer = bottom
+
+	background = {
+		texture = "gfx/interface/icons/flat_icons/artifact_bg.dds"
+	}
+
+	button_icon = {
+		name = "at_find_artifacts_button"
+		#tooltip = "AT_FIND_ARTIFACTS_TOOLTIP"
+		parentanchor = center
+		size = { 35 35 }
+		visible = yes
+
+		#texture = "gfx/interface/icons/inventory/trinket.dds"
+		#texture = "gfx/interface/icons/character_interactions/artifact.dds"
+		texture = "gfx/interface/icons/character_interactions/artisan_inspiration.dds"
+
+		using = tooltip_ne
+
+		onclick = "[GetScriptedGui('at_artifacts_window_init_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('flavor', MakeScopeFlag('find')).End)]"
+		onclick = "[GetVariableSystem.Set('at_artifacts_window_visible', 'yes')]"
+		onclick = "[GetVariableSystem.Set('at_artifacts_window_flavor', 'find')]"
+	}
+}

@@ -1,4 +1,33 @@
-﻿at_artifacts_window_sort_artifacts_effect = {
+﻿at_artifacts_window_get_artifacts_effect = {
+	if = {
+		limit = { scope:flavor = flag:sell }
+		every_character_artifact = {
+			limit = { is_equipped = no }
+			add_to_temporary_list = $LIST$
+		}
+	}
+	else_if = {
+		limit = { scope:flavor = flag:buy }
+		at_get_valid_buyers_or_sellers_effect = { LIST = valid_buyers }
+		every_in_list = {
+			list = valid_buyers
+			limit = {
+				at_candidate_to_sell_artifact_to_trigger = { PARTY = ROOT }
+			}
+			every_character_artifact = {
+				limit = { is_equipped = no }
+				add_to_temporary_list = $LIST$
+			}
+		}
+	}
+	else = {
+		every_artifact = {
+			add_to_temporary_list = $LIST$
+		}
+	}
+}
+
+at_artifacts_window_sort_artifacts_effect = {
 	clear_variable_list = at_artifacts_window_artifacts
 	ordered_in_list = {
 		list = $LIST$

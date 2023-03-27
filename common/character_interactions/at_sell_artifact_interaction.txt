@@ -41,7 +41,7 @@ at_sell_artifact_interaction = {
 
 	is_valid_showing_failures_only = {
 		scope:recipient = {
-			at_candidate_to_sell_artifact_to_trigger = yes
+			at_candidate_to_sell_artifact_to_trigger = { PARTY = scope:actor }
 		}
 		scope:actor = {
 			is_imprisoned = no
