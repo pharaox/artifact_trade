@@ -1,6 +1,7 @@
 ﻿at_artifacts_window_sort_artifacts_effect = {
+	clear_variable_list = at_artifacts_window_artifacts
 	ordered_in_list = {
-		variable = at_artifacts_window_artifacts
+		list = $LIST$
 		order_by = {
 			if = {
 				limit = { ROOT.var:at_artifacts_window_selected_artifact_sort_option = flag:_rarity }
@@ -9,6 +10,10 @@
 			else_if = {
 				limit = { ROOT.var:at_artifacts_window_selected_artifact_sort_option = flag:_durability }
 				value = artifact_durability
+			}
+			else_if = {
+				limit = { ROOT.var:at_artifacts_window_selected_artifact_sort_option = flag:_type }
+				value = at_artifact_type_value
 			}
 			if = {
 				limit = {
@@ -19,13 +24,6 @@
 		}
 		max = 1000
 		check_range_bounds = no
-
-		add_to_temporary_list = sorted_artifacts
-	}
-
-	clear_variable_list = at_artifacts_window_artifacts
-	every_in_list = {
-		list = sorted_artifacts
 
 		ROOT = {
 			add_to_variable_list = {

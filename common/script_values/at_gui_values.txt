@@ -1,0 +1,224 @@
+at_artifact_slot_type_value = {
+	if = {
+		limit = { artifact_slot_type = helmet }
+		value = 1
+	}
+	else_if = {
+		limit = { artifact_slot_type = regalia }
+		value = 2
+	}
+	else_if = {
+		limit = { artifact_slot_type = armor }
+		value = 3
+	}
+	else_if = {
+		limit = { artifact_slot_type = primary_armament }
+		value = 4
+	}
+	else_if = {
+		limit = { artifact_slot_type = miscellaneous }
+		value = 5
+	}
+	else_if = {
+		limit = { artifact_slot_type = sculpture }
+		value = 6
+	}
+	else_if = {
+		limit = { artifact_slot_type = pedestal }
+		value = 7
+	}
+	else_if = {
+		limit = { artifact_slot_type = wall_big }
+		value = 8
+	}
+	else_if = {
+		limit = { artifact_slot_type = wall_small }
+		value = 9
+	}
+	else_if = {
+		limit = { artifact_slot_type = throne }
+		value = 10
+	}
+	else_if = {
+		limit = { artifact_slot_type = book }
+		value = 11
+	}
+}
+
+at_artifact_type_value = {
+	# Crown
+	if = {
+		limit = { artifact_type = helmet }
+		value = 10
+	}
+	# Regalia
+	else_if = {
+		limit = { artifact_type = regalia }
+		value = 20
+	}
+	else_if = {
+		limit = { artifact_type = regalia_simple }
+		value = 21
+	}
+	# Armor
+	else_if = {
+		limit = { artifact_type = armor_mail }
+		value = 30
+	}
+	else_if = {
+		limit = { artifact_type = armor_plate }
+		value = 31
+	}
+	else_if = {
+		limit = { artifact_type = armor_scale }
+		value = 32
+	}
+	else_if = {
+		limit = { artifact_type = armor_lamellar }
+		value = 33
+	}
+	else_if = {
+		limit = { artifact_type = armor_laminar }
+		value = 34
+	}
+	else_if = {
+		limit = { artifact_type = armor_brigandine }
+		value = 35
+	}
+	# Weapons
+	else_if = {
+		limit = { artifact_type = axe }
+		value = 40
+	}
+	else_if = {
+		limit = { artifact_type = hammer }
+		value = 41
+	}
+	else_if = {
+		limit = { artifact_type = mace }
+		value = 42
+	}
+	else_if = {
+		limit = { artifact_type = spear }
+		value = 43
+	}
+	else_if = {
+		limit = { artifact_type = sword }
+		value = 44
+	}
+	else_if = {
+		limit = { artifact_type = dagger }
+		value = 45
+	}
+	# Trinkets
+	else_if = {
+		limit = { artifact_type = miscellaneous }
+		value = 50
+	}
+	else_if = {
+		limit = { artifact_type = miscellaneous_when_not_court }
+		value = 51
+	}
+	else_if = {
+		limit = { artifact_type = brooch }
+		value = 52
+	}
+	else_if = {
+		limit = { artifact_type = necklace }
+		value = 53
+	}
+	# Sculptures
+	else_if = {
+		limit = { artifact_type = sculpture }
+		value = 60
+	}
+	else_if = {
+		limit = { artifact_type = chest }
+		value = 61
+	}
+	else_if = {
+		limit = { artifact_type = cabinet }
+		value = 62
+	}
+	else_if = {
+		limit = { artifact_type = scientific_apparatus }
+		value = 63
+	}
+	# Pedestal items, including alchemy
+	else_if = {
+		limit = { artifact_type = box }
+		value = 70
+	}
+	else_if = {
+		limit = { artifact_type = goblet }
+		value = 71
+	}
+	else_if = {
+		limit = { artifact_type = jug }
+		value = 72
+	}
+	else_if = {
+		limit = { artifact_type = pedestal }
+		value = 73
+	}
+	else_if = {
+		limit = { artifact_type = elixir }
+		value = 74
+	}
+	else_if = {
+		limit = { artifact_type = panacea }
+		value = 75
+	}
+	else_if = {
+		limit = { artifact_type = philosophers_stone }
+		value = 76
+	}
+	# Large wall ornaments
+	else_if = {
+		limit = { artifact_type = tapestry }
+		value = 80
+	}
+	else_if = {
+		limit = { artifact_type = animal_hide_big }
+		value = 81
+	}
+	else_if = {
+		limit = { artifact_type = wall_big }
+		value = 82
+	}
+	else_if = {
+		limit = { artifact_type = wall_shield_special }
+		value = 83
+	}
+	# Small wall ornaments
+	else_if = {
+		limit = { artifact_type = animal_skull }
+		value = 90
+	}
+	else_if = {
+		limit = { artifact_type = animal_hide }
+		value = 91
+	}
+	else_if = {
+		limit = { artifact_type = wall_small }
+		value = 92
+	}
+	else_if = {
+		limit = { artifact_type = wall_shield }
+		value = 93
+	}
+	# Thrones
+	else_if = {
+		limit = { artifact_type = throne }
+		value = 100
+	}
+	else_if = {
+		limit = { artifact_type = throne_special }
+		value = 101
+	}
+	# Books
+	else_if = {
+		limit = { artifact_type = book }
+		value = 110
+	}
+}

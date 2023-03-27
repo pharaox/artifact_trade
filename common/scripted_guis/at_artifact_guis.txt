@@ -2,7 +2,7 @@
 	scope = character
 
 	is_valid = {
-		# TODO Adapt to buy artifact
+		# TODO Adapt to different flavors
 		has_any_artifact = yes
 	}
 
@@ -10,6 +10,7 @@
 		clear_variable_list = at_artifacts_window_artifact_sort_options
 		add_to_variable_list = { name = at_artifacts_window_artifact_sort_options target = flag:_rarity }
 		add_to_variable_list = { name = at_artifacts_window_artifact_sort_options target = flag:_durability }
+		add_to_variable_list = { name = at_artifacts_window_artifact_sort_options target = flag:_type }
 
 		if = {
 			limit = {
@@ -21,18 +22,11 @@
 			}
 		}
 
-		# TODO Adapt to buy artifact
+		# TODO Adapt to different flavors
 		every_character_artifact = {
-			limit = { is_equipped = no }
-			ROOT = {
-				add_to_variable_list = {
-					name = at_artifacts_window_artifacts
-					target = PREV
-				}
-			}
+			add_to_temporary_list = artifacts
 		}
-
-		at_artifacts_window_sort_artifacts_effect = yes
+		at_artifacts_window_sort_artifacts_effect = { LIST = artifacts }
 	}
 }
 
@@ -47,7 +41,7 @@ at_artifacts_window_send_gui = {
 		clear_variable_list = at_artifacts_window_artifact_sort_options
 		clear_variable_list = at_artifacts_window_artifacts
 
-		# TODO Adapt to buy artifact
+		# TODO Adapt to different flavors
 		open_interaction_window = {
 			interaction = at_sell_artifacts_interaction
 			actor = ROOT
@@ -75,7 +69,11 @@ at_artifacts_window_select_artifact_sort_option_gui = {
 			value = scope:sort_option
 		}
 
-		at_artifacts_window_sort_artifacts_effect = yes
+		# TODO Adapt to different flavors
+		every_character_artifact = {
+			add_to_temporary_list = artifacts
+		}
+		at_artifacts_window_sort_artifacts_effect = { LIST = artifacts }
 	}
 }
 
@@ -91,7 +89,11 @@ at_artifacts_window_toggle_artifact_sort_order_gui = {
 			set_variable = at_artifacts_window_is_artifact_sort_order_ascending
 		}
 
-		at_artifacts_window_sort_artifacts_effect = yes
+		# TODO Adapt to different flavors
+		every_character_artifact = {
+			add_to_temporary_list = artifacts
+		}
+		at_artifacts_window_sort_artifacts_effect = { LIST = artifacts }
 	}
 }
 

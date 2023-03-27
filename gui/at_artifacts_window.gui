@@ -55,11 +55,11 @@ window = {
 				spacing = 5
 
 				button_standard = {
-					name = "sort_order"
+					datacontext = "[GetScriptedGui('at_artifacts_window_toggle_artifact_sort_order_gui')]"
 					size = { 25 25 }
 					tooltip = "ARTIFACT_SORT_ORDER_TOOLTIP"
 					using = tooltip_ne
-					onclick = "[GetScriptedGui('at_artifacts_window_toggle_artifact_sort_order_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('flavor', MakeScopeFlag(GetVariableSystem.Get('at_artifacts_window_flavor'))).End)]"
 
 					button_icon = {
 						size = { 25 25 }
@@ -77,6 +77,8 @@ window = {
 				}
 
 				dropdown_menu_standard = {
+					datacontext = "[GetScriptedGui('at_artifacts_window_select_artifact_sort_option_gui')]"
+
 					blockoverride "dropdown_properties"
 					{
 						datamodel = "[GetPlayer.MakeScope.GetList('at_artifacts_window_artifact_sort_options')]"
@@ -90,7 +92,7 @@ window = {
 						text = "[Localize(Concatenate('at', GetPlayer.MakeScope.Var('at_artifacts_window_selected_artifact_sort_option').GetFlagName))]"
 						state = {
 							name = "select_artifact_sort_option"
-							on_start = "[GetScriptedGui('at_artifacts_window_select_artifact_sort_option_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('sort_option', MakeScopeFlag(Scope.GetFlagName)).End)]"
+							on_start = "[ScriptedGui.Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('sort_option', MakeScopeFlag(Scope.GetFlagName)).AddScope('flavor', MakeScopeFlag(GetVariableSystem.Get('at_artifacts_window_flavor'))).End)]"
 						}
 					}
 
