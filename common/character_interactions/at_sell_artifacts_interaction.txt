@@ -1,5 +1,5 @@
 ﻿# Sell a previously selected artifact to other rulers that are willing to buy it from you.
-# The previously selected artifact is saved in the at_selected_artifact scope:actor variable.
+# The previously selected artifact is saved in the at_artifacts_window_selected_artifact scope:actor variable.
 # Scopes: actor / recipient is the artifact owner (seller), secondary_recipient is the buyer, target is the artifact.
 # Human player only.
 at_sell_artifacts_interaction = {
@@ -27,8 +27,8 @@ at_sell_artifacts_interaction = {
 			limit = {
 				at_candidate_to_sell_artifact_to_trigger = { PARTY = scope:actor }
 				scope:actor = {
-					exists = var:at_selected_artifact
-					var:at_selected_artifact = {
+					exists = var:at_artifacts_window_selected_artifact
+					var:at_artifacts_window_selected_artifact = {
 						save_temporary_scope_as = artifact
 					}
 				}
@@ -52,12 +52,12 @@ at_sell_artifacts_interaction = {
 
 	can_be_picked_artifact = {
 		scope:actor = {
-			exists = var:at_selected_artifact
+			exists = var:at_artifacts_window_selected_artifact
 			trigger_if = {
 				limit = {
 					exists = scope:target
 				}
-				var:at_selected_artifact = scope:target
+				var:at_artifacts_window_selected_artifact = scope:target
 			}
 		}
 	}

@@ -205,14 +205,50 @@ at_artifact_repair_cost_quality_wealth_multiplier = {
 	}
 }
 
-# Artifact base price. Calculated by multiplying the potential opinion gain of gifting the artifact
+# Artifact "opinion-based" price. Calculated by multiplying the potential opinion gain of gifting the artifact
 # by scope:actor to to scope:recipient (gift_artifact_opinion) by the "gold per opinion" ratio from
 # sending money as a gift by scope:actor to scope:recipient (gift_value divided by send_gift_opinion).
-at_artifact_base_price_value = {
+at_artifact_opinion_based_price_value = {
 	value = gift_artifact_opinion
 	multiply = gift_value
 	divide = send_gift_opinion
 	multiply = at_artifact_base_price_multiplier
+}
+
+# Artifact base price, calculated using the formula from "Auction Off Artifact".
+at_artifact_base_price_value = {
+	# Rarity
+	if = {
+		limit = { rarity = common }
+		value = 50
+	}
+	else_if = {
+		limit = { rarity = masterwork }
+		value = 75
+	}
+	else_if = {
+		limit = { rarity = famed }
+		value = 125
+	}
+	else_if = {
+		limit = { rarity = illustrious }
+		value = 250
+	}
+
+	# Durability
+	multiply = {
+		value = artifact_durability
+		divide = artifact_max_durability
+	}
+
+	# Uniqueness
+	if = {
+		limit = { is_unique = yes }
+		multiply = 3
+	}
+
+	# Minimum
+	min = 15
 }
 
 # Artifact ask price. Calculated by correcting the base price by a multiplier based on AI greed.

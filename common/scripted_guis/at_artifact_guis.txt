@@ -13,6 +13,7 @@
 		add_to_variable_list = { name = at_artifacts_window_artifact_sort_options target = flag:_rarity }
 		add_to_variable_list = { name = at_artifacts_window_artifact_sort_options target = flag:_durability }
 		add_to_variable_list = { name = at_artifacts_window_artifact_sort_options target = flag:_type }
+		add_to_variable_list = { name = at_artifacts_window_artifact_sort_options target = flag:_price }
 
 		if = {
 			limit = {
@@ -33,7 +34,7 @@ at_artifacts_window_send_gui = {
 	scope = character
 
 	is_valid = {
-		has_variable = at_selected_artifact
+		has_variable = at_artifacts_window_selected_artifact
 	}
 
 	effect = {
@@ -98,7 +99,7 @@ at_artifacts_window_set_selected_artifact_gui = {
 
 	effect = {
 		set_variable = {
-			name = at_selected_artifact
+			name = at_artifacts_window_selected_artifact
 			value = scope:artifact
 		}
 	}

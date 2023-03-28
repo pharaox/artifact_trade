@@ -44,6 +44,10 @@ at_artifacts_window_sort_artifacts_effect = {
 				limit = { ROOT.var:at_artifacts_window_selected_artifact_sort_option = flag:_type }
 				value = at_artifact_type_value
 			}
+			else_if = {
+				limit = { ROOT.var:at_artifacts_window_selected_artifact_sort_option = flag:_price }
+				value = at_artifact_base_price_value
+			}
 			if = {
 				limit = {
 					ROOT = { has_variable = at_artifacts_window_is_artifact_sort_order_ascending }

@@ -2,7 +2,6 @@ window = {
 	name = "at_artifacts_window"
 	position = { 0 20 }
 	parentanchor = center
-	layer = frontend
 
 	using = Window_Background
 	using = Window_Decoration_Spike
@@ -107,19 +106,19 @@ window = {
 
 			scrollbox = {
 				layoutpolicy_horizontal = expanding
-				size = { 400 400 }
+				size = { 600 800 }
 
 				blockoverride "scrollbox_content"
 				{
 					vbox = {
 						datamodel = "[GetPlayer.MakeScope.GetList('at_artifacts_window_artifacts')]"
 						layoutpolicy_horizontal = expanding
-						spacing = 10
+						spacing = 5
 
 						item = {
 							widget = {
 								layoutpolicy_horizontal = expanding
-								size = { 360 80 }
+								size = { 560 90 }
 
 								button_standard = {
 									datacontext = "[Scope.Artifact]"
@@ -128,11 +127,7 @@ window = {
 
 									onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('artifact', Artifact.MakeScope).End)]"
 
-									down = "[EqualTo_uint32(Artifact.GetID, GetPlayer.MakeScope.Var('at_selected_artifact').Artifact.GetID)]"
-
-									tooltipwidget = {
-										artifact_tooltip = {}
-									}
+									down = "[EqualTo_uint32(Artifact.GetID, GetPlayer.MakeScope.Var('at_artifacts_window_selected_artifact').Artifact.GetID)]"
 
 									hbox = {
 										widget = {
@@ -144,12 +139,73 @@ window = {
 											}
 										}
 
-										text_multi = {
+										vbox = {
 											layoutpolicy_horizontal = expanding
-											text = "[Artifact.GetNameNoTooltip]"
-											max_width = 250
-											default_format = "#clickable"
-											autoresize = yes
+											layoutpolicy_vertical = expanding
+
+											tooltipwidget = {
+												artifact_tooltip = {}
+											}
+
+											expand = {}
+
+											hbox = {
+												layoutpolicy_horizontal = expanding
+
+												text_single = {
+													layoutpolicy_horizontal = expanding
+													text = "[Artifact.GetRarityAndSlotType]"
+													max_width = 300
+													using = Font_Size_Small
+												}
+
+												expand = {}
+											}
+
+											hbox = {
+												layoutpolicy_horizontal = expanding
+
+												text_multi = {
+													layoutpolicy_horizontal = expanding
+													text = "[Artifact.GetNameNoTooltip]"
+													max_width = 350
+													using = Font_Size_Medium
+													default_format = "#high"
+													autoresize = yes
+													alwaystransparent = yes
+												}
+
+												expand = {}
+											}
+
+											hbox = {
+												layoutpolicy_horizontal = expanding
+
+												hbox_artifact_durability = {
+													# simple tooltip override so that the durability tooltip doesnt show up here
+													tooltip = ""
+												}
+
+												expand = {}
+
+												text_single = {
+													layoutpolicy_horizontal = expanding
+													text = "[gold_i][Artifact.MakeScope.ScriptValue('at_artifact_base_price_value')|0]"
+													max_width = 60
+													using = Font_Size_Small
+													align = nobaseline
+												}
+
+												spacer = {
+													size = { 10 0 }
+												}
+											}
+
+											expand = {}
+										}
+
+										portrait_head_small = {
+											datacontext = "[Artifact.GetOwner]"
 										}
 
 										expand = {}
