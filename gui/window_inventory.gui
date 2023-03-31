@@ -247,7 +247,7 @@ window = {
 								enabled = "[ScriptedGui.IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('flavor', MakeScopeFlag('sell')).End)]"
 								#tooltip = "AT_SELL_ARTIFACTS_TOOLTIP"
 
-								onclick = "[InventoryView.Close]"
+								#onclick = "[InventoryView.Close]"
 								onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('flavor', MakeScopeFlag('sell')).End)]"
 								onclick = "[VariableSystem.Set('at_artifacts_window_visible', 'yes')]"
 								onclick = "[VariableSystem.Set('at_artifacts_window_flavor', 'sell')]"
@@ -260,7 +260,7 @@ window = {
 								enabled = "[ScriptedGui.IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('flavor', MakeScopeFlag('buy')).End)]"
 								#tooltip = "AT_BUY_ARTIFACTS_TOOLTIP"
 
-								onclick = "[InventoryView.Close]"
+								#onclick = "[InventoryView.Close]"
 								onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('flavor', MakeScopeFlag('buy')).End)]"
 								onclick = "[VariableSystem.Set('at_artifacts_window_visible', 'yes')]"
 								onclick = "[VariableSystem.Set('at_artifacts_window_flavor', 'buy')]"

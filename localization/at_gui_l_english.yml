@@ -5,6 +5,8 @@
  AT_BUY_ARTIFACT:0 "Buy Artifact"
  AT_FIND_ARTIFACTS:0 "Find Artifacts"
 
+ ARTIFACTS_WINDOW_COUNT:1 "[Select_CString(LessThan_CFixedPoint(GetPlayer.MakeScope.Var('at_artifacts_window_count').GetValue, GetPlayer.MakeScope.Var('at_artifacts_window_total_count').GetValue), '#high', '#low' )] [GetPlayer.MakeScope.Var('at_artifacts_window_count').GetValue] #!of [GetPlayer.MakeScope.Var('at_artifacts_window_total_count').GetValue] Artifacts"
+
  at_rarity:0 "Rarity"
  at_durability:0 "Durability"
  at_type:0 "Type"

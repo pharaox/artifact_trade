@@ -1,9 +1,17 @@
-﻿at_artifacts_window_get_artifacts_effect = {
+﻿at_artifacts_window_get_all_artifacts_effect = {
+	at_clear_variable_list_and_reset_count = {
+		LIST = at_artifacts_window_all_artifacts
+		COUNT = at_artifacts_window_total_count
+	}
 	if = {
 		limit = { scope:flavor = flag:sell }
 		every_character_artifact = {
-			limit = { is_equipped = no }
-			add_to_temporary_list = $LIST$
+			ROOT = {
+				at_add_to_variable_list_and_increment_count = {
+					LIST = at_artifacts_window_all_artifacts
+					COUNT = at_artifacts_window_total_count
+				}
+			}
 		}
 	}
 	else_if = {
@@ -15,22 +23,34 @@
 				at_candidate_to_sell_artifact_to_trigger = { PARTY = ROOT }
 			}
 			every_character_artifact = {
-				limit = { is_equipped = no }
-				add_to_temporary_list = $LIST$
+				ROOT = {
+					at_add_to_variable_list_and_increment_count = {
+						LIST = at_artifacts_window_all_artifacts
+						COUNT = at_artifacts_window_total_count
+					}
+				}
 			}
 		}
 	}
 	else = {
 		every_artifact = {
-			add_to_temporary_list = $LIST$
+			ROOT = {
+				at_add_to_variable_list_and_increment_count = {
+					LIST = at_artifacts_window_all_artifacts
+					COUNT = at_artifacts_window_total_count
+				}
+			}
 		}
 	}
 }
 
-at_artifacts_window_sort_artifacts_effect = {
-	clear_variable_list = at_artifacts_window_artifacts
+at_artifacts_window_get_artifacts_effect = {
+	at_clear_variable_list_and_reset_count = {
+		LIST = at_artifacts_window_artifacts
+		COUNT = at_artifacts_window_count
+	}
 	ordered_in_list = {
-		list = $LIST$
+		variable = at_artifacts_window_all_artifacts
 		order_by = {
 			if = {
 				limit = { ROOT.var:at_artifacts_window_selected_artifact_sort_option = flag:_rarity }
@@ -55,14 +75,36 @@ at_artifacts_window_sort_artifacts_effect = {
 				multiply = -1
 			}
 		}
-		max = 1000
+		max = 10000
 		check_range_bounds = no
 
 		ROOT = {
-			add_to_variable_list = {
-				name = at_artifacts_window_artifacts
-				target = PREV
+			at_add_to_variable_list_and_increment_count = {
+				LIST = at_artifacts_window_artifacts
+				COUNT = at_artifacts_window_count
 			}
+		}
+	}
+}
+
+at_clear_variable_list_and_reset_count = {
+	clear_variable_list = $LIST$
+	set_variable = {
+		name = $COUNT$
+		value = 0
+	}
+}
+
+at_add_to_variable_list_and_increment_count = {
+	add_to_variable_list = {
+		name = $LIST$
+		target = PREV
+	}
+	set_variable = {
+		name = $COUNT$
+		value = {
+			value = var:$COUNT$
+			add = 1
 		}
 	}
 }

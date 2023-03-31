@@ -25,8 +25,8 @@
 			}
 		}
 
-		at_artifacts_window_get_artifacts_effect = { LIST = artifacts }
-		at_artifacts_window_sort_artifacts_effect = { LIST = artifacts }
+		at_artifacts_window_get_all_artifacts_effect = yes
+		at_artifacts_window_get_artifacts_effect = yes
 	}
 }
 
@@ -71,8 +71,8 @@ at_artifacts_window_select_artifact_sort_option_gui = {
 			value = scope:sort_option
 		}
 
-		at_artifacts_window_get_artifacts_effect = { LIST = artifacts }
-		at_artifacts_window_sort_artifacts_effect = { LIST = artifacts }
+		at_artifacts_window_get_all_artifacts_effect = yes
+		at_artifacts_window_get_artifacts_effect = yes
 	}
 }
 
@@ -88,8 +88,8 @@ at_artifacts_window_toggle_artifact_sort_order_gui = {
 			set_variable = at_artifacts_window_is_artifact_sort_order_ascending
 		}
 
-		at_artifacts_window_get_artifacts_effect = { LIST = artifacts }
-		at_artifacts_window_sort_artifacts_effect = { LIST = artifacts }
+		at_artifacts_window_get_all_artifacts_effect = yes
+		at_artifacts_window_get_artifacts_effect = yes
 	}
 }
 
@@ -102,5 +102,11 @@ at_artifacts_window_set_selected_artifact_gui = {
 			name = at_artifacts_window_selected_artifact
 			value = scope:artifact
 		}
+	}
+}
+
+at_artifacts_window_filters_warning_gui = {
+	is_shown = {
+		always = no
 	}
 }
