@@ -1,76 +1,79 @@
 ﻿at_artifacts_window_get_all_artifacts_effect = {
-	at_clear_variable_list_and_reset_count = {
-		LIST = at_artifacts_window_all_artifacts
-		COUNT = at_artifacts_window_total_count
-	}
+	clear_global_variable_list = at_artifacts_window_all_artifacts
 	if = {
 		limit = { scope:flavor = flag:sell }
+		at_get_valid_buyers_or_sellers_effect = { LIST = valid_buyers }
 		every_character_artifact = {
-			ROOT = {
-				at_add_to_variable_list_and_increment_count = {
-					LIST = at_artifacts_window_all_artifacts
-					COUNT = at_artifacts_window_total_count
+			limit = {
+				is_equipped = no
+				save_temporary_scope_as = artifact
+				any_in_list = {
+					list = valid_buyers
+					at_candidate_to_sell_artifact_to_trigger = { PARTY = ROOT }
+					save_temporary_opinion_value_as = {
+						name = opinion_of_actor
+						target = ROOT
+					}
+					at_sell_artifact_ai_accept_value > 0
 				}
+			}
+			add_to_global_variable_list = {
+				name = at_artifacts_window_all_artifacts
+				target = this
 			}
 		}
 	}
 	else_if = {
 		limit = { scope:flavor = flag:buy }
-		at_get_valid_buyers_or_sellers_effect = { LIST = valid_buyers }
+		at_get_valid_buyers_or_sellers_effect = { LIST = valid_sellers }
 		every_in_list = {
-			list = valid_buyers
+			list = valid_sellers
 			limit = {
-				at_candidate_to_sell_artifact_to_trigger = { PARTY = ROOT }
+				at_candidate_to_buy_artifact_from_trigger = { PARTY = ROOT }
 			}
 			every_character_artifact = {
-				ROOT = {
-					at_add_to_variable_list_and_increment_count = {
-						LIST = at_artifacts_window_all_artifacts
-						COUNT = at_artifacts_window_total_count
-					}
+				# TODO Filter only buyable artifacts
+				add_to_global_variable_list = {
+					name = at_artifacts_window_all_artifacts
+					target = this
 				}
 			}
 		}
 	}
 	else = {
 		every_artifact = {
-			ROOT = {
-				at_add_to_variable_list_and_increment_count = {
-					LIST = at_artifacts_window_all_artifacts
-					COUNT = at_artifacts_window_total_count
-				}
+			add_to_global_variable_list = {
+				name = at_artifacts_window_all_artifacts
+				target = this
 			}
 		}
 	}
 }
 
 at_artifacts_window_get_artifacts_effect = {
-	at_clear_variable_list_and_reset_count = {
-		LIST = at_artifacts_window_artifacts
-		COUNT = at_artifacts_window_count
-	}
-	ordered_in_list = {
+	clear_global_variable_list = at_artifacts_window_artifacts
+	ordered_in_global_list = {
 		variable = at_artifacts_window_all_artifacts
 		order_by = {
 			if = {
-				limit = { ROOT.var:at_artifacts_window_selected_artifact_sort_option = flag:_rarity }
+				limit = { global_var:at_artifacts_window_selected_artifact_sort_option = flag:_rarity }
 				value = artifact_rarity
 			}
 			else_if = {
-				limit = { ROOT.var:at_artifacts_window_selected_artifact_sort_option = flag:_durability }
+				limit = { global_var:at_artifacts_window_selected_artifact_sort_option = flag:_durability }
 				value = artifact_durability
 			}
 			else_if = {
-				limit = { ROOT.var:at_artifacts_window_selected_artifact_sort_option = flag:_type }
+				limit = { global_var:at_artifacts_window_selected_artifact_sort_option = flag:_type }
 				value = at_artifact_type_value
 			}
 			else_if = {
-				limit = { ROOT.var:at_artifacts_window_selected_artifact_sort_option = flag:_price }
+				limit = { global_var:at_artifacts_window_selected_artifact_sort_option = flag:_price }
 				value = at_artifact_base_price_value
 			}
 			if = {
 				limit = {
-					ROOT = { has_variable = at_artifacts_window_is_artifact_sort_order_ascending }
+					has_global_variable = at_artifacts_window_is_artifact_sort_order_ascending
 				}
 				multiply = -1
 			}
@@ -78,33 +81,9 @@ at_artifacts_window_get_artifacts_effect = {
 		max = 10000
 		check_range_bounds = no
 
-		ROOT = {
-			at_add_to_variable_list_and_increment_count = {
-				LIST = at_artifacts_window_artifacts
-				COUNT = at_artifacts_window_count
-			}
-		}
-	}
-}
-
-at_clear_variable_list_and_reset_count = {
-	clear_variable_list = $LIST$
-	set_variable = {
-		name = $COUNT$
-		value = 0
-	}
-}
-
-at_add_to_variable_list_and_increment_count = {
-	add_to_variable_list = {
-		name = $LIST$
-		target = PREV
-	}
-	set_variable = {
-		name = $COUNT$
-		value = {
-			value = var:$COUNT$
-			add = 1
+		add_to_global_variable_list = {
+			name = at_artifacts_window_artifacts
+			target = this
 		}
 	}
 }

@@ -68,6 +68,12 @@ at_sell_artifact_interaction = {
 				scope:actor = { is_ai = no }
 			}
 			scope:target = { is_equipped = no }
+			trigger_if = {
+				limit = {
+					has_global_variable = at_artifacts_window_selected_artifact
+				}
+				global_var:at_artifacts_window_selected_artifact = scope:target
+			}
 		}
 	}
 

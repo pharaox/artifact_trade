@@ -9,17 +9,17 @@
 	}
 
 	effect = {
-		clear_variable_list = at_artifacts_window_artifact_sort_options
-		add_to_variable_list = { name = at_artifacts_window_artifact_sort_options target = flag:_rarity }
-		add_to_variable_list = { name = at_artifacts_window_artifact_sort_options target = flag:_durability }
-		add_to_variable_list = { name = at_artifacts_window_artifact_sort_options target = flag:_type }
-		add_to_variable_list = { name = at_artifacts_window_artifact_sort_options target = flag:_price }
+		clear_global_variable_list = at_artifacts_window_artifact_sort_options
+		add_to_global_variable_list = { name = at_artifacts_window_artifact_sort_options target = flag:_rarity }
+		add_to_global_variable_list = { name = at_artifacts_window_artifact_sort_options target = flag:_durability }
+		add_to_global_variable_list = { name = at_artifacts_window_artifact_sort_options target = flag:_type }
+		add_to_global_variable_list = { name = at_artifacts_window_artifact_sort_options target = flag:_price }
 
 		if = {
 			limit = {
-				NOT = { exists = var:at_artifacts_window_selected_artifact_sort_option }
+				NOT = { exists = global_var:at_artifacts_window_selected_artifact_sort_option }
 			}
-			set_variable = {
+			set_global_variable = {
 				name = at_artifacts_window_selected_artifact_sort_option
 				value = flag:_rarity
 			}
@@ -34,12 +34,13 @@ at_artifacts_window_send_gui = {
 	scope = character
 
 	is_valid = {
-		has_variable = at_artifacts_window_selected_artifact
+		has_global_variable = at_artifacts_window_selected_artifact
 	}
 
 	effect = {
-		clear_variable_list = at_artifacts_window_artifact_sort_options
-		clear_variable_list = at_artifacts_window_artifacts
+		clear_global_variable_list = at_artifacts_window_artifact_sort_options
+		clear_global_variable_list = at_artifacts_window_all_artifacts
+		clear_global_variable_list = at_artifacts_window_artifacts
 
 		if = {
 			limit = { scope:flavor = flag:sell }
@@ -56,8 +57,9 @@ at_artifacts_window_close_gui = {
 	scope = character
 
 	effect = {
-		clear_variable_list = at_artifacts_window_artifact_sort_options
-		clear_variable_list = at_artifacts_window_artifacts
+		clear_global_variable_list = at_artifacts_window_artifact_sort_options
+		clear_global_variable_list = at_artifacts_window_all_artifacts
+		clear_global_variable_list = at_artifacts_window_artifacts
 	}
 }
 
@@ -66,7 +68,7 @@ at_artifacts_window_select_artifact_sort_option_gui = {
 	saved_scopes = { sort_option }
 
 	effect = {
-		set_variable = {
+		set_global_variable = {
 			name = at_artifacts_window_selected_artifact_sort_option
 			value = scope:sort_option
 		}
@@ -81,11 +83,11 @@ at_artifacts_window_toggle_artifact_sort_order_gui = {
 
 	effect = {
 		if = {
-			limit = { has_variable = at_artifacts_window_is_artifact_sort_order_ascending }
-			remove_variable = at_artifacts_window_is_artifact_sort_order_ascending
+			limit = { has_global_variable = at_artifacts_window_is_artifact_sort_order_ascending }
+			remove_global_variable = at_artifacts_window_is_artifact_sort_order_ascending
 		}
 		else = {
-			set_variable = at_artifacts_window_is_artifact_sort_order_ascending
+			set_global_variable = at_artifacts_window_is_artifact_sort_order_ascending
 		}
 
 		at_artifacts_window_get_all_artifacts_effect = yes
@@ -98,7 +100,7 @@ at_artifacts_window_set_selected_artifact_gui = {
 	saved_scopes = { artifact }
 
 	effect = {
-		set_variable = {
+		set_global_variable = {
 			name = at_artifacts_window_selected_artifact
 			value = scope:artifact
 		}

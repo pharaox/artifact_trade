@@ -1,5 +1,5 @@
 ﻿# Sell a previously selected artifact to other rulers that are willing to buy it from you.
-# The previously selected artifact is saved in the at_artifacts_window_selected_artifact scope:actor variable.
+# The previously selected artifact is saved in the at_artifacts_window_selected_artifact global variable.
 # Scopes: actor / recipient is the artifact owner (seller), secondary_recipient is the buyer, target is the artifact.
 # Human player only.
 at_sell_artifacts_interaction = {
@@ -20,18 +20,15 @@ at_sell_artifacts_interaction = {
 
 	populate_recipient_list = {
 		scope:actor = {
-			at_get_valid_buyers_or_sellers_effect = { LIST = potential_buyers }
+			at_get_valid_buyers_or_sellers_effect = { LIST = valid_buyers }
+		}
+		global_var:at_artifacts_window_selected_artifact = {
+			save_temporary_scope_as = artifact
 		}
 		every_in_list = {
-			list = potential_buyers
+			list = valid_buyers
 			limit = {
 				at_candidate_to_sell_artifact_to_trigger = { PARTY = scope:actor }
-				scope:actor = {
-					exists = var:at_artifacts_window_selected_artifact
-					var:at_artifacts_window_selected_artifact = {
-						save_temporary_scope_as = artifact
-					}
-				}
 				save_temporary_opinion_value_as = {
 					name = opinion_of_actor
 					target = scope:actor
@@ -42,34 +39,31 @@ at_sell_artifacts_interaction = {
 		}
 	}
 
-	is_shown = {
-		always = yes
-	}
-
-	is_valid_showing_failures_only = {
-		always = yes
-	}
-
 	can_be_picked_artifact = {
-		scope:actor = {
-			exists = var:at_artifacts_window_selected_artifact
-			trigger_if = {
-				limit = {
-					exists = scope:target
-				}
-				var:at_artifacts_window_selected_artifact = scope:target
+		trigger_if = {
+			limit = {
+				exists = scope:target
 			}
+			global_var:at_artifacts_window_selected_artifact = scope:target
 		}
 	}
 
 	on_accept = {
-		scope:actor = { save_scope_as = seller }
-		scope:secondary_recipient = { save_scope_as = buyer }
-		scope:secondary_recipient = { save_scope_as = recipient }
-		scope:target = { save_scope_as = artifact }
-		at_buy_artifact_interaction_effect = {
-			ARTIFACT_PRICE = scope:artifact.at_artifact_bid_price_minus_repair_cost_value
+		show_as_tooltip = {
+			scope:actor = { save_scope_as = seller }
+			scope:secondary_recipient = { save_scope_as = buyer }
+			scope:secondary_recipient = { save_scope_as = recipient }
+			scope:target = { save_scope_as = artifact }
+			at_buy_artifact_interaction_effect = {
+				ARTIFACT_PRICE = scope:artifact.at_artifact_bid_price_minus_repair_cost_value
+			}
 		}
+		open_interaction_window = {
+			interaction = at_sell_artifact_interaction
+			actor = scope:actor
+			recipient = scope:secondary_recipient
+		}
+		remove_global_variable = at_artifacts_window_selected_artifact
 	}
 
 	auto_accept = yes

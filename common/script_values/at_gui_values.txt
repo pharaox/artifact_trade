@@ -1,4 +1,4 @@
-at_artifact_slot_type_value = {
+﻿at_artifact_slot_type_value = {
 	if = {
 		limit = { artifact_slot_type = helmet }
 		value = 1
@@ -220,5 +220,21 @@ at_artifact_type_value = {
 	else_if = {
 		limit = { artifact_type = book }
 		value = 110
+	}
+}
+
+at_artifacts_window_artifacts_count_value = {
+	value = 0
+	every_in_global_list = {
+		variable = at_artifacts_window_artifacts
+		add = 1
+	}
+}
+
+at_artifacts_window_all_artifacts_count_value = {
+	value = 0
+	every_in_global_list = {
+		variable = at_artifacts_window_all_artifacts
+		add = 1
 	}
 }
