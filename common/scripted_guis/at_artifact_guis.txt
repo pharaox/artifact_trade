@@ -25,6 +25,77 @@
 			}
 		}
 
+		clear_global_variable_list = at_artifacts_window_rarity_filter_options
+		add_to_global_variable_list = { name = at_artifacts_window_rarity_filter_options target = flag:_all }
+		add_to_global_variable_list = { name = at_artifacts_window_rarity_filter_options target = flag:_common }
+		add_to_global_variable_list = { name = at_artifacts_window_rarity_filter_options target = flag:_masterwork }
+		add_to_global_variable_list = { name = at_artifacts_window_rarity_filter_options target = flag:_famed }
+		add_to_global_variable_list = { name = at_artifacts_window_rarity_filter_options target = flag:_illustrious }
+
+		if = {
+			limit = {
+				NOT = { exists = global_var:at_artifacts_window_selected_rarity_filter_option }
+			}
+			set_global_variable = {
+				name = at_artifacts_window_selected_rarity_filter_option
+				value = flag:_all
+			}
+		}
+
+		clear_global_variable_list = at_artifacts_window_slot_type_filter_options
+		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_all }
+		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_helmet }
+		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_regalia }
+		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_armor }
+		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_primary_armament }
+		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_miscellaneous }
+		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_sculpture }
+		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_pedestal }
+		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_wall_big }
+		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_wall_small }
+		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_throne }
+		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_book }
+
+		if = {
+			limit = {
+				NOT = { exists = global_var:at_artifacts_window_selected_slot_type_filter_option }
+			}
+			set_global_variable = {
+				name = at_artifacts_window_selected_slot_type_filter_option
+				value = flag:_all
+			}
+		}
+
+		clear_global_variable_list = at_artifacts_window_unique_filter_options
+		add_to_global_variable_list = { name = at_artifacts_window_unique_filter_options target = flag:_all }
+		add_to_global_variable_list = { name = at_artifacts_window_unique_filter_options target = flag:_unique }
+		add_to_global_variable_list = { name = at_artifacts_window_unique_filter_options target = flag:_not_unique }
+
+		if = {
+			limit = {
+				NOT = { exists = global_var:at_artifacts_window_selected_unique_filter_option }
+			}
+			set_global_variable = {
+				name = at_artifacts_window_selected_unique_filter_option
+				value = flag:_all
+			}
+		}
+
+		clear_global_variable_list = at_artifacts_window_equipped_filter_options
+		add_to_global_variable_list = { name = at_artifacts_window_equipped_filter_options target = flag:_all }
+		add_to_global_variable_list = { name = at_artifacts_window_equipped_filter_options target = flag:_equipped }
+		add_to_global_variable_list = { name = at_artifacts_window_equipped_filter_options target = flag:_not_equipped }
+
+		if = {
+			limit = {
+				NOT = { exists = global_var:at_artifacts_window_selected_equipped_filter_option }
+			}
+			set_global_variable = {
+				name = at_artifacts_window_selected_equipped_filter_option
+				value = flag:_all
+			}
+		}
+
 		at_artifacts_window_get_all_artifacts_effect = yes
 		at_artifacts_window_get_artifacts_effect = yes
 	}
@@ -38,7 +109,6 @@ at_artifacts_window_send_gui = {
 	}
 
 	effect = {
-		clear_global_variable_list = at_artifacts_window_artifact_sort_options
 		clear_global_variable_list = at_artifacts_window_all_artifacts
 		clear_global_variable_list = at_artifacts_window_artifacts
 
@@ -57,7 +127,6 @@ at_artifacts_window_close_gui = {
 	scope = character
 
 	effect = {
-		clear_global_variable_list = at_artifacts_window_artifact_sort_options
 		clear_global_variable_list = at_artifacts_window_all_artifacts
 		clear_global_variable_list = at_artifacts_window_artifacts
 	}
@@ -107,8 +176,108 @@ at_artifacts_window_set_selected_artifact_gui = {
 	}
 }
 
-at_artifacts_window_filters_warning_gui = {
+at_artifacts_window_has_non_default_filter_options_gui = {
 	is_shown = {
-		always = no
+		trigger_if = {
+			limit = {
+				has_global_variable = at_artifacts_window_selected_rarity_filter_option
+				has_global_variable = at_artifacts_window_selected_slot_type_filter_option
+				has_global_variable = at_artifacts_window_selected_unique_filter_option
+				has_global_variable = at_artifacts_window_selected_equipped_filter_option
+			}
+			NAND = {
+				global_var:at_artifacts_window_selected_rarity_filter_option = flag:_all
+				global_var:at_artifacts_window_selected_slot_type_filter_option = flag:_all
+				global_var:at_artifacts_window_selected_unique_filter_option = flag:_all
+				global_var:at_artifacts_window_selected_equipped_filter_option = flag:_all
+			}
+		}
+		trigger_else = {
+			always = no
+		}
+	}
+}
+
+at_artifacts_window_select_rarity_filter_option_gui = {
+	scope = character
+	saved_scopes = { filter_option }
+
+	effect = {
+		set_global_variable = {
+			name = at_artifacts_window_selected_rarity_filter_option
+			value = scope:filter_option
+		}
+
+		at_artifacts_window_get_all_artifacts_effect = yes
+		at_artifacts_window_get_artifacts_effect = yes
+	}
+}
+
+at_artifacts_window_select_slot_type_filter_option_gui = {
+	scope = character
+	saved_scopes = { filter_option }
+
+	effect = {
+		set_global_variable = {
+			name = at_artifacts_window_selected_slot_type_filter_option
+			value = scope:filter_option
+		}
+
+		at_artifacts_window_get_all_artifacts_effect = yes
+		at_artifacts_window_get_artifacts_effect = yes
+	}
+}
+
+at_artifacts_window_select_unique_filter_option_gui = {
+	scope = character
+	saved_scopes = { filter_option }
+
+	effect = {
+		set_global_variable = {
+			name = at_artifacts_window_selected_unique_filter_option
+			value = scope:filter_option
+		}
+
+		at_artifacts_window_get_all_artifacts_effect = yes
+		at_artifacts_window_get_artifacts_effect = yes
+	}
+}
+
+at_artifacts_window_select_equipped_filter_option_gui = {
+	scope = character
+	saved_scopes = { filter_option }
+
+	effect = {
+		set_global_variable = {
+			name = at_artifacts_window_selected_equipped_filter_option
+			value = scope:filter_option
+		}
+
+		at_artifacts_window_get_all_artifacts_effect = yes
+		at_artifacts_window_get_artifacts_effect = yes
+	}
+}
+
+at_artifacts_window_reset_filter_options_gui = {
+	effect = {
+		set_global_variable = {
+			name = at_artifacts_window_selected_rarity_filter_option
+			value = flag:_all
+		}
+		set_global_variable = {
+			name = at_artifacts_window_selected_slot_type_filter_option
+			value = flag:_all
+		}
+		set_global_variable = {
+			name = at_artifacts_window_selected_unique_filter_option
+			value = flag:_all
+		}
+		set_global_variable = {
+			name = at_artifacts_window_selected_equipped_filter_option
+			value = flag:_all
+		}
+
+		at_artifacts_window_get_all_artifacts_effect = yes
+		at_artifacts_window_get_artifacts_effect = yes
 	}
 }

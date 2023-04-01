@@ -1,0 +1,107 @@
+﻿types at_types_artifact_filters {
+	type at_window_artifact_filters = window {
+		name = "at_artifact_filters_window"
+		position = { -730 20 }
+		size = { 510 800 }
+		parentanchor = top|right
+		focuspolicy = click
+
+		allow_outside = yes
+
+		using = Window_Movable
+		using = Window_Background_Subwindow
+
+		state = {
+			name = _show
+			using = Animation_FadeIn_Quick
+		}
+
+		state = {
+			name = _hide
+			using = Animation_FadeOut_Quick
+		}
+
+		visible = "[Not(GetVariableSystem.Exists('at_artifact_filters_window_hidden'))]"
+
+		vbox = {
+			margin = { 4 4 }
+			spacing = 10
+
+			header_pattern = {
+				layoutpolicy_horizontal = expanding
+
+				blockoverride "header_text" {
+					text = "CHARACTER_LIST_FILTERS"
+				}
+
+				blockoverride "button_close" {
+					onclick = "[GetVariableSystem.Toggle('at_artifact_filters_window_hidden')]"
+				}
+			}
+
+			# TODO Presets
+
+			scrollbox = {
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+
+				blockoverride "scrollbox_content" {
+					vbox = {
+						layoutpolicy_horizontal = expanding
+
+						block "filters" {}
+					}
+				}
+			}
+
+			hbox = {
+				layoutpolicy_horizontal = growing
+				margin_bottom = 10
+
+				button_standard = {
+					datacontext = "[GetScriptedGui('at_artifacts_window_reset_filter_options_gui')]"
+					name = "reset_filters"
+					text = "CHARACTER_RESET_FILTERS"
+					focuspolicy = click
+					onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('flavor', MakeScopeFlag(GetVariableSystem.Get('at_artifacts_window_flavor'))).End)]"
+				}
+			}
+		}
+	}
+
+	type at_hbox_artifact_filter = hbox {
+		layoutpolicy_horizontal = expanding
+		margin_bottom = 10
+		spacing = 10
+
+		text_single = {
+			layoutpolicy_horizontal = expanding
+			block "filter_text" {}
+			default_format = "#medium"
+			align = nobaseline
+			autoresize = no
+		}
+
+		expand = {}
+
+		dropdown_menu_standard = {
+			blockoverride "dropdown_properties" {
+				block "filter_options_datamodel" {}
+				onselectionchanged = "[PdxGuiWidget.FindChild('selected_filter_option').TriggerAnimation('select_filter_option')]"
+			}
+
+			blockoverride "dropdown_active_item_properties" {
+				name = "selected_filter_option"
+				block "selected_filter_option_text" {}
+				state = {
+					name = "select_filter_option"
+					on_start = "[ScriptedGui.Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('filter_option', MakeScopeFlag(Scope.GetFlagName)).AddScope('flavor', MakeScopeFlag(GetVariableSystem.Get('at_artifacts_window_flavor'))).End)]"
+				}
+			}
+
+			blockoverride "dropdown_item_properties" {
+				text = "[Localize(Concatenate('at', Scope.GetFlagName))]"
+			}
+		}
+	}
+}

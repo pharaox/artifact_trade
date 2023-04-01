@@ -9,10 +9,34 @@
 
  AT_ARTIFACTS_COUNT:1 "[Select_CString(LessThan_CFixedPoint(GetPlayer.MakeScope.ScriptValue('at_artifacts_window_artifacts_count_value'), GetPlayer.MakeScope.ScriptValue('at_artifacts_window_all_artifacts_count_value')), '#high', '#low' )] [GetPlayer.MakeScope.ScriptValue('at_artifacts_window_artifacts_count_value')] #!of [GetPlayer.MakeScope.ScriptValue('at_artifacts_window_all_artifacts_count_value')] Artifacts"
 
- at_rarity:0 "Rarity"
- at_durability:0 "Durability"
- at_type:0 "Type"
+ at_rarity:0 "$rarity$"
+ at_durability:0 "$durability$"
+ at_type:0 "$type$"
  at_price:0 "Base Price"
+
+ at_all:0 "$any_filter_option$"
+ at_common:0 "Common"
+ at_masterwork:0 "$masterwork$"
+ at_famed:0 "$famed$"
+ at_illustrious:0 "$illustrious$"
+
+ at_helmet:0 "$artifact_slot_helmet$"
+ at_regalia:0 "$artifact_slot_regalia$"
+ at_armor:0 "$artifact_slot_armor$"
+ at_primary_armament:0 "$artifact_slot_primary_armament$"
+ at_miscellaneous:0 "$artifact_slot_miscellaneous$"
+ at_sculpture:0 "$artifact_slot_sculpture$"
+ at_pedestal:0 "$artifact_slot_pedestal$"
+ at_wall_big:0 "$artifact_slot_wall_big$"
+ at_wall_small:0 "$artifact_slot_wall_small$"
+ at_throne:0 "$artifact_slot_throne$"
+ at_book:0 "$artifact_slot_book$"
+
+ at_unique:0 "Unique"
+ at_not_unique:0 "Not Unique"
+
+ at_equipped:0 "Equipped"
+ at_not_equipped:0 "Not Equipped"
 
  at_debug_msg_adding_to_sorted_artifacts: "Adding to sorted_artifacts"
  at_debug_msg_adding_to_artifacts_window_artifacts: "Adding to artifacts_window_artifacts"
