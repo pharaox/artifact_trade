@@ -90,7 +90,12 @@ at_buy_artifact_effect = {
 		set_owner = scope:buyer
 
 		hidden_effect = {
-			# TODO Mark the artifact as recently bought
+			# Mark the artifact as recently bought
+			set_variable = {
+				name = at_artifact_recently_bought
+				value = yes
+				days = 730
+			}
 
 			# TODO Trigger event
 			#trigger_event = {
@@ -102,14 +107,7 @@ at_buy_artifact_effect = {
 
 # Displays warning tooltips for low durability and useless artifacts.
 at_buy_artifact_warning_tooltips_effect = {
-	if = {
-		limit = {
-			scope:artifact = {
-				artifact_durability <= define:NInventory|ARTIFACT_LOW_DURABILITY
-			}
-		}
-		custom_tooltip = artifact_gift_low_durability_tt
-	}
+	# Low durability
 	if = {
 		limit = {
 			scope:artifact = {
@@ -118,6 +116,16 @@ at_buy_artifact_warning_tooltips_effect = {
 		}
 		custom_tooltip = artifact_gift_very_low_durability_tt
 	}
+	else_if = {
+		limit = {
+			scope:artifact = {
+				artifact_durability <= define:NInventory|ARTIFACT_LOW_DURABILITY
+			}
+		}
+		custom_tooltip = artifact_gift_low_durability_tt
+	}
+
+	# Useless artifact
 	if = {
 		limit = {
 			scope:artifact = {
@@ -144,7 +152,7 @@ at_buy_artifact_warning_tooltips_effect = {
 				}
 			}
 		}
-		custom_tooltip = artifact_gift_useless_tt
+		custom_tooltip = at_artifact_cannot_equip_or_benefit_tt
 	}
 	else_if = {
 		limit = {
@@ -152,7 +160,7 @@ at_buy_artifact_warning_tooltips_effect = {
 				NOT = { can_equip_artifact = scope:artifact }
 			}
 		}
-		custom_tooltip = artifact_gift_equip_tt
+		custom_tooltip = at_artifact_cannot_equip_tt
 	}
 	else_if = {
 		limit = {
@@ -160,7 +168,20 @@ at_buy_artifact_warning_tooltips_effect = {
 				NOT = { can_benefit_from_artifact = scope:artifact }
 			}
 		}
-		custom_tooltip = artifact_gift_benefit_tt
+		custom_tooltip = at_artifact_cannot_benefit_tt
+	}
+
+	# Unwanted or cursed artifact
+	if = {
+		limit = {
+			scope:artifact = {
+				OR = {
+					has_variable = unwanted_artifact
+					has_variable = cursed_artifact
+				}
+			}
+		}
+		custom_tooltip = at_artifact_unwanted_or_cursed_tt
 	}
 }
 

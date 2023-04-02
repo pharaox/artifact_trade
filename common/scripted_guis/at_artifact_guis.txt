@@ -120,6 +120,15 @@ at_artifacts_window_send_gui = {
 				recipient = ROOT
 			}
 		}
+		else_if = {
+			limit = { scope:flavor = flag:buy }
+			open_interaction_window = {
+				interaction = at_buy_artifact_interaction
+				actor = ROOT
+				recipient = global_var:at_artifacts_window_selected_artifact.artifact_owner
+			}
+			remove_global_variable = at_artifacts_window_selected_artifact
+		}
 	}
 }
 

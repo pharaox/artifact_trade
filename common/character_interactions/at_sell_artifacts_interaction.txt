@@ -25,7 +25,7 @@ at_sell_artifacts_interaction = {
 		global_var:at_artifacts_window_selected_artifact = {
 			save_temporary_scope_as = artifact
 		}
-		every_in_list = {
+		ordered_in_list = {
 			list = valid_buyers
 			limit = {
 				at_candidate_to_sell_artifact_to_trigger = { PARTY = scope:actor }
@@ -35,6 +35,13 @@ at_sell_artifacts_interaction = {
 				}
 				at_sell_artifact_ai_accept_value > 0
 			}
+			order_by = {
+				save_temporary_scope_as = buyer
+				value = scope:artifact.at_artifact_bid_price_value
+				max = short_term_gold
+			}
+			max = 5
+			check_range_bounds = no
 			add_to_list = characters
 		}
 	}
@@ -55,7 +62,7 @@ at_sell_artifacts_interaction = {
 			scope:secondary_recipient = { save_scope_as = recipient }
 			scope:target = { save_scope_as = artifact }
 			at_buy_artifact_interaction_effect = {
-				ARTIFACT_PRICE = scope:artifact.at_artifact_bid_price_minus_repair_cost_value
+				ARTIFACT_PRICE = scope:artifact.at_artifact_bid_price_value
 			}
 		}
 		open_interaction_window = {

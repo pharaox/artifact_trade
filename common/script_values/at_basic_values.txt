@@ -1,6 +1,8 @@
 ﻿# AI impact values (base is -50 / 50)
 at_ai_positive_claim_impact_value = 25
 at_ai_positive_qwa_difference_impact_value = 200
+at_ai_negative_qwa_difference_impact_value = -200
+at_ai_positive_durability_impact_value = 50
 at_ai_negative_durability_impact_value = -50
 at_ai_positive_price_impact_value = 10
 at_ai_negative_price_impact_value = -10

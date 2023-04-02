@@ -104,7 +104,7 @@ at_sell_artifact_interaction = {
 		scope:recipient = { save_scope_as = buyer }
 		scope:target = { save_scope_as = artifact }
 		at_buy_artifact_interaction_effect = {
-			ARTIFACT_PRICE = scope:artifact.at_artifact_bid_price_minus_repair_cost_value
+			ARTIFACT_PRICE = scope:artifact.at_artifact_bid_price_value
 		}
 	}
 
@@ -150,9 +150,9 @@ at_sell_artifact_interaction = {
 		# and the QWA of the worst artifact of the same type equipped by the recipient (0 to PIV)
 		modifier = {
 			save_temporary_scope_as = buyer
-			scope:target.at_artifact_quality_wealth_average_difference_value > 0
+			scope:target.at_worst_equipped_artifact_quality_wealth_average_difference_value > 0
 			add = {
-				value = scope:target.at_artifact_quality_wealth_average_difference_value
+				value = scope:target.at_worst_equipped_artifact_quality_wealth_average_difference_value
 				divide = 100
 				multiply = at_ai_positive_qwa_difference_impact_value
 			}
@@ -248,5 +248,138 @@ at_sell_artifact_interaction = {
 		}
 	}
 
-	# TODO AI
+	ai_targets = {
+		ai_recipients = liege
+		ai_recipients = vassals
+		ai_recipients = peer_vassals
+		ai_recipients = neighboring_rulers
+		#ai_recipients = scripted_relations
+	}
+
+	ai_frequency = 24
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 50
+
+		# Artifact recently bought
+		modifier = {
+			scope:target = {
+				has_variable = at_artifact_recently_bought
+			}
+			add = -100
+		}
+
+		# Difference between the QWA of the target artifact
+		# and the QWA of the best artifact of the same type owned but not equipped by the recipient (0 to NIV)
+		modifier = {
+			scope:target = {
+				is_equipped = yes
+			}
+			save_temporary_scope_as = seller
+			scope:target.at_best_non_equipped_artifact_quality_wealth_average_difference_value > 0
+			add = {
+				value = scope:target.at_best_non_equipped_artifact_quality_wealth_average_difference_value
+				divide = 100
+				multiply = at_ai_negative_qwa_difference_impact_value
+			}
+		}
+
+		# Artifact durability (0 to PIV)
+		modifier = {
+			scope:target.artifact_durability < scope:target.artifact_max_durability
+			add = {
+				value = scope:target.artifact_max_durability
+				subtract = scope:target.artifact_durability
+				divide = scope:target.artifact_max_durability
+				multiply = at_ai_positive_durability_impact_value
+			}
+		}
+
+		# TODO Artifact modifiers and recipient lifestyle
+
+		# Useless, not relevant, unwanted, or cursed artifacts
+		modifier = {
+			NOT = { can_equip_artifact = scope:target }
+			add = 100
+		}
+		modifier = {
+			NOT = { can_benefit_from_artifact = scope:target }
+			add = 50
+		}
+		modifier = {
+			scope:target = { has_variable = unwanted_artifact }
+			add = 500
+		}
+		modifier = {
+			scope:target = { has_variable = cursed_artifact }
+			add = 1000
+		}
+
+		# Dynasty banner
+		modifier = {
+			exists = scope:target.var:banner_dynasty
+			exists = scope:actor.dynasty
+			scope:actor = scope:target.var:banner_dynasty.dynast
+			add = -50
+		}
+
+		# Useless banner
+		modifier = {
+			OR = {
+				exists = scope:target.var:banner_dynasty
+				exists = scope:target.var:banner_house
+			}
+			exists = scope:actor.house
+			trigger_if = {
+				limit = { exists = scope:target.var:banner_dynasty }
+				NOT = { scope:target.var:banner_dynasty = scope:actor.dynasty }
+			}
+			trigger_else = {
+				NOT = { scope:target.var:banner_house = scope:actor.house }
+			}
+			add = 100
+		}
+
+		# TODO Price (NIV if price < minor_gold_value, PIV if price > major_gold_value)
+
+		# Opinion of buyer
+		opinion_modifier = {
+			trigger = {
+				NOT = { scope:actor = scope:recipient }
+			}
+			who = scope:actor
+			opinion_target = scope:recipient
+			multiplier = at_buy_sell_artifact_ai_opinion_multiplier
+		}
+
+		# Avoid doing business with rivals or nemesises
+		modifier = {
+			has_relation_rival = scope:recipient
+			add = -100
+		}
+		modifier = {
+			has_relation_nemesis = scope:recipient
+			add = -200
+		}
+
+		# Not enough gold
+		modifier = {
+			scope:recipient = {
+				save_temporary_scope_as = buyer
+				trigger_if = {
+					limit = { is_ai = yes }
+					short_term_gold < scope:target.at_artifact_bid_price_value
+				}
+				trigger_else = {
+					gold < scope:target.at_artifact_bid_price_value
+				}
+			}
+			factor = 0
+			desc = at_not_enough_gold_reason
+		}
+	}
 }

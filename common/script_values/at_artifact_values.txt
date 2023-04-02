@@ -1,17 +1,17 @@
 ﻿# Difference between the QWA of the scoped artifact
 # and the QWA of the worst artifact of the same type equipped by scope:buyer.
-at_artifact_quality_wealth_average_difference_value = {
+at_worst_equipped_artifact_quality_wealth_average_difference_value = {
 	value = at_artifact_quality_wealth_average_value
-	subtract = at_equipped_artifact_quality_wealth_average_value
+	subtract = at_worst_equipped_artifact_quality_wealth_average_value
 }
 
 # QWA of the worst artifact of the same type as the scoped artifact equipped by scope:buyer.
-at_equipped_artifact_quality_wealth_average_value = {
+at_worst_equipped_artifact_quality_wealth_average_value = {
 	save_temporary_scope_as = artifact
-	value = scope:buyer.at_character_equipped_artifact_quality_wealth_average_value
+	value = scope:buyer.at_worst_character_equipped_artifact_quality_wealth_average_value
 }
 
-at_character_equipped_artifact_quality_wealth_average_value = {
+at_worst_character_equipped_artifact_quality_wealth_average_value = {
 	value = 0
 	if = {
 		limit = {
@@ -72,6 +72,114 @@ at_character_equipped_artifact_quality_wealth_average_value = {
 		ordered_equipped_character_artifact = {
 			limit = { artifact_slot_type = miscellaneous }
 			order_by = { value = 100 subtract = at_artifact_quality_wealth_average_value }
+			max = 1
+			add = at_artifact_quality_wealth_average_value
+		}
+	}
+	# TODO Court artifacts
+}
+
+# Difference between the QWA of the scoped artifact
+# and the QWA of the best artifact of the same type owned but not equipped by scope:seller.
+at_best_non_equipped_artifact_quality_wealth_average_difference_value = {
+	value = at_artifact_quality_wealth_average_value
+	subtract = at_best_non_equipped_artifact_quality_wealth_average_value
+}
+
+# QWA of the best artifact of the same type as the scoped artifact owned but not equipped by scope:seller.
+at_best_non_equipped_artifact_quality_wealth_average_value = {
+	save_temporary_scope_as = artifact
+	value = scope:seller.at_best_character_non_equipped_artifact_quality_wealth_average_value
+}
+
+at_best_character_non_equipped_artifact_quality_wealth_average_value = {
+	value = 0
+	if = {
+		limit = {
+			scope:artifact = { artifact_slot_type = primary_armament }
+			any_character_artifact = {
+				is_equipped = no
+				artifact_slot_type = primary_armament
+			}
+		}
+		ordered_character_artifact = {
+			limit = {
+				is_equipped = no
+				artifact_slot_type = primary_armament
+			}
+			order_by = at_artifact_quality_wealth_average_value
+			max = 1
+			add = at_artifact_quality_wealth_average_value
+		}
+	}
+	else_if = {
+		limit = {
+			scope:artifact = { artifact_slot_type = armor }
+			any_character_artifact = {
+				is_equipped = no
+				artifact_slot_type = armor
+			}
+		}
+		ordered_character_artifact = {
+			limit = {
+				is_equipped = no
+				artifact_slot_type = armor
+			}
+			order_by = at_artifact_quality_wealth_average_value
+			max = 1
+			add = at_artifact_quality_wealth_average_value
+		}
+	}
+	else_if = {
+		limit = {
+			scope:artifact = { artifact_slot_type = regalia }
+			any_character_artifact = {
+				is_equipped = no
+				artifact_slot_type = regalia
+			}
+		}
+		ordered_character_artifact = {
+			limit = {
+				is_equipped = no
+				artifact_slot_type = regalia
+			}
+			order_by = at_artifact_quality_wealth_average_value
+			max = 1
+			add = at_artifact_quality_wealth_average_value
+		}
+	}
+	else_if = {
+		limit = {
+			scope:artifact = { artifact_slot_type = helmet }
+			any_character_artifact = {
+				is_equipped = no
+				artifact_slot_type = helmet
+			}
+		}
+		ordered_character_artifact = {
+			limit = {
+				is_equipped = no
+				artifact_slot_type = helmet
+			}
+			order_by = at_artifact_quality_wealth_average_value
+			max = 1
+			add = at_artifact_quality_wealth_average_value
+		}
+	}
+	else_if = {
+		limit = {
+			scope:artifact = { artifact_slot_type = miscellaneous }
+			any_character_artifact = {
+				is_equipped = no
+				artifact_slot_type = miscellaneous
+			}
+		}
+		ordered_character_artifact = {
+			limit = {
+				is_equipped = no
+				artifact_slot_type = miscellaneous
+			}
+			order_by = at_artifact_quality_wealth_average_value
 			max = 1
 			add = at_artifact_quality_wealth_average_value
 		}
@@ -264,6 +372,8 @@ at_artifact_ask_price_value = {
 		multiply = at_artifact_ask_price_player_multiplier
 	}
 
+	# TODO Adjust price for tribal rulers
+
 	# Seller personality multiplier (0.8 to 1.2 based on ai_greed)
 	if = {
 		limit = { exists = scope:seller }
@@ -290,6 +400,8 @@ at_artifact_bid_price_value = {
 		}
 		multiply = at_artifact_bid_price_player_multiplier
 	}
+
+	# TODO Adjust price for tribal rulers
 
 	# Buyer personality multiplier (0.8 to 1.2 based on ai_greed)
 	if = {
@@ -325,6 +437,152 @@ at_artifact_bid_price_minus_repair_cost_value = {
 	}
 }
 
+at_buy_artifact_ai_accept_value = {
+	save_temporary_scope_as = artifact
+	value = 50
+
+	# Artifact recently bought
+	if = {
+		limit = {
+			scope:artifact = {
+				has_variable = at_artifact_recently_bought
+			}
+		}
+		add = -100
+	}
+
+	# Difference between the QWA of the target artifact
+	# and the QWA of the best artifact of the same type owned but not equipped by the recipient (0 to NIV)
+	if = {
+		limit = {
+			is_equipped = yes
+			scope:artifact.at_best_non_equipped_artifact_quality_wealth_average_difference_value > 0
+		}
+		add = {
+			value = scope:artifact.at_best_non_equipped_artifact_quality_wealth_average_difference_value
+			divide = 100
+			multiply = at_ai_negative_qwa_difference_impact_value
+		}
+	}
+
+	# Artifact durability (0 to PIV)
+	if = {
+		limit = {
+			scope:artifact.artifact_durability < scope:artifact.artifact_max_durability
+		}
+		add = {
+			value = scope:artifact.artifact_max_durability
+			subtract = scope:artifact.artifact_durability
+			divide = scope:artifact.artifact_max_durability
+			multiply = at_ai_positive_durability_impact_value
+		}
+	}
+
+	# TODO Artifact modifiers and recipient lifestyle
+
+	# Useless, not relevant, unwanted, or cursed artifacts
+	if = {
+		limit = {
+			scope:seller = {
+				NOT = { can_equip_artifact = scope:artifact }
+			}
+		}
+		add = 100
+	}
+	if = {
+		limit = {
+			scope:seller = {
+				NOT = { can_benefit_from_artifact = scope:artifact }
+			}
+		}
+		add = 50
+	}
+	if = {
+		limit = {
+			scope:artifact = { has_variable = unwanted_artifact }
+		}
+		add = 500
+	}
+	if = {
+		limit = {
+			scope:artifact = { has_variable = cursed_artifact }
+		}
+		add = 1000
+	}
+
+	# Dynasty banner
+	if = {
+		limit = {
+			exists = scope:artifact.var:banner_dynasty
+			exists = scope:seller.dynasty
+			scope:seller = scope:artifact.var:banner_dynasty.dynast
+		}
+		add = -50
+	}
+
+	# Useless banner
+	if = {
+		limit = {
+			OR = {
+				exists = scope:artifact.var:banner_dynasty
+				exists = scope:artifact.var:banner_house
+			}
+			exists = scope:seller.house
+			trigger_if = {
+				limit = { exists = scope:artifact.var:banner_dynasty }
+				NOT = { scope:artifact.var:banner_dynasty = scope:seller.dynasty }
+			}
+			trigger_else = {
+				NOT = { scope:artifact.var:banner_house = scope:seller.house }
+			}
+		}
+		add = 100
+	}
+
+	# TODO Price (NIV if price < minor_gold_value, PIV if price > major_gold_value)
+
+	# Opinion of actor
+	add = {
+		value = scope:opinion_of_actor
+		multiply = at_buy_sell_artifact_ai_opinion_multiplier
+		floor = yes
+	}
+
+	# Avoid doing business with rivals or nemesises
+	if = {
+		limit = {
+			scope:seller = {
+				has_relation_rival = scope:actor
+			}
+		}
+		add = -100
+	}
+	if = {
+		limit = {
+			scope:seller = {
+				has_relation_nemesis = scope:actor
+			}
+		}
+		add = -200
+	}
+
+	# Not enough gold
+	if = {
+		limit = {
+			scope:actor = {
+				trigger_if = {
+					limit = { is_ai = yes }
+					short_term_gold < scope:artifact.at_artifact_ask_price_value
+				}
+				trigger_else = {
+					gold < scope:artifact.at_artifact_ask_price_value
+				}
+			}
+		}
+		multiply = 0
+	}
+}
+
 at_sell_artifact_ai_accept_value = {
 	save_temporary_scope_as = buyer
 	value = -50
@@ -349,10 +607,10 @@ at_sell_artifact_ai_accept_value = {
 	# and the QWA of the worst artifact of the same type equipped by the buyer (0 to PIV)
 	if = {
 		limit = {
-			scope:artifact.at_artifact_quality_wealth_average_difference_value > 0
+			scope:artifact.at_worst_equipped_artifact_quality_wealth_average_difference_value > 0
 		}
 		add = {
-			value = scope:artifact.at_artifact_quality_wealth_average_difference_value
+			value = scope:artifact.at_worst_equipped_artifact_quality_wealth_average_difference_value
 			divide = 100
 			multiply = at_ai_positive_qwa_difference_impact_value
 		}

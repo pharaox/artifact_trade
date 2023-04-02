@@ -27,13 +27,21 @@
 	else_if = {
 		limit = { scope:flavor = flag:buy }
 		at_get_valid_buyers_or_sellers_effect = { LIST = valid_sellers }
+		save_temporary_scope_as = actor
 		every_in_list = {
 			list = valid_sellers
 			limit = {
 				at_candidate_to_buy_artifact_from_trigger = { PARTY = ROOT }
 			}
+			save_temporary_scope_as = seller
+			save_temporary_opinion_value_as = {
+				name = opinion_of_actor
+				target = ROOT
+			}
 			every_character_artifact = {
-				# TODO Filter only buyable artifacts
+				limit = {
+					at_buy_artifact_ai_accept_value > 0
+				}
 				add_to_global_variable_list = {
 					name = at_artifacts_window_all_artifacts
 					target = this
