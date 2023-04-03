@@ -1,0 +1,5 @@
+﻿at_on_artifact_bought = {
+	effect = {
+		at_debug_log_effect = { MSG = at_debug_msg_artifact_bought }
+	}
+}

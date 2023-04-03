@@ -97,10 +97,10 @@ at_buy_artifact_effect = {
 				days = 730
 			}
 
-			# TODO Trigger event
-			#trigger_event = {
-			#	on_action = at_on_artifact_bought
-			#}
+			# Trigger event
+			trigger_event = {
+				on_action = at_on_artifact_bought
+			}
 		}
 	}
 }
