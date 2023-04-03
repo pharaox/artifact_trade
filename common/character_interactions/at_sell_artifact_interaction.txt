@@ -195,13 +195,20 @@ at_sell_artifact_interaction = {
 			desc = ARTIFACT_CURSED_REASON
 		}
 
-		# Dynasty banner
+		# Dynasty or house banner
 		modifier = {
 			exists = scope:target.var:banner_dynasty
 			exists = scope:recipient.dynasty
 			scope:recipient = scope:target.var:banner_dynasty.dynast
 			add = 50
 			desc = ARTIFACT_DYNASTY_BANNER_REASON
+		}
+		modifier = {
+			exists = scope:target.var:banner_house
+			exists = scope:recipient.house
+			scope:recipient = scope:target.var:banner_house.house_head
+			add = 50
+			desc = at_artifact_house_banner_reason
 		}
 
 		# Useless banner
@@ -222,7 +229,19 @@ at_sell_artifact_interaction = {
 			desc = ARTIFACT_USELESS_BANNER_REASON
 		}
 
-		# TODO Price (PIV if price < minor_gold_value, NIV if price > major_gold_value)
+		# Price (PIV if price < minor_gold_value, NIV if price > major_gold_value)
+		modifier = {
+			save_temporary_scope_as = buyer
+			scope:target.at_artifact_bid_price_value < scope:recipient.minor_gold_value
+			add = at_ai_positive_price_impact_value
+			desc = at_target_cheap_reason
+		}
+		modifier = {
+			save_temporary_scope_as = buyer
+			scope:target.at_artifact_bid_price_value > scope:recipient.major_gold_value
+			add = at_ai_negative_price_impact_value
+			desc = at_target_expensive_reason
+		}
 
 		# Opinion of seller
 		opinion_modifier = {
@@ -319,11 +338,17 @@ at_sell_artifact_interaction = {
 			add = 1000
 		}
 
-		# Dynasty banner
+		# Dynasty or house banner
 		modifier = {
 			exists = scope:target.var:banner_dynasty
 			exists = scope:actor.dynasty
 			scope:actor = scope:target.var:banner_dynasty.dynast
+			add = -50
+		}
+		modifier = {
+			exists = scope:target.var:banner_house
+			exists = scope:actor.house
+			scope:actor = scope:target.var:banner_house.house_head
 			add = -50
 		}
 
@@ -344,7 +369,21 @@ at_sell_artifact_interaction = {
 			add = 100
 		}
 
-		# TODO Price (NIV if price < minor_gold_value, PIV if price > major_gold_value)
+		# Price (NIV if price < minor_gold_value, PIV if price > major_gold_value)
+		modifier = {
+			scope:recipient = {
+				save_temporary_scope_as = buyer
+			}
+			scope:target.at_artifact_bid_price_value < scope:actor.minor_gold_value
+			add = at_ai_negative_price_impact_value
+		}
+		modifier = {
+			scope:recipient = {
+				save_temporary_scope_as = buyer
+			}
+			scope:target.at_artifact_bid_price_value > scope:actor.major_gold_value
+			add = at_ai_positive_price_impact_value
+		}
 
 		# Opinion of buyer
 		opinion_modifier = {

@@ -11,6 +11,7 @@ at_worst_equipped_artifact_quality_wealth_average_value = {
 	value = scope:buyer.at_worst_character_equipped_artifact_quality_wealth_average_value
 }
 
+# QWA of the worst artifact of the same type as scope:artifact equipped by the scoped character.
 at_worst_character_equipped_artifact_quality_wealth_average_value = {
 	value = 0
 	if = {
@@ -76,7 +77,93 @@ at_worst_character_equipped_artifact_quality_wealth_average_value = {
 			add = at_artifact_quality_wealth_average_value
 		}
 	}
-	# TODO Court artifacts
+	else_if = {
+		limit = {
+			scope:artifact = { artifact_slot_type = throne }
+			any_equipped_character_artifact = {
+				artifact_slot_type = throne
+			}
+		}
+		every_equipped_character_artifact = {
+			limit = { artifact_slot_type = throne }
+			add = at_artifact_quality_wealth_average_value
+		}
+	}
+	else_if = {
+		limit = {
+			scope:artifact = { artifact_slot_type = wall_big }
+			any_equipped_character_artifact = {
+				artifact_slot_type = wall_big
+				count >= 3
+			}
+		}
+		ordered_equipped_character_artifact = {
+			limit = { artifact_slot_type = wall_big }
+			order_by = { value = 100 subtract = at_artifact_quality_wealth_average_value }
+			max = 1
+			add = at_artifact_quality_wealth_average_value
+		}
+	}
+	else_if = {
+		limit = {
+			scope:artifact = { artifact_slot_type = wall_small }
+			any_equipped_character_artifact = {
+				artifact_slot_type = wall_small
+				count >= 3
+			}
+		}
+		ordered_equipped_character_artifact = {
+			limit = { artifact_slot_type = wall_small }
+			order_by = { value = 100 subtract = at_artifact_quality_wealth_average_value }
+			max = 1
+			add = at_artifact_quality_wealth_average_value
+		}
+	}
+	else_if = {
+		limit = {
+			scope:artifact = { artifact_slot_type = sculpture }
+			any_equipped_character_artifact = {
+				artifact_slot_type = sculpture
+				count >= 2
+			}
+		}
+		ordered_equipped_character_artifact = {
+			limit = { artifact_slot_type = sculpture }
+			order_by = { value = 100 subtract = at_artifact_quality_wealth_average_value }
+			max = 1
+			add = at_artifact_quality_wealth_average_value
+		}
+	}
+	else_if = {
+		limit = {
+			scope:artifact = { artifact_slot_type = book }
+			any_equipped_character_artifact = {
+				artifact_slot_type = book
+				count >= 2
+			}
+		}
+		ordered_equipped_character_artifact = {
+			limit = { artifact_slot_type = book }
+			order_by = { value = 100 subtract = at_artifact_quality_wealth_average_value }
+			max = 1
+			add = at_artifact_quality_wealth_average_value
+		}
+	}
+	else_if = {
+		limit = {
+			scope:artifact = { artifact_slot_type = pedestal }
+			any_equipped_character_artifact = {
+				artifact_slot_type = pedestal
+				count >= 4
+			}
+		}
+		ordered_equipped_character_artifact = {
+			limit = { artifact_slot_type = pedestal }
+			order_by = { value = 100 subtract = at_artifact_quality_wealth_average_value }
+			max = 1
+			add = at_artifact_quality_wealth_average_value
+		}
+	}
 }
 
 # Difference between the QWA of the scoped artifact
@@ -92,6 +179,7 @@ at_best_non_equipped_artifact_quality_wealth_average_value = {
 	value = scope:seller.at_best_character_non_equipped_artifact_quality_wealth_average_value
 }
 
+# QWA of the best artifact of the same type as scope:artifact owned but not equipped by the scoped character.
 at_best_character_non_equipped_artifact_quality_wealth_average_value = {
 	value = 0
 	if = {
@@ -184,7 +272,114 @@ at_best_character_non_equipped_artifact_quality_wealth_average_value = {
 			add = at_artifact_quality_wealth_average_value
 		}
 	}
-	# TODO Court artifacts
+	else_if = {
+		limit = {
+			scope:artifact = { artifact_slot_type = throne }
+			any_character_artifact = {
+				is_equipped = no
+				artifact_slot_type = throne
+			}
+		}
+		ordered_character_artifact = {
+			limit = {
+				is_equipped = no
+				artifact_slot_type = throne
+			}
+			order_by = at_artifact_quality_wealth_average_value
+			max = 1
+			add = at_artifact_quality_wealth_average_value
+		}
+	}
+	else_if = {
+		limit = {
+			scope:artifact = { artifact_slot_type = wall_big }
+			any_character_artifact = {
+				is_equipped = no
+				artifact_slot_type = wall_big
+			}
+		}
+		ordered_character_artifact = {
+			limit = {
+				is_equipped = no
+				artifact_slot_type = wall_big
+			}
+			order_by = at_artifact_quality_wealth_average_value
+			max = 1
+			add = at_artifact_quality_wealth_average_value
+		}
+	}
+	else_if = {
+		limit = {
+			scope:artifact = { artifact_slot_type = wall_small }
+			any_character_artifact = {
+				is_equipped = no
+				artifact_slot_type = wall_small
+			}
+		}
+		ordered_character_artifact = {
+			limit = {
+				is_equipped = no
+				artifact_slot_type = wall_small
+			}
+			order_by = at_artifact_quality_wealth_average_value
+			max = 1
+			add = at_artifact_quality_wealth_average_value
+		}
+	}
+	else_if = {
+		limit = {
+			scope:artifact = { artifact_slot_type = sculpture }
+			any_character_artifact = {
+				is_equipped = no
+				artifact_slot_type = sculpture
+			}
+		}
+		ordered_character_artifact = {
+			limit = {
+				is_equipped = no
+				artifact_slot_type = sculpture
+			}
+			order_by = at_artifact_quality_wealth_average_value
+			max = 1
+			add = at_artifact_quality_wealth_average_value
+		}
+	}
+	else_if = {
+		limit = {
+			scope:artifact = { artifact_slot_type = book }
+			any_character_artifact = {
+				is_equipped = no
+				artifact_slot_type = book
+			}
+		}
+		ordered_character_artifact = {
+			limit = {
+				is_equipped = no
+				artifact_slot_type = book
+			}
+			order_by = at_artifact_quality_wealth_average_value
+			max = 1
+			add = at_artifact_quality_wealth_average_value
+		}
+	}
+	else_if = {
+		limit = {
+			scope:artifact = { artifact_slot_type = pedestal }
+			any_character_artifact = {
+				is_equipped = no
+				artifact_slot_type = pedestal
+			}
+		}
+		ordered_character_artifact = {
+			limit = {
+				is_equipped = no
+				artifact_slot_type = pedestal
+			}
+			order_by = at_artifact_quality_wealth_average_value
+			max = 1
+			add = at_artifact_quality_wealth_average_value
+		}
+	}
 }
 
 # Artifact quality and wealth average (QWA).
@@ -313,16 +508,6 @@ at_artifact_repair_cost_quality_wealth_multiplier = {
 	}
 }
 
-# Artifact "opinion-based" price. Calculated by multiplying the potential opinion gain of gifting the artifact
-# by scope:actor to to scope:recipient (gift_artifact_opinion) by the "gold per opinion" ratio from
-# sending money as a gift by scope:actor to scope:recipient (gift_value divided by send_gift_opinion).
-at_artifact_opinion_based_price_value = {
-	value = gift_artifact_opinion
-	multiply = gift_value
-	divide = send_gift_opinion
-	multiply = at_artifact_base_price_multiplier
-}
-
 # Artifact base price, calculated using the formula from "Auction Off Artifact".
 at_artifact_base_price_value = {
 	# Rarity
@@ -359,84 +544,73 @@ at_artifact_base_price_value = {
 	min = 15
 }
 
-# Artifact ask price. Calculated by correcting the base price by a multiplier based on AI greed.
+# Artifact ask price. Calculated by multiplying the base price by several multipliers:
+# - at_artifact_ask_price_player_multiplier if scope:actor is human
+# - a scope:seller personality multiplier based on ai_greed
 at_artifact_ask_price_value = {
 	value = at_artifact_base_price_value
+
+	if = {
+		limit = {
+			can_be_claimed_by = scope:actor
+		}
+		multiply = 0.5
+	}
 
 	# Make it higher for the player
 	if = {
 		limit = {
-			exists = scope:actor
 			scope:actor = { is_ai = no }
 		}
 		multiply = at_artifact_ask_price_player_multiplier
 	}
 
-	# TODO Adjust price for tribal rulers
-
 	# Seller personality multiplier (0.8 to 1.2 based on ai_greed)
-	if = {
-		limit = { exists = scope:seller }
-		multiply = {
-			value = scope:seller.ai_greed
-			multiply = 0.002
-			add = 1
-		}
+	multiply = {
+		value = scope:seller.ai_greed
+		multiply = 0.002
+		add = 1
 	}
 
 	floor = yes
 	min = 1
 }
 
-# Artifact bid price. Calculated by correcting the base price by a multiplier based on AI greed.
+# Artifact bid price. Calculated by multiplying the base price by several multipliers:
+# - at_artifact_bid_price_player_multiplier if scope:actor is human
+# - a scope:buyer personality multiplier based on ai_greed
 at_artifact_bid_price_value = {
 	value = at_artifact_base_price_value
+
+	if = {
+		limit = {
+			can_be_claimed_by = scope:buyer
+		}
+		multiply = 0.5
+	}
 
 	# Make it lower for the player
 	if = {
 		limit = {
-			exists = scope:actor
 			scope:actor = { is_ai = no }
 		}
 		multiply = at_artifact_bid_price_player_multiplier
 	}
 
-	# TODO Adjust price for tribal rulers
-
 	# Buyer personality multiplier (0.8 to 1.2 based on ai_greed)
-	if = {
-		limit = { exists = scope:buyer }
-		multiply = {
-			value = scope:buyer.ai_greed
-			multiply = -0.002
-			add = 1
-		}
+	multiply = {
+		value = scope:buyer.ai_greed
+		multiply = -0.002
+		add = 1
 	}
 
 	floor = yes
 	min = 1
 }
 
-# Artifact ask price minus repair cost value.
-at_artifact_ask_price_minus_repair_cost_value = {
-	value = at_artifact_ask_price_value
-	if = {
-		limit = { artifact_durability < artifact_max_durability }
-		subtract = at_artifact_repair_cost_value
-		min = 1
-	}
-}
-
-# Artifact bid price minus repair cost value.
-at_artifact_bid_price_minus_repair_cost_value = {
-	value = at_artifact_bid_price_value
-	if = {
-		limit = { artifact_durability < artifact_max_durability }
-		subtract = at_artifact_repair_cost_value
-		min = 1
-	}
-}
-
+# AI accept value of the Buy Artifact interaction, used in effects to evaluate whether
+# scope:seller would accept the interaction initiated by scope:actor with the scoped artifact as target.
+# Must exactly match the ai_accept section of at_buy_artifact_interaction.
 at_buy_artifact_ai_accept_value = {
 	save_temporary_scope_as = artifact
 	value = 50
@@ -510,12 +684,20 @@ at_buy_artifact_ai_accept_value = {
 		add = 1000
 	}
 
-	# Dynasty banner
+	# Dynasty or house banner
 	if = {
 		limit = {
 			exists = scope:artifact.var:banner_dynasty
 			exists = scope:seller.dynasty
 			scope:seller = scope:artifact.var:banner_dynasty.dynast
+		}
+		add = -50
+	}
+	if = {
+		limit = {
+			exists = scope:artifact.var:banner_house
+			exists = scope:seller.house
+			scope:seller = scope:artifact.var:banner_house.house_head
 		}
 		add = -50
 	}
@@ -539,7 +721,19 @@ at_buy_artifact_ai_accept_value = {
 		add = 100
 	}
 
-	# TODO Price (NIV if price < minor_gold_value, PIV if price > major_gold_value)
+	# Price (NIV if price < minor_gold_value, PIV if price > major_gold_value)
+	if = {
+		limit = {
+			scope:artifact.at_artifact_ask_price_value < scope:seller.minor_gold_value
+		}
+		add = at_ai_negative_price_impact_value
+	}
+	else_if = {
+		limit = {
+			scope:artifact.at_artifact_ask_price_value > scope:seller.major_gold_value
+		}
+		add = at_ai_positive_price_impact_value
+	}
 
 	# Opinion of actor
 	add = {
@@ -583,6 +777,9 @@ at_buy_artifact_ai_accept_value = {
 	}
 }
 
+# AI accept value of the Sell Artifact interaction, used in effects to evaluate whether
+# the scoped character would accept the interaction initiated by scope:actor with scope:artifact as target.
+# Must exactly match the ai_accept section of at_sell_artifact_interaction.
 at_sell_artifact_ai_accept_value = {
 	save_temporary_scope_as = buyer
 	value = -50
@@ -657,12 +854,20 @@ at_sell_artifact_ai_accept_value = {
 		add = -1000
 	}
 
-	# Dynasty banner
+	# Dynasty or house banner
 	if = {
 		limit = {
 			exists = scope:artifact.var:banner_dynasty
 			exists = scope:buyer.dynasty
 			scope:buyer = scope:artifact.var:banner_dynasty.dynast
+		}
+		add = 50
+	}
+	if = {
+		limit = {
+			exists = scope:artifact.var:banner_house
+			exists = scope:buyer.house
+			scope:buyer = scope:artifact.var:banner_house.house_head
 		}
 		add = 50
 	}
@@ -686,7 +891,19 @@ at_sell_artifact_ai_accept_value = {
 		add = -100
 	}
 
-	# TODO Price (PIV if price < minor_gold_value, NIV if price > major_gold_value)
+	# Price (PIV if price < minor_gold_value, NIV if price > major_gold_value)
+	if = {
+		limit = {
+			scope:artifact.at_artifact_bid_price_value < scope:buyer.minor_gold_value
+		}
+		add = at_ai_positive_price_impact_value
+	}
+	else_if = {
+		limit = {
+			scope:artifact.at_artifact_bid_price_value > scope:buyer.major_gold_value
+		}
+		add = at_ai_negative_price_impact_value
+	}
 
 	# Opinion of actor
 	add = {
