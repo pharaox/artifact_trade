@@ -25,7 +25,8 @@ widget = {
 		using = tooltip_ne
 
 		onclick = "[GetScriptedGui('at_artifacts_window_init_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('flavor', MakeScopeFlag('find')).End)]"
-		onclick = "[GetVariableSystem.Set('at_artifacts_window_visible', 'yes')]"
+		onclick = "[GetVariableSystem.Set('at_artifacts_window_visible', 'no')]"
+		onclick = "[GetVariableSystem.Set('at_find_artifacts_window_visible', 'yes')]"
 		onclick = "[GetVariableSystem.Set('at_artifacts_window_flavor', 'find')]"
 	}
 }

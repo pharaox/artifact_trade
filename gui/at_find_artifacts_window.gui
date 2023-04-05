@@ -1,0 +1,165 @@
+window = {
+	name = "at_find_artifacts_window"
+	position = { -50 65 }
+	parentanchor = top|right
+	allow_outside = yes
+	layer = middle
+
+	using = Window_Background
+	using = Window_Decoration_Spike
+	using = Window_Size_CharacterList
+
+	state = {
+		name = _show
+		using = Animation_FadeIn_Quick
+	}
+
+	state = {
+		name = _hide
+		using = Animation_FadeOut_Quick
+	}
+
+	visible = "[GetVariableSystem.HasValue('at_find_artifacts_window_visible', 'yes')]"
+
+	vbox = {
+		using = Window_Margins
+
+		header_pattern = {
+			layoutpolicy_horizontal = expanding
+			minimumsize = { 100% 0 }
+
+			blockoverride "header_text" {
+				text = "AT_FIND_ARTIFACTS"
+			}
+
+			blockoverride "button_close" {
+				onclick = "[GetVariableSystem.Set('at_find_artifacts_window_visible', 'no')]"
+				onclick = "[GetScriptedGui('at_artifacts_window_close_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+			}
+		}
+
+		vbox = {
+			layoutpolicy_horizontal = expanding
+			layoutpolicy_vertical = expanding
+			spacing = 3
+
+			at_hbox_artifacts_sort_buttons = {
+				layoutpolicy_horizontal = expanding
+			}
+
+			scrollbox = {
+				layoutpolicy_horizontal = expanding
+				size = { 640 700 }
+
+				blockoverride "scrollbox_content" {
+					vbox = {
+						datamodel = "[GetGlobalList('at_artifacts_window_artifacts')]"
+						layoutpolicy_horizontal = expanding
+
+						item = {
+							at_widget_find_artifacts_list_item = {
+								layoutpolicy_horizontal = expanding
+								size = { 600 90 }
+							}
+						}
+					}
+				}
+
+				blockoverride "scrollbox_empty" {
+					layoutpolicy_vertical = expanding
+					visible = "[IsDataModelEmpty(GetGlobalList('at_artifacts_window_artifacts'))]"
+					text = "AT_NO_ARTIFACTS_FOUND"
+				}
+			}
+
+			at_hbox_artifacts_count = {
+				layoutpolicy_horizontal = growing
+			}
+		}
+
+		expand = {
+			minimumsize = { 0 10 }
+		}
+	}
+
+	at_window_artifact_filters = {
+		blockoverride "filters" {
+			at_hbox_artifact_filter = {
+				datacontext = "[GetScriptedGui('at_artifacts_window_select_rarity_filter_option_gui')]"
+				blockoverride "filter_text" {
+					text = "at_rarity"
+				}
+
+				blockoverride "filter_options_datamodel" {
+					datamodel = "[GetGlobalList('at_artifacts_window_rarity_filter_options')]"
+				}
+
+				blockoverride "selected_filter_option_text" {
+					text = "[Localize(Concatenate('at', GetGlobalVariable('at_artifacts_window_selected_rarity_filter_option').GetFlagName))]"
+				}
+			}
+
+			at_hbox_artifact_filter = {
+				datacontext = "[GetScriptedGui('at_artifacts_window_select_slot_type_filter_option_gui')]"
+				blockoverride "filter_text" {
+					text = "at_type"
+				}
+
+				blockoverride "filter_options_datamodel" {
+					datamodel = "[GetGlobalList('at_artifacts_window_slot_type_filter_options')]"
+				}
+
+				blockoverride "selected_filter_option_text" {
+					text = "[Localize(Concatenate('at', GetGlobalVariable('at_artifacts_window_selected_slot_type_filter_option').GetFlagName))]"
+				}
+			}
+
+			at_hbox_artifact_filter = {
+				datacontext = "[GetScriptedGui('at_artifacts_window_select_unique_filter_option_gui')]"
+				blockoverride "filter_text" {
+					text = "at_unique"
+				}
+
+				blockoverride "filter_options_datamodel" {
+					datamodel = "[GetGlobalList('at_artifacts_window_unique_filter_options')]"
+				}
+
+				blockoverride "selected_filter_option_text" {
+					text = "[Localize(Concatenate('at', GetGlobalVariable('at_artifacts_window_selected_unique_filter_option').GetFlagName))]"
+				}
+			}
+
+			at_hbox_artifact_filter = {
+				datacontext = "[GetScriptedGui('at_artifacts_window_select_equipped_filter_option_gui')]"
+				blockoverride "filter_text" {
+					text = "at_equipped"
+				}
+
+				blockoverride "filter_options_datamodel" {
+					datamodel = "[GetGlobalList('at_artifacts_window_equipped_filter_options')]"
+				}
+
+				blockoverride "selected_filter_option_text" {
+					text = "[Localize(Concatenate('at', GetGlobalVariable('at_artifacts_window_selected_equipped_filter_option').GetFlagName))]"
+				}
+			}
+		}
+	}
+}
+
+types at_types_find_artifacts_window {
+	type at_widget_find_artifacts_list_item = widget {
+		size = { 600 90 }
+
+		divider = {
+			parentanchor = bottom|hcenter
+			size = { 100% 3 }
+		}
+
+		block "button_content" {
+			at_hbox_artifact_info = {
+				datacontext = "[Scope.Artifact]"
+			}
+		}
+	}
+}

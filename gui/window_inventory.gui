@@ -1,7 +1,7 @@
 window = {
 	name = "inventory_view"
 	size = { 1222 840 }
-	layer = middle
+	layer = bottom
 
 	position = { 620 100 }
 
@@ -250,6 +250,7 @@ window = {
 								#onclick = "[InventoryView.Close]"
 								onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('flavor', MakeScopeFlag('sell')).End)]"
 								onclick = "[VariableSystem.Set('at_artifacts_window_visible', 'yes')]"
+								onclick = "[VariableSystem.Set('at_find_artifacts_window_visible', 'no')]"
 								onclick = "[VariableSystem.Set('at_artifacts_window_flavor', 'sell')]"
 							}
 
@@ -263,6 +264,7 @@ window = {
 								#onclick = "[InventoryView.Close]"
 								onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('flavor', MakeScopeFlag('buy')).End)]"
 								onclick = "[VariableSystem.Set('at_artifacts_window_visible', 'yes')]"
+								onclick = "[VariableSystem.Set('at_find_artifacts_window_visible', 'no')]"
 								onclick = "[VariableSystem.Set('at_artifacts_window_flavor', 'buy')]"
 							}
 						}

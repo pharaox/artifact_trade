@@ -1,9 +1,9 @@
 ﻿l_english:
  AT_SELL_ARTIFACTS:0 "Sell Artifacts"
- AT_SELL_ARTIFACT:0 "Sell Artifact"
  AT_BUY_ARTIFACTS:0 "Buy Artifacts"
- AT_BUY_ARTIFACT:0 "Buy Artifact"
- AT_FIND_ARTIFACTS:0 "Find Artifacts"
+ AT_FIND_ARTIFACTS:0 "Artifact Finder"
+
+ AT_NO_ARTIFACTS_FOUND:0 "#weak No valid artifacts found#!"
 
  AT_ARTIFACT_BASE_PRICE:1 "   [gold_i][Artifact.MakeScope.ScriptValue('at_artifact_base_price_value')|0]"
 
