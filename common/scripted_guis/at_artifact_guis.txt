@@ -96,6 +96,37 @@
 			}
 		}
 
+		clear_global_variable_list = at_artifacts_window_owned_filter_options
+		add_to_global_variable_list = { name = at_artifacts_window_owned_filter_options target = flag:_all }
+		add_to_global_variable_list = { name = at_artifacts_window_owned_filter_options target = flag:_owned_by_you }
+		add_to_global_variable_list = { name = at_artifacts_window_owned_filter_options target = flag:_not_owned_by_you }
+
+		if = {
+			limit = {
+				NOT = { exists = global_var:at_artifacts_window_selected_owned_filter_option }
+			}
+			set_global_variable = {
+				name = at_artifacts_window_selected_owned_filter_option
+				value = flag:_all
+			}
+		}
+
+		clear_global_variable_list = at_artifacts_window_claimed_filter_options
+		add_to_global_variable_list = { name = at_artifacts_window_claimed_filter_options target = flag:_all }
+		add_to_global_variable_list = { name = at_artifacts_window_claimed_filter_options target = flag:_claimed_by_you }
+		add_to_global_variable_list = { name = at_artifacts_window_claimed_filter_options target = flag:_claimed_by_others }
+		add_to_global_variable_list = { name = at_artifacts_window_claimed_filter_options target = flag:_not_claimed }
+
+		if = {
+			limit = {
+				NOT = { exists = global_var:at_artifacts_window_selected_claimed_filter_option }
+			}
+			set_global_variable = {
+				name = at_artifacts_window_selected_claimed_filter_option
+				value = flag:_all
+			}
+		}
+
 		at_artifacts_window_get_all_artifacts_effect = yes
 		at_artifacts_window_get_artifacts_effect = yes
 	}
@@ -173,6 +204,25 @@ at_artifacts_window_toggle_artifact_sort_order_gui = {
 	}
 }
 
+at_artifacts_window_has_personal_claim_gui = {
+	is_shown = {
+		any_personal_claimed_artifact = {
+			this = scope:artifact
+		}
+	}
+}
+
+at_artifacts_window_has_house_claim_gui = {
+	is_shown = {
+		exists = house
+		house = {
+			any_house_claimed_artifact = {
+				this = scope:artifact
+			}
+		}
+	}
+}
+
 at_artifacts_window_set_selected_artifact_gui = {
 	scope = character
 	saved_scopes = { artifact }
@@ -193,12 +243,16 @@ at_artifacts_window_has_non_default_filter_options_gui = {
 				has_global_variable = at_artifacts_window_selected_slot_type_filter_option
 				has_global_variable = at_artifacts_window_selected_unique_filter_option
 				has_global_variable = at_artifacts_window_selected_equipped_filter_option
+				has_global_variable = at_artifacts_window_selected_owned_filter_option
+				has_global_variable = at_artifacts_window_selected_claimed_filter_option
 			}
 			NAND = {
 				global_var:at_artifacts_window_selected_rarity_filter_option = flag:_all
 				global_var:at_artifacts_window_selected_slot_type_filter_option = flag:_all
 				global_var:at_artifacts_window_selected_unique_filter_option = flag:_all
 				global_var:at_artifacts_window_selected_equipped_filter_option = flag:_all
+				global_var:at_artifacts_window_selected_owned_filter_option = flag:_all
+				global_var:at_artifacts_window_selected_claimed_filter_option = flag:_all
 			}
 		}
 		trigger_else = {
@@ -267,6 +321,36 @@ at_artifacts_window_select_equipped_filter_option_gui = {
 	}
 }
 
+at_artifacts_window_select_owned_filter_option_gui = {
+	scope = character
+	saved_scopes = { filter_option }
+
+	effect = {
+		set_global_variable = {
+			name = at_artifacts_window_selected_owned_filter_option
+			value = scope:filter_option
+		}
+
+		at_artifacts_window_get_all_artifacts_effect = yes
+		at_artifacts_window_get_artifacts_effect = yes
+	}
+}
+
+at_artifacts_window_select_claimed_filter_option_gui = {
+	scope = character
+	saved_scopes = { filter_option }
+
+	effect = {
+		set_global_variable = {
+			name = at_artifacts_window_selected_claimed_filter_option
+			value = scope:filter_option
+		}
+
+		at_artifacts_window_get_all_artifacts_effect = yes
+		at_artifacts_window_get_artifacts_effect = yes
+	}
+}
+
 at_artifacts_window_reset_filter_options_gui = {
 	effect = {
 		set_global_variable = {
@@ -283,6 +367,14 @@ at_artifacts_window_reset_filter_options_gui = {
 		}
 		set_global_variable = {
 			name = at_artifacts_window_selected_equipped_filter_option
+			value = flag:_all
+		}
+		set_global_variable = {
+			name = at_artifacts_window_selected_owned_filter_option
+			value = flag:_all
+		}
+		set_global_variable = {
+			name = at_artifacts_window_selected_claimed_filter_option
 			value = flag:_all
 		}
 

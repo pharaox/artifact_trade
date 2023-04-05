@@ -143,6 +143,36 @@ window = {
 					text = "[Localize(Concatenate('at', GetGlobalVariable('at_artifacts_window_selected_equipped_filter_option').GetFlagName))]"
 				}
 			}
+
+			at_hbox_artifact_filter = {
+				datacontext = "[GetScriptedGui('at_artifacts_window_select_owned_filter_option_gui')]"
+				blockoverride "filter_text" {
+					text = "at_owned"
+				}
+
+				blockoverride "filter_options_datamodel" {
+					datamodel = "[GetGlobalList('at_artifacts_window_owned_filter_options')]"
+				}
+
+				blockoverride "selected_filter_option_text" {
+					text = "[Localize(Concatenate('at', GetGlobalVariable('at_artifacts_window_selected_owned_filter_option').GetFlagName))]"
+				}
+			}
+
+			at_hbox_artifact_filter = {
+				datacontext = "[GetScriptedGui('at_artifacts_window_select_claimed_filter_option_gui')]"
+				blockoverride "filter_text" {
+					text = "at_claimed"
+				}
+
+				blockoverride "filter_options_datamodel" {
+					datamodel = "[GetGlobalList('at_artifacts_window_claimed_filter_options')]"
+				}
+
+				blockoverride "selected_filter_option_text" {
+					text = "[Localize(Concatenate('at', GetGlobalVariable('at_artifacts_window_selected_claimed_filter_option').GetFlagName))]"
+				}
+			}
 		}
 	}
 }

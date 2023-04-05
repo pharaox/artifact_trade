@@ -159,6 +159,43 @@ at_artifacts_window_get_artifacts_effect = {
 			trigger_else = {
 				always = yes
 			}
+
+			# Filter by owned
+			trigger_if = {
+				limit = { global_var:at_artifacts_window_selected_owned_filter_option = flag:_owned_by_you }
+				artifact_owner = ROOT
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_owned_filter_option = flag:_not_owned_by_you }
+				NOT = { artifact_owner = ROOT }
+			}
+			trigger_else = {
+				always = yes
+			}
+
+			# Filter by claimed
+			trigger_if = {
+				limit = { global_var:at_artifacts_window_selected_claimed_filter_option = flag:_claimed_by_you }
+				can_be_claimed_by = ROOT
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_claimed_filter_option = flag:_claimed_by_others }
+				any_artifact_claimant = {
+					exists = this
+					NOT = { this = ROOT }
+				}
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_claimed_filter_option = flag:_not_claimed }
+				NOT = {
+					any_artifact_claimant = {
+						exists = this
+					}
+				}
+			}
+			trigger_else = {
+				always = yes
+			}
 		}
 		order_by = {
 			# Apply sort option

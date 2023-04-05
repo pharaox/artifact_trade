@@ -38,6 +38,15 @@
  at_equipped:0 "Equipped"
  at_not_equipped:0 "Not Equipped"
 
+ at_owned:0 "Owned"
+ at_owned_by_you:0 "Owned By You"
+ at_not_owned_by_you:0 "Not Owned By You"
+
+ at_claimed:0 "Claimed"
+ at_claimed_by_you:0 "Claimed By You"
+ at_claimed_by_others:0 "Claimed By Others"
+ at_not_claimed:0 "Not Claimed"
+
  at_debug_msg_adding_to_sorted_artifacts: "Adding to sorted_artifacts"
  at_debug_msg_adding_to_artifacts_window_artifacts: "Adding to artifacts_window_artifacts"
  at_debug_msg_sorting_artifacts: "Sorting artifacts"

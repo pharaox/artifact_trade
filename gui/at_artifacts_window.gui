@@ -146,6 +146,36 @@ window = {
 					text = "[Localize(Concatenate('at', GetGlobalVariable('at_artifacts_window_selected_equipped_filter_option').GetFlagName))]"
 				}
 			}
+
+			at_hbox_artifact_filter = {
+				datacontext = "[GetScriptedGui('at_artifacts_window_select_owned_filter_option_gui')]"
+				blockoverride "filter_text" {
+					text = "at_owned"
+				}
+
+				blockoverride "filter_options_datamodel" {
+					datamodel = "[GetGlobalList('at_artifacts_window_owned_filter_options')]"
+				}
+
+				blockoverride "selected_filter_option_text" {
+					text = "[Localize(Concatenate('at', GetGlobalVariable('at_artifacts_window_selected_owned_filter_option').GetFlagName))]"
+				}
+			}
+
+			at_hbox_artifact_filter = {
+				datacontext = "[GetScriptedGui('at_artifacts_window_select_claimed_filter_option_gui')]"
+				blockoverride "filter_text" {
+					text = "at_claimed"
+				}
+
+				blockoverride "filter_options_datamodel" {
+					datamodel = "[GetGlobalList('at_artifacts_window_claimed_filter_options')]"
+				}
+
+				blockoverride "selected_filter_option_text" {
+					text = "[Localize(Concatenate('at', GetGlobalVariable('at_artifacts_window_selected_claimed_filter_option').GetFlagName))]"
+				}
+			}
 		}
 	}
 }
@@ -311,7 +341,27 @@ types at_types_artifacts_window {
 					layoutpolicy_horizontal = expanding
 					text = "GIFT_EQUIPPED_ARTIFACT"
 					visible = "[GetPlayer.GetInventory.IsEquipped(Artifact.Self)]"
-					max_width = 80
+					max_width = 100
+					using = Font_Size_Small
+					align = right
+					default_format = "#weak"
+				}
+
+				text_single = {
+					layoutpolicy_horizontal = expanding
+					text = "ARTIFACT_PERSONAL_CLAIM"
+					visible = "[GetScriptedGui('at_artifacts_window_has_personal_claim_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('artifact', Artifact.MakeScope).End)]"
+					max_width = 100
+					using = Font_Size_Small
+					align = right
+					default_format = "#weak"
+				}
+
+				text_single = {
+					layoutpolicy_horizontal = expanding
+					text = "ARTIFACT_HOUSE_CLAIM"
+					visible = "[GetScriptedGui('at_artifacts_window_has_house_claim_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('artifact', Artifact.MakeScope).End)]"
+					max_width = 100
 					using = Font_Size_Small
 					align = right
 					default_format = "#weak"
