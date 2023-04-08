@@ -296,8 +296,7 @@ types at_types_artifacts_window {
 			size = { 100% 100% }
 
 			onclick = "[GetVariableSystem.Set('at_artifacts_window_visible', 'no')]"
-			onclick = "[GetScriptedGui('at_artifacts_window_set_selected_artifact_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('artifact', Artifact.MakeScope).End)]"
-			onclick = "[GetScriptedGui('at_artifacts_window_send_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('flavor', MakeScopeFlag(GetVariableSystem.Get('at_artifacts_window_flavor'))).End)]"
+			onclick = "[GetScriptedGui('at_artifacts_window_send_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('flavor', MakeScopeFlag(GetVariableSystem.Get('at_artifacts_window_flavor'))).AddScope('artifact', Artifact.MakeScope).End)]"
 
 			block "button_content" {
 				at_hbox_artifact_info = {}

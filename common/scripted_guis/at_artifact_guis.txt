@@ -1,5 +1,6 @@
 ﻿at_artifacts_window_init_gui = {
 	scope = character
+	saved_scopes = { flavor }
 
 	is_valid = {
 		trigger_if = {
@@ -129,19 +130,27 @@
 
 		at_artifacts_window_get_all_artifacts_effect = yes
 		at_artifacts_window_get_artifacts_effect = yes
+
+		if = {
+			limit = { has_global_variable = at_artifacts_window_selected_artifact }
+			remove_global_variable = at_artifacts_window_selected_artifact
+		}
 	}
 }
 
 at_artifacts_window_send_gui = {
 	scope = character
-
-	is_valid = {
-		has_global_variable = at_artifacts_window_selected_artifact
-	}
+	saved_scopes = { flavor artifact }
 
 	effect = {
 		clear_global_variable_list = at_artifacts_window_all_artifacts
 		clear_global_variable_list = at_artifacts_window_artifacts
+
+		set_global_variable = {
+			name = at_artifacts_window_selected_artifact
+			value = scope:artifact
+			days = 1
+		}
 
 		if = {
 			limit = { scope:flavor = flag:sell }
@@ -169,6 +178,11 @@ at_artifacts_window_close_gui = {
 	effect = {
 		clear_global_variable_list = at_artifacts_window_all_artifacts
 		clear_global_variable_list = at_artifacts_window_artifacts
+
+		if = {
+			limit = { has_global_variable = at_artifacts_window_selected_artifact }
+			remove_global_variable = at_artifacts_window_selected_artifact
+		}
 	}
 }
 
@@ -205,6 +219,9 @@ at_artifacts_window_toggle_artifact_sort_order_gui = {
 }
 
 at_artifacts_window_has_personal_claim_gui = {
+	scope = character
+	saved_scopes = { artifact }
+
 	is_shown = {
 		any_personal_claimed_artifact = {
 			this = scope:artifact
@@ -213,6 +230,9 @@ at_artifacts_window_has_personal_claim_gui = {
 }
 
 at_artifacts_window_has_house_claim_gui = {
+	scope = character
+	saved_scopes = { artifact }
+
 	is_shown = {
 		exists = house
 		house = {
@@ -223,19 +243,9 @@ at_artifacts_window_has_house_claim_gui = {
 	}
 }
 
-at_artifacts_window_set_selected_artifact_gui = {
-	scope = character
-	saved_scopes = { artifact }
-
-	effect = {
-		set_global_variable = {
-			name = at_artifacts_window_selected_artifact
-			value = scope:artifact
-		}
-	}
-}
-
 at_artifacts_window_has_non_default_filter_options_gui = {
+	scope = character
+
 	is_shown = {
 		trigger_if = {
 			limit = {
@@ -352,6 +362,8 @@ at_artifacts_window_select_claimed_filter_option_gui = {
 }
 
 at_artifacts_window_reset_filter_options_gui = {
+	scope = character
+
 	effect = {
 		set_global_variable = {
 			name = at_artifacts_window_selected_rarity_filter_option
