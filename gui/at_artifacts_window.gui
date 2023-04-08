@@ -176,6 +176,36 @@ window = {
 					text = "[Localize(Concatenate('at', GetGlobalVariable('at_artifacts_window_selected_claimed_filter_option').GetFlagName))]"
 				}
 			}
+
+			at_hbox_artifact_filter = {
+				datacontext = "[GetScriptedGui('at_artifacts_window_select_useful_filter_option_gui')]"
+				blockoverride "filter_text" {
+					text = "at_useful"
+				}
+
+				blockoverride "filter_options_datamodel" {
+					datamodel = "[GetGlobalList('at_artifacts_window_useful_filter_options')]"
+				}
+
+				blockoverride "selected_filter_option_text" {
+					text = "[Localize(Concatenate('at', GetGlobalVariable('at_artifacts_window_selected_useful_filter_option').GetFlagName))]"
+				}
+			}
+
+			at_hbox_artifact_filter = {
+				datacontext = "[GetScriptedGui('at_artifacts_window_select_unwanted_filter_option_gui')]"
+				blockoverride "filter_text" {
+					text = "at_unwanted"
+				}
+
+				blockoverride "filter_options_datamodel" {
+					datamodel = "[GetGlobalList('at_artifacts_window_unwanted_filter_options')]"
+				}
+
+				blockoverride "selected_filter_option_text" {
+					text = "[Localize(Concatenate('at', GetGlobalVariable('at_artifacts_window_selected_unwanted_filter_option').GetFlagName))]"
+				}
+			}
 		}
 	}
 }

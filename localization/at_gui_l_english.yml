@@ -47,6 +47,13 @@
  at_claimed_by_others:0 "Claimed By Others"
  at_not_claimed:0 "Not Claimed"
 
+ at_useful:0 "Useful"
+ at_useful_to_you:0 "Useful To You"
+ at_not_useful_to_you:0 "Not Useful To You"
+
+ at_unwanted:0 "Unwanted Or Cursed"
+ at_not_unwanted:0 "Not Unwanted Or Cursed"
+
  at_debug_msg_adding_to_sorted_artifacts: "Adding to sorted_artifacts"
  at_debug_msg_adding_to_artifacts_window_artifacts: "Adding to artifacts_window_artifacts"
  at_debug_msg_sorting_artifacts: "Sorting artifacts"

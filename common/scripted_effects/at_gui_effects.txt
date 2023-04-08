@@ -196,6 +196,48 @@ at_artifacts_window_get_artifacts_effect = {
 			trigger_else = {
 				always = yes
 			}
+
+			# Filter by useful
+			trigger_if = {
+				limit = { global_var:at_artifacts_window_selected_useful_filter_option = flag:_useful_to_you }
+				ROOT = {
+					can_equip_artifact = PREV
+					can_benefit_from_artifact = PREV
+					NOT = { at_is_useless_banner_trigger = { ARTIFACT = PREV } }
+				}
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_useful_filter_option = flag:_not_useful_to_you }
+				ROOT = {
+					OR = {
+						NOT = { can_equip_artifact = PREV }
+						NOT = { can_benefit_from_artifact = PREV }
+						at_is_useless_banner_trigger = { ARTIFACT = PREV }
+					}
+				}
+			}
+			trigger_else = {
+				always = yes
+			}
+
+			# Filter by unwanted
+			trigger_if = {
+				limit = { global_var:at_artifacts_window_selected_unwanted_filter_option = flag:_unwanted }
+				OR = {
+					has_variable = unwanted_artifact
+					has_variable = cursed_artifact
+				}
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_unwanted_filter_option = flag:_not_unwanted }
+				NOR = {
+					has_variable = unwanted_artifact
+					has_variable = cursed_artifact
+				}
+			}
+			trigger_else = {
+				always = yes
+			}
 		}
 		order_by = {
 			# Apply sort option
