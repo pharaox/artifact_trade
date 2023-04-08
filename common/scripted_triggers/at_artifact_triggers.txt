@@ -1,65 +1,143 @@
-﻿at_candidate_to_interact_with_trigger = {
+﻿at_can_interact_with_trigger = {
 	NOT = { this = $PARTY$ }
-	highest_held_title_tier >= tier_county
 	is_busy_in_events_localised = yes
 	in_diplomatic_range = $PARTY$
 	NOT = { is_at_war_with = $PARTY$ }
 	is_imprisoned = no
 }
 
-at_candidate_to_sell_artifact_to_trigger = {
-	at_candidate_to_interact_with_trigger = { PARTY = $PARTY$ }
+at_can_sell_artifact_to_trigger = {
+	at_can_interact_with_trigger = { PARTY = $PARTY$ }
 	is_ai = yes
 	short_term_gold > 1
 }
 
-at_candidate_to_buy_artifact_from_trigger = {
-	at_candidate_to_interact_with_trigger = { PARTY = $PARTY$ }
+at_can_buy_artifact_from_trigger = {
+	at_can_interact_with_trigger = { PARTY = $PARTY$ }
 	is_ai = yes
+}
+
+at_can_start_interaction_trigger = {
+	is_busy_in_events_localised = yes
+	is_imprisoned = no
 }
 
 at_valid_buyer_or_seller_trigger = {
 	is_ruler = yes
-	save_temporary_scope_as = ruler
 	OR = {
-		# Liege or vassals in the same realm
+		at_is_same_realm_character_trigger = { PARTY = $PARTY$ }
+		at_is_neighboring_realm_character_trigger = { PARTY = $PARTY$ }
+		at_is_landed_ruler_within_trading_range_trigger = { PARTY = $PARTY$ }
+	}
+}
+
+at_is_same_realm_character_trigger = {
+	trigger_if = {
+		limit = { exists = top_liege }
 		trigger_if = {
-			limit = { exists = top_liege }
-			trigger_if = {
-				limit = { $PARTY$ = { exists = top_liege } }
-				$PARTY$.top_liege = top_liege
-			}
-			trigger_else = {
-				top_liege = $PARTY$
-			}
+			limit = { $PARTY$ = { exists = top_liege } }
+			$PARTY$.top_liege = top_liege
 		}
 		trigger_else = {
-			$PARTY$ = { exists = top_liege }
+			top_liege = $PARTY$
+		}
+	}
+	trigger_else = {
+		$PARTY$ = { exists = top_liege }
+		$PARTY$.top_liege = this
+	}
+}
+
+at_is_neighboring_realm_character_trigger = {
+	any_neighboring_and_across_water_top_liege_realm_owner = {
+		trigger_if = {
+			limit = { $PARTY$ = { exists = top_liege } }
 			$PARTY$.top_liege = this
 		}
-
-		# Neighboring rulers
-		$PARTY$ = {
-			OR = {
-				any_neighboring_and_across_water_top_liege_realm_owner = {
-					this = scope:ruler
-				}
-				any_neighboring_and_across_water_realm_same_rank_owner = {
-					this = scope:ruler
-				}
-			}
+		trigger_else = {
+			this = $PARTY$
 		}
+	}
+}
 
-		# Rulers within trading range
-		AND = {
-			is_landed = yes
-			$PARTY$ = { is_landed = yes }
-			capital_province = {
-				squared_distance = {
-					target = $PARTY$.capital_province
-					value <= $PARTY$.at_artifact_trading_range_value
-				}
-			}
+at_is_landed_ruler_within_trading_range_trigger = {
+	is_landed = yes
+	$PARTY$ = { is_landed = yes }
+	capital_province = {
+		squared_distance = {
+			target = $PARTY$.capital_province
+			value <= $PARTY$.at_artifact_trading_range_value
 		}
+	}
+}
+
+at_is_dynasty_banner_trigger = {
+	exists = $ARTIFACT$.var:banner_dynasty
+	exists = dynasty
+	this = $ARTIFACT$.var:banner_dynasty.dynast
+}
+
+at_is_house_banner_trigger = {
+	exists = $ARTIFACT$.var:banner_house
+	exists = house
+	this = $ARTIFACT$.var:banner_house.house_head
+}
+
+at_is_useless_banner_trigger = {
+	OR = {
+		exists = $ARTIFACT$.var:banner_dynasty
+		exists = $ARTIFACT$.var:banner_house
+	}
+	trigger_if = {
+		limit = { exists = $ARTIFACT$.var:banner_dynasty }
+		NAND = {
+			exists = dynasty
+			$ARTIFACT$.var:banner_dynasty = dynasty
+		}
+	}
+	trigger_else = {
+		NAND = {
+			exists = house
+			$ARTIFACT$.var:banner_house = house
+		}
+	}
+}
+
+at_is_artifact_likely_to_be_traded_trigger = {
+	NOR = {
+		has_variable = unwanted_artifact
+		has_variable = cursed_artifact
+		has_variable = at_artifact_recently_bought
+	}
+}
+
+at_is_likely_to_buy_artifact_trigger = {
+	save_temporary_scope_as = ruler
+	NOR = {
+		is_at_war = yes
+		NOT = { can_equip_artifact = scope:artifact }
+		NOT = { can_benefit_from_artifact = scope:artifact }
+		at_is_useless_banner_trigger = { ARTIFACT = scope:artifact }
+	}
+	OR = {
+		scope:artifact = { can_be_claimed_by = scope:ruler }
+		at_is_dynasty_banner_trigger = { ARTIFACT = scope:artifact }
+		at_is_house_banner_trigger = { ARTIFACT = scope:artifact }
+		at_worst_character_equipped_artifact_quality_wealth_average_value = 0
+	}
+}
+
+at_is_likely_to_sell_artifact_trigger = {
+	save_temporary_scope_as = ruler
+	NOR = {
+		at_is_dynasty_banner_trigger = { ARTIFACT = scope:artifact }
+		at_is_house_banner_trigger = { ARTIFACT = scope:artifact }
+	}
+	OR = {
+		NOT = { can_equip_artifact = scope:artifact }
+		NOT = { can_benefit_from_artifact = scope:artifact }
+		at_is_useless_banner_trigger = { ARTIFACT = scope:artifact }
+		scope:artifact = { is_equipped = no }
+		at_best_character_non_equipped_artifact_quality_wealth_average_value >= scope:artifact.at_artifact_quality_wealth_average_value
 	}
 }

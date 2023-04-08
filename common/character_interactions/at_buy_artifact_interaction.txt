@@ -17,8 +17,38 @@ at_buy_artifact_interaction = {
 	ai_min_reply_days = 0
 	ai_max_reply_days = 0
 
-	# TODO If the recipient is the ruler themselves
-	# redirect to a random ruler within trading range who is likely to sell a artifact
+	# If scope:recipient is scope:actor, redirect to a random valid seller
+	# who is likely to sell an artifact that scope:actor is likely to buy
+	redirect = {
+		scope:recipient = {
+			if = {
+				limit = {
+					this = scope:actor
+					is_ai = yes
+				}
+				random_ruler = {
+					limit = {
+						is_ai = yes
+						at_valid_buyer_or_seller_trigger = { PARTY = scope:actor }
+						at_can_buy_artifact_from_trigger = { PARTY = scope:actor }
+						save_temporary_scope_as = seller
+						any_character_artifact = {
+							at_is_artifact_likely_to_be_traded_trigger = yes
+							save_temporary_scope_as = artifact
+							scope:seller = {
+								at_is_likely_to_sell_artifact_trigger = yes
+							}
+							scope:actor = {
+								at_is_likely_to_buy_artifact_trigger = yes
+								short_term_gold >= scope:artifact.at_artifact_ask_price_value
+							}
+						}
+					}
+					save_scope_as = recipient
+				}
+			}
+		}
+	}
 
 	is_shown = {
 		NOT = { scope:actor = scope:recipient }
@@ -40,8 +70,11 @@ at_buy_artifact_interaction = {
 	}
 
 	is_valid_showing_failures_only = {
+		scope:actor = {
+			at_can_start_interaction_trigger = yes
+		}
 		scope:recipient = {
-			at_candidate_to_buy_artifact_from_trigger = { PARTY = scope:actor }
+			at_can_buy_artifact_from_trigger = { PARTY = scope:actor }
 		}
 	}
 
@@ -91,15 +124,7 @@ at_buy_artifact_interaction = {
 		}
 	}
 
-	auto_accept = {
-		custom_description = {
-			text = "spending_hook"
-			subject = scope:actor
-			object = scope:recipient
-			scope:hook = yes
-			scope:actor = { has_strong_hook = scope:recipient }
-		}
-	}
+	auto_accept = no
 
 	ai_accept = {
 		base = 0
@@ -111,8 +136,15 @@ at_buy_artifact_interaction = {
 
 		modifier = {
 			scope:hook = yes
+			NOT = { scope:actor = { has_strong_hook = scope:recipient } }
 			add = 50
 			desc = SCHEME_WEAK_HOOK_USED
+		}
+		modifier = {
+			scope:hook = yes
+			scope:actor = { has_strong_hook = scope:recipient }
+			add = 100
+			desc = SCHEME_STRONG_HOOK_USED
 		}
 
 		# Artifact recently bought
@@ -152,6 +184,13 @@ at_buy_artifact_interaction = {
 			desc = at_target_below_max_durability_reason
 		}
 
+		# Artifact uniqueness (NIV if unique)
+		modifier = {
+			scope:target = { is_unique = yes }
+			add = at_ai_negative_uniqueness_impact_value
+			desc = at_target_unique_reason
+		}
+
 		# TODO Artifact modifiers and recipient lifestyle
 
 		# Useless, not relevant, unwanted, or cursed artifacts
@@ -178,34 +217,19 @@ at_buy_artifact_interaction = {
 
 		# Dynasty or house banner
 		modifier = {
-			exists = scope:target.var:banner_dynasty
-			exists = scope:recipient.dynasty
-			scope:recipient = scope:target.var:banner_dynasty.dynast
+			at_is_dynasty_banner_trigger = { ARTIFACT = scope:target }
 			add = -50
 			desc = ARTIFACT_DYNASTY_BANNER_REASON
 		}
 		modifier = {
-			exists = scope:target.var:banner_house
-			exists = scope:recipient.house
-			scope:recipient = scope:target.var:banner_house.house_head
+			at_is_house_banner_trigger = { ARTIFACT = scope:target }
 			add = -50
 			desc = at_artifact_house_banner_reason
 		}
 
 		# Useless banner
 		modifier = {
-			OR = {
-				exists = scope:target.var:banner_dynasty
-				exists = scope:target.var:banner_house
-			}
-			exists = scope:recipient.house
-			trigger_if = {
-				limit = { exists = scope:target.var:banner_dynasty }
-				NOT = { scope:target.var:banner_dynasty = scope:recipient.dynasty }
-			}
-			trigger_else = {
-				NOT = { scope:target.var:banner_house = scope:recipient.house }
-			}
+			at_is_useless_banner_trigger = { ARTIFACT = scope:target }
 			add = 100
 			desc = ARTIFACT_USELESS_BANNER_REASON
 		}
@@ -265,6 +289,7 @@ at_buy_artifact_interaction = {
 	}
 
 	ai_targets = {
+		ai_recipients = self
 		ai_recipients = liege
 		ai_recipients = vassals
 		ai_recipients = peer_vassals
@@ -315,6 +340,12 @@ at_buy_artifact_interaction = {
 			}
 		}
 
+		# Artifact uniqueness (PIV if unique)
+		modifier = {
+			scope:target = { is_unique = yes }
+			add = at_ai_positive_uniqueness_impact_value
+		}
+
 		# TODO Artifact modifiers and recipient lifestyle
 
 		# Useless, not relevant, unwanted, or cursed artifacts
@@ -337,32 +368,17 @@ at_buy_artifact_interaction = {
 
 		# Dynasty or house banner
 		modifier = {
-			exists = scope:target.var:banner_dynasty
-			exists = scope:actor.dynasty
-			scope:actor = scope:target.var:banner_dynasty.dynast
+			at_is_dynasty_banner_trigger = { ARTIFACT = scope:target }
 			add = 50
 		}
 		modifier = {
-			exists = scope:target.var:banner_house
-			exists = scope:actor.house
-			scope:actor = scope:target.var:banner_house.house_head
+			at_is_house_banner_trigger = { ARTIFACT = scope:target }
 			add = 50
 		}
 
 		# Useless banner
 		modifier = {
-			OR = {
-				exists = scope:target.var:banner_dynasty
-				exists = scope:target.var:banner_house
-			}
-			exists = scope:actor.house
-			trigger_if = {
-				limit = { exists = scope:target.var:banner_dynasty }
-				NOT = { scope:target.var:banner_dynasty = scope:actor.dynasty }
-			}
-			trigger_else = {
-				NOT = { scope:target.var:banner_house = scope:actor.house }
-			}
+			at_is_useless_banner_trigger = { ARTIFACT = scope:target }
 			add = -100
 		}
 

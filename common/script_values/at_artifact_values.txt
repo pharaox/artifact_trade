@@ -550,13 +550,6 @@ at_artifact_base_price_value = {
 at_artifact_ask_price_value = {
 	value = at_artifact_base_price_value
 
-	if = {
-		limit = {
-			can_be_claimed_by = scope:actor
-		}
-		multiply = 0.5
-	}
-
 	# Make it higher for the player
 	if = {
 		limit = {
@@ -565,14 +558,15 @@ at_artifact_ask_price_value = {
 		multiply = at_artifact_ask_price_player_multiplier
 	}
 
-	# Seller personality multiplier (0.8 to 1.2 based on ai_greed)
+	# Seller personality multiplier (0.87 to 1.13 based on ai_greed)
+	# Chosen so that 0.87 * 1.15 = 1
 	multiply = {
 		value = scope:seller.ai_greed
-		multiply = 0.002
+		multiply = 0.0013
 		add = 1
 	}
 
-	floor = yes
+	round = yes
 	min = 1
 }
 
@@ -582,13 +576,6 @@ at_artifact_ask_price_value = {
 at_artifact_bid_price_value = {
 	value = at_artifact_base_price_value
 
-	if = {
-		limit = {
-			can_be_claimed_by = scope:buyer
-		}
-		multiply = 0.5
-	}
-
 	# Make it lower for the player
 	if = {
 		limit = {
@@ -597,14 +584,15 @@ at_artifact_bid_price_value = {
 		multiply = at_artifact_bid_price_player_multiplier
 	}
 
-	# Buyer personality multiplier (0.8 to 1.2 based on ai_greed)
+	# Buyer personality multiplier (0.83 to 1.17 based on ai_greed)
+	# Chosen so that 1.17 * 0.85 = 1
 	multiply = {
 		value = scope:buyer.ai_greed
-		multiply = -0.002
+		multiply = -0.0017
 		add = 1
 	}
 
-	floor = yes
+	round = yes
 	min = 1
 }
 
@@ -650,6 +638,14 @@ at_buy_artifact_ai_accept_value = {
 			divide = scope:artifact.artifact_max_durability
 			multiply = at_ai_positive_durability_impact_value
 		}
+	}
+
+	# Artifact uniqueness (NIV if unique)
+	if = {
+		limit = {
+			scope:artifact = { is_unique = yes }
+		}
+		add = at_ai_negative_uniqueness_impact_value
 	}
 
 	# TODO Artifact modifiers and recipient lifestyle
@@ -824,6 +820,14 @@ at_sell_artifact_ai_accept_value = {
 			divide = scope:artifact.artifact_max_durability
 			multiply = at_ai_negative_durability_impact_value
 		}
+	}
+
+	# Artifact uniqueness (PIV if unique)
+	if = {
+		limit = {
+			scope:artifact = { is_unique = yes }
+		}
+		add = at_ai_positive_uniqueness_impact_value
 	}
 
 	# TODO Artifact modifiers and recipient lifestyle

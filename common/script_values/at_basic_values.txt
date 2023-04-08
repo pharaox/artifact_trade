@@ -4,6 +4,8 @@ at_ai_positive_qwa_difference_impact_value = 200
 at_ai_negative_qwa_difference_impact_value = -200
 at_ai_positive_durability_impact_value = 50
 at_ai_negative_durability_impact_value = -50
+at_ai_positive_uniqueness_impact_value = 10
+at_ai_negative_uniqueness_impact_value = -10
 at_ai_positive_price_impact_value = 10
 at_ai_negative_price_impact_value = -10
 
@@ -14,5 +16,5 @@ at_buy_sell_artifact_ai_opinion_multiplier = 0.12
 at_artifact_base_price_multiplier = 1.00
 
 # Artifact price multipliers for the player to limit exploits
-at_artifact_ask_price_player_multiplier = 1.2
-at_artifact_bid_price_player_multiplier = 0.8
+at_artifact_ask_price_player_multiplier = 1.15
+at_artifact_bid_price_player_multiplier = 0.85
