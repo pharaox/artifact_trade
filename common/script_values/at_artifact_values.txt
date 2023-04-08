@@ -683,17 +683,17 @@ at_buy_artifact_ai_accept_value = {
 	# Dynasty or house banner
 	if = {
 		limit = {
-			exists = scope:artifact.var:banner_dynasty
-			exists = scope:seller.dynasty
-			scope:seller = scope:artifact.var:banner_dynasty.dynast
+			scope:seller = {
+				at_is_dynasty_banner_trigger = { ARTIFACT = scope:artifact }
+			}
 		}
 		add = -50
 	}
 	if = {
 		limit = {
-			exists = scope:artifact.var:banner_house
-			exists = scope:seller.house
-			scope:seller = scope:artifact.var:banner_house.house_head
+			scope:seller = {
+				at_is_house_banner_trigger = { ARTIFACT = scope:artifact }
+			}
 		}
 		add = -50
 	}
@@ -701,17 +701,8 @@ at_buy_artifact_ai_accept_value = {
 	# Useless banner
 	if = {
 		limit = {
-			OR = {
-				exists = scope:artifact.var:banner_dynasty
-				exists = scope:artifact.var:banner_house
-			}
-			exists = scope:seller.house
-			trigger_if = {
-				limit = { exists = scope:artifact.var:banner_dynasty }
-				NOT = { scope:artifact.var:banner_dynasty = scope:seller.dynasty }
-			}
-			trigger_else = {
-				NOT = { scope:artifact.var:banner_house = scope:seller.house }
+			scope:seller = {
+				at_is_useless_banner_trigger = { ARTIFACT = scope:artifact }
 			}
 		}
 		add = 100
@@ -861,17 +852,17 @@ at_sell_artifact_ai_accept_value = {
 	# Dynasty or house banner
 	if = {
 		limit = {
-			exists = scope:artifact.var:banner_dynasty
-			exists = scope:buyer.dynasty
-			scope:buyer = scope:artifact.var:banner_dynasty.dynast
+			scope:buyer = {
+				at_is_dynasty_banner_trigger = { ARTIFACT = scope:artifact }
+			}
 		}
 		add = 50
 	}
 	if = {
 		limit = {
-			exists = scope:artifact.var:banner_house
-			exists = scope:buyer.house
-			scope:buyer = scope:artifact.var:banner_house.house_head
+			scope:buyer = {
+				at_is_house_banner_trigger = { ARTIFACT = scope:artifact }
+			}
 		}
 		add = 50
 	}
@@ -879,17 +870,8 @@ at_sell_artifact_ai_accept_value = {
 	# Useless banner
 	if = {
 		limit = {
-			OR = {
-				exists = scope:artifact.var:banner_dynasty
-				exists = scope:artifact.var:banner_house
-			}
-			exists = scope:buyer.house
-			trigger_if = {
-				limit = { exists = scope:artifact.var:banner_dynasty }
-				NOT = { scope:artifact.var:banner_dynasty = scope:buyer.dynasty }
-			}
-			trigger_else = {
-				NOT = { scope:artifact.var:banner_house = scope:buyer.house }
+			scope:buyer = {
+				at_is_useless_banner_trigger = { ARTIFACT = scope:artifact }
 			}
 		}
 		add = -100
