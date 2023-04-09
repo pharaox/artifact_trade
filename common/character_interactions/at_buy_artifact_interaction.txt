@@ -130,7 +130,7 @@ at_buy_artifact_interaction = {
 		base = 0
 
 		modifier = {
-			add = 50
+			add = 25
 			desc = GOLD_POSITIVE_REASON
 		}
 
@@ -157,19 +157,16 @@ at_buy_artifact_interaction = {
 		}
 
 		# Difference between the QWA of the target artifact
-		# and the QWA of the best artifact of the same type owned but not equipped by the recipient (0 to NIV)
+		# and the QWA of the n+1-th artifact of the same type owned and equippable by scope:seller
 		modifier = {
-			scope:target = {
-				is_equipped = yes
-			}
+			at_can_equip_and_benefit_from_artifact_trigger = { ARTIFACT = scope:target }
 			save_temporary_scope_as = seller
-			scope:target.at_best_non_equipped_artifact_quality_wealth_average_difference_value > 0
+			scope:target.at_np1th_seller_equippable_artifact_quality_wealth_average_difference_value > 0
 			add = {
-				value = scope:target.at_best_non_equipped_artifact_quality_wealth_average_difference_value
-				divide = 100
+				value = scope:target.at_np1th_seller_equippable_artifact_quality_wealth_average_difference_value
 				multiply = at_ai_negative_qwa_difference_impact_value
 			}
-			desc = at_target_equipped_and_better_than_other_artifacts_reason
+			desc = at_target_better_than_other_owned_artifacts_reason
 		}
 
 		# Artifact durability (0 to PIV)
@@ -186,9 +183,16 @@ at_buy_artifact_interaction = {
 
 		# Artifact uniqueness (NIV if unique)
 		modifier = {
-			scope:target = { is_unique = yes }
+			scope:target = { at_is_unique_artifact_trigger = yes }
 			add = at_ai_negative_uniqueness_impact_value
 			desc = at_target_unique_reason
+		}
+
+		# Artifact religion (NIV if the right religion)
+		modifier = {
+			at_has_artifact_relic_religion_trigger = { ARTIFACT = scope:target }
+			add = at_ai_negative_religion_impact_value
+			desc = at_target_religious_reason
 		}
 
 		# TODO Artifact modifiers and recipient lifestyle
@@ -201,18 +205,18 @@ at_buy_artifact_interaction = {
 		}
 		modifier = {
 			NOT = { can_benefit_from_artifact = scope:target }
-			add = 50
+			add = 100
 			desc = ARTIFACT_NOT_BENEFIT_REASON
 		}
 		modifier = {
 			scope:target = { has_variable = unwanted_artifact }
-			add = 500
-			desc = ARTIFACT_CURSED_REASON
+			add = 100
+			desc = at_target_unwanted_reason
 		}
 		modifier = {
 			scope:target = { has_variable = cursed_artifact }
-			add = 1000
-			desc = ARTIFACT_CURSED_REASON
+			add = 200
+			desc = at_target_cursed_reason
 		}
 
 		# Dynasty or house banner
@@ -227,11 +231,11 @@ at_buy_artifact_interaction = {
 			desc = at_artifact_house_banner_reason
 		}
 
-		# Useless banner
+		# Holds succession title
 		modifier = {
-			at_is_useless_banner_trigger = { ARTIFACT = scope:target }
-			add = 100
-			desc = ARTIFACT_USELESS_BANNER_REASON
+			at_has_artifact_succession_title_trigger = { ARTIFACT = scope:target }
+			add = -50
+			desc = at_artifact_succession_title_reason
 		}
 
 		# Price (NIV if price < minor_gold_value, PIV if price > major_gold_value)
@@ -318,13 +322,13 @@ at_buy_artifact_interaction = {
 		}
 
 		# Difference between the QWA of the target artifact
-		# and the QWA of the worst artifact of the same type equipped by the recipient (0 to PIV)
+		# and the QWA of the n-th artifact of the same type owned and equippable by scope:buyer
 		modifier = {
+			at_can_equip_and_benefit_from_artifact_trigger = { ARTIFACT = scope:target }
 			save_temporary_scope_as = buyer
-			scope:target.at_worst_equipped_artifact_quality_wealth_average_difference_value > 0
+			scope:target.at_nth_buyer_equippable_artifact_quality_wealth_average_difference_value > 0
 			add = {
-				value = scope:target.at_worst_equipped_artifact_quality_wealth_average_difference_value
-				divide = 100
+				value = scope:target.at_nth_buyer_equippable_artifact_quality_wealth_average_difference_value
 				multiply = at_ai_positive_qwa_difference_impact_value
 			}
 		}
@@ -342,8 +346,14 @@ at_buy_artifact_interaction = {
 
 		# Artifact uniqueness (PIV if unique)
 		modifier = {
-			scope:target = { is_unique = yes }
+			scope:target = { at_is_unique_artifact_trigger = yes }
 			add = at_ai_positive_uniqueness_impact_value
+		}
+
+		# Artifact religion (PIV if the right religion)
+		modifier = {
+			at_has_artifact_relic_religion_trigger = { ARTIFACT = scope:target }
+			add = at_ai_positive_religion_impact_value
 		}
 
 		# TODO Artifact modifiers and recipient lifestyle
@@ -355,15 +365,15 @@ at_buy_artifact_interaction = {
 		}
 		modifier = {
 			NOT = { can_benefit_from_artifact = scope:target }
-			add = -50
+			add = -100
 		}
 		modifier = {
 			scope:target = { has_variable = unwanted_artifact }
-			add = -500
+			add = -100
 		}
 		modifier = {
 			scope:target = { has_variable = cursed_artifact }
-			add = -1000
+			add = -200
 		}
 
 		# Dynasty or house banner
@@ -376,10 +386,10 @@ at_buy_artifact_interaction = {
 			add = 50
 		}
 
-		# Useless banner
+		# Holds succession title
 		modifier = {
-			at_is_useless_banner_trigger = { ARTIFACT = scope:target }
-			add = -100
+			at_has_artifact_succession_title_trigger = { ARTIFACT = scope:target }
+			add = 50
 		}
 
 		# Price (PIV if price < minor_gold_value, NIV if price > major_gold_value)

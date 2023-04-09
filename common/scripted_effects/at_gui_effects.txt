@@ -137,7 +137,7 @@ at_artifacts_window_get_artifacts_effect = {
 			# Filter by unique
 			trigger_if = {
 				limit = { global_var:at_artifacts_window_selected_unique_filter_option = flag:_unique }
-				is_unique = yes
+				at_is_unique_artifact_trigger = yes
 			}
 			trigger_else_if = {
 				limit = { global_var:at_artifacts_window_selected_unique_filter_option = flag:_not_unique }
@@ -197,23 +197,17 @@ at_artifacts_window_get_artifacts_effect = {
 				always = yes
 			}
 
-			# Filter by useful
+			# Filter by equippable
 			trigger_if = {
-				limit = { global_var:at_artifacts_window_selected_useful_filter_option = flag:_useful_to_you }
+				limit = { global_var:at_artifacts_window_selected_equippable_filter_option = flag:_equippable_by_you }
 				ROOT = {
-					can_equip_artifact = PREV
-					can_benefit_from_artifact = PREV
-					NOT = { at_is_useless_banner_trigger = { ARTIFACT = PREV } }
+					at_can_equip_and_benefit_from_artifact_trigger = { ARTIFACT = PREV }
 				}
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_useful_filter_option = flag:_not_useful_to_you }
+				limit = { global_var:at_artifacts_window_selected_equippable_filter_option = flag:_not_equippable_by_you }
 				ROOT = {
-					OR = {
-						NOT = { can_equip_artifact = PREV }
-						NOT = { can_benefit_from_artifact = PREV }
-						at_is_useless_banner_trigger = { ARTIFACT = PREV }
-					}
+					NOT = { at_can_equip_and_benefit_from_artifact_trigger = { ARTIFACT = PREV } }
 				}
 			}
 			trigger_else = {

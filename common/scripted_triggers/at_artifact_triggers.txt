@@ -71,6 +71,92 @@ at_is_landed_ruler_within_trading_range_trigger = {
 	}
 }
 
+at_is_unique_artifact_trigger = {
+	OR = {
+		is_unique = yes
+		has_variable = historical_unique_artifact
+	}
+}
+
+at_has_artifact_succession_title_trigger = {
+	exists = $ARTIFACT$.var:artifact_succession_title
+	has_title = $ARTIFACT$.var:artifact_succession_title
+}
+
+at_has_artifact_relic_religion_trigger = {
+	OR = {
+		AND = {
+			exists = $ARTIFACT$.var:relic_religion
+			has_religion = $ARTIFACT$.var:relic_religion
+		}
+		AND = {
+			exists = $ARTIFACT$.var:relic
+			at_has_artifact_relic_flag_religion_trigger = { ARTIFACT = $ARTIFACT$ }
+		}
+	}
+}
+
+at_has_artifact_relic_flag_religion_trigger = {
+	trigger_if = {
+		limit = { $ARTIFACT$.var:relic = flag:christian }
+		has_religion = religion:christianity_religion
+	}
+	trigger_else_if = {
+		limit = { $ARTIFACT$.var:relic = flag:islamic }
+		has_religion = religion:islam_religion
+	}
+	trigger_else_if = {
+		limit = { $ARTIFACT$.var:relic = flag:buddhism }
+		has_religion = religion:buddhism_religion
+	}
+	trigger_else_if = {
+		limit = { $ARTIFACT$.var:relic = flag:zoroastr }
+		has_religion = religion:zoroastrianism_religion
+	}
+	trigger_else_if = {
+		limit = { $ARTIFACT$.var:relic = flag:jainism }
+		has_religion = religion:jainism_religion
+	}
+	trigger_else_if = {
+		limit = { $ARTIFACT$.var:relic = flag:judaism }
+		has_religion = religion:judaism_religion
+	}
+	trigger_else_if = {
+		limit = { $ARTIFACT$.var:relic = flag:germanic }
+		has_religion = religion:germanic_religion
+	}
+	trigger_else_if = {
+		limit = { $ARTIFACT$.var:relic = flag:slavic }
+		has_religion = religion:slavic_religion
+	}
+	trigger_else_if = {
+		limit = { $ARTIFACT$.var:relic = flag:boog }
+		has_religion = religion:west_african_roog_religion
+	}
+	trigger_else_if = {
+		limit = { $ARTIFACT$.var:relic = flag:hinduism }
+		has_religion = religion:hinduism_religion
+	}
+	trigger_else_if = {
+		limit = { $ARTIFACT$.var:relic = flag:finno_ugric_religion }
+		has_religion = religion:finno_ugric_religion
+	}
+	trigger_else = {
+		always = no
+	}
+}
+
+at_can_equip_and_benefit_from_artifact_trigger = {
+	can_equip_artifact = $ARTIFACT$
+	can_benefit_from_artifact = $ARTIFACT$
+}
+
+at_is_artifact_equppable_and_beneficial_trigger = {
+	$CHARACTER$ = {
+		at_can_equip_and_benefit_from_artifact_trigger = { ARTIFACT = prev }
+	}
+}
+
 at_is_dynasty_banner_trigger = {
 	exists = $ARTIFACT$.var:banner_dynasty
 	exists = dynasty
@@ -113,17 +199,14 @@ at_is_artifact_likely_to_be_traded_trigger = {
 
 at_is_likely_to_buy_artifact_trigger = {
 	save_temporary_scope_as = ruler
-	NOR = {
-		is_at_war = yes
-		NOT = { can_equip_artifact = scope:artifact }
-		NOT = { can_benefit_from_artifact = scope:artifact }
-		at_is_useless_banner_trigger = { ARTIFACT = scope:artifact }
-	}
+	is_at_war = no
+	at_can_equip_and_benefit_from_artifact_trigger = { ARTIFACT = scope:artifact }
 	OR = {
 		scope:artifact = { can_be_claimed_by = scope:ruler }
 		at_is_dynasty_banner_trigger = { ARTIFACT = scope:artifact }
 		at_is_house_banner_trigger = { ARTIFACT = scope:artifact }
-		at_worst_character_equipped_artifact_quality_wealth_average_value = 0
+		at_has_artifact_succession_title_trigger = { ARTIFACT = scope:artifact }
+		at_nth_equippable_artifact_quality_wealth_average_value = 0
 	}
 }
 
@@ -132,12 +215,10 @@ at_is_likely_to_sell_artifact_trigger = {
 	NOR = {
 		at_is_dynasty_banner_trigger = { ARTIFACT = scope:artifact }
 		at_is_house_banner_trigger = { ARTIFACT = scope:artifact }
+		at_has_artifact_succession_title_trigger = { ARTIFACT = scope:artifact }
 	}
 	OR = {
-		NOT = { can_equip_artifact = scope:artifact }
-		NOT = { can_benefit_from_artifact = scope:artifact }
-		at_is_useless_banner_trigger = { ARTIFACT = scope:artifact }
-		scope:artifact = { is_equipped = no }
-		at_best_character_non_equipped_artifact_quality_wealth_average_value >= scope:artifact.at_artifact_quality_wealth_average_value
+		NOT = { at_can_equip_and_benefit_from_artifact_trigger = { ARTIFACT = scope:artifact } }
+		at_np1th_equippable_artifact_quality_wealth_average_value >= scope:artifact.at_artifact_quality_wealth_average_value
 	}
 }
