@@ -219,6 +219,7 @@ at_is_likely_to_sell_artifact_trigger = {
 	}
 	OR = {
 		NOT = { at_can_equip_and_benefit_from_artifact_trigger = { ARTIFACT = scope:artifact } }
+		scope:artifact = { is_equipped = no }
 		at_np1th_equippable_artifact_quality_wealth_average_value >= scope:artifact.at_artifact_quality_wealth_average_value
 	}
 }

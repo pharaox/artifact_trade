@@ -310,7 +310,7 @@ at_sell_artifact_interaction = {
 	}
 
 	ai_will_do = {
-		base = 25
+		base = 50
 
 		# Artifact recently bought
 		modifier = {
@@ -318,6 +318,12 @@ at_sell_artifact_interaction = {
 				has_variable = at_artifact_recently_bought
 			}
 			add = -100
+		}
+
+		# Artifact equipped
+		modifier = {
+			scope:target = { is_equipped = yes }
+			add = at_ai_negative_equipped_impact_value
 		}
 
 		# Difference between the QWA of the target artifact

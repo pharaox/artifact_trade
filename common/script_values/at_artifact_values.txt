@@ -711,7 +711,7 @@ at_artifact_ask_price_value = {
 		multiply = at_artifact_ask_price_player_multiplier
 	}
 
-	# Seller personality multiplier (0.87 to 1.13 based on ai_greed)
+	# Seller personality multiplier (0.83 to 1.17 based on ai_greed)
 	# Chosen so that 0.83 * 1.2 = 1
 	multiply = {
 		value = scope:seller.ai_greed
@@ -737,7 +737,7 @@ at_artifact_bid_price_value = {
 		multiply = at_artifact_bid_price_player_multiplier
 	}
 
-	# Buyer personality multiplier (0.83 to 1.17 based on ai_greed)
+	# Buyer personality multiplier (0.75 to 1.25 based on ai_greed)
 	# Chosen so that 1.25 * 0.8 = 1
 	multiply = {
 		value = scope:buyer.ai_greed
@@ -754,7 +754,7 @@ at_artifact_bid_price_value = {
 # Must exactly match the ai_accept section of at_buy_artifact_interaction.
 at_buy_artifact_ai_accept_value = {
 	save_temporary_scope_as = artifact
-	value = 25
+	value = 50
 
 	# Artifact recently bought
 	if = {
@@ -764,6 +764,14 @@ at_buy_artifact_ai_accept_value = {
 			}
 		}
 		add = -100
+	}
+
+	# Artifact equipped
+	if = {
+		limit = {
+			scope:artifact = { is_equipped = yes }
+		}
+		add = at_ai_negative_equipped_impact_value
 	}
 
 	# Difference between the QWA of the target artifact

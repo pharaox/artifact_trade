@@ -130,7 +130,7 @@ at_buy_artifact_interaction = {
 		base = 0
 
 		modifier = {
-			add = 25
+			add = 50
 			desc = GOLD_POSITIVE_REASON
 		}
 
@@ -154,6 +154,13 @@ at_buy_artifact_interaction = {
 			}
 			add = -100
 			desc = at_artifact_recently_bought_reason
+		}
+
+		# Artifact equipped
+		modifier = {
+			scope:target = { is_equipped = yes }
+			add = at_ai_negative_equipped_impact_value
+			desc = at_target_equipped_reason
 		}
 
 		# Difference between the QWA of the target artifact
