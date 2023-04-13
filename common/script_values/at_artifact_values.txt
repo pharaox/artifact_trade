@@ -694,6 +694,7 @@ at_artifact_base_price_value = {
 	}
 
 	# Minimum
+	round = yes
 	min = 10
 }
 
@@ -720,7 +721,7 @@ at_artifact_ask_price_value = {
 	}
 
 	round = yes
-	min = 1
+	min = 5
 }
 
 # Artifact bid price. Calculated by multiplying the base price by several multipliers:
@@ -746,7 +747,7 @@ at_artifact_bid_price_value = {
 	}
 
 	round = yes
-	min = 1
+	min = 5
 }
 
 # AI accept value of the Buy Artifact interaction, used in effects to evaluate whether
@@ -810,14 +811,14 @@ at_buy_artifact_ai_accept_value = {
 		add = at_ai_negative_uniqueness_impact_value
 	}
 
-	# Artifact religion (NIV if the right religion)
+	# Special character for religious relic
 	if = {
 		limit = {
 			scope:seller = {
-				at_has_artifact_relic_religion_trigger = { ARTIFACT = scope:artifact }
+				at_is_artifact_relic_religion_special_character_trigger = { ARTIFACT = scope:artifact }
 			}
 		}
-		add = at_ai_negative_religion_impact_value
+		add = at_ai_negative_relationship_impact_value
 	}
 
 	# TODO Artifact modifiers and recipient lifestyle
@@ -859,7 +860,7 @@ at_buy_artifact_ai_accept_value = {
 				at_is_dynasty_banner_trigger = { ARTIFACT = scope:artifact }
 			}
 		}
-		add = -50
+		add = at_ai_negative_relationship_impact_value
 	}
 	if = {
 		limit = {
@@ -867,7 +868,7 @@ at_buy_artifact_ai_accept_value = {
 				at_is_house_banner_trigger = { ARTIFACT = scope:artifact }
 			}
 		}
-		add = -50
+		add = at_ai_negative_relationship_impact_value
 	}
 
 	# Holds succession title
@@ -877,7 +878,7 @@ at_buy_artifact_ai_accept_value = {
 				at_has_artifact_succession_title_trigger = { ARTIFACT = scope:artifact }
 			}
 		}
-		add = -50
+		add = at_ai_negative_relationship_impact_value
 	}
 
 	# Price (NIV if price < minor_gold_value, PIV if price > major_gold_value)
@@ -993,12 +994,12 @@ at_sell_artifact_ai_accept_value = {
 		add = at_ai_positive_uniqueness_impact_value
 	}
 
-	# Artifact religion (PIV if the right religion)
+	# Special character for religious relic
 	if = {
 		limit = {
-			at_has_artifact_relic_religion_trigger = { ARTIFACT = scope:artifact }
+			at_is_artifact_relic_religion_special_character_trigger = { ARTIFACT = scope:artifact }
 		}
-		add = at_ai_positive_religion_impact_value
+		add = at_ai_positive_relationship_impact_value
 	}
 
 	# TODO Artifact modifiers and recipient lifestyle
@@ -1036,7 +1037,7 @@ at_sell_artifact_ai_accept_value = {
 				at_is_dynasty_banner_trigger = { ARTIFACT = scope:artifact }
 			}
 		}
-		add = 50
+		add = at_ai_positive_relationship_impact_value
 	}
 	if = {
 		limit = {
@@ -1044,7 +1045,7 @@ at_sell_artifact_ai_accept_value = {
 				at_is_house_banner_trigger = { ARTIFACT = scope:artifact }
 			}
 		}
-		add = 50
+		add = at_ai_positive_relationship_impact_value
 	}
 
 	# Holds succession title
@@ -1054,7 +1055,7 @@ at_sell_artifact_ai_accept_value = {
 				at_has_artifact_succession_title_trigger = { ARTIFACT = scope:artifact }
 			}
 		}
-		add = 50
+		add = at_ai_positive_relationship_impact_value
 	}
 
 	# Price (PIV if price < minor_gold_value, NIV if price > major_gold_value)
@@ -1113,6 +1114,37 @@ at_artifact_trading_range_value = {
 	}
 	else = {
 		value = squared_distance_small
+	}
+}
+
+# Number of potential buyers shown in the Sell Artifacts interaction.
+at_number_of_potential_buyers_value = {
+	if = {
+		limit = { has_game_rule = at_number_of_potential_buyers_01 }
+		value = 1
+	}
+	else_if = {
+		limit = { has_game_rule = at_number_of_potential_buyers_02 }
+		value = 2
+	}
+	else_if = {
+		limit = { has_game_rule = at_number_of_potential_buyers_05 }
+		value = 5
+	}
+	else_if = {
+		limit = { has_game_rule = at_number_of_potential_buyers_10 }
+		value = 10
+	}
+	else_if = {
+		limit = { has_game_rule = at_number_of_potential_buyers_20 }
+		value = 20
+	}
+	else_if = {
+		limit = { has_game_rule = at_number_of_potential_buyers_50 }
+		value = 50
+	}
+	else = {
+		value = 1000
 	}
 }
 

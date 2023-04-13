@@ -24,7 +24,7 @@
  at_target_expensive_reason: "[target.GetName] is quite expensive: $VALUE|=+0$"
  at_target_cheap_reason: "[target.GetName] is quite cheap: $VALUE|=+0$"
  at_target_unique_reason: "[target.GetName] is unique: $VALUE|=+0$"
- at_target_religious_reason: "[target.GetName] is a religious relic: $VALUE|=+0$"
+ at_target_religious_reason: "[target.GetName] is a religious relic and [recipient.GetShortUIName|U] is a Head of Faith: $VALUE|=+0$"
  at_target_unwanted_reason: "[target.GetName] is unwanted: $VALUE|=+0$"
  at_target_cursed_reason: "[target.GetName] is cursed: $VALUE|=+0$"
  at_target_equipped_reason: "[target.GetName] is equipped by [recipient.GetShortUIName|U]: $VALUE|=+0$"

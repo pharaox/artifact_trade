@@ -24,10 +24,27 @@ at_can_start_interaction_trigger = {
 
 at_valid_buyer_or_seller_trigger = {
 	is_ruler = yes
-	OR = {
-		at_is_same_realm_character_trigger = { PARTY = $PARTY$ }
-		at_is_neighboring_realm_character_trigger = { PARTY = $PARTY$ }
-		at_is_landed_ruler_within_trading_range_trigger = { PARTY = $PARTY$ }
+	trigger_if = {
+		limit = {
+			has_game_rule = at_valid_trading_partners_same_and_neighboring_realms
+		}
+		OR = {
+			at_is_same_realm_character_trigger = { PARTY = $PARTY$ }
+			at_is_neighboring_realm_character_trigger = { PARTY = $PARTY$ }
+		}
+	}
+	trigger_else_if = {
+		limit = {
+			has_game_rule = at_valid_trading_partners_within_trading_range
+		}
+		OR = {
+			at_is_same_realm_character_trigger = { PARTY = $PARTY$ }
+			at_is_neighboring_realm_character_trigger = { PARTY = $PARTY$ }
+			at_is_landed_ruler_within_trading_range_trigger = { PARTY = $PARTY$ }
+		}
+	}
+	trigger_else = {
+		in_diplomatic_range = $PARTY$
 	}
 }
 
@@ -83,7 +100,7 @@ at_has_artifact_succession_title_trigger = {
 	has_title = $ARTIFACT$.var:artifact_succession_title
 }
 
-at_has_artifact_relic_religion_trigger = {
+at_is_artifact_relic_religion_special_character_trigger = {
 	OR = {
 		AND = {
 			exists = $ARTIFACT$.var:relic_religion
@@ -94,6 +111,7 @@ at_has_artifact_relic_religion_trigger = {
 			at_has_artifact_relic_flag_religion_trigger = { ARTIFACT = $ARTIFACT$ }
 		}
 	}
+	any_held_title = { is_head_of_faith = yes }
 }
 
 at_has_artifact_relic_flag_religion_trigger = {

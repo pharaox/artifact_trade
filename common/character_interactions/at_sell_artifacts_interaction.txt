@@ -40,7 +40,7 @@ at_sell_artifacts_interaction = {
 				value = scope:artifact.at_artifact_bid_price_value
 				max = short_term_gold
 			}
-			max = 5
+			max = at_number_of_potential_buyers_value
 			check_range_bounds = no
 			add_to_list = characters
 		}

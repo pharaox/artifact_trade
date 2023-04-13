@@ -207,10 +207,10 @@ at_sell_artifact_interaction = {
 			desc = at_target_unique_reason
 		}
 
-		# Artifact religion (PIV if the right religion)
+		# Special character for religious relic
 		modifier = {
-			at_has_artifact_relic_religion_trigger = { ARTIFACT = scope:target }
-			add = at_ai_positive_religion_impact_value
+			at_is_artifact_relic_religion_special_character_trigger = { ARTIFACT = scope:target }
+			add = at_ai_positive_relationship_impact_value
 			desc = at_target_religious_reason
 		}
 
@@ -241,19 +241,19 @@ at_sell_artifact_interaction = {
 		# Dynasty or house banner
 		modifier = {
 			at_is_dynasty_banner_trigger = { ARTIFACT = scope:target }
-			add = 50
+			add = at_ai_positive_relationship_impact_value
 			desc = ARTIFACT_DYNASTY_BANNER_REASON
 		}
 		modifier = {
 			at_is_house_banner_trigger = { ARTIFACT = scope:target }
-			add = 50
+			add = at_ai_positive_relationship_impact_value
 			desc = at_artifact_house_banner_reason
 		}
 
 		# Holds succession title
 		modifier = {
 			at_has_artifact_succession_title_trigger = { ARTIFACT = scope:target }
-			add = 50
+			add = at_ai_positive_relationship_impact_value
 			desc = at_artifact_succession_title_reason
 		}
 
@@ -355,10 +355,10 @@ at_sell_artifact_interaction = {
 			add = at_ai_negative_uniqueness_impact_value
 		}
 
-		# Artifact religion (NIV if the right religion)
+		# Special character for religious relic
 		modifier = {
-			at_has_artifact_relic_religion_trigger = { ARTIFACT = scope:target }
-			add = at_ai_negative_religion_impact_value
+			at_is_artifact_relic_religion_special_character_trigger = { ARTIFACT = scope:target }
+			add = at_ai_negative_relationship_impact_value
 		}
 
 		# TODO Artifact modifiers and recipient lifestyle
@@ -384,17 +384,17 @@ at_sell_artifact_interaction = {
 		# Dynasty or house banner
 		modifier = {
 			at_is_dynasty_banner_trigger = { ARTIFACT = scope:target }
-			add = -50
+			add = at_ai_negative_relationship_impact_value
 		}
 		modifier = {
 			at_is_house_banner_trigger = { ARTIFACT = scope:target }
-			add = -50
+			add = at_ai_negative_relationship_impact_value
 		}
 
 		# Holds succession title
 		modifier = {
 			at_has_artifact_succession_title_trigger = { ARTIFACT = scope:target }
-			add = -50
+			add = at_ai_negative_relationship_impact_value
 		}
 
 		# Price (NIV if price < minor_gold_value, PIV if price > major_gold_value)

@@ -1,14 +1,14 @@
 ﻿# AI impact values (base is -50 / 50)
 at_ai_positive_claim_impact_value = 20
-at_ai_negative_equipped_impact_value = -20
+at_ai_negative_equipped_impact_value = -10
 at_ai_positive_qwa_difference_impact_value = 2
 at_ai_negative_qwa_difference_impact_value = -2
 at_ai_positive_durability_impact_value = 50
 at_ai_negative_durability_impact_value = -50
 at_ai_positive_uniqueness_impact_value = 20
 at_ai_negative_uniqueness_impact_value = -20
-at_ai_positive_religion_impact_value = 10
-at_ai_negative_religion_impact_value = -10
+at_ai_positive_relationship_impact_value = 50
+at_ai_negative_relationship_impact_value = -50
 at_ai_positive_price_impact_value = 10
 at_ai_negative_price_impact_value = -10
 

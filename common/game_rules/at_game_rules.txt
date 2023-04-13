@@ -1,0 +1,17 @@
+﻿at_valid_trading_partners = {
+	default = at_valid_trading_partners_within_trading_range
+	at_valid_trading_partners_same_and_neighboring_realms = {}
+	at_valid_trading_partners_within_trading_range = {}
+	at_valid_trading_partners_all = {}
+}
+
+at_number_of_potential_buyers = {
+	default = at_number_of_potential_buyers_05
+	at_number_of_potential_buyers_01 = {}
+	at_number_of_potential_buyers_02 = {}
+	at_number_of_potential_buyers_05 = {}
+	at_number_of_potential_buyers_10 = {}
+	at_number_of_potential_buyers_20 = {}
+	at_number_of_potential_buyers_50 = {}
+	at_number_of_potential_buyers_all = {}
+}
