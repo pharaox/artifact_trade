@@ -3,5 +3,5 @@ tags={
 	"Gameplay"
 	"Character Interactions"
 }
-name="Artifact Trade"
+name="Search & Trade Artifacts"
 supported_version="1.8.*"

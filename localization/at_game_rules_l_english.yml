@@ -5,7 +5,7 @@
  setting_at_artifact_trading_enabled: "Enabled"
  setting_at_artifact_trading_enabled_desc: "Artifact trading is enabled."
 
- rule_at_valid_trading_partners: "#X Search & Trade Artifacts:#! Valid Trading Partners"
+ rule_at_valid_trading_partners: "#X Search & Trade Artifacts:#! Valid Buyers or Sellers"
  setting_at_valid_trading_partners_same_and_neighboring_realms: "Same and Neighboring Realms"
  setting_at_valid_trading_partners_same_and_neighboring_realms_desc: "Characters in the same and neighboring realms."
  setting_at_valid_trading_partners_within_trading_range: "Within Trading Range"

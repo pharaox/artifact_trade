@@ -265,6 +265,23 @@ at_artifacts_window_get_artifacts_effect = {
 			trigger_else = {
 				always = yes
 			}
+
+			# Filter by owner valid buyer or seller
+			trigger_if = {
+				limit = { global_var:at_artifacts_window_selected_owner_valid_buyer_or_seller_filter_option = flag:_valid_buyer_or_seller }
+				artifact_owner = {
+					at_valid_buyer_or_seller_trigger = { PARTY = ROOT }
+				}
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_owner_valid_buyer_or_seller_filter_option = flag:_not_valid_buyer_or_seller }
+				artifact_owner = {
+					NOT = { at_valid_buyer_or_seller_trigger = { PARTY = ROOT } }
+				}
+			}
+			trigger_else = {
+				always = yes
+			}
 		}
 		order_by = {
 			# Apply sort option
