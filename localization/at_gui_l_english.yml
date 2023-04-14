@@ -20,6 +20,8 @@
  at_famed:0 "$famed$"
  at_illustrious:0 "$illustrious$"
 
+ at_all_inventory:0 "All Inventory"
+ at_all_court:0 "All Court"
  at_helmet:0 "$artifact_slot_helmet$"
  at_regalia:0 "$artifact_slot_regalia$"
  at_armor:0 "$artifact_slot_armor$"
@@ -53,6 +55,11 @@
 
  at_unwanted:0 "Unwanted Or Cursed"
  at_not_unwanted:0 "Not Unwanted Or Cursed"
+
+ at_owner:0 "Owner"
+ at_ruler_with_rc:0 "Ruler With Royal Court"
+ at_ruler_without_rc:0 "Ruler Without Royal Court"
+ at_not_ruler:0 "Not Ruler"
 
  at_debug_msg_adding_to_sorted_artifacts: "Adding to sorted_artifacts"
  at_debug_msg_adding_to_artifacts_window_artifacts: "Adding to artifacts_window_artifacts"

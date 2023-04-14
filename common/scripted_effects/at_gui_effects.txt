@@ -87,6 +87,14 @@ at_artifacts_window_get_artifacts_effect = {
 
 			# Filter by slot type
 			trigger_if = {
+				limit = { global_var:at_artifacts_window_selected_slot_type_filter_option = flag:_all_inventory }
+				category = inventory
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_slot_type_filter_option = flag:_all_court }
+				category = court
+			}
+			trigger_else_if = {
 				limit = { global_var:at_artifacts_window_selected_slot_type_filter_option = flag:_helmet }
 				artifact_slot_type = helmet
 			}
@@ -227,6 +235,31 @@ at_artifacts_window_get_artifacts_effect = {
 				NOR = {
 					has_variable = unwanted_artifact
 					has_variable = cursed_artifact
+				}
+			}
+			trigger_else = {
+				always = yes
+			}
+
+			# Filter by owner
+			trigger_if = {
+				limit = { global_var:at_artifacts_window_selected_owner_filter_option = flag:_ruler_with_rc }
+				artifact_owner = {
+					is_ruler = yes
+					has_royal_court = yes
+				}
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_owner_filter_option = flag:_ruler_without_rc }
+				artifact_owner = {
+					is_ruler = yes
+					has_royal_court = no
+				}
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_owner_filter_option = flag:_not_ruler }
+				artifact_owner = {
+					is_ruler = no
 				}
 			}
 			trigger_else = {
