@@ -23,7 +23,8 @@ at_can_start_interaction_trigger = {
 }
 
 at_valid_buyer_or_seller_trigger = {
-	is_ruler = yes
+	NOT = { this = $PARTY$ }
+	in_diplomatic_range = $PARTY$
 	trigger_if = {
 		limit = {
 			has_game_rule = at_valid_trading_partners_same_and_neighboring_realms
@@ -44,7 +45,7 @@ at_valid_buyer_or_seller_trigger = {
 		}
 	}
 	trigger_else = {
-		in_diplomatic_range = $PARTY$
+		always = yes
 	}
 }
 
@@ -216,11 +217,11 @@ at_is_artifact_likely_to_be_traded_trigger = {
 }
 
 at_is_likely_to_buy_artifact_trigger = {
-	save_temporary_scope_as = ruler
+	save_temporary_scope_as = character
 	is_at_war = no
 	at_can_equip_and_benefit_from_artifact_trigger = { ARTIFACT = scope:artifact }
 	OR = {
-		scope:artifact = { can_be_claimed_by = scope:ruler }
+		scope:artifact = { can_be_claimed_by = scope:character }
 		at_is_dynasty_banner_trigger = { ARTIFACT = scope:artifact }
 		at_is_house_banner_trigger = { ARTIFACT = scope:artifact }
 		at_has_artifact_succession_title_trigger = { ARTIFACT = scope:artifact }
@@ -229,7 +230,6 @@ at_is_likely_to_buy_artifact_trigger = {
 }
 
 at_is_likely_to_sell_artifact_trigger = {
-	save_temporary_scope_as = ruler
 	NOR = {
 		at_is_dynasty_banner_trigger = { ARTIFACT = scope:artifact }
 		at_is_house_banner_trigger = { ARTIFACT = scope:artifact }
@@ -239,5 +239,84 @@ at_is_likely_to_sell_artifact_trigger = {
 		NOT = { at_can_equip_and_benefit_from_artifact_trigger = { ARTIFACT = scope:artifact } }
 		scope:artifact = { is_equipped = no }
 		at_np1th_equippable_artifact_quality_wealth_average_value >= scope:artifact.at_artifact_quality_wealth_average_value
+	}
+}
+
+at_artifact_better_than_equipped_trigger = {
+	trigger_if = {
+		limit = {
+			scope:artifact = { artifact_slot_type = primary_armament }
+		}
+		OR = {
+			NOT = {
+				any_equipped_character_artifact = {
+					artifact_slot_type = primary_armament
+				}
+			}
+			any_equipped_character_artifact = {
+				artifact_slot_type = primary_armament
+				at_artifact_quality_wealth_average_value < scope:artifact.at_artifact_quality_wealth_average_value
+			}
+		}
+	}
+	trigger_else_if = {
+		limit = {
+			scope:artifact = { artifact_slot_type = armor }
+		}
+		OR = {
+			NOT = {
+				any_equipped_character_artifact = {
+					artifact_slot_type = armor
+				}
+			}
+			any_equipped_character_artifact = {
+				artifact_slot_type = armor
+				at_artifact_quality_wealth_average_value < scope:artifact.at_artifact_quality_wealth_average_value
+			}
+		}
+	}
+	trigger_else_if = {
+		limit = {
+			scope:artifact = { artifact_slot_type = regalia }
+		}
+		OR = {
+			NOT = {
+				any_equipped_character_artifact = {
+					artifact_slot_type = regalia
+				}
+			}
+			any_equipped_character_artifact = {
+				artifact_slot_type = regalia
+				at_artifact_quality_wealth_average_value < scope:artifact.at_artifact_quality_wealth_average_value
+			}
+		}
+	}
+	trigger_else_if = {
+		limit = {
+			scope:artifact = { artifact_slot_type = helmet }
+		}
+		OR = {
+			NOT = {
+				any_equipped_character_artifact = {
+					artifact_slot_type = helmet
+				}
+			}
+			any_equipped_character_artifact = {
+				artifact_slot_type = helmet
+				at_artifact_quality_wealth_average_value < scope:artifact.at_artifact_quality_wealth_average_value
+			}
+		}
+	}
+	trigger_else_if = {
+		limit = {
+			scope:artifact = { artifact_slot_type = miscellaneous }
+		}
+		any_equipped_character_artifact = {
+			artifact_slot_type = miscellaneous
+			count <= 3
+		}
+	}
+	trigger_else = {
+		always = no
 	}
 }

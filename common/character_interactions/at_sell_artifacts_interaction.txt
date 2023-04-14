@@ -1,4 +1,4 @@
-﻿# Sell a previously selected artifact to other rulers that are willing to buy it from you.
+﻿# Sell a previously selected artifact to other characters that are willing to buy it from you.
 # The previously selected artifact is saved in the at_artifacts_window_selected_artifact global variable.
 # Scopes: actor / recipient is the artifact owner (seller), secondary_recipient is the buyer, target is the artifact.
 # Human player only.

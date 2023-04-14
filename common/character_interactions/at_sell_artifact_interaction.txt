@@ -1,4 +1,4 @@
-﻿# Sell one of your artifacts to another ruler.
+﻿# Sell one of your artifacts to another character.
 # Scopes: actor is the artifact owner (seller), recipient is the buyer, target is the artifact.
 at_sell_artifact_interaction = {
 	category = interaction_category_diplomacy
@@ -49,6 +49,7 @@ at_sell_artifact_interaction = {
 	}
 
 	is_shown = {
+		NOT = { has_game_rule = at_artifact_trading_disabled }
 		NOT = { scope:actor = scope:recipient }
 		trigger_if = {
 			limit = {
@@ -299,8 +300,24 @@ at_sell_artifact_interaction = {
 		ai_recipients = self
 		ai_recipients = liege
 		ai_recipients = vassals
+	}
+	ai_targets = {
 		ai_recipients = peer_vassals
 		ai_recipients = neighboring_rulers
+		max = 20
+	}
+	ai_targets = {
+		ai_recipients = guests
+		ai_recipients = courtiers
+		max = 10
+	}
+	ai_targets = {
+		ai_recipients = family
+		max = 10
+	}
+	ai_targets = {
+		ai_recipients = realm_characters
+		max = 20
 	}
 
 	ai_frequency = 24

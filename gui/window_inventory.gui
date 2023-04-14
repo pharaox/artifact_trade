@@ -238,16 +238,15 @@ window = {
 						}
 
 						hbox = {
+							datacontext = "[GetScriptedGui('at_artifacts_window_init_gui')]"
+							visible = "[And(ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('flavor', MakeScopeFlag('sell')).End), Character.IsLocalPlayer)]"
 							spacing = 10
 
 							button_standard = {
-								datacontext = "[GetScriptedGui('at_artifacts_window_init_gui')]"
-								visible = "[Character.IsLocalPlayer]"
 								text = "AT_SELL_ARTIFACTS"
 								enabled = "[ScriptedGui.IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('flavor', MakeScopeFlag('sell')).End)]"
-								#tooltip = "AT_SELL_ARTIFACTS_TOOLTIP"
+								tooltip = "AT_SELL_ARTIFACTS_TOOLTIP"
 
-								#onclick = "[InventoryView.Close]"
 								onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('flavor', MakeScopeFlag('sell')).End)]"
 								onclick = "[VariableSystem.Set('at_artifacts_window_visible', 'yes')]"
 								onclick = "[VariableSystem.Set('at_find_artifacts_window_visible', 'no')]"
@@ -255,13 +254,10 @@ window = {
 							}
 
 							button_standard = {
-								datacontext = "[GetScriptedGui('at_artifacts_window_init_gui')]"
-								visible = "[Character.IsLocalPlayer]"
 								text = "AT_BUY_ARTIFACTS"
 								enabled = "[ScriptedGui.IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('flavor', MakeScopeFlag('buy')).End)]"
-								#tooltip = "AT_BUY_ARTIFACTS_TOOLTIP"
+								tooltip = "AT_BUY_ARTIFACTS_TOOLTIP"
 
-								#onclick = "[InventoryView.Close]"
 								onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('flavor', MakeScopeFlag('buy')).End)]"
 								onclick = "[VariableSystem.Set('at_artifacts_window_visible', 'yes')]"
 								onclick = "[VariableSystem.Set('at_find_artifacts_window_visible', 'no')]"

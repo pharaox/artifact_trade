@@ -13,7 +13,7 @@ widget = {
 
 	button_icon = {
 		name = "at_find_artifacts_button"
-		#tooltip = "AT_FIND_ARTIFACTS_TOOLTIP"
+		tooltip = "AT_FIND_ARTIFACTS_TOOLTIP"
 		parentanchor = center
 		size = { 35 35 }
 		visible = yes

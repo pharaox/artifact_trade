@@ -1,4 +1,10 @@
-﻿at_valid_trading_partners = {
+﻿at_artifact_trading = {
+	default = at_artifact_trading_enabled
+	at_artifact_trading_disabled = {}
+	at_artifact_trading_enabled = {}
+}
+
+at_valid_trading_partners = {
 	default = at_valid_trading_partners_within_trading_range
 	at_valid_trading_partners_same_and_neighboring_realms = {}
 	at_valid_trading_partners_within_trading_range = {}

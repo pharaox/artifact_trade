@@ -97,6 +97,17 @@ at_buy_artifact_effect = {
 				days = 730
 			}
 
+			# Equip to owner if non-ruler
+			if = {
+				limit = {
+					scope:buyer = {
+						is_ruler = no
+						at_artifact_better_than_equipped_trigger = yes
+					}
+				}
+				equip_artifact_to_owner_replace = yes
+			}
+
 			# Trigger event
 			trigger_event = {
 				on_action = at_on_artifact_bought
@@ -187,7 +198,7 @@ at_buy_artifact_warning_tooltips_effect = {
 
 at_get_valid_buyers_or_sellers_effect = {
 	save_temporary_scope_as = party
-	every_ruler = {
+	every_living_character = {
 		limit = {
 			at_valid_buyer_or_seller_trigger = { PARTY = scope:party }
 		}

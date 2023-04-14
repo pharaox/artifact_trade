@@ -2,6 +2,10 @@
 	scope = character
 	saved_scopes = { flavor }
 
+	is_shown = {
+		NOT = { has_game_rule = at_artifact_trading_disabled }
+	}
+
 	is_valid = {
 		trigger_if = {
 			limit = { scope:flavor = flag:sell }
