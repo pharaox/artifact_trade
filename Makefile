@@ -1,4 +1,4 @@
-NAME := artifact_trade
+NAME := search_and_trade_artifacts
 VERSION := $(shell cat VERSION)
 
 .PHONY: build
