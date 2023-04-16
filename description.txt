@@ -1,6 +1,4 @@
-[h1]Overview[/h1]
-
-With this mod, you can search for artifacts, buy them from other characters, and sell them to other characters. I really missed an artifact trading system, so I decided to create one. Since such a system would not be usable without advanced artifact filtering and sorting, I added an [b]Artifact Finder[/b] as well.
+With this mod, you can search for artifacts, buy them from other characters, and sell them to other characters. The game doesn't have an artifact trading system, so this mod adds one. Since such a system would not be usable without advanced artifact filtering and sorting, it adds an "artifact finder" as well.
 
 The [url=https://steamcommunity.com/workshop/filedetails/?id=2747305366]Auction Off Artifact[/url] mod enables selling of artifacts, however it's fairly limited. No actual trading takes place, you can only sell but not buy, and you can [i]always[/i] sell, which undermines the realism.
 
@@ -8,42 +6,49 @@ This mod adds what is missing, and more. The system is balanced so that it does 
 
 In case you don't like artifact trading for some reason, you can disable the trading part via a game rule.
 
-[h1]Features[/h1]
+The description below is shortened to fit in the character limit. For more information, see the mod [url=https://github.com/pharaox/artifact_trade/blob/main/README.md]README[/url]. Contributions are welcome at [url=https://github.com/pharaox/artifact_trade]GitHub[/url].
 
-[h2]Searching for Artifacts[/h2]
+[h1]Searching for Artifacts[/h1]
 
 To search for artifacts, click on the round ring button in the lower middle portion of the screen. This opens the [b]Artifact Finder[/b] window.
 
-[img]https://steamuserimages-a.akamaihd.net/ugc/2047490891201303401/C4D77756FBBDFD1BB5EE2E3693F36131267D2287/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=#000000&letterbox=false[/img]
+[img]https://steamuserimages-a.akamaihd.net/ugc/2047490891201303401/C4D77756FBBDFD1BB5EE2E3693F36131267D2287/?ima=fit[/img]
 
-This window is very similar to [b]Character Finder[/b]. Without any filters, it contains a list of all artifacts in the game. You can filter artifacts by various criteria, including rarity, type, uniqueness, equipped or not, owned by you or not, claimed or not, and a few others. You can also sort artifacts by rarity, durability, type, or base price.
+This window is very similar to [b]Character Finder[/b]. Without any filters, it contains a list of all artifacts in the game. You can filter artifacts by various criteria, including rarity, type, uniqueness, equipped or not, owned by you or not, claimed or not, etc. You can also sort artifacts by rarity, durability, type, or base price.
 
-[h2]Buying and Selling Artifacts[/h2]
+[h1]Buying and Selling Artifacts[/h1]
 
-To buy or sell artifacts, open the [b]Inventory[/b] window and click [b]Buy Artifacts[/b] or [b]Sell Artifacts[/b]. This opens an artifact selection window similar to [b]Artifact Finder[/b] that also allows you to select the artifact to be bought or sold by clicking on it.
+To buy an artifact, open the [b]Inventory[/b] window and click [b]Buy Artifacts[/b]. This opens an artifact selection window similar to [b]Artifact Finder[/b] that also allows you to select the artifact to be bought clicking on it.
 
-[img]https://steamuserimages-a.akamaihd.net/ugc/2047490891201303383/22CB21BDC1D2071566C7741A8C68543AD1C33B98/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=#000000&letterbox=false[/img]
-
-When selling artifacts, the list contains only artifacts that are not equipped and can be sold at this time (there are valid buyers willing to buy them from you). Clicking on an artifact opens a character selection window to select a buyer. It contains only valid buyers that are willing to buy the selected artifact. Buyers may offer different prices for the artifact, and will never offer more than their [i]short term budget[/i]. Since buyers can't be sorted by their bid prices, the list contains only a limited number of buyers offering the highest bid prices. This number is 5 by default and can be configured via a game rule. After a buyer has been selected, clicking the button opens the [b]Sell Artifact[/b] interaction, where you can review the effects and the buyer's reasons for accepting, and eventually sell the artifact.
+[img]https://steamuserimages-a.akamaihd.net/ugc/2047490891201303383/22CB21BDC1D2071566C7741A8C68543AD1C33B98/?ima=fit[/img]
 
 When buying artifacts, the list contains only artifacts that can be bought at this time (there are valid sellers willing to sell them to you). Clicking on an artifact opens the [b]Buy Artifact[/b] interaction, where you can review the interaction effects, the seller's price, and their reasons for accepting, and eventually buy the artifact.
 
-You can also initiate the [b]Sell Artifact[/b] and [b]Buy Artifact[/b] interactions directly by right-clicking on a character. However, not all characters are valid buyers or sellers, or are willing to buy or sell an artifact, so these interactions could be hidden, disabled, or rejected. Initiating the interactions directly is still a good way to explore a particular character's reasons for rejecting a trade, or use a hook on a character if you have one.
+[img]https://steamuserimages-a.akamaihd.net/ugc/2047490891201303392/317BA2D4D31D25DA426407690C8796488AA9F2D6/?ima=fit[/img]
 
-[h3]Artifact Prices[/h3]
+To sell an artifact, open the [b]Inventory[/b] window and click [b]Sell Artifacts[/b]. This again opens the artifact selection window so you can select the artifact to be sold.
 
-The [i]base artifact prices[/i] are roughly the same as the prices in [u]Auction Off Artifact[/u], so players already familiar with that mod should feel at home. However, instead of being based on rarity, the formula used here is based on the artifact's [i]Quality and Wealth Average (QWA)[/i], two hidden properties that actually determine the rarity, so artifacts with the same rarity can sometimes have different base prices. The actual formula is:
-[list]
-  [*] Determine QWA as [i](quality + wealth) / 2[/i]
-  [*] Multiply by 2.5
-  [*] Multiply by durability as percentage value
-  [*] If the artifact is unique, multiply by 3
-  [*] Round and ensure a minimum of 10
-[/list]
+[img]https://steamuserimages-a.akamaihd.net/ugc/2047490891201303367/96686FBA77F0EC998D776DE7DF0C9399D155F2AB/?ima=fit[/img]
+
+When selling artifacts, the list contains only artifacts that are not equipped and can be sold at this time (there are valid buyers willing to buy them from you). Clicking on an artifact opens a character selection window to select a buyer.
+
+[img]https://steamuserimages-a.akamaihd.net/ugc/2047490891201303374/B5ACFC59CE3771A791C91868E7AA8C0B8E350FA8/?ima=fit[/img]
+
+The list contains only valid buyers that are willing to buy the selected artifact. Buyers may offer different prices for the artifact, and will never offer more than their [i]short term budget[/i]. Since buyers can't be sorted by their bid prices, the list contains only a limited number of buyers offering the highest bid prices. This number is 5 by default and can be configured via a game rule.
+
+After a buyer has been selected, clicking the button opens the [b]Sell Artifact[/b] interaction, where you can review the effects and the buyer's reasons for accepting, and eventually sell the artifact.
+
+[img]https://steamuserimages-a.akamaihd.net/ugc/2047490891201303378/309D444558B708CAE47B96AABA8773BC1744CE89/?ima=fit[/img]
+
+You can also initiate the [b]Buy Artifact[/b] and [b]Sell Artifact[/b] interactions directly by right-clicking on a character. However, not all characters are valid buyers or sellers, or are willing to buy or sell an artifact, so these interactions could be hidden, disabled, or rejected. Initiating the interactions directly is still a good way to explore a particular character's reasons for rejecting a trade, or use a hook on a character if you have one.
+
+[h2]Artifact Prices[/h2]
+
+The [i]base artifact prices[/i] are roughly the same as the prices in [u]Auction Off Artifact[/u], so players already familiar with that mod should feel at home. However, instead of being based on rarity, the formula used here is based on the artifact's [i]Quality and Wealth Average (QWA)[/i], two hidden properties that actually determine the rarity, so artifacts with the same rarity can sometimes have different base prices.
 
 Actual trades are settled at the [i]bid price[/i] (buyer's price) if the initiating party is the seller, and the [i]ask price[/i] (seller's price), if the initiating party is the buyer. These prices are calculated by multiplying the base price by a factor depending on AI greed, and an additional factor of 0.8 (for the bid price) or 1.2 (for the ask price) if the initiating party is the player. As a result, the player always buys at higher and sells at lower prices compared to the AI. This is done to prevent exploits, and to make it a bit more challenging for the player to use the trading system to their advantage.
 
-[h3]AI Willingness to Buy or Sell[/h3]
+[h2]AI Willingness to Buy or Sell[/h2]
 
 When buying artifacts, the AI acceptance is influenced by multiple factors such as:
 [list]
@@ -58,17 +63,11 @@ When buying artifacts, the AI acceptance is influenced by multiple factors such 
   [*] Opinion of seller
 [/list]
 
-When selling artifacts, the AI acceptance is influenced by similar factors, but working in the opposite direction, with the following differences:
-[list]
-  [*] QWA compared to that of the best artifact of the same type owned by the seller that would not be equipped. For example, for helmets this would be the 2-nd best helmet owned by the seller, and for trinkets this would be the 5-th best trinket.
-  [*] Is the artifact equipped by the seller
-[/list]
+When selling artifacts, the AI acceptance is influenced by similar factors, but working in the opposite direction. In addition, the AI will never offer to pay more than their [i]short term budget[/i] (the portion of the AI's budget that can be used for short term purchases), and will only sell if the other party offers enough gold to pay the full price.
 
-In addition, the AI will never offer to pay more than their [i]short term budget[/i] (the portion of the AI's budget that can be used for short term purchases), and will only sell if the other party offers enough gold to pay the full price.
+One of the most important factors is the artifact's QWA, which strongly correlates with rarity. When selling, you may find it quite hard to find buyers for common artifacts, and progressively easier for artifact of higher rarities. When buying, you may find it quite easy to find sellers for common artifacts, and progressively harder for artifact of higher rarities.
 
-The AI is in general quite reluctant to buy artifacts that are useless, or sell artifacts that are useful to them. One of the most important factors is the artifact's QWA, which strongly correlates with rarity. When selling, you may find it quite hard to find buyers for [i]Common[/i] artifacts, and progressively easier for artifact of higher rarities. When buying, you may find it quite easy to find sellers for [i]Common[/i] artifacts, and progressively harder for artifact of higher rarities. You could also spend a hook if you have one on a character to increase their willingness to buy or sell.
-
-Note that AI rulers will regularly initiate buy and sell artifact interactions with other AI characters (never the player), and this will sometimes result in actual trades.
+AI rulers will regularly initiate buy and sell artifact interactions with other AI characters (never the player), and this will sometimes result in actual trades.
 
 [h1]Compatibility[/h1]
 
