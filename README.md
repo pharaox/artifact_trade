@@ -48,7 +48,7 @@ You can also initiate the **Buy Artifact** and **Sell Artifact** interactions di
 
 ### Artifact Prices
 
-The *base artifact prices* are roughly the same as the prices in [Auction Off Artifact](https://steamcommunity.com/workshop/filedetails/?id=2747305366), so players already familiar with that mod should feel at home. However, instead of being based on rarity, the formula used here is based on the artifact's *Quality and Wealth Average (QWA)*, two hidden properties with values from 0 to 100 that actually determine the rarity, so artifacts with the same rarity can sometimes have different base prices. The actual formula is:
+The *base artifact prices* are roughly the same as the prices in [Auction Off Artifact](https://steamcommunity.com/workshop/filedetails/?id=2747305366), so players already familiar with that mod should feel at home. However, instead of being based on rarity, the formula used here is based on the artifact's *Quality and Wealth Average (QWA)*, two hidden properties with values from 0 to 100 that actually determine the rarity. The actual formula is:
 
 * Determine QWA as *(quality + wealth) / 2*
 * Multiply by 2.5
@@ -60,26 +60,13 @@ Actual trades are settled at the *bid price* (buyer's price) if the initiating p
 
 ### AI Willingness to Buy or Sell
 
-When buying artifacts, the AI acceptance is influenced by multiple factors such as:
+When buying artifacts, the AI acceptance is influenced by multiple factors. One of the most important is the artifact's QWA compared to that of the worst artifact of the same type owned by the buyer that would still be equipped. For example, for helmets this would be the best helmet, since only one helmet can be equipped, and for trinkets this would be the 4-th best, since 4 trinkets can be equipped. Note that all equippable and beneficial artifacts are evaluated, no matter if actually equipped or not. Other factors include the artifact's durability as percentage value, uniqueness, is the artifact equippable and beneficial to the buyer, unwanted, or cursed, buyer's claims or special relationship to the artifact (dynast and a dynasty banner, etc.), and the artifact's price.
 
-* QWA compared to that of the worst artifact of the same type owned by the buyer that would still be equipped. For example, for helmets this would be the best helmet, since only one helmet can be equipped, and for trinkets this would be the 4-th best, since 4 trinkets can be equipped. Note that all equippable and beneficial artifacts are evaluated, no matter if they are actually equipped or not.
-* Durability as percentage value
-* Uniqueness
-* Is the artifact equippable and beneficial to the buyer
-* Is the artifact unwanted or cursed
-* Buyer's claim on the artifact
-* Buyer's special relationship to the artifact, e.g. dynast and a dynasty banner, etc.
-* Price
-* Opinion of seller
-
-When selling artifacts, the AI acceptance is influenced by similar factors, but working in the opposite direction, with the following differences:
-
-* QWA compared to that of the best artifact of the same type owned by the seller that would not be equipped. For example, for helmets this would be the 2-nd best helmet owned by the seller, and for trinkets this would be the 5-th best trinket.
-* Is the artifact equipped by the seller
+When selling artifacts, the AI acceptance is influenced by similar factors, but working in the opposite direction, with some minor differences. The artifact's QWA is compared to that of the best artifact of the same type owned by the seller that would not be equipped. For example, for helmets this would be the 2-nd best helmet owned by the seller, and for trinkets this would be the 5-th best trinket.
 
 In addition, the AI will never offer to pay more than their *short term budget* (the portion of the AI's budget that can be used for short term purchases), and will only sell if the other party offers enough gold to pay the full price.
 
-One of the most important factors is the artifact's QWA, which strongly correlates with rarity. When selling, you may find it quite hard to find buyers for common artifacts, and progressively easier for artifact of higher rarities. When buying, you may find it quite easy to find sellers for common artifacts, and progressively harder for artifact of higher rarities. You could also spend a hook if you have one on a character to increase their willingness to buy or sell.
+The artifact's QWA strongly correlates with rarity. When selling, you may find it quite hard to find buyers for common artifacts, and progressively easier for artifact of higher rarities. When buying, you may find it quite easy to find sellers for common artifacts, and progressively harder for artifact of higher rarities. You could spend a hook if you have one on a character to increase their willingness to buy or sell.
 
 AI rulers will regularly initiate buy and sell artifact interactions with other AI characters (never the player), and this will sometimes result in actual trades.
 
