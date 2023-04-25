@@ -30,6 +30,27 @@
 			}
 		}
 
+		clear_global_variable_list = at_artifacts_window_max_count_options
+		add_to_global_variable_list = { name = at_artifacts_window_max_count_options target = flag:_100 }
+		add_to_global_variable_list = { name = at_artifacts_window_max_count_options target = flag:_200 }
+		add_to_global_variable_list = { name = at_artifacts_window_max_count_options target = flag:_500 }
+		add_to_global_variable_list = { name = at_artifacts_window_max_count_options target = flag:_1000 }
+		add_to_global_variable_list = { name = at_artifacts_window_max_count_options target = flag:_2000 }
+		add_to_global_variable_list = { name = at_artifacts_window_max_count_options target = flag:_5000 }
+		add_to_global_variable_list = { name = at_artifacts_window_max_count_options target = flag:_10000 }
+		add_to_global_variable_list = { name = at_artifacts_window_max_count_options target = flag:_20000 }
+		add_to_global_variable_list = { name = at_artifacts_window_max_count_options target = flag:_50000 }
+
+		if = {
+			limit = {
+				NOT = { exists = global_var:at_artifacts_window_selected_max_count_option }
+			}
+			set_global_variable = {
+				name = at_artifacts_window_selected_max_count_option
+				value = flag:_100
+			}
+		}
+
 		clear_global_variable_list = at_artifacts_window_rarity_filter_options
 		add_to_global_variable_list = { name = at_artifacts_window_rarity_filter_options target = flag:_all }
 		add_to_global_variable_list = { name = at_artifacts_window_rarity_filter_options target = flag:_common }
@@ -195,7 +216,6 @@
 			}
 		}
 
-		at_artifacts_window_get_all_artifacts_effect = yes
 		at_artifacts_window_get_artifacts_effect = yes
 
 		if = {
@@ -210,8 +230,7 @@ at_artifacts_window_send_gui = {
 	saved_scopes = { flavor artifact }
 
 	effect = {
-		clear_global_variable_list = at_artifacts_window_all_artifacts
-		clear_global_variable_list = at_artifacts_window_artifacts
+		at_artifacts_window_clear_artifacts_effect = yes
 
 		set_global_variable = {
 			name = at_artifacts_window_selected_artifact
@@ -243,8 +262,7 @@ at_artifacts_window_close_gui = {
 	scope = character
 
 	effect = {
-		clear_global_variable_list = at_artifacts_window_all_artifacts
-		clear_global_variable_list = at_artifacts_window_artifacts
+		at_artifacts_window_clear_artifacts_effect = yes
 
 		if = {
 			limit = { has_global_variable = at_artifacts_window_selected_artifact }
@@ -263,7 +281,6 @@ at_artifacts_window_select_artifact_sort_option_gui = {
 			value = scope:sort_option
 		}
 
-		at_artifacts_window_get_all_artifacts_effect = yes
 		at_artifacts_window_get_artifacts_effect = yes
 	}
 }
@@ -280,8 +297,29 @@ at_artifacts_window_toggle_artifact_sort_order_gui = {
 			set_global_variable = at_artifacts_window_is_artifact_sort_order_ascending
 		}
 
-		at_artifacts_window_get_all_artifacts_effect = yes
 		at_artifacts_window_get_artifacts_effect = yes
+	}
+}
+
+at_artifacts_window_select_max_count_option_gui = {
+	scope = character
+	saved_scopes = { max_count_option }
+
+	effect = {
+		set_global_variable = {
+			name = at_artifacts_window_selected_max_count_option
+			value = scope:max_count_option
+		}
+
+		at_artifacts_window_get_artifacts_effect = yes
+	}
+}
+
+at_artifacts_window_artifacts_gui = {
+	scope = character
+
+	is_shown = {
+		NOT = { has_global_variable = at_artifacts_window_is_getting_artifacts }
 	}
 }
 
@@ -356,7 +394,6 @@ at_artifacts_window_select_rarity_filter_option_gui = {
 			value = scope:filter_option
 		}
 
-		at_artifacts_window_get_all_artifacts_effect = yes
 		at_artifacts_window_get_artifacts_effect = yes
 	}
 }
@@ -371,7 +408,6 @@ at_artifacts_window_select_slot_type_filter_option_gui = {
 			value = scope:filter_option
 		}
 
-		at_artifacts_window_get_all_artifacts_effect = yes
 		at_artifacts_window_get_artifacts_effect = yes
 	}
 }
@@ -386,7 +422,6 @@ at_artifacts_window_select_unique_filter_option_gui = {
 			value = scope:filter_option
 		}
 
-		at_artifacts_window_get_all_artifacts_effect = yes
 		at_artifacts_window_get_artifacts_effect = yes
 	}
 }
@@ -401,7 +436,6 @@ at_artifacts_window_select_equipped_filter_option_gui = {
 			value = scope:filter_option
 		}
 
-		at_artifacts_window_get_all_artifacts_effect = yes
 		at_artifacts_window_get_artifacts_effect = yes
 	}
 }
@@ -416,7 +450,6 @@ at_artifacts_window_select_owned_filter_option_gui = {
 			value = scope:filter_option
 		}
 
-		at_artifacts_window_get_all_artifacts_effect = yes
 		at_artifacts_window_get_artifacts_effect = yes
 	}
 }
@@ -431,7 +464,6 @@ at_artifacts_window_select_claimed_filter_option_gui = {
 			value = scope:filter_option
 		}
 
-		at_artifacts_window_get_all_artifacts_effect = yes
 		at_artifacts_window_get_artifacts_effect = yes
 	}
 }
@@ -446,7 +478,6 @@ at_artifacts_window_select_equippable_filter_option_gui = {
 			value = scope:filter_option
 		}
 
-		at_artifacts_window_get_all_artifacts_effect = yes
 		at_artifacts_window_get_artifacts_effect = yes
 	}
 }
@@ -461,7 +492,6 @@ at_artifacts_window_select_unwanted_filter_option_gui = {
 			value = scope:filter_option
 		}
 
-		at_artifacts_window_get_all_artifacts_effect = yes
 		at_artifacts_window_get_artifacts_effect = yes
 	}
 }
@@ -476,7 +506,6 @@ at_artifacts_window_select_owner_filter_option_gui = {
 			value = scope:filter_option
 		}
 
-		at_artifacts_window_get_all_artifacts_effect = yes
 		at_artifacts_window_get_artifacts_effect = yes
 	}
 }
@@ -491,7 +520,6 @@ at_artifacts_window_select_owner_valid_buyer_or_seller_filter_option_gui = {
 			value = scope:filter_option
 		}
 
-		at_artifacts_window_get_all_artifacts_effect = yes
 		at_artifacts_window_get_artifacts_effect = yes
 	}
 }
@@ -541,7 +569,6 @@ at_artifacts_window_reset_filter_options_gui = {
 			value = flag:_all
 		}
 
-		at_artifacts_window_get_all_artifacts_effect = yes
 		at_artifacts_window_get_artifacts_effect = yes
 	}
 }

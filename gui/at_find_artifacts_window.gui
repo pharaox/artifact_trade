@@ -56,6 +56,7 @@ window = {
 					vbox = {
 						datamodel = "[GetGlobalList('at_artifacts_window_artifacts')]"
 						layoutpolicy_horizontal = expanding
+						visible = "[GetScriptedGui('at_artifacts_window_artifacts_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 
 						item = {
 							at_widget_find_artifacts_list_item = {

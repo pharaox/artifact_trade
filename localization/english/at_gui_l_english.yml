@@ -10,12 +10,24 @@
 
  AT_ARTIFACT_BASE_PRICE:1 "   [gold_i][Artifact.MakeScope.ScriptValue('at_artifact_base_price_value')|0]"
 
- AT_ARTIFACTS_COUNT:1 "[Select_CString(LessThan_CFixedPoint(GetPlayer.MakeScope.ScriptValue('at_artifacts_window_artifacts_count_value'), GetPlayer.MakeScope.ScriptValue('at_artifacts_window_all_artifacts_count_value')), '#high', '#low' )] [GetPlayer.MakeScope.ScriptValue('at_artifacts_window_artifacts_count_value')] #!of [GetPlayer.MakeScope.ScriptValue('at_artifacts_window_all_artifacts_count_value')] Artifacts"
+ AT_ARTIFACTS_COUNT:1 "[Select_CString(LessThan_CFixedPoint(GetPlayer.MakeScope.ScriptValue('at_artifacts_window_filtered_artifacts_count_value'), GetPlayer.MakeScope.ScriptValue('at_artifacts_window_all_artifacts_count_value')), '#high', '#low' )] [GetPlayer.MakeScope.ScriptValue('at_artifacts_window_filtered_artifacts_count_value')] #!of [GetPlayer.MakeScope.ScriptValue('at_artifacts_window_all_artifacts_count_value')] Artifacts"
+
+ AT_SHOW:0 "Show: "
 
  at_rarity:0 "$rarity$"
  at_durability:0 "$durability$"
  at_type:0 "$type$"
  at_price:0 "Base Price"
+
+ at_100:0 "100"
+ at_200:0 "200"
+ at_500:0 "500"
+ at_1000:0 "1000"
+ at_2000:0 "2000"
+ at_5000:0 "5000"
+ at_10000:0 "10000"
+ at_20000:0 "20000"
+ at_50000:0 "50000"
 
  at_all:0 "$any_filter_option$"
  at_common:0 "Common"

@@ -1,4 +1,19 @@
-﻿at_artifacts_window_get_all_artifacts_effect = {
+﻿at_artifacts_window_get_artifacts_effect = {
+	if = {
+		limit = { 
+			NOT = { has_global_variable = at_artifacts_window_is_getting_artifacts }
+		}
+		set_global_variable = at_artifacts_window_is_getting_artifacts
+
+		at_artifacts_window_get_all_artifacts_effect = yes
+		at_artifacts_window_get_filtered_artifacts_effect = yes
+		at_artifacts_window_get_sorted_artifacts_effect = yes
+
+		remove_global_variable = at_artifacts_window_is_getting_artifacts
+	}
+}
+
+at_artifacts_window_get_all_artifacts_effect = {
 	clear_global_variable_list = at_artifacts_window_all_artifacts
 	if = {
 		limit = { scope:flavor = flag:sell }
@@ -59,9 +74,9 @@
 	}
 }
 
-at_artifacts_window_get_artifacts_effect = {
-	clear_global_variable_list = at_artifacts_window_artifacts
-	ordered_in_global_list = {
+at_artifacts_window_get_filtered_artifacts_effect = {
+	clear_global_variable_list = at_artifacts_window_filtered_artifacts
+	every_in_global_list = {
 		variable = at_artifacts_window_all_artifacts
 		limit = {
 			# Filter by rarity
@@ -283,6 +298,18 @@ at_artifacts_window_get_artifacts_effect = {
 				always = yes
 			}
 		}
+
+		add_to_global_variable_list = {
+			name = at_artifacts_window_filtered_artifacts
+			target = this
+		}
+	}
+}
+
+at_artifacts_window_get_sorted_artifacts_effect = {
+	clear_global_variable_list = at_artifacts_window_artifacts
+	ordered_in_global_list = {
+		variable = at_artifacts_window_filtered_artifacts
 		order_by = {
 			# Apply sort option
 			if = {
@@ -310,7 +337,7 @@ at_artifacts_window_get_artifacts_effect = {
 				multiply = -1
 			}
 		}
-		max = 10000
+		max = at_artifacts_window_max_count_value
 		check_range_bounds = no
 
 		add_to_global_variable_list = {
@@ -318,4 +345,10 @@ at_artifacts_window_get_artifacts_effect = {
 			target = this
 		}
 	}
+}
+
+at_artifacts_window_clear_artifacts_effect = {
+	clear_global_variable_list = at_artifacts_window_all_artifacts
+	clear_global_variable_list = at_artifacts_window_filtered_artifacts
+	clear_global_variable_list = at_artifacts_window_artifacts
 }

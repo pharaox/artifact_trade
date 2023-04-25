@@ -58,6 +58,7 @@ window = {
 					vbox = {
 						datamodel = "[GetGlobalList('at_artifacts_window_artifacts')]"
 						layoutpolicy_horizontal = expanding
+						visible = "[GetScriptedGui('at_artifacts_window_artifacts_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 
 						item = {
 							at_widget_artifacts_list_item = {
@@ -322,6 +323,40 @@ types at_types_artifacts_window {
 		margin = { 25 5 }
 		margin_bottom = 8
 		spacing = 5
+
+		text_single = {
+			text = "AT_SHOW"
+			align = nobaseline
+		}
+
+		dropdown_menu_standard = {
+			datacontext = "[GetScriptedGui('at_artifacts_window_select_max_count_option_gui')]"
+
+			blockoverride "dropdown_size" {
+				size = { 100 32 }
+			}
+			blockoverride "dropdown_list_maxsize" {
+				maximumsize = { 92 96 }
+			}
+
+			blockoverride "dropdown_properties" {
+				datamodel = "[GetGlobalList('at_artifacts_window_max_count_options')]"
+				onselectionchanged = "[PdxGuiWidget.FindChild('selected_max_count_option').TriggerAnimation('select_max_count_option')]"
+			}
+
+			blockoverride "dropdown_active_item_properties" {
+				name = "selected_max_count_option"
+				text = "[Localize(Concatenate('at', GetGlobalVariable('at_artifacts_window_selected_max_count_option').GetFlagName))]"
+				state = {
+					name = "select_max_count_option"
+					on_start = "[ScriptedGui.Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('max_count_option', MakeScopeFlag(Scope.GetFlagName)).AddScope('flavor', MakeScopeFlag(GetVariableSystem.Get('at_artifacts_window_flavor'))).End)]"
+				}
+			}
+
+			blockoverride "dropdown_item_properties" {
+				text = "[Localize(Concatenate('at', Scope.GetFlagName))]"
+			}
+		}
 
 		expand = {}
 
