@@ -6,6 +6,8 @@ This mod adds what is missing, and more. The system is balanced so that it does 
 
 In case you don't like artifact trading for some reason, you can disable the trading part via a game rule.
 
+This mod is compatible with all other mods, including total conversion mods such as AGOT and EK2, except for those few mods that modify the [b]Inventory[/b] window. Put it after all other mods in the load order. In case of a conflict with another important mod, put it before that mod - you will lose the new [b]Inventory[/b] window buttons as a result but other features should work as expected.
+
 For more information, see the mod [url=https://github.com/pharaox/artifact_trade/blob/main/README.md]README[/url]. 
 
 Links:
@@ -65,7 +67,3 @@ When selling artifacts, the AI acceptance is influenced by similar factors, but 
 The artifact's QWA strongly correlates with rarity. When selling, you may find it quite hard to find buyers for common artifacts, and progressively easier for artifact of higher rarities. When buying, you may find it quite easy to find sellers for common artifacts, and progressively harder for artifact of higher rarities.
 
 AI rulers will regularly initiate buy and sell artifact interactions with other AI characters (never the player), and this will sometimes result in actual trades.
-
-[h1]Compatibility[/h1]
-
-This mod should be compatible with all other mods, including total conversion mods, except for those few mods that modify the [b]Inventory[/b] window. If in doubt, put this mod higher in the load order - you may lose the new [b]Inventory[/b] window buttons as a result but other mods should work as expected.

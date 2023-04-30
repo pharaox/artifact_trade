@@ -10,6 +10,8 @@ This mod adds what is missing, and more. The system is balanced so that it does 
 
 In case you don't like artifact trading for some reason, you can disable the trading part via a game rule.
 
+This mod is compatible with all other mods, including total conversion mods such as AGOT and EK2, except for those few mods that modify the **Inventory** window. Put it after all other mods in the load order. In case of a conflict with another important mod, put it before that mod - you will lose the new **Inventory** window buttons as a result but other features should work as expected.
+
 ## Searching for Artifacts
 
 To search for artifacts, click on the round ring button in the lower middle portion of the screen. This opens the **Artifact Finder** window.
@@ -79,10 +81,6 @@ For added realism and also to improve performance on lower-end machines, whether
 * **All Characters**: All characters within diplomatic range (more buyers or sellers, worse performance and realism).
 
 The AI uses a slightly different version of the above due to engine limitations.
-
-## Compatibility
-
-This mod should be compatible with all other mods, including total conversion mods, except for those few mods that modify the *Inventory* window. If in doubt, put this mod higher in the load order - you may lose the new *Inventory* window buttons as a result but other mods should work as expected.
 
 ## Credits
 
