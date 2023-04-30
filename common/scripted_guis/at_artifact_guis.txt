@@ -57,6 +57,10 @@
 		add_to_global_variable_list = { name = at_artifacts_window_rarity_filter_options target = flag:_masterwork }
 		add_to_global_variable_list = { name = at_artifacts_window_rarity_filter_options target = flag:_famed }
 		add_to_global_variable_list = { name = at_artifacts_window_rarity_filter_options target = flag:_illustrious }
+		add_to_global_variable_list = { name = at_artifacts_window_rarity_filter_options target = flag:_not_common }
+		add_to_global_variable_list = { name = at_artifacts_window_rarity_filter_options target = flag:_not_masterwork }
+		add_to_global_variable_list = { name = at_artifacts_window_rarity_filter_options target = flag:_not_famed }
+		add_to_global_variable_list = { name = at_artifacts_window_rarity_filter_options target = flag:_not_illustrious }
 
 		if = {
 			limit = {
@@ -70,8 +74,8 @@
 
 		clear_global_variable_list = at_artifacts_window_slot_type_filter_options
 		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_all }
-		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_all_inventory }
-		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_all_court }
+		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_inventory }
+		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_court }
 		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_helmet }
 		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_regalia }
 		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_armor }
@@ -83,6 +87,17 @@
 		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_wall_small }
 		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_throne }
 		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_book }
+		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_not_helmet }
+		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_not_regalia }
+		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_not_armor }
+		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_not_primary_armament }
+		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_not_miscellaneous }
+		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_not_sculpture }
+		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_not_pedestal }
+		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_not_wall_big }
+		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_not_wall_small }
+		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_not_throne }
+		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_not_book }
 
 		if = {
 			limit = {
