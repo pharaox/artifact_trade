@@ -87,6 +87,10 @@
  at_unwanted:0 "Unwanted Or Cursed"
  at_not_unwanted:0 "Not Unwanted Or Cursed"
 
+ at_trash_destroyed:0 "Trash (Destroyed In Sieges)"
+ at_trash:0 "Trash"
+ at_not_trash:0 "Not Trash"
+
  at_owner:0 "Owner Is Ruler"
  at_ruler_with_rc:0 "Ruler With Royal Court"
  at_ruler_without_rc:0 "Ruler Without Royal Court"

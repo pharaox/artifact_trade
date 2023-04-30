@@ -209,6 +209,21 @@ window = {
 			}
 
 			at_hbox_artifact_filter = {
+				datacontext = "[GetScriptedGui('at_artifacts_window_select_trash_filter_option_gui')]"
+				blockoverride "filter_text" {
+					text = "at_trash_destroyed"
+				}
+
+				blockoverride "filter_options_datamodel" {
+					datamodel = "[GetGlobalList('at_artifacts_window_trash_filter_options')]"
+				}
+
+				blockoverride "selected_filter_option_text" {
+					text = "[Localize(Concatenate('at', GetGlobalVariable('at_artifacts_window_selected_trash_filter_option').GetFlagName))]"
+				}
+			}
+
+			at_hbox_artifact_filter = {
 				datacontext = "[GetScriptedGui('at_artifacts_window_select_owner_filter_option_gui')]"
 				blockoverride "filter_text" {
 					text = "at_owner"

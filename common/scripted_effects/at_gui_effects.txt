@@ -316,6 +316,19 @@ at_artifacts_window_get_filtered_artifacts_effect = {
 				always = yes
 			}
 
+			# Filter by trash
+			trigger_if = {
+				limit = { global_var:at_artifacts_window_selected_trash_filter_option = flag:_trash }
+				has_variable = ai_to_ai_destroy_in_sieges
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_trash_filter_option = flag:_not_trash }
+				NOT = { has_variable = ai_to_ai_destroy_in_sieges }
+			}
+			trigger_else = {
+				always = yes
+			}
+
 			# Filter by owner
 			trigger_if = {
 				limit = { global_var:at_artifacts_window_selected_owner_filter_option = flag:_ruler_with_rc }
