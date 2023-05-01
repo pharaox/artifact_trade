@@ -1,3 +1,11 @@
+# Version 0.3.0
+
+## UI Improvements
+
+* Added Modifier filter
+* Added Trash filter
+* Added negative filter options to Rarity and Type filters
+
 # Version 0.2.0
 
 ## UI Improvements
