@@ -1,6 +1,6 @@
 ﻿at_artifacts_window_get_artifacts_effect = {
 	if = {
-		limit = { 
+		limit = {
 			NOT = { has_global_variable = at_artifacts_window_is_getting_artifacts }
 		}
 		set_global_variable = at_artifacts_window_is_getting_artifacts
@@ -96,7 +96,7 @@ at_artifacts_window_get_filtered_artifacts_effect = {
 				limit = { global_var:at_artifacts_window_selected_rarity_filter_option = flag:_illustrious }
 				rarity = illustrious
 			}
-			trigger_if = {
+			trigger_else_if = {
 				limit = { global_var:at_artifacts_window_selected_rarity_filter_option = flag:_not_common }
 				NOT = { rarity = common }
 			}
