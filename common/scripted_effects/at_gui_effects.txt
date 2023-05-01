@@ -230,6 +230,263 @@ at_artifacts_window_get_filtered_artifacts_effect = {
 				always = yes
 			}
 
+			# Filter by modifier
+			# Prestige, piety, court grandeur, renown, tyranny, dread, fertility, health, stress
+			trigger_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_prestige }
+				at_has_artifact_prestige_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_piety }
+				at_has_artifact_piety_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_short_reign_duration }
+				at_has_artifact_short_reign_duration_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_court_grandeur_baseline }
+				at_has_artifact_court_grandeur_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_dynasty_prestige }
+				at_has_artifact_dynasty_prestige_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_tyranny }
+				at_has_artifact_tyranny_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_dread }
+				at_has_artifact_dread_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_fertility }
+				at_has_artifact_fertility_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_health }
+				at_has_artifact_health_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_stress_gain }
+				at_has_artifact_stress_gain_modifier = yes
+			}
+			# Opinion
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_general_opinion }
+				at_has_artifact_general_opinion_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_vassal_opinion }
+				at_has_artifact_vassal_opinion_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_independent_ruler_opinion }
+				at_has_artifact_independent_ruler_opinion_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_courtier_and_guest_opinion }
+				at_has_artifact_courtier_and_guest_opinion_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_spouse_opinion }
+				at_has_artifact_spouse_opinion_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_dynasty_opinion }
+				at_has_artifact_dynasty_opinion_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_attraction_opinion }
+				at_has_artifact_attraction_opinion_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_child_opinion }
+				at_has_artifact_child_opinion_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_clergy_opinion }
+				at_has_artifact_clergy_opinion_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_same_faith_opinion }
+				at_has_artifact_same_faith_opinion_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_different_faith_opinion }
+				at_has_artifact_different_faith_opinion_modifier = yes
+			}
+			# Domain, vassals, income, buildings, development
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_domain_limit }
+				at_has_artifact_domain_limit_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_vassal_limit }
+				at_has_artifact_vassal_limit_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_monthly_income }
+				at_has_artifact_monthly_income_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_men_at_arms_maintenance }
+				at_has_artifact_men_at_arms_maintenance_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_mercenary_hire_cost }
+				at_has_artifact_mercenary_hire_cost_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_domain_tax }
+				at_has_artifact_domain_tax_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_vassal_tax_contribution }
+				at_has_artifact_vassal_tax_contribution_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_development_growth }
+				at_has_artifact_development_growth_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_build_gold_cost }
+				at_has_artifact_build_gold_cost_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_build_speed }
+				at_has_artifact_build_speed_modifier = yes
+			}
+			# Scheme
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_scheme_success_chance }
+				at_has_artifact_scheme_success_chance_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_scheme_secrecy }
+				at_has_artifact_scheme_secrecy_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_scheme_power }
+				at_has_artifact_scheme_power_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_seduce_scheme_power }
+				at_has_artifact_seduce_scheme_power_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_courting_scheme_power }
+				at_has_artifact_courting_scheme_power_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_befriend_scheme_power }
+				at_has_artifact_befriend_scheme_power_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_learn_language_scheme_power }
+				at_has_artifact_learn_language_scheme_power_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_hostile_scheme_resistance }
+				at_has_artifact_hostile_scheme_resistance_modifier = yes
+			}
+			# Lifestyle XP
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_monthly_diplomacy_lifestyle_xp_gain }
+				at_has_artifact_monthly_diplomacy_lifestyle_xp_gain_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_monthly_martial_lifestyle_xp_gain }
+				at_has_artifact_monthly_martial_lifestyle_xp_gain_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_monthly_stewardship_lifestyle_xp_gain }
+				at_has_artifact_monthly_stewardship_lifestyle_xp_gain_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_monthly_intrigue_lifestyle_xp_gain }
+				at_has_artifact_monthly_intrigue_lifestyle_xp_gain_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_monthly_learning_lifestyle_xp_gain }
+				at_has_artifact_monthly_learning_lifestyle_xp_gain_modifier = yes
+			}
+			# Skills
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_diplomacy }
+				at_has_artifact_diplomacy_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_martial }
+				at_has_artifact_martial_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_stewardship }
+				at_has_artifact_stewardship_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_intrigue }
+				at_has_artifact_intrigue_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_learning }
+				at_has_artifact_learning_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_stewardship_per_stress_level }
+				at_has_artifact_stewardship_per_stress_level_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_intrigue_per_stress_level }
+				at_has_artifact_intrigue_per_stress_level_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_learning_per_prestige_level }
+				at_has_artifact_learning_per_prestige_level_modifier = yes
+			}
+			# Prowess
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_prowess }
+				at_has_artifact_prowess_modifier = yes
+			}
+			# Combat
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_knights }
+				at_has_artifact_knights_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_levy_reinforcement_rate }
+				at_has_artifact_levy_reinforcement_rate_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_raid_speed }
+				at_has_artifact_raid_speed_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_hard_casualty_modifier }
+				at_has_artifact_hard_casualty_modifier_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_toughness }
+				at_has_artifact_toughness_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_advantage }
+				at_has_artifact_advantage_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_terrain_advantage }
+				at_has_artifact_terrain_advantage_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_retreat_pursuit }
+				at_has_artifact_retreat_pursuit_modifier = yes
+			}
+			trigger_else = {
+				always = yes
+			}
+
 			# Filter by equipped
 			trigger_if = {
 				limit = { global_var:at_artifacts_window_selected_equipped_filter_option = flag:_equipped }

@@ -124,6 +124,88 @@
 			}
 		}
 
+		clear_global_variable_list = at_artifacts_window_modifier_filter_options
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_all }
+		# Prestige, piety, court grandeur, renown, tyranny, dread, fertility, health, stress
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_prestige }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_piety }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_short_reign_duration }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_court_grandeur_baseline }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_dynasty_prestige }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_tyranny }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_dread }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_fertility }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_health }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_stress_gain }
+		# Opinion
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_general_opinion }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_vassal_opinion }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_independent_ruler_opinion }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_courtier_and_guest_opinion }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_spouse_opinion }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_dynasty_opinion }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_attraction_opinion }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_child_opinion }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_clergy_opinion }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_same_faith_opinion }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_different_faith_opinion }
+		# Domain, vassals, income, buildings, development
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_domain_limit }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_vassal_limit }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_monthly_income }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_men_at_arms_maintenance }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_mercenary_hire_cost }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_domain_tax }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_vassal_tax_contribution }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_development_growth }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_build_gold_cost }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_build_speed }
+		# Scheme
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_scheme_success_chance }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_scheme_secrecy }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_scheme_power }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_seduce_scheme_power }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_courting_scheme_power }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_befriend_scheme_power }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_learn_language_scheme_power }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_hostile_scheme_resistance }
+		# Lifestyle XP
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_monthly_diplomacy_lifestyle_xp_gain }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_monthly_martial_lifestyle_xp_gain }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_monthly_stewardship_lifestyle_xp_gain }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_monthly_intrigue_lifestyle_xp_gain }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_monthly_learning_lifestyle_xp_gain }
+		# Skills
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_diplomacy }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_martial }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_stewardship }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_intrigue }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_learning }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_stewardship_per_stress_level }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_intrigue_per_stress_level }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_learning_per_prestige_level }
+		# Prowess
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_prowess }
+		# Combat
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_knights }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_levy_reinforcement_rate }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_raid_speed }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_hard_casualty_modifier }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_toughness }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_advantage}
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_terrain_advantage }
+ 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_retreat_pursuit }
+
+		if = {
+			limit = {
+				NOT = { exists = global_var:at_artifacts_window_selected_modifier_filter_option }
+			}
+			set_global_variable = {
+				name = at_artifacts_window_selected_modifier_filter_option
+				value = flag:_all
+			}
+		}
+
 		clear_global_variable_list = at_artifacts_window_equipped_filter_options
 		add_to_global_variable_list = { name = at_artifacts_window_equipped_filter_options target = flag:_all }
 		add_to_global_variable_list = { name = at_artifacts_window_equipped_filter_options target = flag:_equipped }
@@ -387,6 +469,7 @@ at_artifacts_window_has_non_default_filter_options_gui = {
 				has_global_variable = at_artifacts_window_selected_rarity_filter_option
 				has_global_variable = at_artifacts_window_selected_slot_type_filter_option
 				has_global_variable = at_artifacts_window_selected_unique_filter_option
+				has_global_variable = at_artifacts_window_selected_modifier_filter_option
 				has_global_variable = at_artifacts_window_selected_equipped_filter_option
 				has_global_variable = at_artifacts_window_selected_owned_filter_option
 				has_global_variable = at_artifacts_window_selected_claimed_filter_option
@@ -400,6 +483,7 @@ at_artifacts_window_has_non_default_filter_options_gui = {
 				global_var:at_artifacts_window_selected_rarity_filter_option = flag:_all
 				global_var:at_artifacts_window_selected_slot_type_filter_option = flag:_all
 				global_var:at_artifacts_window_selected_unique_filter_option = flag:_all
+				global_var:at_artifacts_window_selected_modifier_filter_option = flag:_all
 				global_var:at_artifacts_window_selected_equipped_filter_option = flag:_all
 				global_var:at_artifacts_window_selected_owned_filter_option = flag:_all
 				global_var:at_artifacts_window_selected_claimed_filter_option = flag:_all
@@ -451,6 +535,20 @@ at_artifacts_window_select_unique_filter_option_gui = {
 	effect = {
 		set_global_variable = {
 			name = at_artifacts_window_selected_unique_filter_option
+			value = scope:filter_option
+		}
+
+		at_artifacts_window_get_artifacts_effect = yes
+	}
+}
+
+at_artifacts_window_select_modifier_filter_option_gui = {
+	scope = character
+	saved_scopes = { filter_option }
+
+	effect = {
+		set_global_variable = {
+			name = at_artifacts_window_selected_modifier_filter_option
 			value = scope:filter_option
 		}
 
@@ -584,6 +682,10 @@ at_artifacts_window_reset_filter_options_gui = {
 		}
 		set_global_variable = {
 			name = at_artifacts_window_selected_unique_filter_option
+			value = flag:_all
+		}
+		set_global_variable = {
+			name = at_artifacts_window_selected_modifier_filter_option
 			value = flag:_all
 		}
 		set_global_variable = {
