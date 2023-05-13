@@ -128,8 +128,15 @@ at_sell_artifact_interaction = {
 
 	on_accept = {
 		if = {
-			limit = { scope:hook = yes }
-			scope:actor = { use_hook = scope:recipient }
+			limit = {
+				scope:hook = yes
+				scope:actor = {
+					has_usable_hook = scope:recipient
+				}
+			}
+			scope:actor = {
+				use_hook = scope:recipient
+			}
 		}
 		scope:actor = { save_scope_as = seller }
 		scope:recipient = { save_scope_as = buyer }
