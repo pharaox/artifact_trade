@@ -3,3 +3,17 @@
 		at_debug_log_effect = { MSG = at_debug_msg_artifact_bought }
 	}
 }
+
+at_on_artifact_destroyed = {
+	effect = {
+		if = {
+			limit = {
+				scope:destroyer = { at_has_aniconist_faith_trigger = yes }
+			}
+			at_debug_log_effect = { MSG = at_debug_msg_artifact_destroyed_by_aniconist_ruler }
+		}
+		else = {
+			at_debug_log_effect = { MSG = at_debug_msg_artifact_destroyed }
+		}
+	}
+}

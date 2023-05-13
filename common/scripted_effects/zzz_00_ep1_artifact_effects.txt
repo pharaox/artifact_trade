@@ -1,0 +1,116 @@
+﻿# Destroy Artifact effect
+# DESTROYER = Character destroying the artifact
+# ARTIFACT = The artifact to destroy
+# STA: Overridden from vanilla
+destroy_artifact_aniconist_effect = {
+	$ARTIFACT$ = {
+		save_temporary_scope_as = artifact
+	}
+
+	$DESTROYER$ = {
+		if = {
+			limit = {
+				$DESTROYER$.faith = { has_doctrine_parameter = destroying_artifacts_is_pious }
+			}
+			add_piety = {
+				# Base value
+				value = 5
+				# Add the artifact's quality
+				if = {
+					limit = { exists = scope:artifact.var:quality }
+					add = scope:artifact.var:quality
+				}
+				# If none can be found, add its wealth
+				else_if = {
+					limit = { exists = scope:artifact.var:wealth }
+					add = scope:artifact.var:wealth
+				}
+				# Artifact has no quality or wealth (typical for court artifacts), add something based on rarity
+				else_if = {
+					limit = {
+						scope:artifact = { rarity = illustrious }
+					}
+					add = {
+						value = 20
+					}
+				}
+				else_if = {
+					limit = {
+						scope:artifact = { rarity = famed }
+					}
+					add = {
+						value = 12
+					}
+				}
+				else_if = {
+					limit = {
+						scope:artifact = { rarity = masterwork }
+					}
+					add = {
+						value = 8
+					}
+				}
+				else = {
+					add = {
+						value = 4
+					}
+				}
+				# Boost the value up to something meaningful
+				multiply = 20
+				# Relics are way cooler to burn, double the final value
+				if = {
+					limit = {
+						scope:artifact = { exists = var:relic }
+					}
+					multiply = {
+						value = 2
+						desc = aniconist_destroying_relic
+					}
+				}
+			}
+		}
+		add_gold = {
+			if = {
+				limit = {
+					scope:artifact = { rarity = illustrious }
+				}
+				add = {
+					value = 25
+				}
+			}
+			else_if = {
+				limit = {
+					scope:artifact = { rarity = famed }
+				}
+				add = {
+					value = 15
+				}
+			}
+			else_if = {
+				limit = {
+					scope:artifact = { rarity = masterwork }
+				}
+				add = {
+					value = 8
+				}
+			}
+			else = {
+				add = {
+					value = 4
+				}
+			}
+			# Boost the value up to something meaningful
+			multiply = 10
+		}
+
+		# STA: Trigger event
+		save_scope_as = destroyer
+		scope:artifact = {
+			trigger_event = {
+				on_action = at_on_artifact_destroyed
+			}
+		}
+
+		destroy_owned_artifact = scope:artifact
+	}
+}

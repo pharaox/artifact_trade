@@ -1,2 +1,4 @@
 ﻿l_english:
  at_debug_msg_artifact_bought: "Artifact bought"
+ at_debug_msg_artifact_destroyed: "Artifact destroyed"
+ at_debug_msg_artifact_destroyed_by_aniconist_ruler: "Artifact destroyed by Aniconist ruler"
