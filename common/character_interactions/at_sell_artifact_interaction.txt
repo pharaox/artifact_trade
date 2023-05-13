@@ -174,7 +174,7 @@ at_sell_artifact_interaction = {
 		modifier = {
 			is_at_war = yes
 			add = -50
-			desc = IS_AT_WAR_REASON
+			desc = at_recipient_at_war_reason
 		}
 
 		# Artifact claims
@@ -278,6 +278,20 @@ at_sell_artifact_interaction = {
 			scope:target.at_artifact_bid_price_value > scope:recipient.major_gold_value
 			add = at_ai_negative_price_impact_value
 			desc = at_target_expensive_reason
+		}
+
+		# Buyer gold
+		modifier = {
+			at_is_character_poor_trigger = yes
+			scope:target = { at_is_worthless_artifact_trigger = yes }
+			add = at_ai_negative_wealth_impact_value
+			desc = at_recipient_poor_reason
+		}
+		modifier = {
+			at_is_character_rich_trigger = yes
+			scope:target = { at_is_worthless_artifact_trigger = no }
+			add = at_ai_positive_wealth_impact_value
+			desc = at_recipient_rich_reason
 		}
 
 		# Opinion of seller
@@ -436,6 +450,23 @@ at_sell_artifact_interaction = {
 			}
 			scope:target.at_artifact_bid_price_value > scope:actor.major_gold_value
 			add = at_ai_positive_price_impact_value
+		}
+
+		# Seller gold
+		modifier = {
+			gold <= 0
+			scope:target = { is_equipped = no }
+			add = at_ai_positive_wealth_impact_value
+		}
+		modifier = {
+			at_is_character_poor_trigger = yes
+			scope:target = { at_is_worthless_artifact_trigger = yes }
+			add = at_ai_positive_wealth_impact_value
+		}
+		modifier = {
+			at_is_character_rich_trigger = yes
+			scope:target = { at_is_worthless_artifact_trigger = no }
+			add = at_ai_negative_wealth_impact_value
 		}
 
 		# Opinion of buyer

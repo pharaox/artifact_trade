@@ -11,6 +11,8 @@ at_ai_positive_relationship_impact_value = 50
 at_ai_negative_relationship_impact_value = -50
 at_ai_positive_price_impact_value = 10
 at_ai_negative_price_impact_value = -10
+at_ai_positive_wealth_impact_value = 10
+at_ai_negative_wealth_impact_value = -10
 
 # Multiplier for the opinion modifier affecting ai willingness to buy and sell artifacts
 at_buy_sell_artifact_ai_opinion_multiplier = 0.1

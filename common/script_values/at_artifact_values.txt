@@ -630,7 +630,7 @@ at_artifact_ask_price_value = {
 at_artifact_bid_price_value = {
 	value = at_artifact_base_price_value
 
-	# Buyer personality multiplier (0.75 to 1.25 based on ai_greed)
+	# Buyer personality multiplier (0.8 to 1.2 based on ai_greed)
 	multiply = {
 		value = scope:buyer.ai_greed
 		multiply = -0.002
@@ -817,6 +817,29 @@ at_buy_artifact_ai_accept_value = {
 		add = at_ai_positive_price_impact_value
 	}
 
+	# Seller gold
+	if = {
+		limit = {
+			scope:seller = { gold <= 0 }
+			scope:artifact = { is_equipped = no }
+		}
+		add = at_ai_positive_wealth_impact_value
+	}
+	if = {
+		limit = {
+			scope:seller = { at_is_character_poor_trigger = yes }
+			scope:artifact = { at_is_worthless_artifact_trigger = yes }
+		}
+		add = at_ai_positive_wealth_impact_value
+	}
+	else_if = {
+		limit = {
+			scope:seller = { at_is_character_rich_trigger = yes }
+			scope:artifact = { at_is_worthless_artifact_trigger = no }
+		}
+		add = at_ai_negative_wealth_impact_value
+	}
+
 	# Opinion of actor
 	add = {
 		value = scope:opinion_of_actor
@@ -986,6 +1009,22 @@ at_sell_artifact_ai_accept_value = {
 			scope:artifact.at_artifact_bid_price_value > scope:buyer.major_gold_value
 		}
 		add = at_ai_negative_price_impact_value
+	}
+
+	# Buyer gold
+	if = {
+		limit = {
+			at_is_character_poor_trigger = yes
+			scope:artifact = { at_is_worthless_artifact_trigger = yes }
+		}
+		add = at_ai_negative_wealth_impact_value
+	}
+	else_if = {
+		limit = {
+			at_is_character_rich_trigger = yes
+			scope:artifact = { at_is_worthless_artifact_trigger = no }
+		}
+		add = at_ai_positive_wealth_impact_value
 	}
 
 	# Opinion of actor

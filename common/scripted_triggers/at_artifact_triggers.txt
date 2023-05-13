@@ -107,6 +107,37 @@ at_is_landed_ruler_within_trading_range_trigger = {
 	}
 }
 
+at_is_character_poor_trigger = {
+	trigger_if = {
+		limit = { ai_has_economical_boom_personality = yes }
+		gold <= medium_gold_value
+	}
+	trigger_else = {
+		gold <= minor_gold_value
+	}
+}
+
+at_is_character_rich_trigger = {
+	trigger_if = {
+		limit = { ai_has_economical_boom_personality = yes }
+		short_term_gold >= massive_gold_value
+	}
+	trigger_else = {
+		short_term_gold >= major_gold_value
+	}
+}
+
+at_is_worthless_artifact_trigger = {
+	OR = {
+		has_variable = ai_to_ai_destroy_in_sieges
+		AND = {
+			rarity = common
+			artifact_slot_type = miscellaneous
+			artifact_durability <= define:NInventory|ARTIFACT_LOW_DURABILITY
+		}
+	}
+}
+
 at_is_unique_artifact_trigger = {
 	OR = {
 		is_unique = yes

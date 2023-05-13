@@ -269,6 +269,26 @@ at_buy_artifact_interaction = {
 			desc = at_target_expensive_reason
 		}
 
+		# Seller gold
+		modifier = {
+			gold <= 0
+			scope:target = { is_equipped = no }
+			add = at_ai_positive_wealth_impact_value
+			desc = at_recipient_bankrupt_reason
+		}
+		modifier = {
+			at_is_character_poor_trigger = yes
+			scope:target = { at_is_worthless_artifact_trigger = yes }
+			add = at_ai_positive_wealth_impact_value
+			desc = at_recipient_poor_reason
+		}
+		modifier = {
+			at_is_character_rich_trigger = yes
+			scope:target = { at_is_worthless_artifact_trigger = no }
+			add = at_ai_negative_wealth_impact_value
+			desc = at_recipient_rich_reason
+		}
+
 		# Opinion of buyer
 		opinion_modifier = {
 			trigger = {
@@ -439,6 +459,18 @@ at_buy_artifact_interaction = {
 			}
 			scope:target.at_artifact_ask_price_value > scope:actor.major_gold_value
 			add = at_ai_negative_price_impact_value
+		}
+
+		# Buyer gold
+		modifier = {
+			at_is_character_poor_trigger = yes
+			scope:target = { at_is_worthless_artifact_trigger = yes }
+			add = at_ai_negative_wealth_impact_value
+		}
+		modifier = {
+			at_is_character_rich_trigger = yes
+			scope:target = { at_is_worthless_artifact_trigger = no }
+			add = at_ai_positive_wealth_impact_value
 		}
 
 		# Opinion of seller
