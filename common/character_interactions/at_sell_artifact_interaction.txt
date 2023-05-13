@@ -25,6 +25,7 @@ at_sell_artifact_interaction = {
 				limit = {
 					this = scope:actor
 					is_ai = yes
+					at_can_start_interaction_trigger = yes
 					any_character_artifact = {
 						at_is_artifact_likely_to_be_traded_trigger = yes
 						save_temporary_scope_as = artifact
@@ -219,7 +220,7 @@ at_sell_artifact_interaction = {
 
 		# Useless, not relevant, unwanted, or cursed artifacts
 		modifier = {
-			NOT = { can_equip_artifact = scope:target }
+			NOT = { at_can_equip_artifact_trigger = { ARTIFACT = scope:target } }
 			add = -100
 			desc = ARTIFACT_NOT_EQUIPPABLE_REASON
 		}
@@ -382,7 +383,7 @@ at_sell_artifact_interaction = {
 
 		# Useless, not relevant, unwanted, or cursed artifacts
 		modifier = {
-			NOT = { can_equip_artifact = scope:target }
+			NOT = { at_can_equip_artifact_trigger = { ARTIFACT = scope:target } }
 			add = 100
 		}
 		modifier = {

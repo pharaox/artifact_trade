@@ -282,6 +282,10 @@ at_artifacts_window_get_filtered_artifacts_effect = {
 				at_has_artifact_vassal_opinion_modifier = yes
 			}
 			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_vassal_stance_vassal_opinion }
+				at_has_artifact_vassal_stance_vassal_opinion_modifier = yes
+			}
+			trigger_else_if = {
 				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_independent_ruler_opinion }
 				at_has_artifact_independent_ruler_opinion_modifier = yes
 			}
@@ -345,6 +349,14 @@ at_artifacts_window_get_filtered_artifacts_effect = {
 			trigger_else_if = {
 				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_vassal_tax_contribution }
 				at_has_artifact_vassal_tax_contribution_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_vassal_stance_tax_contribution }
+				at_has_artifact_vassal_stance_tax_contribution_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_vassal_stance_levy_contribution }
+				at_has_artifact_vassal_stance_levy_contribution_modifier = yes
 			}
 			trigger_else_if = {
 				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_development_growth }
@@ -442,6 +454,14 @@ at_artifacts_window_get_filtered_artifacts_effect = {
 				at_has_artifact_intrigue_per_stress_level_modifier = yes
 			}
 			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_intrigue_per_prestige_level }
+				at_has_artifact_intrigue_per_prestige_level_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_learning_per_stress_level }
+				at_has_artifact_learning_per_stress_level_modifier = yes
+			}
+			trigger_else_if = {
 				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_learning_per_prestige_level }
 				at_has_artifact_learning_per_prestige_level_modifier = yes
 			}
@@ -472,6 +492,10 @@ at_artifacts_window_get_filtered_artifacts_effect = {
 				at_has_artifact_toughness_modifier = yes
 			}
 			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_screen }
+				at_has_artifact_screen_modifier = yes
+			}
+			trigger_else_if = {
 				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_advantage }
 				at_has_artifact_advantage_modifier = yes
 			}
@@ -482,6 +506,10 @@ at_artifacts_window_get_filtered_artifacts_effect = {
 			trigger_else_if = {
 				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_retreat_pursuit }
 				at_has_artifact_retreat_pursuit_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_naval_speed }
+				at_has_artifact_naval_speed_modifier = yes
 			}
 			trigger_else = {
 				always = yes

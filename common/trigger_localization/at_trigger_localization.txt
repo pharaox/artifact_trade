@@ -1,0 +1,4 @@
+﻿at_aniconists_wont_trade_artifacts = {
+	first_not = at_aniconists_wont_trade_artifacts_first
+	third_not = at_aniconists_wont_trade_artifacts_third
+}

@@ -47,6 +47,7 @@ at_has_artifact_piety_modifier = {
 		has_artifact_modifier = artifact_monthly_piety_gain_per_happy_powerful_vassal_add_2_modifier
 		has_artifact_modifier = artifact_monthly_piety_gain_per_knight_add_1_modifier
 		has_artifact_modifier = artifact_monthly_piety_gain_per_knight_add_2_modifier
+		has_artifact_modifier = artifact_monthly_piety_gain_per_knight_add_3_modifier
 		has_artifact_modifier = artifact_monthly_piety_gain_mult_1_modifier
 		has_artifact_modifier = artifact_monthly_piety_gain_mult_2_modifier
 		has_artifact_modifier = artifact_monthly_piety_gain_mult_3_modifier
@@ -125,6 +126,8 @@ at_has_artifact_tyranny_modifier = {
 		has_artifact_modifier = artifact_monthly_tyranny_6_modifier
 		has_artifact_modifier = artifact_monthly_tyranny_7_modifier
 		has_artifact_modifier = artifact_monthly_tyranny_8_modifier
+		# Negative
+		has_artifact_modifier = artifact_tyranny_gain_mult_1_modifier
 	}
 }
 
@@ -182,10 +185,10 @@ at_has_artifact_general_opinion_modifier = {
 
 at_has_artifact_vassal_opinion_modifier = {
 	OR = {
-		has_artifact_modifier = artifact_vassal_opinion_1_modifier
-		has_artifact_modifier = artifact_vassal_opinion_2_modifier
-		has_artifact_modifier = artifact_vassal_opinion_3_modifier
-		has_artifact_modifier = artifact_vassal_opinion_4_modifier
+		#has_artifact_modifier = artifact_vassal_opinion_1_modifier
+		#has_artifact_modifier = artifact_vassal_opinion_2_modifier
+		#has_artifact_modifier = artifact_vassal_opinion_3_modifier
+		#has_artifact_modifier = artifact_vassal_opinion_4_modifier
 		has_artifact_modifier = artifact_powerful_vassal_opinion_1_modifier
 		has_artifact_modifier = artifact_powerful_vassal_opinion_2_modifier
 		has_artifact_modifier = artifact_powerful_vassal_opinion_3_modifier
@@ -194,6 +197,27 @@ at_has_artifact_vassal_opinion_modifier = {
 		has_artifact_modifier = artifact_powerful_vassal_opinion_6_modifier
 		has_artifact_modifier = artifact_powerful_vassal_opinion_7_modifier
 		has_artifact_modifier = artifact_powerful_vassal_opinion_8_modifier
+	}
+}
+
+at_has_artifact_vassal_stance_vassal_opinion_modifier = {
+	OR = {
+		has_artifact_modifier = artifact_courtly_vassal_opinion_1_modifier
+		has_artifact_modifier = artifact_courtly_vassal_opinion_2_modifier
+		has_artifact_modifier = artifact_courtly_vassal_opinion_3_modifier
+		has_artifact_modifier = artifact_courtly_vassal_opinion_4_modifier
+		has_artifact_modifier = artifact_glory_hound_vassal_opinion_1_modifier
+		has_artifact_modifier = artifact_glory_hound_vassal_opinion_2_modifier
+		has_artifact_modifier = artifact_glory_hound_vassal_opinion_3_modifier
+		has_artifact_modifier = artifact_glory_hound_vassal_opinion_4_modifier
+		has_artifact_modifier = artifact_parochial_vassal_opinion_1_modifier
+		has_artifact_modifier = artifact_parochial_vassal_opinion_2_modifier
+		has_artifact_modifier = artifact_parochial_vassal_opinion_3_modifier
+		has_artifact_modifier = artifact_parochial_vassal_opinion_4_modifier
+		has_artifact_modifier = artifact_zealot_vassal_opinion_1_modifier
+		has_artifact_modifier = artifact_zealot_vassal_opinion_2_modifier
+		has_artifact_modifier = artifact_zealot_vassal_opinion_3_modifier
+		has_artifact_modifier = artifact_zealot_vassal_opinion_4_modifier
 	}
 }
 
@@ -371,9 +395,9 @@ at_has_artifact_domain_tax_modifier = {
 
 at_has_artifact_vassal_tax_contribution_modifier = {
 	OR = {
-		has_artifact_modifier = artifact_vassal_tax_contribution_mult_1_modifier
+		#has_artifact_modifier = artifact_vassal_tax_contribution_mult_1_modifier
 		has_artifact_modifier = artifact_vassal_tax_contribution_mult_2_modifier
-		has_artifact_modifier = artifact_vassal_tax_contribution_mult_3_modifier
+		#has_artifact_modifier = artifact_vassal_tax_contribution_mult_3_modifier
 		has_artifact_modifier = artifact_vassal_tax_contribution_mult_4_modifier
 		has_artifact_modifier = artifact_happy_powerful_vassal_tax_contribution_mult_1_modifier
 		has_artifact_modifier = artifact_happy_powerful_vassal_tax_contribution_mult_2_modifier
@@ -383,6 +407,48 @@ at_has_artifact_vassal_tax_contribution_modifier = {
 		has_artifact_modifier = artifact_happy_powerful_vassal_tax_contribution_mult_6_modifier
 		has_artifact_modifier = artifact_happy_powerful_vassal_tax_contribution_mult_7_modifier
 		has_artifact_modifier = artifact_happy_powerful_vassal_tax_contribution_mult_8_modifier
+	}
+}
+
+at_has_artifact_vassal_stance_tax_contribution_modifier = {
+	OR = {
+		has_artifact_modifier = artifact_courtly_tax_contribution_mult_1_modifier
+		has_artifact_modifier = artifact_courtly_tax_contribution_mult_2_modifier
+		has_artifact_modifier = artifact_courtly_tax_contribution_mult_3_modifier
+		has_artifact_modifier = artifact_courtly_tax_contribution_mult_4_modifier
+		has_artifact_modifier = artifact_glory_hound_tax_contribution_mult_1_modifier
+		has_artifact_modifier = artifact_glory_hound_tax_contribution_mult_2_modifier
+		has_artifact_modifier = artifact_glory_hound_tax_contribution_mult_3_modifier
+		has_artifact_modifier = artifact_glory_hound_tax_contribution_mult_4_modifier
+		has_artifact_modifier = artifact_parochial_tax_contribution_mult_1_modifier
+		has_artifact_modifier = artifact_parochial_tax_contribution_mult_2_modifier
+		has_artifact_modifier = artifact_parochial_tax_contribution_mult_3_modifier
+		has_artifact_modifier = artifact_parochial_tax_contribution_mult_4_modifier
+		has_artifact_modifier = artifact_zealot_tax_contribution_mult_1_modifier
+		has_artifact_modifier = artifact_zealot_tax_contribution_mult_2_modifier
+		has_artifact_modifier = artifact_zealot_tax_contribution_mult_3_modifier
+		has_artifact_modifier = artifact_zealot_tax_contribution_mult_4_modifier
+	}
+}
+
+at_has_artifact_vassal_stance_levy_contribution_modifier = {
+	OR = {
+		#has_artifact_modifier = artifact_courtly_levy_contribution_mult_1_modifier
+		#has_artifact_modifier = artifact_courtly_levy_contribution_mult_2_modifier
+		#has_artifact_modifier = artifact_courtly_levy_contribution_mult_3_modifier
+		#has_artifact_modifier = artifact_courtly_levy_contribution_mult_4_modifier
+		has_artifact_modifier = artifact_glory_hound_levy_contribution_mult_1_modifier
+		has_artifact_modifier = artifact_glory_hound_levy_contribution_mult_2_modifier
+		has_artifact_modifier = artifact_glory_hound_levy_contribution_mult_3_modifier
+		has_artifact_modifier = artifact_glory_hound_levy_contribution_mult_4_modifier
+		#has_artifact_modifier = artifact_parochial_levy_contribution_mult_1_modifier
+		#has_artifact_modifier = artifact_parochial_levy_contribution_mult_2_modifier
+		#has_artifact_modifier = artifact_parochial_levy_contribution_mult_3_modifier
+		#has_artifact_modifier = artifact_parochial_levy_contribution_mult_4_modifier
+		has_artifact_modifier = artifact_zealot_levy_contribution_mult_1_modifier
+		has_artifact_modifier = artifact_zealot_levy_contribution_mult_2_modifier
+		has_artifact_modifier = artifact_zealot_levy_contribution_mult_3_modifier
+		has_artifact_modifier = artifact_zealot_levy_contribution_mult_4_modifier
 	}
 }
 
@@ -409,10 +475,10 @@ at_has_artifact_build_gold_cost_modifier = {
 		has_artifact_modifier = artifact_build_gold_cost_2_modifier
 		has_artifact_modifier = artifact_build_gold_cost_3_modifier
 		has_artifact_modifier = artifact_build_gold_cost_4_modifier
-		has_artifact_modifier = artifact_build_gold_cost_5_modifier
-		has_artifact_modifier = artifact_build_gold_cost_6_modifier
-		has_artifact_modifier = artifact_build_gold_cost_7_modifier
-		has_artifact_modifier = artifact_build_gold_cost_8_modifier
+		#has_artifact_modifier = artifact_build_gold_cost_5_modifier
+		#has_artifact_modifier = artifact_build_gold_cost_6_modifier
+		#has_artifact_modifier = artifact_build_gold_cost_7_modifier
+		#has_artifact_modifier = artifact_build_gold_cost_8_modifier
 		has_artifact_modifier = artifact_church_holding_build_gold_cost_1_modifier
 		has_artifact_modifier = artifact_church_holding_build_gold_cost_2_modifier
 		has_artifact_modifier = artifact_church_holding_build_gold_cost_3_modifier
@@ -434,6 +500,10 @@ at_has_artifact_build_speed_modifier = {
 		has_artifact_modifier = artifact_build_time_2_modifier
 		has_artifact_modifier = artifact_build_time_3_modifier
 		has_artifact_modifier = artifact_build_time_4_modifier
+		has_artifact_modifier = artifact_city_holding_build_speed_add_2_modifier
+		has_artifact_modifier = artifact_church_holding_build_speed_add_2_modifier
+		has_artifact_modifier = artifact_castle_holding_build_speed_add_2_modifier
+		has_artifact_modifier = artifact_tribal_holding_build_speed_add_2_modifier
 	}
 }
 
@@ -616,6 +686,7 @@ at_has_artifact_diplomacy_modifier = {
 at_has_artifact_martial_modifier = {
 	OR = {
 		has_artifact_modifier = artifact_martial_1_modifier
+		has_artifact_modifier = artifact_martial_2_modifier
 	}
 }
 
@@ -628,12 +699,14 @@ at_has_artifact_stewardship_modifier = {
 at_has_artifact_intrigue_modifier = {
 	OR = {
 		has_artifact_modifier = artifact_intrigue_1_modifier
+		has_artifact_modifier = artifact_intrigue_2_modifier
 	}
 }
 
 at_has_artifact_learning_modifier = {
 	OR = {
 		has_artifact_modifier = artifact_learning_1_modifier
+		has_artifact_modifier = artifact_learning_2_modifier
 	}
 }
 
@@ -648,6 +721,18 @@ at_has_artifact_intrigue_per_stress_level_modifier = {
 	OR = {
 		has_artifact_modifier = artifact_intrigue_per_stress_level_1_modifier
 		has_artifact_modifier = artifact_intrigue_per_stress_level_2_modifier
+	}
+}
+
+at_has_artifact_intrigue_per_prestige_level_modifier = {
+	OR = {
+		has_artifact_modifier = artifact_intrigue_per_prestige_level_1_modifier
+	}
+}
+
+at_has_artifact_learning_per_stress_level_modifier = {
+	OR = {
+		has_artifact_modifier = artifact_learning_per_stress_level_2_modifier
 	}
 }
 
@@ -777,6 +862,23 @@ at_has_artifact_toughness_modifier = {
 		has_artifact_modifier = artifact_heavy_infantry_toughness_1_modifier
 		has_artifact_modifier = artifact_heavy_infantry_toughness_2_modifier
 		has_artifact_modifier = artifact_heavy_infantry_toughness_3_modifier
+		has_artifact_modifier = artifact_archers_toughness_mult_1_modifier
+		has_artifact_modifier = artifact_archers_toughness_mult_2_modifier
+		has_artifact_modifier = artifact_archers_toughness_mult_3_modifier
+		has_artifact_modifier = artifact_archers_toughness_mult_4_modifier
+	}
+}
+
+at_has_artifact_screen_modifier = {
+	OR = {
+		has_artifact_modifier = artifact_archers_screen_add_1_modifier
+		has_artifact_modifier = artifact_archers_screen_add_2_modifier
+		has_artifact_modifier = artifact_archers_screen_add_3_modifier
+		has_artifact_modifier = artifact_archers_screen_add_4_modifier
+		has_artifact_modifier = artifact_archer_cavalry_screen_add_1_modifier
+		has_artifact_modifier = artifact_archer_cavalry_screen_add_2_modifier
+		has_artifact_modifier = artifact_archer_cavalry_screen_add_3_modifier
+		has_artifact_modifier = artifact_archer_cavalry_screen_add_4_modifier
 	}
 }
 
@@ -868,5 +970,13 @@ at_has_artifact_retreat_pursuit_modifier = {
 		has_artifact_modifier = artifact_pursue_efficiency_2_modifier
 		has_artifact_modifier = artifact_pursue_efficiency_3_modifier
 		has_artifact_modifier = artifact_pursue_efficiency_4_modifier
+	}
+}
+
+at_has_artifact_naval_speed_modifier = {
+	OR = {
+		#has_artifact_modifier = artifact_naval_speed_1_modifier
+		has_artifact_modifier = artifact_naval_speed_2_modifier
+		#has_artifact_modifier = artifact_naval_speed_3_modifier
 	}
 }

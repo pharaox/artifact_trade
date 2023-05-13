@@ -83,6 +83,7 @@
  # Opinion
  at_general_opinion:0 "General Opinion"
  at_vassal_opinion:0 "$game_concept_vassal$ Opinion"
+ at_vassal_stance_vassal_opinion:0 "$game_concept_vassal_stance$ $game_concept_vassal$ Opinion"
  at_independent_ruler_opinion:0 "Independent Ruler Opinion"
  at_courtier_and_guest_opinion:0 "$game_concept_courtier$ and $game_concept_guest$ Opinion"
  at_spouse_opinion:0 "$game_concept_spouse$ Opinion"
@@ -100,6 +101,8 @@
  at_mercenary_hire_cost:0 "$game_concept_mercenary$ Hire Cost"
  at_domain_tax:0 "$game_concept_domain$ $game_concept_taxes$"
  at_vassal_tax_contribution:0 "$game_concept_vassal$ $game_concept_tax$ $game_concept_modifier_contribution$"
+ at_vassal_stance_tax_contribution:0 "$game_concept_vassal_stance$ $game_concept_tax$ $game_concept_modifier_contribution$"
+ at_vassal_stance_levy_contribution:0 "$game_concept_vassal_stance$ $game_concept_levy$ $game_concept_modifier_contribution$"
  at_development_growth:0 "$game_concept_development$ Growth"
  at_build_gold_cost:0 "$game_concept_building$ Construction Cost"
  at_build_speed:0 "$game_concept_building$ Construction Time"
@@ -126,6 +129,8 @@
  at_learning:0 "$game_concept_learning$"
  at_stewardship_per_stress_level:0 "$game_concept_stewardship$ per $game_concept_stress_level$"
  at_intrigue_per_stress_level:0 "$game_concept_intrigue$ per $game_concept_stress_level$"
+ at_intrigue_per_prestige_level:0 "$game_concept_intrigue$ per $game_concept_prestige_level$"
+ at_learning_per_stress_level:0 "$game_concept_learning$ per $game_concept_stress_level$"
  at_learning_per_prestige_level:0 "$game_concept_learning$ per $game_concept_prestige_level$"
  # Prowess
  at_prowess:0 "$game_concept_prowess$"
@@ -135,9 +140,11 @@
  at_raid_speed:0 "$game_concept_raid$ Speed"
  at_hard_casualty_modifier:0 "$game_concept_dead_soldiers$"
  at_toughness:0 "$game_concept_toughness$"
+ at_screen:0 "$game_concept_screen$"
  at_advantage:0 "$game_concept_advantage$"
  at_terrain_advantage:0 "Terrain $game_concept_advantage$"
  at_retreat_pursuit:0 "$game_concept_retreat$ Losses / $game_concept_pursuit$ Efficiency"
+ at_naval_speed:0 "$MOD_NAVAL_MOVEMENT_SPEED_MULT$"
 
  at_equipped:0 "Equipped"
  at_not_equipped:0 "Not Equipped"

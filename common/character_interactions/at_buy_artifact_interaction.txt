@@ -25,11 +25,13 @@ at_buy_artifact_interaction = {
 				limit = {
 					this = scope:actor
 					is_ai = yes
+					at_can_start_interaction_trigger = yes
 				}
 				random_ruler = {
 					limit = {
 						is_ai = yes
 						at_valid_buyer_or_seller_trigger = { PARTY = scope:actor }
+						has_any_artifact = yes
 						at_can_buy_artifact_from_trigger = { PARTY = scope:actor }
 						save_temporary_scope_as = seller
 						any_character_artifact = {
@@ -207,7 +209,7 @@ at_buy_artifact_interaction = {
 
 		# Useless, not relevant, unwanted, or cursed artifacts
 		modifier = {
-			NOT = { can_equip_artifact = scope:target }
+			NOT = { at_can_equip_artifact_trigger = { ARTIFACT = scope:target } }
 			add = 100
 			desc = ARTIFACT_NOT_EQUIPPABLE_REASON
 		}
@@ -384,7 +386,7 @@ at_buy_artifact_interaction = {
 
 		# Useless, not relevant, unwanted, or cursed artifacts
 		modifier = {
-			NOT = { can_equip_artifact = scope:target }
+			NOT = { at_can_equip_artifact_trigger = { ARTIFACT = scope:target } }
 			add = -100
 		}
 		modifier = {

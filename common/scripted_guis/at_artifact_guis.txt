@@ -8,6 +8,15 @@
 
 	is_valid = {
 		trigger_if = {
+			limit = {
+				OR = {
+					scope:flavor = flag:sell
+					scope:flavor = flag:buy
+				}
+			}
+			at_can_start_interaction_trigger = yes
+		}
+		trigger_if = {
 			limit = { scope:flavor = flag:sell }
 			has_any_artifact = yes
 		}
@@ -140,6 +149,7 @@
 		# Opinion
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_general_opinion }
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_vassal_opinion }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_vassal_stance_vassal_opinion }
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_independent_ruler_opinion }
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_courtier_and_guest_opinion }
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_spouse_opinion }
@@ -157,6 +167,8 @@
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_mercenary_hire_cost }
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_domain_tax }
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_vassal_tax_contribution }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_vassal_stance_tax_contribution }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_vassal_stance_levy_contribution }
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_development_growth }
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_build_gold_cost }
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_build_speed }
@@ -183,6 +195,8 @@
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_learning }
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_stewardship_per_stress_level }
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_intrigue_per_stress_level }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_intrigue_per_prestige_level }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_learning_per_stress_level }
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_learning_per_prestige_level }
 		# Prowess
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_prowess }
@@ -192,9 +206,11 @@
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_raid_speed }
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_hard_casualty_modifier }
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_toughness }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_screen }
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_advantage}
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_terrain_advantage }
  		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_retreat_pursuit }
+ 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_naval_speed }
 
 		if = {
 			limit = {

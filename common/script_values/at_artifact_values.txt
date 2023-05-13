@@ -574,112 +574,12 @@ at_artifact_default_quality_wealth_value = {
 	}
 }
 
-# Artifact repair cost, corresponds to repair_artifact cost.
-at_artifact_repair_cost_value = {
-	value = 25
-	multiply = at_artifact_repair_cost_durability_multiplier
-	multiply = at_artifact_repair_cost_quality_wealth_multiplier
-	floor = yes
-}
-
-# Durability multiplier for calculating the artifact repair cost.
-at_artifact_repair_cost_durability_multiplier = {
-	value = 1
-	if = {
-		limit = {
-			artifact_durability >= 80
-			artifact_durability < 100
-		}
-		divide = 2
-	}
-	else_if = {
-		limit = {
-			artifact_durability >= 20
-			artifact_durability < 50
-		}
-		multiply = 2
-	}
-	else_if = {
-		limit = {
-			artifact_durability >= 5
-			artifact_durability < 20
-		}
-		multiply = 3
-	}
-	else_if = {
-		limit = {
-			artifact_durability < 5
-		}
-		multiply = 5
-	}
-}
-
-# QWA multiplier for calculating the artifact repair cost.
-at_artifact_repair_cost_quality_wealth_multiplier = {
-	value = 1
-	if = {
-		limit = {
-			at_artifact_quality_wealth_average_value >= 75
-		}
-		multiply = 5
-	}
-	else_if = {
-		limit = {
-			at_artifact_quality_wealth_average_value >= 50
-			at_artifact_quality_wealth_average_value < 75
-		}
-		multiply = 2
-	}
-	else_if = {
-		limit = {
-			at_artifact_quality_wealth_average_value < 25
-		}
-		divide = 2
-	}
-}
-
-# Artifact base price, calculated using the formula from "Auction Off Artifact".
-at_artifact_base_price_aoa_value = {
-	# Rarity
-	if = {
-		limit = { rarity = common }
-		value = 50
-	}
-	else_if = {
-		limit = { rarity = masterwork }
-		value = 75
-	}
-	else_if = {
-		limit = { rarity = famed }
-		value = 125
-	}
-	else_if = {
-		limit = { rarity = illustrious }
-		value = 250
-	}
-
-	# Durability
-	multiply = {
-		value = artifact_durability
-		divide = artifact_max_durability
-	}
-
-	# Uniqueness
-	if = {
-		limit = { at_is_unique_artifact_trigger = yes }
-		multiply = 3
-	}
-
-	# Minimum
-	min = 15
-}
-
 # Artifact base price, calculated using a formula similar to the one
 # from "Auction Off Artifact", but using QWA and a multiplier instead
 at_artifact_base_price_value = {
 	# QWA
 	value = at_artifact_quality_wealth_average_value
-	multiply = 2.5
+	multiply = at_artifact_qwa_price_multiplier
 
 	# Durability
 	multiply = {
@@ -687,15 +587,15 @@ at_artifact_base_price_value = {
 		divide = artifact_max_durability
 	}
 
+	# Minimum
+	round = yes
+	min = at_artifact_destroy_price_value
+
 	# Uniqueness
 	if = {
 		limit = { at_is_unique_artifact_trigger = yes }
 		multiply = 3
 	}
-
-	# Minimum
-	round = yes
-	min = 10
 }
 
 # Artifact ask price. Calculated by multiplying the base price by several multipliers:
@@ -712,11 +612,11 @@ at_artifact_ask_price_value = {
 		multiply = at_artifact_ask_price_player_multiplier
 	}
 
-	# Seller personality multiplier (0.83 to 1.17 based on ai_greed)
-	# Chosen so that 0.83 * 1.2 = 1
+	# Seller personality multiplier (0.86 to 1.14 based on ai_greed)
+	# Chosen so that 0.86 * 1.4 = 1.2
 	multiply = {
 		value = scope:seller.ai_greed
-		multiply = 0.0017
+		multiply = 0.0014
 		add = 1
 	}
 
@@ -730,24 +630,46 @@ at_artifact_ask_price_value = {
 at_artifact_bid_price_value = {
 	value = at_artifact_base_price_value
 
-	# Make it lower for the player
-	if = {
-		limit = {
-			scope:actor = { is_ai = no }
-		}
-		multiply = at_artifact_bid_price_player_multiplier
-	}
-
 	# Buyer personality multiplier (0.75 to 1.25 based on ai_greed)
-	# Chosen so that 1.25 * 0.8 = 1
 	multiply = {
 		value = scope:buyer.ai_greed
-		multiply = -0.0025
+		multiply = -0.002
 		add = 1
 	}
 
 	round = yes
 	min = 5
+}
+
+# Artifact destroy price, calculated using the formula from destroy_artifact_aniconist_effect
+at_artifact_destroy_price_value = {
+	if = {
+		limit = { rarity = common }
+		value = 40
+	}
+	else_if = {
+		limit = { rarity = masterwork }
+		value = 80
+	}
+	else_if = {
+		limit = { rarity = famed }
+		value = 150
+	}
+	else_if = {
+		limit = { rarity = illustrious }
+		value = 250
+	}
+}
+
+# Artifact QWA price multiplier, chosen to correspond to at_artifact_destroy_price_value
+at_artifact_qwa_price_multiplier = {
+	if = {
+		limit = { rarity = famed }
+		value = 2.14 # 150 / 70
+	}
+	else = {
+		value = 2.5
+	}
 }
 
 # AI accept value of the Buy Artifact interaction, used in effects to evaluate whether
@@ -827,7 +749,7 @@ at_buy_artifact_ai_accept_value = {
 	if = {
 		limit = {
 			scope:seller = {
-				NOT = { can_equip_artifact = scope:artifact }
+				NOT = { at_can_equip_artifact_trigger = { ARTIFACT = scope:artifact } }
 			}
 		}
 		add = 100
@@ -1007,7 +929,7 @@ at_sell_artifact_ai_accept_value = {
 	# Useless, not relevant, unwanted, or cursed artifacts
 	if = {
 		limit = {
-			NOT = { can_equip_artifact = scope:artifact }
+			NOT = { at_can_equip_artifact_trigger = { ARTIFACT = scope:artifact } }
 		}
 		add = -100
 	}
@@ -1033,17 +955,13 @@ at_sell_artifact_ai_accept_value = {
 	# Dynasty or house banner
 	if = {
 		limit = {
-			scope:buyer = {
-				at_is_dynasty_banner_trigger = { ARTIFACT = scope:artifact }
-			}
+			at_is_dynasty_banner_trigger = { ARTIFACT = scope:artifact }
 		}
 		add = at_ai_positive_relationship_impact_value
 	}
 	if = {
 		limit = {
-			scope:buyer = {
-				at_is_house_banner_trigger = { ARTIFACT = scope:artifact }
-			}
+			at_is_house_banner_trigger = { ARTIFACT = scope:artifact }
 		}
 		add = at_ai_positive_relationship_impact_value
 	}
@@ -1051,9 +969,7 @@ at_sell_artifact_ai_accept_value = {
 	# Holds succession title
 	if = {
 		limit = {
-			scope:buyer = {
-				at_has_artifact_succession_title_trigger = { ARTIFACT = scope:artifact }
-			}
+			at_has_artifact_succession_title_trigger = { ARTIFACT = scope:artifact }
 		}
 		add = at_ai_positive_relationship_impact_value
 	}

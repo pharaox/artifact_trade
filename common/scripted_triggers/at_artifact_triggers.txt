@@ -9,17 +9,35 @@
 at_can_sell_artifact_to_trigger = {
 	at_can_interact_with_trigger = { PARTY = $PARTY$ }
 	is_ai = yes
+	custom_description = {
+		text = "at_aniconists_wont_trade_artifacts"
+		at_has_aniconist_faith_trigger = no
+	}
 	short_term_gold > 1
 }
 
 at_can_buy_artifact_from_trigger = {
 	at_can_interact_with_trigger = { PARTY = $PARTY$ }
 	is_ai = yes
+	custom_description = {
+		text = "at_aniconists_wont_trade_artifacts"
+		at_has_aniconist_faith_trigger = no
+	}
 }
 
 at_can_start_interaction_trigger = {
 	is_busy_in_events_localised = yes
 	is_imprisoned = no
+	custom_description = {
+		text = "at_aniconists_wont_trade_artifacts"
+		at_has_aniconist_faith_trigger = no
+	}
+}
+
+at_has_aniconist_faith_trigger = {
+	faith = {
+		has_doctrine_parameter = destroying_artifacts_is_pious
+	}
 }
 
 at_valid_buyer_or_seller_trigger = {
@@ -96,6 +114,61 @@ at_is_unique_artifact_trigger = {
 	}
 }
 
+# TODO Built-in trigger can_equip_artifact is buggy in 1.9.0.3
+# replace the body with can_equip_artifact = $ARTIFACT$ when fixed
+at_can_equip_artifact_trigger = {
+	trigger_if = {
+		limit = {
+			$ARTIFACT$ = {
+				OR = {
+					# child_toy_template
+					has_variable = playdate_trinket
+					has_variable = miniature_collection_tiny_chest
+					has_variable = miniature_collection_tiny_sculpture
+					has_variable = miniature_collection_tiny_cabinet
+					has_variable = miniature_collection_tiny_throne
+					has_variable = miniature_collection_tiny_box
+				}
+			}
+		}
+		age < 16
+	}
+	trigger_else_if = {
+		limit = {
+			$ARTIFACT$ = {
+				OR = {
+					# adults_only_template: cuckoldry_psalter
+					AND = {
+						has_variable = cursed_artifact
+						has_variable = ai_to_ai_destroy_in_sieges
+						has_artifact_modifier = artifact_monthly_prestige_penalty_modifier
+						has_artifact_modifier = artifact_attraction_opinion_negative_1_modifier
+					}
+					# adults_only_template: chastity_belt
+					AND = {
+						has_variable = cursed_artifact
+						has_variable = ai_to_ai_destroy_in_sieges
+						has_artifact_modifier = artifact_fertility_negative_modifier
+					}
+					# adults_only_template: worm_on_a_string
+					AND = {
+						has_variable = cursed_artifact
+						has_variable = ai_to_ai_destroy_in_sieges
+						has_artifact_modifier = artifact_attraction_opinion_negative_2_modifier
+						has_artifact_modifier = artifact_child_opinion_1_modifier
+					}
+				}
+			}
+		}
+		age > 18
+	}
+	trigger_else = {
+		# For other artifact templates it's currently either always equippable
+		# or can_equip is the same as can_benefit
+		always = yes
+	}
+}
+
 at_has_artifact_succession_title_trigger = {
 	exists = $ARTIFACT$.var:artifact_succession_title
 	has_title = $ARTIFACT$.var:artifact_succession_title
@@ -166,7 +239,7 @@ at_has_artifact_relic_flag_religion_trigger = {
 }
 
 at_can_equip_and_benefit_from_artifact_trigger = {
-	can_equip_artifact = $ARTIFACT$
+	at_can_equip_artifact_trigger = { ARTIFACT = $ARTIFACT$ }
 	can_benefit_from_artifact = $ARTIFACT$
 }
 
