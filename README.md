@@ -92,6 +92,7 @@ The AI uses a slightly different version of the above due to engine limitations.
 
 ## Links
 
+* [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2962238514)
 * [Artifact Manager Compatibility (CK3 1.8)](https://steamcommunity.com/sharedfiles/filedetails/?id=2966324178)
 * [Russian Translation (by @laxfeed)](https://steamcommunity.com/sharedfiles/filedetails/?id=2965215034)
 * [Spanish Translation (by @Will1294)](https://steamcommunity.com/sharedfiles/filedetails/?id=2971143815)

@@ -19,7 +19,6 @@ The current version is compatible with CK3 1.9. If you are still on 1.8, downloa
 This mod is compatible with all other mods, including total conversion mods such as AGOT and EK2, except for those few mods that modify the [b]Inventory[/b] window. Put it after all other mods in the load order. In case of a conflict with another important mod, put it before that mod - you will lose the new [b]Inventory[/b] window buttons as a result but other features should work as expected.
 
 [h2]Links[/h2]
-
 [list]
   [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2966324178]Artifact Manager Compatibility (CK3 1.8)[/url]
   [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2965215034]Russian Translation (by @laxfeed)[/url]
