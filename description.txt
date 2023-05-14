@@ -1,71 +1,31 @@
+[h2]Overview[/h2]
+
 With this mod, you can search for artifacts, buy them from other characters, and sell them to other characters. The game doesn't have an artifact trading system, so this mod adds one. Since such a system would not be usable without advanced artifact filtering and sorting, it adds an "artifact finder" as well.
 
 In version 1.9 CK3 enabled destroying of artifacts for gold, however it's fairly limited. No actual trading takes place, you can only sell but not buy, and only common and masterwork artifacts. Furthermore, you can [i]always[/i] sell, which undermines the realism.
 
 This mod adds what is missing, and more. The system is balanced so that it does not offer significant advantages to the player. The AI will use it as well, initiating, accepting, or rejecting buy and sell interactions based on a comprehensive estimation of the artifact's usefulness and significance.
 
+The base artifact prices in this mod correspond to the destroy prices in CK3 1.9. Actual trades are settled at slightly different prices that also depend on the AI greed of the accepting party and if the player is involved or not. The player can never sell or destroy an artifact at a price higher than the one they bought it.
+
+When buying and selling artifacts, the AI acceptance is influenced by multiple factors. Besides the artifact rarity compared to that of other relevant artifacts, they include the artifact's durability, its uniqueness, is it equippable and beneficial to the character, is it unwanted or cursed, the character's claims or special relationship to the artifact, the artifact's price, and the character's wealth. In addition, the AI will never offer to pay more than their [i]short term budget[/i], and will only sell if the other party offers enough gold to pay the full price.
+
 In case you don't like artifact trading for some reason, you can disable the trading part via a game rule.
+
+[h2]Compatibility[/h2]
+
+The current version is compatible with CK3 1.9. If you are still on 1.8, download version 0.3.0 from [url=https://forum.paradoxplaza.com/forum/attachments/search_and_trade_artifacts-0-3-0-zip.982525/]Paradox Forums[/url].
 
 This mod is compatible with all other mods, including total conversion mods such as AGOT and EK2, except for those few mods that modify the [b]Inventory[/b] window. Put it after all other mods in the load order. In case of a conflict with another important mod, put it before that mod - you will lose the new [b]Inventory[/b] window buttons as a result but other features should work as expected.
 
-The current version is compatible with CK3 1.9. If you are still on 1.8, download version 0.3.* from [url=]Paradox Forums[/url].
+[h2]Links[/h2]
 
-For more information, see the mod [url=https://github.com/pharaox/artifact_trade/blob/main/README.md]README[/url].
-
-Links:
 [list]
-  [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2966324178]Artifact Manager Compatibility (1.8)[/url]
+  [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2966324178]Artifact Manager Compatibility (CK3 1.8)[/url]
   [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2965215034]Russian Translation (by @laxfeed)[/url]
+  [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2971143815]Spanish Translation (by @Will1294)[/url]
   [*] [url=https://forum.paradoxplaza.com/forum/threads/mod-search-trade-artifacts.1578578/]Forum Thread[/url]
-  [*] [url=https://github.com/pharaox/artifact_trade]GitHub[/url]
+  [*] [url=https://github.com/pharaox/artifact_trade]GitHub Repository[/url]
 [/list]
 
-[h1]Searching for Artifacts[/h1]
-
-To search for artifacts, click on the round ring button in the lower middle portion of the screen. This opens the [b]Artifact Finder[/b] window.
-
-[img]https://steamuserimages-a.akamaihd.net/ugc/2047490891201303401/C4D77756FBBDFD1BB5EE2E3693F36131267D2287/?ima=fit[/img]
-
-This window is very similar to [b]Character Finder[/b]. Without any filters, it contains a list of all artifacts in the game. You can filter artifacts by various criteria, including rarity, type, uniqueness, equipped or not, owned by you or not, claimed or not, etc. You can also sort artifacts by rarity, durability, type, or base price.
-
-[h1]Buying and Selling Artifacts[/h1]
-
-To buy an artifact, open the [b]Inventory[/b] window and click [b]Buy Artifacts[/b]. This opens an artifact selection window similar to [b]Artifact Finder[/b] that also allows you to select the artifact to be bought clicking on it.
-
-[img]https://steamuserimages-a.akamaihd.net/ugc/2047490891201303383/22CB21BDC1D2071566C7741A8C68543AD1C33B98/?ima=fit[/img]
-
-When buying artifacts, the list contains only artifacts that can be bought at this time (there are valid sellers willing to sell them to you). Clicking on an artifact opens the [b]Buy Artifact[/b] interaction, where you can review the interaction effects, the seller's price, and their reasons for accepting, and eventually buy the artifact.
-
-[img]https://steamuserimages-a.akamaihd.net/ugc/2047490891201303392/317BA2D4D31D25DA426407690C8796488AA9F2D6/?ima=fit[/img]
-
-To sell an artifact, open the [b]Inventory[/b] window and click [b]Sell Artifacts[/b]. This again opens the artifact selection window so you can select the artifact to be sold.
-
-[img]https://steamuserimages-a.akamaihd.net/ugc/2047490891201303367/96686FBA77F0EC998D776DE7DF0C9399D155F2AB/?ima=fit[/img]
-
-When selling artifacts, the list contains only artifacts that are not equipped and can be sold at this time (there are valid buyers willing to buy them from you). Clicking on an artifact opens a character selection window to select a buyer.
-
-[img]https://steamuserimages-a.akamaihd.net/ugc/2047490891201303374/B5ACFC59CE3771A791C91868E7AA8C0B8E350FA8/?ima=fit[/img]
-
-The list contains only valid buyers that are willing to buy the selected artifact. Buyers may offer different prices for the artifact, and will never offer more than their [i]short term budget[/i]. Since buyers can't be sorted by their bid prices, the list contains only a limited number of buyers offering the highest bid prices. This number is 5 by default and can be configured via a game rule.
-
-After a buyer has been selected, clicking the button opens the [b]Sell Artifact[/b] interaction, where you can review the effects and the buyer's reasons for accepting, and eventually sell the artifact.
-
-[img]https://steamuserimages-a.akamaihd.net/ugc/2047490891201303378/309D444558B708CAE47B96AABA8773BC1744CE89/?ima=fit[/img]
-
-You can also initiate the [b]Buy Artifact[/b] and [b]Sell Artifact[/b] interactions directly by right-clicking on a character. However, not all characters are valid buyers or sellers, or are willing to buy or sell an artifact, so these interactions could be hidden, disabled, or rejected. Initiating the interactions directly is still a good way to explore a particular character's reasons for rejecting a trade, or use a hook on a character if you have one.
-
-[h2]Artifact Prices[/h2]
-
-The [i]base artifact prices[/i] in this mod correspond to the destroy prices in CK3 1.9. However, instead of being based on rarity, the formula used here is based on the artifact's [i]Quality and Wealth Average (QWA)[/i], two hidden properties that actually determine the rarity.
-
-Actual trades are settled at the [i]bid price[/i] (buyer's price) if the initiating party is the seller, and the [i]ask price[/i] (seller's price), if the initiating party is the buyer. These prices are calculated by multiplying the base price by a factor depending on AI greed, and an additional factor of 1.4 for the ask price if the initiating party is the player. As a result, the player always buys at higher prices compared to the AI. This is done to prevent exploits, and to make it a bit more challenging for the player to use the trading system to their advantage.
-
-[h2]AI Willingness to Buy or Sell[/h2]
-
-When buying artifacts, the AI acceptance is influenced by multiple factors. One of the most important is the artifact's QWA compared to that of the worst artifact of the same type owned by the buyer that would still be equipped. For example, for helmets this would be the best helmet, since only one helmet can be equipped, and for trinkets this would be the 4-th best, since 4 trinkets can be equipped. Note that all equippable and beneficial artifacts are evaluated, no matter if actually equipped or not. Other factors include the artifact's durability as percentage value, uniqueness, is the artifact equippable and beneficial to the buyer, unwanted, or cursed, buyer's claims or special relationship to the artifact (dynast and a dynasty banner, etc.), the artifact's price, and the buyer's wealth.
-
-When selling artifacts, the AI acceptance is influenced by similar factors, but working in the opposite direction. In addition, the AI will never offer to pay more than their [i]short term budget[/i], and will only sell if the other party offers enough gold to pay the full price.
-
-The artifact's QWA strongly correlates with rarity. When selling, you may find it quite hard to find buyers for common artifacts, and progressively easier for artifact of higher rarities. When buying, you may find it quite easy to find sellers for common artifacts, and progressively harder for artifact of higher rarities.
-
-AI rulers will regularly initiate buy and sell artifact interactions with other AI characters (never the player), and this will sometimes result in actual trades.
+For more information, see the mod [url=https://github.com/pharaox/artifact_trade/blob/main/README.md]README[/url].

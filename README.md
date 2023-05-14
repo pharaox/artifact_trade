@@ -8,11 +8,17 @@ In version 1.9 CK3 enabled destroying of artifacts for gold, however it's fairly
 
 This mod adds what is missing, and more. The system is balanced so that it does not offer significant advantages to the player. The AI will use it as well, initiating, accepting, or rejecting buy and sell interactions based on a comprehensive estimation of the artifact's usefulness and significance.
 
+The base artifact prices in this mod correspond to the destroy prices in CK3 1.9. Actual trades are settled at slightly different prices that also depend on the AI greed of the accepting party and if the player is involved or not. The player can never sell or destroy an artifact at a price higher than the one they bought it.
+
+When buying and selling artifacts, the AI acceptance is influenced by multiple factors. Besides the artifact rarity compared to that of other relevant artifacts, they include the artifact's durability, its uniqueness, is it equippable and beneficial to the character, is it unwanted or cursed, the character's claims or special relationship to the artifact, the artifact's price, and the character's wealth. In addition, the AI will never offer to pay more than their *short term budget*, and will only sell if the other party offers enough gold to pay the full price.
+
 In case you don't like artifact trading for some reason, you can disable the trading part via a game rule.
 
-This mod is compatible with all other mods, including total conversion mods such as AGOT and EK2, except for those few mods that modify the **Inventory** window. Put it after all other mods in the load order. In case of a conflict with another important mod, put it before that mod - you will lose the new **Inventory** window buttons as a result but other features should work as expected.
+## Compatibility
 
-The current version is compatible with CK3 1.9. If you are still on 1.8, download version 0.3.* from [Paradox Forums]().
+The current version is compatible with CK3 1.9. If you are still on 1.8, download version 0.3.0 from [Paradox Forums](https://forum.paradoxplaza.com/forum/attachments/search_and_trade_artifacts-0-3-0-zip.982525/).
+
+This mod is compatible with all other mods, including total conversion mods such as AGOT and EK2, except for those few mods that modify the **Inventory** window. Put it after all other mods in the load order. In case of a conflict with another important mod, put it before that mod - you will lose the new **Inventory** window buttons as a result but other features should work as expected.
 
 ## Searching for Artifacts
 
@@ -60,11 +66,11 @@ The *base artifact prices* in this mod correspond to the destroy prices in CK3 1
 * Round and ensure a minimum of the vanilla destroy price
 * If the artifact is unique, multiply by 3
 
-Actual trades are settled at the *bid price* (buyer's price) if the initiating party is the seller, and the *ask price* (seller's price), if the initiating party is the buyer. These prices are calculated by multiplying the base price by a factor depending on AI greed, and an additional factor of 1.4 for the ask price if the initiating party is the player. As a result, the player always buys at higher prices compared to the AI. This is done to prevent exploits, and to make it a bit more challenging for the player to use the trading system to their advantage.
+Actual trades are settled at the *bid price* (buyer's price) if the initiating party is the seller, and the *ask price* (seller's price), if the initiating party is the buyer. These prices are calculated by multiplying the base price by a factor depending on AI greed, and an additional factor of 1.4 for the ask price if the initiating party is the player. As a result, the player always can never sell or destroy an artifact at a price higher than the one they bought it. This is done to prevent exploits, and to make it a bit more challenging for the player to use the trading system to their advantage.
 
 ### AI Willingness to Buy or Sell
 
-When buying artifacts, the AI acceptance is influenced by multiple factors. One of the most important is the artifact's QWA compared to that of the worst artifact of the same type owned by the buyer that would still be equipped. For example, for helmets this would be the best helmet, since only one helmet can be equipped, and for trinkets this would be the 4-th best, since 4 trinkets can be equipped. Note that all equippable and beneficial artifacts are evaluated, no matter if actually equipped or not. Other factors include the artifact's durability as percentage value, uniqueness, is the artifact equippable and beneficial to the buyer, unwanted, or cursed, buyer's claims or special relationship to the artifact (dynast and a dynasty banner, etc.), the artifact's price, and the buyer's wealth.
+When buying artifacts, the AI acceptance is influenced by multiple factors. One of the most important is the artifact's QWA compared to that of the worst artifact of the same type owned by the buyer that would still be equipped. For example, for helmets this would be the best helmet, since only one helmet can be equipped, and for trinkets this would be the 4-th best, since 4 trinkets can be equipped. Note that all equippable and beneficial artifacts are evaluated, no matter if actually equipped or not. Other factors include the artifact's durability as percentage value, its uniqueness, is it equippable and beneficial to the character, is it unwanted or cursed, the character's claims or special relationship to the artifact (dynast and a dynasty banner, etc.), the artifact's price, and the character's wealth.
 
 When selling artifacts, the AI acceptance is influenced by similar factors, but working in the opposite direction, with some minor differences. The artifact's QWA is compared to that of the best artifact of the same type owned by the seller that would not be equipped. For example, for helmets this would be the 2-nd best helmet owned by the seller, and for trinkets this would be the 5-th best trinket.
 
@@ -83,6 +89,14 @@ For added realism and also to improve performance on lower-end machines, whether
 * **All Characters**: All characters within diplomatic range (more buyers or sellers, worse performance and realism).
 
 The AI uses a slightly different version of the above due to engine limitations.
+
+## Links
+
+* [Artifact Manager Compatibility (CK3 1.8)](https://steamcommunity.com/sharedfiles/filedetails/?id=2966324178)
+* [Russian Translation (by @laxfeed)](https://steamcommunity.com/sharedfiles/filedetails/?id=2965215034)
+* [Spanish Translation (by @Will1294)](https://steamcommunity.com/sharedfiles/filedetails/?id=2971143815)
+* [Forum Thread](https://forum.paradoxplaza.com/forum/threads/mod-search-trade-artifacts.1578578/)
+* [GitHub Repository](https://github.com/pharaox/artifact_trade)
 
 ## Credits
 
