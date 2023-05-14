@@ -4,13 +4,15 @@
 
 With this mod, you can search for artifacts, buy them from other characters, and sell them to other characters. The game doesn't have an artifact trading system, so this mod adds one. Since such a system would not be usable without advanced artifact filtering and sorting, it adds an "artifact finder" as well.
 
-The [Auction Off Artifact](https://steamcommunity.com/workshop/filedetails/?id=2747305366) mod enables selling of artifacts, however it's fairly limited. No actual trading takes place, you can only sell but not buy, and you can *always* sell, which undermines the realism.
+In version 1.9 CK3 enabled destroying of artifacts for gold, however it's fairly limited. No actual trading takes place, you can only sell but not buy, and only common and masterwork artifacts. Furthermore, you can *always* sell, which undermines the realism.
 
 This mod adds what is missing, and more. The system is balanced so that it does not offer significant advantages to the player. The AI will use it as well, initiating, accepting, or rejecting buy and sell interactions based on a comprehensive estimation of the artifact's usefulness and significance.
 
 In case you don't like artifact trading for some reason, you can disable the trading part via a game rule.
 
 This mod is compatible with all other mods, including total conversion mods such as AGOT and EK2, except for those few mods that modify the **Inventory** window. Put it after all other mods in the load order. In case of a conflict with another important mod, put it before that mod - you will lose the new **Inventory** window buttons as a result but other features should work as expected.
+
+The current version is compatible with CK3 1.9. If you are still on 1.8, download version 0.3.* from [Paradox Forums]().
 
 ## Searching for Artifacts
 
@@ -50,19 +52,19 @@ You can also initiate the **Buy Artifact** and **Sell Artifact** interactions di
 
 ### Artifact Prices
 
-The *base artifact prices* are roughly the same as the prices in [Auction Off Artifact](https://steamcommunity.com/workshop/filedetails/?id=2747305366), so players already familiar with that mod should feel at home. However, instead of being based on rarity, the formula used here is based on the artifact's *Quality and Wealth Average (QWA)*, two hidden properties with values from 0 to 100 that actually determine the rarity. The actual formula is:
+The *base artifact prices* in this mod correspond to the destroy prices in CK3 1.9. However, instead of being based on rarity, the formula used here is based on the artifact's *Quality and Wealth Average (QWA)*, two hidden properties with values from 0 to 100 that actually determine the rarity. The actual formula is:
 
 * Determine QWA as *(quality + wealth) / 2*
 * Multiply by 2.5
 * Multiply by durability as percentage value
+* Round and ensure a minimum of the vanilla destroy price
 * If the artifact is unique, multiply by 3
-* Round and ensure a minimum of 10
 
-Actual trades are settled at the *bid price* (buyer's price) if the initiating party is the seller, and the *ask price* (seller's price), if the initiating party is the buyer. These prices are calculated by multiplying the base price by a factor depending on AI greed, and an additional factor of 0.8 (for the bid price) or 1.2 (for the ask price) if the initiating party is the player. As a result, the player always buys at higher and sells at lower prices compared to the AI. This is done to prevent exploits, and to make it a bit more challenging for the player to use the trading system to their advantage.
+Actual trades are settled at the *bid price* (buyer's price) if the initiating party is the seller, and the *ask price* (seller's price), if the initiating party is the buyer. These prices are calculated by multiplying the base price by a factor depending on AI greed, and an additional factor of 1.4 for the ask price if the initiating party is the player. As a result, the player always buys at higher prices compared to the AI. This is done to prevent exploits, and to make it a bit more challenging for the player to use the trading system to their advantage.
 
 ### AI Willingness to Buy or Sell
 
-When buying artifacts, the AI acceptance is influenced by multiple factors. One of the most important is the artifact's QWA compared to that of the worst artifact of the same type owned by the buyer that would still be equipped. For example, for helmets this would be the best helmet, since only one helmet can be equipped, and for trinkets this would be the 4-th best, since 4 trinkets can be equipped. Note that all equippable and beneficial artifacts are evaluated, no matter if actually equipped or not. Other factors include the artifact's durability as percentage value, uniqueness, is the artifact equippable and beneficial to the buyer, unwanted, or cursed, buyer's claims or special relationship to the artifact (dynast and a dynasty banner, etc.), and the artifact's price.
+When buying artifacts, the AI acceptance is influenced by multiple factors. One of the most important is the artifact's QWA compared to that of the worst artifact of the same type owned by the buyer that would still be equipped. For example, for helmets this would be the best helmet, since only one helmet can be equipped, and for trinkets this would be the 4-th best, since 4 trinkets can be equipped. Note that all equippable and beneficial artifacts are evaluated, no matter if actually equipped or not. Other factors include the artifact's durability as percentage value, uniqueness, is the artifact equippable and beneficial to the buyer, unwanted, or cursed, buyer's claims or special relationship to the artifact (dynast and a dynasty banner, etc.), the artifact's price, and the buyer's wealth.
 
 When selling artifacts, the AI acceptance is influenced by similar factors, but working in the opposite direction, with some minor differences. The artifact's QWA is compared to that of the best artifact of the same type owned by the seller that would not be equipped. For example, for helmets this would be the 2-nd best helmet owned by the seller, and for trinkets this would be the 5-th best trinket.
 
