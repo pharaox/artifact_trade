@@ -625,7 +625,6 @@ at_artifact_ask_price_value = {
 }
 
 # Artifact bid price. Calculated by multiplying the base price by several multipliers:
-# - at_artifact_bid_price_player_multiplier if scope:actor is human
 # - a scope:buyer personality multiplier based on ai_greed
 at_artifact_bid_price_value = {
 	value = at_artifact_base_price_value
@@ -712,7 +711,7 @@ at_buy_artifact_ai_accept_value = {
 		}
 	}
 
-	# Artifact durability (0 to PIV)
+	# Artifact durability
 	if = {
 		limit = {
 			scope:artifact.artifact_durability < scope:artifact.artifact_max_durability
@@ -725,7 +724,7 @@ at_buy_artifact_ai_accept_value = {
 		}
 	}
 
-	# Artifact uniqueness (NIV if unique)
+	# Artifact uniqueness
 	if = {
 		limit = {
 			scope:artifact = { at_is_unique_artifact_trigger = yes }
@@ -775,6 +774,14 @@ at_buy_artifact_ai_accept_value = {
 		add = 200
 	}
 
+	# Trash or common low durability artifacts
+	if = {
+		limit = {
+			scope:artifact = { at_is_worthless_artifact_trigger = yes }
+		}
+		add = at_ai_positive_trash_impact_value
+	}
+
 	# Dynasty or house banner
 	if = {
 		limit = {
@@ -803,39 +810,40 @@ at_buy_artifact_ai_accept_value = {
 		add = at_ai_negative_relationship_impact_value
 	}
 
-	# Price (NIV if price < minor_gold_value, PIV if price > major_gold_value)
+	# Price
 	if = {
 		limit = {
 			scope:artifact.at_artifact_ask_price_value < scope:seller.minor_gold_value
+			scope:seller = {
+				at_is_character_poor_trigger = no
+			}
 		}
 		add = at_ai_negative_price_impact_value
 	}
 	else_if = {
 		limit = {
 			scope:artifact.at_artifact_ask_price_value > scope:seller.major_gold_value
+			scope:seller = {
+				at_is_character_rich_trigger = no
+			}
 		}
 		add = at_ai_positive_price_impact_value
 	}
 
-	# Seller gold
+	# Seller wealth
 	if = {
 		limit = {
-			scope:seller = { gold <= 0 }
-			scope:artifact = { is_equipped = no }
-		}
-		add = at_ai_positive_wealth_impact_value
-	}
-	if = {
-		limit = {
-			scope:seller = { at_is_character_poor_trigger = yes }
-			scope:artifact = { at_is_worthless_artifact_trigger = yes }
+			scope:seller = {
+				at_is_character_poor_trigger = yes
+			}
 		}
 		add = at_ai_positive_wealth_impact_value
 	}
 	else_if = {
 		limit = {
-			scope:seller = { at_is_character_rich_trigger = yes }
-			scope:artifact = { at_is_worthless_artifact_trigger = no }
+			scope:seller = {
+				at_is_character_rich_trigger = yes
+			}
 		}
 		add = at_ai_negative_wealth_impact_value
 	}
@@ -918,7 +926,7 @@ at_sell_artifact_ai_accept_value = {
 		}
 	}
 
-	# Artifact durability (0 to NIV)
+	# Artifact durability
 	if = {
 		limit = {
 			scope:artifact.artifact_durability < scope:artifact.artifact_max_durability
@@ -931,7 +939,7 @@ at_sell_artifact_ai_accept_value = {
 		}
 	}
 
-	# Artifact uniqueness (PIV if unique)
+	# Artifact uniqueness
 	if = {
 		limit = {
 			scope:artifact = { at_is_unique_artifact_trigger = yes }
@@ -975,6 +983,14 @@ at_sell_artifact_ai_accept_value = {
 		add = -200
 	}
 
+	# Trash or common low durability artifacts
+	if = {
+		limit = {
+			scope:artifact = { at_is_worthless_artifact_trigger = yes }
+		}
+		add = at_ai_negative_trash_impact_value
+	}
+
 	# Dynasty or house banner
 	if = {
 		limit = {
@@ -997,32 +1013,32 @@ at_sell_artifact_ai_accept_value = {
 		add = at_ai_positive_relationship_impact_value
 	}
 
-	# Price (PIV if price < minor_gold_value, NIV if price > major_gold_value)
+	# Price
 	if = {
 		limit = {
 			scope:artifact.at_artifact_bid_price_value < scope:buyer.minor_gold_value
+			at_is_character_poor_trigger = no
 		}
 		add = at_ai_positive_price_impact_value
 	}
 	else_if = {
 		limit = {
 			scope:artifact.at_artifact_bid_price_value > scope:buyer.major_gold_value
+			at_is_character_rich_trigger = no
 		}
 		add = at_ai_negative_price_impact_value
 	}
 
-	# Buyer gold
+	# Buyer wealth
 	if = {
 		limit = {
 			at_is_character_poor_trigger = yes
-			scope:artifact = { at_is_worthless_artifact_trigger = yes }
 		}
 		add = at_ai_negative_wealth_impact_value
 	}
 	else_if = {
 		limit = {
 			at_is_character_rich_trigger = yes
-			scope:artifact = { at_is_worthless_artifact_trigger = no }
 		}
 		add = at_ai_positive_wealth_impact_value
 	}

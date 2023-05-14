@@ -186,7 +186,7 @@ at_buy_artifact_interaction = {
 			desc = at_target_better_than_other_owned_artifacts_reason
 		}
 
-		# Artifact durability (0 to PIV)
+		# Artifact durability
 		modifier = {
 			scope:target.artifact_durability < scope:target.artifact_max_durability
 			add = {
@@ -198,7 +198,7 @@ at_buy_artifact_interaction = {
 			desc = at_target_below_max_durability_reason
 		}
 
-		# Artifact uniqueness (NIV if unique)
+		# Artifact uniqueness
 		modifier = {
 			scope:target = { at_is_unique_artifact_trigger = yes }
 			add = at_ai_negative_uniqueness_impact_value
@@ -236,6 +236,13 @@ at_buy_artifact_interaction = {
 			desc = at_target_cursed_reason
 		}
 
+		# Trash or common low durability artifacts
+		modifier = {
+			scope:target = { at_is_worthless_artifact_trigger = yes }
+			add = at_ai_positive_trash_impact_value
+			desc = at_target_trash_reason
+		}
+
 		# Dynasty or house banner
 		modifier = {
 			at_is_dynasty_banner_trigger = { ARTIFACT = scope:target }
@@ -255,36 +262,30 @@ at_buy_artifact_interaction = {
 			desc = at_artifact_succession_title_reason
 		}
 
-		# Price (NIV if price < minor_gold_value, PIV if price > major_gold_value)
+		# Price
 		modifier = {
 			save_temporary_scope_as = seller
 			scope:target.at_artifact_ask_price_value < scope:recipient.minor_gold_value
+			at_is_character_poor_trigger = no
 			add = at_ai_negative_price_impact_value
 			desc = at_target_cheap_reason
 		}
 		modifier = {
 			save_temporary_scope_as = seller
 			scope:target.at_artifact_ask_price_value > scope:recipient.major_gold_value
+			at_is_character_rich_trigger = no
 			add = at_ai_positive_price_impact_value
 			desc = at_target_expensive_reason
 		}
 
-		# Seller gold
-		modifier = {
-			gold <= 0
-			scope:target = { is_equipped = no }
-			add = at_ai_positive_wealth_impact_value
-			desc = at_recipient_bankrupt_reason
-		}
+		# Seller wealth
 		modifier = {
 			at_is_character_poor_trigger = yes
-			scope:target = { at_is_worthless_artifact_trigger = yes }
 			add = at_ai_positive_wealth_impact_value
 			desc = at_recipient_poor_reason
 		}
 		modifier = {
 			at_is_character_rich_trigger = yes
-			scope:target = { at_is_worthless_artifact_trigger = no }
 			add = at_ai_negative_wealth_impact_value
 			desc = at_recipient_rich_reason
 		}
@@ -386,7 +387,7 @@ at_buy_artifact_interaction = {
 			}
 		}
 
-		# Artifact durability (0 to NIV)
+		# Artifact durability
 		modifier = {
 			scope:target.artifact_durability < scope:target.artifact_max_durability
 			add = {
@@ -397,7 +398,7 @@ at_buy_artifact_interaction = {
 			}
 		}
 
-		# Artifact uniqueness (PIV if unique)
+		# Artifact uniqueness
 		modifier = {
 			scope:target = { at_is_unique_artifact_trigger = yes }
 			add = at_ai_positive_uniqueness_impact_value
@@ -429,6 +430,12 @@ at_buy_artifact_interaction = {
 			add = -200
 		}
 
+		# Trash or common low durability artifacts
+		modifier = {
+			scope:target = { at_is_worthless_artifact_trigger = yes }
+			add = at_ai_negative_trash_impact_value
+		}
+
 		# Dynasty or house banner
 		modifier = {
 			at_is_dynasty_banner_trigger = { ARTIFACT = scope:target }
@@ -445,12 +452,13 @@ at_buy_artifact_interaction = {
 			add = at_ai_positive_relationship_impact_value
 		}
 
-		# Price (PIV if price < minor_gold_value, NIV if price > major_gold_value)
+		# Price
 		modifier = {
 			scope:recipient = {
 				save_temporary_scope_as = seller
 			}
 			scope:target.at_artifact_ask_price_value < scope:actor.minor_gold_value
+			at_is_character_poor_trigger = no
 			add = at_ai_positive_price_impact_value
 		}
 		modifier = {
@@ -458,18 +466,17 @@ at_buy_artifact_interaction = {
 				save_temporary_scope_as = seller
 			}
 			scope:target.at_artifact_ask_price_value > scope:actor.major_gold_value
+			at_is_character_rich_trigger = no
 			add = at_ai_negative_price_impact_value
 		}
 
-		# Buyer gold
+		# Buyer wealth
 		modifier = {
 			at_is_character_poor_trigger = yes
-			scope:target = { at_is_worthless_artifact_trigger = yes }
 			add = at_ai_negative_wealth_impact_value
 		}
 		modifier = {
 			at_is_character_rich_trigger = yes
-			scope:target = { at_is_worthless_artifact_trigger = no }
 			add = at_ai_positive_wealth_impact_value
 		}
 
