@@ -631,9 +631,9 @@ at_artifact_base_price_value = {
 		multiply = at_artifact_unique_price_multiplier
 	}
 
-	# Minimum
+	# Take the Auction Off Artifact price as minimum
+	min = at_artifact_base_price_aoa_value
 	round = yes
-	min = 10
 }
 
 # Artifact ask price. Calculated by multiplying the base price by several multipliers:
