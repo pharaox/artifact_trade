@@ -19,5 +19,9 @@ at_ai_negative_wealth_impact_value = -10
 # Multiplier for the opinion modifier affecting ai willingness to buy and sell artifacts
 at_buy_sell_artifact_ai_opinion_multiplier = 0.1
 
+# Artifact base price multipliers
+at_artifact_qwa_price_multiplier = 2.5
+at_artifact_unique_price_multiplier = 3
+
 # Artifact price multipliers for the player to limit exploits
 at_artifact_ask_price_player_multiplier = 1.4
