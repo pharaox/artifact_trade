@@ -1,5 +1,17 @@
 # Changelog
 
+## Version 0.4.1
+
+### Character Interactions
+
+* Rebalanced impact of QWA difference, equipped, and durability on AI buy and sell decisions
+* Improved wealth considerations for the AI when buying and selling artifacts
+* Improved artifact base price calculation
+
+### Bug Fixes
+
+* Fixed court artifacts being considered equippable by characters not having a royal court
+
 ## Version 0.4.0
 
 ### Compatibility
@@ -15,7 +27,7 @@
 * Disabled artifact trading for Aniconist rulers to prevent them from gaining piety for nothing
 * Added wealth considerations for the AI when buying and selling artifacts to match similar considerations when destroying them
 
-### Fixes
+### Bug Fixes
 
 * Fixed a rare error caused by trying to use a hook without a usable hook
 

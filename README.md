@@ -60,10 +60,10 @@ You can also initiate the **Buy Artifact** and **Sell Artifact** interactions di
 
 The *base artifact prices* in this mod correspond to the destroy prices in CK3 1.9. However, instead of being based on rarity, the formula used here is based on the artifact's *Quality and Wealth Average (QWA)*, two hidden properties with values from 0 to 100 that actually determine the rarity. The actual formula is:
 
-* Determine QWA as *(quality + wealth) / 2*
+* Determine QWA as `(quality + wealth) / 2`
 * Multiply by 2.5
-* Multiply by durability as percentage value
-* Round and ensure a minimum of the vanilla destroy price
+* Multiply by `0.5 + 0.5 * (durability / max_durability)`
+* Ensure a minimum of the vanilla destroy price (for Common and Masterwork only)
 * If the artifact is unique, multiply by 3
 
 Actual trades are settled at the *bid price* (buyer's price) if the initiating party is the seller, and the *ask price* (seller's price), if the initiating party is the buyer. These prices are calculated by multiplying the base price by a factor depending on AI greed, and an additional factor of 1.4 for the ask price if the initiating party is the player. As a result, the player always can never sell or destroy an artifact at a price higher than the one they bought it. This is done to prevent exploits, and to make it a bit more challenging for the player to use the trading system to their advantage.
@@ -93,9 +93,11 @@ The AI uses a slightly different version of the above due to engine limitations.
 ## Links
 
 * [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2962238514)
-* [Artifact Manager Compatibility (CK3 1.8)](https://steamcommunity.com/sharedfiles/filedetails/?id=2966324178)
+* [Artifact Manager Compatibility](https://steamcommunity.com/sharedfiles/filedetails/?id=2966324178)
 * [Russian Translation (by @laxfeed)](https://steamcommunity.com/sharedfiles/filedetails/?id=2965215034)
 * [Spanish Translation (by @Will1294)](https://steamcommunity.com/sharedfiles/filedetails/?id=2971143815)
+* [Chinese Translation (by @小学生)](https://steamcommunity.com/sharedfiles/filedetails/?id=2976964171)
+* [French Translation (by @Pata)](https://steamcommunity.com/sharedfiles/filedetails/?id=2976975086)
 * [Forum Thread](https://forum.paradoxplaza.com/forum/threads/mod-search-trade-artifacts.1578578/)
 * [GitHub Repository](https://github.com/pharaox/artifact_trade)
 

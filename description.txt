@@ -20,9 +20,11 @@ This mod is compatible with all other mods, including total conversion mods such
 
 [h2]Links[/h2]
 [list]
-  [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2966324178]Artifact Manager Compatibility (CK3 1.8)[/url]
+  [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2966324178]Artifact Manager Compatibility[/url]
   [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2965215034]Russian Translation (by @laxfeed)[/url]
   [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2971143815]Spanish Translation (by @Will1294)[/url]
+  [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2976964171]Chinese Translation (by @小学生)[/url]
+  [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2976975086]French Translation (by @Pata)[/url]
   [*] [url=https://forum.paradoxplaza.com/forum/threads/mod-search-trade-artifacts.1578578/]Forum Thread[/url]
   [*] [url=https://github.com/pharaox/artifact_trade]GitHub Repository[/url]
 [/list]
