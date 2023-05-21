@@ -195,6 +195,14 @@ at_can_equip_artifact_trigger = {
 		}
 		age > 18
 	}
+	trigger_else_if = {
+		limit = {
+			$ARTIFACT$ = {
+				category = court
+			}
+		}
+		has_royal_court = yes
+	}
 	trigger_else = {
 		# For other artifact templates it's currently either always equippable
 		# or can_equip is the same as can_benefit
