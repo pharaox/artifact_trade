@@ -266,14 +266,12 @@ at_buy_artifact_interaction = {
 		modifier = {
 			save_temporary_scope_as = seller
 			scope:target.at_artifact_ask_price_value < scope:recipient.minor_gold_value
-			at_is_character_poor_trigger = no
 			add = at_ai_negative_price_impact_value
 			desc = at_target_cheap_reason
 		}
 		modifier = {
 			save_temporary_scope_as = seller
 			scope:target.at_artifact_ask_price_value > scope:recipient.major_gold_value
-			at_is_character_rich_trigger = no
 			add = at_ai_positive_price_impact_value
 			desc = at_target_expensive_reason
 		}
@@ -458,7 +456,6 @@ at_buy_artifact_interaction = {
 				save_temporary_scope_as = seller
 			}
 			scope:target.at_artifact_ask_price_value < scope:actor.minor_gold_value
-			at_is_character_poor_trigger = no
 			add = at_ai_positive_price_impact_value
 		}
 		modifier = {
@@ -466,7 +463,6 @@ at_buy_artifact_interaction = {
 				save_temporary_scope_as = seller
 			}
 			scope:target.at_artifact_ask_price_value > scope:actor.major_gold_value
-			at_is_character_rich_trigger = no
 			add = at_ai_negative_price_impact_value
 		}
 

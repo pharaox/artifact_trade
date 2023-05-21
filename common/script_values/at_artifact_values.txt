@@ -589,7 +589,7 @@ at_artifact_base_price_value = {
 
 	# Minimum
 	round = yes
-	min = at_artifact_destroy_price_value
+		min = at_artifact_destroy_price_value
 
 	# Uniqueness
 	if = {
@@ -814,18 +814,12 @@ at_buy_artifact_ai_accept_value = {
 	if = {
 		limit = {
 			scope:artifact.at_artifact_ask_price_value < scope:seller.minor_gold_value
-			scope:seller = {
-				at_is_character_poor_trigger = no
-			}
 		}
 		add = at_ai_negative_price_impact_value
 	}
 	else_if = {
 		limit = {
 			scope:artifact.at_artifact_ask_price_value > scope:seller.major_gold_value
-			scope:seller = {
-				at_is_character_rich_trigger = no
-			}
 		}
 		add = at_ai_positive_price_impact_value
 	}
@@ -1017,14 +1011,12 @@ at_sell_artifact_ai_accept_value = {
 	if = {
 		limit = {
 			scope:artifact.at_artifact_bid_price_value < scope:buyer.minor_gold_value
-			at_is_character_poor_trigger = no
 		}
 		add = at_ai_positive_price_impact_value
 	}
 	else_if = {
 		limit = {
 			scope:artifact.at_artifact_bid_price_value > scope:buyer.major_gold_value
-			at_is_character_rich_trigger = no
 		}
 		add = at_ai_negative_price_impact_value
 	}

@@ -108,6 +108,7 @@ at_is_landed_ruler_within_trading_range_trigger = {
 }
 
 at_is_character_poor_trigger = {
+	is_ruler = yes
 	trigger_if = {
 		limit = { ai_has_economical_boom_personality = yes }
 		gold <= medium_gold_value
@@ -118,6 +119,7 @@ at_is_character_poor_trigger = {
 }
 
 at_is_character_rich_trigger = {
+	is_ruler = yes
 	trigger_if = {
 		limit = { ai_has_economical_boom_personality = yes }
 		short_term_gold >= massive_gold_value
