@@ -1,5 +1,12 @@
 # Changelog
 
+## Version 0.3.2
+
+### Character Interactions
+
+* Changed artifact price calculation to correspond to the one in newer versions of the mod (for CK3 1.9)
+* Rebalanced impact of an artifact being non-equippable or non-beneficial on AI decisions
+
 ## Version 0.3.1
 
 ### Character Interactions

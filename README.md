@@ -55,8 +55,8 @@ The *base artifact prices* are roughly the same as the prices in [Auction Off Ar
 * Determine QWA as `(quality + wealth) / 2`
 * Multiply by 2.5
 * Multiply by `0.5 + 0.5 * (durability / max_durability)`
+* Ensure a minimum of the artifact destroy price (in CK3 1.9)
 * If the artifact is unique, multiply by 3
-* Ensure a minimum of 10
 
 Actual trades are settled at the *bid price* (buyer's price) if the initiating party is the seller, and the *ask price* (seller's price), if the initiating party is the buyer. These prices are calculated by multiplying the base price by a factor depending on AI greed, and an additional factor of 0.8 (for the bid price) or 1.2 (for the ask price) if the initiating party is the player. As a result, the player always buys at higher and sells at lower prices compared to the AI. This is done to prevent exploits, and to make it a bit more challenging for the player to use the trading system to their advantage.
 
