@@ -574,42 +574,6 @@ at_artifact_default_quality_wealth_value = {
 	}
 }
 
-# Artifact base price, calculated using the formula from "Auction Off Artifact".
-at_artifact_base_price_aoa_value = {
-	# Rarity
-	if = {
-		limit = { rarity = common }
-		value = 50
-	}
-	else_if = {
-		limit = { rarity = masterwork }
-		value = 75
-	}
-	else_if = {
-		limit = { rarity = famed }
-		value = 125
-	}
-	else_if = {
-		limit = { rarity = illustrious }
-		value = 250
-	}
-
-	# Durability
-	multiply = {
-		value = artifact_durability
-		divide = artifact_max_durability
-	}
-
-	# Uniqueness
-	if = {
-		limit = { at_is_unique_artifact_trigger = yes }
-		multiply = 3
-	}
-
-	# Minimum
-	min = 15
-}
-
 # Artifact base price, calculated using a formula similar to the one
 # from "Auction Off Artifact", but using QWA and a multiplier instead
 at_artifact_base_price_value = {
@@ -618,12 +582,10 @@ at_artifact_base_price_value = {
 	multiply = at_artifact_qwa_price_multiplier
 
 	# Durability
-	multiply = {
-		value = artifact_durability
-		divide = artifact_max_durability
-		multiply = 0.5
-		add = 0.5
-	}
+	multiply = at_artifact_durability_multiplier
+
+	# Set destroy artifact gold value as minimum
+	min = at_destroy_artifact_gold_value
 
 	# Uniqueness
 	if = {
@@ -631,8 +593,6 @@ at_artifact_base_price_value = {
 		multiply = at_artifact_unique_price_multiplier
 	}
 
-	# Take the Auction Off Artifact price as minimum
-	min = at_artifact_base_price_aoa_value
 	round = yes
 }
 
@@ -676,6 +636,39 @@ at_artifact_bid_price_value = {
 
 	round = yes
 	min = 5
+}
+
+# Destroy artifact gold value, calculated using the formula from destroy_artifact_aniconist_effect
+# adjusted for durability
+at_destroy_artifact_gold_value = {
+	# Base value (from destroy_artifact_aniconist_effect)
+	if = {
+		limit = { rarity = common }
+		value = 40
+	}
+	else_if = {
+		limit = { rarity = masterwork }
+		value = 80
+	}
+	else_if = {
+		limit = { rarity = famed }
+		value = 150
+	}
+	else_if = {
+		limit = { rarity = illustrious }
+		value = 250
+	}
+
+	# Durability
+	multiply = at_artifact_durability_multiplier
+}
+
+# Artifact durability multiplier
+at_artifact_durability_multiplier = {
+	value = artifact_durability
+	divide = artifact_max_durability
+	multiply = 0.5
+	add = 0.5
 }
 
 # AI accept value of the Buy Artifact interaction, used in effects to evaluate whether
@@ -758,7 +751,7 @@ at_buy_artifact_ai_accept_value = {
 				NOT = { can_equip_artifact = scope:artifact }
 			}
 		}
-		add = 100
+		add = 50
 	}
 	if = {
 		limit = {
@@ -766,7 +759,7 @@ at_buy_artifact_ai_accept_value = {
 				NOT = { can_benefit_from_artifact = scope:artifact }
 			}
 		}
-		add = 100
+		add = 50
 	}
 	if = {
 		limit = {
@@ -963,13 +956,13 @@ at_sell_artifact_ai_accept_value = {
 		limit = {
 			NOT = { can_equip_artifact = scope:artifact }
 		}
-		add = -100
+		add = -50
 	}
 	if = {
 		limit = {
 			NOT = { can_benefit_from_artifact = scope:artifact }
 		}
-		add = -100
+		add = -50
 	}
 	if = {
 		limit = {
