@@ -4,6 +4,12 @@
 	at_artifact_trading_enabled = {}
 }
 
+at_improved_destroy_artifact = {
+	default = at_improved_destroy_artifact_enabled
+	at_improved_destroy_artifact_disabled = {}
+	at_improved_destroy_artifact_enabled = {}
+}
+
 at_valid_trading_partners = {
 	default = at_valid_trading_partners_within_trading_range
 	at_valid_trading_partners_same_and_neighboring_realms = {}

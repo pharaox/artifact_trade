@@ -5,6 +5,12 @@
  setting_at_artifact_trading_enabled: "Enabled"
  setting_at_artifact_trading_enabled_desc: "Artifact trading is enabled."
 
+ rule_at_improved_destroy_artifact: "#X Search & Trade Artifacts:#! Destroy Artifact Improvements"
+ setting_at_improved_destroy_artifact_disabled: "Disabled"
+ setting_at_improved_destroy_artifact_disabled_desc: "Destroy Artifact improvements are disabled."
+ setting_at_improved_destroy_artifact_enabled: "Enabled"
+ setting_at_improved_destroy_artifact_enabled_desc: "Destroy Artifact improvements are enabled."
+
  rule_at_valid_trading_partners: "#X Search & Trade Artifacts:#! Valid Buyers or Sellers"
  setting_at_valid_trading_partners_same_and_neighboring_realms: "Same and Neighboring Realms"
  setting_at_valid_trading_partners_same_and_neighboring_realms_desc: "Characters in the same and neighboring realms."

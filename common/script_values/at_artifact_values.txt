@@ -582,22 +582,22 @@ at_artifact_base_price_value = {
 	multiply = at_artifact_qwa_price_multiplier
 
 	# Durability
-	multiply = {
-		value = artifact_durability
-		divide = artifact_max_durability
-		multiply = 0.5
-		add = 0.5
-	}
+	multiply = at_artifact_durability_multiplier
 
-	# If masterwork or common, take the destroy price as minimum
+	# Set destroy artifact gold value as minimum
 	if = {
 		limit = {
-			OR = {
-				rarity = common
-				rarity = masterwork
+			trigger_if = {
+				limit = {
+					NOT = { has_game_rule = at_improved_destroy_artifact_enabled }
+				}
+				OR = {
+					rarity = common
+					rarity = masterwork
+				}
 			}
 		}
-		min = at_artifact_destroy_price_value
+		min = at_destroy_artifact_gold_value
 	}
 
 	# Uniqueness
@@ -651,8 +651,10 @@ at_artifact_bid_price_value = {
 	min = 5
 }
 
-# Artifact destroy price, calculated using the formula from destroy_artifact_aniconist_effect
-at_artifact_destroy_price_value = {
+# Destroy artifact gold value, calculated using the formula from destroy_artifact_aniconist_effect
+# adjusted for durability if improved destroying of artifacts is enabled
+at_destroy_artifact_gold_value = {
+	# Base value (from destroy_artifact_aniconist_effect)
 	if = {
 		limit = { rarity = common }
 		value = 40
@@ -669,6 +671,63 @@ at_artifact_destroy_price_value = {
 		limit = { rarity = illustrious }
 		value = 250
 	}
+
+	# Durability
+	if = {
+		limit = {
+			has_game_rule = at_improved_destroy_artifact_enabled
+		}
+		multiply = at_artifact_durability_multiplier
+	}
+}
+
+# Destroy artifact piety value, calculated using the formula from destroy_artifact_aniconist_effect
+# adjusted for durability if improved destroying of artifacts is enabled
+at_destroy_artifact_piety_value = {
+	# Base value (from destroy_artifact_aniconist_effect)
+	if = {
+		limit = { rarity = common }
+		value = 180
+	}
+	else_if = {
+		limit = { rarity = masterwork }
+		value = 260
+	}
+	else_if = {
+		limit = { rarity = famed }
+		value = 340
+	}
+	else_if = {
+		limit = { rarity = illustrious }
+		value = 500
+	}
+
+	# Durability
+	if = {
+		limit = {
+			has_game_rule = at_improved_destroy_artifact_enabled
+		}
+		multiply = at_artifact_durability_multiplier
+	}
+
+	# Double for relics
+	if = {
+		limit = {
+			exists = var:relic
+		}
+		multiply = {
+			value = 2
+			desc = aniconist_destroying_relic
+		}
+	}
+}
+
+# Artifact durability multiplier
+at_artifact_durability_multiplier = {
+	value = artifact_durability
+	divide = artifact_max_durability
+	multiply = 0.5
+	add = 0.5
 }
 
 # AI accept value of the Buy Artifact interaction, used in effects to evaluate whether
@@ -751,7 +810,7 @@ at_buy_artifact_ai_accept_value = {
 				NOT = { at_can_equip_artifact_trigger = { ARTIFACT = scope:artifact } }
 			}
 		}
-		add = 100
+		add = 50
 	}
 	if = {
 		limit = {
@@ -759,7 +818,7 @@ at_buy_artifact_ai_accept_value = {
 				NOT = { can_benefit_from_artifact = scope:artifact }
 			}
 		}
-		add = 100
+		add = 50
 	}
 	if = {
 		limit = {
@@ -956,13 +1015,13 @@ at_sell_artifact_ai_accept_value = {
 		limit = {
 			NOT = { at_can_equip_artifact_trigger = { ARTIFACT = scope:artifact } }
 		}
-		add = -100
+		add = -50
 	}
 	if = {
 		limit = {
 			NOT = { can_benefit_from_artifact = scope:artifact }
 		}
-		add = -100
+		add = -50
 	}
 	if = {
 		limit = {

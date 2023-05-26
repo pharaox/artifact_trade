@@ -217,12 +217,12 @@ at_buy_artifact_interaction = {
 		# Useless, not relevant, unwanted, or cursed artifacts
 		modifier = {
 			NOT = { at_can_equip_artifact_trigger = { ARTIFACT = scope:target } }
-			add = 100
+			add = 50
 			desc = ARTIFACT_NOT_EQUIPPABLE_REASON
 		}
 		modifier = {
 			NOT = { can_benefit_from_artifact = scope:target }
-			add = 100
+			add = 50
 			desc = ARTIFACT_NOT_BENEFIT_REASON
 		}
 		modifier = {
@@ -413,11 +413,11 @@ at_buy_artifact_interaction = {
 		# Useless, not relevant, unwanted, or cursed artifacts
 		modifier = {
 			NOT = { at_can_equip_artifact_trigger = { ARTIFACT = scope:target } }
-			add = -100
+			add = -50
 		}
 		modifier = {
 			NOT = { can_benefit_from_artifact = scope:target }
-			add = -100
+			add = -50
 		}
 		modifier = {
 			scope:target = { has_variable = unwanted_artifact }

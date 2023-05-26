@@ -434,3 +434,21 @@ at_artifact_better_than_equipped_trigger = {
 		always = no
 	}
 }
+
+at_aniconist_should_destroy_artifact_trigger = {
+	faith = {
+		has_doctrine_parameter = destroying_artifacts_is_pious
+	}
+	OR = {
+		has_trait = zealous
+		$ARTIFACT$ = { is_equipped = no }
+		$ARTIFACT$ = { exists = var:relic }
+	}
+	NOR = {
+		has_trait = cynical
+		AND = {
+			has_trait = greedy
+			NOT = { has_trait = zealous }
+		}
+	}
+}

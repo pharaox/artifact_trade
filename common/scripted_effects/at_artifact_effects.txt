@@ -197,6 +197,45 @@ at_buy_artifact_warning_tooltips_effect = {
 	}
 }
 
+# Destroys ARTIFACT by DESTROYER
+at_destroy_artifact_effect = {
+	$ARTIFACT$ = {
+		save_temporary_scope_as = artifact
+	}
+
+	$DESTROYER$ = {
+		# Add piety if destroying artifacts is pious
+		if = {
+			limit = {
+				faith = { has_doctrine_parameter = destroying_artifacts_is_pious }
+			}
+			save_scope_value_as = {
+				name = piety_value
+				value = scope:artifact.at_destroy_artifact_piety_value
+			}
+			add_piety = scope:piety_value
+		}
+
+		# Add gold
+		save_scope_value_as = {
+			name = gold_value
+			value = scope:artifact.at_destroy_artifact_gold_value
+		}
+		add_gold = scope:gold_value
+
+		# Trigger event
+		save_scope_as = destroyer
+		scope:artifact = {
+			trigger_event = {
+				on_action = at_on_artifact_destroyed
+			}
+		}
+
+		# Destroy the artifact
+		destroy_owned_artifact = scope:artifact
+	}
+}
+
 at_get_valid_buyers_or_sellers_effect = {
 	save_temporary_scope_as = party
 	every_living_character = {

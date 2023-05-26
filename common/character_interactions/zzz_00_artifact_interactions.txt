@@ -1,0 +1,338 @@
+﻿# Destroy Artifact
+# STA: Overridden from vanilla
+destroy_artifact_interaction = {
+	interface_priority = 30
+	common_interaction = yes
+	category = interaction_category_friendly
+	desc = destroy_artifact_interaction_desc
+
+	target_type = artifact
+	target_filter = actor_artifacts
+
+	ai_targets = {
+		ai_recipients = self
+	}
+
+	# You can only destroy your own artifacts
+	is_shown = {
+		scope:recipient = scope:actor
+		scope:actor = {
+			has_any_artifact = yes
+		}
+	}
+
+	can_be_picked_artifact = {
+	}
+
+	has_valid_target_showing_failures_only = {
+		trigger_if = {
+			limit = {
+				NOT = { has_game_rule = at_improved_destroy_artifact_enabled }
+			}
+			trigger_if = {
+				limit = {
+					NOT = {
+						scope:recipient.faith = { has_doctrine_parameter = destroying_artifacts_is_pious }
+					}
+				}
+				custom_tooltip = {
+					text = artifact_is_rarer_than_masterwork_tt
+					OR = {
+						scope:target = { rarity = common }
+						scope:target = { rarity = masterwork }
+					}
+				}
+			}
+			trigger_if = {
+				limit = {
+					NOR = {
+						scope:target = { rarity = common }
+						scope:target = { rarity = masterwork }
+					}
+				}
+				custom_tooltip = {
+					text = destroying_artifacts_is_not_pious_tt
+					scope:recipient.faith = { has_doctrine_parameter = destroying_artifacts_is_pious }
+				}
+			}
+		}
+	}
+
+	on_accept = {
+		if = {
+			limit = {
+				has_game_rule = at_improved_destroy_artifact_enabled
+			}
+			at_destroy_artifact_effect = { ARTIFACT = scope:target DESTROYER = scope:actor }
+		}
+		else = {
+			destroy_artifact_aniconist_effect = { ARTIFACT = scope:target DESTROYER = scope:actor }
+		}
+	}
+
+	ai_frequency = 24
+
+	ai_potential = {
+		trigger_if = {
+			limit = {
+				NOT = { has_game_rule = at_improved_destroy_artifact_enabled }
+			}
+			OR = {
+				faith = { # Aniconists will always want to destroy artifacts
+					has_doctrine_parameter = destroying_artifacts_is_pious
+				}
+				gold <= minor_gold_value # Poor rulers will consider getting rid of their trash for gold
+				AND = { # Economic boom personalities will bolster their treasury by getting rid of trash more often
+					gold <= medium_gold_value
+					ai_has_economical_boom_personality = yes
+				}
+				any_character_artifact = { # All rulers want to get rid of actively detrimental trash
+					has_variable = unwanted_artifact
+				}
+			}
+		}
+	}
+
+	ai_will_do = {
+		base = 10 # TODO
+
+		# Artifact recently bought
+		modifier = {
+			has_game_rule = at_improved_destroy_artifact_enabled
+			scope:target = {
+				has_variable = at_artifact_recently_bought
+			}
+			add = -100
+		}
+
+		# Artifact equipped
+		modifier = {
+			has_game_rule = at_improved_destroy_artifact_enabled
+			scope:target = { is_equipped = yes }
+			add = at_ai_negative_equipped_impact_value
+		}
+
+		# Difference between the QWA of the target artifact
+		# and the QWA of the n+1-th artifact of the same type owned and equippable by scope:seller
+		modifier = {
+			has_game_rule = at_improved_destroy_artifact_enabled
+			at_can_equip_and_benefit_from_artifact_trigger = { ARTIFACT = scope:target }
+			save_temporary_scope_as = seller
+			scope:target.at_np1th_seller_equippable_artifact_quality_wealth_average_difference_value > 0
+			add = {
+				value = scope:target.at_np1th_seller_equippable_artifact_quality_wealth_average_difference_value
+				multiply = at_ai_negative_qwa_difference_impact_value
+			}
+		}
+
+		# Artifact durability
+		modifier = {
+			has_game_rule = at_improved_destroy_artifact_enabled
+			scope:target.artifact_durability < scope:target.artifact_max_durability
+			add = {
+				value = scope:target.artifact_max_durability
+				subtract = scope:target.artifact_durability
+				divide = scope:target.artifact_max_durability
+				multiply = at_ai_positive_durability_impact_value
+			}
+		}
+
+		# Special character for religious relic
+		modifier = {
+			has_game_rule = at_improved_destroy_artifact_enabled
+			at_is_artifact_relic_religion_special_character_trigger = { ARTIFACT = scope:target }
+			add = at_ai_negative_relationship_impact_value
+		}
+
+		# TODO Artifact modifiers and recipient lifestyle
+
+		# Useless, not relevant, unwanted, or cursed artifacts
+		modifier = {
+			has_game_rule = at_improved_destroy_artifact_enabled
+			NOT = { at_can_equip_artifact_trigger = { ARTIFACT = scope:target } }
+			add = 50
+		}
+		modifier = {
+			has_game_rule = at_improved_destroy_artifact_enabled
+			NOT = { can_benefit_from_artifact = scope:target }
+			add = 50
+		}
+		modifier = {
+			has_game_rule = at_improved_destroy_artifact_enabled
+			scope:target = { has_variable = unwanted_artifact }
+			add = 100
+		}
+		modifier = {
+			has_game_rule = at_improved_destroy_artifact_enabled
+			scope:target = { has_variable = cursed_artifact }
+			add = 200
+		}
+
+		# Trash or common low durability artifacts
+		modifier = {
+			has_game_rule = at_improved_destroy_artifact_enabled
+			scope:target = { at_is_worthless_artifact_trigger = yes }
+			add = at_ai_positive_trash_impact_value
+		}
+
+		# Dynasty or house banner
+		modifier = {
+			has_game_rule = at_improved_destroy_artifact_enabled
+			at_is_dynasty_banner_trigger = { ARTIFACT = scope:target }
+			add = at_ai_negative_relationship_impact_value
+		}
+		modifier = {
+			has_game_rule = at_improved_destroy_artifact_enabled
+			at_is_house_banner_trigger = { ARTIFACT = scope:target }
+			add = at_ai_negative_relationship_impact_value
+		}
+
+		# Holds succession title
+		modifier = {
+			has_game_rule = at_improved_destroy_artifact_enabled
+			at_has_artifact_succession_title_trigger = { ARTIFACT = scope:target }
+			add = at_ai_negative_relationship_impact_value
+		}
+
+		# Price
+		modifier = {
+			has_game_rule = at_improved_destroy_artifact_enabled
+			scope:target.at_destroy_artifact_gold_value < scope:actor.minor_gold_value
+			add = at_ai_negative_price_impact_value
+		}
+		modifier = {
+			has_game_rule = at_improved_destroy_artifact_enabled
+			scope:target.at_destroy_artifact_gold_value > scope:actor.major_gold_value
+			add = at_ai_positive_price_impact_value
+		}
+
+		# Destroyer wealth
+		modifier = {
+			has_game_rule = at_improved_destroy_artifact_enabled
+			at_is_character_poor_trigger = yes
+			add = at_ai_positive_wealth_impact_value
+		}
+		modifier = {
+			has_game_rule = at_improved_destroy_artifact_enabled
+			at_is_character_rich_trigger = yes
+			add = at_ai_negative_wealth_impact_value
+		}
+
+		# Destroyer in debt
+		modifier = {
+			has_game_rule = at_improved_destroy_artifact_enabled
+			gold <= 0
+			add = 10
+		}
+
+		# More reluctant to destroy higher rarity artifacts
+		modifier = {
+			has_game_rule = at_improved_destroy_artifact_enabled
+			scope:target = {
+				OR = {
+					rarity = famed
+					rarity = illustrious
+				}
+			}
+			add = -50
+		}
+
+		# Don't destroy unique artifacts
+		modifier = {
+			has_game_rule = at_improved_destroy_artifact_enabled
+			scope:target = { at_is_unique_artifact_trigger = yes }
+			add = -100
+		}
+
+		# Destroy almost anything if you are aniconist
+		modifier = {
+			has_game_rule = at_improved_destroy_artifact_enabled
+			at_aniconist_should_destroy_artifact_trigger = { ARTIFACT = scope:target }
+			add = 200
+		}
+
+		# Original modifiers
+		modifier = { # Rulers will always destroy unwanted artifacts
+			add = 100
+			NOT = { has_game_rule = at_improved_destroy_artifact_enabled }
+			scope:target = {
+				has_variable = unwanted_artifact
+			}
+		}
+		modifier = { # Rulers will consider destroying trash artifacts if they're poor
+			add = 100
+			NOT = { has_game_rule = at_improved_destroy_artifact_enabled }
+			scope:target = {
+				has_variable = ai_to_ai_destroy_in_sieges
+			}
+		}
+		modifier = { # AI rulers will destroy common unequipped artifacts if money is low
+			add = 100
+			NOT = { has_game_rule = at_improved_destroy_artifact_enabled }
+			OR = {
+				gold <= minor_gold_value # Poor rulers will consider getting rid of their trash for gold
+				AND = { # Economic boom personalities will bolster their treasury by getting rid of trash more often
+					gold <= medium_gold_value
+					ai_has_economical_boom_personality = yes
+				}
+			}
+			scope:target = {
+				rarity = common
+				is_equipped = no
+			}
+		}
+		modifier = { # AI rulers will destroy all unequipped artifacts to get out of debt
+			add = 100
+			NOT = { has_game_rule = at_improved_destroy_artifact_enabled }
+			gold <= 0
+			scope:target = {
+				is_equipped = no
+			}
+		}
+		modifier = { # Common artifact trinkets on their last legs can be considered for destruction if money is low
+			add = 100
+			NOT = { has_game_rule = at_improved_destroy_artifact_enabled }
+			OR = {
+				gold <= minor_gold_value # Poor rulers will consider getting rid of their trash for gold
+				AND = { # Economic boom personalities will bolster their treasury by getting rid of trash more often
+					gold <= medium_gold_value
+					ai_has_economical_boom_personality = yes
+				}
+			}
+			scope:target = {
+				rarity = common
+				artifact_slot_type = miscellaneous
+				artifact_durability <= define:NInventory|ARTIFACT_LOW_DURABILITY
+			}
+		}
+		modifier = { # Aniconists destroy most things
+			add = 100
+			NOT = { has_game_rule = at_improved_destroy_artifact_enabled }
+			faith = {
+				has_doctrine_parameter = destroying_artifacts_is_pious
+			}
+			OR = { # This errors in the ai_potential so it's been moved here
+				has_trait = zealous
+				scope:target = { is_equipped = no }
+				scope:target = { exists = var:relic }
+			}
+			# The logic below relies on the idea that they have the destroying_artifacts_is_pious doctrine parameter. If the restrictions are loosened, these triggers should be updated
+			NOR = {
+				has_trait = cynical
+				AND = {
+					has_trait = greedy
+					NOT = { has_trait = zealous }
+				}
+			}
+			OR = {
+				has_trait = zealous # Destroy all the artifacts
+				any_character_artifact = {
+					is_equipped = no
+				}
+				any_character_artifact = {
+					exists = var:relic
+				}
+			}
+		}
+	}
+}
