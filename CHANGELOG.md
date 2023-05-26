@@ -1,5 +1,15 @@
 # Changelog
 
+## Version 0.5.0
+
+### Character Interactions
+
+* Added improvements to the vanilla Destroy Artifact interaction
+  * Enabled destroying Famed and Illustrious artifacts
+  * Artifact durability now impacts the destroy price (and piety for Aniconist rulers)
+  * Made the AI decision making much more sophisticated and consistent with buying and selling
+  * Introduced a game rule to enable or disable these improvements
+
 ## Version 0.4.1
 
 ### Character Interactions

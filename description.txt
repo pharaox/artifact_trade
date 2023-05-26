@@ -12,6 +12,15 @@ When buying and selling artifacts, the AI acceptance is influenced by multiple f
 
 In case you don't like artifact trading for some reason, you can disable the trading part via a game rule.
 
+This mod also substantially improves the vanilla [b]Destroy Artifact[/b] interaction:
+[list]
+  [*] All rulers can now destroy also Famed and Illustrious artifacts.
+  [*] The destroy price (and piety for Aniconist rulers) is influenced by the artifact durability.
+  [*] The AI decision making is much more sophisticated and consistent with buying and selling.
+[/list]
+
+These improvements are enabled by default but can also be disabled via a game rule.
+
 [h2]Compatibility[/h2]
 
 The current version is compatible with CK3 1.9. If you are still on 1.8, download version 0.3.0 from [url=https://forum.paradoxplaza.com/forum/attachments/search_and_trade_artifacts-0-3-0-zip.982525/]Paradox Forums[/url].
