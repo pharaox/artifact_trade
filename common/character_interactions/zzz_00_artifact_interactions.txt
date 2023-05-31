@@ -94,7 +94,13 @@ destroy_artifact_interaction = {
 	}
 
 	ai_will_do = {
-		base = 10 # TODO
+		base = 0
+
+		# Base
+		modifier = {
+			has_game_rule = at_improved_destroy_artifact_enabled
+			add = 10
+		}
 
 		# Artifact recently bought
 		modifier = {
