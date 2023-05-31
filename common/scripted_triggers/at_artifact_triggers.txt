@@ -147,10 +147,19 @@ at_is_unique_artifact_trigger = {
 	}
 }
 
-# TODO Built-in trigger can_equip_artifact is buggy in 1.9.0.3
-# replace the body with can_equip_artifact = $ARTIFACT$ when fixed
+# Use can_equip_artifact only for artifacts that are owned by the scoped character.
+# The behavior of this trigger changed in 1.9 and it seems this is not considered a bug.
 at_can_equip_artifact_trigger = {
+	save_temporary_scope_as = character
 	trigger_if = {
+		limit = {
+			$ARTIFACT$ = {
+				artifact_owner = scope:character
+			}
+		}
+		can_equip_artifact = $ARTIFACT$
+	}
+	trigger_else_if = {
 		limit = {
 			$ARTIFACT$ = {
 				OR = {
