@@ -1,5 +1,16 @@
 # Changelog
 
+## Version 0.5.1
+
+### Compatibility
+
+* Adapted to CK3 1.9.1
+
+### Bug Fixes
+
+* Small fixes to localization
+* Fixed base AI willingness to destroy artifacts when improvements are disabled
+
 ## Version 0.5.0
 
 ### Character Interactions
