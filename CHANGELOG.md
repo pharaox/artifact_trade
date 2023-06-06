@@ -1,5 +1,15 @@
 # Changelog
 
+## Version 0.5.2
+
+### Bug Fixes
+
+* Fixed issues with multiplayer support
+  * Selected filter and sort options are no longer shared between players
+  * Filtered and sorted artifact lists are no longer shared between players
+  * The artifact selected to be bought or sold is no longer shared between players
+  * Players can now trade artifacts between themselves
+
 ## Version 0.5.1
 
 ### Compatibility
