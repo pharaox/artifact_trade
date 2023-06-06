@@ -225,46 +225,46 @@ at_artifact_type_value = {
 
 at_artifacts_window_max_count_value = {
 	if = {
-		limit = { global_var:at_artifacts_window_selected_max_count_option = flag:_100 }
+		limit = { var:at_artifacts_window_selected_max_count_option = flag:_100 }
 		value = 100
 	}
 	else_if = {
-		limit = { global_var:at_artifacts_window_selected_max_count_option = flag:_200 }
+		limit = { var:at_artifacts_window_selected_max_count_option = flag:_200 }
 		value = 200
 	}
 	else_if = {
-		limit = { global_var:at_artifacts_window_selected_max_count_option = flag:_500 }
+		limit = { var:at_artifacts_window_selected_max_count_option = flag:_500 }
 		value = 500
 	}
 	else_if = {
-		limit = { global_var:at_artifacts_window_selected_max_count_option = flag:_1000 }
+		limit = { var:at_artifacts_window_selected_max_count_option = flag:_1000 }
 		value = 1000
 	}
 	else_if = {
-		limit = { global_var:at_artifacts_window_selected_max_count_option = flag:_2000 }
+		limit = { var:at_artifacts_window_selected_max_count_option = flag:_2000 }
 		value = 2000
 	}
 	else_if = {
-		limit = { global_var:at_artifacts_window_selected_max_count_option = flag:_5000 }
+		limit = { var:at_artifacts_window_selected_max_count_option = flag:_5000 }
 		value = 5000
 	}
 	else_if = {
-		limit = { global_var:at_artifacts_window_selected_max_count_option = flag:_10000 }
+		limit = { var:at_artifacts_window_selected_max_count_option = flag:_10000 }
 		value = 10000
 	}
 	else_if = {
-		limit = { global_var:at_artifacts_window_selected_max_count_option = flag:_20000 }
+		limit = { var:at_artifacts_window_selected_max_count_option = flag:_20000 }
 		value = 20000
 	}
 	else = {
-		limit = { global_var:at_artifacts_window_selected_max_count_option = flag:_50000 }
+		limit = { var:at_artifacts_window_selected_max_count_option = flag:_50000 }
 		value = 50000
 	}
 }
 
 at_artifacts_window_artifacts_count_value = {
 	value = 0
-	every_in_global_list = {
+	every_in_list = {
 		variable = at_artifacts_window_artifacts
 		add = 1
 	}
@@ -272,7 +272,7 @@ at_artifacts_window_artifacts_count_value = {
 
 at_artifacts_window_filtered_artifacts_count_value = {
 	value = 0
-	every_in_global_list = {
+	every_in_list = {
 		variable = at_artifacts_window_filtered_artifacts
 		add = 1
 	}
@@ -280,7 +280,7 @@ at_artifacts_window_filtered_artifacts_count_value = {
 
 at_artifacts_window_all_artifacts_count_value = {
 	value = 0
-	every_in_global_list = {
+	every_in_list = {
 		variable = at_artifacts_window_all_artifacts
 		add = 1
 	}

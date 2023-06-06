@@ -56,7 +56,7 @@ window = {
 
 				blockoverride "scrollbox_content" {
 					vbox = {
-						datamodel = "[GetGlobalList('at_artifacts_window_artifacts')]"
+						datamodel = "[GetPlayer.MakeScope.GetList('at_artifacts_window_artifacts')]"
 						layoutpolicy_horizontal = expanding
 						visible = "[GetScriptedGui('at_artifacts_window_artifacts_gui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 
@@ -71,7 +71,7 @@ window = {
 
 				blockoverride "scrollbox_empty" {
 					layoutpolicy_vertical = expanding
-					visible = "[IsDataModelEmpty(GetGlobalList('at_artifacts_window_artifacts'))]"
+					visible = "[IsDataModelEmpty(GetPlayer.MakeScope.GetList('at_artifacts_window_artifacts'))]"
 					text = "AT_NO_ARTIFACTS_FOUND"
 				}
 			}
@@ -99,7 +99,7 @@ window = {
 				}
 
 				blockoverride "selected_filter_option_text" {
-					text = "[Localize(Concatenate('at', GetGlobalVariable('at_artifacts_window_selected_rarity_filter_option').GetFlagName))]"
+					text = "[Localize(Concatenate('at', GetPlayer.MakeScope.Var('at_artifacts_window_selected_rarity_filter_option').GetFlagName))]"
 				}
 			}
 
@@ -114,7 +114,7 @@ window = {
 				}
 
 				blockoverride "selected_filter_option_text" {
-					text = "[Localize(Concatenate('at', GetGlobalVariable('at_artifacts_window_selected_slot_type_filter_option').GetFlagName))]"
+					text = "[Localize(Concatenate('at', GetPlayer.MakeScope.Var('at_artifacts_window_selected_slot_type_filter_option').GetFlagName))]"
 				}
 			}
 
@@ -129,7 +129,7 @@ window = {
 				}
 
 				blockoverride "selected_filter_option_text" {
-					text = "[Localize(Concatenate('at', GetGlobalVariable('at_artifacts_window_selected_unique_filter_option').GetFlagName))]"
+					text = "[Localize(Concatenate('at', GetPlayer.MakeScope.Var('at_artifacts_window_selected_unique_filter_option').GetFlagName))]"
 				}
 			}
 
@@ -144,7 +144,7 @@ window = {
 				}
 
 				blockoverride "selected_filter_option_text" {
-					text = "[Localize(Concatenate('at', GetGlobalVariable('at_artifacts_window_selected_modifier_filter_option').GetFlagName))]"
+					text = "[Localize(Concatenate('at', GetPlayer.MakeScope.Var('at_artifacts_window_selected_modifier_filter_option').GetFlagName))]"
 				}
 			}
 
@@ -159,7 +159,7 @@ window = {
 				}
 
 				blockoverride "selected_filter_option_text" {
-					text = "[Localize(Concatenate('at', GetGlobalVariable('at_artifacts_window_selected_equipped_filter_option').GetFlagName))]"
+					text = "[Localize(Concatenate('at', GetPlayer.MakeScope.Var('at_artifacts_window_selected_equipped_filter_option').GetFlagName))]"
 				}
 			}
 
@@ -174,7 +174,7 @@ window = {
 				}
 
 				blockoverride "selected_filter_option_text" {
-					text = "[Localize(Concatenate('at', GetGlobalVariable('at_artifacts_window_selected_owned_filter_option').GetFlagName))]"
+					text = "[Localize(Concatenate('at', GetPlayer.MakeScope.Var('at_artifacts_window_selected_owned_filter_option').GetFlagName))]"
 				}
 			}
 
@@ -189,7 +189,7 @@ window = {
 				}
 
 				blockoverride "selected_filter_option_text" {
-					text = "[Localize(Concatenate('at', GetGlobalVariable('at_artifacts_window_selected_claimed_filter_option').GetFlagName))]"
+					text = "[Localize(Concatenate('at', GetPlayer.MakeScope.Var('at_artifacts_window_selected_claimed_filter_option').GetFlagName))]"
 				}
 			}
 
@@ -204,7 +204,7 @@ window = {
 				}
 
 				blockoverride "selected_filter_option_text" {
-					text = "[Localize(Concatenate('at', GetGlobalVariable('at_artifacts_window_selected_equippable_filter_option').GetFlagName))]"
+					text = "[Localize(Concatenate('at', GetPlayer.MakeScope.Var('at_artifacts_window_selected_equippable_filter_option').GetFlagName))]"
 				}
 			}
 
@@ -219,7 +219,7 @@ window = {
 				}
 
 				blockoverride "selected_filter_option_text" {
-					text = "[Localize(Concatenate('at', GetGlobalVariable('at_artifacts_window_selected_unwanted_filter_option').GetFlagName))]"
+					text = "[Localize(Concatenate('at', GetPlayer.MakeScope.Var('at_artifacts_window_selected_unwanted_filter_option').GetFlagName))]"
 				}
 			}
 
@@ -234,7 +234,7 @@ window = {
 				}
 
 				blockoverride "selected_filter_option_text" {
-					text = "[Localize(Concatenate('at', GetGlobalVariable('at_artifacts_window_selected_trash_filter_option').GetFlagName))]"
+					text = "[Localize(Concatenate('at', GetPlayer.MakeScope.Var('at_artifacts_window_selected_trash_filter_option').GetFlagName))]"
 				}
 			}
 
@@ -249,7 +249,7 @@ window = {
 				}
 
 				blockoverride "selected_filter_option_text" {
-					text = "[Localize(Concatenate('at', GetGlobalVariable('at_artifacts_window_selected_owner_filter_option').GetFlagName))]"
+					text = "[Localize(Concatenate('at', GetPlayer.MakeScope.Var('at_artifacts_window_selected_owner_filter_option').GetFlagName))]"
 				}
 			}
 
@@ -264,7 +264,7 @@ window = {
 				}
 
 				blockoverride "selected_filter_option_text" {
-					text = "[Localize(Concatenate('at', GetGlobalVariable('at_artifacts_window_selected_owner_valid_buyer_or_seller_filter_option').GetFlagName))]"
+					text = "[Localize(Concatenate('at', GetPlayer.MakeScope.Var('at_artifacts_window_selected_owner_valid_buyer_or_seller_filter_option').GetFlagName))]"
 				}
 			}
 		}
@@ -314,7 +314,7 @@ types at_types_artifacts_window {
 
 			blockoverride "dropdown_active_item_properties" {
 				name = "selected_artifact_sort_option"
-				text = "[Localize(Concatenate('at', GetGlobalVariable('at_artifacts_window_selected_artifact_sort_option').GetFlagName))]"
+				text = "[Localize(Concatenate('at', GetPlayer.MakeScope.Var('at_artifacts_window_selected_artifact_sort_option').GetFlagName))]"
 				state = {
 					name = "select_artifact_sort_option"
 					on_start = "[ScriptedGui.Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('sort_option', MakeScopeFlag(Scope.GetFlagName)).AddScope('flavor', MakeScopeFlag(GetVariableSystem.Get('at_artifacts_window_flavor'))).End)]"
@@ -337,7 +337,7 @@ types at_types_artifacts_window {
 				size = { 25 25 }
 				texture = "gfx/interface/icons/flat_icons/sort_icon.dds"
 				framesize = { 66 66 }
-				frame = "[BoolTo1And2(GetGlobalVariable('at_artifacts_window_is_artifact_sort_order_ascending').IsSet)]"
+				frame = "[BoolTo1And2(GetPlayer.MakeScope.Var('at_artifacts_window_is_artifact_sort_order_ascending').IsSet)]"
 				alwaystransparent = yes
 
 				blockoverride "button_frames" {
@@ -376,7 +376,7 @@ types at_types_artifacts_window {
 
 			blockoverride "dropdown_active_item_properties" {
 				name = "selected_max_count_option"
-				text = "[Localize(Concatenate('at', GetGlobalVariable('at_artifacts_window_selected_max_count_option').GetFlagName))]"
+				text = "[Localize(Concatenate('at', GetPlayer.MakeScope.Var('at_artifacts_window_selected_max_count_option').GetFlagName))]"
 				state = {
 					name = "select_max_count_option"
 					on_start = "[ScriptedGui.Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('max_count_option', MakeScopeFlag(Scope.GetFlagName)).AddScope('flavor', MakeScopeFlag(GetVariableSystem.Get('at_artifacts_window_flavor'))).End)]"
