@@ -94,17 +94,17 @@ at_sell_artifact_interaction = {
 			any_character_artifact = {
 				this = scope:target
 			}
-		}
-		trigger_if = {
-			limit = {
-				scope:actor = { is_ai = no }
-			}
-			scope:target = { is_equipped = no }
 			trigger_if = {
 				limit = {
-					has_global_variable = at_artifacts_window_selected_artifact
+					is_ai = no
 				}
-				global_var:at_artifacts_window_selected_artifact = scope:target
+				scope:target = { is_equipped = no }
+				trigger_if = {
+					limit = {
+						has_variable = at_artifacts_window_selected_artifact
+					}
+					var:at_artifacts_window_selected_artifact = scope:target
+				}
 			}
 		}
 	}

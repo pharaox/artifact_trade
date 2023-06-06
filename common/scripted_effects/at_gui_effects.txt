@@ -1,20 +1,20 @@
 ﻿at_artifacts_window_get_artifacts_effect = {
 	if = {
 		limit = {
-			NOT = { has_global_variable = at_artifacts_window_is_getting_artifacts }
+			NOT = { has_variable = at_artifacts_window_is_getting_artifacts }
 		}
-		set_global_variable = at_artifacts_window_is_getting_artifacts
+		set_variable = at_artifacts_window_is_getting_artifacts
 
 		at_artifacts_window_get_all_artifacts_effect = yes
 		at_artifacts_window_get_filtered_artifacts_effect = yes
 		at_artifacts_window_get_sorted_artifacts_effect = yes
 
-		remove_global_variable = at_artifacts_window_is_getting_artifacts
+		remove_variable = at_artifacts_window_is_getting_artifacts
 	}
 }
 
 at_artifacts_window_get_all_artifacts_effect = {
-	clear_global_variable_list = at_artifacts_window_all_artifacts
+	clear_variable_list = at_artifacts_window_all_artifacts
 	if = {
 		limit = { scope:flavor = flag:sell }
 		at_get_valid_buyers_or_sellers_effect = { LIST = valid_buyers }
@@ -33,9 +33,11 @@ at_artifacts_window_get_all_artifacts_effect = {
 					at_sell_artifact_ai_accept_value > 0
 				}
 			}
-			add_to_global_variable_list = {
-				name = at_artifacts_window_all_artifacts
-				target = this
+			ROOT = {
+				add_to_variable_list = {
+					name = at_artifacts_window_all_artifacts
+					target = PREV
+				}
 			}
 		}
 	}
@@ -57,59 +59,63 @@ at_artifacts_window_get_all_artifacts_effect = {
 				limit = {
 					at_buy_artifact_ai_accept_value > 0
 				}
-				add_to_global_variable_list = {
-					name = at_artifacts_window_all_artifacts
-					target = this
+				ROOT = {
+					add_to_variable_list = {
+						name = at_artifacts_window_all_artifacts
+						target = PREV
+					}
 				}
 			}
 		}
 	}
 	else = {
 		every_artifact = {
-			add_to_global_variable_list = {
-				name = at_artifacts_window_all_artifacts
-				target = this
+			ROOT = {
+				add_to_variable_list = {
+					name = at_artifacts_window_all_artifacts
+					target = PREV
+				}
 			}
 		}
 	}
 }
 
 at_artifacts_window_get_filtered_artifacts_effect = {
-	clear_global_variable_list = at_artifacts_window_filtered_artifacts
-	every_in_global_list = {
+	clear_variable_list = at_artifacts_window_filtered_artifacts
+	every_in_list = {
 		variable = at_artifacts_window_all_artifacts
 		limit = {
 			# Filter by rarity
 			trigger_if = {
-				limit = { global_var:at_artifacts_window_selected_rarity_filter_option = flag:_common }
+				limit = { ROOT.var:at_artifacts_window_selected_rarity_filter_option = flag:_common }
 				rarity = common
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_rarity_filter_option = flag:_masterwork }
+				limit = { ROOT.var:at_artifacts_window_selected_rarity_filter_option = flag:_masterwork }
 				rarity = masterwork
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_rarity_filter_option = flag:_famed }
+				limit = { ROOT.var:at_artifacts_window_selected_rarity_filter_option = flag:_famed }
 				rarity = famed
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_rarity_filter_option = flag:_illustrious }
+				limit = { ROOT.var:at_artifacts_window_selected_rarity_filter_option = flag:_illustrious }
 				rarity = illustrious
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_rarity_filter_option = flag:_not_common }
+				limit = { ROOT.var:at_artifacts_window_selected_rarity_filter_option = flag:_not_common }
 				NOT = { rarity = common }
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_rarity_filter_option = flag:_not_masterwork }
+				limit = { ROOT.var:at_artifacts_window_selected_rarity_filter_option = flag:_not_masterwork }
 				NOT = { rarity = masterwork }
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_rarity_filter_option = flag:_not_famed }
+				limit = { ROOT.var:at_artifacts_window_selected_rarity_filter_option = flag:_not_famed }
 				NOT = { rarity = famed }
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_rarity_filter_option = flag:_not_illustrious }
+				limit = { ROOT.var:at_artifacts_window_selected_rarity_filter_option = flag:_not_illustrious }
 				NOT = { rarity = illustrious }
 			}
 			trigger_else = {
@@ -118,99 +124,99 @@ at_artifacts_window_get_filtered_artifacts_effect = {
 
 			# Filter by slot type
 			trigger_if = {
-				limit = { global_var:at_artifacts_window_selected_slot_type_filter_option = flag:_inventory }
+				limit = { ROOT.var:at_artifacts_window_selected_slot_type_filter_option = flag:_inventory }
 				category = inventory
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_slot_type_filter_option = flag:_court }
+				limit = { ROOT.var:at_artifacts_window_selected_slot_type_filter_option = flag:_court }
 				category = court
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_slot_type_filter_option = flag:_helmet }
+				limit = { ROOT.var:at_artifacts_window_selected_slot_type_filter_option = flag:_helmet }
 				artifact_slot_type = helmet
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_slot_type_filter_option = flag:_regalia }
+				limit = { ROOT.var:at_artifacts_window_selected_slot_type_filter_option = flag:_regalia }
 				artifact_slot_type = regalia
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_slot_type_filter_option = flag:_armor }
+				limit = { ROOT.var:at_artifacts_window_selected_slot_type_filter_option = flag:_armor }
 				artifact_slot_type = armor
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_slot_type_filter_option = flag:_primary_armament }
+				limit = { ROOT.var:at_artifacts_window_selected_slot_type_filter_option = flag:_primary_armament }
 				artifact_slot_type = primary_armament
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_slot_type_filter_option = flag:_miscellaneous }
+				limit = { ROOT.var:at_artifacts_window_selected_slot_type_filter_option = flag:_miscellaneous }
 				artifact_slot_type = miscellaneous
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_slot_type_filter_option = flag:_sculpture }
+				limit = { ROOT.var:at_artifacts_window_selected_slot_type_filter_option = flag:_sculpture }
 				artifact_slot_type = sculpture
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_slot_type_filter_option = flag:_pedestal }
+				limit = { ROOT.var:at_artifacts_window_selected_slot_type_filter_option = flag:_pedestal }
 				artifact_slot_type = pedestal
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_slot_type_filter_option = flag:_wall_big }
+				limit = { ROOT.var:at_artifacts_window_selected_slot_type_filter_option = flag:_wall_big }
 				artifact_slot_type = wall_big
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_slot_type_filter_option = flag:_wall_small }
+				limit = { ROOT.var:at_artifacts_window_selected_slot_type_filter_option = flag:_wall_small }
 				artifact_slot_type = wall_small
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_slot_type_filter_option = flag:_throne }
+				limit = { ROOT.var:at_artifacts_window_selected_slot_type_filter_option = flag:_throne }
 				artifact_slot_type = throne
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_slot_type_filter_option = flag:_book }
+				limit = { ROOT.var:at_artifacts_window_selected_slot_type_filter_option = flag:_book }
 				artifact_slot_type = book
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_slot_type_filter_option = flag:_not_helmet }
+				limit = { ROOT.var:at_artifacts_window_selected_slot_type_filter_option = flag:_not_helmet }
 				NOT = { artifact_slot_type = helmet }
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_slot_type_filter_option = flag:_not_regalia }
+				limit = { ROOT.var:at_artifacts_window_selected_slot_type_filter_option = flag:_not_regalia }
 				NOT = { artifact_slot_type = regalia }
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_slot_type_filter_option = flag:_not_armor }
+				limit = { ROOT.var:at_artifacts_window_selected_slot_type_filter_option = flag:_not_armor }
 				NOT = { artifact_slot_type = armor }
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_slot_type_filter_option = flag:_not_primary_armament }
+				limit = { ROOT.var:at_artifacts_window_selected_slot_type_filter_option = flag:_not_primary_armament }
 				NOT = { artifact_slot_type = primary_armament }
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_slot_type_filter_option = flag:_not_miscellaneous }
+				limit = { ROOT.var:at_artifacts_window_selected_slot_type_filter_option = flag:_not_miscellaneous }
 				NOT = { artifact_slot_type = miscellaneous }
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_slot_type_filter_option = flag:_not_sculpture }
+				limit = { ROOT.var:at_artifacts_window_selected_slot_type_filter_option = flag:_not_sculpture }
 				NOT = { artifact_slot_type = sculpture }
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_slot_type_filter_option = flag:_not_pedestal }
+				limit = { ROOT.var:at_artifacts_window_selected_slot_type_filter_option = flag:_not_pedestal }
 				NOT = { artifact_slot_type = pedestal }
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_slot_type_filter_option = flag:_not_wall_big }
+				limit = { ROOT.var:at_artifacts_window_selected_slot_type_filter_option = flag:_not_wall_big }
 				NOT = { artifact_slot_type = wall_big }
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_slot_type_filter_option = flag:_not_wall_small }
+				limit = { ROOT.var:at_artifacts_window_selected_slot_type_filter_option = flag:_not_wall_small }
 				NOT = { artifact_slot_type = wall_small }
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_slot_type_filter_option = flag:_not_throne }
+				limit = { ROOT.var:at_artifacts_window_selected_slot_type_filter_option = flag:_not_throne }
 				NOT = { artifact_slot_type = throne }
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_slot_type_filter_option = flag:_not_book }
+				limit = { ROOT.var:at_artifacts_window_selected_slot_type_filter_option = flag:_not_book }
 				NOT = { artifact_slot_type = book }
 			}
 			trigger_else = {
@@ -219,11 +225,11 @@ at_artifacts_window_get_filtered_artifacts_effect = {
 
 			# Filter by unique
 			trigger_if = {
-				limit = { global_var:at_artifacts_window_selected_unique_filter_option = flag:_unique }
+				limit = { ROOT.var:at_artifacts_window_selected_unique_filter_option = flag:_unique }
 				at_is_unique_artifact_trigger = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_unique_filter_option = flag:_not_unique }
+				limit = { ROOT.var:at_artifacts_window_selected_unique_filter_option = flag:_not_unique }
 				is_unique = no
 			}
 			trigger_else = {
@@ -233,282 +239,282 @@ at_artifacts_window_get_filtered_artifacts_effect = {
 			# Filter by modifier
 			# Prestige, piety, court grandeur, renown, tyranny, dread, fertility, health, stress
 			trigger_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_prestige }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_prestige }
 				at_has_artifact_prestige_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_piety }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_piety }
 				at_has_artifact_piety_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_short_reign_duration }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_short_reign_duration }
 				at_has_artifact_short_reign_duration_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_court_grandeur_baseline }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_court_grandeur_baseline }
 				at_has_artifact_court_grandeur_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_dynasty_prestige }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_dynasty_prestige }
 				at_has_artifact_dynasty_prestige_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_tyranny }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_tyranny }
 				at_has_artifact_tyranny_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_dread }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_dread }
 				at_has_artifact_dread_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_fertility }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_fertility }
 				at_has_artifact_fertility_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_health }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_health }
 				at_has_artifact_health_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_stress_gain }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_stress_gain }
 				at_has_artifact_stress_gain_modifier = yes
 			}
 			# Opinion
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_general_opinion }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_general_opinion }
 				at_has_artifact_general_opinion_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_vassal_opinion }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_vassal_opinion }
 				at_has_artifact_vassal_opinion_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_vassal_stance_vassal_opinion }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_vassal_stance_vassal_opinion }
 				at_has_artifact_vassal_stance_vassal_opinion_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_independent_ruler_opinion }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_independent_ruler_opinion }
 				at_has_artifact_independent_ruler_opinion_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_courtier_and_guest_opinion }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_courtier_and_guest_opinion }
 				at_has_artifact_courtier_and_guest_opinion_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_spouse_opinion }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_spouse_opinion }
 				at_has_artifact_spouse_opinion_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_dynasty_opinion }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_dynasty_opinion }
 				at_has_artifact_dynasty_opinion_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_attraction_opinion }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_attraction_opinion }
 				at_has_artifact_attraction_opinion_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_child_opinion }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_child_opinion }
 				at_has_artifact_child_opinion_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_clergy_opinion }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_clergy_opinion }
 				at_has_artifact_clergy_opinion_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_same_faith_opinion }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_same_faith_opinion }
 				at_has_artifact_same_faith_opinion_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_different_faith_opinion }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_different_faith_opinion }
 				at_has_artifact_different_faith_opinion_modifier = yes
 			}
 			# Domain, vassals, income, buildings, development
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_domain_limit }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_domain_limit }
 				at_has_artifact_domain_limit_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_vassal_limit }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_vassal_limit }
 				at_has_artifact_vassal_limit_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_monthly_income }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_monthly_income }
 				at_has_artifact_monthly_income_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_men_at_arms_maintenance }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_men_at_arms_maintenance }
 				at_has_artifact_men_at_arms_maintenance_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_mercenary_hire_cost }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_mercenary_hire_cost }
 				at_has_artifact_mercenary_hire_cost_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_domain_tax }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_domain_tax }
 				at_has_artifact_domain_tax_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_vassal_tax_contribution }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_vassal_tax_contribution }
 				at_has_artifact_vassal_tax_contribution_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_vassal_stance_tax_contribution }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_vassal_stance_tax_contribution }
 				at_has_artifact_vassal_stance_tax_contribution_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_vassal_stance_levy_contribution }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_vassal_stance_levy_contribution }
 				at_has_artifact_vassal_stance_levy_contribution_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_development_growth }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_development_growth }
 				at_has_artifact_development_growth_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_build_gold_cost }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_build_gold_cost }
 				at_has_artifact_build_gold_cost_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_build_speed }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_build_speed }
 				at_has_artifact_build_speed_modifier = yes
 			}
 			# Scheme
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_scheme_success_chance }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_scheme_success_chance }
 				at_has_artifact_scheme_success_chance_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_scheme_secrecy }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_scheme_secrecy }
 				at_has_artifact_scheme_secrecy_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_scheme_power }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_scheme_power }
 				at_has_artifact_scheme_power_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_seduce_scheme_power }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_seduce_scheme_power }
 				at_has_artifact_seduce_scheme_power_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_courting_scheme_power }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_courting_scheme_power }
 				at_has_artifact_courting_scheme_power_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_befriend_scheme_power }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_befriend_scheme_power }
 				at_has_artifact_befriend_scheme_power_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_learn_language_scheme_power }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_learn_language_scheme_power }
 				at_has_artifact_learn_language_scheme_power_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_hostile_scheme_resistance }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_hostile_scheme_resistance }
 				at_has_artifact_hostile_scheme_resistance_modifier = yes
 			}
 			# Lifestyle XP
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_monthly_diplomacy_lifestyle_xp_gain }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_monthly_diplomacy_lifestyle_xp_gain }
 				at_has_artifact_monthly_diplomacy_lifestyle_xp_gain_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_monthly_martial_lifestyle_xp_gain }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_monthly_martial_lifestyle_xp_gain }
 				at_has_artifact_monthly_martial_lifestyle_xp_gain_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_monthly_stewardship_lifestyle_xp_gain }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_monthly_stewardship_lifestyle_xp_gain }
 				at_has_artifact_monthly_stewardship_lifestyle_xp_gain_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_monthly_intrigue_lifestyle_xp_gain }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_monthly_intrigue_lifestyle_xp_gain }
 				at_has_artifact_monthly_intrigue_lifestyle_xp_gain_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_monthly_learning_lifestyle_xp_gain }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_monthly_learning_lifestyle_xp_gain }
 				at_has_artifact_monthly_learning_lifestyle_xp_gain_modifier = yes
 			}
 			# Skills
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_diplomacy }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_diplomacy }
 				at_has_artifact_diplomacy_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_martial }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_martial }
 				at_has_artifact_martial_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_stewardship }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_stewardship }
 				at_has_artifact_stewardship_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_intrigue }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_intrigue }
 				at_has_artifact_intrigue_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_learning }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_learning }
 				at_has_artifact_learning_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_stewardship_per_stress_level }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_stewardship_per_stress_level }
 				at_has_artifact_stewardship_per_stress_level_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_intrigue_per_stress_level }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_intrigue_per_stress_level }
 				at_has_artifact_intrigue_per_stress_level_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_intrigue_per_prestige_level }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_intrigue_per_prestige_level }
 				at_has_artifact_intrigue_per_prestige_level_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_learning_per_stress_level }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_learning_per_stress_level }
 				at_has_artifact_learning_per_stress_level_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_learning_per_prestige_level }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_learning_per_prestige_level }
 				at_has_artifact_learning_per_prestige_level_modifier = yes
 			}
 			# Prowess
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_prowess }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_prowess }
 				at_has_artifact_prowess_modifier = yes
 			}
 			# Combat
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_knights }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_knights }
 				at_has_artifact_knights_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_levy_reinforcement_rate }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_levy_reinforcement_rate }
 				at_has_artifact_levy_reinforcement_rate_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_raid_speed }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_raid_speed }
 				at_has_artifact_raid_speed_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_hard_casualty_modifier }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_hard_casualty_modifier }
 				at_has_artifact_hard_casualty_modifier_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_toughness }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_toughness }
 				at_has_artifact_toughness_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_screen }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_screen }
 				at_has_artifact_screen_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_advantage }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_advantage }
 				at_has_artifact_advantage_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_terrain_advantage }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_terrain_advantage }
 				at_has_artifact_terrain_advantage_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_retreat_pursuit }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_retreat_pursuit }
 				at_has_artifact_retreat_pursuit_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_modifier_filter_option = flag:_naval_speed }
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_naval_speed }
 				at_has_artifact_naval_speed_modifier = yes
 			}
 			trigger_else = {
@@ -517,11 +523,11 @@ at_artifacts_window_get_filtered_artifacts_effect = {
 
 			# Filter by equipped
 			trigger_if = {
-				limit = { global_var:at_artifacts_window_selected_equipped_filter_option = flag:_equipped }
+				limit = { ROOT.var:at_artifacts_window_selected_equipped_filter_option = flag:_equipped }
 				is_equipped = yes
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_equipped_filter_option = flag:_not_equipped }
+				limit = { ROOT.var:at_artifacts_window_selected_equipped_filter_option = flag:_not_equipped }
 				is_equipped = no
 			}
 			trigger_else = {
@@ -530,11 +536,11 @@ at_artifacts_window_get_filtered_artifacts_effect = {
 
 			# Filter by owned
 			trigger_if = {
-				limit = { global_var:at_artifacts_window_selected_owned_filter_option = flag:_owned_by_you }
+				limit = { ROOT.var:at_artifacts_window_selected_owned_filter_option = flag:_owned_by_you }
 				artifact_owner = ROOT
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_owned_filter_option = flag:_not_owned_by_you }
+				limit = { ROOT.var:at_artifacts_window_selected_owned_filter_option = flag:_not_owned_by_you }
 				NOT = { artifact_owner = ROOT }
 			}
 			trigger_else = {
@@ -543,18 +549,18 @@ at_artifacts_window_get_filtered_artifacts_effect = {
 
 			# Filter by claimed
 			trigger_if = {
-				limit = { global_var:at_artifacts_window_selected_claimed_filter_option = flag:_claimed_by_you }
+				limit = { ROOT.var:at_artifacts_window_selected_claimed_filter_option = flag:_claimed_by_you }
 				can_be_claimed_by = ROOT
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_claimed_filter_option = flag:_claimed_by_others }
+				limit = { ROOT.var:at_artifacts_window_selected_claimed_filter_option = flag:_claimed_by_others }
 				any_artifact_claimant = {
 					exists = this
 					NOT = { this = ROOT }
 				}
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_claimed_filter_option = flag:_not_claimed }
+				limit = { ROOT.var:at_artifacts_window_selected_claimed_filter_option = flag:_not_claimed }
 				NOT = {
 					any_artifact_claimant = {
 						exists = this
@@ -567,13 +573,13 @@ at_artifacts_window_get_filtered_artifacts_effect = {
 
 			# Filter by equippable
 			trigger_if = {
-				limit = { global_var:at_artifacts_window_selected_equippable_filter_option = flag:_equippable_by_you }
+				limit = { ROOT.var:at_artifacts_window_selected_equippable_filter_option = flag:_equippable_by_you }
 				ROOT = {
 					at_can_equip_and_benefit_from_artifact_trigger = { ARTIFACT = PREV }
 				}
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_equippable_filter_option = flag:_not_equippable_by_you }
+				limit = { ROOT.var:at_artifacts_window_selected_equippable_filter_option = flag:_not_equippable_by_you }
 				ROOT = {
 					NOT = { at_can_equip_and_benefit_from_artifact_trigger = { ARTIFACT = PREV } }
 				}
@@ -584,14 +590,14 @@ at_artifacts_window_get_filtered_artifacts_effect = {
 
 			# Filter by unwanted
 			trigger_if = {
-				limit = { global_var:at_artifacts_window_selected_unwanted_filter_option = flag:_unwanted }
+				limit = { ROOT.var:at_artifacts_window_selected_unwanted_filter_option = flag:_unwanted }
 				OR = {
 					has_variable = unwanted_artifact
 					has_variable = cursed_artifact
 				}
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_unwanted_filter_option = flag:_not_unwanted }
+				limit = { ROOT.var:at_artifacts_window_selected_unwanted_filter_option = flag:_not_unwanted }
 				NOR = {
 					has_variable = unwanted_artifact
 					has_variable = cursed_artifact
@@ -603,11 +609,11 @@ at_artifacts_window_get_filtered_artifacts_effect = {
 
 			# Filter by trash
 			trigger_if = {
-				limit = { global_var:at_artifacts_window_selected_trash_filter_option = flag:_trash }
+				limit = { ROOT.var:at_artifacts_window_selected_trash_filter_option = flag:_trash }
 				has_variable = ai_to_ai_destroy_in_sieges
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_trash_filter_option = flag:_not_trash }
+				limit = { ROOT.var:at_artifacts_window_selected_trash_filter_option = flag:_not_trash }
 				NOT = { has_variable = ai_to_ai_destroy_in_sieges }
 			}
 			trigger_else = {
@@ -616,21 +622,21 @@ at_artifacts_window_get_filtered_artifacts_effect = {
 
 			# Filter by owner
 			trigger_if = {
-				limit = { global_var:at_artifacts_window_selected_owner_filter_option = flag:_ruler_with_rc }
+				limit = { ROOT.var:at_artifacts_window_selected_owner_filter_option = flag:_ruler_with_rc }
 				artifact_owner = {
 					is_ruler = yes
 					has_royal_court = yes
 				}
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_owner_filter_option = flag:_ruler_without_rc }
+				limit = { ROOT.var:at_artifacts_window_selected_owner_filter_option = flag:_ruler_without_rc }
 				artifact_owner = {
 					is_ruler = yes
 					has_royal_court = no
 				}
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_owner_filter_option = flag:_not_ruler }
+				limit = { ROOT.var:at_artifacts_window_selected_owner_filter_option = flag:_not_ruler }
 				artifact_owner = {
 					is_ruler = no
 				}
@@ -641,13 +647,13 @@ at_artifacts_window_get_filtered_artifacts_effect = {
 
 			# Filter by owner valid buyer or seller
 			trigger_if = {
-				limit = { global_var:at_artifacts_window_selected_owner_valid_buyer_or_seller_filter_option = flag:_valid_buyer_or_seller }
+				limit = { ROOT.var:at_artifacts_window_selected_owner_valid_buyer_or_seller_filter_option = flag:_valid_buyer_or_seller }
 				artifact_owner = {
 					at_valid_buyer_or_seller_trigger = { PARTY = ROOT }
 				}
 			}
 			trigger_else_if = {
-				limit = { global_var:at_artifacts_window_selected_owner_valid_buyer_or_seller_filter_option = flag:_not_valid_buyer_or_seller }
+				limit = { ROOT.var:at_artifacts_window_selected_owner_valid_buyer_or_seller_filter_option = flag:_not_valid_buyer_or_seller }
 				artifact_owner = {
 					NOT = { at_valid_buyer_or_seller_trigger = { PARTY = ROOT } }
 				}
@@ -657,56 +663,60 @@ at_artifacts_window_get_filtered_artifacts_effect = {
 			}
 		}
 
-		add_to_global_variable_list = {
-			name = at_artifacts_window_filtered_artifacts
-			target = this
+		ROOT = {
+			add_to_variable_list = {
+				name = at_artifacts_window_filtered_artifacts
+				target = PREV
+			}
 		}
 	}
 }
 
 at_artifacts_window_get_sorted_artifacts_effect = {
-	clear_global_variable_list = at_artifacts_window_artifacts
-	ordered_in_global_list = {
+	clear_variable_list = at_artifacts_window_artifacts
+	ordered_in_list = {
 		variable = at_artifacts_window_filtered_artifacts
 		order_by = {
 			# Apply sort option
 			if = {
-				limit = { global_var:at_artifacts_window_selected_artifact_sort_option = flag:_rarity }
+				limit = { ROOT.var:at_artifacts_window_selected_artifact_sort_option = flag:_rarity }
 				value = artifact_rarity
 			}
 			else_if = {
-				limit = { global_var:at_artifacts_window_selected_artifact_sort_option = flag:_durability }
+				limit = { ROOT.var:at_artifacts_window_selected_artifact_sort_option = flag:_durability }
 				value = artifact_durability
 			}
 			else_if = {
-				limit = { global_var:at_artifacts_window_selected_artifact_sort_option = flag:_type }
+				limit = { ROOT.var:at_artifacts_window_selected_artifact_sort_option = flag:_type }
 				value = at_artifact_type_value
 			}
 			else_if = {
-				limit = { global_var:at_artifacts_window_selected_artifact_sort_option = flag:_price }
+				limit = { ROOT.var:at_artifacts_window_selected_artifact_sort_option = flag:_price }
 				value = at_artifact_base_price_value
 			}
 
 			# Apply sort order
 			if = {
 				limit = {
-					has_global_variable = at_artifacts_window_is_artifact_sort_order_ascending
+					ROOT = { has_variable = at_artifacts_window_is_artifact_sort_order_ascending }
 				}
 				multiply = -1
 			}
 		}
-		max = at_artifacts_window_max_count_value
+		max = ROOT.at_artifacts_window_max_count_value
 		check_range_bounds = no
 
-		add_to_global_variable_list = {
-			name = at_artifacts_window_artifacts
-			target = this
+		ROOT = {
+			add_to_variable_list = {
+				name = at_artifacts_window_artifacts
+				target = PREV
+			}
 		}
 	}
 }
 
 at_artifacts_window_clear_artifacts_effect = {
-	clear_global_variable_list = at_artifacts_window_all_artifacts
-	clear_global_variable_list = at_artifacts_window_filtered_artifacts
-	clear_global_variable_list = at_artifacts_window_artifacts
+	clear_variable_list = at_artifacts_window_all_artifacts
+	clear_variable_list = at_artifacts_window_filtered_artifacts
+	clear_variable_list = at_artifacts_window_artifacts
 }

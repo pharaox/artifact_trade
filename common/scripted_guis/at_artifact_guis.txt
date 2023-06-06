@@ -31,9 +31,9 @@
 
 		if = {
 			limit = {
-				NOT = { exists = global_var:at_artifacts_window_selected_artifact_sort_option }
+				NOT = { has_variable = at_artifacts_window_selected_artifact_sort_option }
 			}
-			set_global_variable = {
+			set_variable = {
 				name = at_artifacts_window_selected_artifact_sort_option
 				value = flag:_rarity
 			}
@@ -52,9 +52,9 @@
 
 		if = {
 			limit = {
-				NOT = { exists = global_var:at_artifacts_window_selected_max_count_option }
+				NOT = { has_variable = at_artifacts_window_selected_max_count_option }
 			}
-			set_global_variable = {
+			set_variable = {
 				name = at_artifacts_window_selected_max_count_option
 				value = flag:_100
 			}
@@ -73,9 +73,9 @@
 
 		if = {
 			limit = {
-				NOT = { exists = global_var:at_artifacts_window_selected_rarity_filter_option }
+				NOT = { has_variable = at_artifacts_window_selected_rarity_filter_option }
 			}
-			set_global_variable = {
+			set_variable = {
 				name = at_artifacts_window_selected_rarity_filter_option
 				value = flag:_all
 			}
@@ -110,9 +110,9 @@
 
 		if = {
 			limit = {
-				NOT = { exists = global_var:at_artifacts_window_selected_slot_type_filter_option }
+				NOT = { has_variable = at_artifacts_window_selected_slot_type_filter_option }
 			}
-			set_global_variable = {
+			set_variable = {
 				name = at_artifacts_window_selected_slot_type_filter_option
 				value = flag:_all
 			}
@@ -125,9 +125,9 @@
 
 		if = {
 			limit = {
-				NOT = { exists = global_var:at_artifacts_window_selected_unique_filter_option }
+				NOT = { has_variable = at_artifacts_window_selected_unique_filter_option }
 			}
-			set_global_variable = {
+			set_variable = {
 				name = at_artifacts_window_selected_unique_filter_option
 				value = flag:_all
 			}
@@ -214,9 +214,9 @@
 
 		if = {
 			limit = {
-				NOT = { exists = global_var:at_artifacts_window_selected_modifier_filter_option }
+				NOT = { has_variable = at_artifacts_window_selected_modifier_filter_option }
 			}
-			set_global_variable = {
+			set_variable = {
 				name = at_artifacts_window_selected_modifier_filter_option
 				value = flag:_all
 			}
@@ -229,9 +229,9 @@
 
 		if = {
 			limit = {
-				NOT = { exists = global_var:at_artifacts_window_selected_equipped_filter_option }
+				NOT = { has_variable = at_artifacts_window_selected_equipped_filter_option }
 			}
-			set_global_variable = {
+			set_variable = {
 				name = at_artifacts_window_selected_equipped_filter_option
 				value = flag:_all
 			}
@@ -244,9 +244,9 @@
 
 		if = {
 			limit = {
-				NOT = { exists = global_var:at_artifacts_window_selected_owned_filter_option }
+				NOT = { has_variable = at_artifacts_window_selected_owned_filter_option }
 			}
-			set_global_variable = {
+			set_variable = {
 				name = at_artifacts_window_selected_owned_filter_option
 				value = flag:_all
 			}
@@ -260,9 +260,9 @@
 
 		if = {
 			limit = {
-				NOT = { exists = global_var:at_artifacts_window_selected_claimed_filter_option }
+				NOT = { has_variable = at_artifacts_window_selected_claimed_filter_option }
 			}
-			set_global_variable = {
+			set_variable = {
 				name = at_artifacts_window_selected_claimed_filter_option
 				value = flag:_all
 			}
@@ -275,9 +275,9 @@
 
 		if = {
 			limit = {
-				NOT = { exists = global_var:at_artifacts_window_selected_equippable_filter_option }
+				NOT = { has_variable = at_artifacts_window_selected_equippable_filter_option }
 			}
-			set_global_variable = {
+			set_variable = {
 				name = at_artifacts_window_selected_equippable_filter_option
 				value = flag:_all
 			}
@@ -290,9 +290,9 @@
 
 		if = {
 			limit = {
-				NOT = { exists = global_var:at_artifacts_window_selected_unwanted_filter_option }
+				NOT = { has_variable = at_artifacts_window_selected_unwanted_filter_option }
 			}
-			set_global_variable = {
+			set_variable = {
 				name = at_artifacts_window_selected_unwanted_filter_option
 				value = flag:_all
 			}
@@ -305,9 +305,9 @@
 
 		if = {
 			limit = {
-				NOT = { exists = global_var:at_artifacts_window_selected_trash_filter_option }
+				NOT = { has_variable = at_artifacts_window_selected_trash_filter_option }
 			}
-			set_global_variable = {
+			set_variable = {
 				name = at_artifacts_window_selected_trash_filter_option
 				value = flag:_all
 			}
@@ -321,9 +321,9 @@
 
 		if = {
 			limit = {
-				NOT = { exists = global_var:at_artifacts_window_selected_owner_filter_option }
+				NOT = { has_variable = at_artifacts_window_selected_owner_filter_option }
 			}
-			set_global_variable = {
+			set_variable = {
 				name = at_artifacts_window_selected_owner_filter_option
 				value = flag:_all
 			}
@@ -336,9 +336,9 @@
 
 		if = {
 			limit = {
-				NOT = { exists = global_var:at_artifacts_window_selected_owner_valid_buyer_or_seller_filter_option }
+				NOT = { has_variable = at_artifacts_window_selected_owner_valid_buyer_or_seller_filter_option }
 			}
-			set_global_variable = {
+			set_variable = {
 				name = at_artifacts_window_selected_owner_valid_buyer_or_seller_filter_option
 				value = flag:_all
 			}
@@ -347,8 +347,8 @@
 		at_artifacts_window_get_artifacts_effect = yes
 
 		if = {
-			limit = { has_global_variable = at_artifacts_window_selected_artifact }
-			remove_global_variable = at_artifacts_window_selected_artifact
+			limit = { has_variable = at_artifacts_window_selected_artifact }
+			remove_variable = at_artifacts_window_selected_artifact
 		}
 	}
 }
@@ -360,7 +360,7 @@ at_artifacts_window_send_gui = {
 	effect = {
 		at_artifacts_window_clear_artifacts_effect = yes
 
-		set_global_variable = {
+		set_variable = {
 			name = at_artifacts_window_selected_artifact
 			value = scope:artifact
 			days = 1
@@ -379,9 +379,9 @@ at_artifacts_window_send_gui = {
 			open_interaction_window = {
 				interaction = at_buy_artifact_interaction
 				actor = ROOT
-				recipient = global_var:at_artifacts_window_selected_artifact.artifact_owner
+				recipient = var:at_artifacts_window_selected_artifact.artifact_owner
 			}
-			remove_global_variable = at_artifacts_window_selected_artifact
+			remove_variable = at_artifacts_window_selected_artifact
 		}
 	}
 }
@@ -393,8 +393,8 @@ at_artifacts_window_close_gui = {
 		at_artifacts_window_clear_artifacts_effect = yes
 
 		if = {
-			limit = { has_global_variable = at_artifacts_window_selected_artifact }
-			remove_global_variable = at_artifacts_window_selected_artifact
+			limit = { has_variable = at_artifacts_window_selected_artifact }
+			remove_variable = at_artifacts_window_selected_artifact
 		}
 	}
 }
@@ -404,7 +404,7 @@ at_artifacts_window_select_artifact_sort_option_gui = {
 	saved_scopes = { sort_option }
 
 	effect = {
-		set_global_variable = {
+		set_variable = {
 			name = at_artifacts_window_selected_artifact_sort_option
 			value = scope:sort_option
 		}
@@ -418,11 +418,11 @@ at_artifacts_window_toggle_artifact_sort_order_gui = {
 
 	effect = {
 		if = {
-			limit = { has_global_variable = at_artifacts_window_is_artifact_sort_order_ascending }
-			remove_global_variable = at_artifacts_window_is_artifact_sort_order_ascending
+			limit = { has_variable = at_artifacts_window_is_artifact_sort_order_ascending }
+			remove_variable = at_artifacts_window_is_artifact_sort_order_ascending
 		}
 		else = {
-			set_global_variable = at_artifacts_window_is_artifact_sort_order_ascending
+			set_variable = at_artifacts_window_is_artifact_sort_order_ascending
 		}
 
 		at_artifacts_window_get_artifacts_effect = yes
@@ -434,7 +434,7 @@ at_artifacts_window_select_max_count_option_gui = {
 	saved_scopes = { max_count_option }
 
 	effect = {
-		set_global_variable = {
+		set_variable = {
 			name = at_artifacts_window_selected_max_count_option
 			value = scope:max_count_option
 		}
@@ -447,7 +447,7 @@ at_artifacts_window_artifacts_gui = {
 	scope = character
 
 	is_shown = {
-		NOT = { has_global_variable = at_artifacts_window_is_getting_artifacts }
+		NOT = { has_variable = at_artifacts_window_is_getting_artifacts }
 	}
 }
 
@@ -482,32 +482,32 @@ at_artifacts_window_has_non_default_filter_options_gui = {
 	is_shown = {
 		trigger_if = {
 			limit = {
-				has_global_variable = at_artifacts_window_selected_rarity_filter_option
-				has_global_variable = at_artifacts_window_selected_slot_type_filter_option
-				has_global_variable = at_artifacts_window_selected_unique_filter_option
-				has_global_variable = at_artifacts_window_selected_modifier_filter_option
-				has_global_variable = at_artifacts_window_selected_equipped_filter_option
-				has_global_variable = at_artifacts_window_selected_owned_filter_option
-				has_global_variable = at_artifacts_window_selected_claimed_filter_option
-				has_global_variable = at_artifacts_window_selected_equippable_filter_option
-				has_global_variable = at_artifacts_window_selected_unwanted_filter_option
-				has_global_variable = at_artifacts_window_selected_trash_filter_option
-				has_global_variable = at_artifacts_window_selected_owner_filter_option
-				has_global_variable = at_artifacts_window_selected_owner_valid_buyer_or_seller_filter_option
+				has_variable = at_artifacts_window_selected_rarity_filter_option
+				has_variable = at_artifacts_window_selected_slot_type_filter_option
+				has_variable = at_artifacts_window_selected_unique_filter_option
+				has_variable = at_artifacts_window_selected_modifier_filter_option
+				has_variable = at_artifacts_window_selected_equipped_filter_option
+				has_variable = at_artifacts_window_selected_owned_filter_option
+				has_variable = at_artifacts_window_selected_claimed_filter_option
+				has_variable = at_artifacts_window_selected_equippable_filter_option
+				has_variable = at_artifacts_window_selected_unwanted_filter_option
+				has_variable = at_artifacts_window_selected_trash_filter_option
+				has_variable = at_artifacts_window_selected_owner_filter_option
+				has_variable = at_artifacts_window_selected_owner_valid_buyer_or_seller_filter_option
 			}
 			NAND = {
-				global_var:at_artifacts_window_selected_rarity_filter_option = flag:_all
-				global_var:at_artifacts_window_selected_slot_type_filter_option = flag:_all
-				global_var:at_artifacts_window_selected_unique_filter_option = flag:_all
-				global_var:at_artifacts_window_selected_modifier_filter_option = flag:_all
-				global_var:at_artifacts_window_selected_equipped_filter_option = flag:_all
-				global_var:at_artifacts_window_selected_owned_filter_option = flag:_all
-				global_var:at_artifacts_window_selected_claimed_filter_option = flag:_all
-				global_var:at_artifacts_window_selected_equippable_filter_option = flag:_all
-				global_var:at_artifacts_window_selected_unwanted_filter_option = flag:_all
-				global_var:at_artifacts_window_selected_trash_filter_option = flag:_all
-				global_var:at_artifacts_window_selected_owner_filter_option = flag:_all
-				global_var:at_artifacts_window_selected_owner_valid_buyer_or_seller_filter_option = flag:_all
+				var:at_artifacts_window_selected_rarity_filter_option = flag:_all
+				var:at_artifacts_window_selected_slot_type_filter_option = flag:_all
+				var:at_artifacts_window_selected_unique_filter_option = flag:_all
+				var:at_artifacts_window_selected_modifier_filter_option = flag:_all
+				var:at_artifacts_window_selected_equipped_filter_option = flag:_all
+				var:at_artifacts_window_selected_owned_filter_option = flag:_all
+				var:at_artifacts_window_selected_claimed_filter_option = flag:_all
+				var:at_artifacts_window_selected_equippable_filter_option = flag:_all
+				var:at_artifacts_window_selected_unwanted_filter_option = flag:_all
+				var:at_artifacts_window_selected_trash_filter_option = flag:_all
+				var:at_artifacts_window_selected_owner_filter_option = flag:_all
+				var:at_artifacts_window_selected_owner_valid_buyer_or_seller_filter_option = flag:_all
 			}
 		}
 		trigger_else = {
@@ -521,7 +521,7 @@ at_artifacts_window_select_rarity_filter_option_gui = {
 	saved_scopes = { filter_option }
 
 	effect = {
-		set_global_variable = {
+		set_variable = {
 			name = at_artifacts_window_selected_rarity_filter_option
 			value = scope:filter_option
 		}
@@ -535,7 +535,7 @@ at_artifacts_window_select_slot_type_filter_option_gui = {
 	saved_scopes = { filter_option }
 
 	effect = {
-		set_global_variable = {
+		set_variable = {
 			name = at_artifacts_window_selected_slot_type_filter_option
 			value = scope:filter_option
 		}
@@ -549,7 +549,7 @@ at_artifacts_window_select_unique_filter_option_gui = {
 	saved_scopes = { filter_option }
 
 	effect = {
-		set_global_variable = {
+		set_variable = {
 			name = at_artifacts_window_selected_unique_filter_option
 			value = scope:filter_option
 		}
@@ -563,7 +563,7 @@ at_artifacts_window_select_modifier_filter_option_gui = {
 	saved_scopes = { filter_option }
 
 	effect = {
-		set_global_variable = {
+		set_variable = {
 			name = at_artifacts_window_selected_modifier_filter_option
 			value = scope:filter_option
 		}
@@ -577,7 +577,7 @@ at_artifacts_window_select_equipped_filter_option_gui = {
 	saved_scopes = { filter_option }
 
 	effect = {
-		set_global_variable = {
+		set_variable = {
 			name = at_artifacts_window_selected_equipped_filter_option
 			value = scope:filter_option
 		}
@@ -591,7 +591,7 @@ at_artifacts_window_select_owned_filter_option_gui = {
 	saved_scopes = { filter_option }
 
 	effect = {
-		set_global_variable = {
+		set_variable = {
 			name = at_artifacts_window_selected_owned_filter_option
 			value = scope:filter_option
 		}
@@ -605,7 +605,7 @@ at_artifacts_window_select_claimed_filter_option_gui = {
 	saved_scopes = { filter_option }
 
 	effect = {
-		set_global_variable = {
+		set_variable = {
 			name = at_artifacts_window_selected_claimed_filter_option
 			value = scope:filter_option
 		}
@@ -619,7 +619,7 @@ at_artifacts_window_select_equippable_filter_option_gui = {
 	saved_scopes = { filter_option }
 
 	effect = {
-		set_global_variable = {
+		set_variable = {
 			name = at_artifacts_window_selected_equippable_filter_option
 			value = scope:filter_option
 		}
@@ -633,7 +633,7 @@ at_artifacts_window_select_unwanted_filter_option_gui = {
 	saved_scopes = { filter_option }
 
 	effect = {
-		set_global_variable = {
+		set_variable = {
 			name = at_artifacts_window_selected_unwanted_filter_option
 			value = scope:filter_option
 		}
@@ -647,7 +647,7 @@ at_artifacts_window_select_trash_filter_option_gui = {
 	saved_scopes = { filter_option }
 
 	effect = {
-		set_global_variable = {
+		set_variable = {
 			name = at_artifacts_window_selected_trash_filter_option
 			value = scope:filter_option
 		}
@@ -661,7 +661,7 @@ at_artifacts_window_select_owner_filter_option_gui = {
 	saved_scopes = { filter_option }
 
 	effect = {
-		set_global_variable = {
+		set_variable = {
 			name = at_artifacts_window_selected_owner_filter_option
 			value = scope:filter_option
 		}
@@ -675,7 +675,7 @@ at_artifacts_window_select_owner_valid_buyer_or_seller_filter_option_gui = {
 	saved_scopes = { filter_option }
 
 	effect = {
-		set_global_variable = {
+		set_variable = {
 			name = at_artifacts_window_selected_owner_valid_buyer_or_seller_filter_option
 			value = scope:filter_option
 		}
@@ -688,51 +688,51 @@ at_artifacts_window_reset_filter_options_gui = {
 	scope = character
 
 	effect = {
-		set_global_variable = {
+		set_variable = {
 			name = at_artifacts_window_selected_rarity_filter_option
 			value = flag:_all
 		}
-		set_global_variable = {
+		set_variable = {
 			name = at_artifacts_window_selected_slot_type_filter_option
 			value = flag:_all
 		}
-		set_global_variable = {
+		set_variable = {
 			name = at_artifacts_window_selected_unique_filter_option
 			value = flag:_all
 		}
-		set_global_variable = {
+		set_variable = {
 			name = at_artifacts_window_selected_modifier_filter_option
 			value = flag:_all
 		}
-		set_global_variable = {
+		set_variable = {
 			name = at_artifacts_window_selected_equipped_filter_option
 			value = flag:_all
 		}
-		set_global_variable = {
+		set_variable = {
 			name = at_artifacts_window_selected_owned_filter_option
 			value = flag:_all
 		}
-		set_global_variable = {
+		set_variable = {
 			name = at_artifacts_window_selected_claimed_filter_option
 			value = flag:_all
 		}
-		set_global_variable = {
+		set_variable = {
 			name = at_artifacts_window_selected_equippable_filter_option
 			value = flag:_all
 		}
-		set_global_variable = {
+		set_variable = {
 			name = at_artifacts_window_selected_unwanted_filter_option
 			value = flag:_all
 		}
-		set_global_variable = {
+		set_variable = {
 			name = at_artifacts_window_selected_trash_filter_option
 			value = flag:_all
 		}
-		set_global_variable = {
+		set_variable = {
 			name = at_artifacts_window_selected_owner_filter_option
 			value = flag:_all
 		}
-		set_global_variable = {
+		set_variable = {
 			name = at_artifacts_window_selected_owner_valid_buyer_or_seller_filter_option
 			value = flag:_all
 		}
