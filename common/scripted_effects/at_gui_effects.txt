@@ -25,6 +25,7 @@ at_artifacts_window_get_all_artifacts_effect = {
 				save_temporary_scope_as = artifact
 				any_in_list = {
 					list = valid_buyers
+					is_ai = yes
 					at_can_sell_artifact_to_trigger = { PARTY = ROOT }
 					save_temporary_opinion_value_as = {
 						name = opinion_of_actor
@@ -48,6 +49,7 @@ at_artifacts_window_get_all_artifacts_effect = {
 		every_in_list = {
 			list = valid_sellers
 			limit = {
+				is_ai = yes
 				at_can_buy_artifact_from_trigger = { PARTY = ROOT }
 			}
 			save_temporary_scope_as = seller
