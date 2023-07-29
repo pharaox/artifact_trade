@@ -222,7 +222,7 @@ at_has_artifact_succession_title_trigger = {
 	has_title = $ARTIFACT$.var:artifact_succession_title
 }
 
-at_is_artifact_relic_religion_special_character_trigger = {
+at_is_religion_relic_trigger = {
 	OR = {
 		AND = {
 			exists = $ARTIFACT$.var:relic_religion
@@ -233,7 +233,6 @@ at_is_artifact_relic_religion_special_character_trigger = {
 			at_has_artifact_relic_flag_religion_trigger = { ARTIFACT = $ARTIFACT$ }
 		}
 	}
-	any_held_title = { is_head_of_faith = yes }
 }
 
 at_has_artifact_relic_flag_religion_trigger = {
@@ -300,33 +299,13 @@ at_is_artifact_equppable_and_beneficial_trigger = {
 at_is_dynasty_banner_trigger = {
 	exists = $ARTIFACT$.var:banner_dynasty
 	exists = dynasty
-	this = $ARTIFACT$.var:banner_dynasty.dynast
+	$ARTIFACT$.var:banner_dynasty = dynasty
 }
 
 at_is_house_banner_trigger = {
 	exists = $ARTIFACT$.var:banner_house
 	exists = house
-	this = $ARTIFACT$.var:banner_house.house_head
-}
-
-at_is_useless_banner_trigger = {
-	OR = {
-		exists = $ARTIFACT$.var:banner_dynasty
-		exists = $ARTIFACT$.var:banner_house
-	}
-	trigger_if = {
-		limit = { exists = $ARTIFACT$.var:banner_dynasty }
-		NAND = {
-			exists = dynasty
-			$ARTIFACT$.var:banner_dynasty = dynasty
-		}
-	}
-	trigger_else = {
-		NAND = {
-			exists = house
-			$ARTIFACT$.var:banner_house = house
-		}
-	}
+	$ARTIFACT$.var:banner_house = house
 }
 
 at_is_artifact_likely_to_be_traded_trigger = {
@@ -345,6 +324,7 @@ at_is_likely_to_buy_artifact_trigger = {
 		scope:artifact = { can_be_claimed_by = scope:character }
 		at_is_dynasty_banner_trigger = { ARTIFACT = scope:artifact }
 		at_is_house_banner_trigger = { ARTIFACT = scope:artifact }
+		at_is_religion_relic_trigger = { ARTIFACT = scope:artifact }
 		at_has_artifact_succession_title_trigger = { ARTIFACT = scope:artifact }
 		at_nth_equippable_artifact_quality_wealth_average_value = 0
 	}
@@ -354,6 +334,7 @@ at_is_likely_to_sell_artifact_trigger = {
 	NOR = {
 		at_is_dynasty_banner_trigger = { ARTIFACT = scope:artifact }
 		at_is_house_banner_trigger = { ARTIFACT = scope:artifact }
+		at_is_religion_relic_trigger = { ARTIFACT = scope:artifact }
 		at_has_artifact_succession_title_trigger = { ARTIFACT = scope:artifact }
 	}
 	OR = {

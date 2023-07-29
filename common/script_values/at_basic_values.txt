@@ -1,14 +1,18 @@
 ﻿# AI impact values (base is -50 / 50)
-at_ai_positive_claim_impact_value = 20
-at_ai_negative_equipped_impact_value = -20
+at_ai_positive_claim_impact_value = 25
+at_ai_negative_equipped_impact_value = -50
+at_ai_positive_qwa_impact_value = 0.25
+at_ai_negative_qwa_impact_value = -0.25
 at_ai_positive_qwa_difference_impact_value = 1
 at_ai_negative_qwa_difference_impact_value = -1
-at_ai_positive_durability_impact_value = 20
-at_ai_negative_durability_impact_value = -20
-at_ai_positive_uniqueness_impact_value = 20
-at_ai_negative_uniqueness_impact_value = -20
+at_ai_positive_durability_impact_value = 25
+at_ai_negative_durability_impact_value = -25
+at_ai_positive_uniqueness_impact_value = 50
+at_ai_negative_uniqueness_impact_value = -50
 at_ai_positive_relationship_impact_value = 50
 at_ai_negative_relationship_impact_value = -50
+at_ai_positive_relationship_impact_reduced_value = 10
+at_ai_negative_relationship_impact_reduced_value = -10
 at_ai_positive_trash_impact_value = 10
 at_ai_negative_trash_impact_value = -10
 at_ai_positive_price_impact_value = 10
@@ -24,4 +28,4 @@ at_artifact_qwa_price_multiplier = 2.5
 at_artifact_unique_price_multiplier = 3
 
 # Artifact price multipliers for the player to limit exploits
-at_artifact_ask_price_player_multiplier = 1.4
+at_artifact_ask_price_player_multiplier = 1.5

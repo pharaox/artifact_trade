@@ -1,5 +1,18 @@
 # Changelog
 
+## Version 0.6
+
+### Character Interactions
+
+* Added QWA (rarity) considerations for the AI when buying, selling, and destroying artifacts
+  * Always negative, increases with QWA when buying and decreases with QWA when selling
+* Increased impact of artifact claims, equipped, uniqueness and durability on AI decisions
+  * The AI is now very unlikely to sell equipped and unique artifacts
+* Added dynasty banner, house banner, and religious relic considerations also to regular dynasty, house, and religious members with reduced impact
+  * The AI is now less likely to sell their dynasty and house banners and religious relics, and more likely to buy them
+* Increased slightly player ask price multiplier
+  * Artifacts are now even more expensive to buy (20% to 80% more than base price depending on AI greed)
+
 ## Version 0.5.2
 
 ### Bug Fixes

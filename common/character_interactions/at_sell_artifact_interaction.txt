@@ -177,6 +177,16 @@ at_sell_artifact_interaction = {
 			desc = at_recipient_at_war_reason
 		}
 
+		# Artifact QWA (rarity)
+		modifier = {
+			add = {
+				value = scope:target.at_artifact_quality_wealth_average_value
+				subtract = 100
+				multiply = at_ai_positive_qwa_impact_value
+			}
+			desc = at_target_qwa_reason
+		}
+
 		# Artifact claims
 		modifier = {
 			scope:target = { can_be_claimed_by = scope:recipient }
@@ -216,15 +226,6 @@ at_sell_artifact_interaction = {
 			desc = at_target_unique_reason
 		}
 
-		# Special character for religious relic
-		modifier = {
-			at_is_artifact_relic_religion_special_character_trigger = { ARTIFACT = scope:target }
-			add = at_ai_positive_relationship_impact_value
-			desc = at_target_religious_reason
-		}
-
-		# TODO Artifact modifiers and recipient lifestyle
-
 		# Useless, not relevant, unwanted, or cursed artifacts
 		modifier = {
 			NOT = { at_can_equip_artifact_trigger = { ARTIFACT = scope:target } }
@@ -257,13 +258,44 @@ at_sell_artifact_interaction = {
 		# Dynasty or house banner
 		modifier = {
 			at_is_dynasty_banner_trigger = { ARTIFACT = scope:target }
-			add = at_ai_positive_relationship_impact_value
+			add = {
+				if = {
+					limit = { this = dynasty.dynast }
+					value = at_ai_positive_relationship_impact_value
+				}
+				else = {
+					value = at_ai_positive_relationship_impact_reduced_value
+				}
+			}
 			desc = ARTIFACT_DYNASTY_BANNER_REASON
 		}
 		modifier = {
 			at_is_house_banner_trigger = { ARTIFACT = scope:target }
-			add = at_ai_positive_relationship_impact_value
+			add = {
+				if = {
+					limit = { this = house.house_head }
+					value = at_ai_positive_relationship_impact_value
+				}
+				else = {
+					value = at_ai_positive_relationship_impact_reduced_value
+				}
+			}
 			desc = at_artifact_house_banner_reason
+		}
+
+		# Religious relic
+		modifier = {
+			at_is_religion_relic_trigger = { ARTIFACT = scope:target }
+			add = {
+				if = {
+					limit = { any_held_title = { is_head_of_faith = yes } }
+					value = at_ai_positive_relationship_impact_value
+				}
+				else = {
+					value = at_ai_positive_relationship_impact_reduced_value
+				}
+			}
+			desc = at_artifact_religion_relic_reason
 		}
 
 		# Holds succession title
@@ -364,6 +396,14 @@ at_sell_artifact_interaction = {
 			add = -100
 		}
 
+		# Artifact QWA (rarity)
+		modifier = {
+			add = {
+				value = scope:target.at_artifact_quality_wealth_average_value
+				multiply = at_ai_negative_qwa_impact_value
+			}
+		}
+
 		# Artifact equipped
 		modifier = {
 			scope:target = { is_equipped = yes }
@@ -399,14 +439,6 @@ at_sell_artifact_interaction = {
 			add = at_ai_negative_uniqueness_impact_value
 		}
 
-		# Special character for religious relic
-		modifier = {
-			at_is_artifact_relic_religion_special_character_trigger = { ARTIFACT = scope:target }
-			add = at_ai_negative_relationship_impact_value
-		}
-
-		# TODO Artifact modifiers and recipient lifestyle
-
 		# Useless, not relevant, unwanted, or cursed artifacts
 		modifier = {
 			NOT = { at_can_equip_artifact_trigger = { ARTIFACT = scope:target } }
@@ -434,11 +466,41 @@ at_sell_artifact_interaction = {
 		# Dynasty or house banner
 		modifier = {
 			at_is_dynasty_banner_trigger = { ARTIFACT = scope:target }
-			add = at_ai_negative_relationship_impact_value
+			add = {
+				if = {
+					limit = { this = dynasty.dynast }
+					value = at_ai_negative_relationship_impact_value
+				}
+				else = {
+					value = at_ai_negative_relationship_impact_reduced_value
+				}
+			}
 		}
 		modifier = {
 			at_is_house_banner_trigger = { ARTIFACT = scope:target }
-			add = at_ai_negative_relationship_impact_value
+			add = {
+				if = {
+					limit = { this = house.house_head }
+					value = at_ai_negative_relationship_impact_value
+				}
+				else = {
+					value = at_ai_negative_relationship_impact_reduced_value
+				}
+			}
+		}
+
+		# Religious relic
+		modifier = {
+			at_is_religion_relic_trigger = { ARTIFACT = scope:target }
+			add = {
+				if = {
+					limit = { any_held_title = { is_head_of_faith = yes } }
+					value = at_ai_negative_relationship_impact_value
+				}
+				else = {
+					value = at_ai_negative_relationship_impact_reduced_value
+				}
+			}
 		}
 
 		# Holds succession title

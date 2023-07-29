@@ -111,6 +111,15 @@ destroy_artifact_interaction = {
 			add = -100
 		}
 
+		# Artifact QWA (rarity)
+		modifier = {
+			has_game_rule = at_improved_destroy_artifact_enabled
+			add = {
+				value = scope:target.at_artifact_quality_wealth_average_value
+				multiply = at_ai_negative_qwa_impact_value
+			}
+		}
+
 		# Artifact equipped
 		modifier = {
 			has_game_rule = at_improved_destroy_artifact_enabled
@@ -142,15 +151,6 @@ destroy_artifact_interaction = {
 				multiply = at_ai_positive_durability_impact_value
 			}
 		}
-
-		# Special character for religious relic
-		modifier = {
-			has_game_rule = at_improved_destroy_artifact_enabled
-			at_is_artifact_relic_religion_special_character_trigger = { ARTIFACT = scope:target }
-			add = at_ai_negative_relationship_impact_value
-		}
-
-		# TODO Artifact modifiers and recipient lifestyle
 
 		# Useless, not relevant, unwanted, or cursed artifacts
 		modifier = {
@@ -185,12 +185,43 @@ destroy_artifact_interaction = {
 		modifier = {
 			has_game_rule = at_improved_destroy_artifact_enabled
 			at_is_dynasty_banner_trigger = { ARTIFACT = scope:target }
-			add = at_ai_negative_relationship_impact_value
+			add = {
+				if = {
+					limit = { this = dynasty.dynast }
+					value = at_ai_negative_relationship_impact_value
+				}
+				else = {
+					value = at_ai_negative_relationship_impact_reduced_value
+				}
+			}
 		}
 		modifier = {
 			has_game_rule = at_improved_destroy_artifact_enabled
 			at_is_house_banner_trigger = { ARTIFACT = scope:target }
-			add = at_ai_negative_relationship_impact_value
+			add = {
+				if = {
+					limit = { this = house.house_head }
+					value = at_ai_negative_relationship_impact_value
+				}
+				else = {
+					value = at_ai_negative_relationship_impact_reduced_value
+				}
+			}
+		}
+
+		# Religious relic
+		modifier = {
+			has_game_rule = at_improved_destroy_artifact_enabled
+			at_is_religion_relic_trigger = { ARTIFACT = scope:target }
+			add = {
+				if = {
+					limit = { any_held_title = { is_head_of_faith = yes } }
+					value = at_ai_negative_relationship_impact_value
+				}
+				else = {
+					value = at_ai_negative_relationship_impact_reduced_value
+				}
+			}
 		}
 
 		# Holds succession title
