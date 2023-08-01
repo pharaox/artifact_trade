@@ -118,6 +118,7 @@ at_has_artifact_dynasty_prestige_modifier = {
 
 at_has_artifact_tyranny_modifier = {
 	OR = {
+		# Reduction
 		has_artifact_modifier = artifact_monthly_tyranny_1_modifier
 		has_artifact_modifier = artifact_monthly_tyranny_2_modifier
 		has_artifact_modifier = artifact_monthly_tyranny_3_modifier
@@ -126,8 +127,8 @@ at_has_artifact_tyranny_modifier = {
 		has_artifact_modifier = artifact_monthly_tyranny_6_modifier
 		has_artifact_modifier = artifact_monthly_tyranny_7_modifier
 		has_artifact_modifier = artifact_monthly_tyranny_8_modifier
+		# Gain
 		has_artifact_modifier = artifact_tyranny_gain_mult_1_modifier
-		# Negative
 		has_artifact_modifier = artifact_propaganda_chronicle_modifier
 		has_artifact_modifier = jewelled_danda_modifier
 		has_artifact_modifier = Shamshir-e_Zomorrodnegar_modifier
