@@ -145,76 +145,8 @@ at_is_unique_artifact_trigger = {
 	}
 }
 
-# Use can_equip_artifact only for artifacts that are owned by the scoped character.
-# The behavior of this trigger changed in 1.9 and it seems this is not considered a bug.
 at_can_equip_artifact_trigger = {
-	save_temporary_scope_as = character
-	trigger_if = {
-		limit = {
-			$ARTIFACT$ = {
-				artifact_owner = scope:character
-			}
-		}
-		can_equip_artifact = $ARTIFACT$
-	}
-	trigger_else_if = {
-		limit = {
-			$ARTIFACT$ = {
-				OR = {
-					# child_toy_template
-					has_variable = playdate_trinket
-					has_variable = miniature_collection_tiny_chest
-					has_variable = miniature_collection_tiny_sculpture
-					has_variable = miniature_collection_tiny_cabinet
-					has_variable = miniature_collection_tiny_throne
-					has_variable = miniature_collection_tiny_box
-				}
-			}
-		}
-		age < 16
-	}
-	trigger_else_if = {
-		limit = {
-			$ARTIFACT$ = {
-				OR = {
-					# adults_only_template: cuckoldry_psalter
-					AND = {
-						has_variable = cursed_artifact
-						has_variable = ai_to_ai_destroy_in_sieges
-						has_artifact_modifier = artifact_monthly_prestige_penalty_modifier
-						has_artifact_modifier = artifact_attraction_opinion_negative_1_modifier
-					}
-					# adults_only_template: chastity_belt
-					AND = {
-						has_variable = cursed_artifact
-						has_variable = ai_to_ai_destroy_in_sieges
-						has_artifact_modifier = artifact_fertility_negative_modifier
-					}
-					# adults_only_template: worm_on_a_string
-					AND = {
-						has_variable = cursed_artifact
-						has_variable = ai_to_ai_destroy_in_sieges
-						has_artifact_modifier = artifact_attraction_opinion_negative_2_modifier
-						has_artifact_modifier = artifact_child_opinion_1_modifier
-					}
-				}
-			}
-		}
-		age > 18
-	}
-	trigger_else_if = {
-		limit = {
-			$ARTIFACT$ = {
-				category = court
-			}
-		}
-		has_royal_court = yes
-	}
-	trigger_else = {
-		# For other artifact templates it's currently either always equippable
-		# or can_equip is the same as can_benefit
-		always = yes
-	}
+	can_equip_artifact = $ARTIFACT$
 }
 
 at_has_artifact_succession_title_trigger = {
