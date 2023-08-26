@@ -182,11 +182,11 @@
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_learn_language_scheme_power }
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_hostile_scheme_resistance }
 		# Lifestyle XP
-		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_monthly_diplomacy_lifestyle_xp_gain }
-		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_monthly_martial_lifestyle_xp_gain }
-		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_monthly_stewardship_lifestyle_xp_gain }
-		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_monthly_intrigue_lifestyle_xp_gain }
-		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_monthly_learning_lifestyle_xp_gain }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_diplomacy_lifestyle_xp }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_martial_lifestyle_xp }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_stewardship_lifestyle_xp }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_intrigue_lifestyle_xp }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_learning_lifestyle_xp }
 		# Skills
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_diplomacy }
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_martial }

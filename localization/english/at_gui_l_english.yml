@@ -116,11 +116,11 @@
  at_learn_language_scheme_power:0 "[GetScheme('learn_language').GetTypeName] $game_concept_scheme_power$"
  at_hostile_scheme_resistance:0 "$game_concept_scheme_hostile$ $game_concept_scheme_resistance$"
  # Lifestyle XP
- at_monthly_diplomacy_lifestyle_xp_gain:0 "Diplomacy $game_concept_lifestyle$ Experience"
- at_monthly_martial_lifestyle_xp_gain:0 "Martial $game_concept_lifestyle$ Experience"
- at_monthly_stewardship_lifestyle_xp_gain:0 "Stewardship $game_concept_lifestyle$ Experience"
- at_monthly_intrigue_lifestyle_xp_gain:0 "Intrigue $game_concept_lifestyle$ Experience"
- at_monthly_learning_lifestyle_xp_gain:0 "Learning $game_concept_lifestyle$ Experience"
+ at_diplomacy_lifestyle_xp:0 "Diplomacy $game_concept_lifestyle$ Experience"
+ at_martial_lifestyle_xp:0 "Martial $game_concept_lifestyle$ Experience"
+ at_stewardship_lifestyle_xp:0 "Stewardship $game_concept_lifestyle$ Experience"
+ at_intrigue_lifestyle_xp:0 "Intrigue $game_concept_lifestyle$ Experience"
+ at_learning_lifestyle_xp:0 "Learning $game_concept_lifestyle$ Experience"
  # Skills
  at_diplomacy:0 "$game_concept_diplomacy$"
  at_martial:0 "$game_concept_martial$"

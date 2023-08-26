@@ -413,24 +413,24 @@ at_artifacts_window_get_filtered_artifacts_effect = {
 			}
 			# Lifestyle XP
 			trigger_else_if = {
-				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_monthly_diplomacy_lifestyle_xp_gain }
-				at_has_artifact_monthly_diplomacy_lifestyle_xp_gain_modifier = yes
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_diplomacy_lifestyle_xp }
+				at_has_artifact_diplomacy_lifestyle_xp_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_monthly_martial_lifestyle_xp_gain }
-				at_has_artifact_monthly_martial_lifestyle_xp_gain_modifier = yes
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_martial_lifestyle_xp }
+				at_has_artifact_martial_lifestyle_xp_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_monthly_stewardship_lifestyle_xp_gain }
-				at_has_artifact_monthly_stewardship_lifestyle_xp_gain_modifier = yes
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_stewardship_lifestyle_xp }
+				at_has_artifact_stewardship_lifestyle_xp_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_monthly_intrigue_lifestyle_xp_gain }
-				at_has_artifact_monthly_intrigue_lifestyle_xp_gain_modifier = yes
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_intrigue_lifestyle_xp }
+				at_has_artifact_intrigue_lifestyle_xp_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_monthly_learning_lifestyle_xp_gain }
-				at_has_artifact_monthly_learning_lifestyle_xp_gain_modifier = yes
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_learning_lifestyle_xp }
+				at_has_artifact_learning_lifestyle_xp_modifier = yes
 			}
 			# Skills
 			trigger_else_if = {

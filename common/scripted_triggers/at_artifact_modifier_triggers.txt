@@ -500,8 +500,11 @@ at_has_artifact_build_speed_modifier = {
 		has_artifact_modifier = artifact_build_time_2_modifier
 		has_artifact_modifier = artifact_build_time_3_modifier
 		has_artifact_modifier = artifact_build_time_4_modifier
+		has_artifact_modifier = artifact_city_holding_build_speed_add_1_modifier
 		has_artifact_modifier = artifact_city_holding_build_speed_add_2_modifier
+		has_artifact_modifier = artifact_church_holding_build_speed_add_1_modifier
 		has_artifact_modifier = artifact_church_holding_build_speed_add_2_modifier
+		has_artifact_modifier = artifact_castle_holding_build_speed_add_1_modifier
 		has_artifact_modifier = artifact_castle_holding_build_speed_add_2_modifier
 		has_artifact_modifier = artifact_tribal_holding_build_speed_add_2_modifier
 	}
@@ -630,8 +633,10 @@ at_has_artifact_hostile_scheme_resistance_modifier = {
 
 # Lifestyle XP
 
-at_has_artifact_monthly_diplomacy_lifestyle_xp_gain_modifier = {
+at_has_artifact_diplomacy_lifestyle_xp_modifier = {
 	OR = {
+		#has_artifact_modifier = artifact_diplomacy_lifestyle_xp_1_modifier
+		#has_artifact_modifier = artifact_diplomacy_lifestyle_xp_2_modifier
 		has_artifact_modifier = artifact_monthly_diplomacy_lifestyle_xp_1_modifier
 		has_artifact_modifier = artifact_monthly_diplomacy_lifestyle_xp_2_modifier
 		has_artifact_modifier = artifact_monthly_diplomacy_lifestyle_xp_3_modifier
@@ -639,8 +644,10 @@ at_has_artifact_monthly_diplomacy_lifestyle_xp_gain_modifier = {
 	}
 }
 
-at_has_artifact_monthly_martial_lifestyle_xp_gain_modifier = {
+at_has_artifact_martial_lifestyle_xp_modifier = {
 	OR = {
+		#has_artifact_modifier = artifact_martial_lifestyle_xp_1_modifier
+		has_artifact_modifier = artifact_martial_lifestyle_xp_2_modifier
 		has_artifact_modifier = artifact_monthly_martial_lifestyle_xp_1_modifier
 		has_artifact_modifier = artifact_monthly_martial_lifestyle_xp_2_modifier
 		has_artifact_modifier = artifact_monthly_martial_lifestyle_xp_3_modifier
@@ -648,8 +655,10 @@ at_has_artifact_monthly_martial_lifestyle_xp_gain_modifier = {
 	}
 }
 
-at_has_artifact_monthly_stewardship_lifestyle_xp_gain_modifier = {
+at_has_artifact_stewardship_lifestyle_xp_modifier = {
 	OR = {
+		#has_artifact_modifier = artifact_stewardship_lifestyle_xp_1_modifier
+		has_artifact_modifier = artifact_stewardship_lifestyle_xp_2_modifier
 		has_artifact_modifier = artifact_monthly_stewardship_lifestyle_xp_1_modifier
 		has_artifact_modifier = artifact_monthly_stewardship_lifestyle_xp_2_modifier
 		has_artifact_modifier = artifact_monthly_stewardship_lifestyle_xp_3_modifier
@@ -657,8 +666,10 @@ at_has_artifact_monthly_stewardship_lifestyle_xp_gain_modifier = {
 	}
 }
 
-at_has_artifact_monthly_intrigue_lifestyle_xp_gain_modifier = {
+at_has_artifact_intrigue_lifestyle_xp_modifier = {
 	OR = {
+		#has_artifact_modifier = artifact_intrigue_lifestyle_xp_1_modifier
+		#has_artifact_modifier = artifact_intrigue_lifestyle_xp_2_modifier
 		has_artifact_modifier = artifact_monthly_intrigue_lifestyle_xp_1_modifier
 		has_artifact_modifier = artifact_monthly_intrigue_lifestyle_xp_2_modifier
 		has_artifact_modifier = artifact_monthly_intrigue_lifestyle_xp_3_modifier
@@ -666,8 +677,10 @@ at_has_artifact_monthly_intrigue_lifestyle_xp_gain_modifier = {
 	}
 }
 
-at_has_artifact_monthly_learning_lifestyle_xp_gain_modifier = {
+at_has_artifact_learning_lifestyle_xp_modifier = {
 	OR = {
+		has_artifact_modifier = artifact_learning_lifestyle_xp_1_modifier
+		has_artifact_modifier = artifact_learning_lifestyle_xp_2_modifier
 		has_artifact_modifier = artifact_monthly_learning_lifestyle_xp_1_modifier
 		has_artifact_modifier = artifact_monthly_learning_lifestyle_xp_2_modifier
 		has_artifact_modifier = artifact_monthly_learning_lifestyle_xp_3_modifier
