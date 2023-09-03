@@ -6,6 +6,13 @@
 
 * Adapted to CK3 1.10.0
 
+### UI Improvements
+
+* Improved filtering by Modifier
+  * Historical artifacts are now properly included
+  * Artifacts with negative modifiers are also included
+  * Combined few existing filter options for better usability
+
 ## Version 0.6
 
 ### Character Interactions

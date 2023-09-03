@@ -2,6 +2,7 @@
 
 at_has_artifact_prestige_modifier = {
 	OR = {
+		# monthly_prestige
 		has_artifact_modifier = artifact_monthly_minor_prestige_1_modifier
 		has_artifact_modifier = artifact_monthly_minor_prestige_2_modifier
 		has_artifact_modifier = artifact_monthly_minor_prestige_3_modifier
@@ -18,23 +19,84 @@ at_has_artifact_prestige_modifier = {
 		has_artifact_modifier = artifact_monthly_prestige_6_modifier
 		has_artifact_modifier = artifact_monthly_prestige_7_modifier
 		has_artifact_modifier = artifact_monthly_prestige_8_modifier
+		has_artifact_modifier = artifact_placeholder_modifier
+		has_artifact_modifier = artifact_monthly_prestige_penalty_modifier
+		has_artifact_modifier = artifact_killer_1_artifact_modifier
+		has_artifact_modifier = artifact_killer_2_artifact_modifier
+		has_artifact_modifier = artifact_killer_3_artifact_modifier
+		has_artifact_modifier = artifact_killer_4_artifact_modifier
+		has_artifact_modifier = artifact_duel_weapon_1_modifier
+		has_artifact_modifier = artifact_duel_weapon_2_modifier
+		has_artifact_modifier = artifact_duel_weapon_3_modifier
+		has_artifact_modifier = artifact_duel_weapon_4_modifier
+		has_artifact_modifier = artifact_propaganda_chronicle_modifier
+		# historical
+		has_artifact_modifier = joyeuse_modifier
+		has_artifact_modifier = koh_i_noor
+		has_artifact_modifier = al_taj_modifier
+		has_artifact_modifier = al_hafir_modifier
+		has_artifact_modifier = qadib_al_mulk_modifier
+		has_artifact_modifier = mantle_prophet_modifier
+		has_artifact_modifier = tizona_modifier
+		has_artifact_modifier = bronze_head_modifier
+		has_artifact_modifier = crystal_carving_modifier
+		has_artifact_modifier = great_diamond_modifier
+		has_artifact_modifier = al_jabal_modifier
+		has_artifact_modifier = al_yatima_modifier
+		has_artifact_modifier = essen_crown_modifier
+		has_artifact_modifier = durendal_modifier
+		has_artifact_modifier = nagelring_modifier
+		has_artifact_modifier = kladenets_modifier
+		has_artifact_modifier = szczerbiec_modifier
+		has_artifact_modifier = legbiter_modifier
+		has_artifact_modifier = quernbiter_modifier
+		has_artifact_modifier = dragvandil_modifier
+		has_artifact_modifier = curtana_modifier
+		has_artifact_modifier = colada_modifier
+		has_artifact_modifier = angelicas_ring_modifier
+		has_artifact_modifier = olifant_modifier
+		has_artifact_modifier = aram_modifier
+		has_artifact_modifier = excalibur_modifier
+		has_artifact_modifier = throne_charlemagne_modifier
+		has_artifact_modifier = throne_solomon_modifier
+		has_artifact_modifier = throne_scone_modifier
+		has_artifact_modifier = banner_kaviani_modifier
+		has_artifact_modifier = pentapyrgion_modifier
+		has_artifact_modifier = monomachus_crown_modifier
+		has_artifact_modifier = rustam_dagger_modifier
+		has_artifact_modifier = zomorrodnegar_modifier
+		has_artifact_modifier = kaves_apron_modifier
+		has_artifact_modifier = navaratna_modifier
+
+		# monthly_prestige_gain_per_dread_add
 		has_artifact_modifier = artifact_monthly_prestige_gain_per_dread_add_1_modifier
 		has_artifact_modifier = artifact_monthly_prestige_gain_per_dread_add_2_modifier
 		has_artifact_modifier = artifact_monthly_prestige_gain_per_dread_add_3_modifier
 		has_artifact_modifier = artifact_monthly_prestige_gain_per_dread_add_4_modifier
+		# historical
+		has_artifact_modifier = attila_sword_modifier
+
+		# monthly_prestige_gain_per_knight_add
 		has_artifact_modifier = artifact_monthly_prestige_gain_per_knight_add_1_modifier
 		has_artifact_modifier = artifact_monthly_prestige_gain_per_knight_add_2_modifier
 		has_artifact_modifier = artifact_monthly_prestige_gain_per_knight_add_3_modifier
 		has_artifact_modifier = artifact_monthly_prestige_gain_per_knight_add_4_modifier
+
+		# monthly_prestige_gain_per_happy_powerful_vassal_add
 		has_artifact_modifier = artifact_monthly_prestige_gain_per_happy_powerful_vassal_add_1_modifier
 		has_artifact_modifier = artifact_monthly_prestige_gain_per_happy_powerful_vassal_add_2_modifier
 		has_artifact_modifier = artifact_monthly_prestige_gain_per_happy_powerful_vassal_add_3_modifier
 		has_artifact_modifier = artifact_monthly_prestige_gain_per_happy_powerful_vassal_add_4_modifier
+
+		# monthly_prestige_gain_per_happy_powerful_vassal_mult
+		# historical
+		has_artifact_modifier = reichskrone_modifier
 	}
 }
 
 at_has_artifact_piety_modifier = {
 	OR = {
+		# monthly_piety
 		has_artifact_modifier = artifact_monthly_piety_1_modifier
 		has_artifact_modifier = artifact_monthly_piety_2_modifier
 		has_artifact_modifier = artifact_monthly_piety_3_modifier
@@ -43,11 +105,55 @@ at_has_artifact_piety_modifier = {
 		has_artifact_modifier = artifact_monthly_piety_6_modifier
 		has_artifact_modifier = artifact_monthly_piety_7_modifier
 		has_artifact_modifier = artifact_monthly_piety_8_modifier
+		has_artifact_modifier = artifact_monthly_piety_negative_1_modifier
+		has_artifact_modifier = desecrated_artifact_modifier
+		has_artifact_modifier = artifact_fake_papal_tiara_modifier
+		# historical
+		has_artifact_modifier = ark_of_covenant_modifier
+		has_artifact_modifier = al_dawat_modifier
+		has_artifact_modifier = banner_thankfulness
+		has_artifact_modifier = cintamani_modifier
+		has_artifact_modifier = banner_of_edessa_modifier
+		has_artifact_modifier = muhammed_sword_modifier
+		has_artifact_modifier = mmaagha_kamalu_modifier
+		has_artifact_modifier = shankha_conch_modifier
+		has_artifact_modifier = dhammapada_modifier
+		has_artifact_modifier = vinaya_pitaka_modifier
+		has_artifact_modifier = sutta_pitaka_modifier
+		has_artifact_modifier = abhidhamma_pitaka_modifier
+		has_artifact_modifier = sledovik_modifier
+		has_artifact_modifier = kantele_modifier
+		has_artifact_modifier = edmund_head_modifier
+		has_artifact_modifier = makarakundala_modifier
+		has_artifact_modifier = ibeji_modifier
+		has_artifact_modifier = spear_ascalon_modifier
+		has_artifact_modifier = aruval_modifier
+		has_artifact_modifier = ikenga_modifier
+		has_artifact_modifier = afarganyu_modifier
+		has_artifact_modifier = siddhachakra_modifier
+		has_artifact_modifier = kakusandha_modifier
+		has_artifact_modifier = konagamana_modifier
+		has_artifact_modifier = kassapa_modifier
+		has_artifact_modifier = chalice_of_dona_urraca_modifier
+
+		# monthly_piety_gain_per_happy_powerful_vassal_add
 		has_artifact_modifier = artifact_monthly_piety_gain_per_happy_powerful_vassal_add_1_modifier
 		has_artifact_modifier = artifact_monthly_piety_gain_per_happy_powerful_vassal_add_2_modifier
+		# historical
+		has_artifact_modifier = siddhachakra_modifier
+		has_artifact_modifier = former_bells_of_santiago_modifier
+		has_artifact_modifier = bells_of_santiago_modifier
+
+		# monthly_piety_gain_per_knight_add
 		has_artifact_modifier = artifact_monthly_piety_gain_per_knight_add_1_modifier
 		has_artifact_modifier = artifact_monthly_piety_gain_per_knight_add_2_modifier
 		has_artifact_modifier = artifact_monthly_piety_gain_per_knight_add_3_modifier
+		# historical
+		has_artifact_modifier = khanda_modifier
+		has_artifact_modifier = zomorrodnegar_modifier
+		has_artifact_modifier = aruval_modifier
+
+		# monthly_piety_gain_mult
 		has_artifact_modifier = artifact_monthly_piety_gain_mult_1_modifier
 		has_artifact_modifier = artifact_monthly_piety_gain_mult_2_modifier
 		has_artifact_modifier = artifact_monthly_piety_gain_mult_3_modifier
@@ -60,6 +166,17 @@ at_has_artifact_piety_modifier = {
 		has_artifact_modifier = artifact_monthly_piety_gain_mult_10_modifier
 		has_artifact_modifier = artifact_monthly_piety_gain_mult_11_modifier
 		has_artifact_modifier = artifact_monthly_piety_gain_mult_12_modifier
+		# historical
+		has_artifact_modifier = kassapa_modifier
+		has_artifact_modifier = votive_crown_modifier
+
+		# monthly_piety_gain_per_knight_mult
+		# historical
+		has_artifact_modifier = al_sayf_al_khass_modifier
+		has_artifact_modifier = spear_prophet_modifier
+		has_artifact_modifier = david_harp_modifier
+
+		# monthly_piety_from_buildings_mult
 		has_artifact_modifier = artifact_monthly_piety_from_buildings_mult_1_modifier
 		has_artifact_modifier = artifact_monthly_piety_from_buildings_mult_2_modifier
 		has_artifact_modifier = artifact_monthly_piety_from_buildings_mult_3_modifier
@@ -72,11 +189,15 @@ at_has_artifact_piety_modifier = {
 		has_artifact_modifier = artifact_monthly_piety_from_buildings_mult_10_modifier
 		has_artifact_modifier = artifact_monthly_piety_from_buildings_mult_11_modifier
 		has_artifact_modifier = artifact_monthly_piety_from_buildings_mult_12_modifier
+		# historical
+		has_artifact_modifier = muhammed_sword_5_modifier
+		has_artifact_modifier = zomorrodnegar_modifier
 	}
 }
 
 at_has_artifact_short_reign_duration_modifier = {
 	OR = {
+		# short_reign_duration_mult
 		has_artifact_modifier = artifact_short_reign_duration_mult_1_modifier
 		has_artifact_modifier = artifact_short_reign_duration_mult_2_modifier
 		has_artifact_modifier = artifact_short_reign_duration_mult_3_modifier
@@ -85,26 +206,143 @@ at_has_artifact_short_reign_duration_modifier = {
 		has_artifact_modifier = artifact_short_reign_duration_mult_6_modifier
 		has_artifact_modifier = artifact_short_reign_duration_mult_7_modifier
 		has_artifact_modifier = artifact_short_reign_duration_mult_8_modifier
+		has_artifact_modifier = artifact_emperors_crown_artifact_modifier
+		has_artifact_modifier = artifact_crown_artifact_modifier
 	}
 }
 
 at_has_artifact_court_grandeur_modifier = {
 	OR = {
+		# court_grandeur_baseline_add
 		has_artifact_modifier = artifact_court_grandeur_baseline_add_1_modifier
 		has_artifact_modifier = artifact_court_grandeur_baseline_add_2_modifier
 		has_artifact_modifier = artifact_court_grandeur_baseline_add_3_modifier
 		has_artifact_modifier = artifact_court_grandeur_baseline_add_4_modifier
 		has_artifact_modifier = artifact_court_grandeur_baseline_add_5_modifier
 		has_artifact_modifier = artifact_court_grandeur_baseline_add_6_modifier
+		# historical
+		has_artifact_modifier = joyeuse_modifier
+		has_artifact_modifier = ark_of_covenant_modifier
+		has_artifact_modifier = koh_i_noor
+		has_artifact_modifier = al_dawat_modifier
+		has_artifact_modifier = al_hafir_modifier
+		has_artifact_modifier = al_sayf_al_khass_modifier
+		has_artifact_modifier = banner_thankfulness
+		has_artifact_modifier = alexander_the_great_armor_modifier
+		has_artifact_modifier = turquoise_throne_modifier
+		has_artifact_modifier = peacock_throne_modifier
+		has_artifact_modifier = spear_prophet_modifier
+		has_artifact_modifier = cintamani_modifier
+		has_artifact_modifier = banner_of_edessa_modifier
+		has_artifact_modifier = tizona_modifier
+		has_artifact_modifier = muhammed_sword_modifier
+		has_artifact_modifier = mmaagha_kamalu_modifier
+		has_artifact_modifier = bronze_head_modifier
+		has_artifact_modifier = crystal_carving_modifier
+		has_artifact_modifier = attila_sword_modifier
+		has_artifact_modifier = justinian_crown_modifier
+		has_artifact_modifier = babr_e_bayan_modifier
+		has_artifact_modifier = great_diamond_modifier
+		has_artifact_modifier = al_jabal_modifier
+		has_artifact_modifier = al_yatima_modifier
+		has_artifact_modifier = cup_jamshid_modifier
+		has_artifact_modifier = david_harp_modifier
+		has_artifact_modifier = iron_crown_modifier
+		has_artifact_modifier = nikephoros_crown_modifier
+		has_artifact_modifier = shankha_conch_modifier
+		has_artifact_modifier = skull_cap_charlemagne_modifier
+		has_artifact_modifier = dhammapada_modifier
+		has_artifact_modifier = vinaya_pitaka_modifier
+		has_artifact_modifier = sutta_pitaka_modifier
+		has_artifact_modifier = abhidhamma_pitaka_modifier
+		has_artifact_modifier = durendal_modifier
+		has_artifact_modifier = nagelring_modifier
+		has_artifact_modifier = kladenets_modifier
+		has_artifact_modifier = szczerbiec_modifier
+		has_artifact_modifier = legbiter_modifier
+		has_artifact_modifier = quernbiter_modifier
+		has_artifact_modifier = dragvandil_modifier
+		has_artifact_modifier = curtana_modifier
+		has_artifact_modifier = colada_modifier
+		has_artifact_modifier = angelicas_ring_modifier
+		has_artifact_modifier = olifant_modifier
+		has_artifact_modifier = aram_modifier
+		has_artifact_modifier = sledovik_modifier
+		has_artifact_modifier = kantele_modifier
+		has_artifact_modifier = excalibur_modifier
+		has_artifact_modifier = edmund_head_modifier
+		has_artifact_modifier = makarakundala_modifier
+		has_artifact_modifier = ibeji_modifier
+		has_artifact_modifier = caligraphy_modifier
+		has_artifact_modifier = throne_charlemagne_modifier
+		has_artifact_modifier = throne_solomon_modifier
+		has_artifact_modifier = throne_scone_modifier
+		has_artifact_modifier = banner_kaviani_modifier
+		has_artifact_modifier = pentapyrgion_modifier
+		has_artifact_modifier = ruyi_modifier
+		has_artifact_modifier = khanda_modifier
+		has_artifact_modifier = rustam_dagger_modifier
+		has_artifact_modifier = spear_ascalon_modifier
+		has_artifact_modifier = zomorrodnegar_modifier
+		has_artifact_modifier = kaves_apron_modifier
+		has_artifact_modifier = aruval_modifier
+		has_artifact_modifier = navaratna_modifier
+		has_artifact_modifier = ikenga_modifier
+		has_artifact_modifier = afarganyu_modifier
+		has_artifact_modifier = siddhachakra_modifier
+		has_artifact_modifier = kakusandha_modifier
+		has_artifact_modifier = konagamana_modifier
+		has_artifact_modifier = kassapa_modifier
+		has_artifact_modifier = chalice_of_dona_urraca_modifier
+		has_artifact_modifier = former_bells_of_santiago_modifier
+		has_artifact_modifier = bells_of_santiago_modifier
 	}
 }
 
 at_has_artifact_dynasty_prestige_modifier = {
 	OR = {
+		# monthly_dynasty_prestige_mult
 		has_artifact_modifier = artifact_monthly_dynasty_prestige_1_modifier
 		has_artifact_modifier = artifact_monthly_dynasty_prestige_2_modifier
 		has_artifact_modifier = artifact_monthly_dynasty_prestige_3_modifier
 		has_artifact_modifier = artifact_monthly_dynasty_prestige_4_modifier
+		has_artifact_modifier = artifact_killer_4_artifact_modifier
+		# historical
+		has_artifact_modifier = joyeuse_modifier
+		has_artifact_modifier = ark_of_covenant_modifier
+		has_artifact_modifier = koh_i_noor
+		has_artifact_modifier = turquoise_throne_modifier
+		has_artifact_modifier = peacock_throne_modifier
+		has_artifact_modifier = mantle_prophet_modifier
+		has_artifact_modifier = reichskrone_modifier
+		has_artifact_modifier = tizona_modifier
+		has_artifact_modifier = muhammed_sword_modifier
+		has_artifact_modifier = mmaagha_kamalu_modifier
+		has_artifact_modifier = justinian_crown_modifier
+		has_artifact_modifier = babr_e_bayan_modifier
+		has_artifact_modifier = great_diamond_modifier
+		has_artifact_modifier = al_jabal_modifier
+		has_artifact_modifier = al_yatima_modifier
+		has_artifact_modifier = iron_crown_modifier
+		has_artifact_modifier = dhammapada_modifier
+		has_artifact_modifier = vinaya_pitaka_modifier
+		has_artifact_modifier = sutta_pitaka_modifier
+		has_artifact_modifier = abhidhamma_pitaka_modifier
+		has_artifact_modifier = durendal_modifier
+		has_artifact_modifier = nagelring_modifier
+		has_artifact_modifier = kladenets_modifier
+		has_artifact_modifier = szczerbiec_modifier
+		has_artifact_modifier = legbiter_modifier
+		has_artifact_modifier = quernbiter_modifier
+		has_artifact_modifier = dragvandil_modifier
+		has_artifact_modifier = curtana_modifier
+		has_artifact_modifier = colada_modifier
+		has_artifact_modifier = angelicas_ring_modifier
+		has_artifact_modifier = olifant_modifier
+		has_artifact_modifier = aram_modifier
+		has_artifact_modifier = kaves_apron_modifier
+
+		# monthly_dynasty_prestige
 		has_artifact_modifier = artifact_monthly_prestige_add_1_modifier
 		has_artifact_modifier = artifact_monthly_prestige_add_2_modifier
 		has_artifact_modifier = artifact_monthly_prestige_add_3_modifier
@@ -113,11 +351,36 @@ at_has_artifact_dynasty_prestige_modifier = {
 		has_artifact_modifier = artifact_monthly_prestige_add_6_modifier
 		has_artifact_modifier = artifact_monthly_prestige_add_7_modifier
 		has_artifact_modifier = artifact_monthly_prestige_add_8_modifier
+		has_artifact_modifier = artifact_propaganda_chronicle_modifier
+		has_artifact_modifier = artifact_half_baked_propaganda_chronicle_modifier
+		# historical
+		has_artifact_modifier = al_dawat_modifier
+		has_artifact_modifier = al_sayf_al_khass_modifier
+		has_artifact_modifier = bronze_head_modifier
+		has_artifact_modifier = crystal_carving_modifier
+		has_artifact_modifier = attila_sword_modifier
+		has_artifact_modifier = essen_crown_modifier
+		has_artifact_modifier = excalibur_modifier
+		has_artifact_modifier = caligraphy_modifier
+		has_artifact_modifier = throne_charlemagne_modifier
+		has_artifact_modifier = throne_solomon_modifier
+		has_artifact_modifier = throne_scone_modifier
+		has_artifact_modifier = banner_kaviani_modifier
+		has_artifact_modifier = pentapyrgion_modifier
+		has_artifact_modifier = jewelled_danda_modifier
+		has_artifact_modifier = khanda_modifier
+		has_artifact_modifier = rustam_dagger_modifier
+		has_artifact_modifier = spear_ascalon_modifier
+		has_artifact_modifier = zomorrodnegar_modifier
+		has_artifact_modifier = aruval_modifier
+		has_artifact_modifier = navaratna_modifier
+		has_artifact_modifier = bells_of_santiago_modifier
 	}
 }
 
 at_has_artifact_tyranny_modifier = {
 	OR = {
+		# tyranny_loss_mult
 		has_artifact_modifier = artifact_monthly_tyranny_1_modifier
 		has_artifact_modifier = artifact_monthly_tyranny_2_modifier
 		has_artifact_modifier = artifact_monthly_tyranny_3_modifier
@@ -126,52 +389,78 @@ at_has_artifact_tyranny_modifier = {
 		has_artifact_modifier = artifact_monthly_tyranny_6_modifier
 		has_artifact_modifier = artifact_monthly_tyranny_7_modifier
 		has_artifact_modifier = artifact_monthly_tyranny_8_modifier
-		# Negative
+
+		# tyranny_gain_mult
 		has_artifact_modifier = artifact_tyranny_gain_mult_1_modifier
+		# historical
+		has_artifact_modifier = jewelled_danda_modifier
+		has_artifact_modifier = zomorrodnegar_modifier
 	}
 }
 
 at_has_artifact_dread_modifier = {
 	OR = {
+		# dread_gain_mult
 		has_artifact_modifier = artifact_dread_gain_mult_1_modifier
 		has_artifact_modifier = artifact_dread_gain_mult_2_modifier
 		has_artifact_modifier = artifact_dread_gain_mult_3_modifier
 		has_artifact_modifier = artifact_dread_gain_mult_4_modifier
+		has_artifact_modifier = cursed_artifact_modifier
+		has_artifact_modifier = very_cursed_artifact_modifier
+		# dread_baseline_add
 		has_artifact_modifier = artifact_dread_baseline_add_1_modifier
 		has_artifact_modifier = artifact_dread_baseline_add_2_modifier
 		has_artifact_modifier = artifact_dread_baseline_add_3_modifier
 		has_artifact_modifier = artifact_dread_baseline_add_4_modifier
+		# historical
+		has_artifact_modifier = attila_sword_modifier
 	}
 }
 
 at_has_artifact_fertility_modifier = {
 	OR = {
+		# fertility
 		has_artifact_modifier = artifact_fertility_gain_1_modifier
 		has_artifact_modifier = artifact_fertility_gain_2_modifier
 		has_artifact_modifier = artifact_fertility_gain_3_modifier
 		has_artifact_modifier = artifact_fertility_gain_4_modifier
+		has_artifact_modifier = artifact_fertility_negative_modifier
+		# historical
+		has_artifact_modifier = shankha_conch_modifier
+		has_artifact_modifier = kantele_modifier
 	}
 }
 
 at_has_artifact_health_modifier = {
 	OR = {
+		# health
 		has_artifact_modifier = artifact_health_gain_1_modifier
 		has_artifact_modifier = artifact_health_gain_2_modifier
 		has_artifact_modifier = artifact_health_gain_3_modifier
 		has_artifact_modifier = artifact_health_gain_4_modifier
+		has_artifact_modifier = artifact_health_penalty_1_modifier
+
+		# negate_health_penalty_add
 		has_artifact_modifier = artifact_negate_health_penalty_add_1_modifier
 		has_artifact_modifier = artifact_negate_health_penalty_add_2_modifier
 		has_artifact_modifier = artifact_negate_health_penalty_add_3_modifier
 		has_artifact_modifier = artifact_negate_health_penalty_add_4_modifier
+		# historical
+		has_artifact_modifier = cup_jamshid_modifier
+		has_artifact_modifier = former_bells_of_santiago_modifier
 	}
 }
 
 at_has_artifact_stress_gain_modifier = {
 	OR = {
+		# stress_gain_mult
 		has_artifact_modifier = artifact_stress_gain_1_modifier
 		has_artifact_modifier = artifact_stress_gain_2_modifier
 		has_artifact_modifier = artifact_stress_gain_3_modifier
 		has_artifact_modifier = artifact_stress_gain_4_modifier
+		has_artifact_modifier = artifact_stress_gain_1_penalty_modifier
+		# historical
+		has_artifact_modifier = dhammapada_modifier
 	}
 }
 
@@ -179,16 +468,16 @@ at_has_artifact_stress_gain_modifier = {
 
 at_has_artifact_general_opinion_modifier = {
 	OR = {
+		# general_opinion
 		has_artifact_modifier = artifact_general_opinion_1_modifier
+		# historical
+		has_artifact_modifier = koh_i_noor
 	}
 }
 
 at_has_artifact_vassal_opinion_modifier = {
 	OR = {
-		#has_artifact_modifier = artifact_vassal_opinion_1_modifier
-		#has_artifact_modifier = artifact_vassal_opinion_2_modifier
-		#has_artifact_modifier = artifact_vassal_opinion_3_modifier
-		#has_artifact_modifier = artifact_vassal_opinion_4_modifier
+		# powerful_vassal_opinion
 		has_artifact_modifier = artifact_powerful_vassal_opinion_1_modifier
 		has_artifact_modifier = artifact_powerful_vassal_opinion_2_modifier
 		has_artifact_modifier = artifact_powerful_vassal_opinion_3_modifier
@@ -197,23 +486,34 @@ at_has_artifact_vassal_opinion_modifier = {
 		has_artifact_modifier = artifact_powerful_vassal_opinion_6_modifier
 		has_artifact_modifier = artifact_powerful_vassal_opinion_7_modifier
 		has_artifact_modifier = artifact_powerful_vassal_opinion_8_modifier
-	}
-}
+		# historical
+		has_artifact_modifier = alexander_the_great_armor_modifier
+		has_artifact_modifier = skull_cap_charlemagne_modifier
+		has_artifact_modifier = pentapyrgion_modifier
 
-at_has_artifact_vassal_stance_vassal_opinion_modifier = {
-	OR = {
+		# direct_vassal_opinion
+		# historical
+		has_artifact_modifier = abhidhamma_pitaka_modifier
+
+		# courtly_opinion
 		has_artifact_modifier = artifact_courtly_vassal_opinion_1_modifier
 		has_artifact_modifier = artifact_courtly_vassal_opinion_2_modifier
 		has_artifact_modifier = artifact_courtly_vassal_opinion_3_modifier
 		has_artifact_modifier = artifact_courtly_vassal_opinion_4_modifier
+
+		# glory_hound_opinion
 		has_artifact_modifier = artifact_glory_hound_vassal_opinion_1_modifier
 		has_artifact_modifier = artifact_glory_hound_vassal_opinion_2_modifier
 		has_artifact_modifier = artifact_glory_hound_vassal_opinion_3_modifier
 		has_artifact_modifier = artifact_glory_hound_vassal_opinion_4_modifier
+
+		# parochial_opinion
 		has_artifact_modifier = artifact_parochial_vassal_opinion_1_modifier
 		has_artifact_modifier = artifact_parochial_vassal_opinion_2_modifier
 		has_artifact_modifier = artifact_parochial_vassal_opinion_3_modifier
 		has_artifact_modifier = artifact_parochial_vassal_opinion_4_modifier
+
+		# zealot_opinion
 		has_artifact_modifier = artifact_zealot_vassal_opinion_1_modifier
 		has_artifact_modifier = artifact_zealot_vassal_opinion_2_modifier
 		has_artifact_modifier = artifact_zealot_vassal_opinion_3_modifier
@@ -223,6 +523,7 @@ at_has_artifact_vassal_stance_vassal_opinion_modifier = {
 
 at_has_artifact_independent_ruler_opinion_modifier = {
 	OR = {
+		# independent_ruler_opinion
 		has_artifact_modifier = artifact_independent_ruler_opinion_1_modifier
 		has_artifact_modifier = artifact_independent_ruler_opinion_2_modifier
 		has_artifact_modifier = artifact_independent_ruler_opinion_3_modifier
@@ -236,6 +537,7 @@ at_has_artifact_independent_ruler_opinion_modifier = {
 
 at_has_artifact_courtier_and_guest_opinion_modifier = {
 	OR = {
+		# courtier_and_guest_opinion
 		has_artifact_modifier = artifact_courtier_and_guest_opinion_1_modifier
 		has_artifact_modifier = artifact_courtier_and_guest_opinion_2_modifier
 		has_artifact_modifier = artifact_courtier_and_guest_opinion_3_modifier
@@ -244,11 +546,14 @@ at_has_artifact_courtier_and_guest_opinion_modifier = {
 		has_artifact_modifier = artifact_courtier_and_guest_opinion_6_modifier
 		has_artifact_modifier = artifact_courtier_and_guest_opinion_7_modifier
 		has_artifact_modifier = artifact_courtier_and_guest_opinion_8_modifier
+		# historical
+		has_artifact_modifier = reichskrone_modifier
 	}
 }
 
 at_has_artifact_spouse_opinion_modifier = {
 	OR = {
+		# spouse_opinion
 		has_artifact_modifier = artifact_spouse_opinion_add_1_modifier
 		has_artifact_modifier = artifact_spouse_opinion_add_2_modifier
 		has_artifact_modifier = artifact_spouse_opinion_add_3_modifier
@@ -258,6 +563,7 @@ at_has_artifact_spouse_opinion_modifier = {
 
 at_has_artifact_dynasty_opinion_modifier = {
 	OR = {
+		# dynasty_opinion
 		has_artifact_modifier = artifact_dynasty_opinion_1_modifier
 		has_artifact_modifier = artifact_dynasty_opinion_2_modifier
 		has_artifact_modifier = artifact_dynasty_opinion_3_modifier
@@ -271,22 +577,37 @@ at_has_artifact_dynasty_opinion_modifier = {
 
 at_has_artifact_attraction_opinion_modifier = {
 	OR = {
+		# attraction_opinion
 		has_artifact_modifier = artifact_attraction_opinion_1_modifier
 		has_artifact_modifier = artifact_attraction_opinion_2_modifier
 		has_artifact_modifier = artifact_attraction_opinion_3_modifier
 		has_artifact_modifier = artifact_attraction_opinion_4_modifier
+		has_artifact_modifier = artifact_attraction_opinion_negative_1_modifier
+		has_artifact_modifier = artifact_attraction_opinion_negative_2_modifier
+		# historical
+		has_artifact_modifier = koh_i_noor
+		has_artifact_modifier = great_diamond_modifier
+		has_artifact_modifier = al_jabal_modifier
+		has_artifact_modifier = al_yatima_modifier
+		has_artifact_modifier = david_harp_modifier
+		has_artifact_modifier = durendal_modifier
+		has_artifact_modifier = angelicas_ring_modifier
 	}
 }
 
 at_has_artifact_child_opinion_modifier = {
 	OR = {
+		# child_opinion
 		has_artifact_modifier = artifact_child_opinion_1_modifier
 		has_artifact_modifier = artifact_child_opinion_2_modifier
+		# historical
+		has_artifact_modifier = essen_crown_modifier
 	}
 }
 
 at_has_artifact_clergy_opinion_modifier = {
 	OR = {
+		# clergy_opinion
 		has_artifact_modifier = artifact_clergy_opinion_1_modifier
 		has_artifact_modifier = artifact_clergy_opinion_2_modifier
 		has_artifact_modifier = artifact_clergy_opinion_3_modifier
@@ -299,20 +620,33 @@ at_has_artifact_clergy_opinion_modifier = {
 		has_artifact_modifier = artifact_clergy_opinion_10_modifier
 		has_artifact_modifier = artifact_clergy_opinion_11_modifier
 		has_artifact_modifier = artifact_clergy_opinion_12_modifier
+		has_artifact_modifier = artifact_clergy_opinion_penalty_2_modifier
+		# historical
+		has_artifact_modifier = ark_of_covenant_modifier
+		has_artifact_modifier = banner_of_edessa_modifier
+		has_artifact_modifier = kakusandha_modifier
+		has_artifact_modifier = chalice_of_dona_urraca_modifier
 	}
 }
 
 at_has_artifact_same_faith_opinion_modifier = {
 	OR = {
+		# same_faith_opinion
 		has_artifact_modifier = artifact_same_faith_opinion_1_modifier
 		has_artifact_modifier = artifact_same_faith_opinion_2_modifier
 		has_artifact_modifier = artifact_same_faith_opinion_3_modifier
 		has_artifact_modifier = artifact_same_faith_opinion_4_modifier
+		has_artifact_modifier = artifact_same_faith_opinion_negative_1_modifier
+		# historical
+		has_artifact_modifier = muhammed_sword_2_modifier
+		has_artifact_modifier = spear_ascalon_modifier
+		has_artifact_modifier = bells_of_santiago_modifier
 	}
 }
 
 at_has_artifact_different_faith_opinion_modifier = {
 	OR = {
+		# different_faith_opinion
 		has_artifact_modifier = artifact_different_faith_opinion_1_modifier
 		has_artifact_modifier = artifact_different_faith_opinion_2_modifier
 		has_artifact_modifier = artifact_different_faith_opinion_3_modifier
@@ -332,12 +666,16 @@ at_has_artifact_different_faith_opinion_modifier = {
 
 at_has_artifact_domain_limit_modifier = {
 	OR = {
+		# domain_limit
 		has_artifact_modifier = artifact_domain_limit_1_modifier
+		# historical
+		has_artifact_modifier = justinian_crown_modifier
 	}
 }
 
 at_has_artifact_vassal_limit_modifier = {
 	OR = {
+		# vassal_limit
 		has_artifact_modifier = artifact_vassal_limit_1_modifier
 		has_artifact_modifier = artifact_vassal_limit_2_modifier
 		has_artifact_modifier = artifact_vassal_limit_3_modifier
@@ -346,11 +684,16 @@ at_has_artifact_vassal_limit_modifier = {
 		has_artifact_modifier = artifact_vassal_limit_6_modifier
 		has_artifact_modifier = artifact_vassal_limit_7_modifier
 		has_artifact_modifier = artifact_vassal_limit_8_modifier
+		# historical
+		has_artifact_modifier = reichskrone_modifier
+		has_artifact_modifier = justinian_crown_modifier
+		has_artifact_modifier = iron_crown_modifier
 	}
 }
 
 at_has_artifact_monthly_income_modifier = {
 	OR = {
+		# monthly_income_mult
 		has_artifact_modifier = artifact_monthly_income_1_modifier
 		has_artifact_modifier = artifact_monthly_income_2_modifier
 		has_artifact_modifier = artifact_monthly_income_3_modifier
@@ -360,6 +703,7 @@ at_has_artifact_monthly_income_modifier = {
 
 at_has_artifact_men_at_arms_maintenance_modifier = {
 	OR = {
+		# men_at_arms_maintenance
 		has_artifact_modifier = artifact_men_at_arms_maintenance_1_modifier
 		has_artifact_modifier = artifact_men_at_arms_maintenance_2_modifier
 		has_artifact_modifier = artifact_men_at_arms_maintenance_3_modifier
@@ -368,11 +712,27 @@ at_has_artifact_men_at_arms_maintenance_modifier = {
 		has_artifact_modifier = artifact_men_at_arms_maintenance_6_modifier
 		has_artifact_modifier = artifact_men_at_arms_maintenance_7_modifier
 		has_artifact_modifier = artifact_men_at_arms_maintenance_8_modifier
+		# historical
+		has_artifact_modifier = banner_thankfulness
+		has_artifact_modifier = tizona_modifier
+		has_artifact_modifier = skull_cap_charlemagne_modifier
+
+		# army_maintenance_mult
+		# historical
+		has_artifact_modifier = babr_e_bayan_modifier
+		has_artifact_modifier = kaves_apron_modifier
+
+		# *_maintenance_mult
+		# historical
+		has_artifact_modifier = alexander_the_great_armor_modifier
+		has_artifact_modifier = nikephoros_crown_modifier
+		has_artifact_modifier = throne_scone_modifier
 	}
 }
 
 at_has_artifact_mercenary_hire_cost_modifier = {
 	OR = {
+		# mercenary_hire_cost_mult
 		has_artifact_modifier = artifact_mercenary_hire_cost_mult_1_modifier
 		has_artifact_modifier = artifact_mercenary_hire_cost_mult_2_modifier
 		has_artifact_modifier = artifact_mercenary_hire_cost_mult_3_modifier
@@ -382,23 +742,42 @@ at_has_artifact_mercenary_hire_cost_modifier = {
 
 at_has_artifact_domain_tax_modifier = {
 	OR = {
+		# domain_tax_mult
 		has_artifact_modifier = artifact_domain_tax_mult_1_modifier
 		has_artifact_modifier = artifact_domain_tax_mult_2_modifier
 		has_artifact_modifier = artifact_domain_tax_mult_3_modifier
 		has_artifact_modifier = artifact_domain_tax_mult_4_modifier
+		# historical
+		has_artifact_modifier = crystal_carving_modifier
+		has_artifact_modifier = ruyi_modifier
+
+		# domain_tax_same_faith_mult
 		has_artifact_modifier = artifact_domain_tax_same_faith_mult_1_modifier
 		has_artifact_modifier = artifact_domain_tax_same_faith_mult_2_modifier
 		has_artifact_modifier = artifact_domain_tax_same_faith_mult_3_modifier
 		has_artifact_modifier = artifact_domain_tax_same_faith_mult_4_modifier
+		# historical
+		has_artifact_modifier = ark_of_covenant_modifier
+		has_artifact_modifier = mantle_prophet_modifier
+		has_artifact_modifier = cintamani_modifier
+
+		# <terrain>_tax_mult
+		has_artifact_modifier = qadib_al_mulk_modifier
+		has_artifact_modifier = babr_e_bayan_modifier
+		has_artifact_modifier = ikenga_modifier
+		has_artifact_modifier = afarganyu_modifier
 	}
 }
 
 at_has_artifact_vassal_tax_contribution_modifier = {
 	OR = {
-		#has_artifact_modifier = artifact_vassal_tax_contribution_mult_1_modifier
+		# vassal_tax_contribution_mult
 		has_artifact_modifier = artifact_vassal_tax_contribution_mult_2_modifier
-		#has_artifact_modifier = artifact_vassal_tax_contribution_mult_3_modifier
 		has_artifact_modifier = artifact_vassal_tax_contribution_mult_4_modifier
+		# historical
+		has_artifact_modifier = konagamana_modifier
+
+		# happy_powerful_vassal_tax_contribution_mult
 		has_artifact_modifier = artifact_happy_powerful_vassal_tax_contribution_mult_1_modifier
 		has_artifact_modifier = artifact_happy_powerful_vassal_tax_contribution_mult_2_modifier
 		has_artifact_modifier = artifact_happy_powerful_vassal_tax_contribution_mult_3_modifier
@@ -407,23 +786,28 @@ at_has_artifact_vassal_tax_contribution_modifier = {
 		has_artifact_modifier = artifact_happy_powerful_vassal_tax_contribution_mult_6_modifier
 		has_artifact_modifier = artifact_happy_powerful_vassal_tax_contribution_mult_7_modifier
 		has_artifact_modifier = artifact_happy_powerful_vassal_tax_contribution_mult_8_modifier
-	}
-}
+		# historical
+		has_artifact_modifier = bronze_head_modifier
 
-at_has_artifact_vassal_stance_tax_contribution_modifier = {
-	OR = {
+		# courtly_tax_contribution_mult
 		has_artifact_modifier = artifact_courtly_tax_contribution_mult_1_modifier
 		has_artifact_modifier = artifact_courtly_tax_contribution_mult_2_modifier
 		has_artifact_modifier = artifact_courtly_tax_contribution_mult_3_modifier
 		has_artifact_modifier = artifact_courtly_tax_contribution_mult_4_modifier
+
+		# glory_hound_tax_contribution_mult
 		has_artifact_modifier = artifact_glory_hound_tax_contribution_mult_1_modifier
 		has_artifact_modifier = artifact_glory_hound_tax_contribution_mult_2_modifier
 		has_artifact_modifier = artifact_glory_hound_tax_contribution_mult_3_modifier
 		has_artifact_modifier = artifact_glory_hound_tax_contribution_mult_4_modifier
+
+		# parochial_tax_contribution_mult
 		has_artifact_modifier = artifact_parochial_tax_contribution_mult_1_modifier
 		has_artifact_modifier = artifact_parochial_tax_contribution_mult_2_modifier
 		has_artifact_modifier = artifact_parochial_tax_contribution_mult_3_modifier
 		has_artifact_modifier = artifact_parochial_tax_contribution_mult_4_modifier
+
+		# zealot_tax_contribution_mult
 		has_artifact_modifier = artifact_zealot_tax_contribution_mult_1_modifier
 		has_artifact_modifier = artifact_zealot_tax_contribution_mult_2_modifier
 		has_artifact_modifier = artifact_zealot_tax_contribution_mult_3_modifier
@@ -431,20 +815,20 @@ at_has_artifact_vassal_stance_tax_contribution_modifier = {
 	}
 }
 
-at_has_artifact_vassal_stance_levy_contribution_modifier = {
+at_has_artifact_vassal_levy_contribution_modifier = {
 	OR = {
-		#has_artifact_modifier = artifact_courtly_levy_contribution_mult_1_modifier
-		#has_artifact_modifier = artifact_courtly_levy_contribution_mult_2_modifier
-		#has_artifact_modifier = artifact_courtly_levy_contribution_mult_3_modifier
-		#has_artifact_modifier = artifact_courtly_levy_contribution_mult_4_modifier
+		# happy_powerful_vassal_levy_contribution_mult
+		# historical
+		has_artifact_modifier = alexander_the_great_armor_modifier
+		has_artifact_modifier = pentapyrgion_modifier
+
+		# glory_hound_levy_contribution_mult
 		has_artifact_modifier = artifact_glory_hound_levy_contribution_mult_1_modifier
 		has_artifact_modifier = artifact_glory_hound_levy_contribution_mult_2_modifier
 		has_artifact_modifier = artifact_glory_hound_levy_contribution_mult_3_modifier
 		has_artifact_modifier = artifact_glory_hound_levy_contribution_mult_4_modifier
-		#has_artifact_modifier = artifact_parochial_levy_contribution_mult_1_modifier
-		#has_artifact_modifier = artifact_parochial_levy_contribution_mult_2_modifier
-		#has_artifact_modifier = artifact_parochial_levy_contribution_mult_3_modifier
-		#has_artifact_modifier = artifact_parochial_levy_contribution_mult_4_modifier
+
+		# zealot_levy_contribution_mult
 		has_artifact_modifier = artifact_zealot_levy_contribution_mult_1_modifier
 		has_artifact_modifier = artifact_zealot_levy_contribution_mult_2_modifier
 		has_artifact_modifier = artifact_zealot_levy_contribution_mult_3_modifier
@@ -454,6 +838,7 @@ at_has_artifact_vassal_stance_levy_contribution_modifier = {
 
 at_has_artifact_development_growth_modifier = {
 	OR = {
+		# development_growth
 		has_artifact_modifier = artifact_development_growth_1_modifier
 		has_artifact_modifier = artifact_development_growth_2_modifier
 		has_artifact_modifier = artifact_development_growth_3_modifier
@@ -466,19 +851,34 @@ at_has_artifact_development_growth_modifier = {
 		has_artifact_modifier = artifact_development_growth_10_modifier
 		has_artifact_modifier = artifact_development_growth_11_modifier
 		has_artifact_modifier = artifact_development_growth_12_modifier
+
+		# *_development_growth_factor
+		# historical
+		has_artifact_modifier = al_taj_modifier
+		has_artifact_modifier = shankha_conch_modifier
+		has_artifact_modifier = zomorrodnegar_modifier
+		has_artifact_modifier = afarganyu_modifier
+		has_artifact_modifier = afarganyu_modifier
+
+		# character_capital_county_monthly_development_growth_add
+		# historical
+		has_artifact_modifier = turquoise_throne_modifier
+		has_artifact_modifier = peacock_throne_modifier
+		has_artifact_modifier = iron_crown_modifier
+		has_artifact_modifier = navaratna_modifier
 	}
 }
 
 at_has_artifact_build_gold_cost_modifier = {
 	OR = {
+		# build_gold_cost
 		has_artifact_modifier = artifact_build_gold_cost_1_modifier
 		has_artifact_modifier = artifact_build_gold_cost_2_modifier
 		has_artifact_modifier = artifact_build_gold_cost_3_modifier
 		has_artifact_modifier = artifact_build_gold_cost_4_modifier
-		#has_artifact_modifier = artifact_build_gold_cost_5_modifier
-		#has_artifact_modifier = artifact_build_gold_cost_6_modifier
-		#has_artifact_modifier = artifact_build_gold_cost_7_modifier
-		#has_artifact_modifier = artifact_build_gold_cost_8_modifier
+
+		# church_holding_build_gold_cost
+		# church_holding_holding_build_gold_cost
 		has_artifact_modifier = artifact_church_holding_build_gold_cost_1_modifier
 		has_artifact_modifier = artifact_church_holding_build_gold_cost_2_modifier
 		has_artifact_modifier = artifact_church_holding_build_gold_cost_3_modifier
@@ -491,21 +891,43 @@ at_has_artifact_build_gold_cost_modifier = {
 		has_artifact_modifier = artifact_church_holding_build_gold_cost_10_modifier
 		has_artifact_modifier = artifact_church_holding_build_gold_cost_11_modifier
 		has_artifact_modifier = artifact_church_holding_build_gold_cost_12_modifier
+		# historical
+		has_artifact_modifier = banner_of_edessa_modifier
+		has_artifact_modifier = navaratna_modifier
+		has_artifact_modifier = afarganyu_modifier
+		has_artifact_modifier = kassapa_modifier
+		has_artifact_modifier = chalice_of_dona_urraca_modifier
+
+		# city_holding_build_gold_cost
+		# city_holding_holding_build_gold_cost
+		# historical
+		has_artifact_modifier = ruyi_modifier
+
+		# *_construction_gold_cost
+		# historical
+		has_artifact_modifier = sledovik_modifier
+		has_artifact_modifier = ikenga_modifier
 	}
 }
 
 at_has_artifact_build_speed_modifier = {
 	OR = {
+		# build_speed
 		has_artifact_modifier = artifact_build_time_1_modifier
 		has_artifact_modifier = artifact_build_time_2_modifier
 		has_artifact_modifier = artifact_build_time_3_modifier
 		has_artifact_modifier = artifact_build_time_4_modifier
+
+		# city_holding_build_speed
 		has_artifact_modifier = artifact_city_holding_build_speed_add_1_modifier
 		has_artifact_modifier = artifact_city_holding_build_speed_add_2_modifier
+		# church_holding_build_speed
 		has_artifact_modifier = artifact_church_holding_build_speed_add_1_modifier
 		has_artifact_modifier = artifact_church_holding_build_speed_add_2_modifier
+		# castle_holding_build_speed
 		has_artifact_modifier = artifact_castle_holding_build_speed_add_1_modifier
 		has_artifact_modifier = artifact_castle_holding_build_speed_add_2_modifier
+		# tribal_holding_build_speed
 		has_artifact_modifier = artifact_tribal_holding_build_speed_add_2_modifier
 	}
 }
@@ -514,6 +936,7 @@ at_has_artifact_build_speed_modifier = {
 
 at_has_artifact_scheme_success_chance_modifier = {
 	OR = {
+		# owned_hostile_scheme_success_chance_add
 		has_artifact_modifier = artifact_owned_hostile_scheme_success_chance_add_1_modifier
 		has_artifact_modifier = artifact_owned_hostile_scheme_success_chance_add_2_modifier
 		has_artifact_modifier = artifact_owned_hostile_scheme_success_chance_add_3_modifier
@@ -526,6 +949,9 @@ at_has_artifact_scheme_success_chance_modifier = {
 		has_artifact_modifier = artifact_owned_hostile_scheme_success_chance_add_10_modifier
 		has_artifact_modifier = artifact_owned_hostile_scheme_success_chance_add_11_modifier
 		has_artifact_modifier = artifact_owned_hostile_scheme_success_chance_add_12_modifier
+		has_artifact_modifier = crystal_carving_modifier
+
+		# owned_personal_scheme_success_chance_add
 		has_artifact_modifier = artifact_owned_personal_scheme_success_chance_add_1_modifier
 		has_artifact_modifier = artifact_owned_personal_scheme_success_chance_add_2_modifier
 		has_artifact_modifier = artifact_owned_personal_scheme_success_chance_add_3_modifier
@@ -538,11 +964,25 @@ at_has_artifact_scheme_success_chance_modifier = {
 		has_artifact_modifier = artifact_owned_personal_scheme_success_chance_add_10_modifier
 		has_artifact_modifier = artifact_owned_personal_scheme_success_chance_add_11_modifier
 		has_artifact_modifier = artifact_owned_personal_scheme_success_chance_add_12_modifier
+		# historical
+		has_artifact_modifier = dragvandil_modifier
+		has_artifact_modifier = kantele_modifier
+
+		# enemy_hostile_scheme_success_chance_add
+		# historical
+		has_artifact_modifier = cup_jamshid_modifier
+		has_artifact_modifier = angelicas_ring_modifier
+		has_artifact_modifier = rustam_dagger_modifier
+
+		# enemy_personal_scheme_success_chance_add
+		# historical
+		has_artifact_modifier = khanda_modifier
 	}
 }
 
 at_has_artifact_scheme_secrecy_modifier = {
 	OR = {
+		# owned_scheme_secrecy_add
 		has_artifact_modifier = artifact_owned_scheme_secrecy_add_1_modifier
 		has_artifact_modifier = artifact_owned_scheme_secrecy_add_2_modifier
 		has_artifact_modifier = artifact_owned_scheme_secrecy_add_3_modifier
@@ -560,6 +1000,7 @@ at_has_artifact_scheme_secrecy_modifier = {
 
 at_has_artifact_scheme_power_modifier = {
 	OR = {
+		# hostile_scheme_power_add
 		has_artifact_modifier = artifact_hostile_scheme_power_add_1_modifier
 		has_artifact_modifier = artifact_hostile_scheme_power_add_2_modifier
 		has_artifact_modifier = artifact_hostile_scheme_power_add_3_modifier
@@ -572,6 +1013,8 @@ at_has_artifact_scheme_power_modifier = {
 		has_artifact_modifier = artifact_hostile_scheme_power_add_10_modifier
 		has_artifact_modifier = artifact_hostile_scheme_power_add_11_modifier
 		has_artifact_modifier = artifact_hostile_scheme_power_add_12_modifier
+
+		# personal_scheme_power_add
 		has_artifact_modifier = artifact_personal_scheme_power_add_1_modifier
 		has_artifact_modifier = artifact_personal_scheme_power_add_2_modifier
 		has_artifact_modifier = artifact_personal_scheme_power_add_3_modifier
@@ -589,7 +1032,12 @@ at_has_artifact_scheme_power_modifier = {
 
 at_has_artifact_seduce_scheme_power_modifier = {
 	OR = {
+		# seduce_scheme_power_mult
 		has_artifact_modifier = artifact_seduce_scheme_power_mult_1_modifier
+		# historical
+		has_artifact_modifier = curtana_modifier
+
+		# seduce_scheme_power_add
 		has_artifact_modifier = artifact_seduce_scheme_power_add_1_modifier
 		has_artifact_modifier = artifact_seduce_scheme_power_add_2_modifier
 		has_artifact_modifier = artifact_seduce_scheme_power_add_3_modifier
@@ -599,15 +1047,22 @@ at_has_artifact_seduce_scheme_power_modifier = {
 
 at_has_artifact_courting_scheme_power_modifier = {
 	OR = {
+		# courting_scheme_power_add
 		has_artifact_modifier = artifact_courting_scheme_power_add_1_modifier
 		has_artifact_modifier = artifact_courting_scheme_power_add_2_modifier
 		has_artifact_modifier = artifact_courting_scheme_power_add_3_modifier
 		has_artifact_modifier = artifact_courting_scheme_power_add_4_modifier
+
+		# courting_scheme_power_mult
+		# historical
+		has_artifact_modifier = david_harp_modifier
+		has_artifact_modifier = dragvandil_modifier
 	}
 }
 
 at_has_artifact_befriend_scheme_power_modifier = {
 	OR = {
+		# befriend_scheme_power_add
 		has_artifact_modifier = artifact_befriend_scheme_power_add_1_modifier
 		has_artifact_modifier = artifact_befriend_scheme_power_add_2_modifier
 		has_artifact_modifier = artifact_befriend_scheme_power_add_3_modifier
@@ -617,6 +1072,7 @@ at_has_artifact_befriend_scheme_power_modifier = {
 
 at_has_artifact_learn_language_scheme_power_modifier = {
 	OR = {
+		# learn_language_scheme_power_add
 		has_artifact_modifier = artifact_learn_language_scheme_power_add_1_modifier
 		has_artifact_modifier = artifact_learn_language_scheme_power_add_2_modifier
 		has_artifact_modifier = artifact_learn_language_scheme_power_add_3_modifier
@@ -626,6 +1082,7 @@ at_has_artifact_learn_language_scheme_power_modifier = {
 
 at_has_artifact_hostile_scheme_resistance_modifier = {
 	OR = {
+		# hostile_scheme_resistance_add
 		has_artifact_modifier = artifact_scheme_resistance_add_1_modifier
 		has_artifact_modifier = artifact_scheme_resistance_add_2_modifier
 	}
@@ -635,8 +1092,7 @@ at_has_artifact_hostile_scheme_resistance_modifier = {
 
 at_has_artifact_diplomacy_lifestyle_xp_modifier = {
 	OR = {
-		#has_artifact_modifier = artifact_diplomacy_lifestyle_xp_1_modifier
-		#has_artifact_modifier = artifact_diplomacy_lifestyle_xp_2_modifier
+		# monthly_diplomacy_lifestyle_xp_gain_mult
 		has_artifact_modifier = artifact_monthly_diplomacy_lifestyle_xp_1_modifier
 		has_artifact_modifier = artifact_monthly_diplomacy_lifestyle_xp_2_modifier
 		has_artifact_modifier = artifact_monthly_diplomacy_lifestyle_xp_3_modifier
@@ -646,19 +1102,26 @@ at_has_artifact_diplomacy_lifestyle_xp_modifier = {
 
 at_has_artifact_martial_lifestyle_xp_modifier = {
 	OR = {
-		#has_artifact_modifier = artifact_martial_lifestyle_xp_1_modifier
+		# martial_lifestyle_xp_gain_mult
 		has_artifact_modifier = artifact_martial_lifestyle_xp_2_modifier
+
+		# monthly_martial_lifestyle_xp_gain_mult
 		has_artifact_modifier = artifact_monthly_martial_lifestyle_xp_1_modifier
 		has_artifact_modifier = artifact_monthly_martial_lifestyle_xp_2_modifier
 		has_artifact_modifier = artifact_monthly_martial_lifestyle_xp_3_modifier
 		has_artifact_modifier = artifact_monthly_martial_lifestyle_xp_4_modifier
+		has_artifact_modifier = artifact_monthly_martial_lifestyle_xp_1_negative_modifier
+		# historical
+		has_artifact_modifier = nikephoros_crown_modifier
 	}
 }
 
 at_has_artifact_stewardship_lifestyle_xp_modifier = {
 	OR = {
-		#has_artifact_modifier = artifact_stewardship_lifestyle_xp_1_modifier
+		# stewardship_lifestyle_xp_gain_mult
 		has_artifact_modifier = artifact_stewardship_lifestyle_xp_2_modifier
+
+		# monthly_stewardship_lifestyle_xp_gain_mult
 		has_artifact_modifier = artifact_monthly_stewardship_lifestyle_xp_1_modifier
 		has_artifact_modifier = artifact_monthly_stewardship_lifestyle_xp_2_modifier
 		has_artifact_modifier = artifact_monthly_stewardship_lifestyle_xp_3_modifier
@@ -668,8 +1131,7 @@ at_has_artifact_stewardship_lifestyle_xp_modifier = {
 
 at_has_artifact_intrigue_lifestyle_xp_modifier = {
 	OR = {
-		#has_artifact_modifier = artifact_intrigue_lifestyle_xp_1_modifier
-		#has_artifact_modifier = artifact_intrigue_lifestyle_xp_2_modifier
+		# monthly_intrigue_lifestyle_xp_gain_mult
 		has_artifact_modifier = artifact_monthly_intrigue_lifestyle_xp_1_modifier
 		has_artifact_modifier = artifact_monthly_intrigue_lifestyle_xp_2_modifier
 		has_artifact_modifier = artifact_monthly_intrigue_lifestyle_xp_3_modifier
@@ -679,12 +1141,17 @@ at_has_artifact_intrigue_lifestyle_xp_modifier = {
 
 at_has_artifact_learning_lifestyle_xp_modifier = {
 	OR = {
+		# learning_lifestyle_xp_gain_mult
 		has_artifact_modifier = artifact_learning_lifestyle_xp_1_modifier
 		has_artifact_modifier = artifact_learning_lifestyle_xp_2_modifier
+
+		# monthly_learning_lifestyle_xp_gain_mult
 		has_artifact_modifier = artifact_monthly_learning_lifestyle_xp_1_modifier
 		has_artifact_modifier = artifact_monthly_learning_lifestyle_xp_2_modifier
 		has_artifact_modifier = artifact_monthly_learning_lifestyle_xp_3_modifier
 		has_artifact_modifier = artifact_monthly_learning_lifestyle_xp_4_modifier
+		# historical
+		has_artifact_modifier = sutta_pitaka_modifier
 	}
 }
 
@@ -692,66 +1159,88 @@ at_has_artifact_learning_lifestyle_xp_modifier = {
 
 at_has_artifact_diplomacy_modifier = {
 	OR = {
+		# diplomacy
 		has_artifact_modifier = artifact_diplomacy_1_modifier
+
+		# diplomacy_per_prestige_level
+		has_artifact_modifier = artifact_diplomacy_per_prestige_level_modifier
+		# historical
+		has_artifact_modifier = turquoise_throne_modifier
+		has_artifact_modifier = peacock_throne_modifier
+
+		# diplomacy_per_piety_level
+		# historical
+		has_artifact_modifier = votive_crown_modifier
 	}
 }
 
 at_has_artifact_martial_modifier = {
 	OR = {
+		# martial
 		has_artifact_modifier = artifact_martial_1_modifier
 		has_artifact_modifier = artifact_martial_2_modifier
+
+		# martial_per_stress_level
+		# historical
+		has_artifact_modifier = monomachus_crown_modifier
+
+		# martial_per_piety_level
+		# historical
+		has_artifact_modifier = mmaagha_kamalu_modifier
+		has_artifact_modifier = spear_ascalon_modifier
 	}
 }
 
 at_has_artifact_stewardship_modifier = {
 	OR = {
+		# stewardship
 		has_artifact_modifier = artifact_stewardship_1_modifier
+
+		# stewardship_per_stress_level
+		has_artifact_modifier = artifact_stewardship_per_stress_level_1_modifier
+		has_artifact_modifier = artifact_stewardship_per_stress_level_2_modifier
+
+		# stewardship_per_prestige_level
+		# historical
+		has_artifact_modifier = turquoise_throne_modifier
 	}
 }
 
 at_has_artifact_intrigue_modifier = {
 	OR = {
+		# intrigue
 		has_artifact_modifier = artifact_intrigue_1_modifier
 		has_artifact_modifier = artifact_intrigue_2_modifier
+
+		# intrigue_per_stress_level
+		has_artifact_modifier = artifact_intrigue_per_stress_level_1_modifier
+		has_artifact_modifier = artifact_intrigue_per_stress_level_2_modifier
+		# historical
+		has_artifact_modifier = monomachus_crown_modifier
+
+		# intrigue_per_prestige_level
+		has_artifact_modifier = artifact_intrigue_per_prestige_level_1_modifier
 	}
 }
 
 at_has_artifact_learning_modifier = {
 	OR = {
+		# learning
 		has_artifact_modifier = artifact_learning_1_modifier
 		has_artifact_modifier = artifact_learning_2_modifier
-	}
-}
 
-at_has_artifact_stewardship_per_stress_level_modifier = {
-	OR = {
-		has_artifact_modifier = artifact_stewardship_per_stress_level_1_modifier
-		has_artifact_modifier = artifact_stewardship_per_stress_level_2_modifier
-	}
-}
-
-at_has_artifact_intrigue_per_stress_level_modifier = {
-	OR = {
-		has_artifact_modifier = artifact_intrigue_per_stress_level_1_modifier
-		has_artifact_modifier = artifact_intrigue_per_stress_level_2_modifier
-	}
-}
-
-at_has_artifact_intrigue_per_prestige_level_modifier = {
-	OR = {
-		has_artifact_modifier = artifact_intrigue_per_prestige_level_1_modifier
-	}
-}
-
-at_has_artifact_learning_per_stress_level_modifier = {
-	OR = {
+		# learning_per_stress_level
 		has_artifact_modifier = artifact_learning_per_stress_level_2_modifier
-	}
-}
 
-at_has_artifact_learning_per_prestige_level_modifier = {
-	OR = {
+		# learning_per_prestige_level
 		has_artifact_modifier = artifact_learning_per_prestige_level_modifier
+		# historical
+		has_artifact_modifier = peacock_throne_modifier
+
+		# learning_per_piety_level
+		has_artifact_modifier = artifact_learning_per_piety_level_modifier
+		# historical
+		has_artifact_modifier = qadib_al_mulk_modifier
 	}
 }
 
@@ -759,6 +1248,7 @@ at_has_artifact_learning_per_prestige_level_modifier = {
 
 at_has_artifact_prowess_modifier = {
 	OR = {
+		# prowess_no_portrait
 		has_artifact_modifier = artifact_prowess_1_modifier
 		has_artifact_modifier = artifact_prowess_2_modifier
 		has_artifact_modifier = artifact_prowess_3_modifier
@@ -770,6 +1260,20 @@ at_has_artifact_prowess_modifier = {
 		has_artifact_modifier = artifact_prowess_9_modifier
 		has_artifact_modifier = artifact_prowess_10_modifier
 		has_artifact_modifier = artifact_prowess_11_modifier
+		has_artifact_modifier = artifact_prowess_1_negative_modifier
+		has_artifact_modifier = artifact_prowess_2_negative_modifier
+		has_artifact_modifier = artifact_prowess_no_decorations_modifier
+		has_artifact_modifier = artifact_prowess_no_decorations_medium_tier_modifier
+		has_artifact_modifier = artifact_prowess_no_decorations_high_tier_modifier
+		has_artifact_modifier = artifact_armor_1_artifact_modifier
+		has_artifact_modifier = artifact_armor_2_artifact_modifier
+		has_artifact_modifier = artifact_armor_3_artifact_modifier
+		has_artifact_modifier = artifact_armor_4_artifact_modifier
+		has_artifact_modifier = blessed_artifact_modifier
+		has_artifact_modifier = artifact_duel_weapon_3_modifier
+		has_artifact_modifier = artifact_duel_weapon_4_modifier
+
+		# negate_prowess_penalty_add
 		has_artifact_modifier = artifact_negate_prowess_penalty_add_1_modifier
 		has_artifact_modifier = artifact_negate_prowess_penalty_add_2_modifier
 		has_artifact_modifier = artifact_negate_prowess_penalty_add_3_modifier
@@ -785,8 +1289,17 @@ at_has_artifact_prowess_modifier = {
 
 at_has_artifact_knights_modifier = {
 	OR = {
+		# knight_limit
 		has_artifact_modifier = artifact_knight_limit_1_modifier
 		has_artifact_modifier = artifact_knight_limit_2_modifier
+		has_artifact_modifier = artifact_fake_papal_tiara_modifier
+		# historical
+		has_artifact_modifier = joyeuse_modifier
+		has_artifact_modifier = david_harp_modifier
+		has_artifact_modifier = nagelring_modifier
+		has_artifact_modifier = aruval_modifier
+
+		# knight_effectiveness
 		has_artifact_modifier = artifact_knight_effectiveness_1_modifier
 		has_artifact_modifier = artifact_knight_effectiveness_2_modifier
 		has_artifact_modifier = artifact_knight_effectiveness_3_modifier
@@ -799,13 +1312,25 @@ at_has_artifact_knights_modifier = {
 		has_artifact_modifier = artifact_knight_effectiveness_10_modifier
 		has_artifact_modifier = artifact_knight_effectiveness_11_modifier
 		has_artifact_modifier = artifact_knight_effectiveness_12_modifier
+		has_artifact_modifier = artifact_fake_papal_tiara_modifier
+		# historical
+		has_artifact_modifier = spear_prophet_modifier
+		has_artifact_modifier = david_harp_modifier
+		has_artifact_modifier = skull_cap_charlemagne_modifier
+		has_artifact_modifier = durendal_modifier
+		has_artifact_modifier = curtana_modifier
+		has_artifact_modifier = excalibur_modifier
+		has_artifact_modifier = aruval_modifier
 	}
 }
 
 at_has_artifact_levy_reinforcement_rate_modifier = {
 	OR = {
+		# levy_reinforcement_rate
 		has_artifact_modifier = artifact_levy_reinforcement_rate_1_modifier
 		has_artifact_modifier = artifact_levy_reinforcement_rate_2_modifier
+
+		# levy_reinforcement_rate_same_faith
 		has_artifact_modifier = artifact_levy_reinforcement_rate_same_faith_1_modifier
 		has_artifact_modifier = artifact_levy_reinforcement_rate_same_faith_2_modifier
 		has_artifact_modifier = artifact_levy_reinforcement_rate_same_faith_3_modifier
@@ -818,11 +1343,15 @@ at_has_artifact_levy_reinforcement_rate_modifier = {
 		has_artifact_modifier = artifact_levy_reinforcement_rate_same_faith_10_modifier
 		has_artifact_modifier = artifact_levy_reinforcement_rate_same_faith_11_modifier
 		has_artifact_modifier = artifact_levy_reinforcement_rate_same_faith_12_modifier
+		# historical
+		has_artifact_modifier = spear_prophet_modifier
+		has_artifact_modifier = muhammed_sword_1_modifier
 	}
 }
 
 at_has_artifact_raid_speed_modifier = {
 	OR = {
+		# raid_speed
 		has_artifact_modifier = artifact_raid_speed_1_modifier
 		has_artifact_modifier = artifact_raid_speed_2_modifier
 		has_artifact_modifier = artifact_raid_speed_3_modifier
@@ -840,6 +1369,7 @@ at_has_artifact_raid_speed_modifier = {
 
 at_has_artifact_hard_casualty_modifier_modifier = {
 	OR = {
+		# enemy_hard_casualty_modifier
 		has_artifact_modifier = artifact_enemy_hard_casualty_modifier_1_modifier
 		has_artifact_modifier = artifact_enemy_hard_casualty_modifier_2_modifier
 		has_artifact_modifier = artifact_enemy_hard_casualty_modifier_3_modifier
@@ -852,6 +1382,8 @@ at_has_artifact_hard_casualty_modifier_modifier = {
 		has_artifact_modifier = artifact_enemy_hard_casualty_modifier_10_modifier
 		has_artifact_modifier = artifact_enemy_hard_casualty_modifier_11_modifier
 		has_artifact_modifier = artifact_enemy_hard_casualty_modifier_12_modifier
+
+		# hard_casualty_modifier
 		has_artifact_modifier = artifact_hard_casualty_modifier_1_modifier
 		has_artifact_modifier = artifact_hard_casualty_modifier_2_modifier
 		has_artifact_modifier = artifact_hard_casualty_modifier_3_modifier
@@ -867,8 +1399,16 @@ at_has_artifact_hard_casualty_modifier_modifier = {
 	}
 }
 
-at_has_artifact_toughness_modifier = {
+at_has_artifact_damage_toughness_pursuit_screen_modifier = {
 	OR = {
+		# *_damage_mult
+		# historical
+		has_artifact_modifier = banner_thankfulness
+		has_artifact_modifier = kladenets_modifier
+		has_artifact_modifier = szczerbiec_modifier
+		has_artifact_modifier = aram_modifier
+
+		# *_toughness_mult
 		has_artifact_modifier = artifact_heavy_cavalry_toughness_1_modifier
 		has_artifact_modifier = artifact_heavy_cavalry_toughness_2_modifier
 		has_artifact_modifier = artifact_heavy_cavalry_toughness_3_modifier
@@ -879,11 +1419,22 @@ at_has_artifact_toughness_modifier = {
 		has_artifact_modifier = artifact_archers_toughness_mult_2_modifier
 		has_artifact_modifier = artifact_archers_toughness_mult_3_modifier
 		has_artifact_modifier = artifact_archers_toughness_mult_4_modifier
-	}
-}
+		# historical
+		has_artifact_modifier = joyeuse_modifier
+		has_artifact_modifier = tizona_modifier
+		has_artifact_modifier = muhammed_sword_3_modifier
+		has_artifact_modifier = kladenets_modifier
+		has_artifact_modifier = szczerbiec_modifier
+		has_artifact_modifier = aram_modifier
+		has_artifact_modifier = rustam_dagger_modifier
+		has_artifact_modifier = muhammed_sword_3_modifier
 
-at_has_artifact_screen_modifier = {
-	OR = {
+		# *_pursuit_mult
+		# historical
+		has_artifact_modifier = alexander_the_great_armor_modifier
+		has_artifact_modifier = colada_modifier
+
+		# *_screen_add
 		has_artifact_modifier = artifact_archers_screen_add_1_modifier
 		has_artifact_modifier = artifact_archers_screen_add_2_modifier
 		has_artifact_modifier = artifact_archers_screen_add_3_modifier
@@ -892,15 +1443,34 @@ at_has_artifact_screen_modifier = {
 		has_artifact_modifier = artifact_archer_cavalry_screen_add_2_modifier
 		has_artifact_modifier = artifact_archer_cavalry_screen_add_3_modifier
 		has_artifact_modifier = artifact_archer_cavalry_screen_add_4_modifier
+
+		# retreat_losses
+		has_artifact_modifier = artifact_retreat_losses_1_modifier
+		has_artifact_modifier = artifact_retreat_losses_2_modifier
+		has_artifact_modifier = artifact_retreat_losses_3_modifier
+		has_artifact_modifier = artifact_retreat_losses_4_modifier
+
+		# pursue_efficiency
+		has_artifact_modifier = artifact_pursue_efficiency_1_modifier
+		has_artifact_modifier = artifact_pursue_efficiency_2_modifier
+		has_artifact_modifier = artifact_pursue_efficiency_3_modifier
+		has_artifact_modifier = artifact_pursue_efficiency_4_modifier
 	}
 }
 
 at_has_artifact_advantage_modifier = {
 	OR = {
+		# tolerance_advantage_mod
 		has_artifact_modifier = artifact_tolerance_advantage_mod_1_modifier
 		has_artifact_modifier = artifact_tolerance_advantage_mod_2_modifier
 		has_artifact_modifier = artifact_tolerance_advantage_mod_3_modifier
 		has_artifact_modifier = artifact_tolerance_advantage_mod_4_modifier
+		has_artifact_modifier = blessed_artifact_modifier
+		# historical
+		has_artifact_modifier = muhammed_sword_4_modifier
+		has_artifact_modifier = spear_ascalon_modifier
+
+		# controlled_province_advantage
 		has_artifact_modifier = artifact_controlled_province_advantage_1_modifier
 		has_artifact_modifier = artifact_controlled_province_advantage_2_modifier
 		has_artifact_modifier = artifact_controlled_province_advantage_3_modifier
@@ -909,11 +1479,17 @@ at_has_artifact_advantage_modifier = {
 		has_artifact_modifier = artifact_controlled_province_advantage_6_modifier
 		has_artifact_modifier = artifact_controlled_province_advantage_7_modifier
 		has_artifact_modifier = artifact_controlled_province_advantage_8_modifier
-	}
-}
+		has_artifact_modifier = blessed_artifact_modifier
 
-at_has_artifact_terrain_advantage_modifier = {
-	OR = {
+		# defender_advantage
+		# same_heritage_county_advantage_add
+		# advantage_against_coreligionists
+		# historical
+		has_artifact_modifier = durendal_modifier
+		has_artifact_modifier = ark_of_covenant_modifier
+		has_artifact_modifier = banner_thankfulness
+
+		# <terrain>_advantage
 		has_artifact_modifier = artifact_plains_advantage_1_modifier
 		has_artifact_modifier = artifact_plains_advantage_2_modifier
 		has_artifact_modifier = artifact_plains_advantage_3_modifier
@@ -970,26 +1546,25 @@ at_has_artifact_terrain_advantage_modifier = {
 		has_artifact_modifier = artifact_drylands_advantage_2_modifier
 		has_artifact_modifier = artifact_drylands_advantage_3_modifier
 		has_artifact_modifier = artifact_drylands_advantage_4_modifier
-	}
-}
-
-at_has_artifact_retreat_pursuit_modifier = {
-	OR = {
-		has_artifact_modifier = artifact_retreat_losses_1_modifier
-		has_artifact_modifier = artifact_retreat_losses_2_modifier
-		has_artifact_modifier = artifact_retreat_losses_3_modifier
-		has_artifact_modifier = artifact_retreat_losses_4_modifier
-		has_artifact_modifier = artifact_pursue_efficiency_1_modifier
-		has_artifact_modifier = artifact_pursue_efficiency_2_modifier
-		has_artifact_modifier = artifact_pursue_efficiency_3_modifier
-		has_artifact_modifier = artifact_pursue_efficiency_4_modifier
+		# historical
+		has_artifact_modifier = al_sayf_al_khass_modifier
+		has_artifact_modifier = muhammed_sword_7_modifier
+		has_artifact_modifier = quernbiter_modifier
+		has_artifact_modifier = aram_modifier
+		has_artifact_modifier = sledovik_modifier
+		has_artifact_modifier = aruval_modifier
 	}
 }
 
 at_has_artifact_naval_speed_modifier = {
 	OR = {
-		#has_artifact_modifier = artifact_naval_speed_1_modifier
+		# naval_movement_speed_mult
 		has_artifact_modifier = artifact_naval_speed_2_modifier
-		#has_artifact_modifier = artifact_naval_speed_3_modifier
+		# historical
+		has_artifact_modifier = legbiter_modifier
+
+		# embarkation_cost_mult
+		has_artifact_modifier = legbiter_modifier
+		has_artifact_modifier = kantele_modifier
 	}
 }
