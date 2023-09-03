@@ -1,6 +1,6 @@
 # Changelog
 
-## Version 0.7
+## Version 0.7.0
 
 ### Compatibility
 
@@ -13,7 +13,7 @@
   * Artifacts with negative modifiers are also included
   * Combined few existing filter options for better usability
 
-## Version 0.6
+## Version 0.6.0
 
 ### Character Interactions
 

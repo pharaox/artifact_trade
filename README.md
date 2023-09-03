@@ -24,7 +24,7 @@ These improvements are enabled by default but can also be disabled via a game ru
 
 ## Compatibility
 
-The current version is compatible with CK3 1.9. If you are still on 1.8, download version 0.3.2 from [Paradox Forums](https://forum.paradoxplaza.com/forum/attachments/search_and_trade_artifacts-0-3-2-zip.989291/).
+The current version is compatible with CK3 1.10. If you are still on 1.9, download version 0.6.0 from [Paradox Forums](https://forum.paradoxplaza.com/forum/attachments/search_and_trade_artifacts-0-6-0-zip.1019590/).
 
 This mod is compatible with all other mods, including total conversion mods such as AGOT and EK2, except for those few mods that modify the **Inventory** window. Put it after all other mods in the load order. In case of a conflict with another important mod, put it before that mod - you will lose the new **Inventory** window buttons as a result but other features should work as expected.
 
