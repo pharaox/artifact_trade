@@ -5,6 +5,7 @@ destroy_artifact_interaction = {
 	common_interaction = yes
 	category = interaction_category_friendly
 	desc = destroy_artifact_interaction_desc
+	icon = artifact
 
 	target_type = artifact
 	target_filter = actor_artifacts
