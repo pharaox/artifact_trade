@@ -1,5 +1,11 @@
 # Changelog
 
+## Version 0.7.2
+
+### Compatibility
+
+* Added `at_artifact_trade_loaded` global variable on game start to enable other mods to detect this one
+
 ## Version 0.7.1
 
 ### Compatibility

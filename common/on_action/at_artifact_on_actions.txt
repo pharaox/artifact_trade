@@ -1,4 +1,21 @@
-﻿at_on_artifact_bought = {
+﻿# Called from code after history generation
+# Empty scope
+on_game_start = {
+	on_actions = { at_on_game_start }
+}
+
+at_on_game_start = {
+	effect = {
+		set_global_variable = {
+			name = at_artifact_trade_loaded
+			value = yes
+		}
+		at_debug_log_effect = { MSG = at_debug_msg_artifact_trade_loaded }
+	}
+}
+
+
+at_on_artifact_bought = {
 	effect = {
 		at_debug_log_effect = { MSG = at_debug_msg_artifact_bought }
 	}
