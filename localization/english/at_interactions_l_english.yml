@@ -39,7 +39,7 @@
  at_msg_artifact_bought: "Artifact Bought"
  at_msg_artifact_sold: "Artifact Sold"
 
- at_artifact_cannot_equip_or_benefit_tt:0 "@warning_icon! #X [buyer.GetTitledFirstName] cannot equip or benefit from [artifact.GetName]#!"
- at_artifact_cannot_equip_tt:0 "@warning_icon! #X [buyer.GetTitledFirstName] cannot equip [artifact.GetName]#!"
- at_artifact_cannot_benefit_tt:0 "@warning_icon! #X [buyer.GetTitledFirstName] cannot benefit from [artifact.GetName]#!"
- at_artifact_unwanted_or_cursed_tt:0 "@warning_icon! #X Unwanted or cursed artifact#!"
+ at_artifact_cannot_equip_or_benefit_tt: "@warning_icon! #X [buyer.GetTitledFirstName] cannot equip or benefit from [artifact.GetName]#!"
+ at_artifact_cannot_equip_tt: "@warning_icon! #X [buyer.GetTitledFirstName] cannot equip [artifact.GetName]#!"
+ at_artifact_cannot_benefit_tt: "@warning_icon! #X [buyer.GetTitledFirstName] cannot benefit from [artifact.GetName]#!"
+ at_artifact_unwanted_or_cursed_tt: "@warning_icon! #X Unwanted or cursed artifact#!"
