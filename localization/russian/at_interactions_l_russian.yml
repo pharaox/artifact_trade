@@ -1,0 +1,45 @@
+﻿l_russian:
+ # at_buy_artifact_interaction
+ at_buy_artifact_interaction: "Buy Artifact"
+ at_buy_artifact_interaction_desc: "Buy an [artifact|E] for [gold|E]"
+
+ # at_sell_artifact_interaction
+ at_sell_artifact_interaction: "Sell Artifact"
+ at_sell_artifact_interaction_desc: "Sell an [artifact|E] for [gold|E]"
+
+ # at_sell_artifacts_interaction
+ at_sell_artifacts_interaction: "Sell Artifacts"
+ at_sell_artifacts_interaction_desc: "Sell a previously selected [artifact|E] to characters that are willing to buy it"
+ at_sell_artifacts_interaction_send_name: "Sell Artifact"
+ recipient_secondary_at_sell_artifacts_interaction: "Buyer"
+
+ at_reluctant_to_spend_gold_reason: "[recipient.GetSheHe|U] is reluctant to spend [gold|E]: $VALUE|=+0$"
+ at_recipient_at_war_reason: "[recipient.GetSheHe|U] is at war: $VALUE|=+0$"
+ at_target_qwa_reason: "[target.GetName] quality and wealth: $VALUE|=+0$"
+ at_target_better_than_owned_artifacts_reason: "[target.GetName] is better than owned and equippable artifacts: $VALUE|=+0$"
+ at_target_better_than_other_owned_artifacts_reason: "[target.GetName] is better than other owned and equippable artifacts: $VALUE|=+0$"
+ at_target_below_max_durability_reason: "[target.GetName] is below max durability: $VALUE|=+0$"
+ at_artifact_house_banner_reason: "This is [recipient.GetShortUINamePossessiveNoTooltip] [house|E] Banner: $VALUE|=+0$"
+ at_artifact_succession_title_reason: "[recipient.GetShortUIName|U] holds the succession title of [target.GetName]: $VALUE|=+0$"
+ at_artifact_recently_bought_reason: "[recipient.GetShortUIName|U] recently bought [target.GetName] and wants to keep it: $VALUE|=+0$"
+ at_not_enough_gold_reason: "[actor.GetShortUIName|U] can't afford the price: $VALUE|=+0$"
+ at_target_expensive_reason: "[target.GetName] is quite expensive: $VALUE|=+0$"
+ at_target_cheap_reason: "[target.GetName] is quite cheap: $VALUE|=+0$"
+ at_target_unique_reason: "[target.GetName] is unique: $VALUE|=+0$"
+ at_artifact_religion_relic_reason: "[target.GetName] is a relic of [recipient.GetShortUINamePossessiveNoTooltip] religion: $VALUE|=+0$"
+ at_target_unwanted_reason: "[target.GetName] is unwanted: $VALUE|=+0$"
+ at_target_cursed_reason: "[target.GetName] is cursed: $VALUE|=+0$"
+ at_target_equipped_reason: "[target.GetName] is equipped by [recipient.GetShortUIName|U]: $VALUE|=+0$"
+ at_target_trash_reason: "[target.GetName] is rather worthless: $VALUE|=+0$"
+ at_recipient_poor_reason: "[recipient.GetShortUIName|U] considers [recipient.GetHerselfHimself] poor: $VALUE|=+0$"
+ at_recipient_rich_reason: "[recipient.GetShortUIName|U] considers [recipient.GetHerselfHimself] rich: $VALUE|=+0$"
+
+ at_buyer_not_enough_gold_for_artifact_price_tooltip: "Pays #high [gold_i][SCOPE.ScriptValue('at_scope_buyer_current_gold_value')|0]#! to [seller.GetShortUINameNoTooltip] #weak (full price of [gold_i][SCOPE.ScriptValue('at_scope_artifact_price_value')|0] exceeds short term budget)#!"
+
+ at_msg_artifact_bought: "Artifact Bought"
+ at_msg_artifact_sold: "Artifact Sold"
+
+ at_artifact_cannot_equip_or_benefit_tt: "@warning_icon! #X [buyer.GetTitledFirstName] cannot equip or benefit from [artifact.GetName]#!"
+ at_artifact_cannot_equip_tt: "@warning_icon! #X [buyer.GetTitledFirstName] cannot equip [artifact.GetName]#!"
+ at_artifact_cannot_benefit_tt: "@warning_icon! #X [buyer.GetTitledFirstName] cannot benefit from [artifact.GetName]#!"
+ at_artifact_unwanted_or_cursed_tt: "@warning_icon! #X Unwanted or cursed artifact#!"
