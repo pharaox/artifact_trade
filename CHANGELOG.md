@@ -1,5 +1,23 @@
 # Changelog
 
+## Version 0.7.3
+
+### UI Improvements
+
+* Added Sell Artifacts and Buy Artifacts buttons to Artifact Finder for compatibility with mods that modify the Inventory window.
+
+### Game Rules
+
+* Added the `GG_can_change_rule` flag to all game rules so they could be changed mid-game with the Gamerule Gadget mod.
+
+### Localization
+
+* Added English localization for all languages.
+
+### Compatibility
+
+* Added `at_is_loaded` compatibility trigger to enable other mods to dynamically detect this one.
+
 ## Version 0.7.2
 
 ### Compatibility

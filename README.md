@@ -1,5 +1,7 @@
 # Search & Trade Artifacts
 
+[Subscribe on Steam](https://steamcommunity.com/sharedfiles/filedetails/?id=2962238514)
+
 ## Overview
 
 With this mod, you can search for artifacts, buy them from other characters, and sell them to other characters. The game doesn't have an artifact trading system, so this mod adds one. Since such a system would not be usable without advanced artifact filtering and sorting, it adds an "artifact finder" as well.
@@ -24,9 +26,17 @@ These improvements are enabled by default but can also be disabled via a game ru
 
 ## Compatibility
 
-The current version is compatible with CK3 1.11 (and CK3 1.10). If you are still on 1.9, download version 0.6.0 from [Paradox Forums](https://forum.paradoxplaza.com/forum/attachments/search_and_trade_artifacts-0-6-0-zip.1019590/).
+The current version is compatible with CK3 1.11 (and CK3 1.10).
 
-This mod is compatible with all other mods, including total conversion mods such as AGOT and EK2, except for those few mods that modify the **Inventory** window. Put it after all other mods in the load order. In case of a conflict with another important mod, put it before that mod - you will lose the new **Inventory** window buttons as a result but other features should work as expected.
+This mod is compatible with all other mods, including total conversion mods such as AGOT and EK2, except for those few mods that modify the **Inventory** window or the **Destroy Artifact** interaction. If you use such mods, put this mod before them in the load order - you may lose the new **Inventory** window buttons or the **Destroy Artifact** improvements as a result, but everything else should work as expected. The new buttons are also available in the **Artifact Finder** window, so losing them in the **Inventory** window is no big deal.
+
+This mod also supports changing its game rules mid-game with the [Gamerule Gadget](https://steamcommunity.com/sharedfiles/filedetails/?id=2826829936) mod.
+
+I strongly recommend using also the [Unofficial Patch](https://steamcommunity.com/sharedfiles/filedetails/?id=2871648329) mod as it fixes many vanilla artifact issues. Put this mod after Unofficial Patch in the load order.
+
+## Localization
+
+This mod is currently available in English and uses the original English text as a placeholder for all other languages. Translations for other languages are available as separate mods, see [Links](#links).
 
 ## Searching for Artifacts
 
@@ -40,7 +50,7 @@ This window is very similar to **Character Finder**. Without any filters, it con
 
 ## Buying and Selling Artifacts
 
-To buy an artifact, open the **Inventory** window and click **Buy Artifacts**. This opens an artifact selection window similar to **Artifact Finder** that also allows you to select the artifact to be bought by clicking on it.
+To buy an artifact, open the **Inventory** window (or the **Artifact Finder** window) and click **Buy Artifacts**. This opens an artifact selection window similar to **Artifact Finder** that also allows you to select the artifact to be bought by clicking on it.
 
 ![Buy Artifacts](https://steamuserimages-a.akamaihd.net/ugc/2047490891201303383/22CB21BDC1D2071566C7741A8C68543AD1C33B98/?ima=fit)
 
@@ -48,7 +58,7 @@ When buying artifacts, the list contains only artifacts that can be bought at th
 
 ![Buy Artifact](https://steamuserimages-a.akamaihd.net/ugc/2047490891201303392/317BA2D4D31D25DA426407690C8796488AA9F2D6/?ima=fit)
 
-To sell an artifact, open the **Inventory** window and click **Sell Artifacts**. This again opens the artifact selection window so you can select the artifact to be sold.
+To sell an artifact, open the **Inventory** window (or the **Artifact Finder** window) and click **Sell Artifacts**. This again opens the artifact selection window so you can select the artifact to be sold.
 
 ![Sell Artifacts](https://steamuserimages-a.akamaihd.net/ugc/2047490891201303367/96686FBA77F0EC998D776DE7DF0C9399D155F2AB/?ima=fit)
 
@@ -113,6 +123,7 @@ The AI willingness to destroy an artifact is influenced by factors similar to th
 
 * [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2962238514)
 * [Artifact Manager Compatibility](https://steamcommunity.com/sharedfiles/filedetails/?id=2966324178)
+* [Princes of Darkness Compatibility (by @fluffy heretic)](https://steamcommunity.com/sharedfiles/filedetails/?id=3108318083])
 * [Russian Translation (by @laxfeed)](https://steamcommunity.com/sharedfiles/filedetails/?id=2965215034)
 * [Spanish Translation (by @Will1294)](https://steamcommunity.com/sharedfiles/filedetails/?id=2971143815)
 * [Chinese Translation (by @小学生)](https://steamcommunity.com/sharedfiles/filedetails/?id=2976964171)

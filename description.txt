@@ -23,13 +23,22 @@ These improvements are enabled by default but can also be disabled via a game ru
 
 [h2]Compatibility[/h2]
 
-The current version is compatible with CK3 1.11 (and CK3 1.10). If you are still on 1.9, download version 0.6.0 from [url=https://forum.paradoxplaza.com/forum/attachments/search_and_trade_artifacts-0-6-0-zip.1019590/]Paradox Forums[/url].
+The current version is compatible with CK3 1.11 (and CK3 1.10).
 
-This mod is compatible with all other mods, including total conversion mods such as AGOT and EK2, except for those few mods that modify the [b]Inventory[/b] window. Put it after all other mods in the load order. In case of a conflict with another important mod, put it before that mod - you will lose the new [b]Inventory[/b] window buttons as a result but other features should work as expected.
+This mod is compatible with all other mods, including total conversion mods such as AGOT and EK2, except for mods that modify the [b]Inventory[/b] window or the [b]Destroy Artifact[/b] interaction. If you use such mods, put this mod before them in the load order - you may lose the new [b]Inventory[/b] window buttons or the [b]Destroy Artifact[/b] improvements as a result, but everything else should work as expected. The new buttons are also available in the [b]Artifact Finder[/b] window, so losing them in the [b]Inventory[/b] window is no big deal.
+
+This mod also supports changing its game rules mid-game with the [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2826829936]Gamerule Gadget[/url] mod.
+
+I strongly recommend using also the [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2871648329]Unofficial Patch[/url] mod as it fixes many vanilla artifact issues. Put this mod after Unofficial Patch in the load order.
+
+[h2]Localization[/h2]
+
+This mod is currently available in English and uses the original English text as a placeholder for all other languages. Translations for other languages are available as separate mods, see [b]Links[/b] below.
 
 [h2]Links[/h2]
 [list]
   [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2966324178]Artifact Manager Compatibility[/url]
+  [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3108318083]Princes of Darkness Compatibility (by @fluffy heretic)[/url]
   [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2965215034]Russian Translation (by @laxfeed)[/url]
   [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2971143815]Spanish Translation (by @Will1294)[/url]
   [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2976964171]Chinese Translation (by @小学生)[/url]
