@@ -43,8 +43,16 @@ window = {
 			layoutpolicy_vertical = expanding
 			spacing = 3
 
-			at_hbox_artifacts_sort_buttons = {
+			hbox = {
 				layoutpolicy_horizontal = expanding
+
+				at_hbox_artifacts_sort_buttons = {
+					layoutpolicy_horizontal = expanding
+				}
+
+				at_hbox_find_artifacts_sell_buy_buttons = {
+					layoutpolicy_horizontal = expanding
+				}
 			}
 
 			scrollbox = {
@@ -282,6 +290,42 @@ types at_types_find_artifacts_window {
 			at_hbox_artifact_info = {
 				datacontext = "[Scope.Artifact]"
 			}
+		}
+	}
+
+	type at_hbox_find_artifacts_sell_buy_buttons = hbox {
+		margin_left = 20
+		margin_right = 20
+		margin_top = 5
+		spacing = 10
+
+		datacontext = "[GetScriptedGui('at_artifacts_window_init_gui')]"
+		visible = "[And(ScriptedGui.IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('flavor', MakeScopeFlag('sell')).End), Character.IsLocalPlayer)]"
+
+		expand = {}
+
+		button_standard = {
+			size = { 100 32 }
+			text = "AT_SELL_ARTIFACTS"
+			enabled = "[ScriptedGui.IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('flavor', MakeScopeFlag('sell')).End)]"
+			tooltip = "AT_SELL_ARTIFACTS_TOOLTIP"
+
+			onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('flavor', MakeScopeFlag('sell')).End)]"
+			onclick = "[GetVariableSystem.Set('at_find_artifacts_window_visible', 'no')]"
+			onclick = "[GetVariableSystem.Set('at_artifacts_window_visible', 'yes')]"
+			onclick = "[GetVariableSystem.Set('at_artifacts_window_flavor', 'sell')]"
+		}
+
+		button_standard = {
+			size = { 100 32 }
+			text = "AT_BUY_ARTIFACTS"
+			enabled = "[ScriptedGui.IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('flavor', MakeScopeFlag('buy')).End)]"
+			tooltip = "AT_BUY_ARTIFACTS_TOOLTIP"
+
+			onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('flavor', MakeScopeFlag('buy')).End)]"
+			onclick = "[GetVariableSystem.Set('at_find_artifacts_window_visible', 'no')]"
+			onclick = "[GetVariableSystem.Set('at_artifacts_window_visible', 'yes')]"
+			onclick = "[GetVariableSystem.Set('at_artifacts_window_flavor', 'buy')]"
 		}
 	}
 }
