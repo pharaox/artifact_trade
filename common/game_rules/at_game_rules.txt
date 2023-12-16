@@ -1,29 +1,87 @@
 ﻿at_artifact_trading = {
+	categories = {
+		at_artifact_trade
+	}
+
 	default = at_artifact_trading_enabled
-	at_artifact_trading_disabled = {}
-	at_artifact_trading_enabled = {}
+
+	at_artifact_trading_disabled = {
+		flag = GG_can_change_rule
+	}
+
+	at_artifact_trading_enabled = {
+		flag = GG_can_change_rule
+	}
 }
 
 at_improved_destroy_artifact = {
+	categories = {
+		at_artifact_trade
+	}
+
 	default = at_improved_destroy_artifact_enabled
-	at_improved_destroy_artifact_disabled = {}
-	at_improved_destroy_artifact_enabled = {}
+
+	at_improved_destroy_artifact_disabled = {
+		flag = GG_can_change_rule
+	}
+
+	at_improved_destroy_artifact_enabled = {
+		flag = GG_can_change_rule
+	}
 }
 
 at_valid_trading_partners = {
+	categories = {
+		at_artifact_trade
+	}
+
 	default = at_valid_trading_partners_within_trading_range
-	at_valid_trading_partners_same_and_neighboring_realms = {}
-	at_valid_trading_partners_within_trading_range = {}
-	at_valid_trading_partners_all = {}
+
+	at_valid_trading_partners_same_and_neighboring_realms = {
+		flag = GG_can_change_rule
+	}
+
+	at_valid_trading_partners_within_trading_range = {
+		flag = GG_can_change_rule
+	}
+
+	at_valid_trading_partners_all = {
+		flag = GG_can_change_rule
+	}
 }
 
 at_number_of_potential_buyers = {
+	categories = {
+		at_artifact_trade
+	}
+
 	default = at_number_of_potential_buyers_05
-	at_number_of_potential_buyers_01 = {}
-	at_number_of_potential_buyers_02 = {}
-	at_number_of_potential_buyers_05 = {}
-	at_number_of_potential_buyers_10 = {}
-	at_number_of_potential_buyers_20 = {}
-	at_number_of_potential_buyers_50 = {}
-	at_number_of_potential_buyers_all = {}
+
+	at_number_of_potential_buyers_01 = {
+		flag = GG_can_change_rule
+	}
+
+	at_number_of_potential_buyers_02 = {
+		flag = GG_can_change_rule
+	}
+
+	at_number_of_potential_buyers_05 = {
+		flag = GG_can_change_rule
+	}
+
+	at_number_of_potential_buyers_10 = {
+		flag = GG_can_change_rule
+	}
+
+	at_number_of_potential_buyers_20 = {
+		flag = GG_can_change_rule
+	}
+
+	at_number_of_potential_buyers_50 = {
+		flag = GG_can_change_rule
+	}
+
+	at_number_of_potential_buyers_all = {
+		flag = GG_can_change_rule
+	}
 }
