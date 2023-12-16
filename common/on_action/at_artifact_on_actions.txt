@@ -10,7 +10,12 @@ at_on_game_start = {
 			name = at_artifact_trade_loaded
 			value = yes
 		}
-		at_debug_log_effect = { MSG = at_debug_msg_artifact_trade_loaded }
+
+		# Avoid errors in error.log
+		if = {
+			limit = { has_global_variable = at_artifact_trade_loaded }
+			at_debug_log_effect = { MSG = at_debug_msg_artifact_trade_loaded }
+		}
 	}
 }
 
