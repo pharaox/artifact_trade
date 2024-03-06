@@ -67,7 +67,12 @@ destroy_artifact_interaction = {
 			at_destroy_artifact_effect = { ARTIFACT = scope:target DESTROYER = scope:actor }
 		}
 		else = {
-			destroy_artifact_aniconist_effect = { ARTIFACT = scope:target DESTROYER = scope:actor }
+			destroy_artifact_aniconist_effect = {
+				ARTIFACT = scope:target
+				DESTROYER = scope:actor
+				GIVE_GOLD = yes
+				PIETY_BY_DEFAULT = no
+			}
 		}
 	}
 

@@ -201,6 +201,9 @@
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_damage_toughness_pursuit_screen }
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_advantage}
  		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_naval_speed }
+		# CE1
+ 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_legend_spread }
+ 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_epidemic_resistance }
 
 		if = {
 			limit = {

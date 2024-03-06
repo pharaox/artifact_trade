@@ -479,6 +479,15 @@ at_artifacts_window_get_filtered_artifacts_effect = {
 				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_naval_speed }
 				at_has_artifact_naval_speed_modifier = yes
 			}
+			# CE1
+			trigger_else_if = {
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_legend_spread }
+				at_has_artifact_legend_spread_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_epidemic_resistance }
+				at_has_artifact_epidemic_resistance_modifier = yes
+			}
 			trigger_else = {
 				always = yes
 			}

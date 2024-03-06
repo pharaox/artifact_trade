@@ -135,6 +135,9 @@
  at_damage_toughness_pursuit_screen: "$game_concept_damage$ / $game_concept_toughness$ / $game_concept_pursuit$ / $game_concept_screen$"
  at_advantage: "$game_concept_advantage$"
  at_naval_speed: "$MOD_NAVAL_MOVEMENT_SPEED_MULT$"
+ # CE1
+ at_legend_spread: "$game_concept_legend$ Spread Chance"
+ at_epidemic_resistance: "$game_concept_epidemic_resistance$"
 
  at_equipped: "Equipped"
  at_not_equipped: "Not Equipped"

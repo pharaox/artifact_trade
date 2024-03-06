@@ -1161,6 +1161,8 @@ at_has_artifact_diplomacy_modifier = {
 	OR = {
 		# diplomacy
 		has_artifact_modifier = artifact_diplomacy_1_modifier
+		has_artifact_modifier = artifact_diplomacy_2_modifier
+		has_artifact_modifier = artifact_diplomacy_3_modifier
 
 		# diplomacy_per_prestige_level
 		has_artifact_modifier = artifact_diplomacy_per_prestige_level_modifier
@@ -1179,6 +1181,7 @@ at_has_artifact_martial_modifier = {
 		# martial
 		has_artifact_modifier = artifact_martial_1_modifier
 		has_artifact_modifier = artifact_martial_2_modifier
+		has_artifact_modifier = artifact_martial_3_modifier
 
 		# martial_per_stress_level
 		# historical
@@ -1195,6 +1198,8 @@ at_has_artifact_stewardship_modifier = {
 	OR = {
 		# stewardship
 		has_artifact_modifier = artifact_stewardship_1_modifier
+		has_artifact_modifier = artifact_stewardship_2_modifier
+		has_artifact_modifier = artifact_stewardship_3_modifier
 
 		# stewardship_per_stress_level
 		has_artifact_modifier = artifact_stewardship_per_stress_level_1_modifier
@@ -1228,6 +1233,7 @@ at_has_artifact_learning_modifier = {
 		# learning
 		has_artifact_modifier = artifact_learning_1_modifier
 		has_artifact_modifier = artifact_learning_2_modifier
+		has_artifact_modifier = artifact_learning_3_modifier
 
 		# learning_per_stress_level
 		has_artifact_modifier = artifact_learning_per_stress_level_2_modifier
@@ -1566,5 +1572,36 @@ at_has_artifact_naval_speed_modifier = {
 		# embarkation_cost_mult
 		has_artifact_modifier = legbiter_modifier
 		has_artifact_modifier = kantele_modifier
+	}
+}
+
+# CE1
+
+at_has_artifact_legend_spread_modifier = {
+	OR = {
+		# owned_legend_spread_mult
+		has_artifact_modifier = artifact_legend_spread_mult_1_modifier
+		has_artifact_modifier = artifact_legend_spread_mult_2_modifier
+		has_artifact_modifier = artifact_legend_spread_mult_3_modifier
+		#has_artifact_modifier = artifact_legend_spread_mult_4_modifier
+		has_artifact_modifier = artifact_legend_spread_mult_5_modifier
+		has_artifact_modifier = artifact_legend_spread_mult_6_modifier
+		#has_artifact_modifier = artifact_legend_spread_mult_7_modifier
+		#has_artifact_modifier = artifact_legend_spread_mult_8_modifier
+		#has_artifact_modifier = artifact_legend_spread_mult_9_modifier
+		has_artifact_modifier = artifact_legend_spread_mult_10_modifier
+	}
+}
+
+at_has_artifact_epidemic_resistance_modifier = {
+	OR = {
+		# epidemic_resistance
+		has_artifact_modifier = artifact_epidemic_resistance_1_modifier
+		#has_artifact_modifier = artifact_epidemic_resistance_2_modifier
+		#has_artifact_modifier = artifact_epidemic_resistance_3_modifier
+		has_artifact_modifier = artifact_epidemic_resistance_4_modifier
+		#has_artifact_modifier = artifact_epidemic_resistance_5_modifier
+		#has_artifact_modifier = artifact_epidemic_resistance_6_modifier
+		has_artifact_modifier = artifact_epidemic_resistance_7_modifier
 	}
 }
