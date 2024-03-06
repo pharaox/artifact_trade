@@ -1,8 +1,8 @@
-version="0.7.3"
+version="0.8.0"
 tags={
 	"Gameplay"
 	"Character Interactions"
 	"Utilities"
 }
 name="Search & Trade Artifacts"
-supported_version="1.11.*"
+supported_version="1.12.*"
