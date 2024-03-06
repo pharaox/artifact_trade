@@ -26,7 +26,7 @@ These improvements are enabled by default but can also be disabled via a game ru
 
 ## Compatibility
 
-The current version is compatible with CK3 1.11 (and CK3 1.10).
+The current version is compatible with CK3 1.12. If you are still on CK3 1.11.x, use [version 0.7.3](https://github.com/pharaox/artifact_trade/releases/download/0.7.3/search_and_trade_artifacts-0.7.3.zip) instead.
 
 This mod is compatible with all other mods, including total conversion mods such as AGOT and EK2, except for those few mods that modify the **Inventory** window or the **Destroy Artifact** interaction. If you use such mods, put this mod before them in the load order - you may lose the new **Inventory** window buttons or the **Destroy Artifact** improvements as a result, but everything else should work as expected. The new buttons are also available in the **Artifact Finder** window, so losing them in the **Inventory** window is no big deal.
 
