@@ -39,7 +39,7 @@ at_sell_artifacts_interaction = {
 			order_by = {
 				save_temporary_scope_as = buyer
 				value = scope:artifact.at_artifact_bid_price_value
-				max = short_term_gold
+				max = at_short_term_gold_value
 			}
 			max = at_number_of_potential_buyers_value
 			check_range_bounds = no
@@ -54,6 +54,9 @@ at_sell_artifacts_interaction = {
 					exists = scope:target
 				}
 				var:at_artifacts_window_selected_artifact = scope:target
+			}
+			var:at_artifacts_window_selected_artifact = {
+				at_artifact_can_be_sold_trigger = yes
 			}
 		}
 	}

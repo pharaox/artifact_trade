@@ -12,7 +12,7 @@ at_can_sell_artifact_to_trigger = {
 		text = "at_aniconists_wont_trade_artifacts"
 		at_has_aniconist_faith_trigger = no
 	}
-	short_term_gold > 1
+	at_short_term_gold_value > 1
 }
 
 at_can_buy_artifact_from_trigger = {
@@ -120,10 +120,10 @@ at_is_character_rich_trigger = {
 	is_ruler = yes
 	trigger_if = {
 		limit = { ai_has_economical_boom_personality = yes }
-		short_term_gold >= massive_gold_value
+		at_short_term_gold_value >= massive_gold_value
 	}
 	trigger_else = {
-		short_term_gold >= major_gold_value
+		at_short_term_gold_value >= major_gold_value
 	}
 }
 
@@ -371,4 +371,17 @@ at_aniconist_should_destroy_artifact_trigger = {
 			NOT = { has_trait = zealous }
 		}
 	}
+}
+
+at_artifact_can_be_sold_trigger = {
+	always = yes
+}
+
+at_artifact_can_be_bought_by_trigger = {
+	exists = $BUYER$
+	always = yes
+}
+
+at_artifact_can_be_destroyed_trigger = {
+	always = yes
 }

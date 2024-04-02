@@ -27,6 +27,7 @@ at_sell_artifact_interaction = {
 					is_ai = yes
 					at_can_start_interaction_trigger = yes
 					any_character_artifact = {
+						at_artifact_can_be_sold_trigger = yes
 						at_is_artifact_likely_to_be_traded_trigger = yes
 						save_temporary_scope_as = artifact
 						scope:actor = {
@@ -39,9 +40,12 @@ at_sell_artifact_interaction = {
 						is_ai = yes
 						at_valid_buyer_or_seller_trigger = { PARTY = scope:actor }
 						at_can_sell_artifact_to_trigger = { PARTY = scope:actor }
-						at_is_likely_to_buy_artifact_trigger = yes
 						save_temporary_scope_as = buyer
-						short_term_gold >= scope:artifact.at_artifact_bid_price_value
+						scope:artifact = {
+							at_artifact_can_be_bought_by_trigger = { BUYER = scope:buyer }
+						}
+						at_is_likely_to_buy_artifact_trigger = yes
+						at_short_term_gold_value >= scope:artifact.at_artifact_bid_price_value
 					}
 					save_scope_as = recipient
 				}
@@ -106,6 +110,10 @@ at_sell_artifact_interaction = {
 					var:at_artifacts_window_selected_artifact = scope:target
 				}
 			}
+		}
+		scope:target = {
+			at_artifact_can_be_sold_trigger = yes
+			at_artifact_can_be_bought_by_trigger = { BUYER = scope:recipient }
 		}
 	}
 
@@ -353,6 +361,15 @@ at_sell_artifact_interaction = {
 			add = -200
 			desc = ACTOR_NEMESIS_TO_ME_REASON
 		}
+
+		# Not enough gold
+		modifier = {
+			scope:actor = { is_ai = yes }
+			save_temporary_scope_as = buyer
+			at_short_term_gold_value < scope:target.at_artifact_bid_price_value
+			factor = 0
+			desc = at_not_enough_gold_reason
+		}
 	}
 
 	ai_targets = {
@@ -559,16 +576,9 @@ at_sell_artifact_interaction = {
 		modifier = {
 			scope:recipient = {
 				save_temporary_scope_as = buyer
-				trigger_if = {
-					limit = { is_ai = yes }
-					short_term_gold < scope:target.at_artifact_bid_price_value
-				}
-				trigger_else = {
-					gold < scope:target.at_artifact_bid_price_value
-				}
+				gold < scope:target.at_artifact_bid_price_value
 			}
 			factor = 0
-			desc = at_not_enough_gold_reason
 		}
 	}
 }

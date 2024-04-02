@@ -1,5 +1,5 @@
 ﻿# Transfers the ownership of scope:artifact from scope:seller to scope:buyer
-# and pays ARTIFACT_PRICE or short_term_gold to scope:seller. Sends interface messages.
+# and pays ARTIFACT_PRICE or at_short_term_gold_value to scope:seller. Sends interface messages.
 at_buy_artifact_interaction_effect = {
 	save_scope_value_as = {
 		name = artifact_price
@@ -37,13 +37,13 @@ at_buy_artifact_interaction_effect = {
 }
 
 # Transfers the ownership of scope:artifact from scope:seller to scope:buyer
-# and pays scope:artifact_price or short_term_gold to scope:seller.
+# and pays scope:artifact_price or at_short_term_gold_value to scope:seller.
 at_buy_artifact_effect = {
 	scope:buyer = {
 		# Pay price to seller
 		if = {
 			limit = {
-				short_term_gold >= scope:artifact_price
+				at_short_term_gold_value >= scope:artifact_price
 			}
 			pay_short_term_gold = {
 				gold = scope:artifact_price
@@ -54,7 +54,7 @@ at_buy_artifact_effect = {
 			custom_tooltip = at_buyer_not_enough_gold_for_artifact_price_tooltip
 			hidden_effect = {
 				pay_short_term_gold = {
-					gold = short_term_gold
+					gold = at_short_term_gold_value
 					target = scope:seller
 				}
 			}

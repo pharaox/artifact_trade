@@ -29,3 +29,27 @@ at_artifact_unique_price_multiplier = 3
 
 # Artifact price multipliers for the player to limit exploits
 at_artifact_ask_price_player_multiplier = 1.5
+
+at_custom_artifact_base_price_value = {
+	value = 0
+}
+
+at_custom_artifact_base_price_multiplier = {
+	value = 1
+}
+
+at_custom_artifact_ask_price_value = {
+	value = 0
+}
+
+at_custom_artifact_ask_price_multiplier = {
+	value = 1
+}
+
+at_custom_artifact_bid_price_value = {
+	value = 0
+}
+
+at_custom_artifact_bid_price_multiplier = {
+	value = 1
+}
