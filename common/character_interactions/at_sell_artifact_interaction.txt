@@ -17,42 +17,6 @@ at_sell_artifact_interaction = {
 	ai_min_reply_days = 0
 	ai_max_reply_days = 0
 
-	# If scope:recipient is scope:actor and they have an artifact they are likely to sell,
-	# redirect to a random valid buyer who is likely to buy the artifact
-	redirect = {
-		scope:recipient = {
-			if = {
-				limit = {
-					this = scope:actor
-					is_ai = yes
-					at_can_start_interaction_trigger = yes
-					any_character_artifact = {
-						at_artifact_can_be_sold_trigger = yes
-						at_is_artifact_likely_to_be_traded_trigger = yes
-						save_temporary_scope_as = artifact
-						scope:actor = {
-							at_is_likely_to_sell_artifact_trigger = yes
-						}
-					}
-				}
-				random_ruler = {
-					limit = {
-						is_ai = yes
-						at_valid_buyer_or_seller_trigger = { PARTY = scope:actor }
-						at_can_sell_artifact_to_trigger = { PARTY = scope:actor }
-						save_temporary_scope_as = buyer
-						scope:artifact = {
-							at_artifact_can_be_bought_by_trigger = { BUYER = scope:buyer }
-						}
-						at_is_likely_to_buy_artifact_trigger = yes
-						at_short_term_gold_value >= scope:artifact.at_artifact_bid_price_value
-					}
-					save_scope_as = recipient
-				}
-			}
-		}
-	}
-
 	is_shown = {
 		NOT = { has_game_rule = at_artifact_trading_disabled }
 		NOT = { scope:actor = scope:recipient }
@@ -114,6 +78,27 @@ at_sell_artifact_interaction = {
 		scope:target = {
 			at_artifact_can_be_sold_trigger = yes
 			at_artifact_can_be_bought_by_trigger = { BUYER = scope:recipient }
+		}
+		# Performance: AI should not attempt unlikely interactions
+		trigger_if = {
+			limit = {
+				scope:actor = { is_ai = yes }
+			}
+			scope:target = {
+				# Not unwanted, cursed, worthless, or recently bought artifact
+				at_ai_artifact_could_be_traded_trigger = yes
+			}
+			scope:recipient = {
+				# Buyer can equip and benefit from artifact
+				at_ai_could_buy_artifact_trigger = { ARTIFACT = scope:target }
+				# Buyer can afford the artifact
+				save_temporary_scope_as = buyer
+				at_short_term_gold_value >= scope:target.at_artifact_bid_price_value
+			}
+			scope:actor = {
+				# Not of special significance to the seller
+				at_ai_could_sell_artifact_trigger = { ARTIFACT = scope:target }
+			}
 		}
 	}
 
@@ -361,39 +346,24 @@ at_sell_artifact_interaction = {
 			add = -200
 			desc = ACTOR_NEMESIS_TO_ME_REASON
 		}
-
-		# Not enough gold
-		modifier = {
-			scope:actor = { is_ai = yes }
-			save_temporary_scope_as = buyer
-			at_short_term_gold_value < scope:target.at_artifact_bid_price_value
-			factor = 0
-			desc = at_not_enough_gold_reason
-		}
 	}
 
 	ai_targets = {
-		ai_recipients = self
 		ai_recipients = liege
+	}
+	ai_targets = {
 		ai_recipients = vassals
+		max = 20
 	}
 	ai_targets = {
 		ai_recipients = peer_vassals
 		ai_recipients = neighboring_rulers
-		max = 20
-	}
-	ai_targets = {
-		ai_recipients = guests
-		ai_recipients = courtiers
 		max = 10
 	}
 	ai_targets = {
 		ai_recipients = family
-		max = 10
-	}
-	ai_targets = {
-		ai_recipients = realm_characters
-		max = 20
+		ai_recipients = scripted_relations
+		max = 5
 	}
 
 	ai_frequency = 24
@@ -404,14 +374,6 @@ at_sell_artifact_interaction = {
 
 	ai_will_do = {
 		base = 50
-
-		# Artifact recently bought
-		modifier = {
-			scope:target = {
-				has_variable = at_artifact_recently_bought
-			}
-			add = -100
-		}
 
 		# Artifact QWA (rarity)
 		modifier = {
@@ -456,7 +418,7 @@ at_sell_artifact_interaction = {
 			add = at_ai_negative_uniqueness_impact_value
 		}
 
-		# Useless, not relevant, unwanted, or cursed artifacts
+		# Useless or not relevant artifacts
 		modifier = {
 			NOT = { at_can_equip_artifact_trigger = { ARTIFACT = scope:target } }
 			add = 50
@@ -464,66 +426,6 @@ at_sell_artifact_interaction = {
 		modifier = {
 			NOT = { can_benefit_from_artifact = scope:target }
 			add = 50
-		}
-		modifier = {
-			scope:target = { has_variable = unwanted_artifact }
-			add = 100
-		}
-		modifier = {
-			scope:target = { has_variable = cursed_artifact }
-			add = 200
-		}
-
-		# Trash or common low durability artifacts
-		modifier = {
-			scope:target = { at_is_worthless_artifact_trigger = yes }
-			add = at_ai_positive_trash_impact_value
-		}
-
-		# Dynasty or house banner
-		modifier = {
-			at_is_dynasty_banner_trigger = { ARTIFACT = scope:target }
-			add = {
-				if = {
-					limit = { this = dynasty.dynast }
-					value = at_ai_negative_relationship_impact_value
-				}
-				else = {
-					value = at_ai_negative_relationship_impact_reduced_value
-				}
-			}
-		}
-		modifier = {
-			at_is_house_banner_trigger = { ARTIFACT = scope:target }
-			add = {
-				if = {
-					limit = { this = house.house_head }
-					value = at_ai_negative_relationship_impact_value
-				}
-				else = {
-					value = at_ai_negative_relationship_impact_reduced_value
-				}
-			}
-		}
-
-		# Religious relic
-		modifier = {
-			at_is_religion_relic_trigger = { ARTIFACT = scope:target }
-			add = {
-				if = {
-					limit = { any_held_title = { is_head_of_faith = yes } }
-					value = at_ai_negative_relationship_impact_value
-				}
-				else = {
-					value = at_ai_negative_relationship_impact_reduced_value
-				}
-			}
-		}
-
-		# Holds succession title
-		modifier = {
-			at_has_artifact_succession_title_trigger = { ARTIFACT = scope:target }
-			add = at_ai_negative_relationship_impact_value
 		}
 
 		# Price
@@ -570,15 +472,6 @@ at_sell_artifact_interaction = {
 		modifier = {
 			has_relation_nemesis = scope:recipient
 			add = -200
-		}
-
-		# Not enough gold
-		modifier = {
-			scope:recipient = {
-				save_temporary_scope_as = buyer
-				gold < scope:target.at_artifact_bid_price_value
-			}
-			factor = 0
 		}
 	}
 }

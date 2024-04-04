@@ -240,39 +240,25 @@ at_is_house_banner_trigger = {
 	$ARTIFACT$.var:banner_house = house
 }
 
-at_is_artifact_likely_to_be_traded_trigger = {
+at_ai_artifact_could_be_traded_trigger = {
 	NOR = {
 		has_variable = unwanted_artifact
 		has_variable = cursed_artifact
+		at_is_worthless_artifact_trigger = yes
 		has_variable = at_artifact_recently_bought
 	}
 }
 
-at_is_likely_to_buy_artifact_trigger = {
-	save_temporary_scope_as = character
-	is_at_war = no
-	at_can_equip_and_benefit_from_artifact_trigger = { ARTIFACT = scope:artifact }
-	OR = {
-		scope:artifact = { can_be_claimed_by = scope:character }
-		at_is_dynasty_banner_trigger = { ARTIFACT = scope:artifact }
-		at_is_house_banner_trigger = { ARTIFACT = scope:artifact }
-		at_is_religion_relic_trigger = { ARTIFACT = scope:artifact }
-		at_has_artifact_succession_title_trigger = { ARTIFACT = scope:artifact }
-		at_nth_equippable_artifact_quality_wealth_average_value = 0
-	}
+at_ai_could_buy_artifact_trigger = {
+	at_can_equip_and_benefit_from_artifact_trigger = { ARTIFACT = $ARTIFACT$ }
 }
 
-at_is_likely_to_sell_artifact_trigger = {
+at_ai_could_sell_artifact_trigger = {
 	NOR = {
-		at_is_dynasty_banner_trigger = { ARTIFACT = scope:artifact }
-		at_is_house_banner_trigger = { ARTIFACT = scope:artifact }
-		at_is_religion_relic_trigger = { ARTIFACT = scope:artifact }
-		at_has_artifact_succession_title_trigger = { ARTIFACT = scope:artifact }
-	}
-	OR = {
-		NOT = { at_can_equip_and_benefit_from_artifact_trigger = { ARTIFACT = scope:artifact } }
-		scope:artifact = { is_equipped = no }
-		at_np1th_equippable_artifact_quality_wealth_average_value >= scope:artifact.at_artifact_quality_wealth_average_value
+		at_is_dynasty_banner_trigger = { ARTIFACT = $ARTIFACT$ }
+		at_is_house_banner_trigger = { ARTIFACT = $ARTIFACT$ }
+		at_is_religion_relic_trigger = { ARTIFACT = $ARTIFACT$ }
+		at_has_artifact_succession_title_trigger = { ARTIFACT = $ARTIFACT$ }
 	}
 }
 
