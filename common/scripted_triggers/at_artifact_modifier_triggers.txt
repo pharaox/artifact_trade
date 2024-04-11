@@ -762,6 +762,7 @@ at_has_artifact_domain_tax_modifier = {
 		has_artifact_modifier = cintamani_modifier
 
 		# <terrain>_tax_mult
+		# historical
 		has_artifact_modifier = qadib_al_mulk_modifier
 		has_artifact_modifier = babr_e_bayan_modifier
 		has_artifact_modifier = ikenga_modifier
@@ -949,6 +950,7 @@ at_has_artifact_scheme_success_chance_modifier = {
 		has_artifact_modifier = artifact_owned_hostile_scheme_success_chance_add_10_modifier
 		has_artifact_modifier = artifact_owned_hostile_scheme_success_chance_add_11_modifier
 		has_artifact_modifier = artifact_owned_hostile_scheme_success_chance_add_12_modifier
+		# historical
 		has_artifact_modifier = crystal_carving_modifier
 
 		# owned_personal_scheme_success_chance_add
