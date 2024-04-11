@@ -26,10 +26,18 @@ at_can_buy_artifact_from_trigger = {
 at_can_start_interaction_trigger = {
 	is_busy_in_events_localised = yes
 	is_imprisoned = no
+}
+
+at_can_trade_artifacts_trigger = {
+	at_can_start_interaction_trigger = yes
 	custom_description = {
 		text = "at_aniconists_wont_trade_artifacts"
 		at_has_aniconist_faith_trigger = no
 	}
+}
+
+at_can_destroy_artifacts_trigger = {
+	at_can_start_interaction_trigger = yes
 }
 
 at_has_aniconist_faith_trigger = {

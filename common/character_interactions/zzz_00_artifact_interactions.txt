@@ -22,6 +22,12 @@ destroy_artifact_interaction = {
 		}
 	}
 
+	is_valid_showing_failures_only = {
+		scope:actor = {
+			at_can_destroy_artifacts_trigger = yes
+		}
+	}
+
 	can_be_picked_artifact = {
 		scope:target = {
 			at_artifact_can_be_destroyed_trigger = yes

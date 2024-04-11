@@ -14,7 +14,7 @@
 					scope:flavor = flag:buy
 				}
 			}
-			at_can_start_interaction_trigger = yes
+			at_can_trade_artifacts_trigger = yes
 		}
 		trigger_if = {
 			limit = { scope:flavor = flag:sell }

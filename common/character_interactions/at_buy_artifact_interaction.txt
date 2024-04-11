@@ -39,7 +39,7 @@ at_buy_artifact_interaction = {
 
 	is_valid_showing_failures_only = {
 		scope:actor = {
-			at_can_start_interaction_trigger = yes
+			at_can_trade_artifacts_trigger = yes
 		}
 		scope:recipient = {
 			at_can_buy_artifact_from_trigger = { PARTY = scope:actor }
