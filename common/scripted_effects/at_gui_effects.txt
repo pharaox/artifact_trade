@@ -22,11 +22,16 @@ at_artifacts_window_get_all_artifacts_effect = {
 		every_character_artifact = {
 			limit = {
 				is_equipped = no
+				at_artifact_can_be_sold_trigger = yes
 				save_temporary_scope_as = artifact
 				any_in_list = {
 					list = valid_buyers
 					is_ai = yes
 					at_can_sell_artifact_to_trigger = { PARTY = ROOT }
+					save_temporary_scope_as = buyer
+					scope:artifact = {
+						at_artifact_can_be_bought_by_trigger = { BUYER = scope:buyer }
+					}
 					save_temporary_opinion_value_as = {
 						name = opinion_of_actor
 						target = ROOT
@@ -59,6 +64,8 @@ at_artifacts_window_get_all_artifacts_effect = {
 			}
 			every_character_artifact = {
 				limit = {
+					at_artifact_can_be_sold_trigger = yes
+					at_artifact_can_be_bought_by_trigger = { BUYER = ROOT }
 					at_buy_artifact_ai_accept_value > 0
 				}
 				ROOT = {

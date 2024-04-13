@@ -43,6 +43,10 @@ at_buy_artifact_interaction = {
 		}
 		scope:recipient = {
 			at_can_buy_artifact_from_trigger = { PARTY = scope:actor }
+			any_character_artifact = {
+				at_artifact_can_be_sold_trigger = yes
+				at_artifact_can_be_bought_by_trigger = { BUYER = scope:actor }
+			}
 		}
 	}
 

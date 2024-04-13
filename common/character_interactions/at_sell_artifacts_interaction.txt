@@ -30,6 +30,10 @@ at_sell_artifacts_interaction = {
 			limit = {
 				is_ai = yes
 				at_can_sell_artifact_to_trigger = { PARTY = scope:actor }
+				save_temporary_scope_as = buyer
+				scope:artifact = {
+					at_artifact_can_be_bought_by_trigger = { BUYER = scope:buyer }
+				}
 				save_temporary_opinion_value_as = {
 					name = opinion_of_actor
 					target = scope:actor
