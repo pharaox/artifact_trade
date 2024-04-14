@@ -1,3 +1,12 @@
 ﻿l_french:
  at_aniconists_wont_trade_artifacts_first: "Your Aniconist faith does not permit buying or selling artifacts"
  at_aniconists_wont_trade_artifacts_third: "Their Aniconist faith does not permit buying or selling artifacts"
+
+ at_not_enough_short_term_gold_tt: "Their short term budget is insufficient for artifact purchases"
+
+ at_valid_buyer_or_seller_tt: "They are too far away to trade artifacts with"
+
+ at_any_artifact_can_be_sold_and_bought_by_first_tt: "You must have an [artifact|E] that you can to sell and they can buy"
+ at_any_artifact_can_be_sold_and_bought_by_third_tt: "They must have an [artifact|E] that they can sell and you can buy"
+
+ at_any_artifact_can_be_destroyed_tt: "You must have an [artifact|E] that you can destroy"
