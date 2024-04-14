@@ -2,10 +2,12 @@
  # at_buy_artifact_interaction
  at_buy_artifact_interaction: "Buy Artifact"
  at_buy_artifact_interaction_desc: "Buy an [artifact|E] for [gold|E]"
+ at_buy_artifact_interaction_extra_icon: "$hook_extra_icon$"
 
  # at_sell_artifact_interaction
  at_sell_artifact_interaction: "Sell Artifact"
  at_sell_artifact_interaction_desc: "Sell an [artifact|E] for [gold|E]"
+ at_sell_artifact_interaction_extra_icon: "$hook_extra_icon$"
 
  # at_sell_artifacts_interaction
  at_sell_artifacts_interaction: "Sell Artifacts"
