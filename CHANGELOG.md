@@ -1,5 +1,27 @@
 # Changelog
 
+## Version 0.9.0
+
+### Character Interactions
+
+* Added tooltips for all conditions that may prevent the player from using any of the interactions.
+* The Destroy Artifact interaction can no longer be initiated by characters that are "busy in events" or imprisoned.
+* If a character is not a valid buyer or seller, the Buy Artifact and Sell Artifact interactions are now disabled with a proper tooltip instead of hidden.
+* Enabled submods to impose additional conditions on whether an artifact can be sold by the seller, bought by the buyer, or destroyed.
+
+### UI
+
+* Added a new Special artifact filter for historical unique artifacts, relics, etc.
+
+### Performance
+
+* Improved performance of artifact interactions.
+
+### Compatibility
+
+* Added triggers, effects, and values to be used or overridden by AGOT or the AGOT compatibility submod.
+* Improved compatibility with total conversion mods.
+
 ## Version 0.8.0
 
 ### Compatibility

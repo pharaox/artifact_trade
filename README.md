@@ -30,6 +30,8 @@ The current version is compatible with CK3 1.12. If you are still on CK3 1.11.x,
 
 This mod is compatible with all other mods, including total conversion mods such as AGOT and EK2, except for those few mods that modify the **Inventory** window or the **Destroy Artifact** interaction. If you use such mods, put this mod before them in the load order - you may lose the new **Inventory** window buttons or the **Destroy Artifact** improvements as a result, but everything else should work as expected. The new buttons are also available in the **Artifact Finder** window, so losing them in the **Inventory** window is no big deal.
 
+This mod is now fully compatible with [A Game of Thrones](https://steamcommunity.com/sharedfiles/filedetails/?id=2962333032) with a compatibility patch, see [Links](#links).
+
 This mod also supports changing its game rules mid-game with the [Gamerule Gadget](https://steamcommunity.com/sharedfiles/filedetails/?id=2826829936) mod.
 
 I strongly recommend using also the [Unofficial Patch](https://steamcommunity.com/sharedfiles/filedetails/?id=2871648329) mod as it fixes many vanilla artifact issues. Put this mod after Unofficial Patch in the load order.
@@ -122,13 +124,14 @@ The AI willingness to destroy an artifact is influenced by factors similar to th
 ## Links
 
 * [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2962238514)
+* [AGOT Compatibility](https://steamcommunity.com/sharedfiles/filedetails/?id=3222480457)
 * [Artifact Manager Compatibility](https://steamcommunity.com/sharedfiles/filedetails/?id=2966324178)
 * [Princes of Darkness Compatibility (by @fluffy heretic)](https://steamcommunity.com/sharedfiles/filedetails/?id=3108318083])
 * [Russian Translation (by @laxfeed)](https://steamcommunity.com/sharedfiles/filedetails/?id=2965215034)
 * [Spanish Translation (by @Will1294)](https://steamcommunity.com/sharedfiles/filedetails/?id=2971143815)
 * [Chinese Translation (by @小学生)](https://steamcommunity.com/sharedfiles/filedetails/?id=2976964171)
 * [French Translation (by @Pata)](https://steamcommunity.com/sharedfiles/filedetails/?id=2976975086)
-* [Forum Thread](https://forum.paradoxplaza.com/forum/threads/mod-search-trade-artifacts.1578578/)
+* [Korean Translation (by @Yankee)](https://steamcommunity.com/sharedfiles/filedetails/?id=2984914446)
 * [GitHub Repository](https://github.com/pharaox/artifact_trade)
 
 ## Credits

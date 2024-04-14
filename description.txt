@@ -2,7 +2,7 @@
 
 With this mod, you can search for artifacts, buy them from other characters, and sell them to other characters. The game doesn't have an artifact trading system, so this mod adds one. Since such a system would not be usable without advanced artifact filtering and sorting, it adds an "artifact finder" as well.
 
-In version 1.9 CK3 enabled destroying of artifacts for gold, however it's fairly limited. No actual trading takes place, you can only sell but not buy, and only common and masterwork artifacts. Furthermore, you can [i]always[/i] sell, which undermines the realism.
+In version 1.9 CK3 enabled destroying of artifacts for gold, however it's fairly limited. No actual trading takes place, you can destroy, but neither sell nor buy, and only common and masterwork artifacts. Furthermore, you can [i]always[/i] sell, which undermines the realism.
 
 This mod adds what is missing, and more. The system is balanced so that it does not offer significant advantages to the player. The AI will use it as well, initiating, accepting, or rejecting buy and sell interactions based on a comprehensive estimation of the artifact's usefulness and significance.
 
@@ -27,6 +27,8 @@ The current version is compatible with CK3 1.12. If you are still on CK3 1.11.x,
 
 This mod is compatible with all other mods, including total conversion mods such as AGOT and EK2, except for mods that modify the [b]Inventory[/b] window or the [b]Destroy Artifact[/b] interaction. If you use such mods, put this mod before them in the load order - you may lose the new [b]Inventory[/b] window buttons or the [b]Destroy Artifact[/b] improvements as a result, but everything else should work as expected. The new buttons are also available in the [b]Artifact Finder[/b] window, so losing them in the [b]Inventory[/b] window is no big deal.
 
+This mod is now fully compatible with [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2962333032]A Game of Thrones[/url] with a compatibility patch, see [b]Links[/b] below.
+
 This mod also supports changing its game rules mid-game with the [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2826829936]Gamerule Gadget[/url] mod.
 
 I strongly recommend using also the [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2871648329]Unofficial Patch[/url] mod as it fixes many vanilla artifact issues. Put this mod after Unofficial Patch in the load order.
@@ -37,13 +39,14 @@ This mod is currently available in English and uses the original English text as
 
 [h2]Links[/h2]
 [list]
+  [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3222480457]AGOT Compatibility[/url]
   [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2966324178]Artifact Manager Compatibility[/url]
   [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3108318083]Princes of Darkness Compatibility (by @fluffy heretic)[/url]
   [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2965215034]Russian Translation (by @laxfeed)[/url]
   [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2971143815]Spanish Translation (by @Will1294)[/url]
   [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2976964171]Chinese Translation (by @小学生)[/url]
   [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2976975086]French Translation (by @Pata)[/url]
-  [*] [url=https://forum.paradoxplaza.com/forum/threads/mod-search-trade-artifacts.1578578/]Forum Thread[/url]
+  [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2984914446]Korean Translation (by @Yankee)[/url]
   [*] [url=https://github.com/pharaox/artifact_trade]GitHub Repository[/url]
 [/list]
 
