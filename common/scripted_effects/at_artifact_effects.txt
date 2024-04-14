@@ -79,7 +79,9 @@ at_buy_artifact_effect = {
 			}
 			else = {
 				show_as_tooltip = {
-					remove_house_artifact_claim = scope:artifact
+					house ?= {
+						remove_house_artifact_claim = scope:artifact
+					}
 				}
 			}
 		}
