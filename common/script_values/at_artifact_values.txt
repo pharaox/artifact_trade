@@ -743,10 +743,7 @@ at_destroy_artifact_piety_value = {
 		limit = {
 			exists = var:relic
 		}
-		multiply = {
-			value = 2
-			desc = aniconist_destroying_relic
-		}
+		multiply = 2
 	}
 }
 
