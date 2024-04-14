@@ -306,6 +306,24 @@
 			}
 		}
 
+		clear_global_variable_list = at_artifacts_window_special_filter_options
+		add_to_global_variable_list = { name = at_artifacts_window_special_filter_options target = flag:_all }
+		add_to_global_variable_list = { name = at_artifacts_window_special_filter_options target = flag:_historical_unique }
+		add_to_global_variable_list = { name = at_artifacts_window_special_filter_options target = flag:_relic }
+		add_to_global_variable_list = { name = at_artifacts_window_special_filter_options target = flag:_not_historical_unique }
+		add_to_global_variable_list = { name = at_artifacts_window_special_filter_options target = flag:_not_relic }
+		at_artifacts_window_add_special_filter_options_effect = yes
+
+		if = {
+			limit = {
+				NOT = { has_variable = at_artifacts_window_selected_special_filter_option }
+			}
+			set_variable = {
+				name = at_artifacts_window_selected_special_filter_option
+				value = flag:_all
+			}
+		}
+
 		clear_global_variable_list = at_artifacts_window_owner_filter_options
 		add_to_global_variable_list = { name = at_artifacts_window_owner_filter_options target = flag:_all }
 		add_to_global_variable_list = { name = at_artifacts_window_owner_filter_options target = flag:_ruler_with_rc }
@@ -485,6 +503,7 @@ at_artifacts_window_has_non_default_filter_options_gui = {
 				has_variable = at_artifacts_window_selected_equippable_filter_option
 				has_variable = at_artifacts_window_selected_unwanted_filter_option
 				has_variable = at_artifacts_window_selected_trash_filter_option
+				has_variable = at_artifacts_window_selected_special_filter_option
 				has_variable = at_artifacts_window_selected_owner_filter_option
 				has_variable = at_artifacts_window_selected_owner_valid_buyer_or_seller_filter_option
 			}
@@ -499,6 +518,7 @@ at_artifacts_window_has_non_default_filter_options_gui = {
 				var:at_artifacts_window_selected_equippable_filter_option = flag:_all
 				var:at_artifacts_window_selected_unwanted_filter_option = flag:_all
 				var:at_artifacts_window_selected_trash_filter_option = flag:_all
+				var:at_artifacts_window_selected_special_filter_option = flag:_all
 				var:at_artifacts_window_selected_owner_filter_option = flag:_all
 				var:at_artifacts_window_selected_owner_valid_buyer_or_seller_filter_option = flag:_all
 			}
@@ -649,6 +669,20 @@ at_artifacts_window_select_trash_filter_option_gui = {
 	}
 }
 
+at_artifacts_window_select_special_filter_option_gui = {
+	scope = character
+	saved_scopes = { filter_option }
+
+	effect = {
+		set_variable = {
+			name = at_artifacts_window_selected_special_filter_option
+			value = scope:filter_option
+		}
+
+		at_artifacts_window_get_artifacts_effect = yes
+	}
+}
+
 at_artifacts_window_select_owner_filter_option_gui = {
 	scope = character
 	saved_scopes = { filter_option }
@@ -719,6 +753,10 @@ at_artifacts_window_reset_filter_options_gui = {
 		}
 		set_variable = {
 			name = at_artifacts_window_selected_trash_filter_option
+			value = flag:_all
+		}
+		set_variable = {
+			name = at_artifacts_window_selected_special_filter_option
 			value = flag:_all
 		}
 		set_variable = {

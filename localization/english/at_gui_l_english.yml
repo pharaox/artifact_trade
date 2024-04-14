@@ -162,6 +162,12 @@
  at_trash: "Trash"
  at_not_trash: "Not Trash"
 
+ at_special: "Special"
+ at_historical_unique: "Historical Unique"
+ at_relic: "Relic"
+ at_not_historical_unique: "Not Historical Unique"
+ at_not_relic: "Not Relic"
+
  at_owner: "Owner Is Ruler"
  at_ruler_with_rc: "Ruler With Royal Court"
  at_ruler_without_rc: "Ruler Without Royal Court"

@@ -598,6 +598,33 @@ at_artifacts_window_get_filtered_artifacts_effect = {
 				always = yes
 			}
 
+			# Filter by special
+			trigger_if = {
+				limit = { ROOT.var:at_artifacts_window_selected_special_filter_option = flag:_historical_unique }
+				has_variable = historical_unique_artifact
+			}
+			trigger_else_if = {
+				limit = { ROOT.var:at_artifacts_window_selected_special_filter_option = flag:_relic }
+				OR = {
+					has_variable = relic_religion
+					has_variable = relic
+				}
+			}
+			trigger_else_if = {
+				limit = { ROOT.var:at_artifacts_window_selected_special_filter_option = flag:_not_historical_unique }
+				NOT = { has_variable = historical_unique_artifact }
+			}
+			trigger_else_if = {
+				limit = { ROOT.var:at_artifacts_window_selected_special_filter_option = flag:_not_relic }
+				NOR = {
+					has_variable = relic_religion
+					has_variable = relic
+				}
+			}
+			trigger_else = {
+				at_artifacts_window_selected_special_filter_option_trigger = yes
+			}
+
 			# Filter by owner
 			trigger_if = {
 				limit = { ROOT.var:at_artifacts_window_selected_owner_filter_option = flag:_ruler_with_rc }
@@ -697,4 +724,7 @@ at_artifacts_window_clear_artifacts_effect = {
 	clear_variable_list = at_artifacts_window_all_artifacts
 	clear_variable_list = at_artifacts_window_filtered_artifacts
 	clear_variable_list = at_artifacts_window_artifacts
+}
+
+at_artifacts_window_add_special_filter_options_effect = {
 }
