@@ -20,14 +20,6 @@ at_buy_artifact_interaction = {
 	is_shown = {
 		NOT = { has_game_rule = at_artifact_trading_disabled }
 		NOT = { scope:actor = scope:recipient }
-		trigger_if = {
-			limit = {
-				scope:actor = { is_ai = no }
-			}
-			scope:recipient = {
-				at_valid_buyer_or_seller_trigger = { PARTY = scope:actor }
-			}
-		}
 		scope:recipient = {
 			has_any_artifact = yes
 		}
@@ -43,9 +35,21 @@ at_buy_artifact_interaction = {
 		}
 		scope:recipient = {
 			at_can_buy_artifact_from_trigger = { PARTY = scope:actor }
-			any_character_artifact = {
-				at_artifact_can_be_sold_trigger = yes
-				at_artifact_can_be_bought_by_trigger = { BUYER = scope:actor }
+			trigger_if = {
+				limit = {
+					scope:actor = { is_ai = no }
+				}
+				custom_description = {
+					text = "at_valid_buyer_or_seller_tt"
+					at_valid_buyer_or_seller_trigger = { PARTY = scope:actor }
+				}
+			}
+			custom_description = {
+				text = "at_any_artifact_can_be_sold_and_bought_by_tt"
+				any_character_artifact = {
+					at_artifact_can_be_sold_trigger = yes
+					at_artifact_can_be_bought_by_trigger = { BUYER = scope:actor }
+				}
 			}
 		}
 	}

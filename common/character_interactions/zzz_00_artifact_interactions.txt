@@ -25,8 +25,11 @@ destroy_artifact_interaction = {
 	is_valid_showing_failures_only = {
 		scope:actor = {
 			at_can_destroy_artifacts_trigger = yes
-			any_character_artifact = {
-				at_artifact_can_be_destroyed_trigger = yes
+			custom_description = {
+				text = "at_any_artifact_can_be_destroyed_tt"
+				any_character_artifact = {
+					at_artifact_can_be_destroyed_trigger = yes
+				}
 			}
 		}
 	}

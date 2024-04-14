@@ -12,7 +12,10 @@ at_can_sell_artifact_to_trigger = {
 		text = "at_aniconists_wont_trade_artifacts"
 		at_has_aniconist_faith_trigger = no
 	}
-	at_short_term_gold_value > 1
+	custom_description = {
+		text = "at_not_enough_short_term_gold_tt"
+		at_short_term_gold_value > 1
+	}
 }
 
 at_can_buy_artifact_from_trigger = {

@@ -2,3 +2,20 @@
 	first_not = at_aniconists_wont_trade_artifacts_first
 	third_not = at_aniconists_wont_trade_artifacts_third
 }
+
+at_not_enough_short_term_gold_tt = {
+	third_not = at_not_enough_short_term_gold_tt
+}
+
+at_valid_buyer_or_seller_tt = {
+	third_not = at_valid_buyer_or_seller_tt
+}
+
+at_any_artifact_can_be_sold_and_bought_by_tt = {
+	first_not = at_any_artifact_can_be_sold_and_bought_by_first_tt
+	third_not = at_any_artifact_can_be_sold_and_bought_by_third_tt
+}
+
+at_any_artifact_can_be_destroyed_tt = {
+	first_not = at_any_artifact_can_be_destroyed_tt
+}
