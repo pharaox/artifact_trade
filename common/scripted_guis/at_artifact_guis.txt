@@ -412,7 +412,7 @@ at_artifacts_window_close_gui = {
 
 at_artifacts_window_select_artifact_sort_option_gui = {
 	scope = character
-	saved_scopes = { sort_option }
+	saved_scopes = { sort_option flavor }
 
 	effect = {
 		set_variable = {
@@ -426,6 +426,7 @@ at_artifacts_window_select_artifact_sort_option_gui = {
 
 at_artifacts_window_toggle_artifact_sort_order_gui = {
 	scope = character
+	saved_scopes = { flavor }
 
 	effect = {
 		if = {
@@ -442,7 +443,7 @@ at_artifacts_window_toggle_artifact_sort_order_gui = {
 
 at_artifacts_window_select_max_count_option_gui = {
 	scope = character
-	saved_scopes = { max_count_option }
+	saved_scopes = { max_count_option flavor }
 
 	effect = {
 		set_variable = {
@@ -531,7 +532,7 @@ at_artifacts_window_has_non_default_filter_options_gui = {
 
 at_artifacts_window_select_rarity_filter_option_gui = {
 	scope = character
-	saved_scopes = { filter_option }
+	saved_scopes = { filter_option flavor }
 
 	effect = {
 		set_variable = {
@@ -545,7 +546,7 @@ at_artifacts_window_select_rarity_filter_option_gui = {
 
 at_artifacts_window_select_slot_type_filter_option_gui = {
 	scope = character
-	saved_scopes = { filter_option }
+	saved_scopes = { filter_option flavor }
 
 	effect = {
 		set_variable = {
@@ -559,7 +560,7 @@ at_artifacts_window_select_slot_type_filter_option_gui = {
 
 at_artifacts_window_select_unique_filter_option_gui = {
 	scope = character
-	saved_scopes = { filter_option }
+	saved_scopes = { filter_option flavor }
 
 	effect = {
 		set_variable = {
@@ -573,7 +574,7 @@ at_artifacts_window_select_unique_filter_option_gui = {
 
 at_artifacts_window_select_modifier_filter_option_gui = {
 	scope = character
-	saved_scopes = { filter_option }
+	saved_scopes = { filter_option flavor }
 
 	effect = {
 		set_variable = {
@@ -587,7 +588,7 @@ at_artifacts_window_select_modifier_filter_option_gui = {
 
 at_artifacts_window_select_equipped_filter_option_gui = {
 	scope = character
-	saved_scopes = { filter_option }
+	saved_scopes = { filter_option flavor }
 
 	effect = {
 		set_variable = {
@@ -601,7 +602,7 @@ at_artifacts_window_select_equipped_filter_option_gui = {
 
 at_artifacts_window_select_owned_filter_option_gui = {
 	scope = character
-	saved_scopes = { filter_option }
+	saved_scopes = { filter_option flavor }
 
 	effect = {
 		set_variable = {
@@ -615,7 +616,7 @@ at_artifacts_window_select_owned_filter_option_gui = {
 
 at_artifacts_window_select_claimed_filter_option_gui = {
 	scope = character
-	saved_scopes = { filter_option }
+	saved_scopes = { filter_option flavor }
 
 	effect = {
 		set_variable = {
@@ -629,7 +630,7 @@ at_artifacts_window_select_claimed_filter_option_gui = {
 
 at_artifacts_window_select_equippable_filter_option_gui = {
 	scope = character
-	saved_scopes = { filter_option }
+	saved_scopes = { filter_option flavor }
 
 	effect = {
 		set_variable = {
@@ -643,7 +644,7 @@ at_artifacts_window_select_equippable_filter_option_gui = {
 
 at_artifacts_window_select_unwanted_filter_option_gui = {
 	scope = character
-	saved_scopes = { filter_option }
+	saved_scopes = { filter_option flavor }
 
 	effect = {
 		set_variable = {
@@ -657,7 +658,7 @@ at_artifacts_window_select_unwanted_filter_option_gui = {
 
 at_artifacts_window_select_trash_filter_option_gui = {
 	scope = character
-	saved_scopes = { filter_option }
+	saved_scopes = { filter_option flavor }
 
 	effect = {
 		set_variable = {
@@ -671,7 +672,7 @@ at_artifacts_window_select_trash_filter_option_gui = {
 
 at_artifacts_window_select_special_filter_option_gui = {
 	scope = character
-	saved_scopes = { filter_option }
+	saved_scopes = { filter_option flavor }
 
 	effect = {
 		set_variable = {
@@ -685,7 +686,7 @@ at_artifacts_window_select_special_filter_option_gui = {
 
 at_artifacts_window_select_owner_filter_option_gui = {
 	scope = character
-	saved_scopes = { filter_option }
+	saved_scopes = { filter_option flavor }
 
 	effect = {
 		set_variable = {
@@ -699,7 +700,7 @@ at_artifacts_window_select_owner_filter_option_gui = {
 
 at_artifacts_window_select_owner_valid_buyer_or_seller_filter_option_gui = {
 	scope = character
-	saved_scopes = { filter_option }
+	saved_scopes = { filter_option flavor }
 
 	effect = {
 		set_variable = {
@@ -713,6 +714,7 @@ at_artifacts_window_select_owner_valid_buyer_or_seller_filter_option_gui = {
 
 at_artifacts_window_reset_filter_options_gui = {
 	scope = character
+	saved_scopes = { flavor }
 
 	effect = {
 		set_variable = {
