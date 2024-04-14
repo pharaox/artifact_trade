@@ -377,7 +377,7 @@ at_sell_artifact_interaction = {
 	ai_frequency = 24
 
 	ai_potential = {
-		NOT = { has_global_variable = AGOT_is_loaded }
+		always = yes
 	}
 
 	ai_will_do = {

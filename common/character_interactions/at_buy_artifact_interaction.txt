@@ -378,7 +378,6 @@ at_buy_artifact_interaction = {
 	ai_potential = {
 		at_short_term_gold_value >= major_gold_value
 		is_at_war = no
-		NOT = { has_global_variable = AGOT_is_loaded }
 	}
 
 	ai_will_do = {
