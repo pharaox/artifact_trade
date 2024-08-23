@@ -129,7 +129,7 @@ The AI willingness to destroy an artifact is influenced by factors similar to th
 * [Princes of Darkness Compatibility (by @fluffy heretic)](https://steamcommunity.com/sharedfiles/filedetails/?id=3108318083])
 * [Russian Translation (by @laxfeed)](https://steamcommunity.com/sharedfiles/filedetails/?id=2965215034)
 * [Spanish Translation (by @Will1294)](https://steamcommunity.com/sharedfiles/filedetails/?id=2971143815)
-* [Chinese Translation (by @小学生)](https://steamcommunity.com/sharedfiles/filedetails/?id=2976964171)
+* [Chinese Translation (by@無壹)](https://steamcommunity.com/sharedfiles/filedetails/?id=2903983628)
 * [French Translation (by @Pata)](https://steamcommunity.com/sharedfiles/filedetails/?id=2976975086)
 * [Korean Translation (by @Yankee)](https://steamcommunity.com/sharedfiles/filedetails/?id=2984914446)
 * [GitHub Repository](https://github.com/pharaox/artifact_trade)
