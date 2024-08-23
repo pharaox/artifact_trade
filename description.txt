@@ -35,7 +35,7 @@ I strongly recommend using also the [url=https://steamcommunity.com/sharedfiles/
 
 [h2]Localization[/h2]
 
-This mod is currently available in English and uses the original English text as a placeholder for all other languages. Translations for other languages are available as separate mods, see [b]Links[/b] below.
+This mod is currently available in English and Spanish (translated by @Ferchu). For other languages, it uses the original English text as a placeholder. Translations for other languages are available as separate mods, see [b]Links[/b] below.
 
 [h2]Links[/h2]
 [list]

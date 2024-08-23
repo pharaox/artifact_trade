@@ -1,5 +1,11 @@
 # Changelog
 
+## Version 0.9.1
+
+### Localization
+
+* Added Spanish translation by @Ferchu.
+
 ## Version 0.9.0
 
 ### Character Interactions

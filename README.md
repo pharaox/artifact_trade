@@ -38,7 +38,7 @@ I strongly recommend using also the [Unofficial Patch](https://steamcommunity.co
 
 ## Localization
 
-This mod is currently available in English and uses the original English text as a placeholder for all other languages. Translations for other languages are available as separate mods, see [Links](#links).
+This mod is currently available in English and Spanish (translated by @Ferchu). For other languages, it uses the original English text as a placeholder. Translations for other languages are available as separate mods, see [Links](#links).
 
 ## Searching for Artifacts
 
