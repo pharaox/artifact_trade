@@ -1,12 +1,12 @@
 ﻿l_spanish:
- at_aniconists_wont_trade_artifacts_first: "Your Aniconist faith does not permit buying or selling artifacts"
- at_aniconists_wont_trade_artifacts_third: "Their Aniconist faith does not permit buying or selling artifacts"
+at_aniconists_wont_trade_artifacts_first: "Tu fe Aniconista no permite comprar o vender artefactos"
+at_aniconists_wont_trade_artifacts_third: "Su fe Aniconista no permite comprar o vender artefactos"
 
- at_not_enough_short_term_gold_tt: "Their short term budget is insufficient for artifact purchases"
+at_not_enough_short_term_gold_tt: "Su presupuesto a corto plazo es insuficiente para la compra de artefactos"
 
- at_valid_buyer_or_seller_tt: "They are too far away to trade artifacts with"
+at_valid_buyer_or_seller_tt: "Están demasiado lejos para comerciar con artefactos"
 
- at_any_artifact_can_be_sold_and_bought_by_first_tt: "You must have an [artifact|E] that you can to sell and they can buy"
- at_any_artifact_can_be_sold_and_bought_by_third_tt: "They must have an [artifact|E] that they can sell and you can buy"
+at_any_artifact_can_be_sold_and_bought_by_first_tt: "Debes tener un [artifact|E] que puedas vender y que ellos puedan comprar"
+at_any_artifact_can_be_sold_and_bought_by_third_tt: "Deben tener un [artifact|E] que puedan vender y que tú puedas comprar"
 
- at_any_artifact_can_be_destroyed_tt: "You must have an [artifact|E] that you can destroy"
+at_any_artifact_can_be_destroyed_tt: "Debes tener un [artifact|E] que puedas destruir"
