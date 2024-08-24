@@ -1,5 +1,11 @@
 # Changelog
 
+## Version 0.9.2
+
+### Compatibility
+
+* Added more triggers to be overridden by the AGOT compatibility submod.
+
 ## Version 0.9.1
 
 ### Localization
