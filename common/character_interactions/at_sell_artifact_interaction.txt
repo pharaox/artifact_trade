@@ -23,6 +23,9 @@ at_sell_artifact_interaction = {
 		scope:actor = {
 			has_any_artifact = yes
 		}
+		scope:recipient = {
+			at_can_own_artifacts_trigger = yes
+		}
 		NAND = { # Prevent ai from spamming you with sell artifact requests
 			scope:actor = { is_ai = yes }
 			scope:recipient = { is_ai = no }

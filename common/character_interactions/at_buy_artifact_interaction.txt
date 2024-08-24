@@ -20,6 +20,9 @@ at_buy_artifact_interaction = {
 	is_shown = {
 		NOT = { has_game_rule = at_artifact_trading_disabled }
 		NOT = { scope:actor = scope:recipient }
+		scope:actor = {
+			at_can_own_artifacts_trigger = yes
+		}
 		scope:recipient = {
 			has_any_artifact = yes
 		}

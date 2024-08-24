@@ -49,6 +49,10 @@ at_has_aniconist_faith_trigger = {
 	}
 }
 
+at_can_own_artifacts_trigger = {
+	always = yes
+}
+
 at_valid_buyer_or_seller_trigger = {
 	NOT = { this = $PARTY$ }
 	in_diplomatic_range = $PARTY$
