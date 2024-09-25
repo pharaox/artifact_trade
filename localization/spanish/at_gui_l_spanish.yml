@@ -92,6 +92,11 @@
  at_clergy_opinion: "Opinión del $game_concept_clergy$"
  at_same_faith_opinion: "Opinión de la Misma $game_concept_faith$"
  at_different_faith_opinion: "Opinión de Diferente $game_concept_faith$"
+ at_same_culture_opinion: "Same $game_concept_culture$ Opinion"
+ at_different_culture_opinion: "Different $game_concept_culture$ Opinion"
+ at_county_opinion: "$game_concept_county$ Opinion"
+ at_religion_opinion: "$game_concept_religion$ Opinion"
+ at_culture_opinion: "$game_concept_culture$ Opinion"
  # Domain, vassals, income, buildings, development
  at_domain_limit: "$game_concept_domain_limit$"
  at_vassal_limit: "$game_concept_vassal_limit$"
@@ -107,13 +112,14 @@
  # Scheme
  at_scheme_success_chance: "$game_concept_scheme$ $game_concept_success_chance$"
  at_scheme_secrecy: "$game_concept_scheme$ $game_concept_secrecy$"
- at_scheme_power: "$game_concept_scheme_power$"
- at_seduce_scheme_power: "$game_concept_scheme_power$ de [GetScheme('seduce').GetTypeName]"
- at_courting_scheme_power: "$game_concept_scheme_power$ de [GetScheme('courting').GetTypeName]"
- at_befriend_scheme_power: "$game_concept_scheme_power$ de [GetScheme('befriend').GetTypeName]"
- at_learn_language_scheme_power: "$game_concept_scheme_power$ de [GetScheme('learn_language').GetTypeName]"
+ at_scheme_power: "$game_concept_scheme_speed$"
+ at_seduce_scheme_power: "$game_concept_scheme_speed$ de [GetScheme('seduce').GetTypeName]"
+ at_courting_scheme_power: "$game_concept_scheme_speed$ de [GetScheme('courting').GetTypeName]"
+ at_befriend_scheme_power: "$game_concept_scheme_speed$ de [GetScheme('befriend').GetTypeName]"
+ at_learn_language_scheme_power: "$game_concept_scheme_speed$ de [GetScheme('learn_language').GetTypeName]"
  at_hostile_scheme_resistance: "$game_concept_scheme_hostile$ de $game_concept_scheme_resistance$"
  # Lifestyle XP
+ at_lifestyle_xp: "$game_concept_lifestyle$ Experience"
  at_diplomacy_lifestyle_xp: "Experiencia de Diplomacia de $game_concept_lifestyle$"
  at_martial_lifestyle_xp: "Experiencia de Marcial de $game_concept_lifestyle$"
  at_stewardship_lifestyle_xp: "Experiencia de Administración de $game_concept_lifestyle$"
@@ -138,6 +144,10 @@
  # CE1
  at_legend_spread: "Probabilidad de Difusión de $game_concept_legend$"
  at_epidemic_resistance: "$game_concept_epidemic_resistance$"
+ at_legitimacy: "$game_concept_legitimacy$"
+ # RtP
+ at_travel: "$game_concept_travel$"
+ at_influence: "$game_concept_influence$"
 
  at_equipped: "Equipado"
  at_not_equipped: "No Equipado"
