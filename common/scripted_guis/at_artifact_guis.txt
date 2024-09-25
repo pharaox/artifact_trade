@@ -158,6 +158,11 @@
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_clergy_opinion }
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_same_faith_opinion }
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_different_faith_opinion }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_same_culture_opinion }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_different_culture_opinion }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_county_opinion }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_religion_opinion }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_culture_opinion }
 		# Domain, vassals, income, buildings, development
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_domain_limit }
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_vassal_limit }
@@ -180,6 +185,7 @@
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_learn_language_scheme_power }
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_hostile_scheme_resistance }
 		# Lifestyle XP
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_lifestyle_xp }
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_diplomacy_lifestyle_xp }
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_martial_lifestyle_xp }
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_stewardship_lifestyle_xp }
@@ -200,10 +206,14 @@
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_hard_casualty_modifier }
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_damage_toughness_pursuit_screen }
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_advantage}
- 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_naval_speed }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_naval_speed }
 		# CE1
- 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_legend_spread }
- 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_epidemic_resistance }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_legend_spread }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_epidemic_resistance }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_legitimacy }
+		# RtP
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_travel }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_influence }
 
 		if = {
 			limit = {

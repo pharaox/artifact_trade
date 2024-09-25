@@ -51,8 +51,31 @@ destroy_artifact_aniconist_effect = {
 						value = 4
 					}
 				}
+
 				# Boost the value up to something meaningful
-				multiply = 10
+				multiply = {
+					value = 10
+				}
+
+				# multiply by durability percentage
+				multiply = {
+					add = scope:artifact.artifact_durability
+					divide = scope:artifact.artifact_max_durability	
+					divide = 2
+					add = 0.5
+				}
+
+				#Nerf it to bits for LAAMPs
+				if = {
+					limit = { 
+						$DESTROYER$ = { has_government = landless_adventurer_government }
+					}
+					multiply = {
+						value = 0.1
+						round = yes
+					}
+				}
+				min = 1
 			}
 		}
 

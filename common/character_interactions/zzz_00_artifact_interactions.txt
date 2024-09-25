@@ -35,6 +35,12 @@ destroy_artifact_interaction = {
 	}
 
 	can_be_picked_artifact = {
+		custom_tooltip = {
+			text = artifact_is_related_to_contract_tt
+			NOT = {
+				scope:target = { has_variable = 1025_treasure_map }
+			}
+		}
 		scope:target = {
 			at_artifact_can_be_destroyed_trigger = yes
 		}
@@ -70,6 +76,12 @@ destroy_artifact_interaction = {
 					text = destroying_artifacts_is_not_pious_tt
 					scope:recipient.faith = { has_doctrine_parameter = destroying_artifacts_is_pious }
 				}
+			}
+		}
+		scope:actor = {
+			trigger_if = {
+				limit = { is_landless_adventurer = yes }
+				employs_court_position = armorer_camp_officer
 			}
 		}
 	}

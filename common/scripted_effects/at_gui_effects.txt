@@ -332,6 +332,26 @@ at_artifacts_window_get_filtered_artifacts_effect = {
 				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_different_faith_opinion }
 				at_has_artifact_different_faith_opinion_modifier = yes
 			}
+			trigger_else_if = {
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_same_culture_opinion }
+				at_has_artifact_same_culture_opinion_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_different_culture_opinion }
+				at_has_artifact_different_culture_opinion_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_county_opinion }
+				at_has_artifact_county_opinion_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_religion_opinion }
+				at_has_artifact_religion_opinion_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_culture_opinion }
+				at_has_artifact_culture_opinion_modifier = yes
+			}
 			# Domain, vassals, income, buildings, development
 			trigger_else_if = {
 				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_domain_limit }
@@ -411,6 +431,10 @@ at_artifacts_window_get_filtered_artifacts_effect = {
 				at_has_artifact_hostile_scheme_resistance_modifier = yes
 			}
 			# Lifestyle XP
+			trigger_else_if = {
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_lifestyle_xp }
+				at_has_artifact_lifestyle_xp_modifier = yes
+			}
 			trigger_else_if = {
 				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_diplomacy_lifestyle_xp }
 				at_has_artifact_diplomacy_lifestyle_xp_modifier = yes
@@ -494,6 +518,18 @@ at_artifacts_window_get_filtered_artifacts_effect = {
 			trigger_else_if = {
 				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_epidemic_resistance }
 				at_has_artifact_epidemic_resistance_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_legitimacy }
+				at_has_artifact_legitimacy_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_travel }
+				at_has_artifact_travel_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_influence }
+				at_has_artifact_influence_modifier = yes
 			}
 			trigger_else = {
 				always = yes
