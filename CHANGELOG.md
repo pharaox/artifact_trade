@@ -1,5 +1,15 @@
 # Changelog
 
+## Version 0.10.0
+
+### Compatibility
+
+* Adapted to CK3 1.13.0.1
+
+### UI Improvements
+
+* Added 9 new modifier filters, including legitimacy, travel, and influence.
+
 ## Version 0.9.2
 
 ### Compatibility
