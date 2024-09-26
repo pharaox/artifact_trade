@@ -1,5 +1,11 @@
 # Changelog
 
+## Version 0.10.1
+
+### Bug Fixes
+
+* Landless adventurers are now valid buyers or sellers with the "Within Trading Range" game rule setting.
+
 ## Version 0.10.0
 
 ### Compatibility
