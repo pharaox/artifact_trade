@@ -72,7 +72,7 @@ at_valid_buyer_or_seller_trigger = {
 		OR = {
 			at_is_same_realm_character_trigger = { PARTY = $PARTY$ }
 			at_is_neighboring_realm_character_trigger = { PARTY = $PARTY$ }
-			at_is_landed_ruler_within_trading_range_trigger = { PARTY = $PARTY$ }
+			at_is_playable_character_within_trading_range_trigger = { PARTY = $PARTY$ }
 		}
 	}
 	trigger_else = {
@@ -109,9 +109,9 @@ at_is_neighboring_realm_character_trigger = {
 	}
 }
 
-at_is_landed_ruler_within_trading_range_trigger = {
-	is_landed = yes
-	$PARTY$ = { is_landed = yes }
+at_is_playable_character_within_trading_range_trigger = {
+	exists = capital_province
+	$PARTY$ = { exists = capital_province }
 	capital_province = {
 		squared_distance = {
 			target = $PARTY$.capital_province
