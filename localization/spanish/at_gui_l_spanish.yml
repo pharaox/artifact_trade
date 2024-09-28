@@ -119,12 +119,12 @@
  at_learn_language_scheme_power: "$game_concept_scheme_speed$ de [GetScheme('learn_language').GetTypeName]"
  at_hostile_scheme_resistance: "$game_concept_scheme_hostile$ de $game_concept_scheme_resistance$"
  # Lifestyle XP
- at_lifestyle_xp: "$game_concept_lifestyle$ Experience"
- at_diplomacy_lifestyle_xp: "Experiencia de Diplomacia de $game_concept_lifestyle$"
- at_martial_lifestyle_xp: "Experiencia de Marcial de $game_concept_lifestyle$"
- at_stewardship_lifestyle_xp: "Experiencia de Administración de $game_concept_lifestyle$"
- at_intrigue_lifestyle_xp: "Experiencia de Intriga de $game_concept_lifestyle$"
- at_learning_lifestyle_xp: "Experiencia de Aprendizaje de $game_concept_lifestyle$"
+ at_lifestyle_xp: "Experiencia $game_concept_lifestyle$"
+ at_diplomacy_lifestyle_xp: "Experiencia del $game_concept_lifestyle$ Diplomacia"
+ at_martial_lifestyle_xp: "Experiencia del $game_concept_lifestyle$ Marcial"
+ at_stewardship_lifestyle_xp: "Experiencia del $game_concept_lifestyle$ Administración"
+ at_intrigue_lifestyle_xp: "Experiencia del $game_concept_lifestyle$ Intriga"
+ at_learning_lifestyle_xp: "Experiencia del $game_concept_lifestyle$ Aprendizaje"
  # Skills
  at_diplomacy: "$game_concept_diplomacy$"
  at_martial: "$game_concept_martial$"
