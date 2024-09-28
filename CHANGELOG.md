@@ -1,5 +1,20 @@
 # Changelog
 
+## Version 0.10.2
+
+### Interactions
+
+* Enabled spending influence in order to increase acceptance in artifact trading interactions.
+* AI will now also target nearby domicile owners in slavery interactions.
+
+### Miscellaneous
+
+* Reduced the dynamic artifact trading range for landless rulers.
+
+### Localization
+
+* Updated Spanish translation by @Ferchu.
+
 ## Version 0.10.1
 
 ### Bug Fixes
