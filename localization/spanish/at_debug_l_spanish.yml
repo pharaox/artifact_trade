@@ -1,0 +1,6 @@
+﻿l_spanish:
+at_debug_msg_artifact_bought: "Artefacto comprado"
+at_debug_msg_artifact_destroyed: "Artefacto destruido"
+at_debug_msg_artifact_destroyed_by_aniconist_ruler: "Artefacto destruido por un gobernante iconoclasta"
+
+at_debug_msg_artifact_trade_loaded: "[GetCurrentDate.GetStringShort]: Mod Search & Trade Artifacts cargado"
