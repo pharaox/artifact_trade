@@ -1500,6 +1500,26 @@ at_artifact_trading_range_value = {
 	}
 }
 
+# Artifact trading range for landless rulers, depends on title tier.
+at_artifact_trading_range_landless_value = {
+	if = {
+		limit = { highest_held_title_tier = tier_empire }
+		value = squared_distance_huge
+	}
+	else_if = {
+		limit = { highest_held_title_tier = tier_kingdom }
+		value = squared_distance_large
+	}
+	else_if = {
+		limit = { highest_held_title_tier = tier_duchy }
+		value = squared_distance_medium
+	}
+	else = {
+		limit = { highest_held_title_tier = tier_county }
+		value = squared_distance_small
+	}
+}
+
 # Number of potential buyers shown in the Sell Artifacts interaction.
 at_number_of_potential_buyers_value = {
 	if = {
