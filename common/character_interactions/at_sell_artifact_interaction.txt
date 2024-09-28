@@ -113,6 +113,36 @@ at_sell_artifact_interaction = {
 		}
 	}
 
+	cost = {
+		influence = {
+			value = 0
+			if = {
+				limit = { scope:influence_send_option = yes }
+				add = scope:actor.medium_influence_value
+				desc = INFLUENCE_INTERACTION_ACCEPTANCE_SEND_OPTION
+			}
+		}
+	}
+
+	send_option = { # EP3 Influence
+		is_shown = { # Actor must have a government that uses influence 
+			scope:actor = {
+				government_has_flag = government_has_influence
+			}
+		}
+		is_valid = {
+			# Actor has enough influence
+			scope:actor = { influence >= medium_influence_value }
+			# Both characters are within the same top realm
+			custom_tooltip = {
+				text = not_same_realm_tt
+				scope:recipient.top_liege = scope:actor.top_liege
+			}
+		}
+		flag = influence_send_option
+		localization = TRADE_INFLUENCE_FOR_BETTER_AI_ACCEPTANCE
+	}
+
 	# Use hook
 	send_option = {
 		is_valid = {
@@ -172,6 +202,12 @@ at_sell_artifact_interaction = {
 			scope:actor = { has_strong_hook = scope:recipient }
 			add = 100
 			desc = SCHEME_STRONG_HOOK_USED
+		}
+
+		modifier = {
+			scope:influence_send_option = yes
+			add = 25
+			desc = INFLUENCE_INTERACTION_ACCEPTANCE_SEND_OPTION
 		}
 
 		# Avoid spending money if at war
@@ -369,6 +405,7 @@ at_sell_artifact_interaction = {
 	ai_targets = {
 		ai_recipients = peer_vassals
 		ai_recipients = neighboring_rulers
+		ai_recipients = nearby_domicile_owners
 		max = 10
 	}
 	ai_targets = {
