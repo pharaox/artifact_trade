@@ -72,7 +72,7 @@ at_valid_buyer_or_seller_trigger = {
 		OR = {
 			at_is_same_realm_character_trigger = { PARTY = $PARTY$ }
 			at_is_neighboring_realm_character_trigger = { PARTY = $PARTY$ }
-			at_is_playable_character_within_trading_range_trigger = { PARTY = $PARTY$ }
+			at_is_character_within_trading_range_trigger = { PARTY = $PARTY$ }
 		}
 	}
 	trigger_else = {
@@ -109,14 +109,24 @@ at_is_neighboring_realm_character_trigger = {
 	}
 }
 
-at_is_playable_character_within_trading_range_trigger = {
-	exists = capital_province
+at_is_character_within_trading_range_trigger = {
 	$PARTY$ = { exists = capital_province }
+	trigger_if = {
+		limit = { exists = capital_province }
+		capital_province = { save_temporary_scope_as = capital_province }
+	}
+	trigger_else_if = {
+		limit = { exists = host }
+		host.capital_province ?= { save_temporary_scope_as = capital_province }
+	}
+	trigger_else = {
+		location ?= { save_temporary_scope_as = capital_province }
+	}
 	trigger_if = {
 		limit = { 
 			$PARTY$ = { is_landed = yes }
 		}
-		capital_province = {
+		scope:capital_province = {
 			squared_distance = {
 				target = $PARTY$.capital_province
 				value <= $PARTY$.at_artifact_trading_range_value
@@ -124,7 +134,7 @@ at_is_playable_character_within_trading_range_trigger = {
 		}
 	}
 	trigger_else = {
-		capital_province = {
+		scope:capital_province = {
 			squared_distance = {
 				target = $PARTY$.capital_province
 				value <= $PARTY$.at_artifact_trading_range_landless_value
