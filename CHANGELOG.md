@@ -1,11 +1,21 @@
 # Changelog
 
+## Version 0.10.23
+
+### Miscellaneous
+
+* Further reduced the dynamic artifact trading range for landless adventurers to match the vanilla restrictions.
+
+### Bug Fixes
+
+* Valid buyers or sellers now properly include non-ruler characters within trading range.
+
 ## Version 0.10.2
 
 ### Interactions
 
-* Enabled spending influence in order to increase acceptance in artifact trading interactions.
-* AI will now also target nearby domicile owners in slavery interactions.
+* Enabled spending influence in order to increase acceptance in artifact interactions.
+* AI will now also target nearby domicile owners in artifact interactions.
 
 ### Miscellaneous
 
