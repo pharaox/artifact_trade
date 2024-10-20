@@ -1,0 +1,208 @@
+﻿at_get_merchant_effect = {
+	# Find an existing merchant character
+	random_pool_character = {
+		province = $LOCATION$
+		limit = {
+			at_can_be_merchant_trigger = yes
+			var:at_merchant_type ?= flag:$TYPE$
+			trigger_if = {
+				limit = {
+					at_is_saved_vanilla_merchant_trigger = { CHARACTER = $CHARACTER$ }
+				}
+				at_is_saved_vanilla_merchant_of_type_trigger = { CHARACTER = $CHARACTER$ TYPE = $TYPE$ }
+			}
+		}
+		save_scope_as = $MERCHANT$
+		save_scope_as = recurring_$MERCHANT$
+	}
+	if = {
+		limit = { 
+			NOT = { exists = scope:$MERCHANT$ }
+		}
+		# Pick an appropriate character from the pool
+		random_pool_character = {
+			province = $LOCATION$
+			limit = { 
+				at_can_be_merchant_trigger = yes
+				NOT = { has_variable = at_merchant_type }
+				trigger_if = {
+					limit = {
+						at_is_saved_vanilla_merchant_trigger = { CHARACTER = $CHARACTER$ }
+					}
+					at_is_saved_vanilla_merchant_of_type_trigger = { CHARACTER = $CHARACTER$ TYPE = $TYPE$ }
+				}
+			}
+			save_scope_as = $MERCHANT$
+		}
+	}
+	if = {
+		limit = {
+			NOT = { exists = scope:$MERCHANT$ }
+		}
+		# Create a new merchant character
+		create_character = {
+			template = generic_peasant_character
+			location = $LOCATION$
+			dynasty = none
+			culture = $LOCATION$.culture
+			faith = $LOCATION$.faith
+			save_scope_as = $MERCHANT$
+		}
+	}
+
+	# Mark the character as a merchant
+	scope:$MERCHANT$ = {
+		set_variable = { name = at_merchant_type value = flag:$TYPE$ }
+	}
+}
+
+at_remember_merchant_character_effect = {
+	if = {
+		limit = {
+			has_variable = laamp_remembered_$TYPE$s_list
+			any_in_list = {
+				variable = laamp_remembered_$TYPE$s_list
+				this = $CHARACTER$
+			}
+		}
+		remove_list_variable = {
+			name = laamp_remembered_$TYPE$s_list
+			target = $CHARACTER$
+		}
+	}
+	add_to_variable_list = {
+		name = laamp_remembered_$TYPE$s_list
+		target = $CHARACTER$
+		years = 10
+	}
+}
+
+at_get_artifacts_effect = {
+	# Find existing artifacts for sale
+	if = {
+		limit = {
+			any_character_artifact ?= {
+				OR = {
+					var:at_artifact_type ?= flag:$TYPE$
+					has_variable = 1001_laamp_decision_$TYPE$
+				}
+			}
+		}
+		every_character_artifact = {
+			limit = {
+				OR = {
+					var:at_artifact_type ?= flag:$TYPE$
+					has_variable = 1001_laamp_decision_$TYPE$
+				}
+			}
+			set_variable = { name = at_artifact_type value = flag:$TYPE$ }
+			add_to_temporary_list = artifacts
+		}
+	}
+
+	# Create new artifacts for sale
+	while = {
+		limit = {
+			list_size = { name = artifacts value < 3 }
+		}
+
+		at_set_artifact_quality_effect = { TYPE = $TYPE$ }
+		at_set_artifact_wealth_effect = { TYPE = $TYPE$ }
+		at_create_artifact_effect = {
+			TYPE = $TYPE$
+			MERCHANT = $MERCHANT$
+		}
+		scope:newly_created_artifact ?= {
+			set_variable = { name = at_artifact_type value = flag:$TYPE$ }
+			set_variable = { name = suppress_artifact_notifications value = yes days = 2 }
+			#at_add_artifact_modifiers_effect = yes
+			add_to_temporary_list = artifacts
+		}
+	}
+}
+
+at_create_artifact_effect = {
+	if = {
+		limit = { flag:$TYPE$ = flag:weapon }
+		create_artifact_weapon_effect = {
+			OWNER = $MERCHANT$
+			CREATOR = $MERCHANT$
+			SET_WEAPON_TYPE = flag:no
+		}
+	}
+}
+
+at_set_artifact_quality_effect = {
+	random_list = {
+		20 = {
+			modifier = {
+				flag:$TYPE$ = flag:accessory
+				factor = 2
+			}
+			save_scope_value_as = { name = quality value = { 25 50 } }
+		}
+		80 = {
+			save_scope_value_as = { name = quality value = { 10 25 } }
+		}
+	}
+}
+
+at_set_artifact_wealth_effect = {
+	random_list = {
+		20 = {
+			modifier = {
+				flag:$TYPE$ = flag:accessory
+				factor = 2
+			}
+			save_scope_value_as = { name = wealth value = { 25 50 } }
+		}
+		80 = {
+			save_scope_value_as = { name = wealth value = { 10 25 } }
+		}
+	}
+}
+
+at_add_artifact_modifiers_effect = {
+	if = {
+		limit = { rarity = masterwork }
+		if = {
+			limit = { var:at_artifact_type ?= flag:weapon }
+			add_scaled_artifact_modifier_prowess_effect = yes
+			add_scaled_artifact_modifier_combat_effect = yes
+		}
+		else_if = {
+			limit = { var:at_artifact_type ?= flag:armor }
+			add_scaled_artifact_modifier_negate_prowess_penalty_effect = yes
+			add_scaled_artifact_modifier_terrain_advantage_effect = yes 		
+		}
+		else_if = {
+			limit = { var:at_artifact_type ?= flag:accessory }
+			add_scaled_artifact_modifier_hire_mercenary_effect = yes
+			add_scaled_artifact_modifier_prestige_effect = yes		
+		}
+	}
+}
+
+at_set_loc_tracker_2_effect = {
+	if = {
+		limit = { scope:$TYPE$_loc_tracker ?= 0 }
+		save_scope_value_as = { name = $TYPE$_loc_tracker value = 1 }
+	}
+	else = {
+		save_scope_value_as = { name = $TYPE$_loc_tracker value = 0 }
+	}
+}
+
+at_set_loc_tracker_3_effect = {
+	if = {
+		limit = { scope:$TYPE$_loc_tracker ?= 0 }
+		save_scope_value_as = { name = $TYPE$_loc_tracker value = 1 }
+	}
+	else_if = {
+		limit = { scope:$TYPE$_loc_tracker ?= 1 }
+		save_scope_value_as = { name = $TYPE$_loc_tracker value = 2 }
+	}
+	else = {
+		save_scope_value_as = { name = $TYPE$_loc_tracker value = 0 }
+	}
+}

@@ -1,0 +1,780 @@
+﻿namespace = at_decision_events
+
+scripted_effect at_1010_buy_artifact_effect = {
+	# Save permanent scopes for at_buy_artifact_interaction_effect
+	save_scope_as = actor
+	save_scope_as = buyer
+	$MERCHANT$ = { save_scope_as = seller }
+	$ARTIFACT$ = { save_scope_as = artifact }
+
+	save_temporary_scope_value_as = { name = ignore_short_term_gold value = yes }
+	at_buy_artifact_interaction_effect = {
+		ARTIFACT_PRICE = scope:artifact.at_artifact_ask_price_value
+	}
+
+	# Clear permanent scopes
+	clear_saved_scope = actor
+	clear_saved_scope = buyer
+	clear_saved_scope = seller
+	clear_saved_scope = artifact
+}
+
+scripted_trigger at_1010_can_buy_artifact_trigger = {
+	save_temporary_scope_as = actor
+	save_temporary_scope_as = buyer
+	$MERCHANT$ = { save_temporary_scope_as = seller }
+	$ARTIFACT$ = { save_temporary_scope_as = artifact }
+	short_term_gold >= scope:artifact.at_artifact_ask_price_value
+}
+
+scripted_trigger at_1010_ai_will_buy_artifact_trigger = {
+	short_term_gold >= laamp_ai_spending_pants_value
+
+	save_temporary_scope_as = actor
+	save_temporary_scope_as = buyer
+	$MERCHANT$ = { save_temporary_scope_as = seller }
+	$ARTIFACT$ = { save_temporary_scope_as = artifact }
+	save_temporary_scope_value_as = { name = opinion_of_seller value = 100 }
+	at_buy_artifact_ai_will_do_value > 0
+}
+
+scripted_effect at_1010_bought_weapon_effect = {
+	# Destroy some of the artifacts that were not bought
+	hidden_effect = {
+		at_1010_flush_inventory_effect = {
+			FIRST = scope:first_weapon
+			SECOND = scope:second_weapon
+			THIRD = scope:third_weapon
+			MERCHANT = scope:weaponsmith
+		}
+	}
+
+	# Register that a weapon was bought
+	save_scope_value_as = { name = bought_weapon value = yes }
+}
+
+scripted_effect at_1010_flush_inventory_effect = {
+	random_list = {
+		50 = {
+			trigger = { 
+				$FIRST$ = { artifact_owner = $MERCHANT$ }
+			}
+			modifier = {
+				$FIRST$ = { at_is_uncommon_artifact_trigger = yes }
+				factor = 0.5
+			}
+			destroy_artifact = $FIRST$
+		}
+		50 = {
+			trigger = { 
+				$SECOND$ = { artifact_owner = $MERCHANT$ }
+			}
+			modifier = {
+				$SECOND$ = { at_is_uncommon_artifact_trigger = yes }
+				factor = 0.5
+			}
+			destroy_artifact = $SECOND$
+		}
+		50 = {
+			trigger = { 
+				$THIRD$ = { artifact_owner = $MERCHANT$ }
+			}
+			modifier = {
+				$THIRD$ = { at_is_uncommon_artifact_trigger = yes }
+				factor = 0.5
+			}
+			destroy_artifact = $THIRD$
+		}
+	}
+}
+
+scripted_trigger at_1010_done_with_craftsmen_trigger = {
+	exists = scope:bought_weapon
+	exists = scope:bought_armor
+	exists = scope:bought_accessory
+}
+
+scripted_effect at_1010_finish_craftsmen_effect = {
+	remove_list_variable = { name = list_of_options target = flag:craftsmen_option }
+	save_scope_value_as = { name = finished_craftsmen value = yes }
+}
+
+# Visiting Location: the Craftsman District
+# Rewrite of ep3_laamp_decision_event.1060
+# Needs scopes:
+# * visiting_location
+# * visting_partner
+# * bought_weapon, bought_armor, bought_accessory - If set, disable corresponding merchants
+# * been_to_weaponsmith, been_to_armorer, been_to_jeweler - If set, use for loc
+# Sets scopes:
+# * weaponsmith, armorer, jeweler - Merchants
+# * been_to_craftsmen - Set to yes (to specify that the event has already been triggered)
+# * finished_craftsmen - Set to yes if artifacts of every type have been bought
+# * last_location - Set to flag:craftsmen
+#
+at_decision_events.1010 = {
+	type = character_event
+	title = ep3_laamp_decision_event.1060.t
+	window = visit_settlement_window
+
+	desc = {
+		# Intro
+		first_valid = {
+			triggered_desc = {
+				trigger = { 
+					NOT = { exists = scope:been_to_craftsmen }
+				}
+				desc = ep3_laamp_decision_event.1060.desc
+			}
+			triggered_desc = { 
+				trigger = { 
+					scope:last_location ?= flag:main_square
+					NOT = { scope:craftsmen_loc_tracker ?= 1 }
+				}
+				desc = ep3_laamp_decision_event.1060.desc_returned_01
+			}
+			triggered_desc = { 
+				trigger = {
+					scope:last_location ?= flag:main_square
+				}
+				desc = ep3_laamp_decision_event.1060.desc_returned_02
+			}
+			triggered_desc = {
+				trigger = {
+					scope:last_location ?= flag:weaponsmith
+				}
+				desc = ep3_laamp_decision_event.1060.desc_returned_from_weaponsmith
+			}
+			triggered_desc = {
+				trigger = {
+					scope:last_location ?= flag:armorer
+				}
+				desc = ep3_laamp_decision_event.1060.desc_returned_from_armorer
+			}
+			triggered_desc = {
+				trigger = {
+					scope:last_location ?= flag:jeweler
+				}
+				desc = ep3_laamp_decision_event.1060.desc_returned_from_jeweler
+			}
+		}
+		# Outro
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					exists = scope:visiting_partner
+					NOT = { exists = scope:been_to_craftsmen }
+				}
+				desc = ep3_laamp_decision_event.1060.desc_outro_partner
+			}
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = scope:been_to_craftsmen }
+				}
+				desc = ep3_laamp_decision_event.1060.desc_outro
+			}
+			triggered_desc = {
+				trigger = { 
+					exists = scope:visiting_partner
+					at_1010_done_with_craftsmen_trigger = yes 
+				}
+				desc = ep3_laamp_decision_event.1060.desc_outro_return_partner_finished
+			}
+			triggered_desc = {
+				trigger = {
+					at_1010_done_with_craftsmen_trigger = yes
+				}
+				desc = ep3_laamp_decision_event.1060.desc_outro_return_finished
+			}
+			triggered_desc = {
+				trigger = {
+					exists = scope:visiting_partner
+					scope:craftsmen_loc_tracker ?= 0
+				}
+				desc = ep3_laamp_decision_event.1060.desc_outro_return_partner_01
+			}
+			triggered_desc = {
+				trigger = {
+					exists = scope:visiting_partner
+					scope:craftsmen_loc_tracker ?= 1
+				}
+				desc = ep3_laamp_decision_event.1060.desc_outro_return_partner_02
+			}
+			triggered_desc = {
+				trigger = {
+					exists = scope:visiting_partner
+					scope:craftsmen_loc_tracker ?= 2
+				}
+				desc = ep3_laamp_decision_event.1060.desc_outro_return_partner_03
+			}
+			triggered_desc = {
+				trigger = {
+					scope:craftsmen_loc_tracker ?= 0
+				}
+				desc = ep3_laamp_decision_event.1060.desc_outro_return_01
+			}
+			triggered_desc = {
+				trigger = {
+					scope:craftsmen_loc_tracker ?= 1
+				}
+				desc = ep3_laamp_decision_event.1060.desc_outro_return_02
+			}
+			triggered_desc = {
+				trigger = {
+					scope:craftsmen_loc_tracker ?= 2
+				}
+				desc = ep3_laamp_decision_event.1060.desc_outro_return_03
+			}
+		}
+	}
+
+	theme = stewardship
+	override_background = { reference = market }
+
+	# Root and their partner
+	left_portrait = {
+		trigger = { exists = scope:visiting_partner }
+		character = scope:visiting_partner
+		triggered_animation = {
+			trigger = { at_1010_done_with_craftsmen_trigger = yes }
+			animation = boredom
+		}
+		animation = survey
+	}
+	center_portrait = {
+		character = root
+		triggered_animation = {
+			trigger = { has_trait = greedy }
+			animation = stress
+		}
+		animation = personality_forgiving
+	}
+
+	# The craftsmen, if they are available
+	lower_left_portrait = {
+		trigger = {
+			NOT = { scope:1010_fourth_character = root }
+		}
+		character = scope:1010_fourth_character
+	}
+	lower_center_portrait = {
+		trigger = {
+			NOT = { scope:1010_fifth_character = root }
+		}
+		character = scope:1010_fifth_character
+	}
+	lower_right_portrait = {
+		trigger = {
+			NOT = { scope:1010_sixth_character = root }
+		}
+		character = scope:1010_sixth_character
+	}
+	
+	immediate = {
+		# Set loc tracker to avoid repeating the loc
+		at_set_loc_tracker_3_effect = { TYPE = craftsmen }
+
+		# Set visiting location and partner if not already set
+		if = {
+			limit = {
+				NOT = { exists = scope:visiting_location }
+			}
+			location = { save_scope_as = visiting_location }
+		}
+		if = {
+			limit = {
+				NOT = { exists = scope:visiting_partner }
+				any_courtier = {
+					count > 0
+				}
+			}
+			random_courtier = {
+				save_scope_as = visiting_partner
+			}
+		}
+
+		# Find craftsmen
+		if = {
+			limit = {
+				NOT = { exists = scope:weaponsmith }
+			}
+			at_get_merchant_effect = {
+				TYPE = weaponsmith
+				LOCATION = scope:visiting_location
+				CHARACTER = root
+				MERCHANT = weaponsmith
+			}
+		}
+		if = {
+			limit = {
+				NOT = { exists = scope:armorer }
+			}
+			at_get_merchant_effect = {
+				TYPE = armorer
+				LOCATION = scope:visiting_location
+				CHARACTER = root
+				MERCHANT = armorer
+			}
+		}
+		if = {
+			limit = {
+				NOT = { exists = scope:jeweler }
+			}
+			at_get_merchant_effect = {
+				TYPE = jeweler
+				LOCATION = scope:visiting_location
+				CHARACTER = root
+				MERCHANT = jeweler
+			}
+		}
+
+		# Initialize portrait scopes
+		scope:weaponsmith = { save_scope_as = 1010_fourth_character }
+		if = {
+			limit = { exists = scope:bought_weapon }
+			save_scope_as = 1010_fourth_character
+		}
+		scope:armorer = { save_scope_as = 1010_fifth_character }
+		if = {
+			limit = { exists = scope:bought_armor }
+			save_scope_as = 1010_fifth_character
+		}
+		scope:jeweler = { save_scope_as = 1010_sixth_character }
+		if = {
+			limit = { exists = scope:bought_accessory }
+			save_scope_as = 1010_sixth_character
+		}
+
+		# Save vanilla scopes for localization
+		scope:weaponsmith = { save_scope_as = laamp_weaponsmith_craftsman }
+		scope:armorer = { save_scope_as = laamp_armorer_craftsman }
+		scope:jeweler = { save_scope_as = laamp_jeweler_craftsman }
+	}
+
+	# Visit weaponsmith
+	option = {
+		name = {
+			text = {
+				first_valid = {
+					triggered_desc = {
+						trigger = { exists = scope:been_to_weaponsmith }
+						desc = ep3_laamp_decision_event.1060.a_second
+					}
+					desc = ep3_laamp_decision_event.1060.a
+				}
+			}
+		}
+
+		trigger = {
+			custom_tooltip = {
+				text = ep3_laamp_decision_event.1060.a.cooldown.tt
+				NOT = { exists = scope:bought_weapon }
+			}
+		}
+		show_as_unavailable = { always = yes }
+
+		reason = visit_weaponsmith
+		highlight_portrait = scope:weaponsmith
+
+		save_scope_value_as = { name = been_to_craftsmen value = yes }
+
+		# Go to weaponsmith
+		custom_tooltip = ep3_laamp_decision_event.1060.a.tt
+		trigger_event = at_decision_events.1011
+
+		ai_chance = { base = 100 }
+	}
+	
+	# Visit armorer
+	option = {
+		name = {
+			text = {
+				first_valid = {
+					triggered_desc = {
+						trigger = { exists = scope:been_to_armorer }
+						desc = ep3_laamp_decision_event.1060.b_second
+					}
+					desc = ep3_laamp_decision_event.1060.b
+				}
+			}
+		}
+
+		trigger = {
+			always = no # TODO
+			custom_tooltip = {
+				text = ep3_laamp_decision_event.1060.b.cooldown.tt
+				NOT = { exists = scope:bought_armor }
+			}
+		}
+		show_as_unavailable = { always = yes }
+
+		reason = visit_armorsmith
+		highlight_portrait = scope:armorer
+
+		save_scope_value_as = { name = been_to_craftsmen value = yes }
+
+		# Go to armorer
+		custom_tooltip = ep3_laamp_decision_event.1060.b.tt
+		#trigger_event = at_decision_events.1013
+
+		ai_chance = { base = 100 }
+	}
+	
+	# Visit jeweler
+	option = {
+		name = {
+			text = {
+				first_valid = {
+					triggered_desc = {
+						trigger = { exists = scope:been_to_jeweler }
+						desc = ep3_laamp_decision_event.1060.c_second
+					}
+					desc = ep3_laamp_decision_event.1060.c
+				}
+			}
+		}
+
+		trigger = {
+			always = no # TODO
+			custom_tooltip = {
+				text = ep3_laamp_decision_event.1060.c.cooldown.tt
+				NOT = { exists = scope:bought_accessory }
+			}
+		}
+		show_as_unavailable = { always = yes }
+
+		reason = visit_jeweler
+		highlight_portrait = scope:jeweler
+
+		save_scope_value_as = { name = been_to_craftsmen value = yes }
+
+		# Go to jeweler
+		custom_tooltip = ep3_laamp_decision_event.1060.c.tt
+		#trigger_event = at_decision_events.1015
+
+		ai_chance = { base = 100 }
+	}
+
+	# Do something else
+	option = {
+		name = {
+			text = {
+				first_valid = {
+					triggered_desc = {
+						trigger = { at_1010_done_with_craftsmen_trigger = yes }
+						desc = ep3_laamp_decision_event.1060.e_second
+					}
+					desc = ep3_laamp_decision_event.1060.e
+				}
+			}
+		}
+
+		if = {
+			limit = { at_1010_done_with_craftsmen_trigger = yes }
+			at_1010_finish_craftsmen_effect = yes
+		}
+		save_scope_value_as = { name = been_to_craftsmen value = yes }
+		
+		# Go back to main square
+		custom_tooltip = ep3_laamp_decision_event.return.tt
+		#trigger_event = at_decision_events.1001
+		
+		ai_chance = {
+			base = 100
+			modifier = {
+				OR = {
+					has_trait = greedy
+					has_trait = paranoid
+				}
+				add = 300
+			}
+		}
+	}
+
+	after = {
+		save_scope_value_as = { name = last_location value = flag:craftsmen }
+	}
+}
+
+# Visiting Location: the Weaponsmith
+# Rewrite of ep3_laamp_decision_event.1061
+# Needs scopes:
+# * visiting_location
+# * visting_partner
+# * weaponsmith - The weaponsmith
+# Sets scopes:
+# * first_weapon, second_weapon, third_weapon - Artifacts for sale
+# * been_to_weaponsmith - Set to yes (to specify that the event has already been triggered)
+# * bought_weapon - Set to yes if a weapon has been bought
+# * last_location - Set to flag:weaponsmith
+#
+at_decision_events.1011 = {
+	type = character_event
+	title = ep3_laamp_decision_event.1061.t
+	window = visit_settlement_window
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = scope:been_to_weaponsmith }
+					exists = scope:recurring_weaponsmith
+				}
+				desc = ep3_laamp_decision_event.1061.desc_reused_weaponsmith
+			}
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = scope:been_to_weaponsmith }
+				}
+				desc = ep3_laamp_decision_event.1061.desc
+			}
+			triggered_desc = { 
+				trigger = { 
+					scope:weaponsmith_loc_tracker ?= 0
+				}
+				desc = ep3_laamp_decision_event.1061.desc_returned_01
+			}
+			triggered_desc = { 
+				trigger = { 
+					scope:weaponsmith_loc_tracker ?= 1
+				}
+				desc = ep3_laamp_decision_event.1061.desc_returned_02
+			}
+		}
+	}
+
+	theme = stewardship
+	override_sound = { reference = "event:/SFX/Events/Themes/sfx_event_theme_type_martial" }
+	override_background = { reference = armory }
+
+	left_portrait = {
+		trigger = { exists = scope:visiting_partner }
+		character = scope:visiting_partner
+		animation = marshal_random_weapon
+	}
+	center_portrait = {
+		character = root
+		animation = thinking
+	}
+	right_portrait = {
+		character = scope:weaponsmith
+		camera = camera_event_scheme_far_right
+		animation = inspect_weapon
+	}
+
+	artifact = {
+		target = scope:first_weapon
+		position = lower_left_portrait
+	}
+	artifact = {
+		target = scope:second_weapon
+		position = lower_center_portrait
+	}
+	artifact = {
+		target = scope:third_weapon
+		position = lower_right_portrait
+	}
+
+	immediate = {
+		# Override background
+		location.province_owner = { save_scope_as = bg_override_char }
+
+		# Set loc tracker to avoid repeating the loc
+		at_set_loc_tracker_2_effect = { TYPE = weaponsmith }
+
+		# Get artifacts for sale
+		if = {
+			limit = {
+				NOR = {
+					exists = scope:first_weapon
+					exists = scope:second_weapon
+					exists = scope:third_weapon
+				}
+			}
+			scope:weaponsmith = {
+				# Get artifact list
+				at_get_artifacts_effect = {
+					TYPE = weapon
+					MERCHANT = scope:weaponsmith
+				}
+
+				# Save artifact scopes
+				random_in_list = {
+					list = artifacts
+					save_scope_as = first_weapon
+				}
+				random_in_list = {
+					list = artifacts
+					limit = {
+						NOT = { this = scope:first_weapon }
+					}
+					save_scope_as = second_weapon
+				}
+				random_in_list = {
+					list = artifacts
+					limit = {
+						NOR = { 
+							this = scope:first_weapon
+							this = scope:second_weapon
+						}
+					}
+					save_scope_as = third_weapon
+				}
+			}
+		}
+
+		# Remember the weaponsmith
+		at_remember_merchant_character_effect = {
+			TYPE = weaponsmith
+			CHARACTER = scope:weaponsmith
+		}
+
+		# Save vanilla scopes for localization
+		scope:first_weapon = { save_scope_as = 1061_first_weapon }
+		scope:second_weapon = { save_scope_as = 1061_second_weapon }
+		scope:third_weapon = { save_scope_as = 1061_third_weapon }
+	}
+
+	# Buy first artifact
+	option = {
+		name = ep3_laamp_decision_event.1061.a
+
+		trigger = {
+			at_1010_can_buy_artifact_trigger = {
+				MERCHANT = scope:weaponsmith
+				ARTIFACT = scope:first_weapon
+			}
+		}
+		show_as_unavailable = { always = yes }
+
+		# Actually buy the artifact
+		at_1010_buy_artifact_effect = {
+			MERCHANT = scope:weaponsmith
+			ARTIFACT = scope:first_weapon
+		}
+
+		# Destroy some of the artifacts that were not bought
+		# and register that an artifact has been bought
+		at_1010_bought_weapon_effect = yes
+		save_scope_value_as = { name = been_to_weaponsmith value = yes }
+
+		# Go back to craftsmen district
+		custom_tooltip = ep3_laamp_decision_event.1061.return.tt
+		trigger_event = at_decision_events.1010
+
+		ai_chance = {
+			base = 0
+			modifier = {
+				at_1010_ai_will_buy_artifact_trigger = {
+					MERCHANT = scope:weaponsmith
+					ARTIFACT = scope:first_weapon
+				}
+				add = 100
+			}
+		}
+	}
+
+	# Buy second artifact
+	option = {
+		name = ep3_laamp_decision_event.1061.b
+
+		trigger = {
+			at_1010_can_buy_artifact_trigger = {
+				MERCHANT = scope:weaponsmith
+				ARTIFACT = scope:second_weapon
+			}
+		}
+		show_as_unavailable = { always = yes }
+
+		# Actually buy the artifact
+		at_1010_buy_artifact_effect = {
+			MERCHANT = scope:weaponsmith
+			ARTIFACT = scope:second_weapon
+		}
+
+		# Destroy some of the artifacts that were not bought
+		# and register that an artifact has been bought
+		at_1010_bought_weapon_effect = yes
+		save_scope_value_as = { name = been_to_weaponsmith value = yes }
+
+		# Go back to craftsmen district
+		custom_tooltip = ep3_laamp_decision_event.1061.return.tt
+		trigger_event = at_decision_events.1010
+
+		ai_chance = {
+			base = 0
+			modifier = {
+				at_1010_ai_will_buy_artifact_trigger = {
+					MERCHANT = scope:weaponsmith
+					ARTIFACT = scope:second_weapon
+				}
+				add = 100
+			}
+		}
+	}
+
+	# Buy third artifact
+	option = {
+		name = ep3_laamp_decision_event.1061.c
+
+		trigger = {
+			at_1010_can_buy_artifact_trigger = {
+				MERCHANT = scope:weaponsmith
+				ARTIFACT = scope:third_weapon
+			}
+		}
+		show_as_unavailable = { always = yes }
+
+		# Actually buy the artifact
+		at_1010_buy_artifact_effect = {
+			MERCHANT = scope:weaponsmith
+			ARTIFACT = scope:third_weapon
+		}
+
+		# Destroy some of the artifacts that were not bought
+		# and register that an artifact has been bought
+		at_1010_bought_weapon_effect = yes
+		save_scope_value_as = { name = been_to_weaponsmith value = yes }
+
+		# Go back to craftsmen district
+		custom_tooltip = ep3_laamp_decision_event.1061.return.tt
+		trigger_event = at_decision_events.1010
+
+		ai_chance = {
+			base = 0
+			modifier = {
+				at_1010_ai_will_buy_artifact_trigger = {
+					MERCHANT = scope:weaponsmith
+					ARTIFACT = scope:third_weapon
+				}
+				add = 100
+			}
+		}
+	}
+
+	# Do something else
+	option = {
+		name = ep3_laamp_decision_event.1061.d
+
+		save_scope_value_as = { name = been_to_weaponsmith value = yes }
+
+		# Go back to craftsmen district
+		custom_tooltip = ep3_laamp_decision_event.1061.return.tt
+		trigger_event = at_decision_events.1010
+
+		ai_chance = {
+			base = 100
+			modifier = {
+				has_trait = greedy
+				factor = 2
+			}
+		}
+	}
+
+	after = {
+		save_scope_value_as = { name = last_location value = flag:weapponsmith }
+	}
+}
+
+# ep3_laamp_decision_event.1063
+# ep3_laamp_decision_event.1065

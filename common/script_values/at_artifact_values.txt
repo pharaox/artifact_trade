@@ -591,25 +591,6 @@ at_artifact_base_price_value = {
 		desc = at_artifact_price_durability_desc
 	}
 
-	# Set destroy artifact gold value as minimum
-	if = {
-		limit = {
-			trigger_if = {
-				limit = {
-					NOT = { has_game_rule = at_improved_destroy_artifact_enabled }
-				}
-				OR = {
-					rarity = common
-					rarity = masterwork
-				}
-			}
-		}
-		min = {
-			value = at_destroy_artifact_gold_value
-			desc = at_artifact_price_destroy_desc
-		}
-	}
-
 	# Uniqueness
 	if = {
 		limit = { at_is_unique_artifact_trigger = yes }
@@ -631,6 +612,25 @@ at_artifact_base_price_value = {
 # - a scope:seller personality multiplier based on ai_greed
 at_artifact_ask_price_value = {
 	value = at_artifact_base_price_value
+
+	# Set destroy artifact gold value as minimum to prevent exploits
+	if = {
+		limit = {
+			trigger_if = {
+				limit = {
+					NOT = { has_game_rule = at_improved_destroy_artifact_enabled }
+				}
+				OR = {
+					rarity = common
+					rarity = masterwork
+				}
+			}
+		}
+		min = {
+			value = at_destroy_artifact_gold_value
+			desc = at_artifact_price_destroy_desc
+		}
+	}
 
 	# Make it higher for the player
 	if = {
@@ -672,6 +672,11 @@ at_artifact_bid_price_value = {
 		desc = at_artifact_bid_price_ai_greed_desc
 	}
 
+	if = {
+		limit = { exists = scope:artifact_bid_price_multiplier }
+		multiply = scope:artifact_bid_price_multiplier
+	}
+
 	add = at_custom_artifact_bid_price_value
 	multiply = at_custom_artifact_bid_price_multiplier
 
@@ -701,11 +706,17 @@ at_destroy_artifact_gold_value = {
 	}
 
 	# Durability
+	multiply = at_artifact_durability_multiplier
+
+	# Nerf it to bits for LAAMPs
 	if = {
-		limit = {
-			has_game_rule = at_improved_destroy_artifact_enabled
+		limit = { 
+			scope:actor = { is_landless_adventurer = yes }
 		}
-		multiply = at_artifact_durability_multiplier
+		multiply = {
+			value = 0.1
+			round = yes
+		}
 	}
 }
 

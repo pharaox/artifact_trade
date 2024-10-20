@@ -43,7 +43,10 @@ at_buy_artifact_effect = {
 		# Pay price to seller
 		if = {
 			limit = {
-				at_short_term_gold_value >= scope:artifact_price
+				OR = {
+					at_short_term_gold_value >= scope:artifact_price
+					scope:ignore_short_term_gold ?= yes
+				}
 			}
 			pay_short_term_gold = {
 				gold = scope:artifact_price

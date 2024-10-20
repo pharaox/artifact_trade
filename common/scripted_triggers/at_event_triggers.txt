@@ -1,0 +1,98 @@
+﻿at_can_be_merchant_trigger = {
+	NOT = { 
+		has_any_bad_relationship_with_character_trigger = { CHARACTER = root }
+	}
+	is_available_adult = yes
+	NOT = { has_trait = devoted }
+}
+
+at_is_saved_vanilla_merchant_trigger = {
+	OR = {
+		at_is_saved_vanilla_merchant_of_type_trigger = { CHARACTER = $CHARACTER$ TYPE = merchant }
+		at_is_saved_vanilla_merchant_of_type_trigger = { CHARACTER = $CHARACTER$ TYPE = peddler }
+		at_is_saved_vanilla_merchant_of_type_trigger = { CHARACTER = $CHARACTER$ TYPE = crier }
+		at_is_saved_vanilla_merchant_of_type_trigger = { CHARACTER = $CHARACTER$ TYPE = storyteller }
+		at_is_saved_vanilla_merchant_of_type_trigger = { CHARACTER = $CHARACTER$ TYPE = thief }
+		at_is_saved_vanilla_merchant_of_type_trigger = { CHARACTER = $CHARACTER$ TYPE = healer }
+		at_is_saved_vanilla_merchant_of_type_trigger = { CHARACTER = $CHARACTER$ TYPE = clergy }
+		at_is_saved_vanilla_merchant_of_type_trigger = { CHARACTER = $CHARACTER$ TYPE = physician }
+		at_is_saved_vanilla_merchant_of_type_trigger = { CHARACTER = $CHARACTER$ TYPE = bodyguard }
+		at_is_saved_vanilla_merchant_of_type_trigger = { CHARACTER = $CHARACTER$ TYPE = weaponsmith }
+		at_is_saved_vanilla_merchant_of_type_trigger = { CHARACTER = $CHARACTER$ TYPE = armorer }
+		at_is_saved_vanilla_merchant_of_type_trigger = { CHARACTER = $CHARACTER$ TYPE = jeweler }
+		at_is_saved_vanilla_merchant_of_type_trigger = { CHARACTER = $CHARACTER$ TYPE = quartermaster }
+	}
+}
+
+at_is_saved_vanilla_merchant_of_type_trigger = {
+	$CHARACTER$ = {
+		is_target_in_variable_list = { name = laamp_remembered_$TYPE$s_list target = prev }
+	}
+}
+
+at_is_uncommon_artifact_trigger = {
+	OR = {
+		rarity = masterwork
+		rarity = famed 
+		rarity = illustrious 
+	}
+}
+
+at_is_unsellable_artifact_trigger = {
+	OR = {
+		has_variable = banner_house
+		has_variable = banner_dynasty
+		has_variable = 1025_treasure_map
+	}
+}
+
+at_has_friendly_traits_trigger = {
+	OR = {
+		has_trait = gregarious
+		has_trait = trusting
+		has_trait = compassionate
+		has_trait = forgiving
+		has_trait = generous
+		has_trait = fickle
+		has_trait = calm
+	}
+}
+
+at_has_uninterested_traits_trigger = {
+	OR = {
+		has_trait = callous
+		has_trait = cynical
+		has_trait = arrogant
+		has_trait = fickle
+		has_trait = arbitrary
+		has_trait = patient
+		has_trait = sadistic
+	}
+}
+
+at_has_commerce_traits_trigger = {
+	OR = {
+		has_trait = greedy
+		has_trait = deceitful
+		has_trait = ambitious
+		has_trait = diligent
+		has_trait = impatient
+	}
+}
+
+at_has_standoffish_traits_trigger = {
+	OR = {
+		has_trait = shy
+		has_trait = craven
+		has_trait = humble
+		has_trait = paranoid
+	}
+}
+
+at_has_irrational_traits_trigger = {
+	OR = {
+		has_trait = eccentric
+		has_trait = lunatic
+		has_trait = possessed
+	}
+}

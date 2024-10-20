@@ -1,0 +1,1029 @@
+﻿namespace = at_decision_events
+
+scripted_effect at_1020_sell_artifact_effect = {
+	# Save permanent scopes for at_buy_artifact_interaction_effect
+	save_scope_as = actor
+	save_scope_as = seller
+	$MERCHANT$ = { save_scope_as = buyer }
+	$ARTIFACT$ = { save_scope_as = artifact }
+
+	save_temporary_scope_value_as = { name = ignore_short_term_gold value = yes }
+	at_buy_artifact_interaction_effect = {
+		ARTIFACT_PRICE = scope:artifact.at_artifact_bid_price_value
+	}
+
+	# Clear permanent scopes
+	clear_saved_scope = actor
+	clear_saved_scope = seller
+	clear_saved_scope = buyer
+	clear_saved_scope = artifact
+}
+
+scripted_trigger at_1020_ai_will_sell_artifact_trigger = {
+	save_temporary_scope_as = actor
+	save_temporary_scope_as = seller
+	$MERCHANT$ = { save_temporary_scope_as = buyer }
+	$ARTIFACT$ = { save_temporary_scope_as = artifact }
+	save_temporary_scope_value_as = { name = opinion_of_buyer value = 100 }
+	at_sell_artifact_ai_will_do_value > 0
+}
+
+scripted_effect at_1020_sold_artifact_effect = {
+	# Remove vanilla artifact variables
+	scope:first_artifact = {
+		at_1020_remove_sell_variables_effect = yes
+	}
+	scope:second_artifact ?= {
+		at_1020_remove_sell_variables_effect = yes
+	}
+	scope:third_artifact ?= {
+		at_1020_remove_sell_variables_effect = yes
+	}
+
+	# Register that an artifact was sold
+	save_scope_value_as = { name = sold_artifact value = yes }
+	clear_saved_scope = did_not_sell_artifact
+
+	# Remove "sell artifact" as an option
+	remove_list_variable = { name = list_of_options target = flag:sell_artifact_option }
+}
+
+scripted_effect at_1020_add_sell_variables_effect = {
+	root = { save_temporary_scope_as = actor }
+	root = { save_temporary_scope_as = seller }
+	$MERCHANT$ = { save_temporary_scope_as = buyer }
+	save_temporary_scope_as = artifact
+
+	set_variable = {
+		name = 1020_artifact_sell_value
+		value = scope:artifact.at_artifact_bid_price_value
+		days = 1
+	}
+	save_temporary_scope_value_as = { name = artifact_bid_price_multiplier value = 1.2 }
+	set_variable = {
+		name = 1020_artifact_sell_high_value
+		value = scope:artifact.at_artifact_bid_price_value
+		days = 1
+	}
+	save_temporary_scope_value_as = { name = artifact_bid_price_multiplier value = 0.8 }
+	set_variable = {
+		name = 1020_artifact_sell_low_value
+		value = scope:artifact.at_artifact_bid_price_value
+		days = 1
+	}
+
+	clear_saved_scope = artifact_bid_price_multiplier
+}
+
+scripted_effect at_1020_remove_sell_variables_effect = {
+	remove_variable = 1020_artifact_sell_value
+	remove_variable = 1020_artifact_sell_high_value
+	remove_variable = 1020_artifact_sell_low_value
+}
+
+# Visiting Location: No Questions Asked
+# Rewrite of ep3_laamp_decision_event.1020
+# Needs scopes:
+# * visiting_location
+# * visting_partner
+# * been_to_sell_screen - If set, use for loc
+# Sets scopes:
+# * artifact_peddler - Merchant
+# * first_artifact, second_artifact, third_artifact - Artifacts to sell
+# * outraged_partner - Visiting partner if better stewardship than root
+# * recurring_artifact_peddler - Merchant if already visited before
+# * attempted_artifact_haggle - Set to flag:success if a haggle was a success, flag:failure if not
+# * did_not_sell_artifact - Set to yes if an artifact has not been sold
+# * sold_artifact - Set to yes if an artifact has been sold
+# * last_location - Set to flag:artifact_peddler
+#
+at_decision_events.1020 = {
+	type = character_event
+	title = ep3_laamp_decision_event.1020.t 
+	window = visit_settlement_window
+
+	desc = {
+		# Intro
+		first_valid = {
+			triggered_desc = { 
+				trigger = { 
+					NOT = { exists = scope:did_not_sell_artifact }
+					exists = scope:recurring_artifact_peddler
+				}
+				desc = ep3_laamp_decision_event.1020.desc_intro_reused_peddler
+			}
+			triggered_desc = { 
+				trigger = { 
+					NOT = { exists = scope:did_not_sell_artifact }
+					scope:visiting_location = { has_holding_type = city_holding }
+				}
+				desc = ep3_laamp_decision_event.1020.desc_intro_posh_stalls
+			}
+			random_valid = {
+				triggered_desc = { 
+					trigger = { 
+						NOT = { exists = scope:did_not_sell_artifact }
+					}
+					desc = ep3_laamp_decision_event.1020.desc_intro_new_01
+				}
+				triggered_desc = { 
+					trigger = { 
+						NOT = { exists = scope:did_not_sell_artifact }
+					}
+					desc = ep3_laamp_decision_event.1020.desc_intro_new_02
+				}
+			}
+			random_valid = {
+				triggered_desc = { 
+					trigger = {
+						NOT = { exists = scope:been_to_sell_screen }
+					}
+					desc = ep3_laamp_decision_event.1020.desc_intro_returned_01
+				}
+				triggered_desc = { 
+					trigger = {
+						NOT = { exists = scope:been_to_sell_screen }
+					}
+					desc = ep3_laamp_decision_event.1020.desc_intro_returned_02
+				}
+			}
+			random_valid = {
+				triggered_desc = { 
+					desc = ep3_laamp_decision_event.1020.desc_intro_intermediate_returned_01
+				}
+				triggered_desc = { 
+					desc = ep3_laamp_decision_event.1020.desc_intro_intermediate_returned_02
+				}
+			}
+		}
+		
+		# Artifact flavor
+		first_valid = {
+			# One artifact
+			random_valid = {
+				triggered_desc = { 
+					trigger = { 
+						NOT = { exists = scope:did_not_sell_artifact }
+						exists = scope:first_artifact
+						NOT = { exists = scope:second_artifact }
+						NOT = { exists = scope:third_artifact }
+					}
+					desc = ep3_laamp_decision_event.1020.desc_one_artifact_new_01
+				}
+				triggered_desc = { 
+					trigger = { 
+						NOT = { exists = scope:did_not_sell_artifact }
+						exists = scope:first_artifact
+						NOT = { exists = scope:second_artifact }
+						NOT = { exists = scope:third_artifact }
+					}
+					desc = ep3_laamp_decision_event.1020.desc_one_artifact_new_02
+				}
+			}
+			# Two artifacts
+			random_valid = {
+				triggered_desc = { 
+					trigger = { 
+						NOT = { exists = scope:did_not_sell_artifact }
+						exists = scope:first_artifact
+						exists = scope:second_artifact
+						NOT = { exists = scope:third_artifact }
+					}
+					desc = ep3_laamp_decision_event.1020.desc_two_artifacts_new_01
+				}
+				triggered_desc = { 
+					trigger = { 
+						NOT = { exists = scope:did_not_sell_artifact }
+						exists = scope:first_artifact
+						exists = scope:second_artifact
+						NOT = { exists = scope:third_artifact }
+					}
+					desc = ep3_laamp_decision_event.1020.desc_two_artifacts_new_02
+				}
+			}
+			# Three artifacts
+			random_valid = {
+				triggered_desc = { 
+					trigger = { 
+						NOT = { exists = scope:did_not_sell_artifact }
+						exists = scope:first_artifact
+						exists = scope:second_artifact
+						exists = scope:third_artifact
+					}
+					desc = ep3_laamp_decision_event.1020.desc_three_artifacts_new_01
+				}
+				triggered_desc = { 
+					trigger = { 
+						NOT = { exists = scope:did_not_sell_artifact }
+						exists = scope:first_artifact
+						exists = scope:second_artifact
+						exists = scope:third_artifact
+					}
+					desc = ep3_laamp_decision_event.1020.desc_three_artifacts_new_02
+				}
+			}
+		}
+		
+		# Visiting partner flavor
+		first_valid = {
+			triggered_desc = { 
+				trigger = { 
+					exists = scope:did_not_sell_artifact
+					exists = scope:outraged_partner
+				}
+				desc = ep3_laamp_decision_event.1020.desc_outraged_partner_returned
+			}
+			triggered_desc = { 
+				trigger = { exists = scope:outraged_partner }
+				desc = ep3_laamp_decision_event.1020.desc_outraged_partner_new
+			}
+		}
+	}
+
+	theme = stewardship
+	override_background = { reference = ep2_village_festival }
+
+	# Visiting partner
+	left_portrait = {
+		trigger = { exists = scope:visiting_partner }
+		character = scope:visiting_partner
+		triggered_animation = {
+			trigger = { exists = scope:outraged_partner }
+			animation = rage
+		}
+		triggered_animation = {
+			trigger = { 
+				scope:visiting_partner = { at_has_friendly_traits_trigger = yes } 
+			}
+			animation = personality_forgiving
+		}
+		triggered_animation = {
+			trigger = { 
+				scope:visiting_partner = { at_has_commerce_traits_trigger = yes } 
+			}
+			animation = personality_greedy
+		}
+		triggered_animation = {
+			trigger = { 
+				scope:visiting_partner = { at_has_uninterested_traits_trigger = yes } 
+			}
+			animation = personality_cynical
+		}
+		triggered_animation = {
+			trigger = { 
+				scope:visiting_partner = { at_has_irrational_traits_trigger = yes } 
+			}
+			animation = personality_irrational
+		}
+		triggered_animation = {
+			trigger = { 
+				scope:visiting_partner = { at_has_standoffish_traits_trigger = yes } 
+			}
+			animation = personality_coward
+		}
+		animation = personality_compassionate
+	}
+
+	# Root
+	center_portrait = {
+		character = root
+		animation = thinking
+	}
+
+	# Artifact peddler
+	right_portrait = {
+		character = scope:artifact_peddler
+		triggered_animation = {
+			trigger = {
+				scope:artifact_peddler = { at_has_friendly_traits_trigger = yes }
+			}
+			animation = personality_compassionate
+		}
+		triggered_animation = {
+			trigger = {
+				scope:artifact_peddler = { at_has_uninterested_traits_trigger = yes }
+			}
+			animation = personality_callous
+		}
+		triggered_animation = {
+			trigger = {
+				scope:artifact_peddler = { at_has_commerce_traits_trigger = yes }
+			}
+			animation = admiration
+		}
+		triggered_animation = {
+			trigger = {
+				scope:artifact_peddler = { at_has_standoffish_traits_trigger = yes }
+			}
+			animation = personality_coward
+		}
+		triggered_animation = {
+			trigger = {
+				scope:artifact_peddler = { at_has_irrational_traits_trigger = yes }
+			}
+			animation = personality_irrational
+		}
+		animation = personality_forgiving
+	}
+
+	# Artifacts
+	artifact = {
+		trigger = { exists = scope:first_artifact }
+		target = scope:first_artifact
+		position = lower_left_portrait
+	}
+	artifact = {
+		trigger = { exists = scope:second_artifact }
+		target = scope:second_artifact
+		position = lower_center_portrait
+	}
+	artifact = {
+		trigger = { exists = scope:third_artifact }
+		target = scope:third_artifact
+		position = lower_right_portrait
+	}
+
+	immediate = {
+		# Set visiting location and partner if not already set
+		if = {
+			limit = {
+				NOT = { exists = scope:visiting_location }
+			}
+			location = { save_scope_as = visiting_location }
+		}
+		if = {
+			limit = {
+				NOT = { exists = scope:visiting_partner }
+				any_courtier = {
+					count > 0
+				}
+			}
+			random_courtier = {
+				save_scope_as = visiting_partner
+			}
+		}
+
+		# If visiting partner is better at stewardship, make them outraged
+		if = {
+			limit = {
+				NOT = { exists = scope:outraged_partner }
+				scope:visiting_partner ?= {
+					stewardship > root.stewardship
+					stewardship >= average_skill_rating
+				}
+			}
+			save_scope_as = outraged_partner
+		}
+
+		# Find artifact peddler
+		if = {
+			limit = {
+				NOT = { exists = scope:artifact_peddler }
+			}
+			at_get_merchant_effect = {
+				TYPE = peddler
+				LOCATION = scope:visiting_location
+				CHARACTER = root
+				MERCHANT = artifact_peddler
+			}
+		}
+
+		# Remember the artifact peddler
+		at_remember_merchant_character_effect = {
+			TYPE = peddler
+			CHARACTER = scope:artifact_peddler
+		}
+
+		# Find artifacts to sell
+		if = {
+			limit = {
+				NOR = {
+					exists = scope:first_artifact
+					exists = scope:second_artifact
+					exists = scope:third_artifact
+				}
+			}
+
+			# Get artifact list
+			every_character_artifact = {
+				limit = { at_is_unsellable_artifact_trigger = no }
+				add_to_temporary_list = artifacts_to_sell
+			}
+			
+			# Save artifact scopes
+			# Prefer unequipped and marked artifacts, over just unequipped, over others
+			random_in_list = {
+				list = artifacts_to_sell
+				limit = {
+					has_variable = at_artifact_to_sell
+					is_equipped = no
+				}
+				alternative_limit = { 
+					is_equipped = no
+				}
+				alternative_limit = { 
+				}
+				set_variable = {
+					name = at_artifact_to_sell
+					days = visit_settlement_cooldown_days
+				}
+				save_scope_as = first_artifact
+			}
+			if = {
+				limit = {
+					any_in_list = {
+						list = artifacts_to_sell
+						NOT = { this = scope:first_artifact }
+					}
+				}
+				random_in_list = {
+					list = artifacts_to_sell
+					limit = {
+						NOT = { this = scope:first_artifact }
+						has_variable = at_artifact_to_sell
+						is_equipped = no
+					}
+					alternative_limit = {
+						NOT = { this = scope:first_artifact }
+						is_equipped = no
+					}
+					alternative_limit = {
+						NOT = { this = scope:first_artifact }
+					}
+					set_variable = {
+						name = at_artifact_to_sell
+						days = visit_settlement_cooldown_days
+					}
+					save_scope_as = second_artifact
+				}
+			}
+			if = {
+				limit = {
+					any_in_list = {
+						list = artifacts_to_sell
+						NOR = {
+							this = scope:first_artifact
+							this = scope:second_artifact
+						}
+					}
+				}
+				random_in_list = {
+					list = artifacts_to_sell
+					limit = {
+						NOR = {
+							this = scope:first_artifact
+							this = scope:second_artifact
+						}
+						has_variable = at_artifact_to_sell
+						is_equipped = no
+					}
+					alternative_limit = {
+						NOR = {
+							this = scope:first_artifact
+							this = scope:second_artifact
+						}
+						is_equipped = no
+					}
+					alternative_limit = {
+						NOR = {
+							this = scope:first_artifact
+							this = scope:second_artifact
+						}
+					}
+					set_variable = {
+						name = at_artifact_to_sell
+						days = visit_settlement_cooldown_days
+					}
+					save_scope_as = third_artifact
+				}
+			}
+		}
+
+		# Suppress notifications
+		scope:first_artifact = {
+			set_variable = { name = suppress_artifact_notifications value = yes days = 2 }
+		}
+		scope:second_artifact ?= {
+			set_variable = { name = suppress_artifact_notifications value = yes days = 2 }
+		}		
+		scope:third_artifact ?= {
+			set_variable = { name = suppress_artifact_notifications value = yes days = 2 }
+		}
+
+		# Save vanilla scopes and add vanilla variables for localization
+		scope:artifact_peddler = { save_scope_as = laamp_artifact_peddler }
+		scope:first_artifact = {
+			save_scope_as = 1020_first_artifact_to_sell
+			at_1020_add_sell_variables_effect = { MERCHANT = scope:artifact_peddler }
+		}
+		scope:second_artifact ?= {
+			save_scope_as = 1020_second_artifact_to_sell
+			at_1020_add_sell_variables_effect = { MERCHANT = scope:artifact_peddler }
+		}
+		scope:third_artifact ?= {
+			save_scope_as = 1020_third_artifact_to_sell
+			at_1020_add_sell_variables_effect = { MERCHANT = scope:artifact_peddler }
+		}
+	}
+
+	# Proceed to sell screen
+	option = {
+		name = ep3_laamp_decision_event.1020.a
+		custom_tooltip = ep3_laamp_decision_event.1020.a.tt
+
+		# Show default artifact prices
+		custom_tooltip = ep3_laamp_decision_event.1020.a.first_artifact.tt
+		if = {
+			limit = { exists = scope:second_artifact }
+			custom_tooltip = ep3_laamp_decision_event.1020.a.second_artifact.tt
+		}
+		if = {
+			limit = { exists = scope:third_artifact }
+			custom_tooltip = ep3_laamp_decision_event.1020.a.third_artifact.tt
+		}
+
+		# Go to sell screen
+		trigger_event = at_decision_events.1021
+	}
+
+	# Attempt a haggle
+	option = {
+		name = ep3_laamp_decision_event.1020.b
+
+		trigger = { 
+			custom_tooltip = {
+				text = ep3_laamp_decision_event.1020.b.cooldown.tt
+				NOT = { has_variable = at_has_haggled_recently } 
+			}
+		}	
+
+		duel = {
+			skill = stewardship
+			target = scope:artifact_peddler
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				desc = ep3_laamp_decision_event.1020.b.success
+				send_interface_toast = {
+					title = ep3_laamp_decision_event.1020.b.success
+					left_icon = root
+					right_icon = scope:artifact_peddler
+
+					# Show higher artifact prices
+					custom_tooltip = ep3_laamp_decision_event.1020.b.success.first_artifact.tt
+					if = {
+						limit = { exists = scope:second_artifact }
+						custom_tooltip = ep3_laamp_decision_event.1020.b.success.second_artifact.tt
+					}
+					if = {
+						limit = { exists = scope:third_artifact }
+						custom_tooltip = ep3_laamp_decision_event.1020.b.success.third_artifact.tt
+					}
+
+					save_scope_value_as = { name = attempted_artifact_haggle value = flag:success }
+					if = {
+						limit = { has_lifestyle = stewardship_lifestyle }
+						add_stewardship_lifestyle_xp = medium_lifestyle_xp
+					}
+					stress_impact = {
+						greedy = minor_stress_impact_loss
+						ambitious = minor_stress_impact_loss
+					}
+					
+					# Go to sell screen
+					trigger_event = at_decision_events.1021
+				}
+			}
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -20
+				}	
+				desc = ep3_laamp_decision_event.1020.b.failure
+				send_interface_toast = {
+					title = ep3_laamp_decision_event.1020.b.failure
+					left_icon = root
+					right_icon = scope:artifact_peddler
+
+					# Show lower artifact prices
+					custom_tooltip = ep3_laamp_decision_event.1020.b.failure.first_artifact.tt
+					if = {
+						limit = { exists = scope:second_artifact }
+						custom_tooltip = ep3_laamp_decision_event.1020.b.failure.second_artifact.tt
+					}
+					if = {
+						limit = { exists = scope:third_artifact }
+						custom_tooltip = ep3_laamp_decision_event.1020.b.failure.third_artifact.tt
+					}
+
+					save_scope_value_as = { name = attempted_artifact_haggle value = flag:failure }
+					stress_impact = {
+						base = minor_stress_impact_gain
+						greedy = minor_stress_impact_gain
+					}
+
+					# Go to sell screen
+					trigger_event = at_decision_events.1021
+				}
+			}
+		}
+
+		set_variable = {
+			name = at_has_haggled_recently
+			days = visit_settlement_minimum_cooldown_days
+		}
+	}
+
+	# Sell random artifact at a higher price via outraged partner
+	option = {
+		name = ep3_laamp_decision_event.1020.c
+
+		trigger = {
+			exists = scope:outraged_partner
+		}
+
+		# Sell random artifact at higher price
+		save_scope_value_as = { name = artifact_bid_price_multiplier value = 1.2 }
+		random_list = {
+			50 = {
+				desc = ep3_laamp_decision_event.1020.c.first_artifact
+				at_1020_sell_artifact_effect = {
+					MERCHANT = scope:artifact_peddler
+					ARTIFACT = scope:first_artifact
+				}
+			}
+			50 = {
+				trigger = { exists = scope:second_artifact }
+				desc = ep3_laamp_decision_event.1020.c.second_artifact
+				at_1020_sell_artifact_effect = {
+					MERCHANT = scope:artifact_peddler
+					ARTIFACT = scope:second_artifact
+				}
+			}
+			50 = {
+				trigger = { exists = scope:third_artifact }
+				desc = ep3_laamp_decision_event.1020.c.third_artifact
+				at_1020_sell_artifact_effect = {
+					MERCHANT = scope:artifact_peddler
+					ARTIFACT = scope:third_artifact
+				}
+			}
+		}
+
+		# Register that an artifact has been sold
+		at_1020_sold_artifact_effect = yes
+
+		stress_impact = {
+			ambitious = minor_stress_impact_gain
+			lazy = minor_stress_impact_loss
+		}
+
+		# Go back to main square
+		custom_tooltip = ep3_laamp_decision_event.return.tt
+		#trigger_event = at_decision_events.1001
+	}
+
+	# Do something else
+	option = {
+		name = ep3_laamp_decision_event.1020.d
+
+		save_scope_value_as = { name = did_not_sell_artifact value = yes }
+
+		# Go back to main square
+		custom_tooltip = ep3_laamp_decision_event.return.tt
+		#trigger_event = at_decision_events.1001
+	}
+
+	after = {
+		save_scope_value_as = { name = last_location value = flag:artifact_peddler }
+	}
+}
+
+# Visiting Location: Parting Time
+# Rewrite of ep3_laamp_decision_event.1021
+# Needs scopes:
+# * visiting_location
+# * visting_partner
+# * artifact_peddler - Merchant
+# * first_artifact, second_artifact, third_artifact - Artifacts to sell
+# * outraged_partner - Visiting partner if better stewardship than root
+# * attempted_artifact_haggle - If set, use for loc and prices
+# Sets scopes:
+# * been_to_sell_screen - Set to yes (to specify that the event has already been triggered)
+# * did_not_sell_artifact - Set to yes if an artifact has not been sold
+# * sold_artifact - Set to yes if an artifact has been sold
+# * last_location - Set to flag:artifact_peddler
+#
+at_decision_events.1021 = {
+	type = character_event
+	window = visit_settlement_window
+
+	title = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:attempted_artifact_haggle ?= flag:success
+				}
+				desc = ep3_laamp_decision_event.1021.t_success 
+			}
+			triggered_desc = {
+				trigger = {
+					scope:attempted_artifact_haggle ?= flag:failure
+				}
+				desc = ep3_laamp_decision_event.1021.t_failure
+			}
+			desc = ep3_laamp_decision_event.1021.t
+		}
+	}	
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = scope:did_not_sell_artifact }
+					scope:attempted_artifact_haggle ?= flag:success
+				}
+				desc = ep3_laamp_decision_event.1021.desc_success
+			}
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = scope:did_not_sell_artifact }
+					scope:attempted_artifact_haggle ?= flag:failure
+				}
+				desc = ep3_laamp_decision_event.1021.desc_failure
+			}
+			random_valid = {
+				triggered_desc = {
+					trigger = { 
+						NOT = { exists = scope:did_not_sell_artifact }
+					}
+					desc = ep3_laamp_decision_event.1021.desc_moment_of_purchase_01
+				}
+				triggered_desc = {
+					trigger = { 
+						NOT = { exists = scope:did_not_sell_artifact }
+					}
+					desc = ep3_laamp_decision_event.1021.desc_moment_of_purchase_02
+				}
+			}
+			random_valid = {
+				triggered_desc = {
+					trigger = {
+						NOT = { exists = scope:been_to_sell_screen }
+					}
+					desc = ep3_laamp_decision_event.1020.desc_intro_returned_01
+				}
+				triggered_desc = {
+					trigger = {
+						NOT = { exists = scope:been_to_sell_screen }
+					}
+					desc = ep3_laamp_decision_event.1020.desc_intro_returned_02
+				}
+			}
+			random_valid = {
+				triggered_desc = { 
+					desc = ep3_laamp_decision_event.1020.desc_intro_intermediate_returned_01
+				}
+				triggered_desc = { 
+					desc = ep3_laamp_decision_event.1020.desc_intro_intermediate_returned_02
+				}
+			}
+		}	
+	}
+
+	theme = stewardship
+	override_background = { reference = ep2_village_festival }
+
+	# Visiting partner
+	left_portrait = {
+		trigger = { exists = scope:visiting_partner }
+		character = scope:visiting_partner
+		triggered_animation = {
+			trigger = { exists = scope:outraged_partner }
+			animation = rage
+		}
+		triggered_animation = {
+			trigger = { 
+				scope:visiting_partner = { at_has_friendly_traits_trigger = yes } 
+			}
+			animation = personality_forgiving
+		}
+		triggered_animation = {
+			trigger = { 
+				scope:visiting_partner = { at_has_commerce_traits_trigger = yes } 
+			}
+			animation = personality_greedy
+		}
+		triggered_animation = {
+			trigger = { 
+				scope:visiting_partner = { at_has_uninterested_traits_trigger = yes } 
+			}
+			animation = personality_cynical
+		}
+		triggered_animation = {
+			trigger = { 
+				scope:visiting_partner = { at_has_irrational_traits_trigger = yes } 
+			}
+			animation = personality_irrational
+		}
+		triggered_animation = {
+			trigger = { 
+				scope:visiting_partner = { at_has_standoffish_traits_trigger = yes } 
+			}
+			animation = personality_coward
+		}
+		animation = personality_compassionate
+	}
+
+	# Root
+	center_portrait = {
+		character = root
+		triggered_animation = {
+			trigger = {
+				scope:attempted_artifact_haggle ?= flag:failure
+			}
+			animation = shame
+		}
+		animation = thinking
+	}
+
+	# Artifact peddler
+	right_portrait = {
+		character = scope:artifact_peddler
+		triggered_animation = {
+			trigger = { exists = scope:attempted_artifact_haggle }
+			animation = disapproval
+		}
+		animation = steward
+	}
+
+	# Artifacts
+	artifact = {
+		trigger = { exists = scope:first_artifact }
+		target = scope:first_artifact
+		position = lower_left_portrait
+	}
+	artifact = {
+		trigger = { exists = scope:second_artifact }
+		target = scope:second_artifact
+		position = lower_center_portrait
+	}
+	artifact = {
+		trigger = { exists = scope:third_artifact }
+		target = scope:third_artifact
+		position = lower_right_portrait
+	}
+
+	immediate = {
+		if = {
+			limit = { scope:attempted_artifact_haggle ?= flag:success }
+			save_scope_value_as = { name = artifact_bid_price_multiplier value = 1.2 }
+		}
+		else_if = {
+			limit = { scope:attempted_artifact_haggle ?= flag:failure }
+			save_scope_value_as = { name = artifact_bid_price_multiplier value = 0.8 }
+		}
+	}
+
+	# Sell first artifact
+	option = {
+		name = ep3_laamp_decision_event.1021.a
+
+		# Actually sell the artifact
+		at_1020_sell_artifact_effect = {
+			MERCHANT = scope:artifact_peddler
+			ARTIFACT = scope:first_artifact
+		}
+
+		# Register that an artifact has been sold
+		at_1020_sold_artifact_effect = yes
+		save_scope_value_as = { name = been_to_sell_screen value = yes }
+
+		# Go back to main square
+		custom_tooltip = ep3_laamp_decision_event.return.tt
+		#trigger_event = at_decision_events.1001
+
+		ai_chance = {
+			base = 0
+			modifier = {
+				at_1020_ai_will_sell_artifact_trigger = {
+					MERCHANT = scope:artifact_peddler
+					ARTIFACT = scope:first_artifact
+				}
+				add = 100
+			}
+		}
+	}
+
+	# Sell second artifact
+	option = {
+		name = ep3_laamp_decision_event.1021.b
+
+		trigger = {
+			exists = scope:second_artifact
+		}
+
+		# Actually sell the artifact
+		at_1020_sell_artifact_effect = {
+			MERCHANT = scope:artifact_peddler
+			ARTIFACT = scope:second_artifact
+		}
+
+		# Register that an artifact has been sold
+		at_1020_sold_artifact_effect = yes
+		save_scope_value_as = { name = been_to_sell_screen value = yes }
+
+		# Go back to main square
+		custom_tooltip = ep3_laamp_decision_event.return.tt
+		#trigger_event = at_decision_events.1001
+
+		ai_chance = {
+			base = 0
+			modifier = {
+				at_1020_ai_will_sell_artifact_trigger = {
+					MERCHANT = scope:artifact_peddler
+					ARTIFACT = scope:second_artifact
+				}
+				add = 100
+			}
+		}
+	}
+
+	# Sell third artifact
+	option = {
+		name = ep3_laamp_decision_event.1021.c
+
+		trigger = {
+			exists = scope:third_artifact
+		}
+
+		# Actually sell the artifact
+		at_1020_sell_artifact_effect = {
+			MERCHANT = scope:artifact_peddler
+			ARTIFACT = scope:third_artifact
+		}
+
+		# Register that an artifact has been sold
+		at_1020_sold_artifact_effect = yes
+		save_scope_value_as = { name = been_to_sell_screen value = yes }
+
+		# Go back to main square
+		custom_tooltip = ep3_laamp_decision_event.return.tt
+		#trigger_event = at_decision_events.1001
+
+		ai_chance = {
+			base = 0
+			modifier = {
+				at_1020_ai_will_sell_artifact_trigger = {
+					MERCHANT = scope:artifact_peddler
+					ARTIFACT = scope:third_artifact
+				}
+				add = 100
+			}
+		}
+	}
+
+	# Do something else
+	option = {
+		name = {
+			text = {
+				first_valid = {
+					triggered_desc = { 
+						trigger = { exists = scope:attempted_artifact_haggle }
+						desc = ep3_laamp_decision_event.1020.d
+					}
+					desc = ep3_laamp_decision_event.1021.d
+				}
+			}
+		}
+
+		save_scope_value_as = { name = did_not_sell_artifact value = yes }
+		save_scope_value_as = { name = been_to_sell_screen value = yes }
+
+		# Go back to main square or previous screen
+		if = {
+			limit = { exists = scope:attempted_artifact_haggle }
+			custom_tooltip = ep3_laamp_decision_event.return.tt
+			#trigger_event = at_decision_events.1001
+		}
+		else = {
+			trigger_event = at_decision_events.1020
+		}
+
+		ai_chance = {
+			base = 100
+			modifier = {
+				has_trait = greedy
+				factor = 0.5
+			}
+		}
+	}
+
+	after = {
+		save_scope_value_as = { name = last_location value = flag:artifact_peddler }
+	}
+}
