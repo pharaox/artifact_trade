@@ -355,10 +355,13 @@ at_decision_events.1020 = {
 			limit = {
 				NOT = { exists = scope:visiting_partner }
 				any_courtier = {
-					count > 0
+					is_available_adult = yes
 				}
 			}
 			random_courtier = {
+				limit = {
+					is_available_adult = yes
+				}
 				save_scope_as = visiting_partner
 			}
 		}

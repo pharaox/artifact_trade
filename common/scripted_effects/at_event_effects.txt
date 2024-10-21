@@ -130,6 +130,14 @@ at_create_artifact_effect = {
 			SET_WEAPON_TYPE = flag:no
 		}
 	}
+	else_if = {
+		limit = { flag:$TYPE$ = flag:armor }
+		create_artifact_armor_effect = {
+			OWNER = $MERCHANT$
+			CREATOR = $MERCHANT$
+			SET_ARMOR_TYPE = flag:no
+		}
+	}
 }
 
 at_set_artifact_quality_effect = {

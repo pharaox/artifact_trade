@@ -53,6 +53,21 @@ scripted_effect at_1010_bought_weapon_effect = {
 	save_scope_value_as = { name = bought_weapon value = yes }
 }
 
+scripted_effect at_1010_bought_armor_effect = {
+	# Destroy some of the artifacts that were not bought
+	hidden_effect = {
+		at_1010_flush_inventory_effect = {
+			FIRST = scope:first_armor
+			SECOND = scope:second_armor
+			THIRD = scope:third_armor
+			MERCHANT = scope:armorer
+		}
+	}
+
+	# Register that an armor was bought
+	save_scope_value_as = { name = bought_armor value = yes }
+}
+
 scripted_effect at_1010_flush_inventory_effect = {
 	random_list = {
 		50 = {
@@ -285,10 +300,13 @@ at_decision_events.1010 = {
 			limit = {
 				NOT = { exists = scope:visiting_partner }
 				any_courtier = {
-					count > 0
+					is_available_adult = yes
 				}
 			}
 			random_courtier = {
+				limit = {
+					is_available_adult = yes
+				}
 				save_scope_as = visiting_partner
 			}
 		}
@@ -400,7 +418,6 @@ at_decision_events.1010 = {
 		}
 
 		trigger = {
-			always = no # TODO
 			custom_tooltip = {
 				text = ep3_laamp_decision_event.1060.b.cooldown.tt
 				NOT = { exists = scope:bought_armor }
@@ -415,7 +432,7 @@ at_decision_events.1010 = {
 
 		# Go to armorer
 		custom_tooltip = ep3_laamp_decision_event.1060.b.tt
-		#trigger_event = at_decision_events.1013
+		trigger_event = at_decision_events.1013
 
 		ai_chance = { base = 100 }
 	}
@@ -630,9 +647,9 @@ at_decision_events.1011 = {
 		}
 
 		# Save vanilla scopes for localization
-		scope:first_weapon = { save_scope_as = 1061_first_weapon }
-		scope:second_weapon = { save_scope_as = 1061_second_weapon }
-		scope:third_weapon = { save_scope_as = 1061_third_weapon }
+		scope:first_weapon ?= { save_scope_as = 1061_first_weapon }
+		scope:second_weapon ?= { save_scope_as = 1061_second_weapon }
+		scope:third_weapon ?= { save_scope_as = 1061_third_weapon }
 	}
 
 	# Buy first artifact
@@ -773,6 +790,286 @@ at_decision_events.1011 = {
 
 	after = {
 		save_scope_value_as = { name = last_location value = flag:weapponsmith }
+	}
+}
+
+# Visiting Location: the Armorer
+# Rewrite of ep3_laamp_decision_event.1063
+# Needs scopes:
+# * visiting_location
+# * visting_partner
+# * armorer - The armorer
+# Sets scopes:
+# * first_armor, second_armor, third_armor - Artifacts for sale
+# * been_to_armorer - Set to yes (to specify that the event has already been triggered)
+# * bought_armor - Set to yes if an armor has been bought
+# * last_location - Set to flag:armorer
+#
+at_decision_events.1013 = {
+	type = character_event
+	title = ep3_laamp_decision_event.1063.t
+	window = visit_settlement_window
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = scope:been_to_armorer }
+					exists = scope:recurring_armorer
+				}
+				desc = ep3_laamp_decision_event.1063.desc_reused_armorer
+			}
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = scope:been_to_armorer }
+				}
+				desc = ep3_laamp_decision_event.1063.desc
+			}
+			triggered_desc = { 
+				trigger = { 
+					scope:armorer_loc_tracker ?= 0
+				}
+				desc = ep3_laamp_decision_event.1063.desc_returned_01
+			}
+			triggered_desc = { 
+				trigger = { 
+					scope:armorer_loc_tracker ?= 1
+				}
+				desc = ep3_laamp_decision_event.1063.desc_returned_02
+			}
+		}
+	}
+
+	theme = stewardship
+	override_sound = { reference = "event:/SFX/Events/Themes/sfx_event_theme_type_generic" }
+	override_background = { reference = armory }
+
+	left_portrait = {
+		trigger = { exists = scope:visiting_partner }
+		character = scope:visiting_partner
+		animation = personality_content
+	}
+	center_portrait = {
+		character = root
+		animation = thinking
+	}
+	right_portrait = {
+		character = scope:armorer
+		camera = camera_event_scheme_far_right
+		animation = personality_bold
+	}
+
+	artifact = {
+		target = scope:first_armor
+		position = lower_left_portrait
+	}
+	artifact = {
+		target = scope:second_armor
+		position = lower_center_portrait
+	}
+	artifact = {
+		target = scope:third_armor
+		position = lower_right_portrait
+	}
+
+	immediate = {
+		# Override background
+		location.province_owner = { save_scope_as = bg_override_char }
+
+		# Set loc tracker to avoid repeating the loc
+		at_set_loc_tracker_2_effect = { TYPE = armorer }
+
+		# Get artifacts for sale
+		if = {
+			limit = {
+				NOR = {
+					exists = scope:first_armor
+					exists = scope:second_armor
+					exists = scope:third_armor
+				}
+			}
+			scope:armorer = {
+				# Get artifact list
+				at_get_artifacts_effect = {
+					TYPE = armor
+					MERCHANT = scope:armorer
+				}
+
+				# Save artifact scopes
+				random_in_list = {
+					list = artifacts
+					save_scope_as = first_armor
+				}
+				random_in_list = {
+					list = artifacts
+					limit = {
+						NOT = { this = scope:first_armor }
+					}
+					save_scope_as = second_armor
+				}
+				random_in_list = {
+					list = artifacts
+					limit = {
+						NOR = { 
+							this = scope:first_armor
+							this = scope:second_armor
+						}
+					}
+					save_scope_as = third_armor
+				}
+			}
+		}
+
+		# Remember the armorer
+		at_remember_merchant_character_effect = {
+			TYPE = armorer
+			CHARACTER = scope:armorer
+		}
+
+		# Save vanilla scopes for localization
+		scope:first_armor ?= { save_scope_as = 1063_first_armor }
+		scope:second_armor ?= { save_scope_as = 1063_second_armor }
+		scope:third_armor ?= { save_scope_as = 1063_third_armor }
+	}
+
+	# Buy first artifact
+	option = {
+		name = ep3_laamp_decision_event.1063.a
+
+		trigger = {
+			at_1010_can_buy_artifact_trigger = {
+				MERCHANT = scope:armorer
+				ARTIFACT = scope:first_armor
+			}
+		}
+		show_as_unavailable = { always = yes }
+
+		# Actually buy the artifact
+		at_1010_buy_artifact_effect = {
+			MERCHANT = scope:armorer
+			ARTIFACT = scope:first_armor
+		}
+
+		# Destroy some of the artifacts that were not bought
+		# and register that an artifact has been bought
+		at_1010_bought_armor_effect = yes
+		save_scope_value_as = { name = been_to_armorer value = yes }
+
+		# Go back to craftsmen district
+		custom_tooltip = ep3_laamp_decision_event.1061.return.tt
+		trigger_event = at_decision_events.1010
+
+		ai_chance = {
+			base = 0
+			modifier = {
+				at_1010_ai_will_buy_artifact_trigger = {
+					MERCHANT = scope:armorer
+					ARTIFACT = scope:first_armor
+				}
+				add = 100
+			}
+		}
+	}
+
+	# Buy second artifact
+	option = {
+		name = ep3_laamp_decision_event.1063.b
+
+		trigger = {
+			at_1010_can_buy_artifact_trigger = {
+				MERCHANT = scope:armorer
+				ARTIFACT = scope:second_armor
+			}
+		}
+		show_as_unavailable = { always = yes }
+
+		# Actually buy the artifact
+		at_1010_buy_artifact_effect = {
+			MERCHANT = scope:armorer
+			ARTIFACT = scope:second_armor
+		}
+
+		# Destroy some of the artifacts that were not bought
+		# and register that an artifact has been bought
+		at_1010_bought_armor_effect = yes
+		save_scope_value_as = { name = been_to_armorer value = yes }
+
+		# Go back to craftsmen district
+		custom_tooltip = ep3_laamp_decision_event.1061.return.tt
+		trigger_event = at_decision_events.1010
+
+		ai_chance = {
+			base = 0
+			modifier = {
+				at_1010_ai_will_buy_artifact_trigger = {
+					MERCHANT = scope:armorer
+					ARTIFACT = scope:second_armor
+				}
+				add = 100
+			}
+		}
+	}
+
+	# Buy third artifact
+	option = {
+		name = ep3_laamp_decision_event.1063.c
+
+		trigger = {
+			at_1010_can_buy_artifact_trigger = {
+				MERCHANT = scope:armorer
+				ARTIFACT = scope:third_armor
+			}
+		}
+		show_as_unavailable = { always = yes }
+
+		# Actually buy the artifact
+		at_1010_buy_artifact_effect = {
+			MERCHANT = scope:armorer
+			ARTIFACT = scope:third_armor
+		}
+
+		# Destroy some of the artifacts that were not bought
+		# and register that an artifact has been bought
+		at_1010_bought_armor_effect = yes
+		save_scope_value_as = { name = been_to_armorer value = yes }
+
+		# Go back to craftsmen district
+		custom_tooltip = ep3_laamp_decision_event.1061.return.tt
+		trigger_event = at_decision_events.1010
+
+		ai_chance = {
+			base = 0
+			modifier = {
+				at_1010_ai_will_buy_artifact_trigger = {
+					MERCHANT = scope:armorer
+					ARTIFACT = scope:third_armor
+				}
+				add = 100
+			}
+		}
+	}
+
+	# Do something else
+	option = {
+		name = ep3_laamp_decision_event.1063.e
+
+		save_scope_value_as = { name = been_to_armorer value = yes }
+
+		# Go back to craftsmen district
+		custom_tooltip = ep3_laamp_decision_event.1061.return.tt
+		trigger_event = at_decision_events.1010
+
+		ai_chance = {
+			base = 100
+			modifier = {
+				has_trait = greedy
+				factor = 2
+			}
+		}
+	}
+
+	after = {
+		save_scope_value_as = { name = last_location value = flag:armorer }
 	}
 }
 
