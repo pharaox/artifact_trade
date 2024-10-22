@@ -68,6 +68,21 @@ scripted_effect at_1010_bought_armor_effect = {
 	save_scope_value_as = { name = bought_armor value = yes }
 }
 
+scripted_effect at_1010_bought_accessory_effect = {
+	# Destroy some of the artifacts that were not bought
+	hidden_effect = {
+		at_1010_flush_inventory_effect = {
+			FIRST = scope:first_accessory
+			SECOND = scope:second_accessory
+			THIRD = scope:third_accessory
+			MERCHANT = scope:jeweler
+		}
+	}
+
+	# Register that an accessory was bought
+	save_scope_value_as = { name = bought_accessory value = yes }
+}
+
 scripted_effect at_1010_flush_inventory_effect = {
 	random_list = {
 		50 = {
@@ -452,7 +467,6 @@ at_decision_events.1010 = {
 		}
 
 		trigger = {
-			always = no # TODO
 			custom_tooltip = {
 				text = ep3_laamp_decision_event.1060.c.cooldown.tt
 				NOT = { exists = scope:bought_accessory }
@@ -467,7 +481,7 @@ at_decision_events.1010 = {
 
 		# Go to jeweler
 		custom_tooltip = ep3_laamp_decision_event.1060.c.tt
-		#trigger_event = at_decision_events.1015
+		trigger_event = at_decision_events.1015
 
 		ai_chance = { base = 100 }
 	}
@@ -1072,6 +1086,287 @@ at_decision_events.1013 = {
 		save_scope_value_as = { name = last_location value = flag:armorer }
 	}
 }
+
+# Visiting Location: the Jeweler
+# Rewrite of ep3_laamp_decision_event.1065
+# Needs scopes:
+# * visiting_location
+# * visting_partner
+# * jeweler - The jeweler
+# Sets scopes:
+# * first_accessory, second_accessory, third_accessory - Artifacts for sale
+# * been_to_jeweler - Set to yes (to specify that the event has already been triggered)
+# * bought_accessory - Set to yes if an accessory has been bought
+# * last_location - Set to flag:jeweler
+#
+at_decision_events.1015 = {
+	type = character_event
+	title = ep3_laamp_decision_event.1065.t
+	window = visit_settlement_window
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = scope:been_to_jeweler }
+					exists = scope:recurring_jeweler
+				}
+				desc = ep3_laamp_decision_event.1065.desc_reused_jeweler
+			}
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = scope:been_to_jeweler }
+				}
+				desc = ep3_laamp_decision_event.1065.desc
+			}
+			triggered_desc = { 
+				trigger = { 
+					scope:jeweler_loc_tracker ?= 0
+				}
+				desc = ep3_laamp_decision_event.1065.desc_returned_01
+			}
+			triggered_desc = { 
+				trigger = { 
+					scope:jeweler_loc_tracker ?= 1
+				}
+				desc = ep3_laamp_decision_event.1065.desc_returned_02
+			}
+		}
+	}
+
+	theme = stewardship
+	override_sound = { reference = "event:/SFX/Events/Themes/sfx_event_theme_type_generic" }
+	override_background = { reference = physicians_study }
+
+	left_portrait = {
+		trigger = { exists = scope:visiting_partner }
+		character = scope:visiting_partner
+		animation = war_over_tie
+	}
+	center_portrait = {
+		character = root
+		animation = thinking
+	}
+	right_portrait = {
+		character = scope:jeweler
+		camera = camera_event_scheme_far_right
+		animation = chess_cocky
+	}
+
+	artifact = {
+		target = scope:first_accessory
+		position = lower_left_portrait
+	}
+	artifact = {
+		target = scope:second_accessory
+		position = lower_center_portrait
+	}
+	artifact = {
+		target = scope:third_accessory
+		position = lower_right_portrait
+	}
+
+	immediate = {
+		# Override background
+		location.province_owner = { save_scope_as = bg_override_char }
+
+		# Set loc tracker to avoid repeating the loc
+		at_set_loc_tracker_2_effect = { TYPE = jeweler }
+
+		# Get artifacts for sale
+		if = {
+			limit = {
+				NOR = {
+					exists = scope:first_accessory
+					exists = scope:second_accessory
+					exists = scope:third_accessory
+				}
+			}
+			scope:jeweler = {
+				# Get artifact list
+				at_get_artifacts_effect = {
+					TYPE = accessory
+					MERCHANT = scope:jeweler
+				}
+
+				# Save artifact scopes
+				random_in_list = {
+					list = artifacts
+					save_scope_as = first_accessory
+				}
+				random_in_list = {
+					list = artifacts
+					limit = {
+						NOT = { this = scope:first_accessory }
+					}
+					save_scope_as = second_accessory
+				}
+				random_in_list = {
+					list = artifacts
+					limit = {
+						NOR = { 
+							this = scope:first_accessory
+							this = scope:second_accessory
+						}
+					}
+					save_scope_as = third_accessory
+				}
+			}
+		}
+
+		# Remember the jeweler
+		at_remember_merchant_character_effect = {
+			TYPE = jeweler
+			CHARACTER = scope:jeweler
+		}
+
+		# Save vanilla scopes for localization
+		scope:first_accessory ?= { save_scope_as = 1065_first_accessory }
+		scope:second_accessory ?= { save_scope_as = 1065_second_accessory }
+		scope:third_accessory ?= { save_scope_as = 1065_third_accessory }
+	}
+
+	# Buy first artifact
+	option = {
+		name = ep3_laamp_decision_event.1065.a
+
+		trigger = {
+			at_1010_can_buy_artifact_trigger = {
+				MERCHANT = scope:jeweler
+				ARTIFACT = scope:first_accessory
+			}
+		}
+		show_as_unavailable = { always = yes }
+
+		# Actually buy the artifact
+		at_1010_buy_artifact_effect = {
+			MERCHANT = scope:jeweler
+			ARTIFACT = scope:first_accessory
+		}
+
+		# Destroy some of the artifacts that were not bought
+		# and register that an artifact has been bought
+		at_1010_bought_accessory_effect = yes
+		save_scope_value_as = { name = been_to_jeweler value = yes }
+
+		# Go back to craftsmen district
+		custom_tooltip = ep3_laamp_decision_event.1061.return.tt
+		trigger_event = at_decision_events.1010
+
+		ai_chance = {
+			base = 0
+			modifier = {
+				at_1010_ai_will_buy_artifact_trigger = {
+					MERCHANT = scope:jeweler
+					ARTIFACT = scope:first_accessory
+				}
+				add = 100
+			}
+		}
+	}
+
+	# Buy second artifact
+	option = {
+		name = ep3_laamp_decision_event.1065.b
+
+		trigger = {
+			at_1010_can_buy_artifact_trigger = {
+				MERCHANT = scope:jeweler
+				ARTIFACT = scope:second_accessory
+			}
+		}
+		show_as_unavailable = { always = yes }
+
+		# Actually buy the artifact
+		at_1010_buy_artifact_effect = {
+			MERCHANT = scope:jeweler
+			ARTIFACT = scope:second_accessory
+		}
+
+		# Destroy some of the artifacts that were not bought
+		# and register that an artifact has been bought
+		at_1010_bought_accessory_effect = yes
+		save_scope_value_as = { name = been_to_jeweler value = yes }
+
+		# Go back to craftsmen district
+		custom_tooltip = ep3_laamp_decision_event.1061.return.tt
+		trigger_event = at_decision_events.1010
+
+		ai_chance = {
+			base = 0
+			modifier = {
+				at_1010_ai_will_buy_artifact_trigger = {
+					MERCHANT = scope:jeweler
+					ARTIFACT = scope:second_accessory
+				}
+				add = 100
+			}
+		}
+	}
+
+	# Buy third artifact
+	option = {
+		name = ep3_laamp_decision_event.1065.c
+
+		trigger = {
+			at_1010_can_buy_artifact_trigger = {
+				MERCHANT = scope:jeweler
+				ARTIFACT = scope:third_accessory
+			}
+		}
+		show_as_unavailable = { always = yes }
+
+		# Actually buy the artifact
+		at_1010_buy_artifact_effect = {
+			MERCHANT = scope:jeweler
+			ARTIFACT = scope:third_accessory
+		}
+
+		# Destroy some of the artifacts that were not bought
+		# and register that an artifact has been bought
+		at_1010_bought_accessory_effect = yes
+		save_scope_value_as = { name = been_to_jeweler value = yes }
+
+		# Go back to craftsmen district
+		custom_tooltip = ep3_laamp_decision_event.1061.return.tt
+		trigger_event = at_decision_events.1010
+
+		ai_chance = {
+			base = 0
+			modifier = {
+				at_1010_ai_will_buy_artifact_trigger = {
+					MERCHANT = scope:jeweler
+					ARTIFACT = scope:third_accessory
+				}
+				add = 100
+			}
+		}
+	}
+
+	# Do something else
+	option = {
+		name = ep3_laamp_decision_event.1065.d
+
+		save_scope_value_as = { name = been_to_jeweler value = yes }
+
+		# Go back to craftsmen district
+		custom_tooltip = ep3_laamp_decision_event.1061.return.tt
+		trigger_event = at_decision_events.1010
+
+		ai_chance = {
+			base = 100
+			modifier = {
+				has_trait = greedy
+				factor = 2
+			}
+		}
+	}
+
+	after = {
+		save_scope_value_as = { name = last_location value = flag:jeweler }
+	}
+}
+
 
 # ep3_laamp_decision_event.1063
 # ep3_laamp_decision_event.1065

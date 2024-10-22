@@ -138,6 +138,29 @@ at_create_artifact_effect = {
 			SET_ARMOR_TYPE = flag:no
 		}
 	}
+	else_if = {
+		limit = { flag:$TYPE$ = flag:accessory }
+		random_list = {
+			50 = {
+				create_artifact_brooch_effect = {
+					OWNER = $MERCHANT$
+					SMITH = $MERCHANT$
+				}
+			}
+			50 = {
+				create_artifact_ring_effect = {
+					OWNER = $MERCHANT$
+					SMITH = $MERCHANT$
+				}
+			}
+			50 = {
+				create_artifact_necklace_effect = {
+					OWNER = $MERCHANT$
+					SMITH = $MERCHANT$
+				}
+			}
+		}
+	}
 }
 
 at_set_artifact_quality_effect = {
