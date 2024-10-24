@@ -3,7 +3,7 @@
 	random_pool_character = {
 		province = $LOCATION$
 		limit = {
-			at_can_be_merchant_trigger = yes
+			at_can_be_merchant_trigger = { CHARACTER = $CHARACTER$ }
 			var:at_merchant_type ?= flag:$TYPE$
 			trigger_if = {
 				limit = {
@@ -16,14 +16,14 @@
 		save_scope_as = recurring_$MERCHANT$
 	}
 	if = {
-		limit = { 
+		limit = {
 			NOT = { exists = scope:$MERCHANT$ }
 		}
 		# Pick an appropriate character from the pool
 		random_pool_character = {
 			province = $LOCATION$
-			limit = { 
-				at_can_be_merchant_trigger = yes
+			limit = {
+				at_can_be_merchant_trigger = { CHARACTER = $CHARACTER$ }
 				NOT = { has_variable = at_merchant_type }
 				trigger_if = {
 					limit = {
@@ -59,7 +59,6 @@
 at_remember_merchant_character_effect = {
 	if = {
 		limit = {
-			has_variable = laamp_remembered_$TYPE$s_list
 			any_in_list = {
 				variable = laamp_remembered_$TYPE$s_list
 				this = $CHARACTER$
@@ -73,6 +72,26 @@ at_remember_merchant_character_effect = {
 	add_to_variable_list = {
 		name = laamp_remembered_$TYPE$s_list
 		target = $CHARACTER$
+		years = 10
+	}
+}
+
+at_remember_visited_settlement_effect = {
+	if = {
+		limit = {
+			any_in_list = {
+				variable = laamp_visited_settlements_list
+				this = $LOCATION$
+			}
+		}
+		remove_list_variable = {
+			name = laamp_visited_settlements_list
+			target = $LOCATION$
+		}
+	}
+	add_to_variable_list = {
+		name = laamp_visited_settlements_list
+		target = $LOCATION$
 		years = 10
 	}
 }
@@ -204,12 +223,12 @@ at_add_artifact_modifiers_effect = {
 		else_if = {
 			limit = { var:at_artifact_type ?= flag:armor }
 			add_scaled_artifact_modifier_negate_prowess_penalty_effect = yes
-			add_scaled_artifact_modifier_terrain_advantage_effect = yes 		
+			add_scaled_artifact_modifier_terrain_advantage_effect = yes
 		}
 		else_if = {
 			limit = { var:at_artifact_type ?= flag:accessory }
 			add_scaled_artifact_modifier_hire_mercenary_effect = yes
-			add_scaled_artifact_modifier_prestige_effect = yes		
+			add_scaled_artifact_modifier_prestige_effect = yes
 		}
 	}
 }

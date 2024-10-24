@@ -86,7 +86,7 @@ scripted_effect at_1010_bought_accessory_effect = {
 scripted_effect at_1010_flush_inventory_effect = {
 	random_list = {
 		50 = {
-			trigger = { 
+			trigger = {
 				$FIRST$ = { artifact_owner = $MERCHANT$ }
 			}
 			modifier = {
@@ -96,7 +96,7 @@ scripted_effect at_1010_flush_inventory_effect = {
 			destroy_artifact = $FIRST$
 		}
 		50 = {
-			trigger = { 
+			trigger = {
 				$SECOND$ = { artifact_owner = $MERCHANT$ }
 			}
 			modifier = {
@@ -106,7 +106,7 @@ scripted_effect at_1010_flush_inventory_effect = {
 			destroy_artifact = $SECOND$
 		}
 		50 = {
-			trigger = { 
+			trigger = {
 				$THIRD$ = { artifact_owner = $MERCHANT$ }
 			}
 			modifier = {
@@ -125,7 +125,6 @@ scripted_trigger at_1010_done_with_craftsmen_trigger = {
 }
 
 scripted_effect at_1010_finish_craftsmen_effect = {
-	remove_list_variable = { name = list_of_options target = flag:craftsmen_option }
 	save_scope_value_as = { name = finished_craftsmen value = yes }
 }
 
@@ -151,19 +150,19 @@ at_decision_events.1010 = {
 		# Intro
 		first_valid = {
 			triggered_desc = {
-				trigger = { 
+				trigger = {
 					NOT = { exists = scope:been_to_craftsmen }
 				}
 				desc = ep3_laamp_decision_event.1060.desc
 			}
-			triggered_desc = { 
-				trigger = { 
+			triggered_desc = {
+				trigger = {
 					scope:last_location ?= flag:main_square
 					NOT = { scope:craftsmen_loc_tracker ?= 1 }
 				}
 				desc = ep3_laamp_decision_event.1060.desc_returned_01
 			}
-			triggered_desc = { 
+			triggered_desc = {
 				trigger = {
 					scope:last_location ?= flag:main_square
 				}
@@ -204,9 +203,9 @@ at_decision_events.1010 = {
 				desc = ep3_laamp_decision_event.1060.desc_outro
 			}
 			triggered_desc = {
-				trigger = { 
+				trigger = {
 					exists = scope:visiting_partner
-					at_1010_done_with_craftsmen_trigger = yes 
+					at_1010_done_with_craftsmen_trigger = yes
 				}
 				desc = ep3_laamp_decision_event.1060.desc_outro_return_partner_finished
 			}
@@ -299,32 +298,10 @@ at_decision_events.1010 = {
 		}
 		character = scope:1010_sixth_character
 	}
-	
+
 	immediate = {
 		# Set loc tracker to avoid repeating the loc
 		at_set_loc_tracker_3_effect = { TYPE = craftsmen }
-
-		# Set visiting location and partner if not already set
-		if = {
-			limit = {
-				NOT = { exists = scope:visiting_location }
-			}
-			location = { save_scope_as = visiting_location }
-		}
-		if = {
-			limit = {
-				NOT = { exists = scope:visiting_partner }
-				any_courtier = {
-					is_available_adult = yes
-				}
-			}
-			random_courtier = {
-				limit = {
-					is_available_adult = yes
-				}
-				save_scope_as = visiting_partner
-			}
-		}
 
 		# Find craftsmen
 		if = {
@@ -410,6 +387,7 @@ at_decision_events.1010 = {
 		highlight_portrait = scope:weaponsmith
 
 		save_scope_value_as = { name = been_to_craftsmen value = yes }
+		save_scope_value_as = { name = last_location value = flag:craftsmen }
 
 		# Go to weaponsmith
 		custom_tooltip = ep3_laamp_decision_event.1060.a.tt
@@ -417,7 +395,7 @@ at_decision_events.1010 = {
 
 		ai_chance = { base = 100 }
 	}
-	
+
 	# Visit armorer
 	option = {
 		name = {
@@ -444,6 +422,7 @@ at_decision_events.1010 = {
 		highlight_portrait = scope:armorer
 
 		save_scope_value_as = { name = been_to_craftsmen value = yes }
+		save_scope_value_as = { name = last_location value = flag:craftsmen }
 
 		# Go to armorer
 		custom_tooltip = ep3_laamp_decision_event.1060.b.tt
@@ -451,7 +430,7 @@ at_decision_events.1010 = {
 
 		ai_chance = { base = 100 }
 	}
-	
+
 	# Visit jeweler
 	option = {
 		name = {
@@ -478,6 +457,7 @@ at_decision_events.1010 = {
 		highlight_portrait = scope:jeweler
 
 		save_scope_value_as = { name = been_to_craftsmen value = yes }
+		save_scope_value_as = { name = last_location value = flag:craftsmen }
 
 		# Go to jeweler
 		custom_tooltip = ep3_laamp_decision_event.1060.c.tt
@@ -505,11 +485,12 @@ at_decision_events.1010 = {
 			at_1010_finish_craftsmen_effect = yes
 		}
 		save_scope_value_as = { name = been_to_craftsmen value = yes }
-		
+		save_scope_value_as = { name = last_location value = flag:craftsmen }
+
 		# Go back to main square
 		custom_tooltip = ep3_laamp_decision_event.return.tt
-		#trigger_event = at_decision_events.1001
-		
+		trigger_event = at_decision_events.1000
+
 		ai_chance = {
 			base = 100
 			modifier = {
@@ -520,10 +501,6 @@ at_decision_events.1010 = {
 				add = 300
 			}
 		}
-	}
-
-	after = {
-		save_scope_value_as = { name = last_location value = flag:craftsmen }
 	}
 }
 
@@ -559,14 +536,14 @@ at_decision_events.1011 = {
 				}
 				desc = ep3_laamp_decision_event.1061.desc
 			}
-			triggered_desc = { 
-				trigger = { 
+			triggered_desc = {
+				trigger = {
 					scope:weaponsmith_loc_tracker ?= 0
 				}
 				desc = ep3_laamp_decision_event.1061.desc_returned_01
 			}
-			triggered_desc = { 
-				trigger = { 
+			triggered_desc = {
+				trigger = {
 					scope:weaponsmith_loc_tracker ?= 1
 				}
 				desc = ep3_laamp_decision_event.1061.desc_returned_02
@@ -644,7 +621,7 @@ at_decision_events.1011 = {
 				random_in_list = {
 					list = artifacts
 					limit = {
-						NOR = { 
+						NOR = {
 							this = scope:first_weapon
 							this = scope:second_weapon
 						}
@@ -688,6 +665,7 @@ at_decision_events.1011 = {
 		# and register that an artifact has been bought
 		at_1010_bought_weapon_effect = yes
 		save_scope_value_as = { name = been_to_weaponsmith value = yes }
+		save_scope_value_as = { name = last_location value = flag:weaponsmith }
 
 		# Go back to craftsmen district
 		custom_tooltip = ep3_laamp_decision_event.1061.return.tt
@@ -727,6 +705,7 @@ at_decision_events.1011 = {
 		# and register that an artifact has been bought
 		at_1010_bought_weapon_effect = yes
 		save_scope_value_as = { name = been_to_weaponsmith value = yes }
+		save_scope_value_as = { name = last_location value = flag:weaponsmith }
 
 		# Go back to craftsmen district
 		custom_tooltip = ep3_laamp_decision_event.1061.return.tt
@@ -766,6 +745,7 @@ at_decision_events.1011 = {
 		# and register that an artifact has been bought
 		at_1010_bought_weapon_effect = yes
 		save_scope_value_as = { name = been_to_weaponsmith value = yes }
+		save_scope_value_as = { name = last_location value = flag:weaponsmith }
 
 		# Go back to craftsmen district
 		custom_tooltip = ep3_laamp_decision_event.1061.return.tt
@@ -788,6 +768,7 @@ at_decision_events.1011 = {
 		name = ep3_laamp_decision_event.1061.d
 
 		save_scope_value_as = { name = been_to_weaponsmith value = yes }
+		save_scope_value_as = { name = last_location value = flag:weaponsmith }
 
 		# Go back to craftsmen district
 		custom_tooltip = ep3_laamp_decision_event.1061.return.tt
@@ -800,10 +781,6 @@ at_decision_events.1011 = {
 				factor = 2
 			}
 		}
-	}
-
-	after = {
-		save_scope_value_as = { name = last_location value = flag:weapponsmith }
 	}
 }
 
@@ -839,14 +816,14 @@ at_decision_events.1013 = {
 				}
 				desc = ep3_laamp_decision_event.1063.desc
 			}
-			triggered_desc = { 
-				trigger = { 
+			triggered_desc = {
+				trigger = {
 					scope:armorer_loc_tracker ?= 0
 				}
 				desc = ep3_laamp_decision_event.1063.desc_returned_01
 			}
-			triggered_desc = { 
-				trigger = { 
+			triggered_desc = {
+				trigger = {
 					scope:armorer_loc_tracker ?= 1
 				}
 				desc = ep3_laamp_decision_event.1063.desc_returned_02
@@ -924,7 +901,7 @@ at_decision_events.1013 = {
 				random_in_list = {
 					list = artifacts
 					limit = {
-						NOR = { 
+						NOR = {
 							this = scope:first_armor
 							this = scope:second_armor
 						}
@@ -968,6 +945,7 @@ at_decision_events.1013 = {
 		# and register that an artifact has been bought
 		at_1010_bought_armor_effect = yes
 		save_scope_value_as = { name = been_to_armorer value = yes }
+		save_scope_value_as = { name = last_location value = flag:armorer }
 
 		# Go back to craftsmen district
 		custom_tooltip = ep3_laamp_decision_event.1061.return.tt
@@ -1007,6 +985,7 @@ at_decision_events.1013 = {
 		# and register that an artifact has been bought
 		at_1010_bought_armor_effect = yes
 		save_scope_value_as = { name = been_to_armorer value = yes }
+		save_scope_value_as = { name = last_location value = flag:armorer }
 
 		# Go back to craftsmen district
 		custom_tooltip = ep3_laamp_decision_event.1061.return.tt
@@ -1046,6 +1025,7 @@ at_decision_events.1013 = {
 		# and register that an artifact has been bought
 		at_1010_bought_armor_effect = yes
 		save_scope_value_as = { name = been_to_armorer value = yes }
+		save_scope_value_as = { name = last_location value = flag:armorer }
 
 		# Go back to craftsmen district
 		custom_tooltip = ep3_laamp_decision_event.1061.return.tt
@@ -1068,6 +1048,7 @@ at_decision_events.1013 = {
 		name = ep3_laamp_decision_event.1063.e
 
 		save_scope_value_as = { name = been_to_armorer value = yes }
+		save_scope_value_as = { name = last_location value = flag:armorer }
 
 		# Go back to craftsmen district
 		custom_tooltip = ep3_laamp_decision_event.1061.return.tt
@@ -1080,10 +1061,6 @@ at_decision_events.1013 = {
 				factor = 2
 			}
 		}
-	}
-
-	after = {
-		save_scope_value_as = { name = last_location value = flag:armorer }
 	}
 }
 
@@ -1119,14 +1096,14 @@ at_decision_events.1015 = {
 				}
 				desc = ep3_laamp_decision_event.1065.desc
 			}
-			triggered_desc = { 
-				trigger = { 
+			triggered_desc = {
+				trigger = {
 					scope:jeweler_loc_tracker ?= 0
 				}
 				desc = ep3_laamp_decision_event.1065.desc_returned_01
 			}
-			triggered_desc = { 
-				trigger = { 
+			triggered_desc = {
+				trigger = {
 					scope:jeweler_loc_tracker ?= 1
 				}
 				desc = ep3_laamp_decision_event.1065.desc_returned_02
@@ -1204,7 +1181,7 @@ at_decision_events.1015 = {
 				random_in_list = {
 					list = artifacts
 					limit = {
-						NOR = { 
+						NOR = {
 							this = scope:first_accessory
 							this = scope:second_accessory
 						}
@@ -1248,6 +1225,7 @@ at_decision_events.1015 = {
 		# and register that an artifact has been bought
 		at_1010_bought_accessory_effect = yes
 		save_scope_value_as = { name = been_to_jeweler value = yes }
+		save_scope_value_as = { name = last_location value = flag:jeweler }
 
 		# Go back to craftsmen district
 		custom_tooltip = ep3_laamp_decision_event.1061.return.tt
@@ -1287,6 +1265,7 @@ at_decision_events.1015 = {
 		# and register that an artifact has been bought
 		at_1010_bought_accessory_effect = yes
 		save_scope_value_as = { name = been_to_jeweler value = yes }
+		save_scope_value_as = { name = last_location value = flag:jeweler }
 
 		# Go back to craftsmen district
 		custom_tooltip = ep3_laamp_decision_event.1061.return.tt
@@ -1326,6 +1305,7 @@ at_decision_events.1015 = {
 		# and register that an artifact has been bought
 		at_1010_bought_accessory_effect = yes
 		save_scope_value_as = { name = been_to_jeweler value = yes }
+		save_scope_value_as = { name = last_location value = flag:jeweler }
 
 		# Go back to craftsmen district
 		custom_tooltip = ep3_laamp_decision_event.1061.return.tt
@@ -1348,6 +1328,7 @@ at_decision_events.1015 = {
 		name = ep3_laamp_decision_event.1065.d
 
 		save_scope_value_as = { name = been_to_jeweler value = yes }
+		save_scope_value_as = { name = last_location value = flag:jeweler }
 
 		# Go back to craftsmen district
 		custom_tooltip = ep3_laamp_decision_event.1061.return.tt
@@ -1360,10 +1341,6 @@ at_decision_events.1015 = {
 				factor = 2
 			}
 		}
-	}
-
-	after = {
-		save_scope_value_as = { name = last_location value = flag:jeweler }
 	}
 }
 

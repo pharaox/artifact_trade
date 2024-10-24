@@ -43,9 +43,6 @@ scripted_effect at_1020_sold_artifact_effect = {
 	# Register that an artifact was sold
 	save_scope_value_as = { name = sold_artifact value = yes }
 	clear_saved_scope = did_not_sell_artifact
-
-	# Remove "sell artifact" as an option
-	remove_list_variable = { name = list_of_options target = flag:sell_artifact_option }
 }
 
 scripted_effect at_1020_add_sell_variables_effect = {
@@ -99,48 +96,48 @@ scripted_effect at_1020_remove_sell_variables_effect = {
 #
 at_decision_events.1020 = {
 	type = character_event
-	title = ep3_laamp_decision_event.1020.t 
+	title = ep3_laamp_decision_event.1020.t
 	window = visit_settlement_window
 
 	desc = {
 		# Intro
 		first_valid = {
-			triggered_desc = { 
-				trigger = { 
+			triggered_desc = {
+				trigger = {
 					NOT = { exists = scope:did_not_sell_artifact }
 					exists = scope:recurring_artifact_peddler
 				}
 				desc = ep3_laamp_decision_event.1020.desc_intro_reused_peddler
 			}
-			triggered_desc = { 
-				trigger = { 
+			triggered_desc = {
+				trigger = {
 					NOT = { exists = scope:did_not_sell_artifact }
 					scope:visiting_location = { has_holding_type = city_holding }
 				}
 				desc = ep3_laamp_decision_event.1020.desc_intro_posh_stalls
 			}
 			random_valid = {
-				triggered_desc = { 
-					trigger = { 
+				triggered_desc = {
+					trigger = {
 						NOT = { exists = scope:did_not_sell_artifact }
 					}
 					desc = ep3_laamp_decision_event.1020.desc_intro_new_01
 				}
-				triggered_desc = { 
-					trigger = { 
+				triggered_desc = {
+					trigger = {
 						NOT = { exists = scope:did_not_sell_artifact }
 					}
 					desc = ep3_laamp_decision_event.1020.desc_intro_new_02
 				}
 			}
 			random_valid = {
-				triggered_desc = { 
+				triggered_desc = {
 					trigger = {
 						NOT = { exists = scope:been_to_sell_screen }
 					}
 					desc = ep3_laamp_decision_event.1020.desc_intro_returned_01
 				}
-				triggered_desc = { 
+				triggered_desc = {
 					trigger = {
 						NOT = { exists = scope:been_to_sell_screen }
 					}
@@ -148,21 +145,21 @@ at_decision_events.1020 = {
 				}
 			}
 			random_valid = {
-				triggered_desc = { 
+				triggered_desc = {
 					desc = ep3_laamp_decision_event.1020.desc_intro_intermediate_returned_01
 				}
-				triggered_desc = { 
+				triggered_desc = {
 					desc = ep3_laamp_decision_event.1020.desc_intro_intermediate_returned_02
 				}
 			}
 		}
-		
+
 		# Artifact flavor
 		first_valid = {
 			# One artifact
 			random_valid = {
-				triggered_desc = { 
-					trigger = { 
+				triggered_desc = {
+					trigger = {
 						NOT = { exists = scope:did_not_sell_artifact }
 						exists = scope:first_artifact
 						NOT = { exists = scope:second_artifact }
@@ -170,8 +167,8 @@ at_decision_events.1020 = {
 					}
 					desc = ep3_laamp_decision_event.1020.desc_one_artifact_new_01
 				}
-				triggered_desc = { 
-					trigger = { 
+				triggered_desc = {
+					trigger = {
 						NOT = { exists = scope:did_not_sell_artifact }
 						exists = scope:first_artifact
 						NOT = { exists = scope:second_artifact }
@@ -182,8 +179,8 @@ at_decision_events.1020 = {
 			}
 			# Two artifacts
 			random_valid = {
-				triggered_desc = { 
-					trigger = { 
+				triggered_desc = {
+					trigger = {
 						NOT = { exists = scope:did_not_sell_artifact }
 						exists = scope:first_artifact
 						exists = scope:second_artifact
@@ -191,8 +188,8 @@ at_decision_events.1020 = {
 					}
 					desc = ep3_laamp_decision_event.1020.desc_two_artifacts_new_01
 				}
-				triggered_desc = { 
-					trigger = { 
+				triggered_desc = {
+					trigger = {
 						NOT = { exists = scope:did_not_sell_artifact }
 						exists = scope:first_artifact
 						exists = scope:second_artifact
@@ -203,8 +200,8 @@ at_decision_events.1020 = {
 			}
 			# Three artifacts
 			random_valid = {
-				triggered_desc = { 
-					trigger = { 
+				triggered_desc = {
+					trigger = {
 						NOT = { exists = scope:did_not_sell_artifact }
 						exists = scope:first_artifact
 						exists = scope:second_artifact
@@ -212,8 +209,8 @@ at_decision_events.1020 = {
 					}
 					desc = ep3_laamp_decision_event.1020.desc_three_artifacts_new_01
 				}
-				triggered_desc = { 
-					trigger = { 
+				triggered_desc = {
+					trigger = {
 						NOT = { exists = scope:did_not_sell_artifact }
 						exists = scope:first_artifact
 						exists = scope:second_artifact
@@ -223,17 +220,17 @@ at_decision_events.1020 = {
 				}
 			}
 		}
-		
+
 		# Visiting partner flavor
 		first_valid = {
-			triggered_desc = { 
-				trigger = { 
+			triggered_desc = {
+				trigger = {
 					exists = scope:did_not_sell_artifact
 					exists = scope:outraged_partner
 				}
 				desc = ep3_laamp_decision_event.1020.desc_outraged_partner_returned
 			}
-			triggered_desc = { 
+			triggered_desc = {
 				trigger = { exists = scope:outraged_partner }
 				desc = ep3_laamp_decision_event.1020.desc_outraged_partner_new
 			}
@@ -252,32 +249,32 @@ at_decision_events.1020 = {
 			animation = rage
 		}
 		triggered_animation = {
-			trigger = { 
-				scope:visiting_partner = { at_has_friendly_traits_trigger = yes } 
+			trigger = {
+				scope:visiting_partner = { at_has_friendly_traits_trigger = yes }
 			}
 			animation = personality_forgiving
 		}
 		triggered_animation = {
-			trigger = { 
-				scope:visiting_partner = { at_has_commerce_traits_trigger = yes } 
+			trigger = {
+				scope:visiting_partner = { at_has_commerce_traits_trigger = yes }
 			}
 			animation = personality_greedy
 		}
 		triggered_animation = {
-			trigger = { 
-				scope:visiting_partner = { at_has_uninterested_traits_trigger = yes } 
+			trigger = {
+				scope:visiting_partner = { at_has_uninterested_traits_trigger = yes }
 			}
 			animation = personality_cynical
 		}
 		triggered_animation = {
-			trigger = { 
-				scope:visiting_partner = { at_has_irrational_traits_trigger = yes } 
+			trigger = {
+				scope:visiting_partner = { at_has_irrational_traits_trigger = yes }
 			}
 			animation = personality_irrational
 		}
 		triggered_animation = {
-			trigger = { 
-				scope:visiting_partner = { at_has_standoffish_traits_trigger = yes } 
+			trigger = {
+				scope:visiting_partner = { at_has_standoffish_traits_trigger = yes }
 			}
 			animation = personality_coward
 		}
@@ -344,28 +341,6 @@ at_decision_events.1020 = {
 	}
 
 	immediate = {
-		# Set visiting location and partner if not already set
-		if = {
-			limit = {
-				NOT = { exists = scope:visiting_location }
-			}
-			location = { save_scope_as = visiting_location }
-		}
-		if = {
-			limit = {
-				NOT = { exists = scope:visiting_partner }
-				any_courtier = {
-					is_available_adult = yes
-				}
-			}
-			random_courtier = {
-				limit = {
-					is_available_adult = yes
-				}
-				save_scope_as = visiting_partner
-			}
-		}
-
 		# If visiting partner is better at stewardship, make them outraged
 		if = {
 			limit = {
@@ -412,7 +387,7 @@ at_decision_events.1020 = {
 				limit = { at_is_unsellable_artifact_trigger = no }
 				add_to_temporary_list = artifacts_to_sell
 			}
-			
+
 			# Save artifact scopes
 			# Prefer unequipped and marked artifacts, over just unequipped, over others
 			random_in_list = {
@@ -421,10 +396,10 @@ at_decision_events.1020 = {
 					has_variable = at_artifact_to_sell
 					is_equipped = no
 				}
-				alternative_limit = { 
+				alternative_limit = {
 					is_equipped = no
 				}
-				alternative_limit = { 
+				alternative_limit = {
 				}
 				set_variable = {
 					name = at_artifact_to_sell
@@ -508,7 +483,7 @@ at_decision_events.1020 = {
 		}
 		scope:second_artifact ?= {
 			set_variable = { name = suppress_artifact_notifications value = yes days = 2 }
-		}		
+		}
 		scope:third_artifact ?= {
 			set_variable = { name = suppress_artifact_notifications value = yes days = 2 }
 		}
@@ -553,12 +528,12 @@ at_decision_events.1020 = {
 	option = {
 		name = ep3_laamp_decision_event.1020.b
 
-		trigger = { 
+		trigger = {
 			custom_tooltip = {
 				text = ep3_laamp_decision_event.1020.b.cooldown.tt
-				NOT = { has_variable = at_has_haggled_recently } 
+				NOT = { has_variable = at_has_haggled_recently }
 			}
-		}	
+		}
 
 		duel = {
 			skill = stewardship
@@ -595,7 +570,7 @@ at_decision_events.1020 = {
 						greedy = minor_stress_impact_loss
 						ambitious = minor_stress_impact_loss
 					}
-					
+
 					# Go to sell screen
 					trigger_event = at_decision_events.1021
 				}
@@ -605,7 +580,7 @@ at_decision_events.1020 = {
 					value = scope:duel_value
 					multiplier = -3.5
 					min = -20
-				}	
+				}
 				desc = ep3_laamp_decision_event.1020.b.failure
 				send_interface_toast = {
 					title = ep3_laamp_decision_event.1020.b.failure
@@ -679,6 +654,7 @@ at_decision_events.1020 = {
 
 		# Register that an artifact has been sold
 		at_1020_sold_artifact_effect = yes
+		save_scope_value_as = { name = last_location value = flag:artifact_peddler }
 
 		stress_impact = {
 			ambitious = minor_stress_impact_gain
@@ -687,7 +663,7 @@ at_decision_events.1020 = {
 
 		# Go back to main square
 		custom_tooltip = ep3_laamp_decision_event.return.tt
-		#trigger_event = at_decision_events.1001
+		trigger_event = at_decision_events.1000
 	}
 
 	# Do something else
@@ -695,14 +671,11 @@ at_decision_events.1020 = {
 		name = ep3_laamp_decision_event.1020.d
 
 		save_scope_value_as = { name = did_not_sell_artifact value = yes }
+		save_scope_value_as = { name = last_location value = flag:artifact_peddler }
 
 		# Go back to main square
 		custom_tooltip = ep3_laamp_decision_event.return.tt
-		#trigger_event = at_decision_events.1001
-	}
-
-	after = {
-		save_scope_value_as = { name = last_location value = flag:artifact_peddler }
+		trigger_event = at_decision_events.1000
 	}
 }
 
@@ -731,7 +704,7 @@ at_decision_events.1021 = {
 				trigger = {
 					scope:attempted_artifact_haggle ?= flag:success
 				}
-				desc = ep3_laamp_decision_event.1021.t_success 
+				desc = ep3_laamp_decision_event.1021.t_success
 			}
 			triggered_desc = {
 				trigger = {
@@ -741,7 +714,7 @@ at_decision_events.1021 = {
 			}
 			desc = ep3_laamp_decision_event.1021.t
 		}
-	}	
+	}
 
 	desc = {
 		first_valid = {
@@ -761,13 +734,13 @@ at_decision_events.1021 = {
 			}
 			random_valid = {
 				triggered_desc = {
-					trigger = { 
+					trigger = {
 						NOT = { exists = scope:did_not_sell_artifact }
 					}
 					desc = ep3_laamp_decision_event.1021.desc_moment_of_purchase_01
 				}
 				triggered_desc = {
-					trigger = { 
+					trigger = {
 						NOT = { exists = scope:did_not_sell_artifact }
 					}
 					desc = ep3_laamp_decision_event.1021.desc_moment_of_purchase_02
@@ -788,14 +761,14 @@ at_decision_events.1021 = {
 				}
 			}
 			random_valid = {
-				triggered_desc = { 
+				triggered_desc = {
 					desc = ep3_laamp_decision_event.1020.desc_intro_intermediate_returned_01
 				}
-				triggered_desc = { 
+				triggered_desc = {
 					desc = ep3_laamp_decision_event.1020.desc_intro_intermediate_returned_02
 				}
 			}
-		}	
+		}
 	}
 
 	theme = stewardship
@@ -810,32 +783,32 @@ at_decision_events.1021 = {
 			animation = rage
 		}
 		triggered_animation = {
-			trigger = { 
-				scope:visiting_partner = { at_has_friendly_traits_trigger = yes } 
+			trigger = {
+				scope:visiting_partner = { at_has_friendly_traits_trigger = yes }
 			}
 			animation = personality_forgiving
 		}
 		triggered_animation = {
-			trigger = { 
-				scope:visiting_partner = { at_has_commerce_traits_trigger = yes } 
+			trigger = {
+				scope:visiting_partner = { at_has_commerce_traits_trigger = yes }
 			}
 			animation = personality_greedy
 		}
 		triggered_animation = {
-			trigger = { 
-				scope:visiting_partner = { at_has_uninterested_traits_trigger = yes } 
+			trigger = {
+				scope:visiting_partner = { at_has_uninterested_traits_trigger = yes }
 			}
 			animation = personality_cynical
 		}
 		triggered_animation = {
-			trigger = { 
-				scope:visiting_partner = { at_has_irrational_traits_trigger = yes } 
+			trigger = {
+				scope:visiting_partner = { at_has_irrational_traits_trigger = yes }
 			}
 			animation = personality_irrational
 		}
 		triggered_animation = {
-			trigger = { 
-				scope:visiting_partner = { at_has_standoffish_traits_trigger = yes } 
+			trigger = {
+				scope:visiting_partner = { at_has_standoffish_traits_trigger = yes }
 			}
 			animation = personality_coward
 		}
@@ -905,10 +878,11 @@ at_decision_events.1021 = {
 		# Register that an artifact has been sold
 		at_1020_sold_artifact_effect = yes
 		save_scope_value_as = { name = been_to_sell_screen value = yes }
+		save_scope_value_as = { name = last_location value = flag:artifact_peddler }
 
 		# Go back to main square
 		custom_tooltip = ep3_laamp_decision_event.return.tt
-		#trigger_event = at_decision_events.1001
+		trigger_event = at_decision_events.1000
 
 		ai_chance = {
 			base = 0
@@ -939,10 +913,11 @@ at_decision_events.1021 = {
 		# Register that an artifact has been sold
 		at_1020_sold_artifact_effect = yes
 		save_scope_value_as = { name = been_to_sell_screen value = yes }
+		save_scope_value_as = { name = last_location value = flag:artifact_peddler }
 
 		# Go back to main square
 		custom_tooltip = ep3_laamp_decision_event.return.tt
-		#trigger_event = at_decision_events.1001
+		trigger_event = at_decision_events.1000
 
 		ai_chance = {
 			base = 0
@@ -973,10 +948,11 @@ at_decision_events.1021 = {
 		# Register that an artifact has been sold
 		at_1020_sold_artifact_effect = yes
 		save_scope_value_as = { name = been_to_sell_screen value = yes }
+		save_scope_value_as = { name = last_location value = flag:artifact_peddler }
 
 		# Go back to main square
 		custom_tooltip = ep3_laamp_decision_event.return.tt
-		#trigger_event = at_decision_events.1001
+		trigger_event = at_decision_events.1000
 
 		ai_chance = {
 			base = 0
@@ -995,7 +971,7 @@ at_decision_events.1021 = {
 		name = {
 			text = {
 				first_valid = {
-					triggered_desc = { 
+					triggered_desc = {
 						trigger = { exists = scope:attempted_artifact_haggle }
 						desc = ep3_laamp_decision_event.1020.d
 					}
@@ -1006,12 +982,13 @@ at_decision_events.1021 = {
 
 		save_scope_value_as = { name = did_not_sell_artifact value = yes }
 		save_scope_value_as = { name = been_to_sell_screen value = yes }
+		save_scope_value_as = { name = last_location value = flag:artifact_peddler }
 
 		# Go back to main square or previous screen
 		if = {
 			limit = { exists = scope:attempted_artifact_haggle }
 			custom_tooltip = ep3_laamp_decision_event.return.tt
-			#trigger_event = at_decision_events.1001
+			trigger_event = at_decision_events.1000
 		}
 		else = {
 			trigger_event = at_decision_events.1020
@@ -1024,9 +1001,5 @@ at_decision_events.1021 = {
 				factor = 0.5
 			}
 		}
-	}
-
-	after = {
-		save_scope_value_as = { name = last_location value = flag:artifact_peddler }
 	}
 }

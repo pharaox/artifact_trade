@@ -1,6 +1,6 @@
 ﻿at_can_be_merchant_trigger = {
-	NOT = { 
-		has_any_bad_relationship_with_character_trigger = { CHARACTER = root }
+	NOT = {
+		has_any_bad_relationship_with_character_trigger = { CHARACTER = $CHARACTER$ }
 	}
 	is_available_adult = yes
 	NOT = { has_trait = devoted }
@@ -33,8 +33,8 @@ at_is_saved_vanilla_merchant_of_type_trigger = {
 at_is_uncommon_artifact_trigger = {
 	OR = {
 		rarity = masterwork
-		rarity = famed 
-		rarity = illustrious 
+		rarity = famed
+		rarity = illustrious
 	}
 }
 
@@ -95,4 +95,75 @@ at_has_irrational_traits_trigger = {
 		has_trait = lunatic
 		has_trait = possessed
 	}
+}
+
+at_is_appropriate_visiting_partner_trigger = {
+	location = $CHARACTER$.location
+	is_available = yes
+	OR = {
+		opinion = { target = $CHARACTER$ value >= 25 }
+		has_any_good_relationship_with_character_trigger = { CHARACTER = $CHARACTER$ }
+	}
+	NOR = {
+		has_relation_potential_rival = $CHARACTER$
+		has_relation_victim = $CHARACTER$
+		has_relation_bully = $CHARACTER$
+		has_court_position = second_camp_officer
+	}
+	age >= 10
+}
+
+at_is_constantinople_unique_location_trigger = {
+	exists = title:b_constantinople
+	scope:visiting_location.barony = title:b_constantinople
+}
+
+at_is_europe_like_location_trigger = {
+	exists = geographical_region:world_europe
+	geographical_region = world_europe
+}
+
+at_is_scandinavia_like_location_trigger = {
+	exists = geographical_region:world_europe_north
+	geographical_region = world_europe_north
+}
+
+at_is_britannia_like_location_trigger = {
+	exists = geographical_region:world_europe_west_britannia
+	geographical_region = world_europe_west_britannia
+}
+
+at_is_iberia_like_location_trigger = {
+	exists = geographical_region:world_europe_west_iberia
+	geographical_region = world_europe_west_iberia
+}
+
+at_is_middle_east_like_location_trigger = {
+	exists = geographical_region:world_middle_east
+	geographical_region = world_middle_east
+}
+
+at_is_india_like_location_trigger = {
+	exists = geographical_region:world_india
+	geographical_region = world_india
+}
+
+at_is_steppe_like_location_trigger = {
+	exists = geographical_region:world_steppe
+	geographical_region = world_steppe
+}
+
+at_is_north_africa_like_location_trigger = {
+	exists = geographical_region:world_africa_north
+	geographical_region = world_africa_north
+}
+
+at_is_west_africa_like_location_trigger = {
+	exists = geographical_region:world_africa_west
+	geographical_region = world_africa_west
+}
+
+at_is_east_africa_like_location_trigger = {
+	exists = geographical_region:world_africa_east
+	geographical_region = world_africa_east
 }
