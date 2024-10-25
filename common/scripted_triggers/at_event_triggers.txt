@@ -113,6 +113,14 @@ at_is_appropriate_visiting_partner_trigger = {
 	age >= 10
 }
 
+at_has_illness_or_wounds_trigger = {
+	OR = {
+		has_treatable_disease_trigger = yes
+		has_trait = wounded_1
+		has_wounds_trigger = yes
+	}
+}
+
 at_is_constantinople_unique_location_trigger = {
 	exists = title:b_constantinople
 	scope:visiting_location.barony = title:b_constantinople

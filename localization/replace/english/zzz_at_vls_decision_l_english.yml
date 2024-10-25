@@ -1,0 +1,5 @@
+﻿l_english:
+ # Visit Local Settlement Slot 1
+ vls_decision_slot_1: "$visit_local_settlement_decision$: Buy and Sell Artifacts"
+ vls_decision_slot_1_desc: "$visit_local_settlement_decision_desc$"
+ vls_decision_slot_1_tooltip: "$vls_decision_tooltip$"

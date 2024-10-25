@@ -210,3 +210,67 @@ at_set_artifact_wealth_effect = {
 		}
 	}
 }
+
+at_get_visiting_partner_effect = {
+	if = {
+		limit = {
+			any_courtier = {
+				at_is_appropriate_visiting_partner_trigger = { CHARACTER = $CHARACTER$ }
+			}
+		}
+		random_courtier = {
+			limit = {
+				at_is_appropriate_visiting_partner_trigger = { CHARACTER = $CHARACTER$ }
+			}
+			weight = {
+				base = 1
+				modifier = {
+					add = 1000
+					is_close_family_of = $CHARACTER$
+					at_has_illness_or_wounds_trigger = yes
+					location = { has_holding_type = church_holding }
+				}
+				modifier = {
+					add = 500
+					is_spouse_of = $CHARACTER$
+					at_has_illness_or_wounds_trigger = yes
+					location = { has_holding_type = church_holding }
+				}
+				modifier = {
+					add = 100
+					has_relation_lover = $CHARACTER$
+					location = { has_holding_type = church_holding }
+				}
+				modifier = {
+					add = 20
+					is_spouse_of = $CHARACTER$
+				}
+				modifier = {
+					add = 15
+					is_primary_heir_of = $CHARACTER$
+				}
+				modifier = {
+					add = 10
+					OR = {
+						has_court_position = bodyguard_court_position
+						has_court_position = quartermaster_camp_officer
+						has_court_position = master_of_spoils_camp_officer
+					}
+				}
+				modifier = {
+					add = 5
+					is_close_family_of = $CHARACTER$
+				}
+				modifier = {
+					add = 2
+					has_trait = ambitious
+				}
+				modifier = {
+					add = -5
+					has_trait = lazy
+				}
+			}
+			save_scope_as = visiting_partner
+		}
+	}
+}

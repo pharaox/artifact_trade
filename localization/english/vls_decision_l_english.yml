@@ -1,0 +1,11 @@
+﻿l_english:
+ # Visit Local Settlement
+ vls_decision_tooltip: "Explore the local holding"
+ # Visit Local Settlement Slot 1
+ vls_decision_slot_1: ""
+ vls_decision_slot_1_desc: "$vls_decision_slot_1$"
+ vls_decision_slot_1_tooltip: "$vls_decision_slot_1$"
+ # Visit Local Settlement Slot 2
+ vls_decision_slot_2: ""
+ vls_decision_slot_2_desc: "$vls_decision_slot_2$"
+ vls_decision_slot_2_tooltip: "$vls_decision_slot_2$"

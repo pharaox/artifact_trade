@@ -1,0 +1,11 @@
+﻿#vls_decision_slot_1_prepare_effect = {
+#}
+#
+#vls_decision_slot_1_main_effect = {
+#}
+
+vls_decision_slot_2_prepare_effect = {
+}
+
+vls_decision_slot_2_main_effect = {
+}

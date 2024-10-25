@@ -1,0 +1,36 @@
+﻿vls_decision_slot_1_prepare_effect = {
+	save_scope_as = first_pass
+
+	# Build list of options
+	add_to_variable_list = {
+		name = list_of_options
+		target = flag:has_tavern_option
+	}
+	if = {
+		limit = {
+			location = { has_holding_type = church_holding }
+		}
+		add_to_variable_list = {
+			name = list_of_options
+			target = flag:has_church_option
+		}
+	}
+	if = {
+		limit = {
+			location = { has_holding_type = castle_holding }
+		}
+		add_to_variable_list = {
+			name = list_of_options
+			target = flag:has_castle_option
+		}
+	}
+
+	# Find visiting partner
+	at_get_visiting_partner_effect = { CHARACTER = root }
+}
+
+vls_decision_slot_1_main_effect = {
+	custom_tooltip = at_visit_local_settlement_decision_tt
+	set_variable = ep3_laamp_decision_1000_is_visiting
+	trigger_event =  at_decision_events.1000
+}
