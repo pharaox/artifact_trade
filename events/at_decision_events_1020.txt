@@ -42,7 +42,6 @@ scripted_effect at_1020_sold_artifact_effect = {
 
 	# Register that an artifact was sold
 	save_scope_value_as = { name = sold_artifact value = yes }
-	clear_saved_scope = did_not_sell_artifact
 }
 
 scripted_effect at_1020_add_sell_variables_effect = {
@@ -83,14 +82,14 @@ scripted_effect at_1020_remove_sell_variables_effect = {
 # Needs scopes:
 # * visiting_location
 # * visting_partner
-# * been_to_sell_screen - If set, use for loc
+# * been_to_peddler_sell_screen - If set, use for loc
 # Sets scopes:
 # * artifact_peddler - Merchant
 # * first_artifact, second_artifact, third_artifact - Artifacts to sell
 # * outraged_partner - Visiting partner if better stewardship than root
 # * recurring_artifact_peddler - Merchant if already visited before
 # * attempted_artifact_haggle - Set to flag:success if a haggle was a success, flag:failure if not
-# * did_not_sell_artifact - Set to yes if an artifact has not been sold
+# * been_to_peddler - Set to yes (to specify that any of the peddler events has already been triggered)
 # * sold_artifact - Set to yes if an artifact has been sold
 # * last_location - Set to flag:artifact_peddler
 #
@@ -104,14 +103,14 @@ at_decision_events.1020 = {
 		first_valid = {
 			triggered_desc = {
 				trigger = {
-					NOT = { exists = scope:did_not_sell_artifact }
+					NOT = { exists = scope:been_to_peddler }
 					exists = scope:recurring_artifact_peddler
 				}
 				desc = ep3_laamp_decision_event.1020.desc_intro_reused_peddler
 			}
 			triggered_desc = {
 				trigger = {
-					NOT = { exists = scope:did_not_sell_artifact }
+					NOT = { exists = scope:been_to_peddler }
 					scope:visiting_location = { has_holding_type = city_holding }
 				}
 				desc = ep3_laamp_decision_event.1020.desc_intro_posh_stalls
@@ -119,13 +118,13 @@ at_decision_events.1020 = {
 			random_valid = {
 				triggered_desc = {
 					trigger = {
-						NOT = { exists = scope:did_not_sell_artifact }
+						NOT = { exists = scope:been_to_peddler }
 					}
 					desc = ep3_laamp_decision_event.1020.desc_intro_new_01
 				}
 				triggered_desc = {
 					trigger = {
-						NOT = { exists = scope:did_not_sell_artifact }
+						NOT = { exists = scope:been_to_peddler }
 					}
 					desc = ep3_laamp_decision_event.1020.desc_intro_new_02
 				}
@@ -133,13 +132,13 @@ at_decision_events.1020 = {
 			random_valid = {
 				triggered_desc = {
 					trigger = {
-						NOT = { exists = scope:been_to_sell_screen }
+						NOT = { exists = scope:been_to_peddler_sell_screen }
 					}
 					desc = ep3_laamp_decision_event.1020.desc_intro_returned_01
 				}
 				triggered_desc = {
 					trigger = {
-						NOT = { exists = scope:been_to_sell_screen }
+						NOT = { exists = scope:been_to_peddler_sell_screen }
 					}
 					desc = ep3_laamp_decision_event.1020.desc_intro_returned_02
 				}
@@ -160,7 +159,7 @@ at_decision_events.1020 = {
 			random_valid = {
 				triggered_desc = {
 					trigger = {
-						NOT = { exists = scope:did_not_sell_artifact }
+						NOT = { exists = scope:been_to_peddler }
 						exists = scope:first_artifact
 						NOT = { exists = scope:second_artifact }
 						NOT = { exists = scope:third_artifact }
@@ -169,7 +168,7 @@ at_decision_events.1020 = {
 				}
 				triggered_desc = {
 					trigger = {
-						NOT = { exists = scope:did_not_sell_artifact }
+						NOT = { exists = scope:been_to_peddler }
 						exists = scope:first_artifact
 						NOT = { exists = scope:second_artifact }
 						NOT = { exists = scope:third_artifact }
@@ -181,7 +180,7 @@ at_decision_events.1020 = {
 			random_valid = {
 				triggered_desc = {
 					trigger = {
-						NOT = { exists = scope:did_not_sell_artifact }
+						NOT = { exists = scope:been_to_peddler }
 						exists = scope:first_artifact
 						exists = scope:second_artifact
 						NOT = { exists = scope:third_artifact }
@@ -190,7 +189,7 @@ at_decision_events.1020 = {
 				}
 				triggered_desc = {
 					trigger = {
-						NOT = { exists = scope:did_not_sell_artifact }
+						NOT = { exists = scope:been_to_peddler }
 						exists = scope:first_artifact
 						exists = scope:second_artifact
 						NOT = { exists = scope:third_artifact }
@@ -202,7 +201,7 @@ at_decision_events.1020 = {
 			random_valid = {
 				triggered_desc = {
 					trigger = {
-						NOT = { exists = scope:did_not_sell_artifact }
+						NOT = { exists = scope:been_to_peddler }
 						exists = scope:first_artifact
 						exists = scope:second_artifact
 						exists = scope:third_artifact
@@ -211,7 +210,7 @@ at_decision_events.1020 = {
 				}
 				triggered_desc = {
 					trigger = {
-						NOT = { exists = scope:did_not_sell_artifact }
+						NOT = { exists = scope:been_to_peddler }
 						exists = scope:first_artifact
 						exists = scope:second_artifact
 						exists = scope:third_artifact
@@ -225,7 +224,7 @@ at_decision_events.1020 = {
 		first_valid = {
 			triggered_desc = {
 				trigger = {
-					exists = scope:did_not_sell_artifact
+					exists = scope:been_to_peddler
 					exists = scope:outraged_partner
 				}
 				desc = ep3_laamp_decision_event.1020.desc_outraged_partner_returned
@@ -654,6 +653,7 @@ at_decision_events.1020 = {
 
 		# Register that an artifact has been sold
 		at_1020_sold_artifact_effect = yes
+		save_scope_value_as = { name = been_to_peddler value = yes }
 		save_scope_value_as = { name = last_location value = flag:artifact_peddler }
 
 		stress_impact = {
@@ -670,7 +670,7 @@ at_decision_events.1020 = {
 	option = {
 		name = ep3_laamp_decision_event.1020.d
 
-		save_scope_value_as = { name = did_not_sell_artifact value = yes }
+		save_scope_value_as = { name = been_to_peddler value = yes }
 		save_scope_value_as = { name = last_location value = flag:artifact_peddler }
 
 		# Go back to main square
@@ -689,8 +689,8 @@ at_decision_events.1020 = {
 # * outraged_partner - Visiting partner if better stewardship than root
 # * attempted_artifact_haggle - If set, use for loc and prices
 # Sets scopes:
-# * been_to_sell_screen - Set to yes (to specify that the event has already been triggered)
-# * did_not_sell_artifact - Set to yes if an artifact has not been sold
+# * been_to_peddler - Set to yes (to specify that any of the peddler events has already been triggered)
+# * been_to_peddler_sell_screen - Set to yes (to specify that the event has already been triggered)
 # * sold_artifact - Set to yes if an artifact has been sold
 # * last_location - Set to flag:artifact_peddler
 #
@@ -720,14 +720,14 @@ at_decision_events.1021 = {
 		first_valid = {
 			triggered_desc = {
 				trigger = {
-					NOT = { exists = scope:did_not_sell_artifact }
+					NOT = { exists = scope:been_to_peddler }
 					scope:attempted_artifact_haggle ?= flag:success
 				}
 				desc = ep3_laamp_decision_event.1021.desc_success
 			}
 			triggered_desc = {
 				trigger = {
-					NOT = { exists = scope:did_not_sell_artifact }
+					NOT = { exists = scope:been_to_peddler }
 					scope:attempted_artifact_haggle ?= flag:failure
 				}
 				desc = ep3_laamp_decision_event.1021.desc_failure
@@ -735,13 +735,13 @@ at_decision_events.1021 = {
 			random_valid = {
 				triggered_desc = {
 					trigger = {
-						NOT = { exists = scope:did_not_sell_artifact }
+						NOT = { exists = scope:been_to_peddler }
 					}
 					desc = ep3_laamp_decision_event.1021.desc_moment_of_purchase_01
 				}
 				triggered_desc = {
 					trigger = {
-						NOT = { exists = scope:did_not_sell_artifact }
+						NOT = { exists = scope:been_to_peddler }
 					}
 					desc = ep3_laamp_decision_event.1021.desc_moment_of_purchase_02
 				}
@@ -749,13 +749,13 @@ at_decision_events.1021 = {
 			random_valid = {
 				triggered_desc = {
 					trigger = {
-						NOT = { exists = scope:been_to_sell_screen }
+						NOT = { exists = scope:been_to_peddler_sell_screen }
 					}
 					desc = ep3_laamp_decision_event.1020.desc_intro_returned_01
 				}
 				triggered_desc = {
 					trigger = {
-						NOT = { exists = scope:been_to_sell_screen }
+						NOT = { exists = scope:been_to_peddler_sell_screen }
 					}
 					desc = ep3_laamp_decision_event.1020.desc_intro_returned_02
 				}
@@ -877,7 +877,8 @@ at_decision_events.1021 = {
 
 		# Register that an artifact has been sold
 		at_1020_sold_artifact_effect = yes
-		save_scope_value_as = { name = been_to_sell_screen value = yes }
+		save_scope_value_as = { name = been_to_peddler value = yes }
+		save_scope_value_as = { name = been_to_peddler_sell_screen value = yes }
 		save_scope_value_as = { name = last_location value = flag:artifact_peddler }
 
 		# Go back to main square
@@ -912,7 +913,8 @@ at_decision_events.1021 = {
 
 		# Register that an artifact has been sold
 		at_1020_sold_artifact_effect = yes
-		save_scope_value_as = { name = been_to_sell_screen value = yes }
+		save_scope_value_as = { name = been_to_peddler value = yes }
+		save_scope_value_as = { name = been_to_peddler_sell_screen value = yes }
 		save_scope_value_as = { name = last_location value = flag:artifact_peddler }
 
 		# Go back to main square
@@ -947,7 +949,8 @@ at_decision_events.1021 = {
 
 		# Register that an artifact has been sold
 		at_1020_sold_artifact_effect = yes
-		save_scope_value_as = { name = been_to_sell_screen value = yes }
+		save_scope_value_as = { name = been_to_peddler value = yes }
+		save_scope_value_as = { name = been_to_peddler_sell_screen value = yes }
 		save_scope_value_as = { name = last_location value = flag:artifact_peddler }
 
 		# Go back to main square
@@ -980,8 +983,8 @@ at_decision_events.1021 = {
 			}
 		}
 
-		save_scope_value_as = { name = did_not_sell_artifact value = yes }
-		save_scope_value_as = { name = been_to_sell_screen value = yes }
+		save_scope_value_as = { name = been_to_peddler value = yes }
+		save_scope_value_as = { name = been_to_peddler_sell_screen value = yes }
 		save_scope_value_as = { name = last_location value = flag:artifact_peddler }
 
 		# Go back to main square or previous screen
