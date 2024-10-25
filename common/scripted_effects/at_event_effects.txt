@@ -210,27 +210,3 @@ at_set_artifact_wealth_effect = {
 		}
 	}
 }
-
-at_set_loc_tracker_2_effect = {
-	if = {
-		limit = { scope:$TYPE$_loc_tracker ?= 0 }
-		save_scope_value_as = { name = $TYPE$_loc_tracker value = 1 }
-	}
-	else = {
-		save_scope_value_as = { name = $TYPE$_loc_tracker value = 0 }
-	}
-}
-
-at_set_loc_tracker_3_effect = {
-	if = {
-		limit = { scope:$TYPE$_loc_tracker ?= 0 }
-		save_scope_value_as = { name = $TYPE$_loc_tracker value = 1 }
-	}
-	else_if = {
-		limit = { scope:$TYPE$_loc_tracker ?= 1 }
-		save_scope_value_as = { name = $TYPE$_loc_tracker value = 2 }
-	}
-	else = {
-		save_scope_value_as = { name = $TYPE$_loc_tracker value = 0 }
-	}
-}

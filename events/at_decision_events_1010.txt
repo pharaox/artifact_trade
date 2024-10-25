@@ -155,18 +155,19 @@ at_decision_events.1010 = {
 				}
 				desc = ep3_laamp_decision_event.1060.desc
 			}
-			triggered_desc = {
-				trigger = {
-					scope:last_location ?= flag:main_square
-					NOT = { scope:craftsmen_loc_tracker ?= 1 }
+			random_valid = {
+				triggered_desc = {
+					trigger = {
+						scope:last_location ?= flag:main_square
+					}
+					desc = ep3_laamp_decision_event.1060.desc_returned_01
 				}
-				desc = ep3_laamp_decision_event.1060.desc_returned_01
-			}
-			triggered_desc = {
-				trigger = {
-					scope:last_location ?= flag:main_square
+				triggered_desc = {
+					trigger = {
+						scope:last_location ?= flag:main_square
+					}
+					desc = ep3_laamp_decision_event.1060.desc_returned_02
 				}
-				desc = ep3_laamp_decision_event.1060.desc_returned_02
 			}
 			triggered_desc = {
 				trigger = {
@@ -215,44 +216,36 @@ at_decision_events.1010 = {
 				}
 				desc = ep3_laamp_decision_event.1060.desc_outro_return_finished
 			}
-			triggered_desc = {
-				trigger = {
-					exists = scope:visiting_partner
-					scope:craftsmen_loc_tracker ?= 0
+			random_valid = {
+				triggered_desc = {
+					trigger = {
+						exists = scope:visiting_partner
+					}
+					desc = ep3_laamp_decision_event.1060.desc_outro_return_partner_01
 				}
-				desc = ep3_laamp_decision_event.1060.desc_outro_return_partner_01
+				triggered_desc = {
+					trigger = {
+						exists = scope:visiting_partner
+					}
+					desc = ep3_laamp_decision_event.1060.desc_outro_return_partner_02
+				}
+				triggered_desc = {
+					trigger = {
+						exists = scope:visiting_partner
+					}
+					desc = ep3_laamp_decision_event.1060.desc_outro_return_partner_03
+				}
 			}
-			triggered_desc = {
-				trigger = {
-					exists = scope:visiting_partner
-					scope:craftsmen_loc_tracker ?= 1
+			random_valid = {
+				triggered_desc = {
+					desc = ep3_laamp_decision_event.1060.desc_outro_return_01
 				}
-				desc = ep3_laamp_decision_event.1060.desc_outro_return_partner_02
-			}
-			triggered_desc = {
-				trigger = {
-					exists = scope:visiting_partner
-					scope:craftsmen_loc_tracker ?= 2
+				triggered_desc = {
+					desc = ep3_laamp_decision_event.1060.desc_outro_return_02
 				}
-				desc = ep3_laamp_decision_event.1060.desc_outro_return_partner_03
-			}
-			triggered_desc = {
-				trigger = {
-					scope:craftsmen_loc_tracker ?= 0
+				triggered_desc = {
+					desc = ep3_laamp_decision_event.1060.desc_outro_return_03
 				}
-				desc = ep3_laamp_decision_event.1060.desc_outro_return_01
-			}
-			triggered_desc = {
-				trigger = {
-					scope:craftsmen_loc_tracker ?= 1
-				}
-				desc = ep3_laamp_decision_event.1060.desc_outro_return_02
-			}
-			triggered_desc = {
-				trigger = {
-					scope:craftsmen_loc_tracker ?= 2
-				}
-				desc = ep3_laamp_decision_event.1060.desc_outro_return_03
 			}
 		}
 	}
@@ -300,9 +293,6 @@ at_decision_events.1010 = {
 	}
 
 	immediate = {
-		# Set loc tracker to avoid repeating the loc
-		at_set_loc_tracker_3_effect = { TYPE = craftsmen }
-
 		# Find craftsmen
 		if = {
 			limit = {
@@ -536,17 +526,13 @@ at_decision_events.1011 = {
 				}
 				desc = ep3_laamp_decision_event.1061.desc
 			}
-			triggered_desc = {
-				trigger = {
-					scope:weaponsmith_loc_tracker ?= 0
+			random_valid = {
+				triggered_desc = {
+					desc = ep3_laamp_decision_event.1061.desc_returned_01
 				}
-				desc = ep3_laamp_decision_event.1061.desc_returned_01
-			}
-			triggered_desc = {
-				trigger = {
-					scope:weaponsmith_loc_tracker ?= 1
+				triggered_desc = {
+					desc = ep3_laamp_decision_event.1061.desc_returned_02
 				}
-				desc = ep3_laamp_decision_event.1061.desc_returned_02
 			}
 		}
 	}
@@ -586,9 +572,6 @@ at_decision_events.1011 = {
 	immediate = {
 		# Override background
 		location.province_owner = { save_scope_as = bg_override_char }
-
-		# Set loc tracker to avoid repeating the loc
-		at_set_loc_tracker_2_effect = { TYPE = weaponsmith }
 
 		# Get artifacts for sale
 		if = {
@@ -816,17 +799,13 @@ at_decision_events.1013 = {
 				}
 				desc = ep3_laamp_decision_event.1063.desc
 			}
-			triggered_desc = {
-				trigger = {
-					scope:armorer_loc_tracker ?= 0
+			random_valid = {
+				triggered_desc = {
+					desc = ep3_laamp_decision_event.1063.desc_returned_01
 				}
-				desc = ep3_laamp_decision_event.1063.desc_returned_01
-			}
-			triggered_desc = {
-				trigger = {
-					scope:armorer_loc_tracker ?= 1
+				triggered_desc = {
+					desc = ep3_laamp_decision_event.1063.desc_returned_02
 				}
-				desc = ep3_laamp_decision_event.1063.desc_returned_02
 			}
 		}
 	}
@@ -866,9 +845,6 @@ at_decision_events.1013 = {
 	immediate = {
 		# Override background
 		location.province_owner = { save_scope_as = bg_override_char }
-
-		# Set loc tracker to avoid repeating the loc
-		at_set_loc_tracker_2_effect = { TYPE = armorer }
 
 		# Get artifacts for sale
 		if = {
@@ -1096,17 +1072,13 @@ at_decision_events.1015 = {
 				}
 				desc = ep3_laamp_decision_event.1065.desc
 			}
-			triggered_desc = {
-				trigger = {
-					scope:jeweler_loc_tracker ?= 0
+			random_valid = {
+				triggered_desc = {
+					desc = ep3_laamp_decision_event.1065.desc_returned_01
 				}
-				desc = ep3_laamp_decision_event.1065.desc_returned_01
-			}
-			triggered_desc = {
-				trigger = {
-					scope:jeweler_loc_tracker ?= 1
+				triggered_desc = {
+					desc = ep3_laamp_decision_event.1065.desc_returned_02
 				}
-				desc = ep3_laamp_decision_event.1065.desc_returned_02
 			}
 		}
 	}
@@ -1146,9 +1118,6 @@ at_decision_events.1015 = {
 	immediate = {
 		# Override background
 		location.province_owner = { save_scope_as = bg_override_char }
-
-		# Set loc tracker to avoid repeating the loc
-		at_set_loc_tracker_2_effect = { TYPE = jeweler }
 
 		# Get artifacts for sale
 		if = {
