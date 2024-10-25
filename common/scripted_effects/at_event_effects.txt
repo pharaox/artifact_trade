@@ -134,7 +134,6 @@ at_get_artifacts_effect = {
 		scope:newly_created_artifact ?= {
 			set_variable = { name = at_artifact_type value = flag:$TYPE$ }
 			set_variable = { name = suppress_artifact_notifications value = yes days = 2 }
-			#at_add_artifact_modifiers_effect = yes
 			add_to_temporary_list = artifacts
 		}
 	}
@@ -208,27 +207,6 @@ at_set_artifact_wealth_effect = {
 		}
 		80 = {
 			save_scope_value_as = { name = wealth value = { 10 25 } }
-		}
-	}
-}
-
-at_add_artifact_modifiers_effect = {
-	if = {
-		limit = { rarity = masterwork }
-		if = {
-			limit = { var:at_artifact_type ?= flag:weapon }
-			add_scaled_artifact_modifier_prowess_effect = yes
-			add_scaled_artifact_modifier_combat_effect = yes
-		}
-		else_if = {
-			limit = { var:at_artifact_type ?= flag:armor }
-			add_scaled_artifact_modifier_negate_prowess_penalty_effect = yes
-			add_scaled_artifact_modifier_terrain_advantage_effect = yes
-		}
-		else_if = {
-			limit = { var:at_artifact_type ?= flag:accessory }
-			add_scaled_artifact_modifier_hire_mercenary_effect = yes
-			add_scaled_artifact_modifier_prestige_effect = yes
 		}
 	}
 }
