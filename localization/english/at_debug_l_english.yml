@@ -1,6 +1,19 @@
 ﻿l_english:
- at_debug_msg_artifact_bought: "Artifact bought"
- at_debug_msg_artifact_destroyed: "Artifact destroyed"
- at_debug_msg_artifact_destroyed_by_aniconist_ruler: "Artifact destroyed by Aniconist ruler"
+ at_debug_prefix: "[GetCurrentDate.GetStringShort]: [THIS.Char.GetFullNameNoTooltip] ([THIS.Char.GetID])"
+
+ at_debug_msg_artifact_bought: "$at_debug_prefix$: Artifact bought, artifact: $at_artifact$, seller: $at_seller$, price: $at_artifact_price$"
+ at_debug_msg_artifact_sold: "$at_debug_prefix$: Artifact sold, artifact: $at_artifact$, buyer: $at_buyer$, price: $at_artifact_price$"
+ at_debug_msg_artifact_destroyed: "$at_debug_prefix$: Artifact destroyed, artifact: $at_artifact$, aniconist: $at_aniconist$"
 
  at_debug_msg_artifact_trade_loaded: "[GetCurrentDate.GetStringShort]: Search & Trade Artifacts mod loaded"
+
+ at_artifact: "[THIS.Var('artifact').Artifact.GetNameNoTooltip] ([THIS.Var('artifact').Artifact.GetID]$at_artifact_type$)"
+ at_buyer: "[THIS.Var('buyer').Char.GetFullNameNoTooltip] ([THIS.Var('buyer').Char.GetID]$at_buyer_merchant_type$)"
+ at_seller: "[THIS.Var('seller').Char.GetFullNameNoTooltip] ([THIS.Var('seller').Char.GetID]$at_seller_merchant_type$)"
+ at_artifact_price: "[THIS.Var('artifact_price').GetValue]"
+ at_destroyer: "[THIS.Var('destroyer').Char.GetFullNameNoTooltip] ([THIS.Var('destroyer').Char.GetID])"
+ at_aniconist: "[Select_CString(THIS.Var('aniconist').IsSet, 'yes', 'no')]"
+
+ at_artifact_type: "[Select_CString(THIS.Var('artifact').Var('at_artifact_type').IsSet, Concatenate(', ', THIS.Var('artifact').Var('at_artifact_type').GetFlagName), '')]"
+ at_buyer_merchant_type: "[Select_CString(THIS.Var('buyer').Var('at_merchant_type').IsSet, Concatenate(', ', THIS.Var('buyer').Var('at_merchant_type').GetFlagName), '')]"
+ at_seller_merchant_type: "[Select_CString(THIS.Var('seller').Var('at_merchant_type').IsSet, Concatenate(', ', THIS.Var('seller').Var('at_merchant_type').GetFlagName), '')]"

@@ -22,20 +22,40 @@ at_on_game_start = {
 
 at_on_artifact_bought = {
 	effect = {
-		at_debug_log_effect = { MSG = at_debug_msg_artifact_bought }
+		scope:actor = {
+			if = {
+				limit = { this = scope:buyer }
+				at_debug_log_3_effect = {
+					MSG = at_debug_msg_artifact_bought
+					NAME1 = artifact TYPE1 = flag:artifact
+					NAME2 = seller TYPE2 = flag:character
+					NAME3 = artifact_price TYPE3 = flag:value
+				}
+			}
+			else = {
+				at_debug_log_3_effect = {
+					MSG = at_debug_msg_artifact_sold
+					NAME1 = artifact TYPE1 = flag:artifact
+					NAME2 = buyer TYPE2 = flag:character
+					NAME3 = artifact_price TYPE3 = flag:value
+				}
+			}
+		}
 	}
 }
 
 at_on_artifact_destroyed = {
 	effect = {
-		if = {
-			limit = {
-				scope:destroyer = { at_has_aniconist_faith_trigger = yes }
+		scope:destroyer = {
+			if = {
+				limit = { at_has_aniconist_faith_trigger = yes }
+				save_scope_value_as = { name = aniconist value = yes }
 			}
-			at_debug_log_effect = { MSG = at_debug_msg_artifact_destroyed_by_aniconist_ruler }
-		}
-		else = {
-			at_debug_log_effect = { MSG = at_debug_msg_artifact_destroyed }
+			at_debug_log_2_effect = {
+				MSG = at_debug_msg_artifact_destroyed
+				NAME1 = artifact TYPE1 = flag:artifact
+				NAME2 = aniconist TYPE2 = flag:boolean
+			}
 		}
 	}
 }

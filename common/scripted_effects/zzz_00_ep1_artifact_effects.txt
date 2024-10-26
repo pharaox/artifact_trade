@@ -4,7 +4,7 @@
 # STA: Overridden from vanilla
 destroy_artifact_aniconist_effect = {
 	$ARTIFACT$ = {
-		save_temporary_scope_as = artifact
+		save_scope_as = artifact
 	}
 
 	$DESTROYER$ = {
@@ -60,14 +60,14 @@ destroy_artifact_aniconist_effect = {
 				# multiply by durability percentage
 				multiply = {
 					add = scope:artifact.artifact_durability
-					divide = scope:artifact.artifact_max_durability	
+					divide = scope:artifact.artifact_max_durability
 					divide = 2
 					add = 0.5
 				}
 
 				#Nerf it to bits for LAAMPs
 				if = {
-					limit = { 
+					limit = {
 						$DESTROYER$ = { has_government = landless_adventurer_government }
 					}
 					multiply = {

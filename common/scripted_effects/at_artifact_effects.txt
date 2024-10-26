@@ -205,7 +205,7 @@ at_buy_artifact_warning_tooltips_effect = {
 # Destroys ARTIFACT by DESTROYER
 at_destroy_artifact_effect = {
 	$ARTIFACT$ = {
-		save_temporary_scope_as = artifact
+		save_scope_as = artifact
 	}
 
 	$DESTROYER$ = {

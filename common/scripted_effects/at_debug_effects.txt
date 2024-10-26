@@ -2,8 +2,6 @@
 	if = {
 		limit = { debug_only = yes }
 		debug_log = $MSG$
-		debug_log_date = yes
-		debug_log_scopes = yes
 	}
 }
 
@@ -11,5 +9,65 @@ at_debug_log_no_details_effect = {
 	if = {
 		limit = { debug_only = yes }
 		debug_log = $MSG$
+	}
+}
+
+at_debug_log_1_effect = {
+	if = {
+		limit = { debug_only = yes }
+
+		at_debug_set_scope_variable_effect = { NAME = $NAME1$ TYPE = $TYPE1$ }
+		debug_log = $MSG$
+		at_debug_remove_scope_variable_effect = { NAME = $NAME1$ TYPE = $TYPE1$ }
+	}
+}
+
+at_debug_log_2_effect = {
+	if = {
+		limit = { debug_only = yes }
+
+		at_debug_set_scope_variable_effect = { NAME = $NAME1$ TYPE = $TYPE1$ }
+		at_debug_set_scope_variable_effect = { NAME = $NAME2$ TYPE = $TYPE2$ }
+		debug_log = $MSG$
+		at_debug_remove_scope_variable_effect = { NAME = $NAME1$ TYPE = $TYPE1$ }
+		at_debug_remove_scope_variable_effect = { NAME = $NAME2$ TYPE = $TYPE2$ }
+	}
+}
+
+at_debug_log_3_effect = {
+	if = {
+		limit = { debug_only = yes }
+
+		at_debug_set_scope_variable_effect = { NAME = $NAME1$ TYPE = $TYPE1$ }
+		at_debug_set_scope_variable_effect = { NAME = $NAME2$ TYPE = $TYPE2$ }
+		at_debug_set_scope_variable_effect = { NAME = $NAME3$ TYPE = $TYPE3$ }
+		debug_log = $MSG$
+		at_debug_remove_scope_variable_effect = { NAME = $NAME1$ TYPE = $TYPE1$ }
+		at_debug_remove_scope_variable_effect = { NAME = $NAME2$ TYPE = $TYPE2$ }
+		at_debug_remove_scope_variable_effect = { NAME = $NAME3$ TYPE = $TYPE3$ }
+	}
+}
+
+at_debug_set_scope_variable_effect = {
+	if = {
+		limit = {
+			NOT = { $TYPE$ = flag:variable }
+			exists = scope:$NAME$
+			trigger_if = {
+				limit = { $TYPE$ = flag:boolean }
+				scope:$NAME$ = yes
+			}
+		}
+		set_variable = { name = $NAME$ value = scope:$NAME$ }
+	}
+}
+
+at_debug_remove_scope_variable_effect = {
+	if = {
+		limit = {
+			NOT = { $TYPE$ = flag:variable }
+			has_variable = $NAME$
+		}
+		remove_variable = $NAME$
 	}
 }
