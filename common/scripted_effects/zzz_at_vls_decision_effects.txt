@@ -1,4 +1,6 @@
 ﻿vls_decision_slot_1_prepare_effect = {
+	at_debug_log_effect = { MSG = at_debug_msg_visiting_holding }
+
 	save_scope_as = first_pass
 
 	# Build list of options
@@ -30,6 +32,8 @@
 }
 
 vls_decision_slot_1_main_effect = {
+	at_debug_log_effect = { MSG = at_debug_msg_visiting_holding_to_trade_artifacts }
+
 	custom_tooltip = at_visit_local_settlement_decision_tt
 	set_variable = ep3_laamp_decision_1000_is_visiting
 	trigger_event =  at_decision_events.1000

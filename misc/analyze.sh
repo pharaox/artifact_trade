@@ -12,3 +12,6 @@ echo "- peddler: $(grep -a "Artifact sold,.*peddler" $LOGFILE | wc -l)"
 echo "Artifact destroyed: $(grep -a "Artifact destroyed," $LOGFILE | grep -v "AGOT" | wc -l)"
 echo "- aniconist: $(grep -a "Artifact destroyed,.*aniconist: yes" $LOGFILE | wc -l)"
 echo
+echo "Visiting holding: $(grep -a "Visiting holding," $LOGFILE | wc -l)"
+echo "Visiting holding to trade artifacts: $(grep -a "Visiting holding to trade artifacts," $LOGFILE | wc -l)"
+echo
