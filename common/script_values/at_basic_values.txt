@@ -53,3 +53,5 @@ at_custom_artifact_bid_price_value = {
 at_custom_artifact_bid_price_multiplier = {
 	value = 1
 }
+
+at_laamp_ai_spending_pants_value = 200

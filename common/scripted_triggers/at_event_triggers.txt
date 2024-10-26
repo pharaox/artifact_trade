@@ -1,4 +1,11 @@
-﻿at_can_be_merchant_trigger = {
+﻿at_province_has_craftsmen_trigger = {
+	OR = {
+		has_holding_type = city_holding
+		county.development_level >= 10
+	}
+}
+
+at_can_be_merchant_trigger = {
 	NOT = {
 		has_any_bad_relationship_with_character_trigger = { CHARACTER = $CHARACTER$ }
 	}

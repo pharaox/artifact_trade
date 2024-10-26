@@ -864,10 +864,7 @@ at_decision_events.1000 = {
 			if = {
 				limit = {
 					scope:visiting_location = {
-						OR = {
-							has_holding_type = city_holding
-							county.development_level >= 10
-						}
+						at_province_has_craftsmen_trigger = yes
 					}
 				}
 				add_to_variable_list = {

@@ -1,0 +1,19 @@
+﻿vls_decision_slot_1_ai_chance_value = {
+	value = 0
+	if = {
+		limit = {
+			OR = {
+				AND = {
+					location = {
+						at_province_has_craftsmen_trigger = yes
+					}
+					gold >= at_laamp_ai_spending_pants_value
+				}
+				any_character_artifact = {
+					at_is_unsellable_artifact_trigger = no
+				}
+			}
+		}
+		add = 200
+	}
+}

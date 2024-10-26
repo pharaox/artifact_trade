@@ -28,7 +28,7 @@ scripted_trigger at_1010_can_buy_artifact_trigger = {
 }
 
 scripted_trigger at_1010_ai_will_buy_artifact_trigger = {
-	short_term_gold >= laamp_ai_spending_pants_value
+	short_term_gold >= at_laamp_ai_spending_pants_value
 
 	save_temporary_scope_as = actor
 	save_temporary_scope_as = buyer

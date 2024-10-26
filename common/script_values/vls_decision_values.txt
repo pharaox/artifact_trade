@@ -1,0 +1,7 @@
+﻿#vls_decision_slot_1_ai_chance_value = {
+#	value = 0
+#}
+
+vls_decision_slot_2_ai_chance_value = {
+	value = 0
+}

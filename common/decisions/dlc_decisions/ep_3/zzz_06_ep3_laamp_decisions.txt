@@ -76,7 +76,13 @@ visit_local_settlement_decision = {
 			localization = vls_decision_slot_1
 			current_description = vls_decision_slot_1_desc
 			icon = "gfx/interface/icons/decisions/vls_decision_slot_1.dds"
-			ai_chance = { value = 100 }
+			ai_chance = {
+				value = vls_decision_slot_1_ai_chance_value
+				if = {
+					limit = { has_character_flag = vls_decision_slot_1 }
+					multiply = 0
+				}
+			}
 		}
 
 		item = { # Visit Local Settlement Slot 2
@@ -90,7 +96,13 @@ visit_local_settlement_decision = {
 			localization = vls_decision_slot_2
 			current_description = vls_decision_slot_2_desc
 			icon = "gfx/interface/icons/decisions/vls_decision_slot_2.dds"
-			ai_chance = { value = 100 }
+			ai_chance = {
+				value = vls_decision_slot_2_ai_chance_value
+				if = {
+					limit = { has_character_flag = vls_decision_slot_2 }
+					multiply = 0
+				}
+			}
 		}
 	}
 
@@ -140,10 +152,12 @@ visit_local_settlement_decision = {
 		else_if = {
 			limit = { scope:vls_decision_slot_1 = yes }
 			vls_decision_slot_1_main_effect = yes
+			add_character_flag = { flag = vls_decision_slot_1 years = 2 }
 		}
 		else_if = {
 			limit = { scope:vls_decision_slot_2 = yes }
 			vls_decision_slot_2_main_effect = yes
+			add_character_flag = { flag = vls_decision_slot_2 years = 2 }
 		}
 
 		close_view = {
@@ -152,7 +166,7 @@ visit_local_settlement_decision = {
 		}
 	}
 
-	ai_check_interval = 12
+	ai_check_interval = 6
 
 	ai_potential = {
 		government_has_flag = government_is_landless_adventurer
