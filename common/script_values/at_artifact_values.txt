@@ -779,6 +779,9 @@ at_buy_artifact_ai_accept_value = {
 			scope:artifact = {
 				has_variable = at_artifact_recently_bought
 			}
+			scope:seller = {
+				NOT = { has_variable = at_merchant_type }
+			}
 		}
 		add = -100
 	}
@@ -965,6 +968,16 @@ at_buy_artifact_ai_accept_value = {
 			}
 		}
 		add = at_ai_negative_wealth_impact_value
+	}
+
+	# Merchants are more willing to sell
+	if = {
+		limit = {
+			scope:seller = {
+				has_variable = at_merchant_type
+			}
+		}
+		add = at_ai_positive_merchant_impact_value
 	}
 
 	# Opinion of actor
@@ -1185,6 +1198,14 @@ at_sell_artifact_ai_accept_value = {
 		add = at_ai_positive_wealth_impact_value
 	}
 
+	# Peddlers are more willing to buy
+	if = {
+		limit = {
+			var:at_merchant_type ?= flag:peddler
+		}
+		add = at_ai_positive_merchant_impact_value
+	}
+
 	# Opinion of actor
 	add = {
 		value = scope:opinion_of_actor
@@ -1347,6 +1368,17 @@ at_buy_artifact_ai_will_do_value = {
 		add = at_ai_positive_wealth_impact_value
 	}
 
+	# Landless adventurers are more willing to buy from merchants
+	if = {
+		limit = {
+			is_landless_adventurer = yes
+			scope:seller = {
+				has_variable = at_merchant_type
+			}
+		}
+		add = at_ai_positive_laamp_impact_value
+	}
+
 	# Opinion of seller
 	add = {
 		value = scope:opinion_of_seller
@@ -1466,6 +1498,18 @@ at_sell_artifact_ai_will_do_value = {
 		add = at_ai_negative_wealth_impact_value
 	}
 
+	# Landless adventurers are more willing to sell to merchants
+	if = {
+		limit = {
+			is_landless_adventurer = yes
+			scope:buyer = {
+				has_variable = at_merchant_type
+			}
+		}
+		add = at_ai_positive_laamp_impact_value
+		multiply = at_attempted_artifact_haggle_multiplier
+	}
+
 	# Opinion of buyer
 	add = {
 		value = scope:opinion_of_buyer
@@ -1485,6 +1529,18 @@ at_sell_artifact_ai_will_do_value = {
 			has_relation_nemesis = scope:buyer
 		}
 		add = -200
+	}
+}
+
+at_attempted_artifact_haggle_multiplier = {
+	value = 1
+	if = {
+		limit = { scope:attempted_artifact_haggle ?= flag:success }
+		value = 2
+	}
+	else_if = {
+		limit = { scope:attempted_artifact_haggle ?= flag:failure }
+		value = 0.5
 	}
 }
 

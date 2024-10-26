@@ -35,6 +35,7 @@
  at_target_trash_reason: "[target.GetName] is rather worthless: $VALUE|=+0$"
  at_recipient_poor_reason: "[recipient.GetShortUIName|U] considers [recipient.GetHerselfHimself] poor: $VALUE|=+0$"
  at_recipient_rich_reason: "[recipient.GetShortUIName|U] considers [recipient.GetHerselfHimself] rich: $VALUE|=+0$"
+ at_recipient_merchant_reason: "[recipient.GetShortUIName|U] is a merchant: $VALUE|=+0$"
 
  at_buyer_not_enough_gold_for_artifact_price_tooltip: "Pays #high [gold_i][SCOPE.ScriptValue('at_scope_buyer_current_gold_value')|0]#! to [seller.GetShortUINameNoTooltip] #weak (full price of [gold_i][SCOPE.ScriptValue('at_scope_artifact_price_value')|0] exceeds short term budget)#!"
 

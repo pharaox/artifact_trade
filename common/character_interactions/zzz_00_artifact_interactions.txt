@@ -141,6 +141,7 @@ destroy_artifact_interaction = {
 			scope:target = {
 				has_variable = at_artifact_recently_bought
 			}
+			NOT = { has_variable = at_merchant_type }
 			add = -100
 		}
 

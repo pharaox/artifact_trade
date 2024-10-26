@@ -113,7 +113,7 @@ at_buy_artifact_interaction = {
 	}
 
 	send_option = { # EP3 Influence
-		is_shown = { # Actor must have a government that uses influence 
+		is_shown = { # Actor must have a government that uses influence
 			scope:actor = {
 				government_has_flag = government_has_influence
 			}
@@ -203,6 +203,7 @@ at_buy_artifact_interaction = {
 			scope:target = {
 				has_variable = at_artifact_recently_bought
 			}
+			NOT = { has_variable = at_merchant_type }
 			add = -100
 			desc = at_artifact_recently_bought_reason
 		}
@@ -358,6 +359,13 @@ at_buy_artifact_interaction = {
 			at_is_character_rich_trigger = yes
 			add = at_ai_negative_wealth_impact_value
 			desc = at_recipient_rich_reason
+		}
+
+		# Merchants are more willing to sell
+		modifier = {
+			has_variable = at_merchant_type
+			add = at_ai_positive_merchant_impact_value
+			desc = at_recipient_merchant_reason
 		}
 
 		# Opinion of buyer
@@ -537,6 +545,15 @@ at_buy_artifact_interaction = {
 		modifier = {
 			at_is_character_rich_trigger = yes
 			add = at_ai_positive_wealth_impact_value
+		}
+
+		# Landless adventurers are more willing to buy from merchants
+		modifier = {
+			is_landless_adventurer = yes
+			scope:recipient = {
+				has_variable = at_merchant_type
+			}
+			add = at_ai_positive_laamp_impact_value
 		}
 
 		# Opinion of seller
