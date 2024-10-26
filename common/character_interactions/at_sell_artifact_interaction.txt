@@ -17,6 +17,38 @@ at_sell_artifact_interaction = {
 	ai_min_reply_days = 0
 	ai_max_reply_days = 0
 
+	redirect = {
+		if = {
+			limit = {
+				scope:actor = {
+					is_ai = yes
+					this = scope:recipient
+					exists = location
+				}
+			}
+			# Redirect to a random peddler in or near this location
+			scope:actor.location = {
+				every_character_in_location = {
+					add_to_temporary_list = potential_recipients
+				}
+			}
+			every_pool_character = {
+				province = scope:actor.location
+				add_to_temporary_list = potential_recipients
+			}
+			random_in_list = {
+				list = potential_recipients
+				limit = {
+					NOT = { this = scope:actor }
+					var:at_merchant_type ?= flag:peddler
+					at_can_own_artifacts_trigger = yes
+					at_can_sell_artifact_to_trigger = { PARTY = scope:actor }
+				}
+				save_scope_as = recipient
+			}
+		}
+	}
+
 	is_shown = {
 		NOT = { has_game_rule = at_artifact_trading_disabled }
 		NOT = { scope:actor = scope:recipient }
@@ -403,17 +435,23 @@ at_sell_artifact_interaction = {
 	}
 
 	ai_targets = {
+		ai_recipients = self # Redirect to a nearby merchant
 		ai_recipients = liege
 	}
 	ai_targets = {
 		ai_recipients = vassals
-		max = 20
+		max = 10
 	}
 	ai_targets = {
 		ai_recipients = peer_vassals
 		ai_recipients = neighboring_rulers
 		ai_recipients = nearby_domicile_owners
 		max = 10
+	}
+	ai_targets = {
+		ai_recipients = courtiers
+		ai_recipients = guests
+		max = 5
 	}
 	ai_targets = {
 		ai_recipients = family

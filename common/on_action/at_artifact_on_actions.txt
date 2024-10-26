@@ -22,22 +22,31 @@ at_on_game_start = {
 
 at_on_artifact_bought = {
 	effect = {
+		if = {
+			limit = { exists = scope:recipient }
+			save_temporary_scope_value_as = { name = source value = flag:interaction }
+		}
+		else = {
+			save_temporary_scope_value_as = { name = source value = flag:event }
+		}
 		scope:actor = {
 			if = {
 				limit = { this = scope:buyer }
-				at_debug_log_3_effect = {
+				at_debug_log_4_effect = {
 					MSG = at_debug_msg_artifact_bought
 					NAME1 = artifact TYPE1 = flag:artifact
 					NAME2 = seller TYPE2 = flag:character
 					NAME3 = artifact_price TYPE3 = flag:value
+					NAME4 = source TYPE4 = flag:flag
 				}
 			}
 			else = {
-				at_debug_log_3_effect = {
+				at_debug_log_4_effect = {
 					MSG = at_debug_msg_artifact_sold
 					NAME1 = artifact TYPE1 = flag:artifact
 					NAME2 = buyer TYPE2 = flag:character
 					NAME3 = artifact_price TYPE3 = flag:value
+					NAME4 = source TYPE4 = flag:flag
 				}
 			}
 		}

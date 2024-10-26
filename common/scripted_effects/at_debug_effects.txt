@@ -48,6 +48,22 @@ at_debug_log_3_effect = {
 	}
 }
 
+at_debug_log_4_effect = {
+	if = {
+		limit = { debug_only = yes }
+
+		at_debug_set_scope_variable_effect = { NAME = $NAME1$ TYPE = $TYPE1$ }
+		at_debug_set_scope_variable_effect = { NAME = $NAME2$ TYPE = $TYPE2$ }
+		at_debug_set_scope_variable_effect = { NAME = $NAME3$ TYPE = $TYPE3$ }
+		at_debug_set_scope_variable_effect = { NAME = $NAME4$ TYPE = $TYPE4$ }
+		debug_log = $MSG$
+		at_debug_remove_scope_variable_effect = { NAME = $NAME1$ TYPE = $TYPE1$ }
+		at_debug_remove_scope_variable_effect = { NAME = $NAME2$ TYPE = $TYPE2$ }
+		at_debug_remove_scope_variable_effect = { NAME = $NAME3$ TYPE = $TYPE3$ }
+		at_debug_remove_scope_variable_effect = { NAME = $NAME4$ TYPE = $TYPE4$ }
+	}
+}
+
 at_debug_set_scope_variable_effect = {
 	if = {
 		limit = {
