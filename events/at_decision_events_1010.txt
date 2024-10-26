@@ -7,7 +7,6 @@ scripted_effect at_1010_buy_artifact_effect = {
 	$MERCHANT$ = { save_scope_as = seller }
 	$ARTIFACT$ = { save_scope_as = artifact }
 
-	save_temporary_scope_value_as = { name = ignore_short_term_gold value = yes }
 	at_buy_artifact_interaction_effect = {
 		ARTIFACT_PRICE = scope:artifact.at_artifact_ask_price_value
 	}
@@ -24,22 +23,19 @@ scripted_trigger at_1010_can_buy_artifact_trigger = {
 	save_temporary_scope_as = buyer
 	$MERCHANT$ = { save_temporary_scope_as = seller }
 	$ARTIFACT$ = { save_temporary_scope_as = artifact }
-	short_term_gold >= scope:artifact.at_artifact_ask_price_value
+	at_short_term_gold_value >= scope:artifact.at_artifact_ask_price_value
 }
 
 scripted_trigger at_1010_ai_will_buy_artifact_trigger = {
-	short_term_gold >= at_laamp_ai_spending_pants_value
-
 	save_temporary_scope_as = actor
 	save_temporary_scope_as = buyer
 	$MERCHANT$ = { save_temporary_scope_as = seller }
 	$ARTIFACT$ = { save_temporary_scope_as = artifact }
-	save_temporary_scope_value_as = { name = opinion_of_seller value = 100 }
+	save_temporary_opinion_value_as = { name = opinion_of_seller target = scope:seller }
 	at_buy_artifact_ai_will_do_value > 0
 }
 
-scripted_effect at_1010_bought_weapon_effect = {
-	# Destroy some of the artifacts that were not bought
+scripted_effect at_1010_flush_weapons_effect = {
 	hidden_effect = {
 		at_1010_flush_inventory_effect = {
 			FIRST = scope:first_weapon
@@ -48,13 +44,9 @@ scripted_effect at_1010_bought_weapon_effect = {
 			MERCHANT = scope:weaponsmith
 		}
 	}
-
-	# Register that a weapon was bought
-	save_scope_value_as = { name = bought_weapon value = yes }
 }
 
-scripted_effect at_1010_bought_armor_effect = {
-	# Destroy some of the artifacts that were not bought
+scripted_effect at_1010_flush_armors_effect = {
 	hidden_effect = {
 		at_1010_flush_inventory_effect = {
 			FIRST = scope:first_armor
@@ -63,13 +55,9 @@ scripted_effect at_1010_bought_armor_effect = {
 			MERCHANT = scope:armorer
 		}
 	}
-
-	# Register that an armor was bought
-	save_scope_value_as = { name = bought_armor value = yes }
 }
 
-scripted_effect at_1010_bought_accessory_effect = {
-	# Destroy some of the artifacts that were not bought
+scripted_effect at_1010_flush_accessories_effect = {
 	hidden_effect = {
 		at_1010_flush_inventory_effect = {
 			FIRST = scope:first_accessory
@@ -78,9 +66,6 @@ scripted_effect at_1010_bought_accessory_effect = {
 			MERCHANT = scope:jeweler
 		}
 	}
-
-	# Register that an accessory was bought
-	save_scope_value_as = { name = bought_accessory value = yes }
 }
 
 scripted_effect at_1010_flush_inventory_effect = {
@@ -93,6 +78,9 @@ scripted_effect at_1010_flush_inventory_effect = {
 				$FIRST$ = { at_is_uncommon_artifact_trigger = yes }
 				factor = 0.5
 			}
+			$MERCHANT$ = {
+				add_gold = $FIRST$.at_artifact_base_price_value
+			}
 			destroy_artifact = $FIRST$
 		}
 		50 = {
@@ -103,6 +91,9 @@ scripted_effect at_1010_flush_inventory_effect = {
 				$SECOND$ = { at_is_uncommon_artifact_trigger = yes }
 				factor = 0.5
 			}
+			$MERCHANT$ = {
+				add_gold = $SECOND$.at_artifact_base_price_value
+			}
 			destroy_artifact = $SECOND$
 		}
 		50 = {
@@ -112,6 +103,9 @@ scripted_effect at_1010_flush_inventory_effect = {
 			modifier = {
 				$THIRD$ = { at_is_uncommon_artifact_trigger = yes }
 				factor = 0.5
+			}
+			$MERCHANT$ = {
+				add_gold = $THIRD$.at_artifact_base_price_value
 			}
 			destroy_artifact = $THIRD$
 		}
@@ -383,7 +377,13 @@ at_decision_events.1010 = {
 		custom_tooltip = ep3_laamp_decision_event.1060.a.tt
 		trigger_event = at_decision_events.1011
 
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 100
+			modifier = {
+				exists = scope:been_to_weaponsmith
+				factor = 0.5
+			}
+		}
 	}
 
 	# Visit armorer
@@ -418,7 +418,13 @@ at_decision_events.1010 = {
 		custom_tooltip = ep3_laamp_decision_event.1060.b.tt
 		trigger_event = at_decision_events.1013
 
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 100
+			modifier = {
+				exists = scope:been_to_armorer
+				factor = 0.5
+			}
+		}
 	}
 
 	# Visit jeweler
@@ -453,7 +459,13 @@ at_decision_events.1010 = {
 		custom_tooltip = ep3_laamp_decision_event.1060.c.tt
 		trigger_event = at_decision_events.1015
 
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 100
+			modifier = {
+				exists = scope:been_to_jeweler
+				factor = 0.5
+			}
+		}
 	}
 
 	# Do something else
@@ -482,13 +494,10 @@ at_decision_events.1010 = {
 		trigger_event = at_decision_events.1000
 
 		ai_chance = {
-			base = 100
+			base = 50
 			modifier = {
-				OR = {
-					has_trait = greedy
-					has_trait = paranoid
-				}
-				add = 300
+				has_trait = greedy
+				factor = 2
 			}
 		}
 	}
@@ -645,8 +654,10 @@ at_decision_events.1011 = {
 		}
 
 		# Destroy some of the artifacts that were not bought
-		# and register that an artifact has been bought
-		at_1010_bought_weapon_effect = yes
+		at_1010_flush_weapons_effect = yes
+
+		# Update scopes
+		save_scope_value_as = { name = bought_weapon value = yes }
 		save_scope_value_as = { name = been_to_weaponsmith value = yes }
 		save_scope_value_as = { name = last_location value = flag:weaponsmith }
 
@@ -685,8 +696,10 @@ at_decision_events.1011 = {
 		}
 
 		# Destroy some of the artifacts that were not bought
-		# and register that an artifact has been bought
-		at_1010_bought_weapon_effect = yes
+		at_1010_flush_weapons_effect = yes
+
+		# Update scopes
+		save_scope_value_as = { name = bought_weapon value = yes }
 		save_scope_value_as = { name = been_to_weaponsmith value = yes }
 		save_scope_value_as = { name = last_location value = flag:weaponsmith }
 
@@ -725,8 +738,10 @@ at_decision_events.1011 = {
 		}
 
 		# Destroy some of the artifacts that were not bought
-		# and register that an artifact has been bought
-		at_1010_bought_weapon_effect = yes
+		at_1010_flush_weapons_effect = yes
+
+		# Update scopes
+		save_scope_value_as = { name = bought_weapon value = yes }
 		save_scope_value_as = { name = been_to_weaponsmith value = yes }
 		save_scope_value_as = { name = last_location value = flag:weaponsmith }
 
@@ -750,6 +765,7 @@ at_decision_events.1011 = {
 	option = {
 		name = ep3_laamp_decision_event.1061.d
 
+		# Update scopes
 		save_scope_value_as = { name = been_to_weaponsmith value = yes }
 		save_scope_value_as = { name = last_location value = flag:weaponsmith }
 
@@ -758,7 +774,7 @@ at_decision_events.1011 = {
 		trigger_event = at_decision_events.1010
 
 		ai_chance = {
-			base = 100
+			base = 50
 			modifier = {
 				has_trait = greedy
 				factor = 2
@@ -918,8 +934,10 @@ at_decision_events.1013 = {
 		}
 
 		# Destroy some of the artifacts that were not bought
-		# and register that an artifact has been bought
-		at_1010_bought_armor_effect = yes
+		at_1010_flush_armors_effect = yes
+
+		# Update scopes
+		save_scope_value_as = { name = bought_armor value = yes }
 		save_scope_value_as = { name = been_to_armorer value = yes }
 		save_scope_value_as = { name = last_location value = flag:armorer }
 
@@ -958,8 +976,10 @@ at_decision_events.1013 = {
 		}
 
 		# Destroy some of the artifacts that were not bought
-		# and register that an artifact has been bought
-		at_1010_bought_armor_effect = yes
+		at_1010_flush_armors_effect = yes
+
+		# Update scopes
+		save_scope_value_as = { name = bought_armor value = yes }
 		save_scope_value_as = { name = been_to_armorer value = yes }
 		save_scope_value_as = { name = last_location value = flag:armorer }
 
@@ -998,8 +1018,10 @@ at_decision_events.1013 = {
 		}
 
 		# Destroy some of the artifacts that were not bought
-		# and register that an artifact has been bought
-		at_1010_bought_armor_effect = yes
+		at_1010_flush_armors_effect = yes
+
+		# Update scopes
+		save_scope_value_as = { name = bought_armor value = yes }
 		save_scope_value_as = { name = been_to_armorer value = yes }
 		save_scope_value_as = { name = last_location value = flag:armorer }
 
@@ -1023,6 +1045,7 @@ at_decision_events.1013 = {
 	option = {
 		name = ep3_laamp_decision_event.1063.e
 
+		# Update scopes
 		save_scope_value_as = { name = been_to_armorer value = yes }
 		save_scope_value_as = { name = last_location value = flag:armorer }
 
@@ -1031,7 +1054,7 @@ at_decision_events.1013 = {
 		trigger_event = at_decision_events.1010
 
 		ai_chance = {
-			base = 100
+			base = 50
 			modifier = {
 				has_trait = greedy
 				factor = 2
@@ -1191,8 +1214,10 @@ at_decision_events.1015 = {
 		}
 
 		# Destroy some of the artifacts that were not bought
-		# and register that an artifact has been bought
-		at_1010_bought_accessory_effect = yes
+		at_1010_flush_accessories_effect = yes
+
+		# Update scopes
+		save_scope_value_as = { name = bought_accessory value = yes }
 		save_scope_value_as = { name = been_to_jeweler value = yes }
 		save_scope_value_as = { name = last_location value = flag:jeweler }
 
@@ -1231,8 +1256,10 @@ at_decision_events.1015 = {
 		}
 
 		# Destroy some of the artifacts that were not bought
-		# and register that an artifact has been bought
-		at_1010_bought_accessory_effect = yes
+		at_1010_flush_accessories_effect = yes
+
+		# Update scopes
+		save_scope_value_as = { name = bought_accessory value = yes }
 		save_scope_value_as = { name = been_to_jeweler value = yes }
 		save_scope_value_as = { name = last_location value = flag:jeweler }
 
@@ -1271,8 +1298,10 @@ at_decision_events.1015 = {
 		}
 
 		# Destroy some of the artifacts that were not bought
-		# and register that an artifact has been bought
-		at_1010_bought_accessory_effect = yes
+		at_1010_flush_accessories_effect = yes
+
+		# Update scopes
+		save_scope_value_as = { name = bought_accessory value = yes }
 		save_scope_value_as = { name = been_to_jeweler value = yes }
 		save_scope_value_as = { name = last_location value = flag:jeweler }
 
@@ -1296,6 +1325,7 @@ at_decision_events.1015 = {
 	option = {
 		name = ep3_laamp_decision_event.1065.d
 
+		# Update scopes
 		save_scope_value_as = { name = been_to_jeweler value = yes }
 		save_scope_value_as = { name = last_location value = flag:jeweler }
 
@@ -1304,7 +1334,7 @@ at_decision_events.1015 = {
 		trigger_event = at_decision_events.1010
 
 		ai_chance = {
-			base = 100
+			base = 50
 			modifier = {
 				has_trait = greedy
 				factor = 2
@@ -1312,7 +1342,3 @@ at_decision_events.1015 = {
 		}
 	}
 }
-
-
-# ep3_laamp_decision_event.1063
-# ep3_laamp_decision_event.1065

@@ -10,6 +10,9 @@
  at_debug_msg_visiting_holding: "$at_debug_prefix$: Visiting holding, location: $at_location$, holding type: $at_holding_type$"
  at_debug_msg_visiting_holding_to_trade_artifacts: "$at_debug_prefix$: Visiting holding to trade artifacts, location: $at_location$, holding type: $at_holding_type$"
 
+ at_debug_msg_attempting_artifact_haggle: "$at_debug_prefix$: Attempting artifact haggle"
+ at_debug_msg_selling_artifact_via_outraged_partner: "$at_debug_prefix$: Selling artifact via outraged partner"
+
  at_artifact: "[THIS.Var('artifact').Artifact.GetNameNoTooltip] ([THIS.Var('artifact').Artifact.GetID]$at_artifact_type$)"
  at_buyer: "[THIS.Var('buyer').Char.GetFullNameNoTooltip] ([THIS.Var('buyer').Char.GetID]$at_buyer_merchant_type$)"
  at_seller: "[THIS.Var('seller').Char.GetFullNameNoTooltip] ([THIS.Var('seller').Char.GetID]$at_seller_merchant_type$)"

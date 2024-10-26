@@ -7,7 +7,7 @@
 					location = {
 						at_province_has_craftsmen_trigger = yes
 					}
-					gold >= at_laamp_ai_spending_pants_value
+					at_short_term_gold_value >= 75
 				}
 				any_character_artifact = {
 					at_is_unsellable_artifact_trigger = no

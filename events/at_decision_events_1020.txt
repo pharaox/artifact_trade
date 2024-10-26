@@ -7,7 +7,6 @@ scripted_effect at_1020_sell_artifact_effect = {
 	$MERCHANT$ = { save_scope_as = buyer }
 	$ARTIFACT$ = { save_scope_as = artifact }
 
-	save_temporary_scope_value_as = { name = ignore_short_term_gold value = yes }
 	at_buy_artifact_interaction_effect = {
 		ARTIFACT_PRICE = scope:artifact.at_artifact_bid_price_value
 	}
@@ -24,11 +23,11 @@ scripted_trigger at_1020_ai_will_sell_artifact_trigger = {
 	save_temporary_scope_as = seller
 	$MERCHANT$ = { save_temporary_scope_as = buyer }
 	$ARTIFACT$ = { save_temporary_scope_as = artifact }
-	save_temporary_scope_value_as = { name = opinion_of_buyer value = 100 }
+	save_temporary_opinion_value_as = { name = opinion_of_buyer target = scope:buyer }
 	at_sell_artifact_ai_will_do_value > 0
 }
 
-scripted_effect at_1020_sold_artifact_effect = {
+scripted_effect at_1020_cleanup_effect = {
 	# Remove vanilla artifact variables
 	scope:first_artifact = {
 		at_1020_remove_sell_variables_effect = yes
@@ -39,9 +38,6 @@ scripted_effect at_1020_sold_artifact_effect = {
 	scope:third_artifact ?= {
 		at_1020_remove_sell_variables_effect = yes
 	}
-
-	# Register that an artifact was sold
-	save_scope_value_as = { name = sold_artifact value = yes }
 }
 
 scripted_effect at_1020_add_sell_variables_effect = {
@@ -487,6 +483,24 @@ at_decision_events.1020 = {
 			set_variable = { name = suppress_artifact_notifications value = yes days = 2 }
 		}
 
+		# Determine artifact outraged partner wants to sell
+		if = {
+			limit = { exists = scope:outraged_partner }
+			random_list = {
+				50 = {
+					scope:first_artifact = { save_scope_as = outraged_partner_artifact }
+				}
+				50 = {
+					trigger = { exists = scope:second_artifact }
+					scope:second_artifact = { save_scope_as = outraged_partner_artifact }
+				}
+				50 = {
+					trigger = { exists = scope:third_artifact }
+					scope:third_artifact = { save_scope_as = outraged_partner_artifact }
+				}
+			}
+		}
+
 		# Save vanilla scopes and add vanilla variables for localization
 		scope:artifact_peddler = { save_scope_as = laamp_artifact_peddler }
 		scope:first_artifact = {
@@ -521,6 +535,33 @@ at_decision_events.1020 = {
 
 		# Go to sell screen
 		trigger_event = at_decision_events.1021
+
+		ai_chance = {
+			base = 0
+			modifier = {
+				OR = {
+					at_1020_ai_will_sell_artifact_trigger = {
+						MERCHANT = scope:artifact_peddler
+						ARTIFACT = scope:first_artifact
+					}
+					AND = {
+						exists = scope:second_artifact
+						at_1020_ai_will_sell_artifact_trigger = {
+							MERCHANT = scope:artifact_peddler
+							ARTIFACT = scope:second_artifact
+						}
+					}
+					AND = {
+						exists = scope:third_artifact
+						at_1020_ai_will_sell_artifact_trigger = {
+							MERCHANT = scope:artifact_peddler
+							ARTIFACT = scope:third_artifact
+						}
+					}
+				}
+				add = 100
+			}
+		}
 	}
 
 	# Attempt a haggle
@@ -533,6 +574,8 @@ at_decision_events.1020 = {
 				NOT = { has_variable = at_has_haggled_recently }
 			}
 		}
+
+		at_debug_log_effect = { MSG = at_debug_msg_attempting_artifact_haggle }
 
 		duel = {
 			skill = stewardship
@@ -613,6 +656,19 @@ at_decision_events.1020 = {
 			name = at_has_haggled_recently
 			days = visit_settlement_minimum_cooldown_days
 		}
+
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = {
+					value = stewardship
+					divide = {
+						value = scope:artifact_peddler.stewardship
+						min = 1
+					}
+				}
+			}
+		}
 	}
 
 	# Sell random artifact at a higher price via outraged partner
@@ -623,59 +679,76 @@ at_decision_events.1020 = {
 			exists = scope:outraged_partner
 		}
 
+		at_debug_log_effect = { MSG = at_debug_msg_selling_artifact_via_outraged_partner }
+
 		# Sell random artifact at higher price
+		if = {
+			limit = { scope:first_artifact = scope:outraged_partner_artifact }
+			custom_tooltip = ep3_laamp_decision_event.1020.c.first_artifact
+		}
+		else_if = {
+			limit = { scope:second_artifact ?= scope:outraged_partner_artifact }
+			custom_tooltip = ep3_laamp_decision_event.1020.c.second_artifact
+		}
+		else_if = {
+			limit = { scope:third_artifact ?= scope:outraged_partner_artifact }
+			custom_tooltip = ep3_laamp_decision_event.1020.c.third_artifact
+		}
 		save_scope_value_as = { name = artifact_bid_price_multiplier value = 1.2 }
-		random_list = {
-			50 = {
-				desc = ep3_laamp_decision_event.1020.c.first_artifact
-				at_1020_sell_artifact_effect = {
-					MERCHANT = scope:artifact_peddler
-					ARTIFACT = scope:first_artifact
-				}
-			}
-			50 = {
-				trigger = { exists = scope:second_artifact }
-				desc = ep3_laamp_decision_event.1020.c.second_artifact
-				at_1020_sell_artifact_effect = {
-					MERCHANT = scope:artifact_peddler
-					ARTIFACT = scope:second_artifact
-				}
-			}
-			50 = {
-				trigger = { exists = scope:third_artifact }
-				desc = ep3_laamp_decision_event.1020.c.third_artifact
-				at_1020_sell_artifact_effect = {
-					MERCHANT = scope:artifact_peddler
-					ARTIFACT = scope:third_artifact
-				}
-			}
+		at_1020_sell_artifact_effect = {
+			MERCHANT = scope:artifact_peddler
+			ARTIFACT = scope:outraged_partner_artifact
 		}
 
-		# Register that an artifact has been sold
-		at_1020_sold_artifact_effect = yes
+		# Cleanup variables and update scopes
+		at_1020_cleanup_effect = yes
+		save_scope_value_as = { name = sold_artifact value = yes }
 		save_scope_value_as = { name = been_to_peddler value = yes }
 		save_scope_value_as = { name = last_location value = flag:artifact_peddler }
 
 		stress_impact = {
-			ambitious = minor_stress_impact_gain
+			diligent = minor_stress_impact_gain
 			lazy = minor_stress_impact_loss
 		}
 
 		# Go back to main square
 		custom_tooltip = ep3_laamp_decision_event.return.tt
 		trigger_event = at_decision_events.1000
+
+		ai_chance = {
+			base = 0
+			modifier = {
+				at_1020_ai_will_sell_artifact_trigger = {
+					MERCHANT = scope:artifact_peddler
+					ARTIFACT = scope:outraged_partner_artifact
+				}
+				add = 200
+			}
+			modifier = {
+				has_trait = diligent
+				factor = 0.5
+			}
+			modifier = {
+				has_trait = lazy
+				factor = 2
+			}
+		}
 	}
 
 	# Do something else
 	option = {
 		name = ep3_laamp_decision_event.1020.d
 
+		# Cleanup variables and update scopes
+		at_1020_cleanup_effect = yes
 		save_scope_value_as = { name = been_to_peddler value = yes }
 		save_scope_value_as = { name = last_location value = flag:artifact_peddler }
 
 		# Go back to main square
 		custom_tooltip = ep3_laamp_decision_event.return.tt
 		trigger_event = at_decision_events.1000
+
+		ai_chance = { base = 50 }
 	}
 }
 
@@ -875,8 +948,9 @@ at_decision_events.1021 = {
 			ARTIFACT = scope:first_artifact
 		}
 
-		# Register that an artifact has been sold
-		at_1020_sold_artifact_effect = yes
+		# Cleanup variables and update scopes
+		at_1020_cleanup_effect = yes
+		save_scope_value_as = { name = sold_artifact value = yes }
 		save_scope_value_as = { name = been_to_peddler value = yes }
 		save_scope_value_as = { name = been_to_peddler_sell_screen value = yes }
 		save_scope_value_as = { name = last_location value = flag:artifact_peddler }
@@ -911,8 +985,9 @@ at_decision_events.1021 = {
 			ARTIFACT = scope:second_artifact
 		}
 
-		# Register that an artifact has been sold
-		at_1020_sold_artifact_effect = yes
+		# Cleanup variables and update scopes
+		at_1020_cleanup_effect = yes
+		save_scope_value_as = { name = sold_artifact value = yes }
 		save_scope_value_as = { name = been_to_peddler value = yes }
 		save_scope_value_as = { name = been_to_peddler_sell_screen value = yes }
 		save_scope_value_as = { name = last_location value = flag:artifact_peddler }
@@ -947,8 +1022,9 @@ at_decision_events.1021 = {
 			ARTIFACT = scope:third_artifact
 		}
 
-		# Register that an artifact has been sold
-		at_1020_sold_artifact_effect = yes
+		# Cleanup variables and update scopes
+		at_1020_cleanup_effect = yes
+		save_scope_value_as = { name = sold_artifact value = yes }
 		save_scope_value_as = { name = been_to_peddler value = yes }
 		save_scope_value_as = { name = been_to_peddler_sell_screen value = yes }
 		save_scope_value_as = { name = last_location value = flag:artifact_peddler }
@@ -983,6 +1059,8 @@ at_decision_events.1021 = {
 			}
 		}
 
+		# Cleanup variables and update scopes
+		at_1020_cleanup_effect = yes
 		save_scope_value_as = { name = been_to_peddler value = yes }
 		save_scope_value_as = { name = been_to_peddler_sell_screen value = yes }
 		save_scope_value_as = { name = last_location value = flag:artifact_peddler }
@@ -998,7 +1076,7 @@ at_decision_events.1021 = {
 		}
 
 		ai_chance = {
-			base = 100
+			base = 50
 			modifier = {
 				has_trait = greedy
 				factor = 0.5

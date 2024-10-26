@@ -928,7 +928,13 @@ at_decision_events.1000 = {
 		custom_tooltip = ep3_laamp_decision_event.1000.d.tt
 		trigger_event = at_decision_events.1010
 
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 100
+			modifier = {
+				exists = scope:been_to_craftsmen
+				factor = 0.5
+			}
+		}
 	}
 
 	# Sell an artifact to local peddlers
@@ -973,7 +979,13 @@ at_decision_events.1000 = {
 			trigger_event = at_decision_events.1020
 		}
 
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 100
+			modifier = {
+				exists = scope:been_to_peddler
+				factor = 0.5
+			}
+		}
 	}
 
 	# Go back to the camp
