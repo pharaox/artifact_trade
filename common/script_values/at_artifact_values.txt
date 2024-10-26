@@ -17,21 +17,21 @@ at_np1th_seller_equippable_artifact_quality_wealth_average_difference_value = {
 }
 
 at_nth_equippable_artifact_quality_wealth_average_value = {
-	save_temporary_scope_as = owner
+	save_temporary_scope_as = artifact_owner
 	value = 0
 	if = {
 		limit = {
 			scope:artifact = { artifact_slot_type = primary_armament }
 			any_character_artifact = {
 				artifact_slot_type = primary_armament
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 				count >= 1
 			}
 		}
 		ordered_character_artifact = {
 			limit = {
 				artifact_slot_type = primary_armament
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 			}
 			order_by = at_artifact_quality_wealth_average_value
 			position = 0
@@ -43,14 +43,14 @@ at_nth_equippable_artifact_quality_wealth_average_value = {
 			scope:artifact = { artifact_slot_type = armor }
 			any_character_artifact = {
 				artifact_slot_type = armor
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 				count >= 1
 			}
 		}
 		ordered_character_artifact = {
 			limit = {
 				artifact_slot_type = armor
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 			}
 			order_by = at_artifact_quality_wealth_average_value
 			position = 0
@@ -62,14 +62,14 @@ at_nth_equippable_artifact_quality_wealth_average_value = {
 			scope:artifact = { artifact_slot_type = regalia }
 			any_character_artifact = {
 				artifact_slot_type = regalia
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 				count >= 1
 			}
 		}
 		ordered_character_artifact = {
 			limit = {
 				artifact_slot_type = regalia
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 			}
 			order_by = at_artifact_quality_wealth_average_value
 			position = 0
@@ -81,14 +81,14 @@ at_nth_equippable_artifact_quality_wealth_average_value = {
 			scope:artifact = { artifact_slot_type = helmet }
 			any_character_artifact = {
 				artifact_slot_type = helmet
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 				count >= 1
 			}
 		}
 		ordered_character_artifact = {
 			limit = {
 				artifact_slot_type = helmet
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 			}
 			order_by = at_artifact_quality_wealth_average_value
 			position = 0
@@ -100,14 +100,14 @@ at_nth_equippable_artifact_quality_wealth_average_value = {
 			scope:artifact = { artifact_slot_type = miscellaneous }
 			any_character_artifact = {
 				artifact_slot_type = miscellaneous
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 				count >= 4
 			}
 		}
 		ordered_character_artifact = {
 			limit = {
 				artifact_slot_type = miscellaneous
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 			}
 			order_by = at_artifact_quality_wealth_average_value
 			position = 3
@@ -119,14 +119,14 @@ at_nth_equippable_artifact_quality_wealth_average_value = {
 			scope:artifact = { artifact_slot_type = throne }
 			any_character_artifact = {
 				artifact_slot_type = throne
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 				count >= 1
 			}
 		}
 		ordered_character_artifact = {
 			limit = {
 				artifact_slot_type = throne
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 			}
 			order_by = at_artifact_quality_wealth_average_value
 			position = 0
@@ -138,14 +138,14 @@ at_nth_equippable_artifact_quality_wealth_average_value = {
 			scope:artifact = { artifact_slot_type = wall_big }
 			any_character_artifact = {
 				artifact_slot_type = wall_big
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 				count >= 3
 			}
 		}
 		ordered_character_artifact = {
 			limit = {
 				artifact_slot_type = wall_big
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 			}
 			order_by = at_artifact_quality_wealth_average_value
 			position = 2
@@ -157,14 +157,14 @@ at_nth_equippable_artifact_quality_wealth_average_value = {
 			scope:artifact = { artifact_slot_type = wall_small }
 			any_character_artifact = {
 				artifact_slot_type = wall_small
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 				count >= 3
 			}
 		}
 		ordered_character_artifact = {
 			limit = {
 				artifact_slot_type = wall_small
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 			}
 			order_by = at_artifact_quality_wealth_average_value
 			position = 2
@@ -176,14 +176,14 @@ at_nth_equippable_artifact_quality_wealth_average_value = {
 			scope:artifact = { artifact_slot_type = sculpture }
 			any_character_artifact = {
 				artifact_slot_type = sculpture
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 				count >= 2
 			}
 		}
 		ordered_character_artifact = {
 			limit = {
 				artifact_slot_type = sculpture
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 			}
 			order_by = at_artifact_quality_wealth_average_value
 			position = 1
@@ -195,14 +195,14 @@ at_nth_equippable_artifact_quality_wealth_average_value = {
 			scope:artifact = { artifact_slot_type = book }
 			any_character_artifact = {
 				artifact_slot_type = book
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 				count >= 2
 			}
 		}
 		ordered_character_artifact = {
 			limit = {
 				artifact_slot_type = book
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 			}
 			order_by = at_artifact_quality_wealth_average_value
 			position = 1
@@ -214,14 +214,14 @@ at_nth_equippable_artifact_quality_wealth_average_value = {
 			scope:artifact = { artifact_slot_type = pedestal }
 			any_character_artifact = {
 				artifact_slot_type = pedestal
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 				count >= 4
 			}
 		}
 		ordered_character_artifact = {
 			limit = {
 				artifact_slot_type = pedestal
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 			}
 			order_by = at_artifact_quality_wealth_average_value
 			position = 3
@@ -231,21 +231,21 @@ at_nth_equippable_artifact_quality_wealth_average_value = {
 }
 
 at_np1th_equippable_artifact_quality_wealth_average_value = {
-	save_temporary_scope_as = owner
+	save_temporary_scope_as = artifact_owner
 	value = 0
 	if = {
 		limit = {
 			scope:artifact = { artifact_slot_type = primary_armament }
 			any_character_artifact = {
 				artifact_slot_type = primary_armament
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 				count >= 2
 			}
 		}
 		ordered_character_artifact = {
 			limit = {
 				artifact_slot_type = primary_armament
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 			}
 			order_by = at_artifact_quality_wealth_average_value
 			position = 1
@@ -257,14 +257,14 @@ at_np1th_equippable_artifact_quality_wealth_average_value = {
 			scope:artifact = { artifact_slot_type = armor }
 			any_character_artifact = {
 				artifact_slot_type = armor
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 				count >= 2
 			}
 		}
 		ordered_character_artifact = {
 			limit = {
 				artifact_slot_type = armor
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 			}
 			order_by = at_artifact_quality_wealth_average_value
 			position = 1
@@ -276,14 +276,14 @@ at_np1th_equippable_artifact_quality_wealth_average_value = {
 			scope:artifact = { artifact_slot_type = regalia }
 			any_character_artifact = {
 				artifact_slot_type = regalia
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 				count >= 2
 			}
 		}
 		ordered_character_artifact = {
 			limit = {
 				artifact_slot_type = regalia
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 			}
 			order_by = at_artifact_quality_wealth_average_value
 			position = 1
@@ -295,14 +295,14 @@ at_np1th_equippable_artifact_quality_wealth_average_value = {
 			scope:artifact = { artifact_slot_type = helmet }
 			any_character_artifact = {
 				artifact_slot_type = helmet
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 				count >= 2
 			}
 		}
 		ordered_character_artifact = {
 			limit = {
 				artifact_slot_type = helmet
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 			}
 			order_by = at_artifact_quality_wealth_average_value
 			position = 1
@@ -314,14 +314,14 @@ at_np1th_equippable_artifact_quality_wealth_average_value = {
 			scope:artifact = { artifact_slot_type = miscellaneous }
 			any_character_artifact = {
 				artifact_slot_type = miscellaneous
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 				count >= 5
 			}
 		}
 		ordered_character_artifact = {
 			limit = {
 				artifact_slot_type = miscellaneous
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 			}
 			order_by = at_artifact_quality_wealth_average_value
 			position = 4
@@ -333,14 +333,14 @@ at_np1th_equippable_artifact_quality_wealth_average_value = {
 			scope:artifact = { artifact_slot_type = throne }
 			any_character_artifact = {
 				artifact_slot_type = throne
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 				count >= 2
 			}
 		}
 		ordered_character_artifact = {
 			limit = {
 				artifact_slot_type = throne
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 			}
 			order_by = at_artifact_quality_wealth_average_value
 			position = 1
@@ -352,14 +352,14 @@ at_np1th_equippable_artifact_quality_wealth_average_value = {
 			scope:artifact = { artifact_slot_type = wall_big }
 			any_character_artifact = {
 				artifact_slot_type = wall_big
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 				count >= 4
 			}
 		}
 		ordered_character_artifact = {
 			limit = {
 				artifact_slot_type = wall_big
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 			}
 			order_by = at_artifact_quality_wealth_average_value
 			position = 3
@@ -371,14 +371,14 @@ at_np1th_equippable_artifact_quality_wealth_average_value = {
 			scope:artifact = { artifact_slot_type = wall_small }
 			any_character_artifact = {
 				artifact_slot_type = wall_small
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 				count >= 4
 			}
 		}
 		ordered_character_artifact = {
 			limit = {
 				artifact_slot_type = wall_small
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 			}
 			order_by = at_artifact_quality_wealth_average_value
 			position = 3
@@ -390,14 +390,14 @@ at_np1th_equippable_artifact_quality_wealth_average_value = {
 			scope:artifact = { artifact_slot_type = sculpture }
 			any_character_artifact = {
 				artifact_slot_type = sculpture
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 				count >= 3
 			}
 		}
 		ordered_character_artifact = {
 			limit = {
 				artifact_slot_type = sculpture
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 			}
 			order_by = at_artifact_quality_wealth_average_value
 			position = 2
@@ -409,14 +409,14 @@ at_np1th_equippable_artifact_quality_wealth_average_value = {
 			scope:artifact = { artifact_slot_type = book }
 			any_character_artifact = {
 				artifact_slot_type = book
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 				count >= 3
 			}
 		}
 		ordered_character_artifact = {
 			limit = {
 				artifact_slot_type = book
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 			}
 			order_by = at_artifact_quality_wealth_average_value
 			position = 2
@@ -428,14 +428,14 @@ at_np1th_equippable_artifact_quality_wealth_average_value = {
 			scope:artifact = { artifact_slot_type = pedestal }
 			any_character_artifact = {
 				artifact_slot_type = pedestal
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 				count >= 5
 			}
 		}
 		ordered_character_artifact = {
 			limit = {
 				artifact_slot_type = pedestal
-				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:owner }
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
 			}
 			order_by = at_artifact_quality_wealth_average_value
 			position = 4
@@ -710,7 +710,7 @@ at_destroy_artifact_gold_value = {
 
 	# Nerf it to bits for LAAMPs
 	if = {
-		limit = { 
+		limit = {
 			scope:actor = { is_landless_adventurer = yes }
 		}
 		multiply = {
