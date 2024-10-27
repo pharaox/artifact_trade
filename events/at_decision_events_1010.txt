@@ -23,7 +23,7 @@ scripted_trigger at_1010_can_buy_artifact_trigger = {
 	save_temporary_scope_as = buyer
 	$MERCHANT$ = { save_temporary_scope_as = seller }
 	$ARTIFACT$ = { save_temporary_scope_as = artifact }
-	at_short_term_gold_value >= scope:artifact.at_artifact_ask_price_value
+	short_term_gold >= scope:artifact.at_artifact_ask_price_value
 }
 
 scripted_trigger at_1010_ai_will_buy_artifact_trigger = {

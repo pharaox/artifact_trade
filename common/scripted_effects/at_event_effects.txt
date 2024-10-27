@@ -136,6 +136,8 @@ at_get_artifacts_effect = {
 			set_variable = { name = suppress_artifact_notifications value = yes days = 2 }
 			add_to_temporary_list = artifacts
 		}
+		clear_saved_scope = quality
+		clear_saved_scope = wealth
 	}
 }
 

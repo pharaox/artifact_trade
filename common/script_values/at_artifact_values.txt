@@ -453,16 +453,12 @@ at_artifact_quality_wealth_average_value = {
 	multiply = 0.5
 }
 
-# Artifact quality. Uses var:quality or scope:quality,
+# Artifact quality. Uses var:quality and other variables,
 # falls back to at_artifact_default_quality_wealth_value if neither is set.
 at_artifact_quality_value = {
 	if = {
 		limit = { exists = var:quality }
 		value = var:quality
-	}
-	else_if = {
-		limit = { exists = scope:quality }
-		value = scope:quality
 	}
 	else_if = {
 		limit = { exists = var:unwanted_artifact }
@@ -503,16 +499,12 @@ at_artifact_quality_value = {
 	}
 }
 
-# Artifact wealth. Uses var:wealth or scope:wealth,
+# Artifact wealth. Uses var:wealth and other variables,
 # falls back to at_artifact_default_quality_wealth_value if neither is set.
 at_artifact_wealth_value = {
 	if = {
 		limit = { exists = var:wealth }
 		value = var:wealth
-	}
-	else_if = {
-		limit = { exists = scope:wealth }
-		value = scope:wealth
 	}
 	else_if = {
 		limit = { exists = var:unwanted_artifact }
