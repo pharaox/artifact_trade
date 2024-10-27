@@ -125,6 +125,7 @@ at_get_artifacts_effect = {
 			list_size = { name = artifacts value < 3 }
 		}
 
+		at_debug_log_effect = { MSG = at_debug_msg_creating_artifact }
 		at_set_artifact_quality_or_wealth_effect = {
 			NAME = quality
 			LOCATION = $LOCATION$
@@ -137,7 +138,6 @@ at_get_artifacts_effect = {
 		}
 		at_create_artifact_effect = {
 			TYPE = $TYPE$
-			MERCHANT = $MERCHANT$
 		}
 		scope:newly_created_artifact ?= {
 			set_variable = { name = at_artifact_type value = flag:$TYPE$ }
@@ -154,19 +154,20 @@ at_get_artifacts_effect = {
 }
 
 at_create_artifact_effect = {
+	save_temporary_scope_as = merchant
 	if = {
 		limit = { flag:$TYPE$ = flag:weapon }
 		create_artifact_weapon_effect = {
-			OWNER = $MERCHANT$
-			CREATOR = $MERCHANT$
+			OWNER = scope:merchant
+			CREATOR = scope:merchant
 			SET_WEAPON_TYPE = flag:no
 		}
 	}
 	else_if = {
 		limit = { flag:$TYPE$ = flag:armor }
 		create_artifact_armor_effect = {
-			OWNER = $MERCHANT$
-			CREATOR = $MERCHANT$
+			OWNER = scope:merchant
+			CREATOR = scope:merchant
 			SET_ARMOR_TYPE = flag:no
 		}
 	}
@@ -175,32 +176,32 @@ at_create_artifact_effect = {
 		random_list = {
 			50 = {
 				create_artifact_brooch_effect = {
-					OWNER = $MERCHANT$
-					SMITH = $MERCHANT$
+					OWNER = scope:merchant
+					SMITH = scope:merchant
 				}
 			}
 			50 = {
 				create_artifact_ring_effect = {
-					OWNER = $MERCHANT$
-					SMITH = $MERCHANT$
+					OWNER = scope:merchant
+					SMITH = scope:merchant
 				}
 			}
 			50 = {
 				create_artifact_necklace_effect = {
-					OWNER = $MERCHANT$
-					SMITH = $MERCHANT$
+					OWNER = scope:merchant
+					SMITH = scope:merchant
 				}
 			}
 			25 = {
 				create_artifact_crown_effect = {
-					OWNER = $MERCHANT$
-					SMITH = $MERCHANT$
+					OWNER = scope:merchant
+					SMITH = scope:merchant
 				}
 			}
 			25 = {
 				create_artifact_regalia_effect = {
-					OWNER = $MERCHANT$
-					SMITH = $MERCHANT$
+					OWNER = scope:merchant
+					SMITH = scope:merchant
 				}
 			}
 		}
@@ -299,6 +300,25 @@ at_add_scaled_artifact_modifiers_effect = {
 				add_scaled_artifact_modifier_hire_mercenary_effect = yes
 			}
 		}
+	}
+}
+
+at_destroy_random_artifact_effect = {
+	if = {
+		limit = { has_any_artifact = yes }
+		random_character_artifact = {
+			weight = {
+				base = 50
+				modifier = {
+					at_is_uncommon_artifact_trigger = yes
+					factor = 0.5
+				}
+			}
+			save_temporary_scope_as = destroyed_artifact
+		}
+		at_debug_log_effect = { MSG = at_debug_msg_destroying_artifact }
+		add_gold = scope:destroyed_artifact.at_artifact_base_price_value
+		destroy_artifact = scope:destroyed_artifact
 	}
 }
 

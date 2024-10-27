@@ -19,6 +19,20 @@ at_on_game_start = {
 	}
 }
 
+# Called from code once a year for all characters, at a random point that year (individually for each character)
+# Root is the character
+random_yearly_everyone_pulse = {
+	on_actions = { at_random_yearly_everyone_pulse }
+}
+
+at_random_yearly_everyone_pulse = {
+	effect = {
+		if = {
+			limit = { has_variable = at_merchant_type }
+			at_destroy_random_artifact_effect = yes
+		}
+	}
+}
 
 at_on_artifact_bought = {
 	effect = {

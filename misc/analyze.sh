@@ -15,3 +15,9 @@ echo
 echo "Visiting holding: $(grep -a "Visiting holding," $LOGFILE | wc -l)"
 echo "Visiting holding to trade artifacts: $(grep -a "Visiting holding to trade artifacts," $LOGFILE | wc -l)"
 echo
+echo "Attempting artifact haggle: $(grep -a "Attempting artifact haggle" $LOGFILE | wc -l)"
+echo "Selling artifact via outraged partner: $(grep -a "Selling artifact via outraged partner" $LOGFILE | wc -l)"
+echo
+echo "Creating artifact: $(grep -a "Creating artifact" $LOGFILE | wc -l)"
+echo "Destroying artifact: $(grep -a "Destroying artifact" $LOGFILE | wc -l)"
+echo

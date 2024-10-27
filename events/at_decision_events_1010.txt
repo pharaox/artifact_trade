@@ -35,83 +35,6 @@ scripted_trigger at_1010_ai_will_buy_artifact_trigger = {
 	at_buy_artifact_ai_will_do_value > 0
 }
 
-scripted_effect at_1010_flush_weapons_effect = {
-	hidden_effect = {
-		at_1010_flush_inventory_effect = {
-			FIRST = scope:first_weapon
-			SECOND = scope:second_weapon
-			THIRD = scope:third_weapon
-			MERCHANT = scope:weaponsmith
-		}
-	}
-}
-
-scripted_effect at_1010_flush_armors_effect = {
-	hidden_effect = {
-		at_1010_flush_inventory_effect = {
-			FIRST = scope:first_armor
-			SECOND = scope:second_armor
-			THIRD = scope:third_armor
-			MERCHANT = scope:armorer
-		}
-	}
-}
-
-scripted_effect at_1010_flush_accessories_effect = {
-	hidden_effect = {
-		at_1010_flush_inventory_effect = {
-			FIRST = scope:first_accessory
-			SECOND = scope:second_accessory
-			THIRD = scope:third_accessory
-			MERCHANT = scope:jeweler
-		}
-	}
-}
-
-scripted_effect at_1010_flush_inventory_effect = {
-	random_list = {
-		50 = {
-			trigger = {
-				$FIRST$ = { artifact_owner = $MERCHANT$ }
-			}
-			modifier = {
-				$FIRST$ = { at_is_uncommon_artifact_trigger = yes }
-				factor = 0.5
-			}
-			$MERCHANT$ = {
-				add_gold = $FIRST$.at_artifact_base_price_value
-			}
-			destroy_artifact = $FIRST$
-		}
-		50 = {
-			trigger = {
-				$SECOND$ = { artifact_owner = $MERCHANT$ }
-			}
-			modifier = {
-				$SECOND$ = { at_is_uncommon_artifact_trigger = yes }
-				factor = 0.5
-			}
-			$MERCHANT$ = {
-				add_gold = $SECOND$.at_artifact_base_price_value
-			}
-			destroy_artifact = $SECOND$
-		}
-		50 = {
-			trigger = {
-				$THIRD$ = { artifact_owner = $MERCHANT$ }
-			}
-			modifier = {
-				$THIRD$ = { at_is_uncommon_artifact_trigger = yes }
-				factor = 0.5
-			}
-			$MERCHANT$ = {
-				add_gold = $THIRD$.at_artifact_base_price_value
-			}
-			destroy_artifact = $THIRD$
-		}
-	}
-}
-
 scripted_trigger at_1010_done_with_craftsmen_trigger = {
 	exists = scope:bought_weapon
 	exists = scope:bought_armor
@@ -596,7 +519,6 @@ at_decision_events.1011 = {
 				at_get_artifacts_effect = {
 					TYPE = weapon
 					LOCATION = scope:visiting_location
-					MERCHANT = scope:weaponsmith
 				}
 
 				# Save artifact scopes
@@ -655,7 +577,11 @@ at_decision_events.1011 = {
 		}
 
 		# Destroy some of the artifacts that were not bought
-		at_1010_flush_weapons_effect = yes
+		scope:weaponsmith = {
+			hidden_effect = {
+				at_destroy_random_artifact_effect = yes
+			}
+		}
 
 		# Update scopes
 		save_scope_value_as = { name = bought_weapon value = yes }
@@ -697,7 +623,11 @@ at_decision_events.1011 = {
 		}
 
 		# Destroy some of the artifacts that were not bought
-		at_1010_flush_weapons_effect = yes
+		scope:weaponsmith = {
+			hidden_effect = {
+				at_destroy_random_artifact_effect = yes
+			}
+		}
 
 		# Update scopes
 		save_scope_value_as = { name = bought_weapon value = yes }
@@ -739,7 +669,11 @@ at_decision_events.1011 = {
 		}
 
 		# Destroy some of the artifacts that were not bought
-		at_1010_flush_weapons_effect = yes
+		scope:weaponsmith = {
+			hidden_effect = {
+				at_destroy_random_artifact_effect = yes
+			}
+		}
 
 		# Update scopes
 		save_scope_value_as = { name = bought_weapon value = yes }
@@ -877,7 +811,6 @@ at_decision_events.1013 = {
 				at_get_artifacts_effect = {
 					TYPE = armor
 					LOCATION = scope:visiting_location
-					MERCHANT = scope:armorer
 				}
 
 				# Save artifact scopes
@@ -936,7 +869,11 @@ at_decision_events.1013 = {
 		}
 
 		# Destroy some of the artifacts that were not bought
-		at_1010_flush_armors_effect = yes
+		scope:armorer = {
+			hidden_effect = {
+				at_destroy_random_artifact_effect = yes
+			}
+		}
 
 		# Update scopes
 		save_scope_value_as = { name = bought_armor value = yes }
@@ -978,7 +915,11 @@ at_decision_events.1013 = {
 		}
 
 		# Destroy some of the artifacts that were not bought
-		at_1010_flush_armors_effect = yes
+		scope:armorer = {
+			hidden_effect = {
+				at_destroy_random_artifact_effect = yes
+			}
+		}
 
 		# Update scopes
 		save_scope_value_as = { name = bought_armor value = yes }
@@ -1020,7 +961,11 @@ at_decision_events.1013 = {
 		}
 
 		# Destroy some of the artifacts that were not bought
-		at_1010_flush_armors_effect = yes
+		scope:armorer = {
+			hidden_effect = {
+				at_destroy_random_artifact_effect = yes
+			}
+		}
 
 		# Update scopes
 		save_scope_value_as = { name = bought_armor value = yes }
@@ -1158,7 +1103,6 @@ at_decision_events.1015 = {
 				at_get_artifacts_effect = {
 					TYPE = accessory
 					LOCATION = scope:visiting_location
-					MERCHANT = scope:jeweler
 				}
 
 				# Save artifact scopes
@@ -1217,7 +1161,11 @@ at_decision_events.1015 = {
 		}
 
 		# Destroy some of the artifacts that were not bought
-		at_1010_flush_accessories_effect = yes
+		scope:jeweler = {
+			hidden_effect = {
+				at_destroy_random_artifact_effect = yes
+			}
+		}
 
 		# Update scopes
 		save_scope_value_as = { name = bought_accessory value = yes }
@@ -1259,7 +1207,11 @@ at_decision_events.1015 = {
 		}
 
 		# Destroy some of the artifacts that were not bought
-		at_1010_flush_accessories_effect = yes
+		scope:jeweler = {
+			hidden_effect = {
+				at_destroy_random_artifact_effect = yes
+			}
+		}
 
 		# Update scopes
 		save_scope_value_as = { name = bought_accessory value = yes }
@@ -1301,7 +1253,11 @@ at_decision_events.1015 = {
 		}
 
 		# Destroy some of the artifacts that were not bought
-		at_1010_flush_accessories_effect = yes
+		scope:jeweler = {
+			hidden_effect = {
+				at_destroy_random_artifact_effect = yes
+			}
+		}
 
 		# Update scopes
 		save_scope_value_as = { name = bought_accessory value = yes }
