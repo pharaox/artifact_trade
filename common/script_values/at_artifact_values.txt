@@ -635,6 +635,12 @@ at_artifact_ask_price_value = {
 		}
 	}
 
+	# Adjust for tribal rulers
+	multiply = {
+		value = at_artifact_price_tribal_multiplier
+		desc = at_artifact_price_tribal_desc
+	}
+
 	# Seller personality multiplier (0.8 to 1.2 based on ai_greed)
 	# Chosen so that 0.8 * 1.5 = 1.2
 	multiply = {
@@ -655,6 +661,12 @@ at_artifact_ask_price_value = {
 # - a scope:buyer personality multiplier based on ai_greed
 at_artifact_bid_price_value = {
 	value = at_artifact_base_price_value
+
+	# Adjust for tribal rulers
+	multiply = {
+		value = at_artifact_price_tribal_multiplier
+		desc = at_artifact_price_tribal_desc
+	}
 
 	# Buyer personality multiplier (0.8 to 1.2 based on ai_greed)
 	multiply = {
@@ -705,10 +717,15 @@ at_destroy_artifact_gold_value = {
 		limit = {
 			scope:actor = { is_landless_adventurer = yes }
 		}
-		multiply = {
-			value = 0.1
-			round = yes
+		multiply = 0.1
+	}
+
+	# Adjust for tribal rulers
+	if = {
+		limit = {
+			scope:actor = { government_has_flag = government_is_tribal }
 		}
+		multiply = 0.75
 	}
 }
 
@@ -756,6 +773,67 @@ at_artifact_durability_multiplier = {
 	divide = artifact_max_durability
 	multiply = 0.5
 	add = 0.5
+}
+
+at_artifact_price_tribal_multiplier = {
+	# Determine party (buyer or seller)
+	if = {
+		limit = {
+			exists = scope:buyer
+			NOT = { scope:buyer = scope:actor }
+		}
+		scope:buyer = { save_temporary_scope_as = party }
+	}
+	else_if = {
+		limit = {
+			exists = scope:seller
+			NOT = { scope:seller = scope:actor }
+		}
+		scope:seller = { save_temporary_scope_as = party }
+	}
+
+	# Change party to liege, host, or county holder if not ruler
+	scope:party ?= {
+		if = {
+			limit = { is_ruler = yes }
+			# Do nothing
+		}
+		else_if = {
+			limit = { exists = liege }
+			liege = { save_temporary_scope_as = party }
+		}
+		else_if = {
+			limit = { exists = host }
+			host = { save_temporary_scope_as = party }
+		}
+		else_if = {
+			limit = {
+				exists = location
+				exists = location.county
+			}
+			location.county.holder ?= { save_temporary_scope_as = party }
+		}
+	}
+
+	if = {
+		limit = {
+			scope:actor = { government_has_flag = government_is_tribal }
+			scope:party ?= { government_has_flag = government_is_tribal }
+		}
+		value = 0.75
+	}
+	else_if = {
+		limit = {
+			OR = {
+				scope:actor = { government_has_flag = government_is_tribal }
+				scope:party ?= { government_has_flag = government_is_tribal }
+			}
+		}
+		value = 0.9
+	}
+	else = {
+		value = 1
+	}
 }
 
 # AI accept value of the Buy Artifact interaction, used in effects to evaluate whether
