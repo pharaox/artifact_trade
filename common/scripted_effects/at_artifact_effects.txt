@@ -77,6 +77,8 @@ at_buy_artifact_effect = {
 			}
 		}
 
+		custom_tooltip = at_artifact_price_breakdown_tooltip
+
 		# Remove buyer claims (tooltip only)
 		if = {
 			limit = {

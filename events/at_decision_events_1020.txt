@@ -31,12 +31,15 @@ scripted_effect at_1020_cleanup_effect = {
 	# Remove vanilla artifact variables
 	scope:first_artifact = {
 		at_1020_remove_sell_variables_effect = yes
+		at_1020_remove_bid_price_multiplier_effect = yes
 	}
 	scope:second_artifact ?= {
 		at_1020_remove_sell_variables_effect = yes
+		at_1020_remove_bid_price_multiplier_effect = yes
 	}
 	scope:third_artifact ?= {
 		at_1020_remove_sell_variables_effect = yes
+		at_1020_remove_bid_price_multiplier_effect = yes
 	}
 }
 
@@ -46,31 +49,49 @@ scripted_effect at_1020_add_sell_variables_effect = {
 	$MERCHANT$ = { save_temporary_scope_as = buyer }
 	save_temporary_scope_as = artifact
 
+	remove_variable = at_bid_price_multiplier
 	set_variable = {
 		name = 1020_artifact_sell_value
 		value = scope:artifact.at_artifact_bid_price_value
 		days = 1
 	}
-	save_temporary_scope_value_as = { name = artifact_bid_price_multiplier value = 1.2 }
+	set_variable = { name = at_bid_price_multiplier value = 1.2 }
 	set_variable = {
 		name = 1020_artifact_sell_high_value
 		value = scope:artifact.at_artifact_bid_price_value
 		days = 1
 	}
-	save_temporary_scope_value_as = { name = artifact_bid_price_multiplier value = 0.8 }
+	set_variable = { name = at_bid_price_multiplier value = 0.8 }
 	set_variable = {
 		name = 1020_artifact_sell_low_value
 		value = scope:artifact.at_artifact_bid_price_value
 		days = 1
 	}
-
-	clear_saved_scope = artifact_bid_price_multiplier
+	remove_variable = at_bid_price_multiplier
 }
 
 scripted_effect at_1020_remove_sell_variables_effect = {
 	remove_variable = 1020_artifact_sell_value
 	remove_variable = 1020_artifact_sell_high_value
 	remove_variable = 1020_artifact_sell_low_value
+}
+
+scripted_effect at_1020_set_bid_price_multiplier_effect = {
+	if = {
+		limit = { scope:attempted_artifact_haggle ?= flag:success }
+		set_variable = { name = at_bid_price_multiplier value = 1.2 }
+	}
+	else_if = {
+		limit = { scope:attempted_artifact_haggle ?= flag:failure }
+		set_variable = { name = at_bid_price_multiplier value = 0.8 }
+	}
+	else = {
+		remove_variable = at_bid_price_multiplier
+	}
+}
+
+scripted_effect at_1020_remove_bid_price_multiplier_effect = {
+	remove_variable = at_bid_price_multiplier
 }
 
 # Visiting Location: No Questions Asked
@@ -483,6 +504,21 @@ at_decision_events.1020 = {
 			set_variable = { name = suppress_artifact_notifications value = yes days = 2 }
 		}
 
+		# Save vanilla scopes and add vanilla variables for localization
+		scope:artifact_peddler = { save_scope_as = laamp_artifact_peddler }
+		scope:first_artifact = {
+			save_scope_as = 1020_first_artifact_to_sell
+			at_1020_add_sell_variables_effect = { MERCHANT = scope:artifact_peddler }
+		}
+		scope:second_artifact ?= {
+			save_scope_as = 1020_second_artifact_to_sell
+			at_1020_add_sell_variables_effect = { MERCHANT = scope:artifact_peddler }
+		}
+		scope:third_artifact ?= {
+			save_scope_as = 1020_third_artifact_to_sell
+			at_1020_add_sell_variables_effect = { MERCHANT = scope:artifact_peddler }
+		}
+
 		# Determine artifact outraged partner wants to sell
 		if = {
 			limit = { exists = scope:outraged_partner }
@@ -499,21 +535,9 @@ at_decision_events.1020 = {
 					scope:third_artifact = { save_scope_as = outraged_partner_artifact }
 				}
 			}
-		}
-
-		# Save vanilla scopes and add vanilla variables for localization
-		scope:artifact_peddler = { save_scope_as = laamp_artifact_peddler }
-		scope:first_artifact = {
-			save_scope_as = 1020_first_artifact_to_sell
-			at_1020_add_sell_variables_effect = { MERCHANT = scope:artifact_peddler }
-		}
-		scope:second_artifact ?= {
-			save_scope_as = 1020_second_artifact_to_sell
-			at_1020_add_sell_variables_effect = { MERCHANT = scope:artifact_peddler }
-		}
-		scope:third_artifact ?= {
-			save_scope_as = 1020_third_artifact_to_sell
-			at_1020_add_sell_variables_effect = { MERCHANT = scope:artifact_peddler }
+			scope:outraged_partner_artifact = {
+				set_variable = { name = at_bid_price_multiplier value = 1.2 }
+			}
 		}
 	}
 
@@ -694,7 +718,6 @@ at_decision_events.1020 = {
 			limit = { scope:third_artifact ?= scope:outraged_partner_artifact }
 			custom_tooltip = ep3_laamp_decision_event.1020.c.third_artifact
 		}
-		save_scope_value_as = { name = artifact_bid_price_multiplier value = 1.2 }
 		at_1020_sell_artifact_effect = {
 			MERCHANT = scope:artifact_peddler
 			ARTIFACT = scope:outraged_partner_artifact
@@ -928,13 +951,14 @@ at_decision_events.1021 = {
 	}
 
 	immediate = {
-		if = {
-			limit = { scope:attempted_artifact_haggle ?= flag:success }
-			save_scope_value_as = { name = artifact_bid_price_multiplier value = 1.2 }
+		scope:first_artifact = {
+			at_1020_set_bid_price_multiplier_effect = yes
 		}
-		else_if = {
-			limit = { scope:attempted_artifact_haggle ?= flag:failure }
-			save_scope_value_as = { name = artifact_bid_price_multiplier value = 0.8 }
+		scope:second_artifact ?= {
+			at_1020_set_bid_price_multiplier_effect = yes
+		}
+		scope:third_artifact ?= {
+			at_1020_set_bid_price_multiplier_effect = yes
 		}
 	}
 

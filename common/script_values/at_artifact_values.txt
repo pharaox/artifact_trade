@@ -677,8 +677,11 @@ at_artifact_bid_price_value = {
 	}
 
 	if = {
-		limit = { exists = scope:artifact_bid_price_multiplier }
-		multiply = scope:artifact_bid_price_multiplier
+		limit = { has_variable = at_bid_price_multiplier }
+		multiply = {
+			value = var:at_bid_price_multiplier
+			desc = at_artifact_bid_price_multiplier_desc
+		}
 	}
 
 	add = at_custom_artifact_bid_price_value
@@ -1704,4 +1707,15 @@ at_scope_buyer_current_gold_value = {
 # Used in localization.
 at_scope_artifact_price_value = {
 	value = scope:artifact_price
+}
+
+# Used in localization.
+at_artifact_actual_price_value = {
+	if = {
+		limit = { scope:actor = scope:buyer }
+		value = at_artifact_ask_price_value
+	}
+	else = {
+		value = at_artifact_bid_price_value
+	}
 }
