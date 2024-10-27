@@ -595,6 +595,7 @@ at_decision_events.1011 = {
 				# Get artifact list
 				at_get_artifacts_effect = {
 					TYPE = weapon
+					LOCATION = scope:visiting_location
 					MERCHANT = scope:weaponsmith
 				}
 
@@ -875,6 +876,7 @@ at_decision_events.1013 = {
 				# Get artifact list
 				at_get_artifacts_effect = {
 					TYPE = armor
+					LOCATION = scope:visiting_location
 					MERCHANT = scope:armorer
 				}
 
@@ -1155,6 +1157,7 @@ at_decision_events.1015 = {
 				# Get artifact list
 				at_get_artifacts_effect = {
 					TYPE = accessory
+					LOCATION = scope:visiting_location
 					MERCHANT = scope:jeweler
 				}
 

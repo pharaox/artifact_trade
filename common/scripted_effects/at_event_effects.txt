@@ -125,8 +125,16 @@ at_get_artifacts_effect = {
 			list_size = { name = artifacts value < 3 }
 		}
 
-		at_set_artifact_quality_effect = { TYPE = $TYPE$ }
-		at_set_artifact_wealth_effect = { TYPE = $TYPE$ }
+		at_set_artifact_quality_or_wealth_effect = {
+			NAME = quality
+			LOCATION = $LOCATION$
+			TYPE = $TYPE$
+		}
+		at_set_artifact_quality_or_wealth_effect = {
+			NAME = wealth
+			LOCATION = $LOCATION$
+			TYPE = $TYPE$
+		}
 		at_create_artifact_effect = {
 			TYPE = $TYPE$
 			MERCHANT = $MERCHANT$
@@ -134,6 +142,10 @@ at_get_artifacts_effect = {
 		scope:newly_created_artifact ?= {
 			set_variable = { name = at_artifact_type value = flag:$TYPE$ }
 			set_variable = { name = suppress_artifact_notifications value = yes days = 2 }
+			if = {
+				limit = { at_artifact_quality_wealth_average_value >= 20 }
+				at_add_scaled_artifact_modifiers_effect = yes
+			}
 			add_to_temporary_list = artifacts
 		}
 		clear_saved_scope = quality
@@ -179,36 +191,113 @@ at_create_artifact_effect = {
 					SMITH = $MERCHANT$
 				}
 			}
+			25 = {
+				create_artifact_crown_effect = {
+					OWNER = $MERCHANT$
+					SMITH = $MERCHANT$
+				}
+			}
+			25 = {
+				create_artifact_regalia_effect = {
+					OWNER = $MERCHANT$
+					SMITH = $MERCHANT$
+				}
+			}
 		}
 	}
 }
 
-at_set_artifact_quality_effect = {
-	random_list = {
-		20 = {
-			modifier = {
-				flag:$TYPE$ = flag:accessory
-				factor = 2
+at_set_artifact_quality_or_wealth_effect = {
+	save_scope_value_as = {
+		name = $NAME$
+		value = {
+			value = $LOCATION$.county.development_level
+			if = {
+				limit = {
+					$LOCATION$ = { has_holding_type = city_holding }
+				}
+				add = { 5 10 }
 			}
-			save_scope_value_as = { name = quality value = { 25 50 } }
-		}
-		80 = {
-			save_scope_value_as = { name = quality value = { 10 25 } }
+			if = {
+				limit = { flag:$TYPE$ = flag:accessory }
+				add = { 2 5 }
+			}
+			add = { -10 10 }
+			min = 5
+			max = 70
 		}
 	}
 }
 
-at_set_artifact_wealth_effect = {
-	random_list = {
-		20 = {
-			modifier = {
-				flag:$TYPE$ = flag:accessory
-				factor = 2
+at_add_scaled_artifact_modifiers_effect = {
+	if = {
+		limit = {
+			OR = {
+				artifact_slot_type = primary_armament # prowess, combat / intrigue
+				artifact_slot_type = armor # prowess, combat
 			}
-			save_scope_value_as = { name = wealth value = { 25 50 } }
 		}
-		80 = {
-			save_scope_value_as = { name = wealth value = { 10 25 } }
+		random_list = {
+			1 = {
+				add_scaled_artifact_modifier_prowess_effect = yes
+			}
+			1 = {
+				add_scaled_artifact_modifier_combat_effect = yes
+			}
+			1 = {
+				add_scaled_artifact_modifier_negate_prowess_penalty_effect = yes
+			}
+			1 = {
+				add_scaled_artifact_modifier_terrain_advantage_effect = yes
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				artifact_type = brooch # minor prestige, attractiveness, rulesrship
+				artifact_type = ring # minor prestige, majesty, rulesrship
+				artifact_type = necklace # minor prestige, attractiveness, majesty
+			}
+		}
+		random_list = {
+			1 = {
+				add_scaled_artifact_modifier_minor_prestige_effect = yes
+			}
+			1 = {
+				add_scaled_artifact_modifier_attractiveness_effect = yes
+			}
+			1 = {
+				add_scaled_artifact_modifier_rulership_effect = yes
+			}
+			1 = {
+				add_scaled_artifact_modifier_majesty_effect = yes
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				artifact_slot_type = helmet # minor prestige, majesty, rulesrship
+				artifact_slot_type = regalia # minor prestige, attractiveness, majesty
+			}
+		}
+		random_list = {
+			1 = {
+				add_scaled_artifact_modifier_prestige_effect = yes
+			}
+			1 = {
+				add_scaled_artifact_modifier_piety_effect = yes
+			}
+			1 = {
+				add_scaled_artifact_modifier_rulership_effect = yes
+			}
+			1 = {
+				add_scaled_artifact_modifier_majesty_effect = yes
+			}
+			1 = {
+				add_scaled_artifact_modifier_hire_mercenary_effect = yes
+			}
 		}
 	}
 }
