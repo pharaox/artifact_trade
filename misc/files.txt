@@ -1,5 +1,7 @@
 common/character_interactions/00_artifact_interactions.txt
+common/decisions/dlc_decisions/ep_3/06_ep3_laamp_decisions.txt
 common/modifiers/00_artifact_modifiers.txt
 common/modifiers/00_historical_artifact_modifiers.txt
 common/scripted_effects/00_ep1_artifact_effects.txt
+events/dlc/ep3/ep3_laamp_decision_events.txt
 gui/window_inventory.gui
