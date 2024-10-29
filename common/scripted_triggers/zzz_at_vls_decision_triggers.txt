@@ -1,5 +1,5 @@
 ﻿vls_decision_slot_1_is_shown_trigger = {
-	always = yes
+	has_game_rule = at_improved_vls_decision_enabled
 }
 
 vls_decision_slot_1_is_valid_trigger = {

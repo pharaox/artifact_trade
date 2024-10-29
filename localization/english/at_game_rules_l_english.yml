@@ -13,6 +13,12 @@
  setting_at_improved_destroy_artifact_enabled: "Enabled"
  setting_at_improved_destroy_artifact_enabled_desc: "Destroy Artifact improvements are enabled."
 
+ rule_at_improved_vls_decision: "#color_yellow Search & Trade Artifacts:#! Visit Holding Improvements"
+ setting_at_improved_vls_decision_disabled: "#high Disabled#!"
+ setting_at_improved_vls_decision_disabled_desc: "Visit Holding improvements are disabled."
+ setting_at_improved_vls_decision_enabled: "Enabled"
+ setting_at_improved_vls_decision_enabled_desc: "Visit Holding improvements are enabled."
+
  rule_at_valid_trading_partners: "#color_yellow Search & Trade Artifacts:#! Valid Buyers or Sellers"
  setting_at_valid_trading_partners_same_and_neighboring_realms: "#high Same and Neighboring Realms#!"
  setting_at_valid_trading_partners_same_and_neighboring_realms_desc: "Characters in the same and neighboring realms."

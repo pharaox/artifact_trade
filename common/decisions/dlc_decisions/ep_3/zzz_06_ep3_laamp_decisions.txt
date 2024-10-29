@@ -110,8 +110,14 @@ visit_local_settlement_decision = {
 		if = {
 			limit = { scope:vls_decision = yes }
 
-			vls_decision_slot_1_prepare_effect = yes
-			vls_decision_slot_2_prepare_effect = yes
+			if = {
+				limit = { vls_decision_slot_1_is_shown_trigger = yes }
+				vls_decision_slot_1_prepare_effect = yes
+			}
+			if = {
+				limit = { vls_decision_slot_2_is_shown_trigger = yes }
+				vls_decision_slot_2_prepare_effect = yes
+			}
 
 			if = {
 				limit = {
@@ -123,28 +129,68 @@ visit_local_settlement_decision = {
 					}
 				}
 				#The base tooltip
-				custom_tooltip = visit_local_settlement_tribal_holding_decision_tt
+				if = {
+					limit = { vls_decision_slot_1_is_shown_trigger = yes }
+					custom_tooltip = vls_decision_slot_1_vanilla_tribal_holding_tt_overwrite
+				}
+				else_if = {
+					limit = { vls_decision_slot_2_is_shown_trigger = yes }
+					custom_tooltip = vls_decision_slot_2_vanilla_tribal_holding_tt_overwrite
+				}
+				else = {
+					custom_tooltip = visit_local_settlement_tribal_holding_decision_tt
+				}
 			}
 			else_if = {
 				limit = {
 					root.location = { has_holding_type = church_holding }
 				}
 				#Add on church holding-specific effects
-				custom_tooltip = visit_local_settlement_church_holding_decision_tt
+				if = {
+					limit = { vls_decision_slot_1_is_shown_trigger = yes }
+					custom_tooltip = vls_decision_slot_1_vanilla_church_holding_tt_overwrite
+				}
+				else_if = {
+					limit = { vls_decision_slot_2_is_shown_trigger = yes }
+					custom_tooltip = vls_decision_slot_2_vanilla_church_holding_tt_overwrite
+				}
+				else = {
+					custom_tooltip = visit_local_settlement_church_holding_decision_tt
+				}
 			}
 			else_if = {
 				limit = {
 					root.location = { has_holding_type = castle_holding }
 				}
 				#Add on castle holding-specific effects
-				custom_tooltip = visit_local_settlement_castle_holding_decision_tt
+				if = {
+					limit = { vls_decision_slot_1_is_shown_trigger = yes }
+					custom_tooltip = vls_decision_slot_1_vanilla_castle_holding_tt_overwrite
+				}
+				else_if = {
+					limit = { vls_decision_slot_2_is_shown_trigger = yes }
+					custom_tooltip = vls_decision_slot_2_vanilla_castle_holding_tt_overwrite
+				}
+				else = {
+					custom_tooltip = visit_local_settlement_castle_holding_decision_tt
+				}
 			}
 			else_if = {
 				limit = {
 					root.location = { has_holding_type = city_holding }
 				}
 				#Add on castle holding-specific effects
-				custom_tooltip = visit_local_settlement_city_holding_decision_tt
+				if = {
+					limit = { vls_decision_slot_1_is_shown_trigger = yes }
+					custom_tooltip = vls_decision_slot_1_vanilla_city_holding_tt_overwrite
+				}
+				else_if = {
+					limit = { vls_decision_slot_2_is_shown_trigger = yes }
+					custom_tooltip = vls_decision_slot_2_vanilla_city_holding_tt_overwrite
+				}
+				else = {
+					custom_tooltip = visit_local_settlement_city_holding_decision_tt
+				}
 			}
 			set_variable = ep3_laamp_decision_1000_is_visiting
 			trigger_event =  ep3_laamp_decision_event.1000

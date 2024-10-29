@@ -30,6 +30,22 @@ at_improved_destroy_artifact = {
 	}
 }
 
+at_improved_vls_decision = {
+	categories = {
+		at_artifact_trade
+	}
+
+	default = at_improved_vls_decision_enabled
+
+	at_improved_vls_decision_disabled = {
+		flag = GG_can_change_rule
+	}
+
+	at_improved_vls_decision_enabled = {
+		flag = GG_can_change_rule
+	}
+}
+
 at_valid_trading_partners = {
 	categories = {
 		at_artifact_trade

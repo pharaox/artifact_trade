@@ -1,4 +1,16 @@
 ﻿l_english:
+ # Vanilla overwrites
+ # Visit Local Settlement Slot 1
+ vls_decision_slot_1_vanilla_tribal_holding_tt_overwrite: "$visit_local_settlement_tribal_holding_decision_tt$"
+ vls_decision_slot_1_vanilla_church_holding_tt_overwrite: "$visit_local_settlement_church_holding_decision_tt$"
+ vls_decision_slot_1_vanilla_castle_holding_tt_overwrite: "$visit_local_settlement_castle_holding_decision_tt$"
+ vls_decision_slot_1_vanilla_city_holding_tt_overwrite: "$visit_local_settlement_city_holding_decision_tt$"
+ # Visit Local Settlement Slot 2
+ vls_decision_slot_2_vanilla_tribal_holding_tt_overwrite: "$visit_local_settlement_tribal_holding_decision_tt$"
+ vls_decision_slot_2_vanilla_church_holding_tt_overwrite: "$visit_local_settlement_church_holding_decision_tt$"
+ vls_decision_slot_2_vanilla_castle_holding_tt_overwrite: "$visit_local_settlement_castle_holding_decision_tt$"
+ vls_decision_slot_2_vanilla_city_holding_tt_overwrite: "$visit_local_settlement_city_holding_decision_tt$"
+
  # Visit Local Settlement
  vls_decision_tooltip: "Explore the local holding"
  # Visit Local Settlement Slot 1
