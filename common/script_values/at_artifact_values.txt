@@ -823,7 +823,7 @@ at_artifact_price_tribal_multiplier = {
 			scope:actor = { government_has_flag = government_is_tribal }
 			scope:party ?= { government_has_flag = government_is_tribal }
 		}
-		value = 0.75
+		value = 0.6
 	}
 	else_if = {
 		limit = {
@@ -832,7 +832,7 @@ at_artifact_price_tribal_multiplier = {
 				scope:party ?= { government_has_flag = government_is_tribal }
 			}
 		}
-		value = 0.9
+		value = 0.8
 	}
 	else = {
 		value = 1
