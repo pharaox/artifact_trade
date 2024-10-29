@@ -5,12 +5,6 @@
 		limit = {
 			at_can_be_merchant_trigger = { CHARACTER = $CHARACTER$ }
 			var:at_merchant_type ?= flag:$TYPE$
-			trigger_if = {
-				limit = {
-					at_is_saved_vanilla_merchant_trigger = { CHARACTER = $CHARACTER$ }
-				}
-				at_is_saved_vanilla_merchant_of_type_trigger = { CHARACTER = $CHARACTER$ TYPE = $TYPE$ }
-			}
 		}
 		save_scope_as = $MERCHANT$
 		save_scope_as = recurring_$MERCHANT$
@@ -227,6 +221,23 @@ at_set_artifact_quality_or_wealth_effect = {
 			min = 5
 			max = 70
 		}
+	}
+}
+
+at_add_merchant_gold_effect = {
+	add_gold = {
+		value = $LOCATION$.county.development_level
+		if = {
+			limit = {
+				$LOCATION$ = { has_holding_type = city_holding }
+			}
+			add = { 5 10 }
+		}
+		multiply = 5
+		min = 50
+		max = 200
+		add = { -10 10 }
+		subtract = gold
 	}
 }
 

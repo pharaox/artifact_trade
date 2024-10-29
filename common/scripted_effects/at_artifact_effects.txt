@@ -43,28 +43,11 @@ at_buy_artifact_effect = {
 		# Pay price to seller
 		if = {
 			limit = {
-				OR = {
-					at_short_term_gold_value >= scope:artifact_price
-					AND = {
-						var:at_merchant_type ?= flag:peddler
-						scope:seller = {
-							is_landless_adventurer = yes
-						}
-					}
-				}
+				at_short_term_gold_value >= scope:artifact_price
 			}
 			pay_short_term_gold = {
 				gold = scope:artifact_price
 				target = scope:seller
-			}
-
-			# Ensure the buyer has at least 0 gold after the transaction
-			if = {
-				limit = { gold < 0 }
-				add_gold = {
-					value = gold
-					multiply = -1
-				}
 			}
 		}
 		else = {

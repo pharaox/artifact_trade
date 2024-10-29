@@ -52,19 +52,28 @@ scripted_effect at_1020_add_sell_variables_effect = {
 	remove_variable = at_bid_price_multiplier
 	set_variable = {
 		name = 1020_artifact_sell_value
-		value = scope:artifact.at_artifact_bid_price_value
+		value = {
+			value = scope:artifact.at_artifact_bid_price_value
+			max = $MERCHANT$.at_short_term_gold_value
+		}
 		days = 1
 	}
 	set_variable = { name = at_bid_price_multiplier value = 1.2 }
 	set_variable = {
 		name = 1020_artifact_sell_high_value
-		value = scope:artifact.at_artifact_bid_price_value
+		value = {
+			value = scope:artifact.at_artifact_bid_price_value
+			max = $MERCHANT$.at_short_term_gold_value
+		}
 		days = 1
 	}
 	set_variable = { name = at_bid_price_multiplier value = 0.8 }
 	set_variable = {
 		name = 1020_artifact_sell_low_value
-		value = scope:artifact.at_artifact_bid_price_value
+		value = {
+			value = scope:artifact.at_artifact_bid_price_value
+			max = $MERCHANT$.at_short_term_gold_value
+		}
 		days = 1
 	}
 	remove_variable = at_bid_price_multiplier
@@ -379,6 +388,16 @@ at_decision_events.1020 = {
 				LOCATION = scope:visiting_location
 				CHARACTER = root
 				MERCHANT = artifact_peddler
+			}
+			if = {
+				limit = {
+					NOT = { exists = scope:recurring_artifact_peddler }
+				}
+				hidden_effect = {
+					scope:artifact_peddler = {
+						at_add_merchant_gold_effect = { LOCATION = scope:visiting_location }
+					}
+				}
 			}
 		}
 
