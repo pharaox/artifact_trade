@@ -66,6 +66,38 @@ at_valid_trading_partners = {
 	}
 }
 
+at_interaction_range = {
+	categories = {
+		at_artifact_trade
+	}
+
+	default = at_interaction_range_all
+
+	at_interaction_range_small = {
+		flag = GG_can_change_rule
+	}
+
+	at_interaction_range_medium = {
+		flag = GG_can_change_rule
+	}
+
+	at_interaction_range_large = {
+		flag = GG_can_change_rule
+	}
+
+	at_interaction_range_huge = {
+		flag = GG_can_change_rule
+	}
+
+	at_interaction_range_massive = {
+		flag = GG_can_change_rule
+	}
+
+	at_interaction_range_all = {
+		flag = GG_can_change_rule
+	}
+}
+
 at_number_of_potential_buyers = {
 	categories = {
 		at_artifact_trade

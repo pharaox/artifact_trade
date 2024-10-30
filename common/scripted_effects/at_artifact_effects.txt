@@ -245,6 +245,12 @@ at_get_valid_buyers_or_sellers_effect = {
 	every_living_character = {
 		limit = {
 			at_valid_buyer_or_seller_trigger = { PARTY = scope:party }
+			trigger_if = {
+				limit = {
+					NOT = { has_game_rule = at_interaction_range_all }
+				}
+				at_is_character_within_interaction_range_trigger = { PARTY = scope:party }
+			}
 		}
 		add_to_list = $LIST$
 	}

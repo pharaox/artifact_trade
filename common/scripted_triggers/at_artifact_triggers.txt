@@ -111,19 +111,9 @@ at_is_neighboring_realm_character_trigger = {
 
 at_is_character_within_trading_range_trigger = {
 	$PARTY$ = { exists = capital_province }
+	at_get_capital_province_trigger = yes
 	trigger_if = {
-		limit = { exists = capital_province }
-		capital_province = { save_temporary_scope_as = capital_province }
-	}
-	trigger_else_if = {
-		limit = { exists = host }
-		host.capital_province ?= { save_temporary_scope_as = capital_province }
-	}
-	trigger_else = {
-		location ?= { save_temporary_scope_as = capital_province }
-	}
-	trigger_if = {
-		limit = { 
+		limit = {
 			$PARTY$ = { is_landed = yes }
 		}
 		scope:capital_province = {
@@ -140,6 +130,30 @@ at_is_character_within_trading_range_trigger = {
 				value <= $PARTY$.at_artifact_trading_range_landless_value
 			}
 		}
+	}
+}
+
+at_is_character_within_interaction_range_trigger = {
+	at_get_capital_province_trigger = yes
+	scope:capital_province ?= {
+		squared_distance = {
+			target = $PARTY$.capital_province
+			value <= $PARTY$.at_interaction_range_value
+		}
+	}
+}
+
+at_get_capital_province_trigger = {
+	trigger_if = {
+		limit = { exists = capital_province }
+		capital_province = { save_temporary_scope_as = capital_province }
+	}
+	trigger_else_if = {
+		limit = { exists = host }
+		host.capital_province ?= { save_temporary_scope_as = capital_province }
+	}
+	trigger_else = {
+		location ?= { save_temporary_scope_as = capital_province }
 	}
 }
 
