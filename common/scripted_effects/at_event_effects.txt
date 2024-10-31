@@ -209,7 +209,7 @@ at_set_artifact_quality_or_wealth_effect = {
 			value = $LOCATION$.county.development_level
 			if = {
 				limit = {
-					$LOCATION$ = { has_holding_type = city_holding }
+					$LOCATION$ = { at_has_city_like_holding_trigger = yes }
 				}
 				add = { 5 10 }
 			}
@@ -229,7 +229,7 @@ at_add_merchant_gold_effect = {
 		value = $LOCATION$.county.development_level
 		if = {
 			limit = {
-				$LOCATION$ = { has_holding_type = city_holding }
+				$LOCATION$ = { at_has_city_like_holding_trigger = yes }
 			}
 			add = { 5 10 }
 		}
@@ -350,18 +350,18 @@ at_get_visiting_partner_effect = {
 					add = 1000
 					is_close_family_of = $CHARACTER$
 					at_has_illness_or_wounds_trigger = yes
-					location = { has_holding_type = church_holding }
+					location = { at_has_church_like_holding_trigger = yes }
 				}
 				modifier = {
 					add = 500
 					is_spouse_of = $CHARACTER$
 					at_has_illness_or_wounds_trigger = yes
-					location = { has_holding_type = church_holding }
+					location = { at_has_church_like_holding_trigger = yes }
 				}
 				modifier = {
 					add = 100
 					has_relation_lover = $CHARACTER$
-					location = { has_holding_type = church_holding }
+					location = { at_has_church_like_holding_trigger = yes }
 				}
 				modifier = {
 					add = 20

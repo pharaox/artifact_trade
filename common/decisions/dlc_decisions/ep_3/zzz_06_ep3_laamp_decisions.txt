@@ -124,7 +124,7 @@ visit_local_settlement_decision = {
 					root.location = {
 						OR = {
 							has_holding = no
-							has_holding_type = tribal_holding
+							at_has_tribal_like_holding_trigger = yes
 						}
 					}
 				}
@@ -143,7 +143,7 @@ visit_local_settlement_decision = {
 			}
 			else_if = {
 				limit = {
-					root.location = { has_holding_type = church_holding }
+					root.location = { at_has_church_like_holding_trigger = yes }
 				}
 				#Add on church holding-specific effects
 				if = {
@@ -160,7 +160,7 @@ visit_local_settlement_decision = {
 			}
 			else_if = {
 				limit = {
-					root.location = { has_holding_type = castle_holding }
+					root.location = { at_has_castle_like_holding_trigger = yes }
 				}
 				#Add on castle holding-specific effects
 				if = {
@@ -177,7 +177,7 @@ visit_local_settlement_decision = {
 			}
 			else_if = {
 				limit = {
-					root.location = { has_holding_type = city_holding }
+					root.location = { at_has_city_like_holding_trigger = yes }
 				}
 				#Add on castle holding-specific effects
 				if = {

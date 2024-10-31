@@ -113,32 +113,32 @@ at_decision_events.1000 = {
 			random_valid = {
 				triggered_desc = {
 					trigger = {
-						scope:visiting_location = { has_holding_type = tribal_holding }
+						scope:visiting_location = { at_has_tribal_like_holding_trigger = yes }
 					}
 					desc = ep3_laamp_decision_event.1000.desc_intro_tribal_holding_01
 				}
 				triggered_desc = {
 					trigger = {
-						scope:visiting_location = { has_holding_type = tribal_holding }
+						scope:visiting_location = { at_has_tribal_like_holding_trigger = yes }
 					}
 					desc = ep3_laamp_decision_event.1000.desc_intro_tribal_holding_02
 				}
 			}
 			triggered_desc = {
 				trigger = {
-					scope:visiting_location = { has_holding_type = church_holding }
+					scope:visiting_location = { at_has_church_like_holding_trigger = yes }
 				}
 				desc = ep3_laamp_decision_event.1000.desc_intro_church_holding
 			}
 			triggered_desc = {
 				trigger = {
-					scope:visiting_location = { has_holding_type = castle_holding }
+					scope:visiting_location = { at_has_castle_like_holding_trigger = yes }
 				}
 				desc = ep3_laamp_decision_event.1000.desc_intro_castle_holding
 			}
 			triggered_desc = {
 				trigger = {
-					scope:visiting_location = { has_holding_type = city_holding }
+					scope:visiting_location = { at_has_city_like_holding_trigger = yes }
 				}
 				desc = ep3_laamp_decision_event.1000.desc_intro_city_holding
 			}
@@ -641,19 +641,19 @@ at_decision_events.1000 = {
 
 	override_sound = {
 		trigger = {
-			scope:visiting_location = { has_holding_type = church_holding }
+			scope:visiting_location = { at_has_church_like_holding_trigger = yes }
 		}
 		reference = "event:/SFX/Events/Themes/sfx_event_theme_type_faith"
 	}
 	override_sound = {
 		trigger = {
-			scope:visiting_location = { has_holding_type = castle_holding }
+			scope:visiting_location = { at_has_castle_like_holding_trigger = yes }
 		}
 		reference = "event:/SFX/Events/Themes/sfx_event_theme_type_martial"
 	}
 	override_sound = {
 		trigger = {
-			scope:visiting_location = { has_holding_type = city_holding }
+			scope:visiting_location = { at_has_city_like_holding_trigger = yes }
 		}
 		reference = "event:/SFX/Events/Themes/sfx_event_theme_type_stewardship"
 	}
@@ -676,7 +676,7 @@ at_decision_events.1000 = {
 	override_background = {
 		trigger = {
 			at_1000_finished_trigger = yes
-			scope:visiting_location = { has_holding_type = tribal_holding }
+			scope:visiting_location = { at_has_tribal_like_holding_trigger = yes }
 		}
 		reference = bp1_bonfire
 	}
@@ -694,25 +694,25 @@ at_decision_events.1000 = {
 	}
 	override_background = {
 		trigger = {
-			scope:visiting_location = { has_holding_type = tribal_holding }
+			scope:visiting_location = { at_has_tribal_like_holding_trigger = yes }
 		}
 		reference = terrain_settlement
 	}
 	override_background = {
 		trigger = {
-			scope:visiting_location = { has_holding_type = church_holding }
+			scope:visiting_location = { at_has_church_like_holding_trigger = yes }
 		}
 		reference = holy_site_generic
 	}
 	override_background = {
 		trigger = {
-			scope:visiting_location = { has_holding_type = castle_holding }
+			scope:visiting_location = { at_has_castle_like_holding_trigger = yes }
 		}
 		reference = courtyard_location
 	}
 	override_background = {
 		trigger = {
-			scope:visiting_location = { has_holding_type = city_holding }
+			scope:visiting_location = { at_has_city_like_holding_trigger = yes }
 		}
 		reference = ep3_city_gate
 	}

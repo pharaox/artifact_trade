@@ -10,7 +10,7 @@
 	}
 	if = {
 		limit = {
-			location = { has_holding_type = church_holding }
+			location = { at_has_church_like_holding_trigger = yes }
 		}
 		add_to_variable_list = {
 			name = list_of_options
@@ -19,7 +19,7 @@
 	}
 	if = {
 		limit = {
-			location = { has_holding_type = castle_holding }
+			location = { at_has_castle_like_holding_trigger = yes }
 		}
 		add_to_variable_list = {
 			name = list_of_options

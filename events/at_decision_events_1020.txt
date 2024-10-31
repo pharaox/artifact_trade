@@ -137,7 +137,7 @@ at_decision_events.1020 = {
 			triggered_desc = {
 				trigger = {
 					NOT = { exists = scope:been_to_peddler }
-					scope:visiting_location = { has_holding_type = city_holding }
+					scope:visiting_location = { at_has_city_like_holding_trigger = yes }
 				}
 				desc = ep3_laamp_decision_event.1020.desc_intro_posh_stalls
 			}

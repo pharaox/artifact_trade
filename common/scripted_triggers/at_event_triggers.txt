@@ -1,6 +1,6 @@
 ﻿at_province_has_craftsmen_trigger = {
 	OR = {
-		has_holding_type = city_holding
+		at_has_city_like_holding_trigger = yes
 		county.development_level >= 10
 		# Economy
 		has_building_or_higher = common_tradeport_01
@@ -194,4 +194,20 @@ at_is_west_africa_like_location_trigger = {
 at_is_east_africa_like_location_trigger = {
 	exists = geographical_region:world_africa_east
 	geographical_region = world_africa_east
+}
+
+at_has_tribal_like_holding_trigger = {
+	has_holding_type = tribal_holding
+}
+
+at_has_church_like_holding_trigger = {
+	has_holding_type = church_holding
+}
+
+at_has_castle_like_holding_trigger = {
+	has_holding_type = castle_holding
+}
+
+at_has_city_like_holding_trigger = {
+	has_holding_type = city_holding
 }
