@@ -728,7 +728,7 @@ at_destroy_artifact_gold_value = {
 		limit = {
 			scope:actor = { government_has_flag = government_is_tribal }
 		}
-		multiply = 0.75
+		multiply = 0.6
 	}
 }
 
