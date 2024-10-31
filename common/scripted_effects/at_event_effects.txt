@@ -238,6 +238,7 @@ at_add_merchant_gold_effect = {
 		max = 200
 		add = { -10 10 }
 		subtract = gold
+		min = 1
 	}
 }
 
