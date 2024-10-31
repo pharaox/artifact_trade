@@ -1,0 +1,39 @@
+﻿namespace = at_decision_events
+
+# Properly cleanup after ep3_laamp_decision_event.1000
+# See https://forum.paradoxplaza.com/forum/threads/ai-landless-adventurers-are-not-visiting-settlements-if-you-switch-to-any-of-them-you-cant-as-well.1712826/
+at_decision_events.1090 = {
+	type = character_event
+	hidden = yes
+
+	trigger = {
+		is_ai = yes
+		has_variable = ep3_laamp_decision_1000_is_visiting
+	}
+
+	immediate = {
+		at_debug_log_effect = { MSG = at_debug_msg_cleaning_up_after_ep3_laamp_decision_1000 }
+
+		# See 1000_clean_up_effect
+		# Supplies
+		remove_variable = supply_gold_cost
+		remove_variable = 1010_guards_summoned
+		# Artifacts
+		remove_variable = 1021_artifact_sell_screen
+		# Town Crier
+		remove_variable = 1025_first_contract_desc
+		remove_variable = 1025_second_contract_desc
+		remove_variable = 1025_third_contract_desc
+		# Healer
+		remove_variable = 1041_healer_aptitude
+		remove_variable = 1041_partner_healer_aptitude
+		# Church
+		remove_variable = 1043_collect_gold_difficulty
+		# Main
+		clear_variable_list = list_of_options
+		remove_variable = list_of_options
+		remove_variable = return_from_location
+		# Un-engage us from the decision
+		remove_variable = ep3_laamp_decision_1000_is_visiting
+	}
+}

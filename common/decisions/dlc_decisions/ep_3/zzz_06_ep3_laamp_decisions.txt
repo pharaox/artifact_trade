@@ -194,6 +194,13 @@ visit_local_settlement_decision = {
 			}
 			set_variable = ep3_laamp_decision_1000_is_visiting
 			trigger_event =  ep3_laamp_decision_event.1000
+
+			# Properly cleanup after ep3_laamp_decision_event.1000
+			# See https://forum.paradoxplaza.com/forum/threads/ai-landless-adventurers-are-not-visiting-settlements-if-you-switch-to-any-of-them-you-cant-as-well.1712826/
+			trigger_event = {
+				id = at_decision_events.1090
+				delayed = yes
+			}
 		}
 		else_if = {
 			limit = { scope:vls_decision_slot_1 = yes }

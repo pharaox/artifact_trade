@@ -16,6 +16,8 @@
  at_debug_msg_creating_artifact: "$at_debug_prefix$: Creating artifact"
  at_debug_msg_destroying_artifact: "$at_debug_prefix$: Destroying artifact"
 
+ at_debug_msg_cleaning_up_after_ep3_laamp_decision_1000: "$at_debug_prefix$: Cleaning up after ep3_laamp_decision_event.1000"
+
  at_artifact: "[THIS.Var('artifact').Artifact.GetNameNoTooltip] ([THIS.Var('artifact').Artifact.GetID]$at_artifact_type$)"
  at_buyer: "[THIS.Var('buyer').Char.GetFullNameNoTooltip] ([THIS.Var('buyer').Char.GetID]$at_buyer_merchant_type$)"
  at_seller: "[THIS.Var('seller').Char.GetFullNameNoTooltip] ([THIS.Var('seller').Char.GetID]$at_seller_merchant_type$)"
