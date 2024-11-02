@@ -10,9 +10,11 @@ In version 1.9 CK3 enabled destroying of artifacts for gold, however it's fairly
 
 This mod adds what is missing, and more. The system is balanced so that it does not offer significant advantages to the player. The AI will use it as well, initiating, accepting, or rejecting buy and sell interactions based on a comprehensive estimation of the artifact's usefulness and significance.
 
-The base artifact prices in this mod correspond to the destroy prices in CK3 1.9. Actual trades are settled at slightly different prices that also depend on the AI greed of the accepting party and if the player is involved or not. The player can never sell or destroy an artifact at a price higher than the one they bought it.
+The base artifact prices in this mod are mainly determined by the artifact's *quality and wealth* (hidden properties that determine rarity), and roughly correspond to the destroy prices. Actual trades are settled at slightly different prices that also depend on the AI greed of the accepting party. Tribal characters demand and offer lower prices. The player can never sell or destroy an artifact at a price higher than the one they bought it, since AI sellers include a "profit margin" when selling to the player.
 
 When buying and selling artifacts, the AI acceptance is influenced by multiple factors. Besides the artifact rarity compared to that of other relevant artifacts, they include the artifact's durability, its uniqueness, is it equippable and beneficial to the character, is it unwanted or cursed, the character's claims or special relationship to the artifact, the artifact's price, and the character's wealth. In addition, the AI will never offer to pay more than their *short term budget*, and will only sell if the other party offers enough gold to pay the full price.
+
+For added realism and better performance, not all characters are valid buyers or sellers. By default, these are characters in the same and neighboring realms, and foreign rulers within a dynamic trading range depending on rank. This can be adjusted via a game rule.
 
 In case you don't like artifact trading for some reason, you can disable the trading part via a game rule.
 
@@ -22,7 +24,19 @@ This mod also substantially improves the vanilla **Destroy Artifact** interactio
 * The destroy price (and piety for Aniconist rulers) is influenced by the artifact durability.
 * The AI decision making is much more sophisticated and consistent with buying and selling.
 
-These improvements are enabled by default but can also be disabled via a game rule.
+In the "Roads to Power" DLC, CK3 added buying and selling artifacts by landless adventurers as part of the **Visit Holding** decision event chain. This mod substantially improves upon this feature as well:
+
+* Artifact prices are consistent and based on the above criteria, instead of being somewhat based on rarity but otherwise random.
+* Adventurers and peddlers can only buy artifacts if they can afford them.
+* Artifacts can be bought in all holding types above certain development level, and their quality and wealth (and therefore rarity and price) depend on that level as well.
+* Artifacts sold by merchants are still better on average, but in a more balanced way. They will be destroyed or replaced after some time if not bought.
+* AI landless adventurers will regularly buy and sell artifacts as well.
+
+In addition, currently this mod fixes a [vanilla issue](https://forum.paradoxplaza.com/forum/threads/ai-landless-adventurers-are-not-visiting-settlements-if-you-switch-to-any-of-them-you-cant-as-well.1712826/) that prevents AI landless adventurers from visiting holdings.
+
+Since the original vanilla event chain can't be changed without a significant compatibility sacrifice, this mod disables the artifact trading options in the vanilla chain and adds an entirely new chain, reachable via a new option of the **Visit Holding** decision.
+
+These improvements are enabled by default but can also be disabled via game rules.
 
 ## Compatibility
 
@@ -83,10 +97,11 @@ The *base artifact prices* in this mod correspond to the destroy prices in CK3 1
 * Determine QWA as `(quality + wealth) / 2`
 * Multiply by 2.5
 * Multiply by `0.5 + 0.5 * (durability / max_durability)`
-* Ensure a minimum of the artifact destroy price
 * If the artifact is unique, multiply by 3
 
-Actual trades are settled at the *bid price* (buyer's price) if the initiating party is the seller, and the *ask price* (seller's price), if the initiating party is the buyer. These prices are calculated by multiplying the base price by a factor depending on AI greed, and an additional factor of 1.4 for the ask price if the initiating party is the player. As a result, the player can never sell or destroy an artifact at a price higher than the one they bought it. This is done to prevent exploits, and to make it a bit more challenging for the player to use the trading system to their advantage.
+Actual trades are settled at the *bid price* (buyer's price) if the initiating party is the seller, and the *ask price* (seller's price), if the initiating party is the buyer. These prices are calculated by multiplying the base price by a factor depending on AI greed, and an additional "profit margin" of 50% for the ask price if the initiating party is the player. As a result, the player can never sell or destroy an artifact at a price higher than the one they bought it. This is done to prevent exploits, and to make it a bit more challenging for the player to use the trading system to their advantage.
+
+For consistency with vanilla's **Destroy Artifact**, ask prices are never lower than the artifact destroy value. Also, tribal characters both offer and demand lower prices to reflect their scarcity of gold and for consistency with other vanilla features - 20% lower if one party is tribal, and 40% lower if both parties are tribal.
 
 ### AI Willingness to Buy or Sell
 
@@ -97,6 +112,8 @@ When selling artifacts, the AI willingness or acceptance is influenced by simila
 In addition, the AI will never offer to pay more than their *short term budget* (the portion of the AI's budget that can be used for short term purchases), and will only sell if the other party offers enough gold to pay the full price.
 
 The artifact's QWA strongly correlates with rarity. When selling, you may find it quite hard to find buyers for common artifacts, and progressively easier for artifact of higher rarities. When buying, you may find it quite easy to find sellers for common artifacts, and progressively harder for artifact of higher rarities. You could spend a hook if you have one on a character to increase their willingness to buy or sell.
+
+AI landless adventurers are somewhat more willing to trade artifacts. In addition, craftsmen are much more willing to sell, and peddlers are much more willing to both buy and sell, for consistency with their general willingness to do so in the **Visit Holding** decision event chain.
 
 AI rulers will regularly initiate buy and sell artifact interactions with other AI characters (never the player), and this will sometimes result in actual trades.
 
@@ -120,6 +137,10 @@ The AI willingness to destroy an artifact is influenced by factors similar to th
 
 * They are quite reluctant to destroy Famed or Illustrious artifacts, and will almost never destroy unique artifacts.
 * As an exception to the above, they will destroy almost anything if they are Aniconist.
+
+## Performance
+
+The **Buy Artifacts** and **Sell Artifacts** interactions might become slow if the number of characters that would accept them is large enough (hundreds). To avoid this, you can use the **Buy / Sell Artifacts Range** game rule to reduce the range these interactions use to look for characters.
 
 ## Links
 

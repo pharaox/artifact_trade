@@ -6,9 +6,11 @@ In version 1.9 CK3 enabled destroying of artifacts for gold, however it's fairly
 
 This mod adds what is missing, and more. The system is balanced so that it does not offer significant advantages to the player. The AI will use it as well, initiating, accepting, or rejecting buy and sell interactions based on a comprehensive estimation of the artifact's usefulness and significance.
 
-The base artifact prices in this mod correspond to the destroy prices in CK3 1.9. Actual trades are settled at slightly different prices that also depend on the AI greed of the accepting party and if the player is involved or not. The player can never sell or destroy an artifact at a price higher than the one they bought it.
+The base artifact prices in this mod are mainly determined by the artifact's [i]quality and wealth[/i] (hidden properties that determine rarity), and roughly correspond to the destroy prices. Actual trades are settled at slightly different prices that also depend on the AI greed of the accepting party. Tribal characters demand and offer lower prices. The player can never sell or destroy an artifact at a price higher than the one they bought it, since AI sellers include a "profit margin" when selling to the player.
 
 When buying and selling artifacts, the AI acceptance is influenced by multiple factors. Besides the artifact rarity compared to that of other relevant artifacts, they include the artifact's durability, its uniqueness, is it equippable and beneficial to the character, is it unwanted or cursed, the character's claims or special relationship to the artifact, the artifact's price, and the character's wealth. In addition, the AI will never offer to pay more than their [i]short term budget[/i], and will only sell if the other party offers enough gold to pay the full price.
+
+For added realism and better performance, not all characters are valid buyers or sellers. By default, these are characters in the same and neighboring realms, and foreign rulers within a dynamic trading range depending on rank. This can be adjusted via a game rule.
 
 In case you don't like artifact trading for some reason, you can disable the trading part via a game rule.
 
@@ -19,7 +21,20 @@ This mod also substantially improves the vanilla [b]Destroy Artifact[/b] interac
   [*] The AI decision making is much more sophisticated and consistent with buying and selling.
 [/list]
 
-These improvements are enabled by default but can also be disabled via a game rule.
+In the "Roads to Power" DLC, CK3 added buying and selling artifacts by landless adventurers as part of the [b]Visit Holding[/b] decision event chain. This mod substantially improves upon this feature as well:
+[list]
+  [*] Artifact prices are consistent and based on the above criteria, instead of being somewhat based on rarity but otherwise random.
+  [*] Adventurers and peddlers can only buy artifacts if they can afford them.
+  [*] Artifacts can be bought in all holding types above certain development level, and their quality and wealth (and therefore rarity and price) depend on that level as well.
+  [*] Artifacts sold by merchants are still better on average, but in a more balanced way. They will be destroyed or replaced after some time if not bought.
+  [*] AI landless adventurers will regularly buy and sell artifacts as well.
+[/list]
+
+In addition, currently this mod fixes a [url=https://forum.paradoxplaza.com/forum/threads/ai-landless-adventurers-are-not-visiting-settlements-if-you-switch-to-any-of-them-you-cant-as-well.1712826/]vanilla issue[/url] that prevents AI landless adventurers from visiting holdings.
+
+Since the original vanilla event chain can't be changed without a significant compatibility sacrifice, this mod disables the artifact trading options in the vanilla chain and adds an entirely new chain, reachable via a new option of the [b]Visit Holding[/b] decision.
+
+These improvements are enabled by default but can also be disabled via game rules.
 
 [h2]Compatibility[/h2]
 
@@ -36,6 +51,10 @@ I strongly recommend using also the [url=https://steamcommunity.com/sharedfiles/
 [h2]Localization[/h2]
 
 This mod is currently available in English and Spanish (translated by @Ferchu). For other languages, it uses the original English text as a placeholder. Translations for other languages are available as separate mods, see [b]Links[/b] below.
+
+[h2]Performance[/h2]
+
+The [b]Buy Artifacts[/b] and [b]Sell Artifacts[/b] interactions might become slow if the number of characters that would accept them is large enough (hundreds). To avoid this, you can use the [b]IBuy / Sell Artifacts Range[/b] game rule to reduce the range these interactions use to look for characters.
 
 [h2]Links[/h2]
 [list]

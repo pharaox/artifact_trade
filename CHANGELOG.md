@@ -1,5 +1,41 @@
 # Changelog
 
+## Version 0.11.0
+
+### Decisions
+
+* Added a new "Buy & Sell Artifacts" event chain to the "Visit Holding" decision for landless adventurers to improve upon vanilla's artifact trading features.
+  * Artifact prices are consistent and based on the criteria used by the mod.
+  * Adventurers and peddlers can only buy artifacts if they can afford them.
+  * Artifacts can be bought in all holding types above certain development level, and their quality and wealth (and therefore rarity and price) depend on that level as well.
+  * Artifacts sold by merchants are still better on average, but in a more balanced way. They will be destroyed or replaced after some time if not bought.
+  * AI landless adventurers will regularly buy and sell artifacts as well.
+
+### Character Interactions
+
+* Interactions and events now show a detailed breakdown of the artifact price.
+* Tribal rulers will now both offer and demand lower prices to reflect their scarcity of gold.
+* AI landless adventurers are now somewhat more willing to trade artifacts via interactions. In addition, craftsmen are much more willing to sell, and peddlers are much more willing to both buy and sell.
+* AI rulers will now target more interaction recipients, including craftsmen and peddlers.
+
+### Game Rules
+
+* Added the "Visit Holding Improvements" game rule to enable or disable the "Visit Holding" decision changes.
+* Added the "Buy / Sell Artifacts Range" game rule to reduce the range these interactions use to look for characters for better performance.
+
+### UI Improvements
+
+* Newly introduced artifact types after 1.8 (rings, feathers, etc.) will now be properly used when sorting artifacts by type in the UI.
+
+### Bug Fixes
+
+* Fixed a [vanilla issue](https://forum.paradoxplaza.com/forum/threads/ai-landless-adventurers-are-not-visiting-settlements-if-you-switch-to-any-of-them-you-cant-as-well.1712826/) that prevents AI landless adventurers from visiting holdings.
+* Fixed some minor issues showing up as runtime errors.
+
+### Miscellaneous
+
+* Enhanced debug logging when buying, selling, and destroying artifacts.
+
 ## Version 0.10.4
 
 ### Compatibility
