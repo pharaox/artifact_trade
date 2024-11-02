@@ -25,7 +25,7 @@ In the "Roads to Power" DLC, CK3 added buying and selling artifacts by landless 
 [list]
   [*] Artifact prices are consistent and based on the above criteria, instead of being somewhat based on rarity but otherwise random.
   [*] Adventurers and peddlers can only buy artifacts if they can afford them.
-  [*] Artifacts can be bought in all holding types above certain development level, and their quality and wealth (and therefore rarity and price) depend on that level as well.
+  [*] Artifacts can be bought in all holding types above certain development level (configurable via game rule), and their quality and wealth (and therefore rarity and price) depend on that level as well.
   [*] Artifacts sold by merchants are still better on average, but in a more balanced way. They will be destroyed or replaced after some time if not bought.
   [*] AI landless adventurers will regularly buy and sell artifacts as well.
 [/list]

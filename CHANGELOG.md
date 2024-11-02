@@ -1,5 +1,15 @@
 # Changelog
 
+## Version 0.11.1
+
+### Decisions
+
+* If "Visit Holding" decision improvements are disabled, visiting a holding no longer requires an additional click.
+
+### Game Rules
+
+* Added the "Craftsmen Availability" game rule to allow configuring the holding types and development levels required for craftsmen to be available.
+
 ## Version 0.11.0
 
 ### Decisions
