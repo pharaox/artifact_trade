@@ -1,20 +1,30 @@
 ﻿at_province_has_craftsmen_trigger = {
 	OR = {
 		at_has_city_like_holding_trigger = yes
-		county.development_level >= 10
-		# Economy
-		has_building_or_higher = common_tradeport_01
-		has_building_or_higher = caravanserai_01
-		# Military
-		has_building_or_higher = smiths_01
-		has_building_or_higher = workshops_01
-		# Tribal
-		has_building_or_higher = market_villages_01
-		# Duchy capital
-		has_building_or_higher = blacksmiths_01
-		has_building_or_higher = royal_armory_01
-		# Special
-		has_special_building = yes
+		trigger_if = {
+			limit = {
+				NOT = { has_game_rule = at_craftsmen_holdings_city }
+			}
+			OR = {
+				county.development_level >= at_craftsmen_min_development_level_value
+				# Economy
+				has_building_or_higher = common_tradeport_01
+				has_building_or_higher = caravanserai_01
+				# Military
+				has_building_or_higher = smiths_01
+				has_building_or_higher = workshops_01
+				# Tribal
+				has_building_or_higher = market_villages_01
+				# Duchy capital
+				has_building_or_higher = blacksmiths_01
+				has_building_or_higher = royal_armory_01
+				# Special
+				has_special_building = yes
+			}
+		}
+		trigger_else = {
+			always = no
+		}
 	}
 }
 

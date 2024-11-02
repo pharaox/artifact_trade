@@ -46,6 +46,30 @@ at_improved_vls_decision = {
 	}
 }
 
+at_craftsmen_holdings = {
+	categories = {
+		at_artifact_trade
+	}
+
+	default = at_craftsmen_holdings_all_10
+
+	at_craftsmen_holdings_city = {
+		flag = GG_can_change_rule
+	}
+
+	at_craftsmen_holdings_all = {
+		flag = GG_can_change_rule
+	}
+
+	at_craftsmen_holdings_all_10 = {
+		flag = GG_can_change_rule
+	}
+
+	at_craftsmen_holdings_all_20 = {
+		flag = GG_can_change_rule
+	}
+}
+
 at_valid_trading_partners = {
 	categories = {
 		at_artifact_trade

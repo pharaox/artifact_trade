@@ -1,0 +1,13 @@
+﻿at_craftsmen_min_development_level_value = {
+	if = {
+		limit = { has_game_rule = at_craftsmen_holdings_all_10 }
+		value = 10
+	}
+	else_if = {
+		limit = { has_game_rule = at_craftsmen_holdings_all_20 }
+		value = 20
+	}
+	else = {
+		value = 0
+	}
+}
