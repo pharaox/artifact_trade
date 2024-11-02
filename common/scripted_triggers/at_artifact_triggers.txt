@@ -416,8 +416,12 @@ at_artifact_can_be_sold_trigger = {
 }
 
 at_artifact_can_be_bought_by_trigger = {
-	exists = $BUYER$
-	always = yes
+	trigger_if = {
+		limit = {
+			$BUYER$.var:at_merchant_type ?= flag:peddler
+		}
+		at_is_unsellable_artifact_trigger = no
+	}
 }
 
 at_artifact_can_be_destroyed_trigger = {
