@@ -19,6 +19,16 @@
  setting_at_improved_vls_decision_enabled: "Enabled"
  setting_at_improved_vls_decision_enabled_desc: "Visit Holding improvements are enabled."
 
+ rule_at_craftsmen_holdings: "#color_yellow Search & Trade Artifacts:#! Craftsmen Availability"
+ setting_at_craftsmen_holdings_city: "#high City Holdings Only#!"
+ setting_at_craftsmen_holdings_city_desc: "Craftsmen are only available in city holdings (vanilla default)."
+ setting_at_craftsmen_holdings_all: "#high All Holding Types#!"
+ setting_at_craftsmen_holdings_all_desc: "Craftsmen are also available in non-city holdings."
+ setting_at_craftsmen_holdings_all_10: "All Holding Types, Min 10 Dev"
+ setting_at_craftsmen_holdings_all_10_desc: "Craftsmen are also available in non-city holdings with at least 10 development or certain buildings."
+ setting_at_craftsmen_holdings_all_20: "#high All Holding Types, Min 20 Dev#!"
+ setting_at_craftsmen_holdings_all_20_desc: "Craftsmen are also available in non-city holdings with at least 20 development or certain buildings."
+
  rule_at_valid_trading_partners: "#color_yellow Buscar y Comerciar Artefactos:#! Compradores o Vendedores Válidos"
  setting_at_valid_trading_partners_same_and_neighboring_realms: "#high Reinos Iguales y Vecinos#!"
  setting_at_valid_trading_partners_same_and_neighboring_realms_desc: "Personajes en los mismos reinos y reinos vecinos."
