@@ -198,7 +198,7 @@ visit_local_settlement_decision = {
 			# Properly cleanup after ep3_laamp_decision_event.1000
 			# See https://forum.paradoxplaza.com/forum/threads/ai-landless-adventurers-are-not-visiting-settlements-if-you-switch-to-any-of-them-you-cant-as-well.1712826/
 			trigger_event = {
-				id = at_decision_events.1090
+				id = vls_decision_events.0001
 				delayed = yes
 			}
 		}

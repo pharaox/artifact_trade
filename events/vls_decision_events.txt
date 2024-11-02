@@ -1,8 +1,8 @@
-﻿namespace = at_decision_events
+﻿namespace = vls_decision_events
 
 # Properly cleanup after ep3_laamp_decision_event.1000
 # See https://forum.paradoxplaza.com/forum/threads/ai-landless-adventurers-are-not-visiting-settlements-if-you-switch-to-any-of-them-you-cant-as-well.1712826/
-at_decision_events.1090 = {
+vls_decision_events.0001 = {
 	type = character_event
 	hidden = yes
 
