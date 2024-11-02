@@ -1,8 +1,10 @@
 ﻿l_korean:
  at_artifact_price_qwa_desc: "Quality & Wealth"
  at_artifact_price_durability_desc: "Durability"
- at_artifact_price_destroy_desc: "Not Less Than Destroy Price"
+ at_artifact_price_destroy_desc: "Not Less Than Destroy Value"
  at_artifact_price_unique_desc: "Unique"
+ at_artifact_price_tribal_desc: "Tribal Government"
  at_artifact_ask_price_player_desc: "Profit Margin"
  at_artifact_ask_price_ai_greed_desc: "Seller Greed"
  at_artifact_bid_price_ai_greed_desc: "Buyer Greed"
+ at_artifact_bid_price_multiplier_desc: "Haggle Outcome"

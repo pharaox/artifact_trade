@@ -1,4 +1,4 @@
-﻿l_english:
+﻿l_german:
  # Vanilla overwrites
  # Visit Local Settlement Slot 1
  vls_decision_slot_1_vanilla_tribal_holding_tt_overwrite: "$visit_local_settlement_tribal_holding_decision_tt$"
@@ -12,7 +12,7 @@
  vls_decision_slot_2_vanilla_city_holding_tt_overwrite: "$visit_local_settlement_city_holding_decision_tt$"
 
  # Visit Local Settlement
- vls_decision_tooltip: "Explore the local $local_holding_type_capitalized_no_holding$"
+ vls_decision_tooltip: "Das örtliche $local_holding_type_capitalized_no_holding$ erkunden"
  # Visit Local Settlement Slot 1
  vls_decision_slot_1: ""
  vls_decision_slot_1_desc: "$vls_decision_slot_1$"

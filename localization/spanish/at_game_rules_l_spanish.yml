@@ -13,6 +13,12 @@
  setting_at_improved_destroy_artifact_enabled: "Habilitado"
  setting_at_improved_destroy_artifact_enabled_desc: "Las mejoras por destruir artefactos están habilitadas."
 
+ rule_at_improved_vls_decision: "#color_yellow Search & Trade Artifacts:#! Visit Holding Improvements"
+ setting_at_improved_vls_decision_disabled: "#high Disabled#!"
+ setting_at_improved_vls_decision_disabled_desc: "Visit Holding improvements are disabled."
+ setting_at_improved_vls_decision_enabled: "Enabled"
+ setting_at_improved_vls_decision_enabled_desc: "Visit Holding improvements are enabled."
+
  rule_at_valid_trading_partners: "#color_yellow Buscar y Comerciar Artefactos:#! Compradores o Vendedores Válidos"
  setting_at_valid_trading_partners_same_and_neighboring_realms: "#high Reinos Iguales y Vecinos#!"
  setting_at_valid_trading_partners_same_and_neighboring_realms_desc: "Personajes en los mismos reinos y reinos vecinos."
@@ -20,6 +26,20 @@
  setting_at_valid_trading_partners_within_trading_range_desc: "Personajes en los mismos reinos y reinos vecinos, y gobernantes dentro de un rango de comercio dinámico dependiendo del rango."
  setting_at_valid_trading_partners_all: "#high Todos los Personajes#!"
  setting_at_valid_trading_partners_all_desc: "Todos los personajes dentro del rango diplomático."
+
+ rule_at_interaction_range: "#color_yellow Search & Trade Artifacts:#! Buy / Sell Artifacts Range"
+ setting_at_interaction_range_small: "#high Small#!"
+ setting_at_interaction_range_small_desc: "Valid buyers or sellers located within 150 map-pixels are listed (fastest)."
+ setting_at_interaction_range_medium: "#high Medium#!"
+ setting_at_interaction_range_medium_desc: "Valid buyers or sellers located within 250 map-pixels are listed."
+ setting_at_interaction_range_large: "#high Large#!"
+ setting_at_interaction_range_large_desc: "Valid buyers or sellers located within 650 map-pixels are listed."
+ setting_at_interaction_range_huge: "#high Huge#!"
+ setting_at_interaction_range_huge_desc: "Valid buyers or sellers located within 850 map-pixels are listed."
+ setting_at_interaction_range_massive: "#high Massive#!"
+ setting_at_interaction_range_massive_desc: "Valid buyers or sellers located within 1200 map-pixels are listed."
+ setting_at_interaction_range_all: "Diplomatic Range"
+ setting_at_interaction_range_all_desc: "All valid buyers or sellers are listed (slowest)."
 
  rule_at_number_of_potential_buyers: "#color_yellow Buscar y Comerciar Artefactos:#! Número de Compradores Potenciales"
  setting_at_number_of_potential_buyers_01: "#high 1#!"

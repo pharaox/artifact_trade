@@ -1,0 +1,12 @@
+﻿l_spanish:
+ # Vanilla overwrites
+ vls_decision_slot_1_vanilla_tribal_holding_tt_overwrite: "$visit_local_settlement_effect_intro$$visit_local_settlement_effect_tavern$$visit_local_settlement_effect_supplies$$visit_local_settlement_effect_contracts$"
+ vls_decision_slot_1_vanilla_church_holding_tt_overwrite: "$visit_local_settlement_effect_intro$$visit_local_settlement_effect_tavern$$visit_local_settlement_effect_church$$visit_local_settlement_effect_supplies$$visit_local_settlement_effect_contracts$"
+ vls_decision_slot_1_vanilla_castle_holding_tt_overwrite: "$visit_local_settlement_effect_intro$$visit_local_settlement_effect_tavern$$visit_local_settlement_effect_castle$$visit_local_settlement_effect_supplies$$visit_local_settlement_effect_contracts$"
+ vls_decision_slot_1_vanilla_city_holding_tt_overwrite: "$visit_local_settlement_effect_intro$$visit_local_settlement_effect_tavern$$visit_local_settlement_effect_cheaper_supplies$$visit_local_settlement_effect_contracts$"
+
+ # Visit Local Settlement Slot 1
+ vls_decision_slot_1: "$visit_local_settlement_decision$: Buy and Sell Artifacts"
+ vls_decision_slot_1_desc: "$visit_local_settlement_decision_desc$"
+ vls_decision_slot_1_tooltip: "$vls_decision_tooltip$"
+ vls_decision_slot_1_tt: "$visit_local_settlement_effect_intro$$visit_local_settlement_effect_city$$visit_local_settlement_effect_artifacts$"
