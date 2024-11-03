@@ -54,7 +54,7 @@ This mod is currently available in English and Spanish (translated by @Ferchu). 
 
 [h2]Performance[/h2]
 
-The [b]Buy Artifacts[/b] and [b]Sell Artifacts[/b] interactions might become slow if the number of characters that would accept them is large enough (hundreds). To avoid this, you can use the [b]IBuy / Sell Artifacts Range[/b] game rule to reduce the range these interactions use to look for characters.
+The [b]Buy Artifacts[/b] and [b]Sell Artifacts[/b] interactions might become slow if the number of characters that would accept them is large enough (hundreds). To avoid this, you can use the [b]Buy / Sell Artifacts Range[/b] game rule to reduce the range these interactions use to look for characters.
 
 [h2]Links[/h2]
 [list]
