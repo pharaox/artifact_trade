@@ -113,32 +113,32 @@ at_decision_events.1000 = {
 			random_valid = {
 				triggered_desc = {
 					trigger = {
-						scope:visiting_location = { at_has_tribal_like_holding_trigger = yes }
+						scope:visiting_location = { vls_has_tribal_like_holding_trigger = yes }
 					}
 					desc = ep3_laamp_decision_event.1000.desc_intro_tribal_holding_01
 				}
 				triggered_desc = {
 					trigger = {
-						scope:visiting_location = { at_has_tribal_like_holding_trigger = yes }
+						scope:visiting_location = { vls_has_tribal_like_holding_trigger = yes }
 					}
 					desc = ep3_laamp_decision_event.1000.desc_intro_tribal_holding_02
 				}
 			}
 			triggered_desc = {
 				trigger = {
-					scope:visiting_location = { at_has_church_like_holding_trigger = yes }
+					scope:visiting_location = { vls_has_church_like_holding_trigger = yes }
 				}
 				desc = ep3_laamp_decision_event.1000.desc_intro_church_holding
 			}
 			triggered_desc = {
 				trigger = {
-					scope:visiting_location = { at_has_castle_like_holding_trigger = yes }
+					scope:visiting_location = { vls_has_castle_like_holding_trigger = yes }
 				}
 				desc = ep3_laamp_decision_event.1000.desc_intro_castle_holding
 			}
 			triggered_desc = {
 				trigger = {
-					scope:visiting_location = { at_has_city_like_holding_trigger = yes }
+					scope:visiting_location = { vls_has_city_like_holding_trigger = yes }
 				}
 				desc = ep3_laamp_decision_event.1000.desc_intro_city_holding
 			}
@@ -167,7 +167,7 @@ at_decision_events.1000 = {
 					exists = scope:last_location
 					NOT = { exists = scope:is_unique_location }
 					exists = scope:is_currently_raining
-					scope:visiting_location = { at_is_scandinavia_like_location_trigger = yes }
+					scope:visiting_location = { vls_is_scandinavia_like_location_trigger = yes }
 				}
 				desc = ep3_laamp_decision_event.1000.desc_outro_regional_scandinavia_summer_returned_02
 			}
@@ -176,7 +176,7 @@ at_decision_events.1000 = {
 					exists = scope:last_location
 					NOT = { exists = scope:is_unique_location }
 					exists = scope:is_currently_snowing
-					scope:visiting_location = { at_is_scandinavia_like_location_trigger = yes }
+					scope:visiting_location = { vls_is_scandinavia_like_location_trigger = yes }
 				}
 				desc = ep3_laamp_decision_event.1000.desc_outro_regional_scandinavia_winter_returned_01
 			}
@@ -185,7 +185,7 @@ at_decision_events.1000 = {
 					exists = scope:last_location
 					NOT = { exists = scope:is_unique_location }
 					exists = scope:is_currently_raining
-					scope:visiting_location = { at_is_britannia_like_location_trigger = yes }
+					scope:visiting_location = { vls_is_britannia_like_location_trigger = yes }
 				}
 				desc = ep3_laamp_decision_event.1000.desc_outro_regional_britannia_returned_02
 			}
@@ -194,7 +194,7 @@ at_decision_events.1000 = {
 					exists = scope:last_location
 					NOT = { exists = scope:is_unique_location }
 					exists = scope:is_currently_foggy
-					scope:visiting_location = { at_is_britannia_like_location_trigger = yes }
+					scope:visiting_location = { vls_is_britannia_like_location_trigger = yes }
 				}
 				desc = ep3_laamp_decision_event.1000.desc_outro_regional_britannia_returned_03
 			}
@@ -206,7 +206,7 @@ at_decision_events.1000 = {
 						exists = scope:last_location
 						NOT = { exists = scope:is_unique_location }
 						middle_of_year_season_trigger = yes
-						scope:visiting_location = { at_is_scandinavia_like_location_trigger = yes }
+						scope:visiting_location = { vls_is_scandinavia_like_location_trigger = yes }
 					}
 					desc = ep3_laamp_decision_event.1000.desc_outro_regional_scandinavia_summer_returned_01
 				}
@@ -215,7 +215,7 @@ at_decision_events.1000 = {
 						exists = scope:last_location
 						NOT = { exists = scope:is_unique_location }
 						end_of_year_season_trigger = yes
-						scope:visiting_location = { at_is_scandinavia_like_location_trigger = yes }
+						scope:visiting_location = { vls_is_scandinavia_like_location_trigger = yes }
 					}
 					desc = ep3_laamp_decision_event.1000.desc_outro_regional_scandinavia_winter_returned_02
 				}
@@ -224,7 +224,7 @@ at_decision_events.1000 = {
 						exists = scope:last_location
 						NOT = { exists = scope:is_unique_location }
 						end_of_year_season_trigger = yes
-						scope:visiting_location = { at_is_scandinavia_like_location_trigger = yes }
+						scope:visiting_location = { vls_is_scandinavia_like_location_trigger = yes }
 					}
 					desc = ep3_laamp_decision_event.1000.desc_outro_regional_scandinavia_winter_returned_03
 				}
@@ -234,7 +234,7 @@ at_decision_events.1000 = {
 					trigger = {
 						exists = scope:last_location
 						NOT = { exists = scope:is_unique_location }
-						scope:visiting_location = { at_is_britannia_like_location_trigger = yes }
+						scope:visiting_location = { vls_is_britannia_like_location_trigger = yes }
 					}
 					desc = ep3_laamp_decision_event.1000.desc_outro_regional_britannia_returned_01
 				}
@@ -245,7 +245,7 @@ at_decision_events.1000 = {
 						exists = scope:last_location
 						NOT = { exists = scope:is_unique_location }
 						middle_of_year_season_trigger = yes
-						scope:visiting_location = { at_is_europe_like_location_trigger = yes }
+						scope:visiting_location = { vls_is_europe_like_location_trigger = yes }
 					}
 					desc = ep3_laamp_decision_event.1000.desc_outro_regional_europe_returned_01
 				}
@@ -254,7 +254,7 @@ at_decision_events.1000 = {
 						exists = scope:last_location
 						NOT = { exists = scope:is_unique_location }
 						end_of_year_season_trigger = yes
-						scope:visiting_location = { at_is_europe_like_location_trigger = yes }
+						scope:visiting_location = { vls_is_europe_like_location_trigger = yes }
 					}
 					desc = ep3_laamp_decision_event.1000.desc_outro_regional_europe_returned_02
 				}
@@ -264,7 +264,7 @@ at_decision_events.1000 = {
 					trigger = {
 						exists = scope:last_location
 						NOT = { exists = scope:is_unique_location }
-						scope:visiting_location = { at_is_iberia_like_location_trigger = yes }
+						scope:visiting_location = { vls_is_iberia_like_location_trigger = yes }
 					}
 					desc = ep3_laamp_decision_event.1000.desc_outro_regional_iberia_returned_01
 				}
@@ -272,7 +272,7 @@ at_decision_events.1000 = {
 					trigger = {
 						exists = scope:last_location
 						NOT = { exists = scope:is_unique_location }
-						scope:visiting_location = { at_is_iberia_like_location_trigger = yes }
+						scope:visiting_location = { vls_is_iberia_like_location_trigger = yes }
 					}
 					desc = ep3_laamp_decision_event.1000.desc_outro_regional_iberia_returned_02
 				}
@@ -280,7 +280,7 @@ at_decision_events.1000 = {
 					trigger = {
 						exists = scope:last_location
 						NOT = { exists = scope:is_unique_location }
-						scope:visiting_location = { at_is_iberia_like_location_trigger = yes }
+						scope:visiting_location = { vls_is_iberia_like_location_trigger = yes }
 					}
 					desc = ep3_laamp_decision_event.1000.desc_outro_regional_iberia_returned_03
 				}
@@ -290,7 +290,7 @@ at_decision_events.1000 = {
 					trigger = {
 						exists = scope:last_location
 						NOT = { exists = scope:is_unique_location }
-						scope:visiting_location = { at_is_middle_east_like_location_trigger = yes }
+						scope:visiting_location = { vls_is_middle_east_like_location_trigger = yes }
 					}
 					desc = ep3_laamp_decision_event.1000.desc_outro_regional_middle_east_returned_01
 				}
@@ -298,7 +298,7 @@ at_decision_events.1000 = {
 					trigger = {
 						exists = scope:last_location
 						NOT = { exists = scope:is_unique_location }
-						scope:visiting_location = { at_is_middle_east_like_location_trigger = yes }
+						scope:visiting_location = { vls_is_middle_east_like_location_trigger = yes }
 					}
 					desc = ep3_laamp_decision_event.1000.desc_outro_regional_middle_east_returned_02
 				}
@@ -306,7 +306,7 @@ at_decision_events.1000 = {
 					trigger = {
 						exists = scope:last_location
 						NOT = { exists = scope:is_unique_location }
-						scope:visiting_location = { at_is_middle_east_like_location_trigger = yes }
+						scope:visiting_location = { vls_is_middle_east_like_location_trigger = yes }
 					}
 					desc = ep3_laamp_decision_event.1000.desc_outro_regional_middle_east_returned_03
 				}
@@ -316,7 +316,7 @@ at_decision_events.1000 = {
 					trigger = {
 						exists = scope:last_location
 						NOT = { exists = scope:is_unique_location }
-						scope:visiting_location = { at_is_india_like_location_trigger = yes }
+						scope:visiting_location = { vls_is_india_like_location_trigger = yes }
 					}
 					desc = ep3_laamp_decision_event.1000.desc_outro_regional_india_returned_01
 				}
@@ -324,7 +324,7 @@ at_decision_events.1000 = {
 					trigger = {
 						exists = scope:last_location
 						NOT = { exists = scope:is_unique_location }
-						scope:visiting_location = { at_is_india_like_location_trigger = yes }
+						scope:visiting_location = { vls_is_india_like_location_trigger = yes }
 					}
 					desc = ep3_laamp_decision_event.1000.desc_outro_regional_india_returned_02
 				}
@@ -332,7 +332,7 @@ at_decision_events.1000 = {
 					trigger = {
 						exists = scope:last_location
 						NOT = { exists = scope:is_unique_location }
-						scope:visiting_location = { at_is_india_like_location_trigger = yes }
+						scope:visiting_location = { vls_is_india_like_location_trigger = yes }
 					}
 					desc = ep3_laamp_decision_event.1000.desc_outro_regional_india_returned_03
 				}
@@ -340,7 +340,7 @@ at_decision_events.1000 = {
 					trigger = {
 						exists = scope:last_location
 						NOT = { exists = scope:is_unique_location }
-						scope:visiting_location = { at_is_india_like_location_trigger = yes }
+						scope:visiting_location = { vls_is_india_like_location_trigger = yes }
 					}
 					desc = ep3_laamp_decision_event.1000.desc_outro_regional_india_returned_04
 				}
@@ -348,7 +348,7 @@ at_decision_events.1000 = {
 					trigger = {
 						exists = scope:last_location
 						NOT = { exists = scope:is_unique_location }
-						scope:visiting_location = { at_is_india_like_location_trigger = yes }
+						scope:visiting_location = { vls_is_india_like_location_trigger = yes }
 					}
 					desc = ep3_laamp_decision_event.1000.desc_outro_regional_india_returned_05
 				}
@@ -358,7 +358,7 @@ at_decision_events.1000 = {
 					trigger = {
 						exists = scope:last_location
 						NOT = { exists = scope:is_unique_location }
-						scope:visiting_location = { at_is_steppe_like_location_trigger = yes }
+						scope:visiting_location = { vls_is_steppe_like_location_trigger = yes }
 					}
 					desc = ep3_laamp_decision_event.1000.desc_outro_regional_steppe_returned_01
 				}
@@ -366,7 +366,7 @@ at_decision_events.1000 = {
 					trigger = {
 						exists = scope:last_location
 						NOT = { exists = scope:is_unique_location }
-						scope:visiting_location = { at_is_steppe_like_location_trigger = yes }
+						scope:visiting_location = { vls_is_steppe_like_location_trigger = yes }
 					}
 					desc = ep3_laamp_decision_event.1000.desc_outro_regional_steppe_returned_02
 				}
@@ -374,7 +374,7 @@ at_decision_events.1000 = {
 					trigger = {
 						exists = scope:last_location
 						NOT = { exists = scope:is_unique_location }
-						scope:visiting_location = { at_is_steppe_like_location_trigger = yes }
+						scope:visiting_location = { vls_is_steppe_like_location_trigger = yes }
 					}
 					desc = ep3_laamp_decision_event.1000.desc_outro_regional_steppe_returned_03
 				}
@@ -385,7 +385,7 @@ at_decision_events.1000 = {
 						exists = scope:last_location
 						NOT = { exists = scope:is_unique_location }
 						middle_of_year_season_trigger = yes
-						scope:visiting_location = { at_is_north_africa_like_location_trigger = yes }
+						scope:visiting_location = { vls_is_north_africa_like_location_trigger = yes }
 					}
 					desc = ep3_laamp_decision_event.1000.desc_outro_regional_north_africa_returned_01
 				}
@@ -393,7 +393,7 @@ at_decision_events.1000 = {
 					trigger = {
 						exists = scope:last_location
 						NOT = { exists = scope:is_unique_location }
-						scope:visiting_location = { at_is_north_africa_like_location_trigger = yes }
+						scope:visiting_location = { vls_is_north_africa_like_location_trigger = yes }
 					}
 					desc = ep3_laamp_decision_event.1000.desc_outro_regional_north_africa_returned_02
 				}
@@ -401,7 +401,7 @@ at_decision_events.1000 = {
 					trigger = {
 						exists = scope:last_location
 						NOT = { exists = scope:is_unique_location }
-						scope:visiting_location = { at_is_north_africa_like_location_trigger = yes }
+						scope:visiting_location = { vls_is_north_africa_like_location_trigger = yes }
 					}
 					desc = ep3_laamp_decision_event.1000.desc_outro_regional_north_africa_returned_03
 				}
@@ -411,7 +411,7 @@ at_decision_events.1000 = {
 					trigger = {
 						exists = scope:last_location
 						NOT = { exists = scope:is_unique_location }
-						scope:visiting_location = { at_is_west_africa_like_location_trigger = yes }
+						scope:visiting_location = { vls_is_west_africa_like_location_trigger = yes }
 					}
 					desc = ep3_laamp_decision_event.1000.desc_outro_regional_west_africa_returned_01
 				}
@@ -419,7 +419,7 @@ at_decision_events.1000 = {
 					trigger = {
 						exists = scope:last_location
 						NOT = { exists = scope:is_unique_location }
-						scope:visiting_location = { at_is_west_africa_like_location_trigger = yes }
+						scope:visiting_location = { vls_is_west_africa_like_location_trigger = yes }
 					}
 					desc = ep3_laamp_decision_event.1000.desc_outro_regional_west_africa_returned_02
 				}
@@ -427,7 +427,7 @@ at_decision_events.1000 = {
 					trigger = {
 						exists = scope:last_location
 						NOT = { exists = scope:is_unique_location }
-						scope:visiting_location = { at_is_west_africa_like_location_trigger = yes }
+						scope:visiting_location = { vls_is_west_africa_like_location_trigger = yes }
 					}
 					desc = ep3_laamp_decision_event.1000.desc_outro_regional_west_africa_returned_03
 				}
@@ -435,7 +435,7 @@ at_decision_events.1000 = {
 					trigger = {
 						exists = scope:last_location
 						NOT = { exists = scope:is_unique_location }
-						scope:visiting_location = { at_is_west_africa_like_location_trigger = yes }
+						scope:visiting_location = { vls_is_west_africa_like_location_trigger = yes }
 					}
 					desc = ep3_laamp_decision_event.1000.desc_outro_regional_west_africa_returned_04
 				}
@@ -445,7 +445,7 @@ at_decision_events.1000 = {
 					trigger = {
 						exists = scope:last_location
 						NOT = { exists = scope:is_unique_location }
-						scope:visiting_location = { at_is_east_africa_like_location_trigger = yes }
+						scope:visiting_location = { vls_is_east_africa_like_location_trigger = yes }
 					}
 					desc = ep3_laamp_decision_event.1000.desc_outro_regional_east_africa_returned_01
 				}
@@ -453,7 +453,7 @@ at_decision_events.1000 = {
 					trigger = {
 						exists = scope:last_location
 						NOT = { exists = scope:is_unique_location }
-						scope:visiting_location = { at_is_east_africa_like_location_trigger = yes }
+						scope:visiting_location = { vls_is_east_africa_like_location_trigger = yes }
 					}
 					desc = ep3_laamp_decision_event.1000.desc_outro_regional_east_africa_returned_02
 				}
@@ -461,7 +461,7 @@ at_decision_events.1000 = {
 					trigger = {
 						exists = scope:last_location
 						NOT = { exists = scope:is_unique_location }
-						scope:visiting_location = { at_is_east_africa_like_location_trigger = yes }
+						scope:visiting_location = { vls_is_east_africa_like_location_trigger = yes }
 					}
 					desc = ep3_laamp_decision_event.1000.desc_outro_regional_east_africa_returned_03
 				}
@@ -469,7 +469,7 @@ at_decision_events.1000 = {
 					trigger = {
 						exists = scope:last_location
 						NOT = { exists = scope:is_unique_location }
-						scope:visiting_location = { at_is_east_africa_like_location_trigger = yes }
+						scope:visiting_location = { vls_is_east_africa_like_location_trigger = yes }
 					}
 					desc = ep3_laamp_decision_event.1000.desc_outro_regional_east_africa_returned_04
 				}
@@ -641,19 +641,19 @@ at_decision_events.1000 = {
 
 	override_sound = {
 		trigger = {
-			scope:visiting_location = { at_has_church_like_holding_trigger = yes }
+			scope:visiting_location = { vls_has_church_like_holding_trigger = yes }
 		}
 		reference = "event:/SFX/Events/Themes/sfx_event_theme_type_faith"
 	}
 	override_sound = {
 		trigger = {
-			scope:visiting_location = { at_has_castle_like_holding_trigger = yes }
+			scope:visiting_location = { vls_has_castle_like_holding_trigger = yes }
 		}
 		reference = "event:/SFX/Events/Themes/sfx_event_theme_type_martial"
 	}
 	override_sound = {
 		trigger = {
-			scope:visiting_location = { at_has_city_like_holding_trigger = yes }
+			scope:visiting_location = { vls_has_city_like_holding_trigger = yes }
 		}
 		reference = "event:/SFX/Events/Themes/sfx_event_theme_type_stewardship"
 	}
@@ -676,7 +676,7 @@ at_decision_events.1000 = {
 	override_background = {
 		trigger = {
 			at_1000_finished_trigger = yes
-			scope:visiting_location = { at_has_tribal_like_holding_trigger = yes }
+			scope:visiting_location = { vls_has_tribal_like_holding_trigger = yes }
 		}
 		reference = bp1_bonfire
 	}
@@ -694,25 +694,25 @@ at_decision_events.1000 = {
 	}
 	override_background = {
 		trigger = {
-			scope:visiting_location = { at_has_tribal_like_holding_trigger = yes }
+			scope:visiting_location = { vls_has_tribal_like_holding_trigger = yes }
 		}
 		reference = terrain_settlement
 	}
 	override_background = {
 		trigger = {
-			scope:visiting_location = { at_has_church_like_holding_trigger = yes }
+			scope:visiting_location = { vls_has_church_like_holding_trigger = yes }
 		}
 		reference = holy_site_generic
 	}
 	override_background = {
 		trigger = {
-			scope:visiting_location = { at_has_castle_like_holding_trigger = yes }
+			scope:visiting_location = { vls_has_castle_like_holding_trigger = yes }
 		}
 		reference = courtyard_location
 	}
 	override_background = {
 		trigger = {
-			scope:visiting_location = { at_has_city_like_holding_trigger = yes }
+			scope:visiting_location = { vls_has_city_like_holding_trigger = yes }
 		}
 		reference = ep3_city_gate
 	}
@@ -731,31 +731,31 @@ at_decision_events.1000 = {
 		}
 		triggered_animation = {
 			trigger = {
-				scope:visiting_partner = { at_has_friendly_traits_trigger = yes }
+				scope:visiting_partner = { vls_has_friendly_traits_trigger = yes }
 			}
 			animation = personality_forgiving
 		}
 		triggered_animation = {
 			trigger = {
-				scope:visiting_partner = { at_has_commerce_traits_trigger = yes }
+				scope:visiting_partner = { vls_has_commerce_traits_trigger = yes }
 			}
 			animation = personality_greedy
 		}
 		triggered_animation = {
 			trigger = {
-				scope:visiting_partner = { at_has_uninterested_traits_trigger = yes }
+				scope:visiting_partner = { vls_has_uninterested_traits_trigger = yes }
 			}
 			animation = personality_cynical
 		}
 		triggered_animation = {
 			trigger = {
-				scope:visiting_partner = { at_has_irrational_traits_trigger = yes }
+				scope:visiting_partner = { vls_has_irrational_traits_trigger = yes }
 			}
 			animation = personality_irrational
 		}
 		triggered_animation = {
 			trigger = {
-				scope:visiting_partner = { at_has_standoffish_traits_trigger = yes }
+				scope:visiting_partner = { vls_has_standoffish_traits_trigger = yes }
 			}
 			animation = personality_coward
 		}
@@ -766,15 +766,15 @@ at_decision_events.1000 = {
 	center_portrait = {
 		character = root
 		triggered_animation = {
-			trigger = { at_has_irrational_traits_trigger = yes }
+			trigger = { vls_has_irrational_traits_trigger = yes }
 			animation = personality_irrational
 		}
 		triggered_animation = {
-			trigger = { at_has_standoffish_traits_trigger = yes }
+			trigger = { vls_has_standoffish_traits_trigger = yes }
 			animation = personality_coward
 		}
 		triggered_animation = {
-			trigger = { at_has_uninterested_traits_trigger = yes }
+			trigger = { vls_has_uninterested_traits_trigger = yes }
 			animation = personality_callous
 		}
 		animation = personality_content
@@ -810,8 +810,8 @@ at_decision_events.1000 = {
 				location_has_winter_trigger = no
 				scope:visiting_location = {
 					OR = {
-						at_is_scandinavia_like_location_trigger = yes
-						at_is_britannia_like_location_trigger = yes
+						vls_is_scandinavia_like_location_trigger = yes
+						vls_is_britannia_like_location_trigger = yes
 					}
 				}
 			}
@@ -825,7 +825,7 @@ at_decision_events.1000 = {
 				exists = scope:last_location
 				NOT = { exists = scope:is_unique_location }
 				location_has_winter_trigger = yes
-				scope:visiting_location = { at_is_scandinavia_like_location_trigger = yes }
+				scope:visiting_location = { vls_is_scandinavia_like_location_trigger = yes }
 			}
 			random = {
 				chance = 50
@@ -837,7 +837,7 @@ at_decision_events.1000 = {
 				exists = scope:last_location
 				NOT = { exists = scope:is_unique_location }
 				location_has_winter_trigger = yes
-				scope:visiting_location = { at_is_britannia_like_location_trigger = yes }
+				scope:visiting_location = { vls_is_britannia_like_location_trigger = yes }
 			}
 			random = {
 				chance = 50
@@ -848,7 +848,7 @@ at_decision_events.1000 = {
 		# Initialize unique locations
 		if = {
 			limit = {
-				at_is_constantinople_unique_location_trigger = yes
+				vls_is_constantinople_unique_location_trigger = yes
 			}
 			save_scope_value_as = { name = is_constantinople value = yes }
 			save_scope_value_as = { name = is_unique_location value = yes }
@@ -885,7 +885,7 @@ at_decision_events.1000 = {
 			}
 
 			# Find visiting partner
-			at_get_visiting_partner_effect = { CHARACTER = root }
+			vls_get_visiting_partner_effect = { CHARACTER = root }
 
 			save_scope_value_as = { name = initialized value = yes }
 		}
@@ -1013,7 +1013,7 @@ at_decision_events.1000 = {
 
 		custom_tooltip = ep3_laamp_decision_event.1000.i.tt
 
-		at_remember_visited_settlement_effect = { LOCATION = scope:visiting_location }
+		vls_remember_visited_settlement_effect = { LOCATION = scope:visiting_location }
 		at_1000_clean_up_effect = yes
 
 		ai_chance = { base = 50 }

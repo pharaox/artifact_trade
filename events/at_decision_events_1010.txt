@@ -547,7 +547,7 @@ at_decision_events.1011 = {
 		}
 
 		# Remember the weaponsmith
-		at_remember_merchant_character_effect = {
+		vls_remember_merchant_character_effect = {
 			TYPE = weaponsmith
 			CHARACTER = scope:weaponsmith
 		}
@@ -839,7 +839,7 @@ at_decision_events.1013 = {
 		}
 
 		# Remember the armorer
-		at_remember_merchant_character_effect = {
+		vls_remember_merchant_character_effect = {
 			TYPE = armorer
 			CHARACTER = scope:armorer
 		}
@@ -1131,7 +1131,7 @@ at_decision_events.1015 = {
 		}
 
 		# Remember the jeweler
-		at_remember_merchant_character_effect = {
+		vls_remember_merchant_character_effect = {
 			TYPE = jeweler
 			CHARACTER = scope:jeweler
 		}

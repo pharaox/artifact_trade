@@ -1,0 +1,177 @@
+﻿vls_can_be_visiting_partner_trigger = {
+	location = $CHARACTER$.location
+	is_available = yes
+	OR = {
+		opinion = { target = $CHARACTER$ value >= 25 }
+		has_any_good_relationship_with_character_trigger = { CHARACTER = $CHARACTER$ }
+	}
+	NOR = {
+		has_relation_potential_rival = $CHARACTER$
+		has_relation_victim = $CHARACTER$
+		has_relation_bully = $CHARACTER$
+		has_court_position = second_camp_officer
+	}
+	age >= 10
+}
+
+vls_can_be_merchant_trigger = {
+	NOT = {
+		has_any_bad_relationship_with_character_trigger = { CHARACTER = $CHARACTER$ }
+	}
+	is_available_adult = yes
+	NOT = { has_trait = devoted }
+}
+
+vls_is_saved_vanilla_merchant_trigger = {
+	OR = {
+		vls_is_saved_vanilla_merchant_of_type_trigger = { CHARACTER = $CHARACTER$ TYPE = merchant }
+		vls_is_saved_vanilla_merchant_of_type_trigger = { CHARACTER = $CHARACTER$ TYPE = peddler }
+		vls_is_saved_vanilla_merchant_of_type_trigger = { CHARACTER = $CHARACTER$ TYPE = crier }
+		vls_is_saved_vanilla_merchant_of_type_trigger = { CHARACTER = $CHARACTER$ TYPE = storyteller }
+		vls_is_saved_vanilla_merchant_of_type_trigger = { CHARACTER = $CHARACTER$ TYPE = thief }
+		vls_is_saved_vanilla_merchant_of_type_trigger = { CHARACTER = $CHARACTER$ TYPE = healer }
+		vls_is_saved_vanilla_merchant_of_type_trigger = { CHARACTER = $CHARACTER$ TYPE = clergy }
+		vls_is_saved_vanilla_merchant_of_type_trigger = { CHARACTER = $CHARACTER$ TYPE = physician }
+		vls_is_saved_vanilla_merchant_of_type_trigger = { CHARACTER = $CHARACTER$ TYPE = bodyguard }
+		vls_is_saved_vanilla_merchant_of_type_trigger = { CHARACTER = $CHARACTER$ TYPE = weaponsmith }
+		vls_is_saved_vanilla_merchant_of_type_trigger = { CHARACTER = $CHARACTER$ TYPE = armorer }
+		vls_is_saved_vanilla_merchant_of_type_trigger = { CHARACTER = $CHARACTER$ TYPE = jeweler }
+		vls_is_saved_vanilla_merchant_of_type_trigger = { CHARACTER = $CHARACTER$ TYPE = quartermaster }
+	}
+}
+
+vls_is_saved_vanilla_merchant_of_type_trigger = {
+	$CHARACTER$ = {
+		is_target_in_variable_list = { name = laamp_remembered_$TYPE$s_list target = prev }
+	}
+}
+
+vls_has_friendly_traits_trigger = {
+	OR = {
+		has_trait = gregarious
+		has_trait = trusting
+		has_trait = compassionate
+		has_trait = forgiving
+		has_trait = generous
+		has_trait = fickle
+		has_trait = calm
+	}
+}
+
+vls_has_uninterested_traits_trigger = {
+	OR = {
+		has_trait = callous
+		has_trait = cynical
+		has_trait = arrogant
+		has_trait = fickle
+		has_trait = arbitrary
+		has_trait = patient
+		has_trait = sadistic
+	}
+}
+
+vls_has_commerce_traits_trigger = {
+	OR = {
+		has_trait = greedy
+		has_trait = deceitful
+		has_trait = ambitious
+		has_trait = diligent
+		has_trait = impatient
+	}
+}
+
+vls_has_standoffish_traits_trigger = {
+	OR = {
+		has_trait = shy
+		has_trait = craven
+		has_trait = humble
+		has_trait = paranoid
+	}
+}
+
+vls_has_irrational_traits_trigger = {
+	OR = {
+		has_trait = eccentric
+		has_trait = lunatic
+		has_trait = possessed
+	}
+}
+
+vls_has_illness_or_wounds_trigger = {
+	OR = {
+		has_treatable_disease_trigger = yes
+		has_trait = wounded_1
+		has_wounds_trigger = yes
+	}
+}
+
+vls_is_constantinople_unique_location_trigger = {
+	exists = title:b_constantinople
+	scope:visiting_location.barony = title:b_constantinople
+}
+
+vls_is_europe_like_location_trigger = {
+	exists = geographical_region:world_europe
+	geographical_region = world_europe
+}
+
+vls_is_scandinavia_like_location_trigger = {
+	exists = geographical_region:world_europe_north
+	geographical_region = world_europe_north
+}
+
+vls_is_britannia_like_location_trigger = {
+	exists = geographical_region:world_europe_west_britannia
+	geographical_region = world_europe_west_britannia
+}
+
+vls_is_iberia_like_location_trigger = {
+	exists = geographical_region:world_europe_west_iberia
+	geographical_region = world_europe_west_iberia
+}
+
+vls_is_middle_east_like_location_trigger = {
+	exists = geographical_region:world_middle_east
+	geographical_region = world_middle_east
+}
+
+vls_is_india_like_location_trigger = {
+	exists = geographical_region:world_india
+	geographical_region = world_india
+}
+
+vls_is_steppe_like_location_trigger = {
+	exists = geographical_region:world_steppe
+	geographical_region = world_steppe
+}
+
+vls_is_north_africa_like_location_trigger = {
+	exists = geographical_region:world_africa_north
+	geographical_region = world_africa_north
+}
+
+vls_is_west_africa_like_location_trigger = {
+	exists = geographical_region:world_africa_west
+	geographical_region = world_africa_west
+}
+
+vls_is_east_africa_like_location_trigger = {
+	exists = geographical_region:world_africa_east
+	geographical_region = world_africa_east
+}
+
+vls_has_tribal_like_holding_trigger = {
+	has_holding_type = tribal_holding
+}
+
+vls_has_church_like_holding_trigger = {
+	has_holding_type = church_holding
+}
+
+vls_has_castle_like_holding_trigger = {
+	has_holding_type = castle_holding
+}
+
+vls_has_city_like_holding_trigger = {
+	has_holding_type = city_holding
+}

@@ -137,7 +137,7 @@ at_decision_events.1020 = {
 			triggered_desc = {
 				trigger = {
 					NOT = { exists = scope:been_to_peddler }
-					scope:visiting_location = { at_has_city_like_holding_trigger = yes }
+					scope:visiting_location = { vls_has_city_like_holding_trigger = yes }
 				}
 				desc = ep3_laamp_decision_event.1020.desc_intro_posh_stalls
 			}
@@ -275,31 +275,31 @@ at_decision_events.1020 = {
 		}
 		triggered_animation = {
 			trigger = {
-				scope:visiting_partner = { at_has_friendly_traits_trigger = yes }
+				scope:visiting_partner = { vls_has_friendly_traits_trigger = yes }
 			}
 			animation = personality_forgiving
 		}
 		triggered_animation = {
 			trigger = {
-				scope:visiting_partner = { at_has_commerce_traits_trigger = yes }
+				scope:visiting_partner = { vls_has_commerce_traits_trigger = yes }
 			}
 			animation = personality_greedy
 		}
 		triggered_animation = {
 			trigger = {
-				scope:visiting_partner = { at_has_uninterested_traits_trigger = yes }
+				scope:visiting_partner = { vls_has_uninterested_traits_trigger = yes }
 			}
 			animation = personality_cynical
 		}
 		triggered_animation = {
 			trigger = {
-				scope:visiting_partner = { at_has_irrational_traits_trigger = yes }
+				scope:visiting_partner = { vls_has_irrational_traits_trigger = yes }
 			}
 			animation = personality_irrational
 		}
 		triggered_animation = {
 			trigger = {
-				scope:visiting_partner = { at_has_standoffish_traits_trigger = yes }
+				scope:visiting_partner = { vls_has_standoffish_traits_trigger = yes }
 			}
 			animation = personality_coward
 		}
@@ -317,31 +317,31 @@ at_decision_events.1020 = {
 		character = scope:artifact_peddler
 		triggered_animation = {
 			trigger = {
-				scope:artifact_peddler = { at_has_friendly_traits_trigger = yes }
+				scope:artifact_peddler = { vls_has_friendly_traits_trigger = yes }
 			}
 			animation = personality_compassionate
 		}
 		triggered_animation = {
 			trigger = {
-				scope:artifact_peddler = { at_has_uninterested_traits_trigger = yes }
+				scope:artifact_peddler = { vls_has_uninterested_traits_trigger = yes }
 			}
 			animation = personality_callous
 		}
 		triggered_animation = {
 			trigger = {
-				scope:artifact_peddler = { at_has_commerce_traits_trigger = yes }
+				scope:artifact_peddler = { vls_has_commerce_traits_trigger = yes }
 			}
 			animation = admiration
 		}
 		triggered_animation = {
 			trigger = {
-				scope:artifact_peddler = { at_has_standoffish_traits_trigger = yes }
+				scope:artifact_peddler = { vls_has_standoffish_traits_trigger = yes }
 			}
 			animation = personality_coward
 		}
 		triggered_animation = {
 			trigger = {
-				scope:artifact_peddler = { at_has_irrational_traits_trigger = yes }
+				scope:artifact_peddler = { vls_has_irrational_traits_trigger = yes }
 			}
 			animation = personality_irrational
 		}
@@ -402,7 +402,7 @@ at_decision_events.1020 = {
 		}
 
 		# Remember the artifact peddler
-		at_remember_merchant_character_effect = {
+		vls_remember_merchant_character_effect = {
 			TYPE = peddler
 			CHARACTER = scope:artifact_peddler
 		}
@@ -614,7 +614,7 @@ at_decision_events.1020 = {
 		trigger = {
 			custom_tooltip = {
 				text = ep3_laamp_decision_event.1020.b.cooldown.tt
-				NOT = { has_variable = at_has_haggled_recently }
+				NOT = { has_variable = 1020_has_haggled_recently }
 			}
 		}
 
@@ -696,7 +696,7 @@ at_decision_events.1020 = {
 		}
 
 		set_variable = {
-			name = at_has_haggled_recently
+			name = 1020_has_haggled_recently
 			days = visit_settlement_minimum_cooldown_days
 		}
 
@@ -899,31 +899,31 @@ at_decision_events.1021 = {
 		}
 		triggered_animation = {
 			trigger = {
-				scope:visiting_partner = { at_has_friendly_traits_trigger = yes }
+				scope:visiting_partner = { vls_has_friendly_traits_trigger = yes }
 			}
 			animation = personality_forgiving
 		}
 		triggered_animation = {
 			trigger = {
-				scope:visiting_partner = { at_has_commerce_traits_trigger = yes }
+				scope:visiting_partner = { vls_has_commerce_traits_trigger = yes }
 			}
 			animation = personality_greedy
 		}
 		triggered_animation = {
 			trigger = {
-				scope:visiting_partner = { at_has_uninterested_traits_trigger = yes }
+				scope:visiting_partner = { vls_has_uninterested_traits_trigger = yes }
 			}
 			animation = personality_cynical
 		}
 		triggered_animation = {
 			trigger = {
-				scope:visiting_partner = { at_has_irrational_traits_trigger = yes }
+				scope:visiting_partner = { vls_has_irrational_traits_trigger = yes }
 			}
 			animation = personality_irrational
 		}
 		triggered_animation = {
 			trigger = {
-				scope:visiting_partner = { at_has_standoffish_traits_trigger = yes }
+				scope:visiting_partner = { vls_has_standoffish_traits_trigger = yes }
 			}
 			animation = personality_coward
 		}

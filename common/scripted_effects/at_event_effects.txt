@@ -3,7 +3,7 @@
 	random_pool_character = {
 		province = $LOCATION$
 		limit = {
-			at_can_be_merchant_trigger = { CHARACTER = $CHARACTER$ }
+			vls_can_be_merchant_trigger = { CHARACTER = $CHARACTER$ }
 			var:at_merchant_type ?= flag:$TYPE$
 		}
 		save_scope_as = $MERCHANT$
@@ -17,13 +17,13 @@
 		random_pool_character = {
 			province = $LOCATION$
 			limit = {
-				at_can_be_merchant_trigger = { CHARACTER = $CHARACTER$ }
+				vls_can_be_merchant_trigger = { CHARACTER = $CHARACTER$ }
 				NOT = { has_variable = at_merchant_type }
 				trigger_if = {
 					limit = {
-						at_is_saved_vanilla_merchant_trigger = { CHARACTER = $CHARACTER$ }
+						vls_is_saved_vanilla_merchant_trigger = { CHARACTER = $CHARACTER$ }
 					}
-					at_is_saved_vanilla_merchant_of_type_trigger = { CHARACTER = $CHARACTER$ TYPE = $TYPE$ }
+					vls_is_saved_vanilla_merchant_of_type_trigger = { CHARACTER = $CHARACTER$ TYPE = $TYPE$ }
 				}
 			}
 			save_scope_as = $MERCHANT$
@@ -47,46 +47,6 @@
 	# Mark the character as a merchant
 	scope:$MERCHANT$ = {
 		set_variable = { name = at_merchant_type value = flag:$TYPE$ }
-	}
-}
-
-at_remember_merchant_character_effect = {
-	if = {
-		limit = {
-			any_in_list = {
-				variable = laamp_remembered_$TYPE$s_list
-				this = $CHARACTER$
-			}
-		}
-		remove_list_variable = {
-			name = laamp_remembered_$TYPE$s_list
-			target = $CHARACTER$
-		}
-	}
-	add_to_variable_list = {
-		name = laamp_remembered_$TYPE$s_list
-		target = $CHARACTER$
-		years = 10
-	}
-}
-
-at_remember_visited_settlement_effect = {
-	if = {
-		limit = {
-			any_in_list = {
-				variable = laamp_visited_settlements_list
-				this = $LOCATION$
-			}
-		}
-		remove_list_variable = {
-			name = laamp_visited_settlements_list
-			target = $LOCATION$
-		}
-	}
-	add_to_variable_list = {
-		name = laamp_visited_settlements_list
-		target = $LOCATION$
-		years = 10
 	}
 }
 
@@ -209,7 +169,7 @@ at_set_artifact_quality_or_wealth_effect = {
 			value = $LOCATION$.county.development_level
 			if = {
 				limit = {
-					$LOCATION$ = { at_has_city_like_holding_trigger = yes }
+					$LOCATION$ = { vls_has_city_like_holding_trigger = yes }
 				}
 				add = { 5 10 }
 			}
@@ -221,24 +181,6 @@ at_set_artifact_quality_or_wealth_effect = {
 			min = 5
 			max = 70
 		}
-	}
-}
-
-at_add_merchant_gold_effect = {
-	add_gold = {
-		value = $LOCATION$.county.development_level
-		if = {
-			limit = {
-				$LOCATION$ = { at_has_city_like_holding_trigger = yes }
-			}
-			add = { 5 10 }
-		}
-		multiply = 5
-		min = 50
-		max = 200
-		add = { -10 10 }
-		subtract = gold
-		min = 1
 	}
 }
 
@@ -315,6 +257,24 @@ at_add_scaled_artifact_modifiers_effect = {
 	}
 }
 
+at_add_merchant_gold_effect = {
+	add_gold = {
+		value = $LOCATION$.county.development_level
+		if = {
+			limit = {
+				$LOCATION$ = { vls_has_city_like_holding_trigger = yes }
+			}
+			add = { 5 10 }
+		}
+		multiply = 5
+		min = 50
+		max = 200
+		add = { -10 10 }
+		subtract = gold
+		min = 1
+	}
+}
+
 at_destroy_random_artifact_effect = {
 	if = {
 		limit = { has_any_artifact = yes }
@@ -331,69 +291,5 @@ at_destroy_random_artifact_effect = {
 		at_debug_log_effect = { MSG = at_debug_msg_destroying_artifact }
 		add_gold = scope:destroyed_artifact.at_artifact_base_price_value
 		destroy_artifact = scope:destroyed_artifact
-	}
-}
-
-at_get_visiting_partner_effect = {
-	if = {
-		limit = {
-			any_courtier = {
-				at_is_appropriate_visiting_partner_trigger = { CHARACTER = $CHARACTER$ }
-			}
-		}
-		random_courtier = {
-			limit = {
-				at_is_appropriate_visiting_partner_trigger = { CHARACTER = $CHARACTER$ }
-			}
-			weight = {
-				base = 1
-				modifier = {
-					add = 1000
-					is_close_family_of = $CHARACTER$
-					at_has_illness_or_wounds_trigger = yes
-					location = { at_has_church_like_holding_trigger = yes }
-				}
-				modifier = {
-					add = 500
-					is_spouse_of = $CHARACTER$
-					at_has_illness_or_wounds_trigger = yes
-					location = { at_has_church_like_holding_trigger = yes }
-				}
-				modifier = {
-					add = 100
-					has_relation_lover = $CHARACTER$
-					location = { at_has_church_like_holding_trigger = yes }
-				}
-				modifier = {
-					add = 20
-					is_spouse_of = $CHARACTER$
-				}
-				modifier = {
-					add = 15
-					is_primary_heir_of = $CHARACTER$
-				}
-				modifier = {
-					add = 10
-					OR = {
-						has_court_position = bodyguard_court_position
-						has_court_position = quartermaster_camp_officer
-						has_court_position = master_of_spoils_camp_officer
-					}
-				}
-				modifier = {
-					add = 5
-					is_close_family_of = $CHARACTER$
-				}
-				modifier = {
-					add = 2
-					has_trait = ambitious
-				}
-				modifier = {
-					add = -5
-					has_trait = lazy
-				}
-			}
-			save_scope_as = visiting_partner
-		}
 	}
 }

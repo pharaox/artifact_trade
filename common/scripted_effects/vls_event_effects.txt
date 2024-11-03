@@ -1,0 +1,103 @@
+﻿vls_get_visiting_partner_effect = {
+	if = {
+		limit = {
+			any_courtier = {
+				vls_can_be_visiting_partner_trigger = { CHARACTER = $CHARACTER$ }
+			}
+		}
+		random_courtier = {
+			limit = {
+				vls_can_be_visiting_partner_trigger = { CHARACTER = $CHARACTER$ }
+			}
+			weight = {
+				base = 1
+				modifier = {
+					add = 1000
+					is_close_family_of = $CHARACTER$
+					vls_has_illness_or_wounds_trigger = yes
+					location = { vls_has_church_like_holding_trigger = yes }
+				}
+				modifier = {
+					add = 500
+					is_spouse_of = $CHARACTER$
+					vls_has_illness_or_wounds_trigger = yes
+					location = { vls_has_church_like_holding_trigger = yes }
+				}
+				modifier = {
+					add = 100
+					has_relation_lover = $CHARACTER$
+					location = { vls_has_church_like_holding_trigger = yes }
+				}
+				modifier = {
+					add = 20
+					is_spouse_of = $CHARACTER$
+				}
+				modifier = {
+					add = 15
+					is_primary_heir_of = $CHARACTER$
+				}
+				modifier = {
+					add = 10
+					OR = {
+						has_court_position = bodyguard_court_position
+						has_court_position = quartermaster_camp_officer
+						has_court_position = master_of_spoils_camp_officer
+					}
+				}
+				modifier = {
+					add = 5
+					is_close_family_of = $CHARACTER$
+				}
+				modifier = {
+					add = 2
+					has_trait = ambitious
+				}
+				modifier = {
+					add = -5
+					has_trait = lazy
+				}
+			}
+			save_scope_as = visiting_partner
+		}
+	}
+}
+
+vls_remember_merchant_character_effect = {
+	if = {
+		limit = {
+			any_in_list = {
+				variable = laamp_remembered_$TYPE$s_list
+				this = $CHARACTER$
+			}
+		}
+		remove_list_variable = {
+			name = laamp_remembered_$TYPE$s_list
+			target = $CHARACTER$
+		}
+	}
+	add_to_variable_list = {
+		name = laamp_remembered_$TYPE$s_list
+		target = $CHARACTER$
+		years = 10
+	}
+}
+
+vls_remember_visited_settlement_effect = {
+	if = {
+		limit = {
+			any_in_list = {
+				variable = laamp_visited_settlements_list
+				this = $LOCATION$
+			}
+		}
+		remove_list_variable = {
+			name = laamp_visited_settlements_list
+			target = $LOCATION$
+		}
+	}
+	add_to_variable_list = {
+		name = laamp_visited_settlements_list
+		target = $LOCATION$
+		years = 10
+	}
+}
