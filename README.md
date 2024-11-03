@@ -153,6 +153,7 @@ The **Buy Artifacts** and **Sell Artifacts** interactions might become slow if t
 * [Chinese Translation (by@無壹)](https://steamcommunity.com/sharedfiles/filedetails/?id=2903983628)
 * [French Translation (by @Pata)](https://steamcommunity.com/sharedfiles/filedetails/?id=2976975086)
 * [Korean Translation (by @Yankee)](https://steamcommunity.com/sharedfiles/filedetails/?id=2984914446)
+* [German Translation (by @finallyciv)](https://steamcommunity.com/sharedfiles/filedetails/?id=3355568022)
 * [GitHub Repository](https://github.com/pharaox/artifact_trade)
 
 ## Credits
