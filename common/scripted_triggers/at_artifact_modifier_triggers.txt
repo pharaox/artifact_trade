@@ -73,6 +73,9 @@ at_has_artifact_prestige_modifier = {
 		has_artifact_modifier = tree_automa_modifier
 		has_artifact_modifier = statue_roman_woman_modifier
 
+		# monthly_prestige_gain_mult
+		has_artifact_modifier = artifact_monthly_prestige_mult_1_modifier
+
 		# monthly_prestige_gain_per_dread_add
 		has_artifact_modifier = artifact_monthly_prestige_gain_per_dread_add_1_modifier
 		has_artifact_modifier = artifact_monthly_prestige_gain_per_dread_add_2_modifier
@@ -931,6 +934,44 @@ at_has_artifact_development_growth_modifier = {
 		has_artifact_modifier = artifact_development_growth_11_modifier
 		has_artifact_modifier = artifact_development_growth_12_modifier
 
+		# <terrain>_development_growth
+		has_artifact_modifier = artifact_desert_development_growth_1
+		has_artifact_modifier = artifact_desert_mountains_development_growth_1
+		has_artifact_modifier = artifact_drylands_development_growth_1
+		has_artifact_modifier = artifact_mountains_development_growth_1
+		has_artifact_modifier = artifact_hills_development_growth_1
+		has_artifact_modifier = artifact_plains_development_growth_1
+		has_artifact_modifier = artifact_farmlands_development_growth_1
+		has_artifact_modifier = artifact_floodplains_development_growth_1
+		has_artifact_modifier = artifact_forest_development_growth_1
+		has_artifact_modifier = artifact_taiga_development_growth_1
+		has_artifact_modifier = artifact_oasis_development_growth_1
+		has_artifact_modifier = artifact_wetlands_development_growth_1
+		has_artifact_modifier = artifact_desert_development_growth_2
+		has_artifact_modifier = artifact_desert_mountains_development_growth_2
+		has_artifact_modifier = artifact_drylands_development_growth_2
+		has_artifact_modifier = artifact_mountains_development_growth_2
+		has_artifact_modifier = artifact_hills_development_growth_2
+		has_artifact_modifier = artifact_plains_development_growth_2
+		has_artifact_modifier = artifact_farmlands_development_growth_2
+		has_artifact_modifier = artifact_floodplains_development_growth_2
+		has_artifact_modifier = artifact_forest_development_growth_2
+		has_artifact_modifier = artifact_taiga_development_growth_2
+		has_artifact_modifier = artifact_oasis_development_growth_2
+		has_artifact_modifier = artifact_wetlands_development_growth_2
+		has_artifact_modifier = artifact_desert_development_growth_3
+		has_artifact_modifier = artifact_desert_mountains_development_growth_3
+		has_artifact_modifier = artifact_drylands_development_growth_3
+		has_artifact_modifier = artifact_mountains_development_growth_3
+		has_artifact_modifier = artifact_hills_development_growth_3
+		has_artifact_modifier = artifact_plains_development_growth_3
+		has_artifact_modifier = artifact_farmlands_development_growth_3
+		has_artifact_modifier = artifact_floodplains_development_growth_3
+		has_artifact_modifier = artifact_forest_development_growth_3
+		has_artifact_modifier = artifact_taiga_development_growth_3
+		has_artifact_modifier = artifact_oasis_development_growth_3
+		has_artifact_modifier = artifact_wetlands_development_growth_3
+
 		# *_development_growth_factor
 		# historical
 		has_artifact_modifier = al_taj_modifier
@@ -1388,7 +1429,7 @@ at_has_artifact_prowess_modifier = {
 		has_artifact_modifier = artifact_armor_knight_of_the_swan_artifact_modifier
 
 		# prowess_per_piety_level
-		
+
 		# negate_prowess_penalty_add
 		has_artifact_modifier = artifact_negate_prowess_penalty_add_1_modifier
 		has_artifact_modifier = artifact_negate_prowess_penalty_add_2_modifier
@@ -1604,7 +1645,7 @@ at_has_artifact_advantage_modifier = {
 		has_artifact_modifier = blessed_artifact_modifier
 
 		# attacker_advantage
-		
+
 		# defender_advantage
 		# same_heritage_county_advantage_add
 		# advantage_against_coreligionists
@@ -1679,6 +1720,8 @@ at_has_artifact_advantage_modifier = {
 		has_artifact_modifier = aruval_modifier
 
 		# winter_advantage
+		has_artifact_modifier = artifact_winter_movement_speed
+		has_artifact_modifier = artifact_winter_advantage
 	}
 }
 
@@ -1732,6 +1775,7 @@ at_has_artifact_legitimacy_modifier = {
 		#has_artifact_modifier = artifact_legitimacy_gain_mult_1_modifier
 		#has_artifact_modifier = artifact_legitimacy_gain_mult_2_modifier
 		has_artifact_modifier = artifact_legitimacy_gain_mult_3_modifier
+		has_artifact_modifier = artifact_legitimacy_gain_mult_4_modifier
 		#has_artifact_modifier = artifact_legitimacy_gain_mult_4_modifier
 		#has_artifact_modifier = artifact_legitimacy_gain_mult_5_modifier
 		#has_artifact_modifier = artifact_legitimacy_gain_mult_6_modifier
@@ -1746,6 +1790,26 @@ at_has_artifact_legitimacy_modifier = {
 
 at_has_artifact_travel_modifier = {
 	OR = {
+		# character_travel_safety
+		# character_travel_speed
+		has_artifact_modifier = artifact_travel_safety_1
+		has_artifact_modifier = artifact_travel_safety_2
+		has_artifact_modifier = character_travel_speed_1
+		has_artifact_modifier = character_travel_speed_2
+
+		# <terrain>_travel_danger
+		has_artifact_modifier = artifact_jungle_danger_travel_modifier
+		has_artifact_modifier = artifact_desert_danger_travel_modifier
+		has_artifact_modifier = artifact_drylands_danger_travel_modifier
+		has_artifact_modifier = artifact_desert_mountains_danger_travel_modifier
+		has_artifact_modifier = artifact_wetlands_danger_travel_modifier
+		has_artifact_modifier = artifact_steppe_danger_travel_modifier
+		has_artifact_modifier = artifact_floodplains_danger_travel_modifier
+		has_artifact_modifier = artifact_hills_danger_travel_modifier
+		has_artifact_modifier = artifact_mountains_danger_travel_modifier
+		has_artifact_modifier = artifact_forest_danger_travel_modifier
+		has_artifact_modifier = artifact_taiga_danger_travel_modifier
+
 		# character_travel_speed_mult
 		# character_travel_safety_mult
 		# provisions_capacity_mult
