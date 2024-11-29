@@ -1,6 +1,4 @@
 ﻿vls_decision_slot_1_prepare_effect = {
-	at_debug_log_effect = { MSG = at_debug_msg_visiting_holding }
-
 	save_scope_as = first_pass
 
 	# Build list of options

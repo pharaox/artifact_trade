@@ -6,6 +6,10 @@ tiger:
 	ck3-tiger --no-color . > ck3-tiger.out
 	cat ck3-tiger.out
 
+.PHONY: update-deps
+update-deps:
+	rsync -r --exclude=CHANGELOG.md --exclude=descriptor.mod --exclude=VERSION ../vls/* .
+
 .PHONY: build
 build: clean
 	mkdir -p tmp/$(NAME)

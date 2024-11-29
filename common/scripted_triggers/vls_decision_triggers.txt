@@ -1,10 +1,10 @@
-﻿#vls_decision_slot_1_is_shown_trigger = {
-#	always = no
-#}
-#
-#vls_decision_slot_1_is_valid_trigger = {
-#	always = no
-#}
+﻿vls_decision_slot_1_is_shown_trigger = {
+	always = no
+}
+
+vls_decision_slot_1_is_valid_trigger = {
+	always = no
+}
 
 vls_decision_slot_2_is_shown_trigger = {
 	always = no

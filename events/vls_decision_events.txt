@@ -12,7 +12,7 @@ vls_decision_events.0001 = {
 	}
 
 	immediate = {
-		at_debug_log_effect = { MSG = at_debug_msg_cleaning_up_after_ep3_laamp_decision_1000 }
+		vls_debug_log_effect = { MSG = vls_debug_msg_cleaning_up_after_ep3_laamp_decision_1000 }
 
 		# See 1000_clean_up_effect
 		# Supplies

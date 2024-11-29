@@ -110,6 +110,8 @@ visit_local_settlement_decision = {
 		if = {
 			limit = { scope:vls_decision = yes }
 
+			vls_debug_log_effect = { MSG = vls_debug_msg_visiting_holding }
+
 			if = {
 				limit = { vls_decision_slot_1_is_shown_trigger = yes }
 				vls_decision_slot_1_prepare_effect = yes
