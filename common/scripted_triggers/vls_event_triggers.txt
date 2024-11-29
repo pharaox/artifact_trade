@@ -175,3 +175,7 @@ vls_has_castle_like_holding_trigger = {
 vls_has_city_like_holding_trigger = {
 	has_holding_type = city_holding
 }
+
+vls_has_other_holding_trigger = {
+	always = no
+}

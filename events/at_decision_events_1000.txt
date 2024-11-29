@@ -142,6 +142,12 @@ at_decision_events.1000 = {
 				}
 				desc = ep3_laamp_decision_event.1000.desc_intro_city_holding
 			}
+			triggered_desc = {
+				trigger = {
+					scope:visiting_location = { vls_has_other_holding_trigger = yes }
+				}
+				desc = vls_decision_event.1000.desc_intro_other_holding
+			}
 		}
 
 		# Outro

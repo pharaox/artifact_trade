@@ -21,3 +21,5 @@
  vls_decision_slot_2: ""
  vls_decision_slot_2_desc: "$vls_decision_slot_2$"
  vls_decision_slot_2_tooltip: "$vls_decision_slot_2$"
+
+ vls_decision_event.1000.desc_intro_other_holding: ""
