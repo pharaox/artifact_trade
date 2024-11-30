@@ -1,5 +1,24 @@
 # Changelog
 
+## Version 0.12.1
+
+### Events
+
+* No artifacts will be randomly destroyed when an artifacts is sold by a craftsman.
+
+### Bug Fixes
+
+* Removed house claims from buyer and seller when an artifact is sold.
+* Suppressed "artifact lost" notifications when an artifact is sold.
+
+### Compatibility
+
+* Added support for other holding types in main square event for use in compatibility mods.
+
+### Miscellaneous
+
+* Extracted common Visit Holding decision code as library mod.
+
 ## Version 0.12.0
 
 ### Compatibility
