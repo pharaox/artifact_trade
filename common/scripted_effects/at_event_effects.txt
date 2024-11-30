@@ -42,6 +42,9 @@
 			faith = $LOCATION$.faith
 			save_scope_as = $MERCHANT$
 		}
+		scope:$MERCHANT$ = {
+			set_variable = { name = last_visited_ruler value = dummy_female days = 1825 } # Prevent pruning
+		}
 	}
 
 	# Mark the character as a merchant
