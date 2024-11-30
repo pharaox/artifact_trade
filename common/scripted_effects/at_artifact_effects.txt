@@ -112,6 +112,12 @@ at_buy_artifact_effect = {
 	}
 
 	scope:artifact = {
+		set_variable = {
+			name = suppress_artifact_notifications
+			value = yes
+			days = 2
+		}
+
 		# Set buyer as new owner
 		set_owner = scope:buyer
 

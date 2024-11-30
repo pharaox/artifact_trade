@@ -95,7 +95,6 @@ at_get_artifacts_effect = {
 		}
 		scope:newly_created_artifact ?= {
 			set_variable = { name = at_artifact_type value = flag:$TYPE$ }
-			set_variable = { name = suppress_artifact_notifications value = yes days = 2 }
 			if = {
 				limit = { at_artifact_quality_wealth_average_value >= 20 }
 				at_add_scaled_artifact_modifiers_effect = yes

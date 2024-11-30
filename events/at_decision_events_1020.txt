@@ -512,17 +512,6 @@ at_decision_events.1020 = {
 			}
 		}
 
-		# Suppress notifications
-		scope:first_artifact = {
-			set_variable = { name = suppress_artifact_notifications value = yes days = 2 }
-		}
-		scope:second_artifact ?= {
-			set_variable = { name = suppress_artifact_notifications value = yes days = 2 }
-		}
-		scope:third_artifact ?= {
-			set_variable = { name = suppress_artifact_notifications value = yes days = 2 }
-		}
-
 		# Save vanilla scopes and add vanilla variables for localization
 		scope:artifact_peddler = { save_scope_as = laamp_artifact_peddler }
 		scope:first_artifact = {
