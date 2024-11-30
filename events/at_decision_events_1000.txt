@@ -30,7 +30,7 @@ scripted_effect at_1000_clean_up_effect = {
 # Visiting Location: the Main Square
 # Partial rewrite of ep3_laamp_decision_event.1000 / ep3_laamp_decision_event.1001
 # Needs scopes:
-# * been_to_frafstmen, been_to_peddler - If set, used for loc
+# * been_to_craftsmen, been_to_peddler - If set, used for loc
 # * finished_craftsmen, sold_artifact - Used for disabling the corresponding options
 # Sets scopes:
 # * visiting_location
@@ -921,9 +921,11 @@ at_decision_events.1000 = {
 				NOT = { exists = scope:finished_craftsmen }
 			}
 		}
-
 		show_as_unavailable = {
-			exists = scope:finished_craftsmen
+			is_target_in_variable_list = {
+				name = at_event_options
+				target = flag:craftsmen_option
+			}
 			at_1000_finished_trigger = no
 		}
 
@@ -968,7 +970,10 @@ at_decision_events.1000 = {
 			}
 		}
 		show_as_unavailable = {
-			exists = scope:sold_artifact
+			is_target_in_variable_list = {
+				name = at_event_options
+				target = flag:sell_artifact_option
+			}
 			at_1000_finished_trigger = no
 		}
 

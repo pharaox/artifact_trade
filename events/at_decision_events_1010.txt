@@ -41,17 +41,13 @@ scripted_trigger at_1010_done_with_craftsmen_trigger = {
 	exists = scope:bought_accessory
 }
 
-scripted_effect at_1010_finish_craftsmen_effect = {
-	save_scope_value_as = { name = finished_craftsmen value = yes }
-}
-
 # Visiting Location: the Craftsman District
 # Rewrite of ep3_laamp_decision_event.1060
 # Needs scopes:
 # * visiting_location
-# * visting_partner
-# * bought_weapon, bought_armor, bought_accessory - If set, disable corresponding merchants
-# * been_to_weaponsmith, been_to_armorer, been_to_jeweler - If set, use for loc
+# * visiting_partner
+# * been_to_weaponsmith, been_to_armorer, been_to_jeweler - Visited merchants, use for loc
+# * bought_weapon, bought_armor, bought_accessory - Merchants from whom a slave has been bought, disable corresponding merchants
 # Sets scopes:
 # * weaponsmith, armorer, jeweler - Merchants
 # * been_to_craftsmen - Set to yes (to specify that the event has already been triggered)
@@ -192,21 +188,21 @@ at_decision_events.1010 = {
 	# The craftsmen, if they are available
 	lower_left_portrait = {
 		trigger = {
-			NOT = { scope:1010_fourth_character = root }
+			NOT = { exists = scope:bought_weapon }
 		}
-		character = scope:1010_fourth_character
+		character = scope:weaponsmith
 	}
 	lower_center_portrait = {
 		trigger = {
-			NOT = { scope:1010_fifth_character = root }
+			NOT = { exists = scope:bought_armor}
 		}
-		character = scope:1010_fifth_character
+		character = scope:armorer
 	}
 	lower_right_portrait = {
 		trigger = {
-			NOT = { scope:1010_sixth_character = root }
+			NOT = { exists = scope:bought_accessory }
 		}
-		character = scope:1010_sixth_character
+		character = scope:jeweler
 	}
 
 	immediate = {
@@ -243,23 +239,6 @@ at_decision_events.1010 = {
 				CHARACTER = root
 				MERCHANT = jeweler
 			}
-		}
-
-		# Initialize portrait scopes
-		scope:weaponsmith = { save_scope_as = 1010_fourth_character }
-		if = {
-			limit = { exists = scope:bought_weapon }
-			save_scope_as = 1010_fourth_character
-		}
-		scope:armorer = { save_scope_as = 1010_fifth_character }
-		if = {
-			limit = { exists = scope:bought_armor }
-			save_scope_as = 1010_fifth_character
-		}
-		scope:jeweler = { save_scope_as = 1010_sixth_character }
-		if = {
-			limit = { exists = scope:bought_accessory }
-			save_scope_as = 1010_sixth_character
 		}
 
 		# Save vanilla scopes for localization
@@ -407,7 +386,7 @@ at_decision_events.1010 = {
 
 		if = {
 			limit = { at_1010_done_with_craftsmen_trigger = yes }
-			at_1010_finish_craftsmen_effect = yes
+			save_scope_value_as = { name = finished_craftsmen value = yes }
 		}
 		save_scope_value_as = { name = been_to_craftsmen value = yes }
 		save_scope_value_as = { name = last_location value = flag:craftsmen }
@@ -418,10 +397,6 @@ at_decision_events.1010 = {
 
 		ai_chance = {
 			base = 50
-			modifier = {
-				has_trait = greedy
-				factor = 2
-			}
 		}
 	}
 }
@@ -430,7 +405,7 @@ at_decision_events.1010 = {
 # Rewrite of ep3_laamp_decision_event.1061
 # Needs scopes:
 # * visiting_location
-# * visting_partner
+# * visiting_partner
 # * weaponsmith - The weaponsmith
 # Sets scopes:
 # * first_weapon, second_weapon, third_weapon - Artifacts for sale
@@ -576,13 +551,6 @@ at_decision_events.1011 = {
 			ARTIFACT = scope:first_weapon
 		}
 
-		# Destroy some of the artifacts that were not bought
-		scope:weaponsmith = {
-			hidden_effect = {
-				at_destroy_random_artifact_effect = yes
-			}
-		}
-
 		# Update scopes
 		save_scope_value_as = { name = bought_weapon value = yes }
 		save_scope_value_as = { name = been_to_weaponsmith value = yes }
@@ -620,13 +588,6 @@ at_decision_events.1011 = {
 		at_1010_buy_artifact_effect = {
 			MERCHANT = scope:weaponsmith
 			ARTIFACT = scope:second_weapon
-		}
-
-		# Destroy some of the artifacts that were not bought
-		scope:weaponsmith = {
-			hidden_effect = {
-				at_destroy_random_artifact_effect = yes
-			}
 		}
 
 		# Update scopes
@@ -668,13 +629,6 @@ at_decision_events.1011 = {
 			ARTIFACT = scope:third_weapon
 		}
 
-		# Destroy some of the artifacts that were not bought
-		scope:weaponsmith = {
-			hidden_effect = {
-				at_destroy_random_artifact_effect = yes
-			}
-		}
-
 		# Update scopes
 		save_scope_value_as = { name = bought_weapon value = yes }
 		save_scope_value_as = { name = been_to_weaponsmith value = yes }
@@ -709,11 +663,7 @@ at_decision_events.1011 = {
 		trigger_event = at_decision_events.1010
 
 		ai_chance = {
-			base = 50
-			modifier = {
-				has_trait = greedy
-				factor = 2
-			}
+			base = 1
 		}
 	}
 }
@@ -722,7 +672,7 @@ at_decision_events.1011 = {
 # Rewrite of ep3_laamp_decision_event.1063
 # Needs scopes:
 # * visiting_location
-# * visting_partner
+# * visiting_partner
 # * armorer - The armorer
 # Sets scopes:
 # * first_armor, second_armor, third_armor - Artifacts for sale
@@ -868,13 +818,6 @@ at_decision_events.1013 = {
 			ARTIFACT = scope:first_armor
 		}
 
-		# Destroy some of the artifacts that were not bought
-		scope:armorer = {
-			hidden_effect = {
-				at_destroy_random_artifact_effect = yes
-			}
-		}
-
 		# Update scopes
 		save_scope_value_as = { name = bought_armor value = yes }
 		save_scope_value_as = { name = been_to_armorer value = yes }
@@ -912,13 +855,6 @@ at_decision_events.1013 = {
 		at_1010_buy_artifact_effect = {
 			MERCHANT = scope:armorer
 			ARTIFACT = scope:second_armor
-		}
-
-		# Destroy some of the artifacts that were not bought
-		scope:armorer = {
-			hidden_effect = {
-				at_destroy_random_artifact_effect = yes
-			}
 		}
 
 		# Update scopes
@@ -960,13 +896,6 @@ at_decision_events.1013 = {
 			ARTIFACT = scope:third_armor
 		}
 
-		# Destroy some of the artifacts that were not bought
-		scope:armorer = {
-			hidden_effect = {
-				at_destroy_random_artifact_effect = yes
-			}
-		}
-
 		# Update scopes
 		save_scope_value_as = { name = bought_armor value = yes }
 		save_scope_value_as = { name = been_to_armorer value = yes }
@@ -1001,11 +930,7 @@ at_decision_events.1013 = {
 		trigger_event = at_decision_events.1010
 
 		ai_chance = {
-			base = 50
-			modifier = {
-				has_trait = greedy
-				factor = 2
-			}
+			base = 1
 		}
 	}
 }
@@ -1014,7 +939,7 @@ at_decision_events.1013 = {
 # Rewrite of ep3_laamp_decision_event.1065
 # Needs scopes:
 # * visiting_location
-# * visting_partner
+# * visiting_partner
 # * jeweler - The jeweler
 # Sets scopes:
 # * first_accessory, second_accessory, third_accessory - Artifacts for sale
@@ -1160,13 +1085,6 @@ at_decision_events.1015 = {
 			ARTIFACT = scope:first_accessory
 		}
 
-		# Destroy some of the artifacts that were not bought
-		scope:jeweler = {
-			hidden_effect = {
-				at_destroy_random_artifact_effect = yes
-			}
-		}
-
 		# Update scopes
 		save_scope_value_as = { name = bought_accessory value = yes }
 		save_scope_value_as = { name = been_to_jeweler value = yes }
@@ -1204,13 +1122,6 @@ at_decision_events.1015 = {
 		at_1010_buy_artifact_effect = {
 			MERCHANT = scope:jeweler
 			ARTIFACT = scope:second_accessory
-		}
-
-		# Destroy some of the artifacts that were not bought
-		scope:jeweler = {
-			hidden_effect = {
-				at_destroy_random_artifact_effect = yes
-			}
 		}
 
 		# Update scopes
@@ -1252,13 +1163,6 @@ at_decision_events.1015 = {
 			ARTIFACT = scope:third_accessory
 		}
 
-		# Destroy some of the artifacts that were not bought
-		scope:jeweler = {
-			hidden_effect = {
-				at_destroy_random_artifact_effect = yes
-			}
-		}
-
 		# Update scopes
 		save_scope_value_as = { name = bought_accessory value = yes }
 		save_scope_value_as = { name = been_to_jeweler value = yes }
@@ -1293,11 +1197,7 @@ at_decision_events.1015 = {
 		trigger_event = at_decision_events.1010
 
 		ai_chance = {
-			base = 50
-			modifier = {
-				has_trait = greedy
-				factor = 2
-			}
+			base = 1
 		}
 	}
 }

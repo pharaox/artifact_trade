@@ -107,12 +107,12 @@ scripted_effect at_1020_remove_bid_price_multiplier_effect = {
 # Rewrite of ep3_laamp_decision_event.1020
 # Needs scopes:
 # * visiting_location
-# * visting_partner
+# * visiting_partner
 # * been_to_peddler_sell_screen - If set, use for loc
 # Sets scopes:
 # * artifact_peddler - Merchant
 # * first_artifact, second_artifact, third_artifact - Artifacts to sell
-# * outraged_partner - Visiting partner if better stewardship than root
+# * outraged_partner - Visiting partner if outraged
 # * recurring_artifact_peddler - Merchant if already visited before
 # * attempted_artifact_haggle - Set to flag:success if a haggle was a success, flag:failure if not
 # * been_to_peddler - Set to yes (to specify that any of the peddler events has already been triggered)
@@ -375,7 +375,9 @@ at_decision_events.1020 = {
 					stewardship >= average_skill_rating
 				}
 			}
-			save_scope_as = outraged_partner
+			scope:visiting_partner = {
+				save_scope_as = outraged_partner
+			}
 		}
 
 		# Find artifact peddler
@@ -606,6 +608,7 @@ at_decision_events.1020 = {
 				NOT = { has_variable = 1020_has_haggled_recently }
 			}
 		}
+		show_as_unavailable = { always = yes }
 
 		at_debug_log_effect = { MSG = at_debug_msg_attempting_artifact_haggle }
 
@@ -787,10 +790,10 @@ at_decision_events.1020 = {
 # Rewrite of ep3_laamp_decision_event.1021
 # Needs scopes:
 # * visiting_location
-# * visting_partner
+# * visiting_partner
 # * artifact_peddler - Merchant
 # * first_artifact, second_artifact, third_artifact - Artifacts to sell
-# * outraged_partner - Visiting partner if better stewardship than root
+# * outraged_partner - Visiting partner if outraged
 # * attempted_artifact_haggle - If set, use for loc and prices
 # Sets scopes:
 # * been_to_peddler - Set to yes (to specify that any of the peddler events has already been triggered)
@@ -1108,11 +1111,7 @@ at_decision_events.1021 = {
 		}
 
 		ai_chance = {
-			base = 50
-			modifier = {
-				has_trait = greedy
-				factor = 0.5
-			}
+			base = 1
 		}
 	}
 }
