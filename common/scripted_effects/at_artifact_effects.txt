@@ -62,28 +62,50 @@ at_buy_artifact_effect = {
 
 		custom_tooltip = at_artifact_price_breakdown_tooltip
 
-		# Remove buyer claims (tooltip only)
+		# Remove buyer claims
 		if = {
 			limit = {
-				scope:artifact = {
-					can_be_claimed_by = scope:buyer
+				any_personal_claimed_artifact = {
+					this = scope:artifact
 				}
 			}
-			if = {
-				limit = {
-					any_personal_claimed_artifact = {
-						this = scope:artifact
+			show_as_tooltip = {
+				remove_personal_artifact_claim = scope:artifact
+			}
+		}
+		hidden_effect = {
+			house ?= {
+				if = {
+					limit = {
+						any_house_claimed_artifact = {
+							this = scope:artifact
+						}
 					}
-				}
-				show_as_tooltip = {
-					remove_personal_artifact_claim = scope:artifact
+					remove_house_artifact_claim = scope:artifact
 				}
 			}
-			else = {
-				show_as_tooltip = {
-					house ?= {
-						remove_house_artifact_claim = scope:artifact
+		}
+	}
+
+	scope:seller = {
+		# Remove seller claims
+		if = {
+			limit = {
+				any_personal_claimed_artifact = {
+					this = scope:artifact
+				}
+			}
+			remove_personal_artifact_claim = scope:artifact
+		}
+		hidden_effect = {
+			house ?= {
+				if = {
+					limit = {
+						any_house_claimed_artifact = {
+							this = scope:artifact
+						}
 					}
+					remove_house_artifact_claim = scope:artifact
 				}
 			}
 		}
