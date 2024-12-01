@@ -1,5 +1,16 @@
 # Changelog
 
+## Version 0.12.2
+
+### Character Interactions
+
+* The AI will now properly evaluate Journal artifacts for buying and selling.
+
+### UI Improvements
+
+* It is now possible to filter only Journal and non-Journal artifacts.
+* Journal artifacts will now be properly sorted when sorting artifacts by type in the UI.
+
 ## Version 0.12.1
 
 ### Events
