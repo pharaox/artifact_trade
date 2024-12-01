@@ -1,3 +1,4 @@
+common/artifacts/types/00_types.txt
 common/character_interactions/00_artifact_interactions.txt
 common/decisions/dlc_decisions/ep_3/06_ep3_laamp_decisions.txt
 common/modifiers/00_artifact_modifiers.txt
