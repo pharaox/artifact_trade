@@ -20,12 +20,16 @@
 		value = 5
 	}
 	else_if = {
-		limit = { artifact_slot_type = sculpture }
+		limit = { artifact_slot_type = journal }
 		value = 6
 	}
 	else_if = {
-		limit = { artifact_slot_type = pedestal }
+		limit = { artifact_slot_type = sculpture }
 		value = 7
+	}
+	else_if = {
+		limit = { artifact_slot_type = pedestal }
+		value = 8
 	}
 	else_if = {
 		limit = { artifact_slot_type = wall_big }
@@ -43,266 +47,281 @@
 		limit = { artifact_slot_type = book }
 		value = 12
 	}
+	else = {
+		value = 13
+	}
 }
 
 at_artifact_type_value = {
 	# Crown
 	if = {
 		limit = { artifact_type = helmet }
-		value = 10
+		value = 100
 	}
 	else_if = {
 		limit = { artifact_type = helmet_simple }
-		value = 11
+		value = 101
 	}
 	# Regalia
 	else_if = {
 		limit = { artifact_type = regalia }
-		value = 20
+		value = 200
 	}
 	else_if = {
 		limit = { artifact_type = regalia_simple }
-		value = 21
+		value = 201
 	}
 	# Armor
 	else_if = {
 		limit = { artifact_type = armor_mail }
-		value = 30
+		value = 300
 	}
 	else_if = {
 		limit = { artifact_type = armor_plate }
-		value = 31
+		value = 301
 	}
 	else_if = {
 		limit = { artifact_type = armor_scale }
-		value = 32
+		value = 302
 	}
 	else_if = {
 		limit = { artifact_type = armor_lamellar }
-		value = 33
+		value = 303
 	}
 	else_if = {
 		limit = { artifact_type = armor_laminar }
-		value = 34
+		value = 304
 	}
 	else_if = {
 		limit = { artifact_type = armor_brigandine }
-		value = 35
+		value = 305
 	}
 	# Weapons
 	else_if = {
 		limit = { artifact_type = axe }
-		value = 40
+		value = 400
 	}
 	else_if = {
 		limit = { artifact_type = hammer }
-		value = 41
+		value = 401
 	}
 	else_if = {
 		limit = { artifact_type = mace }
-		value = 42
+		value = 402
 	}
 	else_if = {
 		limit = { artifact_type = spear }
-		value = 43
+		value = 403
 	}
 	else_if = {
 		limit = { artifact_type = sword }
-		value = 44
+		value = 404
 	}
 	else_if = {
 		limit = { artifact_type = dagger }
-		value = 45
+		value = 405
 	}
 	else_if = {
 		limit = { artifact_type = longbow }
-		value = 46
+		value = 406
 	}
 	else_if = {
 		limit = { artifact_type = composite }
-		value = 47
+		value = 407
 	}
 	else_if = {
 		limit = { artifact_type = bow }
-		value = 48
+		value = 408
 	}
 	else_if = {
 		limit = { artifact_type = crossbow }
-		value = 49
+		value = 409
 	}
 	# Trinkets
 	else_if = {
 		limit = { artifact_type = miscellaneous }
-		value = 50
+		value = 500
 	}
 	else_if = {
 		limit = { artifact_type = miscellaneous_when_not_court }
-		value = 51
+		value = 501
 	}
 	else_if = {
 		limit = { artifact_type = brooch }
-		value = 52
+		value = 502
 	}
 	else_if = {
 		limit = { artifact_type = necklace }
-		value = 53
+		value = 503
 	}
 	else_if = {
 		limit = { artifact_type = ring }
-		value = 54
+		value = 504
 	}
 	else_if = {
 		limit = { artifact_type = animal_trinket }
-		value = 55
+		value = 505
 	}
 	else_if = {
 		limit = { artifact_type = bird_feather }
-		value = 56
+		value = 506
 	}
 	else_if = {
 		limit = { artifact_type = pas_darmes_token }
-		value = 57
+		value = 507
 	}
 	else_if = {
 		limit = { artifact_type = pas_darmes_spurs }
-		value = 58
+		value = 508
 	}
 	else_if = {
 		limit = { artifact_type = tournament_favor }
-		value = 59
+		value = 509
+	}
+	# Journals
+	else_if = {
+		limit = { artifact_type = journal }
+		value = 600
 	}
 	# Sculptures
 	else_if = {
 		limit = { artifact_type = sculpture }
-		value = 60
+		value = 700
 	}
 	else_if = {
 		limit = { artifact_type = chest }
-		value = 61
+		value = 701
 	}
 	else_if = {
 		limit = { artifact_type = cabinet }
-		value = 62
+		value = 702
 	}
 	else_if = {
 		limit = { artifact_type = scientific_apparatus }
-		value = 63
+		value = 703
 	}
 	else_if = {
 		limit = { artifact_type = tun_barrel }
-		value = 64
+		value = 704
 	}
 	# Pedestal items, including alchemy
 	else_if = {
 		limit = { artifact_type = box }
-		value = 70
+		value = 800
 	}
 	else_if = {
 		limit = { artifact_type = goblet }
-		value = 71
+		value = 801
 	}
 	else_if = {
 		limit = { artifact_type = jug }
-		value = 72
+		value = 802
 	}
 	else_if = {
 		limit = { artifact_type = brooch_pedestal }
-		value = 73
+		value = 803
 	}
 	else_if = {
 		limit = { artifact_type = necklace_pedestal }
-		value = 74
+		value = 804
 	}
 	else_if = {
 		limit = { artifact_type = bowl }
-		value = 75
+		value = 805
 	}
 	else_if = {
 		limit = { artifact_type = plate }
-		value = 76
+		value = 806
 	}
 	else_if = {
 		limit = { artifact_type = urn }
-		value = 77
+		value = 807
 	}
 	else_if = {
 		limit = { artifact_type = scepter_pedestal }
-		value = 78
+		value = 808
 	}
 	else_if = {
 		limit = { artifact_type = pedestal }
-		value = 79
+		value = 809
 	}
 	else_if = {
 		limit = { artifact_type = elixir }
-		value = 80
+		value = 810
 	}
 	else_if = {
 		limit = { artifact_type = panacea }
-		value = 81
+		value = 811
 	}
 	else_if = {
 		limit = { artifact_type = philosophers_stone }
-		value = 82
+		value = 812
 	}
 	# Large wall ornaments
 	else_if = {
 		limit = { artifact_type = tapestry }
-		value = 90
+		value = 900
 	}
 	else_if = {
 		limit = { artifact_type = animal_hide_big }
-		value = 91
+		value = 901
 	}
 	else_if = {
 		limit = { artifact_type = wall_big }
-		value = 92
+		value = 902
 	}
 	else_if = {
 		limit = { artifact_type = wall_shield_special }
-		value = 93
+		value = 903
 	}
 	else_if = {
 		limit = { artifact_type = wall_icon_court_large }
-		value = 94
+		value = 904
 	}
 	# Small wall ornaments
 	else_if = {
 		limit = { artifact_type = animal_skull }
-		value = 100
+		value = 1000
 	}
 	else_if = {
 		limit = { artifact_type = animal_hide }
-		value = 101
+		value = 1001
 	}
 	else_if = {
 		limit = { artifact_type = wall_small }
-		value = 102
+		value = 1002
 	}
 	else_if = {
 		limit = { artifact_type = wall_shield }
-		value = 103
+		value = 1003
 	}
 	else_if = {
 		limit = { artifact_type = wall_icon_court_small }
-		value = 104
+		value = 1004
 	}
 	# Thrones
 	else_if = {
 		limit = { artifact_type = throne }
-		value = 110
+		value = 1100
 	}
 	else_if = {
 		limit = { artifact_type = throne_special }
-		value = 111
+		value = 1101
 	}
 	# Books
 	else_if = {
 		limit = { artifact_type = book }
-		value = 120
+		value = 1200
 	}
+	else_if = {
+		limit = { artifact_type = chronicle }
+		value = 1201
+	}
+	# Unknown
 	else = {
-		value = 200
+		value = at_artifact_slot_type_value
+		multiply = 100
+		add = 99
 	}
 }
 

@@ -116,6 +116,25 @@ at_nth_equippable_artifact_quality_wealth_average_value = {
 	}
 	else_if = {
 		limit = {
+			scope:artifact = { artifact_slot_type = journal }
+			any_character_artifact = {
+				artifact_slot_type = journal
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
+				count >= 1
+			}
+		}
+		ordered_character_artifact = {
+			limit = {
+				artifact_slot_type = journal
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
+			}
+			order_by = at_artifact_quality_wealth_average_value
+			position = 0
+			add = at_artifact_quality_wealth_average_value
+		}
+	}
+	else_if = {
+		limit = {
 			scope:artifact = { artifact_slot_type = throne }
 			any_character_artifact = {
 				artifact_slot_type = throne
@@ -325,6 +344,25 @@ at_np1th_equippable_artifact_quality_wealth_average_value = {
 			}
 			order_by = at_artifact_quality_wealth_average_value
 			position = 4
+			add = at_artifact_quality_wealth_average_value
+		}
+	}
+	else_if = {
+		limit = {
+			scope:artifact = { artifact_slot_type = journal }
+			any_character_artifact = {
+				artifact_slot_type = journal
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
+				count >= 2
+			}
+		}
+		ordered_character_artifact = {
+			limit = {
+				artifact_slot_type = journal
+				at_is_artifact_equppable_and_beneficial_trigger = { CHARACTER = scope:artifact_owner }
+			}
+			order_by = at_artifact_quality_wealth_average_value
+			position = 1
 			add = at_artifact_quality_wealth_average_value
 		}
 	}

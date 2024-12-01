@@ -90,6 +90,7 @@
 		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_armor }
 		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_primary_armament }
 		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_miscellaneous }
+		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_journal }
 		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_sculpture }
 		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_pedestal }
 		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_wall_big }
@@ -101,6 +102,7 @@
 		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_not_armor }
 		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_not_primary_armament }
 		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_not_miscellaneous }
+		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_not_journal }
 		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_not_sculpture }
 		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_not_pedestal }
 		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_not_wall_big }

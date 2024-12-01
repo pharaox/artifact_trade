@@ -388,6 +388,22 @@ at_artifact_better_than_equipped_trigger = {
 			count <= 3
 		}
 	}
+	trigger_else_if = {
+		limit = {
+			scope:artifact = { artifact_slot_type = journal }
+		}
+		OR = {
+			NOT = {
+				any_equipped_character_artifact = {
+					artifact_slot_type = journal
+				}
+			}
+			any_equipped_character_artifact = {
+				artifact_slot_type = journal
+				at_artifact_quality_wealth_average_value < scope:artifact.at_artifact_quality_wealth_average_value
+			}
+		}
+	}
 	trigger_else = {
 		always = no
 	}

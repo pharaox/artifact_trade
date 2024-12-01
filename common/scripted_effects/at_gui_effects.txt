@@ -161,6 +161,10 @@ at_artifacts_window_get_filtered_artifacts_effect = {
 				artifact_slot_type = miscellaneous
 			}
 			trigger_else_if = {
+				limit = { ROOT.var:at_artifacts_window_selected_slot_type_filter_option = flag:_journal }
+				artifact_slot_type = journal
+			}
+			trigger_else_if = {
 				limit = { ROOT.var:at_artifacts_window_selected_slot_type_filter_option = flag:_sculpture }
 				artifact_slot_type = sculpture
 			}
@@ -203,6 +207,10 @@ at_artifacts_window_get_filtered_artifacts_effect = {
 			trigger_else_if = {
 				limit = { ROOT.var:at_artifacts_window_selected_slot_type_filter_option = flag:_not_miscellaneous }
 				NOT = { artifact_slot_type = miscellaneous }
+			}
+			trigger_else_if = {
+				limit = { ROOT.var:at_artifacts_window_selected_slot_type_filter_option = flag:_not_journal }
+				NOT = { artifact_slot_type = journal }
 			}
 			trigger_else_if = {
 				limit = { ROOT.var:at_artifacts_window_selected_slot_type_filter_option = flag:_not_sculpture }
