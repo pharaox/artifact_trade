@@ -194,7 +194,7 @@ visit_local_settlement_decision = {
 					custom_tooltip = visit_local_settlement_city_holding_decision_tt
 				}
 			}
-			set_variable = ep3_laamp_decision_1000_is_visiting
+			temporarily_lock_visit_settlement_effect = yes
 			trigger_event =  ep3_laamp_decision_event.1000
 
 			# Properly cleanup after ep3_laamp_decision_event.1000

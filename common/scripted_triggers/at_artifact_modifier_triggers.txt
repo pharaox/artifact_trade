@@ -746,7 +746,7 @@ at_has_artifact_culture_opinion_modifier = {
 at_has_artifact_domain_limit_modifier = {
 	OR = {
 		# domain_limit
-		has_artifact_modifier = artifact_domain_limit_1_modifier
+		#has_artifact_modifier = artifact_domain_limit_1_modifier
 		# historical
 		has_artifact_modifier = justinian_crown_modifier
 	}
@@ -1215,6 +1215,8 @@ at_has_artifact_hostile_scheme_resistance_modifier = {
 at_has_artifact_lifestyle_xp_modifier = {
 	OR = {
 		# monthly_lifestyle_xp_gain_mult
+		has_artifact_modifier = artifact_monthly_lifestyle_xp_miniscule_modifier
+		has_artifact_modifier = artifact_monthly_lifestyle_xp_minor_modifier
 		has_artifact_modifier = artifact_monthly_lifestyle_xp_1_modifier
 		has_artifact_modifier = artifact_monthly_lifestyle_xp_2_modifier
 		has_artifact_modifier = artifact_monthly_lifestyle_xp_3_modifier
