@@ -146,7 +146,6 @@ The **Buy Artifacts** and **Sell Artifacts** interactions might become slow if t
 
 * [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2962238514)
 * [AGOT Compatibility](https://steamcommunity.com/sharedfiles/filedetails/?id=3222480457)
-* [Artifact Manager Compatibility](https://steamcommunity.com/sharedfiles/filedetails/?id=2966324178)
 * [Princes of Darkness Compatibility (by @fluffy heretic)](https://steamcommunity.com/sharedfiles/filedetails/?id=3108318083])
 * [Russian Translation (by @laxfeed)](https://steamcommunity.com/sharedfiles/filedetails/?id=2965215034)
 * [Spanish Translation (by @Will1294)](https://steamcommunity.com/sharedfiles/filedetails/?id=2971143815)
