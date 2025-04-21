@@ -77,10 +77,6 @@ at_valid_trading_partners = {
 
 	default = at_valid_trading_partners_within_trading_range
 
-	at_valid_trading_partners_same_and_neighboring_realms = {
-		flag = GG_can_change_rule
-	}
-
 	at_valid_trading_partners_within_trading_range = {
 		flag = GG_can_change_rule
 	}

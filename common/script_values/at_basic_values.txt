@@ -33,6 +33,12 @@ at_artifact_unique_price_multiplier = 3
 # Artifact price multipliers for the player to limit exploits
 at_artifact_ask_price_player_multiplier = 1.5
 
+# Trading range distance values
+at_squared_distance_small = 22500 # 150 map-pixels, same as vanilla
+at_squared_distance_medium = 90000 # 300 map-pixels
+at_squared_distance_large = 202500 # 450 map-pixels
+at_squared_distance_huge = 360000 # 600 map-pixels
+
 at_custom_artifact_base_price_value = {
 	value = 0
 }

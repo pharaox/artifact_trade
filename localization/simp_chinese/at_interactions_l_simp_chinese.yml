@@ -15,6 +15,8 @@
  at_sell_artifacts_interaction_send_name: "Sell Artifact"
  recipient_secondary_at_sell_artifacts_interaction: "Buyer"
 
+ at_warning_reduced_range_desc: "\n@warning_icon! #X Since you are traveling, your trading range is reduced and centered on your location#!"
+
  at_reluctant_to_spend_gold_reason: "[recipient.GetSheHe|U] is reluctant to spend [gold|E]: $VALUE|=+0$"
  at_recipient_at_war_reason: "[recipient.GetSheHe|U] is at war: $VALUE|=+0$"
  at_target_qwa_reason: "[target.GetName] quality and wealth: $VALUE|=+0$"

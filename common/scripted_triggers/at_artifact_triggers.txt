@@ -33,6 +33,7 @@ at_can_start_interaction_trigger = {
 
 at_can_trade_artifacts_trigger = {
 	at_can_start_interaction_trigger = yes
+	is_in_army = no
 	custom_description = {
 		text = "at_aniconists_wont_trade_artifacts"
 		at_has_aniconist_faith_trigger = no
@@ -58,20 +59,9 @@ at_valid_buyer_or_seller_trigger = {
 	in_diplomatic_range = $PARTY$
 	trigger_if = {
 		limit = {
-			has_game_rule = at_valid_trading_partners_same_and_neighboring_realms
-		}
-		OR = {
-			at_is_same_realm_character_trigger = { PARTY = $PARTY$ }
-			at_is_neighboring_realm_character_trigger = { PARTY = $PARTY$ }
-		}
-	}
-	trigger_else_if = {
-		limit = {
 			has_game_rule = at_valid_trading_partners_within_trading_range
 		}
 		OR = {
-			at_is_same_realm_character_trigger = { PARTY = $PARTY$ }
-			at_is_neighboring_realm_character_trigger = { PARTY = $PARTY$ }
 			at_is_character_within_trading_range_trigger = { PARTY = $PARTY$ }
 		}
 	}
@@ -80,69 +70,36 @@ at_valid_buyer_or_seller_trigger = {
 	}
 }
 
-at_is_same_realm_character_trigger = {
-	trigger_if = {
-		limit = { exists = top_liege }
-		trigger_if = {
-			limit = { $PARTY$ = { exists = top_liege } }
-			$PARTY$.top_liege = top_liege
-		}
-		trigger_else = {
-			top_liege = $PARTY$
-		}
-	}
-	trigger_else = {
-		$PARTY$ = { exists = top_liege }
-		$PARTY$.top_liege = this
-	}
-}
-
-at_is_neighboring_realm_character_trigger = {
-	any_neighboring_and_across_water_top_liege_realm_owner = {
-		trigger_if = {
-			limit = { $PARTY$ = { exists = top_liege } }
-			$PARTY$.top_liege = this
-		}
-		trigger_else = {
-			this = $PARTY$
-		}
-	}
-}
-
 at_is_character_within_trading_range_trigger = {
-	$PARTY$ = { exists = capital_province }
 	at_get_capital_province_trigger = yes
-	trigger_if = {
-		limit = {
-			$PARTY$ = { is_landed = yes }
-		}
-		scope:capital_province = {
-			squared_distance = {
-				target = $PARTY$.capital_province
-				value <= $PARTY$.at_artifact_trading_range_value
-			}
-		}
+	$PARTY$ = {
+		at_get_party_capital_province_trigger = yes
 	}
-	trigger_else = {
-		scope:capital_province = {
-			squared_distance = {
-				target = $PARTY$.capital_province
-				value <= $PARTY$.at_artifact_trading_range_landless_value
-			}
+	exists = scope:party_capital_province
+	scope:capital_province ?= {
+		squared_distance = {
+			target = scope:party_capital_province
+			value <= $PARTY$.at_artifact_trading_range_value
 		}
 	}
 }
 
 at_is_character_within_interaction_range_trigger = {
 	at_get_capital_province_trigger = yes
+	$PARTY$ = {
+		at_get_party_capital_province_trigger = yes
+	}
+	exists = scope:party_capital_province
 	scope:capital_province ?= {
 		squared_distance = {
-			target = $PARTY$.capital_province
+			target = scope:party_capital_province
 			value <= $PARTY$.at_interaction_range_value
 		}
 	}
 }
 
+# The "character" is the receiving side (recipient), they may be a ruler or not.
+# Their "capital" is their actual capital if ruler, their host's capital if courtier or guest, or their location if pool.
 at_get_capital_province_trigger = {
 	trigger_if = {
 		limit = { exists = capital_province }
@@ -154,6 +111,18 @@ at_get_capital_province_trigger = {
 	}
 	trigger_else = {
 		location ?= { save_temporary_scope_as = capital_province }
+	}
+}
+
+# The "party" is the acting side (actor), they are always a ruler.
+# Their "capital" is their location if they are traveling, or their actual capital if not.
+at_get_party_capital_province_trigger = {
+	trigger_if = {
+		limit = { exists = current_travel_plan }
+		location ?= { save_temporary_scope_as = party_capital_province }
+	}
+	trigger_else = {
+		capital_province ?= { save_temporary_scope_as = party_capital_province }
 	}
 }
 

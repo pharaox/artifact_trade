@@ -1658,23 +1658,29 @@ at_attempted_artifact_haggle_multiplier = {
 # Artifact trading range, depends on title tier.
 at_artifact_trading_range_value = {
 	if = {
-		limit = { highest_held_title_tier = tier_empire }
-		value = squared_distance_almost_massive
+		limit = { is_landless_adventurer = yes }
+		value = define:NTaskContract|ADVENTURER_DISTANCE_RESTRICTION
 	}
 	else_if = {
-		limit = { highest_held_title_tier = tier_kingdom }
-		value = squared_distance_huge
-	}
-	else_if = {
-		limit = { highest_held_title_tier = tier_duchy }
-		value = squared_distance_large
-	}
-	else_if = {
-		limit = { highest_held_title_tier = tier_county }
-		value = squared_distance_medium
+		limit = { exists = current_travel_plan }
+		value = at_squared_distance_small
 	}
 	else = {
-		value = squared_distance_small
+		if = {
+			limit = { highest_held_title_tier = tier_empire }
+			value = at_squared_distance_huge
+		}
+		else_if = {
+			limit = { highest_held_title_tier = tier_kingdom }
+			value = at_squared_distance_large
+		}
+		else_if = {
+			limit = { highest_held_title_tier = tier_duchy }
+			value = at_squared_distance_medium
+		}
+		else = {
+			value = at_squared_distance_small
+		}
 	}
 }
 

@@ -1,10 +1,12 @@
 ﻿l_spanish:
  AT_SELL_ARTIFACTS: "Vender Artefactos"
- AT_SELL_ARTIFACTS_TOOLTIP: "#T $AT_SELL_ARTIFACTS$#!"
+ AT_SELL_ARTIFACTS_TOOLTIP: "$AT_SELL_ARTIFACTS$ $AT_WARNING_REDUCED_RANGE$"
  AT_BUY_ARTIFACTS: "Comprar Artefactos"
- AT_BUY_ARTIFACTS_TOOLTIP: "#T $AT_BUY_ARTIFACTS$#!"
+ AT_BUY_ARTIFACTS_TOOLTIP: "$AT_BUY_ARTIFACTS$ $AT_WARNING_REDUCED_RANGE$"
  AT_FIND_ARTIFACTS: "Buscador de Artefactos"
  AT_FIND_ARTIFACTS_TOOLTIP: "#T $AT_FIND_ARTIFACTS$#!"
+
+ AT_WARNING_REDUCED_RANGE: "[SelectLocalization(GetPlayer.GetTravelPlan.IsValid, 'at_warning_reduced_range_desc', 'at_empty')]"
 
  AT_NO_ARTIFACTS_FOUND: "#weak No se encontraron artefactos válidos#!"
 

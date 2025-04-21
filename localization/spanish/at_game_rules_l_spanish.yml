@@ -30,10 +30,8 @@
  setting_at_craftsmen_holdings_all_20_desc: "Craftsmen are also available in non-city holdings with at least 20 development or certain buildings."
 
  rule_at_valid_trading_partners: "#color_yellow Buscar y Comerciar Artefactos:#! Compradores o Vendedores Válidos"
- setting_at_valid_trading_partners_same_and_neighboring_realms: "#high Reinos Iguales y Vecinos#!"
- setting_at_valid_trading_partners_same_and_neighboring_realms_desc: "Personajes en los mismos reinos y reinos vecinos."
  setting_at_valid_trading_partners_within_trading_range: "Dentro del Rango de Comercio"
- setting_at_valid_trading_partners_within_trading_range_desc: "Personajes en los mismos reinos y reinos vecinos, y gobernantes dentro de un rango de comercio dinámico dependiendo del rango."
+ setting_at_valid_trading_partners_within_trading_range_desc: "Personajes dentro de un rango de comercio dinámico dependiendo del rango."
  setting_at_valid_trading_partners_all: "#high Todos los Personajes#!"
  setting_at_valid_trading_partners_all_desc: "Todos los personajes dentro del rango diplomático."
 

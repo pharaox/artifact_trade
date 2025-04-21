@@ -2,11 +2,22 @@
 # Scopes: actor is the buyer, recipient is the artifact owner (seller), target is the artifact.
 at_buy_artifact_interaction = {
 	category = interaction_category_diplomacy
-	desc = at_buy_artifact_interaction_desc
 	interface_priority = 60
 	common_interaction = yes
 	needs_recipient_to_open = yes
 	icon = artisan_inspiration
+
+	desc = {
+		desc = at_buy_artifact_interaction_desc
+		triggered_desc = {
+			trigger = {
+				scope:actor = {
+					exists = current_travel_plan
+				}
+			}
+			desc = at_warning_reduced_range_desc
+		}
+	}
 
 	target_type = artifact
 	target_filter = recipient_artifacts
