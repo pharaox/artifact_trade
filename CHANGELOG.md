@@ -1,5 +1,16 @@
 # Changelog
 
+## Version 0.14.0
+
+### Interactions
+
+* Reduced artifact trading ranges across the board, and reduced them even further for traveling characters. Characters in armies are no longer able to trade artifacts at all.
+* Removed *Same and Neighboring Realms* setting from the *Valid Buyers or Sellers* game rule.
+
+### Compatibility
+
+* Adapted to CK3 1.16.0.1
+
 ## Version 0.13.0
 
 ### Compatibility
