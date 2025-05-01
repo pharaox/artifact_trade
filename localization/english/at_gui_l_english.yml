@@ -152,6 +152,10 @@
  # RtP
  at_travel: "$game_concept_travel$"
  at_influence: "$game_concept_influence$"
+ # KotS
+ at_fertility_growth: "$game_concept_fertility$ Growth"
+ at_herd_gain: "$game_concept_herd$ Gain"
+ at_herd_conversion: "$game_concept_herd$ Conversion"
 
  at_equipped: "Equipped"
  at_not_equipped: "Not Equipped"

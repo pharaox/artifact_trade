@@ -539,6 +539,18 @@ at_artifacts_window_get_filtered_artifacts_effect = {
 				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_influence }
 				at_has_artifact_influence_modifier = yes
 			}
+			trigger_else_if = {
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_fertility_growth }
+				at_has_artifact_fertility_growth_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_herd_gain }
+				at_has_artifact_herd_gain_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_herd_conversion }
+				at_has_artifact_herd_conversion_modifier = yes
+			}
 			trigger_else = {
 				always = yes
 			}

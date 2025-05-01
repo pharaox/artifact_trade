@@ -880,8 +880,11 @@ at_decision_events.1000 = {
 			}
 			if = {
 				limit = {
-					any_character_artifact = {
-						at_is_unsellable_artifact_trigger = no
+					OR = {
+						any_character_artifact = {
+							at_is_unsellable_artifact_trigger = no
+						}
+						at_can_laamp_sell_eagle_trigger = yes
 					}
 				}
 				add_to_variable_list = {

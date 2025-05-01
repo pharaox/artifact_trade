@@ -216,6 +216,10 @@
 		# RtP
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_travel }
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_influence }
+		# KotS
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_fertility_growth }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_herd_gain }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_herd_conversion }
 
 		if = {
 			limit = {

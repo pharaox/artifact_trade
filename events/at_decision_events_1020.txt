@@ -29,7 +29,7 @@ scripted_trigger at_1020_ai_will_sell_artifact_trigger = {
 
 scripted_effect at_1020_cleanup_effect = {
 	# Remove vanilla artifact variables
-	scope:first_artifact = {
+	scope:first_artifact ?= {
 		at_1020_remove_sell_variables_effect = yes
 		at_1020_remove_bid_price_multiplier_effect = yes
 	}
@@ -427,22 +427,29 @@ at_decision_events.1020 = {
 
 			# Save artifact scopes
 			# Prefer unequipped and marked artifacts, over just unequipped, over others
-			random_in_list = {
-				list = artifacts_to_sell
+			if = {
 				limit = {
-					has_variable = at_artifact_to_sell
-					is_equipped = no
+					any_in_list = {
+						list = artifacts_to_sell
+					}
 				}
-				alternative_limit = {
-					is_equipped = no
+				random_in_list = {
+					list = artifacts_to_sell
+					limit = {
+						has_variable = at_artifact_to_sell
+						is_equipped = no
+					}
+					alternative_limit = {
+						is_equipped = no
+					}
+					alternative_limit = {
+					}
+					set_variable = {
+						name = at_artifact_to_sell
+						days = visit_settlement_cooldown_days
+					}
+					save_scope_as = first_artifact
 				}
-				alternative_limit = {
-				}
-				set_variable = {
-					name = at_artifact_to_sell
-					days = visit_settlement_cooldown_days
-				}
-				save_scope_as = first_artifact
 			}
 			if = {
 				limit = {
@@ -516,7 +523,7 @@ at_decision_events.1020 = {
 
 		# Save vanilla scopes and add vanilla variables for localization
 		scope:artifact_peddler = { save_scope_as = laamp_artifact_peddler }
-		scope:first_artifact = {
+		scope:first_artifact ?= {
 			save_scope_as = 1020_first_artifact_to_sell
 			at_1020_add_sell_variables_effect = { MERCHANT = scope:artifact_peddler }
 		}
@@ -534,6 +541,7 @@ at_decision_events.1020 = {
 			limit = { exists = scope:outraged_partner }
 			random_list = {
 				50 = {
+					trigger = { exists = scope:first_artifact }
 					scope:first_artifact = { save_scope_as = outraged_partner_artifact }
 				}
 				50 = {
@@ -545,7 +553,7 @@ at_decision_events.1020 = {
 					scope:third_artifact = { save_scope_as = outraged_partner_artifact }
 				}
 			}
-			scope:outraged_partner_artifact = {
+			scope:outraged_partner_artifact ?= {
 				set_variable = { name = at_bid_price_multiplier value = 1.2 }
 			}
 		}
@@ -556,8 +564,20 @@ at_decision_events.1020 = {
 		name = ep3_laamp_decision_event.1020.a
 		custom_tooltip = ep3_laamp_decision_event.1020.a.tt
 
+		trigger = {
+			scope:artifact_peddler = {
+				short_term_gold >= 1
+			}
+		}
+		show_as_unavailable = {
+			always = yes
+		}
+
 		# Show default artifact prices
-		custom_tooltip = ep3_laamp_decision_event.1020.a.first_artifact.tt
+		if = {
+			limit = { exists = scope:first_artifact }
+			custom_tooltip = ep3_laamp_decision_event.1020.a.first_artifact.tt
+		}
 		if = {
 			limit = { exists = scope:second_artifact }
 			custom_tooltip = ep3_laamp_decision_event.1020.a.second_artifact.tt
@@ -567,6 +587,15 @@ at_decision_events.1020 = {
 			custom_tooltip = ep3_laamp_decision_event.1020.a.third_artifact.tt
 		}
 
+		# Show eagle price
+		if = {
+			limit = {
+				at_can_laamp_sell_eagle_trigger = yes
+			}
+			custom_tooltip = ep3_laamp_decision_event.1020.eagle.tt
+			custom_tooltip = ep3_laamp_decision_event.1020.eagle.price_tt
+		}
+
 		# Go to sell screen
 		trigger_event = at_decision_events.1021
 
@@ -574,9 +603,12 @@ at_decision_events.1020 = {
 			base = 0
 			modifier = {
 				OR = {
-					at_1020_ai_will_sell_artifact_trigger = {
-						MERCHANT = scope:artifact_peddler
-						ARTIFACT = scope:first_artifact
+					AND = {
+						exists = scope:first_artifact
+						at_1020_ai_will_sell_artifact_trigger = {
+							MERCHANT = scope:artifact_peddler
+							ARTIFACT = scope:first_artifact
+						}
 					}
 					AND = {
 						exists = scope:second_artifact
@@ -592,6 +624,7 @@ at_decision_events.1020 = {
 							ARTIFACT = scope:third_artifact
 						}
 					}
+					at_can_laamp_sell_eagle_trigger = yes
 				}
 				add = 100
 			}
@@ -603,12 +636,18 @@ at_decision_events.1020 = {
 		name = ep3_laamp_decision_event.1020.b
 
 		trigger = {
+			exists = scope:first_artifact
+			scope:artifact_peddler = {
+				short_term_gold >= 1
+			}
 			custom_tooltip = {
 				text = ep3_laamp_decision_event.1020.b.cooldown.tt
 				NOT = { has_variable = 1020_has_haggled_recently }
 			}
 		}
-		show_as_unavailable = { always = yes }
+		show_as_unavailable = {
+			exists = scope:first_artifact
+		}
 
 		at_debug_log_effect = { MSG = at_debug_msg_attempting_artifact_haggle }
 
@@ -712,13 +751,21 @@ at_decision_events.1020 = {
 
 		trigger = {
 			exists = scope:outraged_partner
+			exists = scope:outraged_partner_artifact
+			scope:artifact_peddler = {
+				short_term_gold >= 1
+			}
+		}
+		show_as_unavailable = {
+			exists = scope:outraged_partner
+			exists = scope:outraged_partner_artifact
 		}
 
 		at_debug_log_effect = { MSG = at_debug_msg_selling_artifact_via_outraged_partner }
 
 		# Sell random artifact at higher price
 		if = {
-			limit = { scope:first_artifact = scope:outraged_partner_artifact }
+			limit = { scope:first_artifact ?= scope:outraged_partner_artifact }
 			custom_tooltip = ep3_laamp_decision_event.1020.c.first_artifact
 		}
 		else_if = {
@@ -931,6 +978,12 @@ at_decision_events.1021 = {
 			}
 			animation = shame
 		}
+		triggered_animation = {
+			trigger = {
+				at_can_laamp_sell_eagle_trigger = yes
+			}
+			animation = hunting_falcon
+		}
 		animation = thinking
 	}
 
@@ -962,7 +1015,7 @@ at_decision_events.1021 = {
 	}
 
 	immediate = {
-		scope:first_artifact = {
+		scope:first_artifact ?= {
 			at_1020_set_bid_price_multiplier_effect = yes
 		}
 		scope:second_artifact ?= {
@@ -976,6 +1029,10 @@ at_decision_events.1021 = {
 	# Sell first artifact
 	option = {
 		name = ep3_laamp_decision_event.1021.a
+
+		trigger = {
+			exists = scope:first_artifact
+		}
 
 		# Actually sell the artifact
 		at_1020_sell_artifact_effect = {
@@ -1076,6 +1133,80 @@ at_decision_events.1021 = {
 					ARTIFACT = scope:third_artifact
 				}
 				add = 100
+			}
+		}
+	}
+
+	option = {
+		name = ep3_laamp_decision_event.1021.eagle
+
+		trigger = {
+			at_can_laamp_sell_eagle_trigger = yes
+		}
+
+		# Actually sell the eagle
+		at_debug_log_effect = { MSG = at_debug_msg_selling_eagle }
+		scope:artifact_peddler = {		
+			pay_short_term_gold = {
+				gold = root.hunting_eagle_sell_value
+				target = root
+			}
+		}
+		transfer_eagle_effect = {
+			RECIPIENT = scope:artifact_peddler
+			GIVER = root
+			METHOD = market
+		}
+
+		# Stress impact
+		stress_impact = {
+			base = minor_stress_impact_gain
+			greedy = minor_stress_impact_loss
+			generous = minor_stress_impact_gain
+			callous = minor_stress_impact_loss
+			sadistic = minor_stress_impact_loss
+			compassionate = minor_stress_impact_gain
+		}
+
+		# Cleanup variables and update scopes
+		at_1020_cleanup_effect = yes
+		save_scope_value_as = { name = sold_artifact value = yes }
+		save_scope_value_as = { name = been_to_peddler value = yes }
+		save_scope_value_as = { name = been_to_peddler_sell_screen value = yes }
+		save_scope_value_as = { name = last_location value = flag:artifact_peddler }
+
+		# Go back to main square
+		custom_tooltip = ep3_laamp_decision_event.return.tt
+		trigger_event = at_decision_events.1000
+
+		ai_chance = {
+			base = 1
+			ai_value_modifier = {
+				ai_greed = 0.5
+				ai_compassion = -0.5
+			}
+			modifier = {
+				gold < 0
+				add = 50
+			}
+			modifier = {
+				has_character_modifier = weak_eagle_modifier
+				add = 20
+			}
+			modifier = {
+				has_character_modifier = very_weak_eagle_modifier
+				add = 50
+			}
+			modifier = {
+				eagle_is_old_trigger = yes
+				add = 50
+			}
+			modifier = {
+				OR = {
+					has_character_modifier = strong_eagle_modifier
+					has_eagle_personality_trait_trigger = yes
+				}
+				add = -50
 			}
 		}
 	}

@@ -11,6 +11,7 @@
 
  at_debug_msg_attempting_artifact_haggle: "$at_debug_prefix$: Attempting artifact haggle"
  at_debug_msg_selling_artifact_via_outraged_partner: "$at_debug_prefix$: Selling artifact via outraged partner"
+ at_debug_msg_selling_eagle: "$at_debug_prefix$: Selling eagle"
 
  at_debug_msg_creating_artifact: "$at_debug_prefix$: Creating artifact"
  at_debug_msg_destroying_artifact: "$at_debug_prefix$: Destroying artifact"

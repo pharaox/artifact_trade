@@ -37,3 +37,15 @@ at_is_unsellable_artifact_trigger = {
 		has_variable = 1025_treasure_map
 	}
 }
+
+at_can_laamp_sell_eagle_trigger = {
+	location = { has_holding_type = nomad_holding }
+	has_available_eagle_trigger = yes
+	NOR = { 
+		has_character_flag = cant_sell_eagle
+		scope:artifact_peddler ?= {
+			has_eagle_trigger = yes
+		}
+	}
+	short_term_gold <= minor_gold_laamps_value
+}
