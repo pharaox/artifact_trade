@@ -113,13 +113,23 @@ at_decision_events.1000 = {
 			random_valid = {
 				triggered_desc = {
 					trigger = {
-						scope:visiting_location = { vls_has_tribal_like_holding_trigger = yes }
+						scope:visiting_location = {
+							OR = {
+								vls_has_tribal_like_holding_trigger = yes
+								vls_has_nomad_like_holding_trigger = yes
+							}
+						}
 					}
 					desc = ep3_laamp_decision_event.1000.desc_intro_tribal_holding_01
 				}
 				triggered_desc = {
 					trigger = {
-						scope:visiting_location = { vls_has_tribal_like_holding_trigger = yes }
+						scope:visiting_location = {
+							OR = {
+								vls_has_tribal_like_holding_trigger = yes
+								vls_has_nomad_like_holding_trigger = yes
+							}
+						}
 					}
 					desc = ep3_laamp_decision_event.1000.desc_intro_tribal_holding_02
 				}
@@ -682,7 +692,12 @@ at_decision_events.1000 = {
 	override_background = {
 		trigger = {
 			at_1000_finished_trigger = yes
-			scope:visiting_location = { vls_has_tribal_like_holding_trigger = yes }
+			scope:visiting_location = {
+				OR = {
+					vls_has_tribal_like_holding_trigger = yes
+					vls_has_nomad_like_holding_trigger = yes
+				}
+			}
 		}
 		reference = bp1_bonfire
 	}
@@ -703,6 +718,12 @@ at_decision_events.1000 = {
 			scope:visiting_location = { vls_has_tribal_like_holding_trigger = yes }
 		}
 		reference = terrain_settlement
+	}
+	override_background = {
+		trigger = { 
+			scope:visiting_location = { vls_has_nomad_like_holding_trigger = yes }
+		}
+		reference = mpo_camp_steppe
 	}
 	override_background = {
 		trigger = {

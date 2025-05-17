@@ -164,6 +164,18 @@ at_decision_events.1010 = {
 	}
 
 	theme = stewardship
+	override_background = {
+		trigger = {
+			scope:visiting_location = {
+				OR = {
+					vls_has_tribal_like_holding_trigger = yes
+					vls_has_nomad_like_holding_trigger = yes
+				}
+
+			}
+		}
+		reference = army_camp
+	}
 	override_background = { reference = market }
 
 	# Root and their partner

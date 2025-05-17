@@ -164,6 +164,13 @@ vls_has_tribal_like_holding_trigger = {
 	has_holding_type = tribal_holding
 }
 
+vls_has_nomad_like_holding_trigger = {
+	OR = {
+		has_holding_type = nomad_holding
+		has_holding_type = herder_holding
+	}
+}
+
 vls_has_church_like_holding_trigger = {
 	has_holding_type = church_holding
 }
