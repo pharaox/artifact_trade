@@ -1,5 +1,15 @@
 # Changelog
 
+## Version 0.14.1
+
+### Interactions
+
+* Increased artifact trading ranges slightly across the board.
+
+### Compatibility
+
+* Adapted to CK3 1.16.2
+
 ## Version 0.14.0
 
 ### Interactions
