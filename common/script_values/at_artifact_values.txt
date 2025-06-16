@@ -1662,7 +1662,12 @@ at_artifact_trading_range_value = {
 		value = define:NTaskContract|ADVENTURER_DISTANCE_RESTRICTION
 	}
 	else_if = {
-		limit = { exists = current_travel_plan }
+		limit = {
+			OR = {
+				exists = current_travel_plan
+				is_commanding_army = yes
+			}
+		}
 		value = at_squared_distance_small
 	}
 	else = {
