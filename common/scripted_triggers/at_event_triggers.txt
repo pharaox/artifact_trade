@@ -7,6 +7,8 @@
 			}
 			OR = {
 				county ?= { development_level >= at_craftsmen_min_development_level_value }
+
+				# Buildings
 				# Economy
 				has_building_or_higher = common_tradeport_01
 				has_building_or_higher = caravanserai_01
@@ -14,6 +16,22 @@
 				has_building_or_higher = market_villages_01
 				# Special
 				has_special_building = yes
+
+				# Domicile buildings
+				any_province_domicile = {
+					OR = {
+						# Estate
+						has_domicile_building_or_higher = market_01
+						# Yurt
+						has_domicile_building_or_higher = trade_yurt_01
+					}
+				}
+
+				# Capital of a kingdom or empire
+				county.holder = {
+					capital_province ?= prev
+					highest_held_title_tier >= tier_kingdom
+				}
 			}
 		}
 		trigger_else = {
