@@ -1,5 +1,12 @@
 # Changelog
 
+## Version 0.14.2
+
+### Balance
+
+* Enabled characters commanding armies to trade artifacts with the smallest possible range.
+* Enabled craftsmen in nomad settlements that have the *Barter Stalls* domicile building, or are capitals of kingdoms or empires, since they usually have low development and no other buildings.
+
 ## Version 0.14.1
 
 ### Interactions
