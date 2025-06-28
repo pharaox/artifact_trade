@@ -25,7 +25,7 @@ clean:
 
 .PHONY: thumbnail
 thumbnail:
-	convert images/D_v_aist.jpg -crop 920x920+25+505 +repage -resize 768x768^ -gravity center -extent 768x768 thumbnail.png
+	convert images/D_v_aist.jpg -crop 920x920+25+505 +repage -resize 512x512^ -gravity center -extent 512x512^ thumbnail.png
 
 .PHONY: update-version
 update-version:
