@@ -155,6 +155,8 @@ The **Buy Artifacts** and **Sell Artifacts** interactions might become slow if t
 * [German Translation (by @finallyciv)](https://steamcommunity.com/sharedfiles/filedetails/?id=3355568022)
 * [GitHub Repository](https://github.com/pharaox/artifact_trade)
 
+Thumbnail Source: [*Herr Dietmar von Aist* from Codex Manesse](https://commons.wikimedia.org/wiki/File:D_v_aist.jpg)
+
 ## Credits
 
 * [Auction Off Artifact](https://steamcommunity.com/workshop/filedetails/?id=2747305366) for the original formula for artifact prices.

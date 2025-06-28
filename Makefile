@@ -23,6 +23,10 @@ clean:
 	rm -rf tmp
 	rm -f ck3-tiger.out
 
+.PHONY: thumbnail
+thumbnail:
+	convert images/D_v_aist.jpg -crop 920x920+25+505 +repage -resize 768x768^ -gravity center -extent 768x768 thumbnail.png
+
 .PHONY: update-version
 update-version:
 	sed -i 's/$(VERSION)/$(NEW_VERSION)/g' descriptor.mod VERSION
