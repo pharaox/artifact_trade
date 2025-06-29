@@ -1,10 +1,9 @@
 ﻿# Destroy Artifact effect
 # DESTROYER = Character destroying the artifact
 # ARTIFACT = The artifact to destroy
-# STA: Overridden from vanilla
 destroy_artifact_aniconist_effect = {
 	$ARTIFACT$ = {
-		save_scope_as = artifact
+		save_scope_as = artifact # STA Use a permanent scope for the event
 	}
 
 	$DESTROYER$ = {
@@ -72,8 +71,8 @@ destroy_artifact_aniconist_effect = {
 					}
 					multiply = {
 						value = 0.1
-						round = yes
 					}
+					round = yes #Unop: Move the round here from the multiply block since it will make it multiply by 0
 				}
 				min = 1
 			}
