@@ -38,7 +38,7 @@ These improvements are enabled by default but can also be disabled via game rule
 
 [h2]Compatibility[/h2]
 
-The current version is compatible with CK3 1.16. If you are still on CK3 1.15.x, use [url=https://github.com/pharaox/artifact_trade/releases/download/0.13.0/search_and_trade_artifacts-0.13.0.zip]version 0.13.0[/url] instead.
+The current version is compatible with CK3 1.17. If you are still on CK3 1.16.x, use [url=https://github.com/pharaox/artifact_trade/releases/download/0.14.2/search_and_trade_artifacts-0.14.2.zip]version 0.14.2[/url] instead.
 
 This mod is compatible with all other mods, including total conversion mods such as AGOT and EK2, except for mods that modify the [b]Inventory[/b] window or the [b]Destroy Artifact[/b] interaction. If you use such mods, put this mod before them in the load order - you may lose the new [b]Inventory[/b] window buttons or the [b]Destroy Artifact[/b] improvements as a result, but everything else should work as expected. The new buttons are also available in the [b]Artifact Finder[/b] window, so losing them in the [b]Inventory[/b] window is no big deal.
 
@@ -60,7 +60,7 @@ The [b]Buy Artifacts[/b] and [b]Sell Artifacts[/b] interactions might become slo
 [list]
   [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3222480457]AGOT Compatibility[/url]
   [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3108318083]Princes of Darkness Compatibility (by @fluffy heretic)[/url]
-  [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2965215034]Russian Translation (by @laxfeed)[/url]
+  [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3491541845]Russian Translation (by @Gordon_Wolfich)[/url]
   [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2971143815]Spanish Translation (by @Will1294)[/url]
   [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2903983628]Chinese Translation (by @無壹)[/url]
   [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2976975086]French Translation (by @Pata)[/url]
