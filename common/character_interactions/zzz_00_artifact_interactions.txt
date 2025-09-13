@@ -20,6 +20,17 @@ destroy_artifact_interaction = {
 		scope:actor = {
 			has_any_artifact = yes
 		}
+		scope:actor = {
+			trigger_if = {
+				limit = {
+					exists = involved_activity
+				}
+				involved_activity ?= { #do not give out anything during coronation
+					has_activity_type = activity_coronation
+					activity_host = scope:actor
+				}
+			}
+		}
 	}
 
 	is_valid_showing_failures_only = {
