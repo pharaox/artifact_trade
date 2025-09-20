@@ -25,9 +25,11 @@ destroy_artifact_interaction = {
 				limit = {
 					exists = involved_activity
 				}
-				involved_activity ?= { #do not give out anything during coronation
-					has_activity_type = activity_coronation
-					activity_host = scope:actor
+				NOT = {
+					involved_activity ?= { #do not give out anything during coronation
+						has_activity_type = activity_coronation
+						activity_host = scope:actor
+					}
 				}
 			}
 		}
