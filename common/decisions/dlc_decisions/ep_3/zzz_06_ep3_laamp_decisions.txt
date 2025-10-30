@@ -14,7 +14,7 @@ visit_local_settlement_decision = {
 	is_shown = {
 		#DLC check.
 		has_ep3_dlc_trigger = yes
-		is_landless_adventurer = yes
+		has_government = landless_adventurer_government
 	}
 
 	is_valid_showing_failures_only = {
@@ -147,7 +147,12 @@ visit_local_settlement_decision = {
 			}
 			else_if = {
 				limit = {
-					root.location = { has_holding_type = church_holding }
+					root.location = {
+						OR = {
+							has_holding_type = church_holding
+							has_holding_type = temple_citadel_holding
+						}
+					}
 				}
 				#Add on church holding-specific effects
 				if = {
@@ -223,7 +228,8 @@ visit_local_settlement_decision = {
 		}
 	}
 
-	ai_check_interval = 6
+	# It's now disabled for AI in vanilla, why?
+	ai_check_interval = 12
 
 	ai_potential = {
 		government_has_flag = government_is_landless_adventurer

@@ -455,22 +455,22 @@ at_decision_events.1020 = {
 				limit = {
 					any_in_list = {
 						list = artifacts_to_sell
-						NOT = { this = scope:first_artifact }
+						this != scope:first_artifact
 					}
 				}
 				random_in_list = {
 					list = artifacts_to_sell
 					limit = {
-						NOT = { this = scope:first_artifact }
+						this != scope:first_artifact
 						has_variable = at_artifact_to_sell
 						is_equipped = no
 					}
 					alternative_limit = {
-						NOT = { this = scope:first_artifact }
+						this != scope:first_artifact
 						is_equipped = no
 					}
 					alternative_limit = {
-						NOT = { this = scope:first_artifact }
+						this != scope:first_artifact
 					}
 					set_variable = {
 						name = at_artifact_to_sell

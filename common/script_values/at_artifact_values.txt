@@ -821,14 +821,14 @@ at_artifact_price_tribal_multiplier = {
 	if = {
 		limit = {
 			exists = scope:buyer
-			NOT = { scope:buyer = scope:actor }
+			scope:buyer != scope:actor
 		}
 		scope:buyer = { save_temporary_scope_as = party }
 	}
 	else_if = {
 		limit = {
 			exists = scope:seller
-			NOT = { scope:seller = scope:actor }
+			scope:seller != scope:actor
 		}
 		scope:seller = { save_temporary_scope_as = party }
 	}

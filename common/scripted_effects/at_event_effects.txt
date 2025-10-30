@@ -57,19 +57,13 @@ at_get_artifacts_effect = {
 	# Find existing artifacts for sale
 	if = {
 		limit = {
-			any_character_artifact ?= {
-				OR = {
-					var:at_artifact_type ?= flag:$TYPE$
-					has_variable = 1001_laamp_decision_$TYPE$
-				}
+			any_character_artifact = {
+				var:at_artifact_type ?= flag:$TYPE$
 			}
 		}
 		every_character_artifact = {
 			limit = {
-				OR = {
-					var:at_artifact_type ?= flag:$TYPE$
-					has_variable = 1001_laamp_decision_$TYPE$
-				}
+				var:at_artifact_type ?= flag:$TYPE$
 			}
 			set_variable = { name = at_artifact_type value = flag:$TYPE$ }
 			add_to_temporary_list = artifacts

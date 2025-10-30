@@ -152,10 +152,15 @@
  # RtP
  at_travel: "$game_concept_travel$"
  at_influence: "$game_concept_influence$"
- # KotS
+ # MPO
  at_fertility_growth: "$game_concept_fertility$ Growth"
  at_herd_gain: "$game_concept_herd$ Gain"
  at_herd_conversion: "$game_concept_herd$ Conversion"
+ # TGP
+ at_merit: "$game_concept_merit$"
+ at_poet_trait_xp: "$trait_lifestyle_poet$ Experience"
+ at_confucian_education_trait_xp: "$trait_confucian_education$ Experience"
+ at_study_confucian_classics_power: "[GetScheme('study_confucian_classics').GetTypeName] $game_concept_scheme_speed$"
 
  at_equipped: "Equipped"
  at_not_equipped: "Not Equipped"

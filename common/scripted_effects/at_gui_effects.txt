@@ -531,6 +531,7 @@ at_artifacts_window_get_filtered_artifacts_effect = {
 				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_legitimacy }
 				at_has_artifact_legitimacy_modifier = yes
 			}
+			# RtP
 			trigger_else_if = {
 				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_travel }
 				at_has_artifact_travel_modifier = yes
@@ -539,6 +540,7 @@ at_artifacts_window_get_filtered_artifacts_effect = {
 				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_influence }
 				at_has_artifact_influence_modifier = yes
 			}
+			# MPO
 			trigger_else_if = {
 				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_fertility_growth }
 				at_has_artifact_fertility_growth_modifier = yes
@@ -550,6 +552,23 @@ at_artifacts_window_get_filtered_artifacts_effect = {
 			trigger_else_if = {
 				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_herd_conversion }
 				at_has_artifact_herd_conversion_modifier = yes
+			}
+			# TGP
+			trigger_else_if = {
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_merit }
+				at_has_artifact_merit_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_poet_trait_xp }
+				at_has_artifact_poet_trait_xp_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_confucian_education_trait_xp }
+				at_has_artifact_confucian_education_trait_xp_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_study_confucian_classics_power }
+				at_has_artifact_study_confucian_classics_power_modifier = yes
 			}
 			trigger_else = {
 				always = yes
@@ -575,7 +594,7 @@ at_artifacts_window_get_filtered_artifacts_effect = {
 			}
 			trigger_else_if = {
 				limit = { ROOT.var:at_artifacts_window_selected_owned_filter_option = flag:_not_owned_by_you }
-				NOT = { artifact_owner = ROOT }
+				artifact_owner != ROOT
 			}
 			trigger_else = {
 				always = yes
@@ -590,7 +609,7 @@ at_artifacts_window_get_filtered_artifacts_effect = {
 				limit = { ROOT.var:at_artifacts_window_selected_claimed_filter_option = flag:_claimed_by_others }
 				any_artifact_claimant = {
 					exists = this
-					NOT = { this = ROOT }
+					this != ROOT
 				}
 			}
 			trigger_else_if = {

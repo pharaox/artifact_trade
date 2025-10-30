@@ -1,6 +1,7 @@
 ﻿vls_can_be_visiting_partner_trigger = {
 	location = $CHARACTER$.location
 	is_available = yes
+	age >= 10
 	OR = {
 		opinion = { target = $CHARACTER$ value >= 25 }
 		has_any_good_relationship_with_character_trigger = { CHARACTER = $CHARACTER$ }
@@ -10,8 +11,8 @@
 		has_relation_victim = $CHARACTER$
 		has_relation_bully = $CHARACTER$
 		has_court_position = second_camp_officer
+		has_variable = 1010_payment_child
 	}
-	age >= 10
 }
 
 vls_can_be_merchant_trigger = {
@@ -172,7 +173,10 @@ vls_has_nomad_like_holding_trigger = {
 }
 
 vls_has_church_like_holding_trigger = {
-	has_holding_type = church_holding
+	OR = {
+		has_holding_type = church_holding
+		has_holding_type = temple_citadel_holding
+	}
 }
 
 vls_has_castle_like_holding_trigger = {

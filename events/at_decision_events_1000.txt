@@ -588,7 +588,7 @@ at_decision_events.1000 = {
 								has_trait = cynical
 								has_trait = lifestyle_reveler
 								any_secret = {
-									secret_type = secret_non_believer
+									type = secret_non_believer
 								}
 							}
 						}

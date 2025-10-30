@@ -176,11 +176,11 @@ at_buy_artifact_warning_tooltips_effect = {
 				OR = {
 					AND = {
 						has_variable = banner_house
-						NOT = { var:banner_house = scope:buyer.house }
+						var:banner_house != scope:buyer.house
 					}
 					AND = {
 						has_variable = banner_dynasty
-						NOT = { var:banner_dynasty = scope:buyer.dynasty }
+						var:banner_dynasty != scope:buyer.dynasty
 					}
 				}
 			}

@@ -50,7 +50,7 @@ at_buy_artifact_interaction = {
 			random_in_list = {
 				list = potential_recipients
 				limit = {
-					NOT = { this = scope:actor }
+					this != scope:actor
 					is_alive = yes
 					has_variable = at_merchant_type
 					has_any_artifact = yes
@@ -63,7 +63,7 @@ at_buy_artifact_interaction = {
 
 	is_shown = {
 		NOT = { has_game_rule = at_artifact_trading_disabled }
-		NOT = { scope:actor = scope:recipient }
+		scope:actor != scope:recipient
 		scope:actor = {
 			at_can_own_artifacts_trigger = yes
 		}
@@ -415,7 +415,7 @@ at_buy_artifact_interaction = {
 		# Opinion of buyer
 		opinion_modifier = {
 			trigger = {
-				NOT = { scope:actor = scope:recipient }
+				scope:actor != scope:recipient
 			}
 			who = scope:recipient
 			opinion_target = scope:actor
@@ -599,7 +599,7 @@ at_buy_artifact_interaction = {
 
 		# Landless adventurers are more willing to buy from merchants
 		modifier = {
-			is_landless_adventurer = yes
+			has_government = landless_adventurer_government
 			scope:recipient = {
 				has_variable = at_merchant_type
 			}
@@ -609,7 +609,7 @@ at_buy_artifact_interaction = {
 		# Opinion of seller
 		opinion_modifier = {
 			trigger = {
-				NOT = { scope:actor = scope:recipient }
+				scope:actor != scope:recipient
 			}
 			who = scope:actor
 			opinion_target = scope:recipient

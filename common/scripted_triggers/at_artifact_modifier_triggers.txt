@@ -117,6 +117,10 @@ at_has_artifact_piety_modifier = {
 		has_artifact_modifier = desecrated_artifact_modifier
 		has_artifact_modifier = artifact_fake_papal_tiara_modifier
 		has_artifact_modifier = artifact_magic_amulet_modifier
+		has_artifact_modifier = artifact_kris_1_modifier
+		has_artifact_modifier = artifact_kris_2_modifier
+		has_artifact_modifier = artifact_kris_3_modifier
+		has_artifact_modifier = artifact_kris_4_modifier
 		# historical
 		has_artifact_modifier = ark_of_covenant_modifier
 		has_artifact_modifier = al_dawat_modifier
@@ -1278,6 +1282,7 @@ at_has_artifact_martial_lifestyle_xp_modifier = {
 at_has_artifact_stewardship_lifestyle_xp_modifier = {
 	OR = {
 		# stewardship_lifestyle_xp_gain_mult
+		has_artifact_modifier = artifact_stewardship_lifestyle_xp_1_modifier
 		has_artifact_modifier = artifact_stewardship_lifestyle_xp_2_modifier
 
 		# monthly_stewardship_lifestyle_xp_gain_mult
@@ -1784,6 +1789,10 @@ at_has_artifact_legend_spread_modifier = {
 		#has_artifact_modifier = artifact_legend_spread_mult_8_modifier
 		#has_artifact_modifier = artifact_legend_spread_mult_9_modifier
 		has_artifact_modifier = artifact_legend_spread_mult_10_modifier
+		has_artifact_modifier = artifact_kris_1_modifier
+		has_artifact_modifier = artifact_kris_2_modifier
+		has_artifact_modifier = artifact_kris_3_modifier
+		has_artifact_modifier = artifact_kris_4_modifier
 	}
 }
 
@@ -1814,6 +1823,10 @@ at_has_artifact_legitimacy_modifier = {
 		#has_artifact_modifier = artifact_legitimacy_gain_mult_8_modifier
 		#has_artifact_modifier = artifact_legitimacy_gain_mult_9_modifier
 		#has_artifact_modifier = artifact_legitimacy_gain_mult_10_modifier
+		has_artifact_modifier = artifact_kris_1_modifier
+		has_artifact_modifier = artifact_kris_2_modifier
+		has_artifact_modifier = artifact_kris_3_modifier
+		has_artifact_modifier = artifact_kris_4_modifier
 	}
 }
 
@@ -1857,6 +1870,10 @@ at_has_artifact_influence_modifier = {
 		has_artifact_modifier = statue_four_tetrarchs_modifier
 
 		# monthly_influence_mult
+		has_artifact_modifier = artifact_monthly_influence_mult_1_modifier
+		has_artifact_modifier = artifact_monthly_influence_mult_2_modifier
+		has_artifact_modifier = artifact_monthly_influence_mult_3_modifier
+		has_artifact_modifier = artifact_monthly_influence_mult_4_modifier
 		# historical
 		has_artifact_modifier = statue_constantine_modifier
 		has_artifact_modifier = statue_roman_woman_modifier
@@ -1866,6 +1883,8 @@ at_has_artifact_influence_modifier = {
 		has_artifact_modifier = statue_four_tetrarchs_modifier
 	}
 }
+
+# MPO
 
 at_has_artifact_fertility_growth_modifier = {
 	OR = {
@@ -1910,5 +1929,49 @@ at_has_artifact_herd_conversion_modifier = {
 		has_artifact_modifier = artifact_herd_conversion_6_modifier
 		has_artifact_modifier = artifact_herd_conversion_7_modifier
 		has_artifact_modifier = artifact_herd_conversion_8_modifier
+	}
+}
+
+# TGP
+
+at_has_artifact_merit_modifier = {
+	OR = {
+		# monthly_merit_mult
+		has_artifact_modifier = artifact_monthly_merit_mult_1_modifier
+		has_artifact_modifier = artifact_monthly_merit_mult_2_modifier
+		has_artifact_modifier = artifact_monthly_merit_mult_3_modifier
+		has_artifact_modifier = artifact_monthly_merit_mult_4_modifier
+		has_artifact_modifier = artifact_monthly_merit_mult_5_modifier
+		has_artifact_modifier = artifact_monthly_merit_mult_6_modifier
+		has_artifact_modifier = artifact_monthly_merit_mult_7_modifier
+		has_artifact_modifier = artifact_monthly_merit_mult_8_modifier
+	}
+}
+
+at_has_artifact_poet_trait_xp_modifier = {
+	OR = {
+		# trait_track_lifestyle_poet_xp_gain_mult
+		has_artifact_modifier = artifact_poetry_1_modifier
+		has_artifact_modifier = artifact_poetry_2_modifier
+		has_artifact_modifier = artifact_poetry_3_modifier
+	}
+}
+
+at_has_artifact_confucian_education_trait_xp_modifier = {
+	OR = {
+		# confucian_education_xp_gain_mult
+		has_artifact_modifier = artifact_monthly_confucian_education_xp_1_modifier
+		has_artifact_modifier = artifact_monthly_confucian_education_xp_2_modifier
+		has_artifact_modifier = artifact_monthly_confucian_education_xp_3_modifier
+	}
+}
+
+at_has_artifact_study_confucian_classics_power_modifier = {
+	OR = {
+		# study_confucian_classics_scheme_phase_duration_add
+		has_artifact_modifier = artifact_study_confucian_classics_scheme_phase_duration_add_1_modifier
+		has_artifact_modifier = artifact_study_confucian_classics_scheme_phase_duration_add_2_modifier
+		has_artifact_modifier = artifact_study_confucian_classics_scheme_phase_duration_add_3_modifier
+		has_artifact_modifier = artifact_study_confucian_classics_scheme_phase_duration_add_4_modifier
 	}
 }

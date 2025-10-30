@@ -1,6 +1,5 @@
 ﻿at_can_interact_with_trigger = {
-	NOT = { this = $PARTY$ }
-	is_busy_in_events_localised = yes
+	this != $PARTY$
 	in_diplomatic_range = $PARTY$
 	NOT = { is_at_war_with = $PARTY$ }
 	is_imprisoned = no
@@ -27,7 +26,6 @@ at_can_buy_artifact_from_trigger = {
 }
 
 at_can_start_interaction_trigger = {
-	is_busy_in_events_localised = yes
 	is_imprisoned = no
 }
 
@@ -58,7 +56,7 @@ at_can_own_artifacts_trigger = {
 }
 
 at_valid_buyer_or_seller_trigger = {
-	NOT = { this = $PARTY$ }
+	this != $PARTY$
 	in_diplomatic_range = $PARTY$
 	trigger_if = {
 		limit = {
@@ -137,7 +135,7 @@ at_get_party_capital_province_trigger = {
 at_is_character_poor_trigger = {
 	is_ruler = yes
 	trigger_if = {
-		limit = { ai_has_economical_boom_personality = yes }
+		limit = { ai_has_builder_or_pious_builder_personality = yes }
 		gold <= medium_gold_value
 	}
 	trigger_else = {
@@ -148,7 +146,7 @@ at_is_character_poor_trigger = {
 at_is_character_rich_trigger = {
 	is_ruler = yes
 	trigger_if = {
-		limit = { ai_has_economical_boom_personality = yes }
+		limit = { ai_has_builder_or_pious_builder_personality = yes }
 		at_short_term_gold_value >= massive_gold_value
 	}
 	trigger_else = {

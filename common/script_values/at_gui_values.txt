@@ -71,6 +71,10 @@ at_artifact_type_value = {
 		limit = { artifact_type = regalia_simple }
 		value = 201
 	}
+	else_if = {
+		limit = { artifact_type = seal_of_investiture }
+		value = 202
+	}
 	# Armor
 	else_if = {
 		limit = { artifact_type = armor_mail }

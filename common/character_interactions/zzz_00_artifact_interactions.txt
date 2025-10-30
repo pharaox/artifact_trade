@@ -50,8 +50,18 @@ destroy_artifact_interaction = {
 	can_be_picked_artifact = {
 		custom_tooltip = {
 			text = artifact_is_related_to_contract_tt
-			NOT = {
-				scope:target = { has_variable = 1025_treasure_map }
+			scope:target = {
+				NOR = {
+					has_variable = 1025_treasure_map
+					has_variable = is_tribute_mission_artifact
+					has_variable = mandala_capital_05_unconfirmed_talisman
+				}
+			}
+		}
+		custom_tooltip = {
+			text = artifact_is_related_to_great_project_construction_tt
+			scope:target = {
+				NOT = { has_variable = mandala_capital_05_unconfirmed_talisman }
 			}
 		}
 		scope:target = {
@@ -93,7 +103,7 @@ destroy_artifact_interaction = {
 		}
 		scope:actor = {
 			trigger_if = {
-				limit = { is_landless_adventurer = yes }
+				limit = { has_government = landless_adventurer_government }
 				employs_court_position = armorer_camp_officer
 			}
 		}
@@ -116,7 +126,14 @@ destroy_artifact_interaction = {
 		}
 	}
 
-	ai_frequency = 24
+	ai_frequency_by_tier = {
+		barony = 0
+		county = 48
+		duchy = 24
+		kingdom = 24
+		empire = 24
+		hegemony = 24
+	}
 
 	ai_potential = {
 		trigger_if = {
@@ -130,7 +147,7 @@ destroy_artifact_interaction = {
 				gold <= minor_gold_value # Poor rulers will consider getting rid of their trash for gold
 				AND = { # Economic boom personalities will bolster their treasury by getting rid of trash more often
 					gold <= medium_gold_value
-					ai_has_economical_boom_personality = yes
+					ai_has_builder_or_pious_builder_personality = yes
 				}
 				any_character_artifact = { # All rulers want to get rid of actively detrimental trash
 					has_variable = unwanted_artifact
@@ -335,6 +352,14 @@ destroy_artifact_interaction = {
 			add = 200
 		}
 
+		# More likely to destroy if you are aniconist and "pious builder" 
+		modifier = {
+			has_game_rule = at_improved_destroy_artifact_enabled
+			at_has_aniconist_faith_trigger = yes
+			ai_has_pious_builder_personality = yes
+			add = 50
+		}
+
 		# Original modifiers
 		modifier = { # Rulers will always destroy unwanted artifacts
 			add = 100
@@ -357,7 +382,7 @@ destroy_artifact_interaction = {
 				gold <= minor_gold_value # Poor rulers will consider getting rid of their trash for gold
 				AND = { # Economic boom personalities will bolster their treasury by getting rid of trash more often
 					gold <= medium_gold_value
-					ai_has_economical_boom_personality = yes
+					ai_has_builder_or_pious_builder_personality = yes
 				}
 			}
 			scope:target = {
@@ -380,7 +405,7 @@ destroy_artifact_interaction = {
 				gold <= minor_gold_value # Poor rulers will consider getting rid of their trash for gold
 				AND = { # Economic boom personalities will bolster their treasury by getting rid of trash more often
 					gold <= medium_gold_value
-					ai_has_economical_boom_personality = yes
+					ai_has_builder_or_pious_builder_personality = yes
 				}
 			}
 			scope:target = {
@@ -429,6 +454,14 @@ destroy_artifact_interaction = {
 				any_character_artifact = {
 					exists = var:relic
 				}
+			}
+		}
+		modifier = { #Piety _and_ gold? Sign me up!
+			add = 50
+			NOT = { has_game_rule = at_improved_destroy_artifact_enabled }
+			ai_has_pious_builder_personality = yes
+			faith = {
+				has_doctrine_parameter = destroying_artifacts_is_pious
 			}
 		}
 	}

@@ -74,6 +74,16 @@ destroy_artifact_aniconist_effect = {
 					}
 					round = yes #Unop: Move the round here from the multiply block since it will make it multiply by 0
 				}
+				if = {
+					limit = {
+						exists = scope:artifact.var:ai_to_ai_destroy_in_sieges # Trash artifact
+					}
+					max = {
+						value = $DESTROYER$.tiny_gold_value
+						multiply = 0.5
+					}
+				}
+				
 				min = 1
 			}
 		}

@@ -26,7 +26,7 @@
 
 * `common/artifacts/types/00_types.txt`
   * Entire file
-    * => `common/script_values_/at_gui_values.txt`
+    * => `common/script_values/at_gui_values.txt`
 * `common/modifiers/00_artifact_modifiers.txt`
   * Entire file
     * => `common/scripted_triggers/at_artifact_modifier_triggers.txt`

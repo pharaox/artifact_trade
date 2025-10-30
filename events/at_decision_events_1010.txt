@@ -516,7 +516,7 @@ at_decision_events.1011 = {
 				random_in_list = {
 					list = artifacts
 					limit = {
-						NOT = { this = scope:first_weapon }
+						this != scope:first_weapon
 					}
 					save_scope_as = second_weapon
 				}
@@ -783,7 +783,7 @@ at_decision_events.1013 = {
 				random_in_list = {
 					list = artifacts
 					limit = {
-						NOT = { this = scope:first_armor }
+						this != scope:first_armor
 					}
 					save_scope_as = second_armor
 				}
@@ -1050,7 +1050,7 @@ at_decision_events.1015 = {
 				random_in_list = {
 					list = artifacts
 					limit = {
-						NOT = { this = scope:first_accessory }
+						this != scope:first_accessory
 					}
 					save_scope_as = second_accessory
 				}

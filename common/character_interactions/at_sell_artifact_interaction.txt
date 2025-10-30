@@ -50,7 +50,7 @@ at_sell_artifact_interaction = {
 			random_in_list = {
 				list = potential_recipients
 				limit = {
-					NOT = { this = scope:actor }
+					this != scope:actor
 					var:at_merchant_type ?= flag:peddler
 					at_can_own_artifacts_trigger = yes
 					at_can_sell_artifact_to_trigger = { PARTY = scope:actor }
@@ -62,7 +62,7 @@ at_sell_artifact_interaction = {
 
 	is_shown = {
 		NOT = { has_game_rule = at_artifact_trading_disabled }
-		NOT = { scope:actor = scope:recipient }
+		scope:actor != scope:recipient
 		scope:actor = {
 			has_any_artifact = yes
 		}
@@ -424,7 +424,7 @@ at_sell_artifact_interaction = {
 		# Opinion of seller
 		opinion_modifier = {
 			trigger = {
-				NOT = { scope:actor = scope:recipient }
+				scope:actor != scope:recipient
 			}
 			who = scope:recipient
 			opinion_target = scope:actor
@@ -573,7 +573,7 @@ at_sell_artifact_interaction = {
 		# Opinion of buyer
 		opinion_modifier = {
 			trigger = {
-				NOT = { scope:actor = scope:recipient }
+				scope:actor != scope:recipient
 			}
 			who = scope:actor
 			opinion_target = scope:recipient
