@@ -471,7 +471,14 @@ at_buy_artifact_interaction = {
 		max = 5
 	}
 
-	ai_frequency = 24
+	ai_frequency_by_tier = {
+		barony = 0
+		county = 48
+		duchy = 36
+		kingdom = 24
+		empire = 24
+		hegemony = 24
+	}
 
 	ai_potential = {
 		at_short_term_gold_value >= major_gold_value

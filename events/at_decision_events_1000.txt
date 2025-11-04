@@ -821,7 +821,7 @@ at_decision_events.1000 = {
 			}
 			location = {
 				random_neighboring_province = {
-					limit = { is_sea_province = no }
+					limit = { exists = county }
 					save_scope_as = neighboring_county
 				}
 			}
