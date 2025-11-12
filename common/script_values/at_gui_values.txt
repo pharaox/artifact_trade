@@ -261,6 +261,10 @@ at_artifact_type_value = {
 		limit = { artifact_type = philosophers_stone }
 		value = 812
 	}
+	else_if = {
+		limit = { artifact_type = seal_of_investiture_court }
+		value = 813
+	}
 	# Large wall ornaments
 	else_if = {
 		limit = { artifact_type = tapestry }

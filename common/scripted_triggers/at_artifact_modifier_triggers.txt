@@ -72,6 +72,16 @@ at_has_artifact_prestige_modifier = {
 		has_artifact_modifier = byz_throne_modifier
 		has_artifact_modifier = tree_automa_modifier
 		has_artifact_modifier = statue_roman_woman_modifier
+		has_artifact_modifier = goujian_sword_4_modifier
+		has_artifact_modifier = insence_burner_modifier
+		has_artifact_modifier = higekiri_sword_modifier
+		has_artifact_modifier = hizamaru_sword_modifier
+		has_artifact_modifier = dojigiri_sword_modifier
+		has_artifact_modifier = mikazuki_munechika_sword_modifier
+		has_artifact_modifier = odenta_sword_modifier
+		has_artifact_modifier = gyerimro_dagger_modifier
+		has_artifact_modifier = nukemaru_sword_modifier
+		has_artifact_modifier = kogarasumaru_sword_modifier
 
 		# monthly_prestige_gain_mult
 		has_artifact_modifier = artifact_monthly_prestige_mult_1_modifier
@@ -99,6 +109,10 @@ at_has_artifact_prestige_modifier = {
 		# monthly_prestige_gain_per_happy_powerful_vassal_mult
 		# historical
 		has_artifact_modifier = reichskrone_modifier
+
+		# monthly_piety_gain_per_legitimacy_level_add
+		# historical
+		has_artifact_modifier = heirloom_seal_modifier
 	}
 }
 
@@ -148,6 +162,9 @@ at_has_artifact_piety_modifier = {
 		has_artifact_modifier = konagamana_modifier
 		has_artifact_modifier = kassapa_modifier
 		has_artifact_modifier = chalice_of_dona_urraca_modifier
+		has_artifact_modifier = goujian_sword_3_modifier
+		has_artifact_modifier = hamayumi_bow_modifier
+		has_artifact_modifier = eight_fold_chest_modifier
 
 		# monthly_piety_gain_per_happy_powerful_vassal_add
 		has_artifact_modifier = artifact_monthly_piety_gain_per_happy_powerful_vassal_add_1_modifier
@@ -205,10 +222,15 @@ at_has_artifact_piety_modifier = {
 		# historical
 		has_artifact_modifier = muhammed_sword_5_modifier
 		has_artifact_modifier = zomorrodnegar_modifier
+		has_artifact_modifier = goujian_sword_5_modifier
+
+		# monthly_piety_gain_per_legitimacy_level_add
+		# historical
+		has_artifact_modifier = heirloom_seal_modifier
 
 		# monthly_piety_gain_per_legitimacy_level_mult
-		#has_artifact_modifier = artifact_monthly_piety_gain_per_legitimacy_level_mult_1_modifier
-		#has_artifact_modifier = artifact_monthly_piety_gain_per_legitimacy_level_mult_2_modifier
+		has_artifact_modifier = artifact_monthly_piety_gain_per_legitimacy_level_mult_1_modifier
+		has_artifact_modifier = artifact_monthly_piety_gain_per_legitimacy_level_mult_2_modifier
 		has_artifact_modifier = artifact_monthly_piety_gain_per_legitimacy_level_mult_3_modifier
 		#has_artifact_modifier = artifact_monthly_piety_gain_per_legitimacy_level_mult_4_modifier
 		#has_artifact_modifier = artifact_monthly_piety_gain_per_legitimacy_level_mult_5_modifier
@@ -324,6 +346,16 @@ at_has_artifact_court_grandeur_modifier = {
 		has_artifact_modifier = byz_throne_modifier
 		has_artifact_modifier = tree_automa_modifier
 		has_artifact_modifier = hydraulic_organ_modifier
+		has_artifact_modifier = goujian_sword_modifier
+		has_artifact_modifier = heirloom_seal_modifier
+		has_artifact_modifier = insence_burner_modifier
+		has_artifact_modifier = sakanoue_sword_modifier
+		has_artifact_modifier = hamayumi_bow_modifier
+		has_artifact_modifier = seven_branched_sword_modifier
+		has_artifact_modifier = gyerimro_dagger_modifier
+		has_artifact_modifier = eight_fold_chest_modifier
+		has_artifact_modifier = artifact_chinese_armillary_sphere
+		has_artifact_modifier = complete_essentials_for_the_military_classics
 	}
 }
 
@@ -371,6 +403,11 @@ at_has_artifact_dynasty_prestige_modifier = {
 		has_artifact_modifier = olifant_modifier
 		has_artifact_modifier = aram_modifier
 		has_artifact_modifier = kaves_apron_modifier
+		has_artifact_modifier = goujian_sword_modifier
+		has_artifact_modifier = insence_burner_modifier
+		has_artifact_modifier = sakanoue_sword_modifier
+		has_artifact_modifier = dojigiri_sword_modifier
+		has_artifact_modifier = karakawa_armor_modifier
 
 		# monthly_dynasty_prestige
 		has_artifact_modifier = artifact_monthly_prestige_add_1_modifier
@@ -407,6 +444,7 @@ at_has_artifact_dynasty_prestige_modifier = {
 		has_artifact_modifier = bells_of_santiago_modifier
 		has_artifact_modifier = byz_throne_modifier
 		has_artifact_modifier = statue_four_tetrarchs_modifier
+		has_artifact_modifier = goujian_sword_modifier
 	}
 }
 
@@ -440,6 +478,7 @@ at_has_artifact_dread_modifier = {
 		has_artifact_modifier = artifact_dread_gain_mult_4_modifier
 		has_artifact_modifier = cursed_artifact_modifier
 		has_artifact_modifier = very_cursed_artifact_modifier
+
 		# dread_baseline_add
 		has_artifact_modifier = artifact_dread_baseline_add_1_modifier
 		has_artifact_modifier = artifact_dread_baseline_add_2_modifier
@@ -447,6 +486,11 @@ at_has_artifact_dread_modifier = {
 		has_artifact_modifier = artifact_dread_baseline_add_4_modifier
 		# historical
 		has_artifact_modifier = attila_sword_modifier
+		has_artifact_modifier = kogarasumaru_sword_modifier
+
+		# dread_decay_mult
+		# historical
+		has_artifact_modifier = higekiri_sword_modifier
 	}
 }
 
@@ -498,6 +542,7 @@ at_has_artifact_stress_gain_modifier = {
 		has_artifact_modifier = artifact_magic_amulet_modifier
 		# historical
 		has_artifact_modifier = dhammapada_modifier
+		has_artifact_modifier = hamayumi_bow_modifier
 	}
 }
 
@@ -514,6 +559,10 @@ at_has_artifact_general_opinion_modifier = {
 
 at_has_artifact_vassal_opinion_modifier = {
 	OR = {
+		# vassal_opinion
+		# historical
+		has_artifact_modifier = odenta_sword_modifier
+
 		# powerful_vassal_opinion
 		has_artifact_modifier = artifact_powerful_vassal_opinion_1_modifier
 		has_artifact_modifier = artifact_powerful_vassal_opinion_2_modifier
@@ -531,6 +580,10 @@ at_has_artifact_vassal_opinion_modifier = {
 		# direct_vassal_opinion
 		# historical
 		has_artifact_modifier = abhidhamma_pitaka_modifier
+
+		# fellow_vassal_opinion
+		# historical
+		has_artifact_modifier = odenta_sword_modifier
 
 		# courtly_opinion
 		has_artifact_modifier = artifact_courtly_vassal_opinion_1_modifier
@@ -594,6 +647,7 @@ at_has_artifact_courtier_and_guest_opinion_modifier = {
 		has_artifact_modifier = artifact_armor_knight_of_the_swan_artifact_modifier
 		# historical
 		has_artifact_modifier = reichskrone_modifier
+		has_artifact_modifier = goujian_sword_8_modifier
 
 		# courtier_opinion
 		# historical
@@ -695,6 +749,7 @@ at_has_artifact_same_faith_opinion_modifier = {
 		has_artifact_modifier = muhammed_sword_2_modifier
 		has_artifact_modifier = spear_ascalon_modifier
 		has_artifact_modifier = bells_of_santiago_modifier
+		has_artifact_modifier = goujian_sword_2_modifier
 	}
 }
 
@@ -749,11 +804,17 @@ at_has_artifact_religion_opinion_modifier = {
 		has_artifact_modifier = former_bells_of_santiago_modifier
 		has_artifact_modifier = bells_of_santiago_modifier
 		has_artifact_modifier = statue_constantine_modifier
+		has_artifact_modifier = goujian_sword_6_modifier
+		has_artifact_modifier = eight_fold_chest_modifier
 	}
 }
 
 at_has_artifact_culture_opinion_modifier = {
-	always = no
+	OR = {
+		# *_opinion
+		has_artifact_modifier = goujian_sword_modifier
+		has_artifact_modifier = heirloom_seal_modifier
+	}
 }
 
 # Domain, vassals, income, buildings, development
@@ -846,6 +907,7 @@ at_has_artifact_domain_tax_modifier = {
 		# historical
 		has_artifact_modifier = crystal_carving_modifier
 		has_artifact_modifier = ruyi_modifier
+		has_artifact_modifier = goujian_sword_1_modifier
 
 		# domain_tax_same_faith_mult
 		has_artifact_modifier = artifact_domain_tax_same_faith_mult_1_modifier
@@ -856,6 +918,7 @@ at_has_artifact_domain_tax_modifier = {
 		has_artifact_modifier = ark_of_covenant_modifier
 		has_artifact_modifier = mantle_prophet_modifier
 		has_artifact_modifier = cintamani_modifier
+		has_artifact_modifier = eight_fold_chest_modifier
 
 		# <terrain>_tax_mult
 		# historical
@@ -1117,6 +1180,10 @@ at_has_artifact_scheme_success_chance_modifier = {
 		has_artifact_modifier = kantele_modifier
 		has_artifact_modifier = statue_roman_woman_modifier
 
+		# owned_personal_scheme_success_chance_max_add
+		# historical
+		has_artifact_modifier = seven_branched_sword_modifier
+
 		# enemy_hostile_scheme_success_chance_add
 		# historical
 		has_artifact_modifier = cup_jamshid_modifier
@@ -1276,6 +1343,7 @@ at_has_artifact_martial_lifestyle_xp_modifier = {
 		#has_artifact_modifier = artifact_monthly_martial_lifestyle_xp_1_negative_modifier
 		# historical
 		has_artifact_modifier = nikephoros_crown_modifier
+		has_artifact_modifier = complete_essentials_for_the_military_classics
 	}
 }
 
@@ -1318,6 +1386,7 @@ at_has_artifact_learning_lifestyle_xp_modifier = {
 		has_artifact_modifier = sutta_pitaka_modifier
 		has_artifact_modifier = hydraulic_organ_modifier
 		has_artifact_modifier = double_moon_modifier
+		has_artifact_modifier = artifact_chinese_armillary_sphere
 	}
 }
 
@@ -1329,6 +1398,9 @@ at_has_artifact_diplomacy_modifier = {
 		has_artifact_modifier = artifact_diplomacy_1_modifier
 		has_artifact_modifier = artifact_diplomacy_2_modifier
 		has_artifact_modifier = artifact_diplomacy_3_modifier
+		# historical
+		has_artifact_modifier = seven_branched_sword_modifier
+		has_artifact_modifier = gyerimro_dagger_modifier
 
 		# diplomacy_per_prestige_level
 		has_artifact_modifier = artifact_diplomacy_per_prestige_level_modifier
@@ -1362,6 +1434,7 @@ at_has_artifact_martial_modifier = {
 		# historical
 		has_artifact_modifier = mmaagha_kamalu_modifier
 		has_artifact_modifier = spear_ascalon_modifier
+		has_artifact_modifier = sakanoue_sword_modifier
 	}
 }
 
@@ -1407,6 +1480,8 @@ at_has_artifact_learning_modifier = {
 		has_artifact_modifier = artifact_learning_1_modifier
 		has_artifact_modifier = artifact_learning_2_modifier
 		has_artifact_modifier = artifact_learning_3_modifier
+		# historical
+		has_artifact_modifier = artifact_chinese_armillary_sphere
 
 		# learning_per_stress_level
 		has_artifact_modifier = artifact_learning_per_stress_level_2_modifier
@@ -1457,6 +1532,15 @@ at_has_artifact_prowess_modifier = {
 		has_artifact_modifier = artifact_duel_weapon_4_modifier
 		has_artifact_modifier = artifact_durable_materials_02
 		has_artifact_modifier = artifact_armor_knight_of_the_swan_artifact_modifier
+		# historical
+		has_artifact_modifier = higekiri_sword_modifier
+		has_artifact_modifier = hizamaru_sword_modifier
+		has_artifact_modifier = dojigiri_sword_modifier
+		has_artifact_modifier = mikazuki_munechika_sword_modifier
+		has_artifact_modifier = odenta_sword_modifier
+		has_artifact_modifier = karakawa_armor_modifier
+		has_artifact_modifier = nukemaru_sword_modifier
+		has_artifact_modifier = kogarasumaru_sword_modifier
 
 		# prowess_per_piety_level
 
@@ -1509,6 +1593,11 @@ at_has_artifact_knights_modifier = {
 		has_artifact_modifier = curtana_modifier
 		has_artifact_modifier = excalibur_modifier
 		has_artifact_modifier = aruval_modifier
+
+		# knight_effectiveness_mult
+		# historical
+		has_artifact_modifier = mikazuki_munechika_sword_modifier
+		has_artifact_modifier = complete_essentials_for_the_military_classics
 	}
 }
 
@@ -1570,6 +1659,8 @@ at_has_artifact_hard_casualty_modifier_modifier = {
 		has_artifact_modifier = artifact_enemy_hard_casualty_modifier_10_modifier
 		has_artifact_modifier = artifact_enemy_hard_casualty_modifier_11_modifier
 		has_artifact_modifier = artifact_enemy_hard_casualty_modifier_12_modifier
+		# historical
+		has_artifact_modifier = karakawa_armor_modifier
 
 		# hard_casualty_modifier
 		has_artifact_modifier = artifact_hard_casualty_modifier_1_modifier
@@ -1595,6 +1686,7 @@ at_has_artifact_damage_toughness_pursuit_screen_modifier = {
 		has_artifact_modifier = kladenets_modifier
 		has_artifact_modifier = szczerbiec_modifier
 		has_artifact_modifier = aram_modifier
+		has_artifact_modifier = nukemaru_sword_modifier
 
 		# *_toughness_mult
 		has_artifact_modifier = artifact_heavy_cavalry_toughness_1_modifier
@@ -1618,6 +1710,8 @@ at_has_artifact_damage_toughness_pursuit_screen_modifier = {
 		has_artifact_modifier = rustam_dagger_modifier
 		has_artifact_modifier = muhammed_sword_3_modifier
 		has_artifact_modifier = statue_constantine_modifier
+		has_artifact_modifier = sakanoue_sword_modifier
+		has_artifact_modifier = complete_essentials_for_the_military_classics
 
 		# *_pursuit_mult
 		# historical
@@ -1813,11 +1907,10 @@ at_has_artifact_legitimacy_modifier = {
 	OR = {
 		# legitimacy_gain_mult
 		#has_artifact_modifier = artifact_legitimacy_gain_mult_1_modifier
-		#has_artifact_modifier = artifact_legitimacy_gain_mult_2_modifier
+		has_artifact_modifier = artifact_legitimacy_gain_mult_2_modifier
 		has_artifact_modifier = artifact_legitimacy_gain_mult_3_modifier
 		has_artifact_modifier = artifact_legitimacy_gain_mult_4_modifier
-		#has_artifact_modifier = artifact_legitimacy_gain_mult_4_modifier
-		#has_artifact_modifier = artifact_legitimacy_gain_mult_5_modifier
+		has_artifact_modifier = artifact_legitimacy_gain_mult_5_modifier
 		#has_artifact_modifier = artifact_legitimacy_gain_mult_6_modifier
 		#has_artifact_modifier = artifact_legitimacy_gain_mult_7_modifier
 		#has_artifact_modifier = artifact_legitimacy_gain_mult_8_modifier
@@ -1827,6 +1920,18 @@ at_has_artifact_legitimacy_modifier = {
 		has_artifact_modifier = artifact_kris_2_modifier
 		has_artifact_modifier = artifact_kris_3_modifier
 		has_artifact_modifier = artifact_kris_4_modifier
+		# historical
+		has_artifact_modifier = artifact_chinese_armillary_sphere
+
+		# legitimacy_loss_mult
+		#has_artifact_modifier = artifact_legitimacy_loss_mult_1_modifier
+		has_artifact_modifier = artifact_legitimacy_loss_mult_2_modifier
+		has_artifact_modifier = artifact_legitimacy_loss_mult_3_modifier
+		has_artifact_modifier = artifact_legitimacy_loss_mult_4_modifier
+		has_artifact_modifier = artifact_legitimacy_loss_mult_5_modifier
+		#has_artifact_modifier = artifact_legitimacy_loss_mult_6_modifier
+		#has_artifact_modifier = artifact_legitimacy_loss_mult_7_modifier
+		#has_artifact_modifier = artifact_legitimacy_loss_mult_8_modifier
 	}
 }
 
@@ -1868,6 +1973,8 @@ at_has_artifact_influence_modifier = {
 		# monthly_influence
 		# historical
 		has_artifact_modifier = statue_four_tetrarchs_modifier
+		# historical
+		has_artifact_modifier = heirloom_seal_modifier
 
 		# monthly_influence_mult
 		has_artifact_modifier = artifact_monthly_influence_mult_1_modifier
@@ -1877,6 +1984,7 @@ at_has_artifact_influence_modifier = {
 		# historical
 		has_artifact_modifier = statue_constantine_modifier
 		has_artifact_modifier = statue_roman_woman_modifier
+		has_artifact_modifier = goujian_sword_7_modifier
 
 		# influence_level_impact_mult
 		# historical
