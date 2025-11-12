@@ -1,7 +1,4 @@
-﻿# Destroy Artifact effect
-# DESTROYER = Character destroying the artifact
-# ARTIFACT = The artifact to destroy
-destroy_artifact_aniconist_effect = {
+﻿destroy_artifact_aniconist_effect = {
 	$ARTIFACT$ = {
 		save_scope_as = artifact # STA Use a permanent scope for the event
 	}
@@ -59,14 +56,14 @@ destroy_artifact_aniconist_effect = {
 				# multiply by durability percentage
 				multiply = {
 					add = scope:artifact.artifact_durability
-					divide = scope:artifact.artifact_max_durability
+					divide = scope:artifact.artifact_max_durability	
 					divide = 2
 					add = 0.5
 				}
 
 				#Nerf it to bits for LAAMPs
 				if = {
-					limit = {
+					limit = { 
 						$DESTROYER$ = { has_government = landless_adventurer_government }
 					}
 					multiply = {

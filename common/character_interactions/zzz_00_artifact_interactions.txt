@@ -1,5 +1,4 @@
-﻿# Destroy Artifact
-destroy_artifact_interaction = {
+﻿destroy_artifact_interaction = {
 	interface_priority = 30
 	common_interaction = yes
 	icon = artifact
