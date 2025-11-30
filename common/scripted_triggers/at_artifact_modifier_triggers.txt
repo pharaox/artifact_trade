@@ -165,6 +165,7 @@ at_has_artifact_piety_modifier = {
 		has_artifact_modifier = goujian_sword_3_modifier
 		has_artifact_modifier = hamayumi_bow_modifier
 		has_artifact_modifier = eight_fold_chest_modifier
+		has_artifact_modifier = statue_amitabha_buddha_modifier
 
 		# monthly_piety_gain_per_happy_powerful_vassal_add
 		has_artifact_modifier = artifact_monthly_piety_gain_per_happy_powerful_vassal_add_1_modifier
@@ -356,6 +357,7 @@ at_has_artifact_court_grandeur_modifier = {
 		has_artifact_modifier = eight_fold_chest_modifier
 		has_artifact_modifier = artifact_chinese_armillary_sphere
 		has_artifact_modifier = complete_essentials_for_the_military_classics
+		has_artifact_modifier = statue_amitabha_buddha_modifier
 	}
 }
 
@@ -806,6 +808,7 @@ at_has_artifact_religion_opinion_modifier = {
 		has_artifact_modifier = statue_constantine_modifier
 		has_artifact_modifier = goujian_sword_6_modifier
 		has_artifact_modifier = eight_fold_chest_modifier
+		has_artifact_modifier = statue_amitabha_buddha_modifier
 	}
 }
 
