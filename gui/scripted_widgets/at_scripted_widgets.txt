@@ -1,3 +1,5 @@
 ﻿gui/at_artifacts_window.gui = at_artifacts_window
 gui/at_find_artifacts_window.gui = at_find_artifacts_window
-gui/at_find_artifacts_widget.gui = at_find_artifacts_widget
+gui/at_find_artifacts_widget.gui = at_find_artifacts_widget_left
+gui/at_find_artifacts_widget.gui = at_find_artifacts_widget_center
+gui/at_find_artifacts_widget.gui = at_find_artifacts_widget_right

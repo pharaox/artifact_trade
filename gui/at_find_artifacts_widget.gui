@@ -1,32 +1,79 @@
 widget = {
-	name = "at_find_artifacts_widget"
+	name = "at_find_artifacts_widget_left"
 	parentanchor = bottom|right
 	widgetanchor = bottom|right
-	position = { -690 0 }
-	size = { 55 55 }
-	visible = yes
+	position = { -870 -5 }
+	size = { 56 56 }
+	visible = "[And(And(GetPlayer.IsValid, Not(GetVariableSystem.Exists('hide_bottom_left_HUD'))), GetScriptedGui('at_find_artifacts_widget_gui').IsShown(GuiScope.AddScope('position', MakeScopeFlag('left')).End))]"
 	layer = bottom
 
 	background = {
 		texture = "gfx/interface/icons/flat_icons/artifact_bg.dds"
 	}
 
-	button_icon = {
-		name = "at_find_artifacts_button"
-		tooltip = "AT_FIND_ARTIFACTS_TOOLTIP"
+	at_find_artifacts_button = {}
+}
+
+widget = {
+	name = "at_find_artifacts_widget_center"
+	parentanchor = bottom|right
+	widgetanchor = bottom|right
+	position = { -780 -5 }
+	size = { 56 56 }
+	visible = "[And(And(GetPlayer.IsValid, Not(GetVariableSystem.Exists('hide_bottom_left_HUD'))), GetScriptedGui('at_find_artifacts_widget_gui').IsShown(GuiScope.AddScope('position', MakeScopeFlag('center')).End))]"
+	layer = bottom
+
+	background = {
+		texture = "gfx/interface/icons/flat_icons/artifact_bg.dds"
+	}
+
+	at_find_artifacts_button = {}
+}
+
+widget = {
+	name = "at_find_artifacts_widget_right"
+	parentanchor = bottom|right
+	widgetanchor = bottom|right
+	position = { -690 -5 }
+	size = { 56 56 }
+	visible = "[And(And(GetPlayer.IsValid, Not(GetVariableSystem.Exists('hide_bottom_left_HUD'))), GetScriptedGui('at_find_artifacts_widget_gui').IsShown(GuiScope.AddScope('position', MakeScopeFlag('right')).End))]"
+	layer = bottom
+
+	background = {
+		texture = "gfx/interface/icons/flat_icons/artifact_bg.dds"
+	}
+
+	at_find_artifacts_button = {}
+}
+
+types at_find_artifacts_button_types {
+	type at_find_artifacts_button = button_normal {
 		parentanchor = center
-		size = { 35 35 }
+		size = { 55 55 }
 		visible = yes
 
-		#texture = "gfx/interface/icons/inventory/trinket.dds"
-		#texture = "gfx/interface/icons/character_interactions/artifact.dds"
-		texture = "gfx/interface/icons/character_interactions/artisan_inspiration.dds"
-
+		tooltip = "AT_FIND_ARTIFACTS_TOOLTIP"
 		using = tooltip_ne
+
+		shortcut = "army_split_half"
 
 		onclick = "[GetScriptedGui('at_artifacts_window_init_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('flavor', MakeScopeFlag('find')).End)]"
 		onclick = "[GetVariableSystem.Set('at_artifacts_window_visible', 'no')]"
 		onclick = "[GetVariableSystem.Set('at_find_artifacts_window_visible', 'yes')]"
 		onclick = "[GetVariableSystem.Set('at_artifacts_window_flavor', 'find')]"
+
+		icon_round_button_base = {}
+
+		button_icon_highlight = {
+			size = { 40 40 }
+			parentanchor = center
+
+			#texture = "gfx/interface/icons/inventory/trinket.dds"
+			#texture = "gfx/interface/icons/character_interactions/artifact.dds"
+			texture = "gfx/interface/icons/character_interactions/artisan_inspiration.dds"
+			#texture = "gfx/interface/icons/flat_icons/signet_ring.dds"
+
+			blockoverride "button_icon_modify_texture" {}
+		}
 	}
 }

@@ -153,3 +153,23 @@ at_number_of_potential_buyers = {
 		flag = GG_can_change_rule
 	}
 }
+
+at_widget_position = {
+	categories = {
+		at_artifact_trade
+	}
+
+	default = at_widget_position_right
+
+	at_widget_position_left = {
+		flag = GG_can_change_rule
+	}
+
+	at_widget_position_center = {
+		flag = GG_can_change_rule
+	}
+
+	at_widget_position_right = {
+		flag = GG_can_change_rule
+	}
+}

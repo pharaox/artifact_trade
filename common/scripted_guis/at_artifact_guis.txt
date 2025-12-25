@@ -794,3 +794,22 @@ at_artifacts_window_reset_filter_options_gui = {
 		at_artifacts_window_get_artifacts_effect = yes
 	}
 }
+
+at_find_artifacts_widget_gui = {
+	scope = none
+	saved_scopes = { position }
+
+	is_shown = {
+		trigger_if = {
+			limit = { scope:position = flag:left }
+			has_game_rule = at_widget_position_left
+		}
+		trigger_else_if = {
+			limit = { scope:position = flag:center }
+			has_game_rule = at_widget_position_center
+		}
+		trigger_else = {
+			has_game_rule = at_widget_position_right
+		}
+	}
+}

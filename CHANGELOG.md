@@ -1,5 +1,14 @@
 # Changelog
 
+## Version 0.16.3
+
+### UI
+
+* Added a game rule to configure the Find Artifact button position (Left, Center, or Right), to avoid overlaps with other mods.
+* Added a keyboard shortcut (F key) for the Find Artifact button.
+* The Find Artifact button is now only shown if there is a valid player, and if the bottom-left HUD area is also shown.
+* Resized and aligned the Find Artifact button with the other bottom-left HUD buttons, and reduced its brightness.
+
 ## Version 0.16.2
 
 ### Compatibility
