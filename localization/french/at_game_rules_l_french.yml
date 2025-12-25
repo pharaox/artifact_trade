@@ -64,3 +64,11 @@
  setting_at_number_of_potential_buyers_50_desc: "Limit to max 50 buyers offering the best price."
  setting_at_number_of_potential_buyers_all: "#high All#!"
  setting_at_number_of_potential_buyers_all_desc: "No limit, show all buyers."
+
+ rule_at_widget_position: "#color_yellow Search & Trade Artifacts:#! Find Artifact Button Position"
+ setting_at_widget_position_left: "#high Left#!"
+ setting_at_widget_position_left_desc: "Position the Find Artifact button 870 pixels from the right border."
+ setting_at_widget_position_center: "#high Center#!"
+ setting_at_widget_position_center_desc: "Position the Find Artifact button 780 pixels from the right border."
+ setting_at_widget_position_right: "Right"
+ setting_at_widget_position_right_desc: "Position the Find Artifact button 690 pixels from the right border (default)."
