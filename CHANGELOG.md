@@ -9,6 +9,10 @@
 * The Find Artifact button is now only shown if there is a valid player, and if the bottom-left HUD area is also shown.
 * Resized and aligned the Find Artifact button with the other bottom-left HUD buttons, and reduced its brightness.
 
+### Localization
+
+* Updated and improved the Spanish translation.
+
 ## Version 0.16.2
 
 ### Compatibility
