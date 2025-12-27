@@ -4,7 +4,7 @@
  AT_BUY_ARTIFACTS: "Comprar Artefactos"
  AT_BUY_ARTIFACTS_TOOLTIP: "$AT_BUY_ARTIFACTS$ $AT_WARNING_REDUCED_RANGE$"
  AT_FIND_ARTIFACTS: "Buscador de Artefactos"
- AT_FIND_ARTIFACTS_TOOLTIP: "#T Find Artifact#!\nFind any [artifact|E] in the game."
+ AT_FIND_ARTIFACTS_TOOLTIP: "#T Buscar Artefacto#!\nEncuentra cualquier [artifact|E] en el juego."
 
  AT_WARNING_REDUCED_RANGE: "[SelectLocalization(GetPlayer.GetTravelPlan.IsValid, 'at_warning_reduced_range_desc', 'at_empty')]"
 
@@ -61,7 +61,7 @@
  at_not_armor: "No $artifact_slot_armor$"
  at_not_primary_armament: "No $artifact_slot_primary_armament$"
  at_not_miscellaneous: "No $artifact_slot_miscellaneous$"
- at_not_journal: "Not $artifact_slot_journal$"
+ at_not_journal: "No $artifact_slot_journal$"
  at_not_sculpture: "No $artifact_slot_sculpture$"
  at_not_pedestal: "No $artifact_slot_pedestal$"
  at_not_wall_big: "No $artifact_slot_wall_big$"
@@ -96,11 +96,11 @@
  at_clergy_opinion: "Opinión del $game_concept_clergy$"
  at_same_faith_opinion: "Opinión de la Misma $game_concept_faith$"
  at_different_faith_opinion: "Opinión de Diferente $game_concept_faith$"
- at_same_culture_opinion: "Same $game_concept_culture$ Opinion"
- at_different_culture_opinion: "Different $game_concept_culture$ Opinion"
- at_county_opinion: "$game_concept_county$ Opinion"
- at_religion_opinion: "$game_concept_religion$ Opinion"
- at_culture_opinion: "$game_concept_culture$ Opinion"
+ at_same_culture_opinion: "Opinión de la Misma $game_concept_culture$"
+ at_different_culture_opinion: "Opinión de Diferente $game_concept_culture$"
+ at_county_opinion: "Opinión del $game_concept_county$"
+ at_religion_opinion: "Opinión de la $game_concept_religion$"
+ at_culture_opinion: "Opinión de la $game_concept_culture$"
  # Domain, vassals, income, buildings, development
  at_domain_limit: "$game_concept_domain_limit$"
  at_vassal_limit: "$game_concept_vassal_limit$"
@@ -152,6 +152,15 @@
  # RtP
  at_travel: "$game_concept_travel$"
  at_influence: "$game_concept_influence$"
+ # MPO
+ at_fertility_growth: "Crecimiento de $game_concept_fertility$"
+ at_herd_gain: "Ganancia de $game_concept_herd$"
+ at_herd_conversion: "Conversión de $game_concept_herd$"
+ # TGP
+ at_merit: "$game_concept_merit$"
+ at_poet_trait_xp: "Experiencia de $trait_lifestyle_poet$"
+ at_confucian_education_trait_xp: "Experiencia de $trait_confucian_education$"
+ at_study_confucian_classics_power: "$game_concept_scheme_speed$ de [GetScheme('study_confucian_classics').GetTypeName]"
 
  at_equipped: "Equipado"
  at_not_equipped: "No Equipado"
@@ -190,3 +199,5 @@
  at_owner_valid_buyer_or_seller: "El Propietario es Comprador o Vendedor Válido"
  at_valid_buyer_or_seller: "Comprador o Vendedor Válido"
  at_not_valid_buyer_or_seller: "No Comprador o Vendedor Válido"
+
+ at_empty: ""
