@@ -55,7 +55,7 @@ types at_find_artifacts_button_types {
 		tooltip = "AT_FIND_ARTIFACTS_TOOLTIP"
 		using = tooltip_ne
 
-		shortcut = "army_split_half"
+		#shortcut = "army_split_half"
 
 		onclick = "[GetScriptedGui('at_artifacts_window_init_gui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('flavor', MakeScopeFlag('find')).End)]"
 		onclick = "[GetVariableSystem.Set('at_artifacts_window_visible', 'no')]"

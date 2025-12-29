@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 0.16.3.1
+
+* Removed the Find Artifact shortcut for now to avoid conflicts with other mods (e.g. Clear Notifications).
+
 ## Version 0.16.3
 
 ### UI
