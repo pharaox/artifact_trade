@@ -18,7 +18,7 @@ For added realism and better performance, not all characters are valid buyers or
 
 In case you don't like artifact trading for some reason, you can disable the trading part via a game rule.
 
-To enable searching for artifacts, this mod adds a **Find Artifact** button in the bottom-center area of the screen with **F** as shortcut, its exact position can be configured via a game rule.
+To enable searching for artifacts, this mod adds a **Find Artifact** button in the bottom-center area of the screen, its exact position can be configured via a game rule.
 
 This mod also substantially improves the vanilla **Destroy Artifact** interaction:
 
