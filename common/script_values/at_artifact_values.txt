@@ -732,22 +732,31 @@ at_artifact_bid_price_value = {
 # Destroy artifact gold value, calculated using the formula from destroy_artifact_aniconist_effect
 # adjusted for durability if improved destroying of artifacts is enabled
 at_destroy_artifact_gold_value = {
-	# Base value (from destroy_artifact_aniconist_effect)
 	if = {
-		limit = { rarity = common }
-		value = 40
+		limit = { has_game_rule = at_improved_destroy_artifact_enabled }
+		# Take into account actual quality & wealth
+		# With default values, this will give 38 / 75 / 175 / 250, close to the values below
+		value = at_artifact_quality_wealth_average_value
+		multiply = at_artifact_qwa_price_multiplier
 	}
-	else_if = {
-		limit = { rarity = masterwork }
-		value = 80
-	}
-	else_if = {
-		limit = { rarity = famed }
-		value = 150
-	}
-	else_if = {
-		limit = { rarity = illustrious }
-		value = 250
+	else = {
+		# Base value (from destroy_artifact_aniconist_effect)
+		if = {
+			limit = { rarity = common }
+			value = 40
+		}
+		else_if = {
+			limit = { rarity = masterwork }
+			value = 80
+		}
+		else_if = {
+			limit = { rarity = famed }
+			value = 150
+		}
+		else_if = {
+			limit = { rarity = illustrious }
+			value = 250
+		}
 	}
 
 	# Durability
