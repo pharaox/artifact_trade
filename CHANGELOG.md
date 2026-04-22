@@ -1,5 +1,11 @@
 # Changelog
 
+## Version 0.17.0
+
+### Compatibility
+
+* Adapted to CK3 1.19.0.3
+
 ## Version 0.16.3.1
 
 * Removed the Find Artifact shortcut for now to avoid conflicts with other mods (e.g. Clear Notifications).

@@ -82,6 +82,7 @@ at_has_artifact_prestige_modifier = {
 		has_artifact_modifier = gyerimro_dagger_modifier
 		has_artifact_modifier = nukemaru_sword_modifier
 		has_artifact_modifier = kogarasumaru_sword_modifier
+		has_artifact_modifier = easteregg_henry_longsword_modifier
 
 		# monthly_prestige_gain_mult
 		has_artifact_modifier = artifact_monthly_prestige_mult_1_modifier
@@ -410,6 +411,7 @@ at_has_artifact_dynasty_prestige_modifier = {
 		has_artifact_modifier = sakanoue_sword_modifier
 		has_artifact_modifier = dojigiri_sword_modifier
 		has_artifact_modifier = karakawa_armor_modifier
+		has_artifact_modifier = easteregg_henry_longsword_modifier
 
 		# monthly_dynasty_prestige
 		has_artifact_modifier = artifact_monthly_prestige_add_1_modifier
@@ -1544,6 +1546,7 @@ at_has_artifact_prowess_modifier = {
 		has_artifact_modifier = karakawa_armor_modifier
 		has_artifact_modifier = nukemaru_sword_modifier
 		has_artifact_modifier = kogarasumaru_sword_modifier
+		has_artifact_modifier = easteregg_henry_longsword_modifier
 
 		# prowess_per_piety_level
 
@@ -1601,6 +1604,7 @@ at_has_artifact_knights_modifier = {
 		# historical
 		has_artifact_modifier = mikazuki_munechika_sword_modifier
 		has_artifact_modifier = complete_essentials_for_the_military_classics
+		has_artifact_modifier = easteregg_henry_longsword_modifier
 	}
 }
 

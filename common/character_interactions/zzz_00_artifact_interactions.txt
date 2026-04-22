@@ -52,7 +52,6 @@
 				NOR = {
 					has_variable = 1025_treasure_map
 					has_variable = is_tribute_mission_artifact
-					has_variable = mandala_capital_05_unconfirmed_talisman
 				}
 			}
 		}

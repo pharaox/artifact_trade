@@ -7,7 +7,7 @@
 * `common/character_interactions/00_artifact_interactions.txt`
   * `destroy_artifact_interaction`
 * `common/decisions/dlc_decisions/ep_3/06_ep3_laamp_decisions.txt`
-  * `visit_settlement_decision`
+  * `visit_local_settlement_decision`
 * `common/scripted_effects/00_ep1_artifact_effects.txt`
   * `destroy_artifact_aniconist_effect`
 * `events/dlc/ep3/ep3_laamp_decision_events.txt`
