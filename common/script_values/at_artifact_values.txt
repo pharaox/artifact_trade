@@ -606,7 +606,35 @@ at_artifact_default_quality_wealth_value = {
 
 # Artifact base price, calculated using a formula similar to the one
 # from "Auction Off Artifact", but using QWA and a multiplier instead
+# Logic duplicated in at_artifact_ask_price_value and at_artifact_bid_price_value to avoid a tooltip bug
 at_artifact_base_price_value = {
+	# QWA
+	value = 0
+	add = {
+		value = at_artifact_quality_wealth_average_value
+		multiply = at_artifact_qwa_price_multiplier
+	}
+
+	# Durability
+	multiply = at_artifact_durability_multiplier
+
+	# Uniqueness
+	if = {
+		limit = { at_is_unique_artifact_trigger = yes }
+		multiply = at_artifact_unique_price_multiplier
+	}
+
+	add = at_custom_artifact_base_price_value
+	multiply = at_custom_artifact_base_price_multiplier
+
+	round = yes
+	min = 5
+}
+
+# Artifact ask price. Calculated by multiplying the base price by several multipliers:
+# - at_artifact_ask_price_player_multiplier if scope:actor is human
+# - a scope:seller personality multiplier based on ai_greed
+at_artifact_ask_price_value = {
 	# QWA
 	value = 0
 	add = {
@@ -634,14 +662,10 @@ at_artifact_base_price_value = {
 	multiply = at_custom_artifact_base_price_multiplier
 
 	round = yes
-	min = 5
-}
-
-# Artifact ask price. Calculated by multiplying the base price by several multipliers:
-# - at_artifact_ask_price_player_multiplier if scope:actor is human
-# - a scope:seller personality multiplier based on ai_greed
-at_artifact_ask_price_value = {
-	value = at_artifact_base_price_value
+	min = {
+		value = 5
+		desc = at_artifact_price_min_desc
+	}
 
 	# Set destroy artifact gold value as minimum to prevent exploits
 	if = {
@@ -692,13 +716,46 @@ at_artifact_ask_price_value = {
 	multiply = at_custom_artifact_ask_price_multiplier
 
 	round = yes
-	min = 5
+	min = {
+		value = 5
+		desc = at_artifact_price_min_desc
+	}
 }
 
 # Artifact bid price. Calculated by multiplying the base price by several multipliers:
 # - a scope:buyer personality multiplier based on ai_greed
 at_artifact_bid_price_value = {
-	value = at_artifact_base_price_value
+	# QWA
+	value = 0
+	add = {
+		value = at_artifact_quality_wealth_average_value
+		multiply = at_artifact_qwa_price_multiplier
+		desc = at_artifact_price_qwa_desc
+	}
+
+	# Durability
+	multiply = {
+		value = at_artifact_durability_multiplier
+		desc = at_artifact_price_durability_desc
+	}
+
+	# Uniqueness
+	if = {
+		limit = { at_is_unique_artifact_trigger = yes }
+		multiply = {
+			value = at_artifact_unique_price_multiplier
+			desc = at_artifact_price_unique_desc
+		}
+	}
+
+	add = at_custom_artifact_base_price_value
+	multiply = at_custom_artifact_base_price_multiplier
+
+	round = yes
+	min = {
+		value = 5
+		desc = at_artifact_price_min_desc
+	}
 
 	# Adjust for tribal rulers
 	multiply = {
@@ -726,7 +783,10 @@ at_artifact_bid_price_value = {
 	multiply = at_custom_artifact_bid_price_multiplier
 
 	round = yes
-	min = 5
+	min = {
+		value = 5
+		desc = at_artifact_price_min_desc
+	}
 }
 
 # Destroy artifact gold value, calculated using the formula from destroy_artifact_aniconist_effect
