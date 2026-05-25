@@ -53,6 +53,10 @@ at_is_unsellable_artifact_trigger = {
 		has_variable = banner_house
 		has_variable = banner_dynasty
 		has_variable = 1025_treasure_map
+		has_variable = is_tribute_mission_artifact
+		has_variable = bunga_mas_created_by
+		has_variable = artifact_prevent_transfer
+		has_variable = pyr_goods_type
 	}
 }
 
