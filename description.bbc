@@ -1,33 +1,35 @@
 [h2]Overview[/h2]
 
+[b]Check out my new mod [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3797518189]Pyrates[/url] - take landless adventure to the seas with new buildings, contracts, and events.[/b]
+
 With this mod, you can search for artifacts, buy them from other characters, and sell them to other characters. The game doesn't have an artifact trading system, so this mod adds one. Since such a system would not be usable without advanced artifact filtering and sorting, it adds an "artifact finder" as well.
 
-In version 1.9 CK3 enabled destroying of artifacts for gold, however it's fairly limited. No actual trading takes place, you can only destroy, and only common and masterwork artifacts. Furthermore, you can [i]always[/i] get rid of your artifacts, which undermines the realism.
+In version 1.9, CK3 enabled destroying of artifacts for gold, however it's fairly limited. No actual trading takes place, you can only destroy, and only common and masterwork artifacts. Furthermore, you can [i]always[/i] get rid of your artifacts, which undermines the realism.
 
 This mod adds what is missing, and more. The system is balanced so that it does not offer significant advantages to the player. The AI will use it as well, initiating, accepting, or rejecting buy and sell interactions based on a comprehensive estimation of the artifact's usefulness and significance.
 
 The base artifact prices in this mod are mainly determined by the artifact's [i]quality and wealth[/i] (hidden properties that determine rarity), and roughly correspond to the destroy prices. Actual trades are settled at slightly different prices that also depend on the AI greed of the accepting party. Tribal characters demand and offer lower prices. The player can never sell or destroy an artifact at a price higher than the one they bought it, since AI sellers include a "profit margin" when selling to the player.
 
-When buying and selling artifacts, the AI acceptance is influenced by multiple factors. Besides the artifact rarity compared to that of other relevant artifacts, they include the artifact's durability, its uniqueness, is it equippable and beneficial to the character, is it unwanted or cursed, the character's claims or special relationship to the artifact, the artifact's price, and the character's wealth. In addition, the AI will never offer to pay more than their [i]short term budget[/i], and will only sell if the other party offers enough gold to pay the full price.
+When buying and selling artifacts, the AI acceptance is influenced by multiple factors. Besides the artifact rarity compared to that of other relevant artifacts, they include the artifact's durability, its uniqueness, is it equippable and beneficial to the character, is it unwanted or cursed, the character's claims or special relationship to the artifact, the artifact's price, and the character's wealth. In addition, the AI will never offer to pay more than their [i]short-term budget[/i], and will only sell if the other party offers enough gold to pay the full price.
 
 For added realism and better performance, not all characters are valid buyers or sellers. By default, these are characters in the same and neighboring realms, and foreign rulers within a dynamic trading range depending on rank. This can be adjusted via a game rule.
 
 In case you don't like artifact trading for some reason, you can disable the trading part via a game rule.
 
-To enable searching for artifacts, this mod adds a [b]Find Artifact[/b] button in the bottom-center area of the screen, its exact position can be configured via a game rule.
+To enable searching for artifacts, this mod adds a [b]Find Artifact[/b] button in the bottom-center area of the screen. Its exact position can be configured via a game rule.
 
 This mod also substantially improves the vanilla [b]Destroy Artifact[/b] interaction:
 [list]
   [*] All rulers can now destroy also Famed and Illustrious artifacts.
-  [*] The destroy price (and piety for Aniconist rulers) is influenced by the artifact durability.
-  [*] The AI decision making is much more sophisticated and consistent with buying and selling.
+  [*] The destroy price (and piety for Aniconist rulers) is influenced by the artifact's durability.
+  [*] The AI decision-making is much more sophisticated and consistent with buying and selling.
 [/list]
 
 In the "Roads to Power" DLC, CK3 added buying and selling artifacts by landless adventurers as part of the [b]Visit Holding[/b] decision event chain. This mod substantially improves upon this feature as well:
 [list]
   [*] Artifact prices are consistent and based on the above criteria, instead of being somewhat based on rarity but otherwise random.
   [*] Adventurers and peddlers can only buy artifacts if they can afford them.
-  [*] Artifacts can be bought in all holding types above certain development level (configurable via game rule), and their quality and wealth (and therefore rarity and price) depend on that level as well.
+  [*] Artifacts can be bought in all holding types above a certain development level (configurable via game rule), and their quality and wealth (and therefore rarity and price) depend on that level as well.
   [*] Artifacts sold by merchants are still better on average, but in a more balanced way. They will be destroyed or replaced after some time if not bought.
   [*] AI landless adventurers will regularly buy and sell artifacts as well.
 [/list]
@@ -40,7 +42,7 @@ These improvements are enabled by default but can also be disabled via game rule
 
 [h2]Compatibility[/h2]
 
-The current version is compatible with CK3 1.19. If you are still on CK3 1.18.x, use [url=https://github.com/pharaox/artifact_trade/releases/download0.16.3.1/search_and_trade_artifacts-0.16.3.1.zip]version 0.16.3.1[/url] instead.
+The current version is compatible with CK3 1.19. If you are still on CK3 1.18.x, use [url=https://github.com/pharaox/artifact_trade/releases/download/0.16.3.1/search_and_trade_artifacts-0.16.3.1.zip]version 0.16.3.1[/url] instead.
 
 This mod is compatible with all other mods, including total conversion mods such as AGOT and EK2, except for mods that modify the [b]Inventory[/b] window or the [b]Destroy Artifact[/b] interaction. If you use such mods, put this mod before them in the load order - you may lose the new [b]Inventory[/b] window buttons or the [b]Destroy Artifact[/b] improvements as a result, but everything else should work as expected. The new buttons are also available in the [b]Artifact Finder[/b] window, so losing them in the [b]Inventory[/b] window is no big deal.
 
@@ -77,4 +79,5 @@ If you like this mod, you may also consider my other mods:
 [list]
   [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3082182371]Travelers[/url]
   [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3157170996]Active Courtiers[/url]
+  [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3797518189]Pyrates[/url]
 [/list]

@@ -6,31 +6,31 @@
 
 With this mod, you can search for artifacts, buy them from other characters, and sell them to other characters. The game doesn't have an artifact trading system, so this mod adds one. Since such a system would not be usable without advanced artifact filtering and sorting, it adds an "artifact finder" as well.
 
-In version 1.9 CK3 enabled destroying of artifacts for gold, however it's fairly limited. No actual trading takes place, you can only destroy, and only common and masterwork artifacts. Furthermore, you can *always* get rid of your artifacts, which undermines the realism.
+In version 1.9, CK3 enabled destroying of artifacts for gold, however it's fairly limited. No actual trading takes place, you can only destroy, and only common and masterwork artifacts. Furthermore, you can *always* get rid of your artifacts, which undermines the realism.
 
 This mod adds what is missing, and more. The system is balanced so that it does not offer significant advantages to the player. The AI will use it as well, initiating, accepting, or rejecting buy and sell interactions based on a comprehensive estimation of the artifact's usefulness and significance.
 
 The base artifact prices in this mod are mainly determined by the artifact's *quality and wealth* (hidden properties that determine rarity), and roughly correspond to the destroy prices. Actual trades are settled at slightly different prices that also depend on the AI greed of the accepting party. Tribal characters demand and offer lower prices. The player can never sell or destroy an artifact at a price higher than the one they bought it, since AI sellers include a "profit margin" when selling to the player.
 
-When buying and selling artifacts, the AI acceptance is influenced by multiple factors. Besides the artifact rarity compared to that of other relevant artifacts, they include the artifact's durability, its uniqueness, is it equippable and beneficial to the character, is it unwanted or cursed, the character's claims or special relationship to the artifact, the artifact's price, and the character's wealth. In addition, the AI will never offer to pay more than their *short term budget*, and will only sell if the other party offers enough gold to pay the full price.
+When buying and selling artifacts, the AI acceptance is influenced by multiple factors. Besides the artifact rarity compared to that of other relevant artifacts, they include the artifact's durability, its uniqueness, is it equippable and beneficial to the character, is it unwanted or cursed, the character's claims or special relationship to the artifact, the artifact's price, and the character's wealth. In addition, the AI will never offer to pay more than their *short-term budget*, and will only sell if the other party offers enough gold to pay the full price.
 
 For added realism and better performance, not all characters are valid buyers or sellers. By default, these are characters in the same and neighboring realms, and foreign rulers within a dynamic trading range depending on rank. This can be adjusted via a game rule.
 
 In case you don't like artifact trading for some reason, you can disable the trading part via a game rule.
 
-To enable searching for artifacts, this mod adds a **Find Artifact** button in the bottom-center area of the screen, its exact position can be configured via a game rule.
+To enable searching for artifacts, this mod adds a **Find Artifact** button in the bottom-center area of the screen. Its exact position can be configured via a game rule.
 
 This mod also substantially improves the vanilla **Destroy Artifact** interaction:
 
 * All rulers can now destroy also Famed and Illustrious artifacts.
-* The destroy price (and piety for Aniconist rulers) is influenced by the artifact durability.
-* The AI decision making is much more sophisticated and consistent with buying and selling.
+* The destroy price (and piety for Aniconist rulers) is influenced by the artifact's durability.
+* The AI decision-making is much more sophisticated and consistent with buying and selling.
 
 In the "Roads to Power" DLC, CK3 added buying and selling artifacts by landless adventurers as part of the **Visit Holding** decision event chain. This mod substantially improves upon this feature as well:
 
 * Artifact prices are consistent and based on the above criteria, instead of being somewhat based on rarity but otherwise random.
 * Adventurers and peddlers can only buy artifacts if they can afford them.
-* Artifacts can be bought in all holding types above certain development level (configurable via game rule), and their quality and wealth (and therefore rarity and price) depend on that level as well.
+* Artifacts can be bought in all holding types above a certain development level (configurable via game rule), and their quality and wealth (and therefore rarity and price) depend on that level as well.
 * Artifacts sold by merchants are still better on average, but in a more balanced way. They will be destroyed or replaced after some time if not bought.
 * AI landless adventurers will regularly buy and sell artifacts as well.
 
@@ -84,7 +84,7 @@ When selling artifacts, the list contains only artifacts that are not equipped a
 
 ![Sell Artifacts Choose Buyer](https://steamuserimages-a.akamaihd.net/ugc/2047490891201303374/B5ACFC59CE3771A791C91868E7AA8C0B8E350FA8/?ima=fit)
 
-The list contains only valid buyers that are willing to buy the selected artifact. Buyers may offer different prices for the artifact, and will never offer more than their *short term budget*. Since buyers can't be sorted by their bid prices, the list contains only a limited number of buyers offering the highest bid prices. This number is 5 by default and can be configured via a game rule.
+The list contains only valid buyers that are willing to buy the selected artifact. Buyers may offer different prices for the artifact, and will never offer more than their *short-term budget*. Since buyers can't be sorted by their bid prices, the list contains only a limited number of buyers offering the highest bid prices. This number is 5 by default and can be configured via a game rule.
 
 After a buyer has been selected, clicking the button opens the **Sell Artifact** interaction, where you can review the effects and the buyer's reasons for accepting, and eventually sell the artifact.
 
@@ -107,11 +107,11 @@ For consistency with vanilla's **Destroy Artifact**, ask prices are never lower 
 
 ### AI Willingness to Buy or Sell
 
-When buying artifacts, the AI willingness or acceptance is influenced by multiple factors. One of the most important is the artifact's QWA compared to that of the worst artifact of the same type owned by the buyer that would still be equipped. For example, for helmets this would be the best helmet, since only one helmet can be equipped, and for trinkets this would be the 4-th best, since 4 trinkets can be equipped. Note that all equippable and beneficial artifacts are evaluated, no matter if actually equipped or not. Other factors include the artifact's durability as percentage value, its uniqueness, is it equippable and beneficial to the character, is it unwanted or cursed, the character's claims or special relationship to the artifact (dynast and a dynasty banner, etc.), the artifact's price, and the character's wealth.
+When buying artifacts, the AI willingness or acceptance is influenced by multiple factors. One of the most important is the artifact's QWA compared to that of the worst artifact of the same type owned by the buyer that would still be equipped. For example, for helmets this would be the best helmet, since only one helmet can be equipped, and for trinkets this would be the 4th best, since 4 trinkets can be equipped. Note that all equippable and beneficial artifacts are evaluated, no matter if actually equipped or not. Other factors include the artifact's durability as percentage value, its uniqueness, is it equippable and beneficial to the character, is it unwanted or cursed, the character's claims or special relationship to the artifact (dynast and a dynasty banner, etc.), the artifact's price, and the character's wealth.
 
-When selling artifacts, the AI willingness or acceptance is influenced by similar factors, but working in the opposite direction, with some minor differences. The artifact's QWA is compared to that of the best artifact of the same type owned by the seller that would not be equipped. For example, for helmets this would be the 2-nd best helmet owned by the seller, and for trinkets this would be the 5-th best trinket.
+When selling artifacts, the AI willingness or acceptance is influenced by similar factors, but working in the opposite direction, with some minor differences. The artifact's QWA is compared to that of the best artifact of the same type owned by the seller that would not be equipped. For example, for helmets this would be the 2nd best helmet owned by the seller, and for trinkets this would be the 5th best trinket.
 
-In addition, the AI will never offer to pay more than their *short term budget* (the portion of the AI's budget that can be used for short term purchases), and will only sell if the other party offers enough gold to pay the full price.
+In addition, the AI will never offer to pay more than their *short-term budget* (the portion of the AI's budget that can be used for short term purchases), and will only sell if the other party offers enough gold to pay the full price.
 
 The artifact's QWA strongly correlates with rarity. When selling, you may find it quite hard to find buyers for common artifacts, and progressively easier for artifact of higher rarities. When buying, you may find it quite easy to find sellers for common artifacts, and progressively harder for artifact of higher rarities. You could spend a hook if you have one on a character to increase their willingness to buy or sell.
 
@@ -148,10 +148,10 @@ The **Buy Artifacts** and **Sell Artifacts** interactions might become slow if t
 
 * [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2962238514)
 * [AGOT Compatibility](https://steamcommunity.com/sharedfiles/filedetails/?id=3222480457)
-* [Princes of Darkness Compatibility (by @fluffy heretic)](https://steamcommunity.com/sharedfiles/filedetails/?id=3108318083])
+* [Princes of Darkness Compatibility (by @fluffy heretic)](https://steamcommunity.com/sharedfiles/filedetails/?id=3108318083)
 * [Russian Translation (by @Gordon_Wolfich)](https://steamcommunity.com/sharedfiles/filedetails/?id=3491541845)
 * [Spanish Translation (by @Will1294)](https://steamcommunity.com/sharedfiles/filedetails/?id=2971143815)
-* [Chinese Translation (by@無壹)](https://steamcommunity.com/sharedfiles/filedetails/?id=2903983628)
+* [Chinese Translation (by @無壹)](https://steamcommunity.com/sharedfiles/filedetails/?id=2903983628)
 * [French Translation (by @Pata)](https://steamcommunity.com/sharedfiles/filedetails/?id=2976975086)
 * [Korean Translation (by @Yankee)](https://steamcommunity.com/sharedfiles/filedetails/?id=3353861078)
 * [German Translation (by @finallyciv)](https://steamcommunity.com/sharedfiles/filedetails/?id=3355568022)
