@@ -1,5 +1,5 @@
 NAME := search_and_trade_artifacts
-VERSION := $(shell cat VERSION)
+VERSION := $(shell sed -n 's/^version="\(.*\)"/\1/p' descriptor.mod)
 
 .PHONY: tiger
 tiger:
@@ -8,12 +8,12 @@ tiger:
 
 .PHONY: update-deps
 update-deps:
-	rsync -r --exclude=CHANGELOG.md --exclude=descriptor.mod --exclude=VERSION ../vls/* .
+	rsync -r --exclude=CHANGELOG.md --exclude=descriptor.mod ../vls/* .
 
 .PHONY: build
 build: clean
 	mkdir -p tmp/$(NAME)
-	rsync -r --exclude=".*" --exclude=tmp --exclude=images --exclude=misc --exclude=Makefile --exclude=description.txt --exclude=LICENSE.md --exclude=VERSION --exclude=ck3-tiger.conf . tmp/$(NAME)
+	rsync -r --exclude=".*" --exclude=tmp --exclude=images --exclude=misc --exclude=Makefile --exclude=description.txt --exclude=LICENSE.md --exclude=ck3-tiger.conf . tmp/$(NAME)
 	cp descriptor.mod tmp/$(NAME).mod
 	echo "path=\"mod/$(NAME)\"" >> tmp/$(NAME).mod
 	cd tmp && zip -r $(NAME)-$(VERSION).zip . && cd ..
@@ -29,4 +29,4 @@ thumbnail:
 
 .PHONY: update-version
 update-version:
-	sed -i 's/$(VERSION)/$(NEW_VERSION)/g' descriptor.mod VERSION
+	sed -i 's/$(VERSION)/$(NEW_VERSION)/g' descriptor.mod
