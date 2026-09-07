@@ -1,5 +1,12 @@
 # Changelog
 
+## Version 0.17.1
+
+### Bug Fixes
+
+* Fixed the artifact price breakdown tooltip.
+* Made tribute and Pyrates artifacts unsellable.
+
 ## Version 0.17.0
 
 ### Compatibility
