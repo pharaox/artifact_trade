@@ -564,6 +564,14 @@ at_has_artifact_general_opinion_modifier = {
 at_has_artifact_vassal_opinion_modifier = {
 	OR = {
 		# vassal_opinion
+		has_artifact_modifier = artifact_killer_3_artifact_modifier
+		has_artifact_modifier = artifact_killer_4_artifact_modifier
+		has_artifact_modifier = artifact_armor_2_artifact_modifier
+		has_artifact_modifier = artifact_armor_3_artifact_modifier
+		has_artifact_modifier = artifact_armor_4_artifact_modifier
+		has_artifact_modifier = artifact_emperors_crown_artifact_modifier
+		has_artifact_modifier = artifact_crown_artifact_modifier
+		has_artifact_modifier = artifact_duel_weapon_4_modifier
 		# historical
 		has_artifact_modifier = odenta_sword_modifier
 
