@@ -1,0 +1,20 @@
+CK3: 1.20.0.3, mod: 0.18.0
+
+Artifact bought: 2
+- weaponsmith: 0
+- armorer: 1
+- jeweler: 1
+Artifact sold: 7
+- peddler: 4
+Artifact destroyed: 19
+- aniconist: 0
+
+Visiting holding: 229
+Visiting holding to trade artifacts: 29
+
+Attempting artifact haggle: 11
+Selling artifact via outraged partner: 0
+
+Creating artifact: 84
+Destroying artifact: 67
+
