@@ -8,9 +8,9 @@
 	#The cooldown is set separately, if you only entered and left you shouldn't get punished for it
 
 	is_shown = {
+		has_government = landless_adventurer_government
 		#DLC check.
 		has_ep3_dlc_trigger = yes
-		has_government = landless_adventurer_government
 	}
 
 	is_valid_showing_failures_only = {
@@ -20,7 +20,7 @@
 		root.location = {
 			has_holding = yes
 			is_occupied = no
-			is_raided = no	
+			is_raided = no
 		}
 		custom_description = {
 			text = "visit_local_settlement_decision_sieged"
@@ -223,7 +223,7 @@
 			player = root
 		}
 	}
-	
+
 	# It's now disabled for AI in vanilla, why?
 	ai_check_interval = 24
 
@@ -231,7 +231,7 @@
 		government_has_flag = government_is_landless_adventurer
 		is_available = yes
 	}
-	
+
 	ai_will_do = {
 		base = 100
 	}

@@ -60,12 +60,13 @@ at_sell_artifact_interaction = {
 		}
 	}
 
-	is_shown = {
+	is_available = {
 		NOT = { has_game_rule = at_artifact_trading_disabled }
+		has_any_artifact = yes
+	}
+
+	is_shown = {
 		scope:actor != scope:recipient
-		scope:actor = {
-			has_any_artifact = yes
-		}
 		scope:recipient = {
 			at_can_own_artifacts_trigger = yes
 		}
@@ -477,10 +478,6 @@ at_sell_artifact_interaction = {
 		kingdom = 24
 		empire = 24
 		hegemony = 24
-	}
-
-	ai_potential = {
-		always = yes
 	}
 
 	ai_will_do = {

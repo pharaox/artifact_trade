@@ -46,8 +46,8 @@ at_can_destroy_artifacts_trigger = {
 }
 
 at_has_aniconist_faith_trigger = {
-	faith = {
-		has_doctrine_parameter = destroying_artifacts_is_pious
+	rite = {
+		rite_has_parameter = destroying_artifacts_is_pious
 	}
 }
 
@@ -385,8 +385,8 @@ at_artifact_better_than_equipped_trigger = {
 }
 
 at_aniconist_should_destroy_artifact_trigger = {
-	faith = {
-		has_doctrine_parameter = destroying_artifacts_is_pious
+	rite = {
+		rite_has_parameter = destroying_artifacts_is_pious
 	}
 	OR = {
 		has_trait = zealous

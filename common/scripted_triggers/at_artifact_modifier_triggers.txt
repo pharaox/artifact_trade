@@ -501,6 +501,7 @@ at_has_artifact_dread_modifier = {
 at_has_artifact_fertility_modifier = {
 	OR = {
 		# fertility
+		has_artifact_modifier = artifact_fertility_gain_0_5_modifier
 		has_artifact_modifier = artifact_fertility_gain_1_modifier
 		has_artifact_modifier = artifact_fertility_gain_2_modifier
 		has_artifact_modifier = artifact_fertility_gain_3_modifier
@@ -515,6 +516,7 @@ at_has_artifact_fertility_modifier = {
 at_has_artifact_health_modifier = {
 	OR = {
 		# health
+		has_artifact_modifier = artifact_health_gain_0_5_modifier
 		has_artifact_modifier = artifact_health_gain_1_modifier
 		has_artifact_modifier = artifact_health_gain_2_modifier
 		has_artifact_modifier = artifact_health_gain_3_modifier
@@ -529,6 +531,13 @@ at_has_artifact_health_modifier = {
 		# historical
 		has_artifact_modifier = cup_jamshid_modifier
 		has_artifact_modifier = former_bells_of_santiago_modifier
+
+		# life_expectancy
+		has_artifact_modifier = artifact_life_expectancy_1_modifier
+		has_artifact_modifier = artifact_life_expectancy_3_modifier
+
+		# trait_track_withering_mind_xp_gain_mult
+		has_artifact_modifier = artifact_negate_withering_mind_1_modifier
 	}
 }
 
@@ -1136,6 +1145,8 @@ at_has_artifact_build_gold_cost_modifier = {
 at_has_artifact_build_speed_modifier = {
 	OR = {
 		# build_speed
+		has_artifact_modifier = artifact_build_time_0_2_5_modifier
+		has_artifact_modifier = artifact_build_time_0_5_modifier
 		has_artifact_modifier = artifact_build_time_1_modifier
 		has_artifact_modifier = artifact_build_time_2_modifier
 		has_artifact_modifier = artifact_build_time_3_modifier
@@ -1256,6 +1267,18 @@ at_has_artifact_scheme_power_modifier = {
 		has_artifact_modifier = artifact_personal_scheme_phase_duration_add_10_modifier
 		has_artifact_modifier = artifact_personal_scheme_phase_duration_add_11_modifier
 		has_artifact_modifier = artifact_personal_scheme_phase_duration_add_12_modifier
+
+		# learning_scheme_phase_duration
+		has_artifact_modifier = artifact_learning_scheme_phase_duration_add_1_modifier
+
+		# study_faith_scheme_phase_duration_add
+		has_artifact_modifier = artifact_study_faith_scheme_phase_duration_add_1_modifier
+
+		# study_scripture_scheme_phase_duration_add
+		has_artifact_modifier = artifact_study_scripture_scheme_phase_duration_add_1_modifier
+		has_artifact_modifier = artifact_study_scripture_scheme_phase_duration_add_2_modifier
+		has_artifact_modifier = artifact_study_scripture_scheme_phase_duration_add_3_modifier
+		has_artifact_modifier = artifact_study_scripture_scheme_phase_duration_add_4_modifier
 	}
 }
 
@@ -1324,6 +1347,7 @@ at_has_artifact_lifestyle_xp_modifier = {
 		# monthly_lifestyle_xp_gain_mult
 		has_artifact_modifier = artifact_monthly_lifestyle_xp_miniscule_modifier
 		has_artifact_modifier = artifact_monthly_lifestyle_xp_minor_modifier
+		has_artifact_modifier = artifact_monthly_lifestyle_xp_0_5_modifier
 		has_artifact_modifier = artifact_monthly_lifestyle_xp_1_modifier
 		has_artifact_modifier = artifact_monthly_lifestyle_xp_2_modifier
 		has_artifact_modifier = artifact_monthly_lifestyle_xp_3_modifier
@@ -1391,6 +1415,7 @@ at_has_artifact_learning_lifestyle_xp_modifier = {
 		has_artifact_modifier = artifact_learning_lifestyle_xp_2_modifier
 
 		# monthly_learning_lifestyle_xp_gain_mult
+		has_artifact_modifier = artifact_monthly_learning_lifestyle_xp_0_5_modifier
 		has_artifact_modifier = artifact_monthly_learning_lifestyle_xp_1_modifier
 		has_artifact_modifier = artifact_monthly_learning_lifestyle_xp_2_modifier
 		has_artifact_modifier = artifact_monthly_learning_lifestyle_xp_3_modifier
@@ -1414,6 +1439,9 @@ at_has_artifact_diplomacy_modifier = {
 		# historical
 		has_artifact_modifier = seven_branched_sword_modifier
 		has_artifact_modifier = gyerimro_dagger_modifier
+
+		# diplomacy_mult
+		has_artifact_modifier = artifact_diplomacy_mult_1_modifier
 
 		# diplomacy_per_prestige_level
 		has_artifact_modifier = artifact_diplomacy_per_prestige_level_modifier
@@ -1458,6 +1486,9 @@ at_has_artifact_stewardship_modifier = {
 		has_artifact_modifier = artifact_stewardship_2_modifier
 		has_artifact_modifier = artifact_stewardship_3_modifier
 
+		# stewardship_mult
+		has_artifact_modifier = artifact_stewardship_mult_1_modifier
+
 		# stewardship_per_stress_level
 		has_artifact_modifier = artifact_stewardship_per_stress_level_1_modifier
 		has_artifact_modifier = artifact_stewardship_per_stress_level_2_modifier
@@ -1495,6 +1526,9 @@ at_has_artifact_learning_modifier = {
 		has_artifact_modifier = artifact_learning_3_modifier
 		# historical
 		has_artifact_modifier = artifact_chinese_armillary_sphere
+
+		# learning_mult
+		has_artifact_modifier = artifact_learning_mult_1_modifier
 
 		# learning_per_stress_level
 		has_artifact_modifier = artifact_learning_per_stress_level_2_modifier
@@ -1555,6 +1589,10 @@ at_has_artifact_prowess_modifier = {
 		has_artifact_modifier = nukemaru_sword_modifier
 		has_artifact_modifier = kogarasumaru_sword_modifier
 		has_artifact_modifier = easteregg_henry_longsword_modifier
+
+		# prowess_mult
+		has_artifact_modifier = artifact_prowess_mult_1_modifier
+		has_artifact_modifier = artifact_prowess_mult_2_modifier
 
 		# prowess_per_piety_level
 

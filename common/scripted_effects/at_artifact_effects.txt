@@ -239,7 +239,7 @@ at_destroy_artifact_effect = {
 		# Add piety if destroying artifacts is pious
 		if = {
 			limit = {
-				faith = { has_doctrine_parameter = destroying_artifacts_is_pious }
+				rite = { rite_has_parameter = destroying_artifacts_is_pious }
 			}
 			save_scope_value_as = {
 				name = piety_value

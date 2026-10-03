@@ -155,32 +155,36 @@ at_artifact_type_value = {
 		value = 502
 	}
 	else_if = {
-		limit = { artifact_type = necklace }
+		limit = { artifact_type = badge }
 		value = 503
 	}
 	else_if = {
-		limit = { artifact_type = ring }
+		limit = { artifact_type = necklace }
 		value = 504
 	}
 	else_if = {
-		limit = { artifact_type = animal_trinket }
+		limit = { artifact_type = ring }
 		value = 505
 	}
 	else_if = {
-		limit = { artifact_type = bird_feather }
+		limit = { artifact_type = animal_trinket }
 		value = 506
 	}
 	else_if = {
-		limit = { artifact_type = pas_darmes_token }
+		limit = { artifact_type = bird_feather }
 		value = 507
 	}
 	else_if = {
-		limit = { artifact_type = pas_darmes_spurs }
+		limit = { artifact_type = pas_darmes_token }
 		value = 508
 	}
 	else_if = {
-		limit = { artifact_type = tournament_favor }
+		limit = { artifact_type = pas_darmes_spurs }
 		value = 509
+	}
+	else_if = {
+		limit = { artifact_type = tournament_favor }
+		value = 510
 	}
 	# Journals
 	else_if = {
