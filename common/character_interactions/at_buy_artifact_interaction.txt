@@ -21,6 +21,7 @@ at_buy_artifact_interaction = {
 
 	target_type = artifact
 	target_filter = recipient_artifacts
+	show_all_targets = no
 
 	greeting = positive
 	send_name = at_buy_artifact_interaction
