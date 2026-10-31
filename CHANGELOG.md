@@ -1,5 +1,15 @@
 # Changelog
 
+## Version 0.18.1
+
+### Bug Fixes
+
+* Fixed the Sell Artifact interaction opened from the Sell Artifacts window selecting the wrong artifact, which blocked the trade until the original artifact was selected again.
+
+### Compatibility
+
+* Adapted to CK3 1.20.1.
+
 ## Version 0.18.0
 
 ### Compatibility
