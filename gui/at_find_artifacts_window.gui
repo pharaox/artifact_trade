@@ -1,4 +1,4 @@
-window = {
+﻿window = {
 	name = "at_find_artifacts_window"
 	position = { -50 65 }
 	parentanchor = top|right
@@ -286,6 +286,21 @@ window = {
 
 				blockoverride "selected_filter_option_text" {
 					text = "[Localize(Concatenate('at', GetPlayer.MakeScope.Var('at_artifacts_window_selected_owner_valid_buyer_or_seller_filter_option').GetFlagName))]"
+				}
+			}
+
+			at_hbox_artifact_filter = {
+				datacontext = "[GetScriptedGui('at_artifacts_window_select_diplomatic_range_filter_option_gui')]"
+				blockoverride "filter_text" {
+					text = "at_diplomatic_range"
+				}
+
+				blockoverride "filter_options_datamodel" {
+					datamodel = "[GetGlobalList('at_artifacts_window_diplomatic_range_filter_options')]"
+				}
+
+				blockoverride "selected_filter_option_text" {
+					text = "[Localize(Concatenate('at', GetPlayer.MakeScope.Var('at_artifacts_window_selected_diplomatic_range_filter_option').GetFlagName))]"
 				}
 			}
 		}

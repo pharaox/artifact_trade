@@ -1,4 +1,4 @@
-# Search & Trade Artifacts
+﻿# Search & Trade Artifacts
 
 [Subscribe on Steam](https://steamcommunity.com/sharedfiles/filedetails/?id=2962238514)
 
@@ -63,6 +63,8 @@ To search for artifacts, click on the round ring button in the lower middle port
 ![Artifact Finder](https://steamuserimages-a.akamaihd.net/ugc/2047490891201303401/C4D77756FBBDFD1BB5EE2E3693F36131267D2287/?ima=fit)
 
 This window is very similar to **Character Finder**. Without any filters, it contains a list of all artifacts in the game. You can filter artifacts by various criteria, including rarity, type, uniqueness, equipped or not, owned by you or not, claimed or not, etc. You can also sort artifacts by rarity, durability, type, or base price.
+
+The **Diplomatic Range** filter lets you show all artifacts, or only those whose owners are within or outside your diplomatic range. It defaults to All and can be combined with the other filters. It uses the game's diplomatic range, independently of the trading range and other conditions for valid buyers or sellers.
 
 **Note:** Due to modding limitations, the **Artifact Finder** does not offer sorting or searching for artifacts by name.
 

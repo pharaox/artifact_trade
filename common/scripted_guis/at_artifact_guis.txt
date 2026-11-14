@@ -376,6 +376,21 @@
 			}
 		}
 
+		clear_global_variable_list = at_artifacts_window_diplomatic_range_filter_options
+		add_to_global_variable_list = { name = at_artifacts_window_diplomatic_range_filter_options target = flag:_all }
+		add_to_global_variable_list = { name = at_artifacts_window_diplomatic_range_filter_options target = flag:_within_diplomatic_range }
+		add_to_global_variable_list = { name = at_artifacts_window_diplomatic_range_filter_options target = flag:_outside_diplomatic_range }
+
+		if = {
+			limit = {
+				NOT = { has_variable = at_artifacts_window_selected_diplomatic_range_filter_option }
+			}
+			set_variable = {
+				name = at_artifacts_window_selected_diplomatic_range_filter_option
+				value = flag:_all
+			}
+		}
+
 		at_artifacts_window_get_artifacts_effect = yes
 
 		if = {
@@ -528,6 +543,7 @@ at_artifacts_window_has_non_default_filter_options_gui = {
 				has_variable = at_artifacts_window_selected_special_filter_option
 				has_variable = at_artifacts_window_selected_owner_filter_option
 				has_variable = at_artifacts_window_selected_owner_valid_buyer_or_seller_filter_option
+				has_variable = at_artifacts_window_selected_diplomatic_range_filter_option
 			}
 			NAND = {
 				var:at_artifacts_window_selected_rarity_filter_option = flag:_all
@@ -543,6 +559,7 @@ at_artifacts_window_has_non_default_filter_options_gui = {
 				var:at_artifacts_window_selected_special_filter_option = flag:_all
 				var:at_artifacts_window_selected_owner_filter_option = flag:_all
 				var:at_artifacts_window_selected_owner_valid_buyer_or_seller_filter_option = flag:_all
+				var:at_artifacts_window_selected_diplomatic_range_filter_option = flag:_all
 			}
 		}
 		trigger_else = {
@@ -733,6 +750,20 @@ at_artifacts_window_select_owner_valid_buyer_or_seller_filter_option_gui = {
 	}
 }
 
+at_artifacts_window_select_diplomatic_range_filter_option_gui = {
+	scope = character
+	saved_scopes = { filter_option flavor }
+
+	effect = {
+		set_variable = {
+			name = at_artifacts_window_selected_diplomatic_range_filter_option
+			value = scope:filter_option
+		}
+
+		at_artifacts_window_get_artifacts_effect = yes
+	}
+}
+
 at_artifacts_window_reset_filter_options_gui = {
 	scope = character
 	saved_scopes = { flavor }
@@ -788,6 +819,10 @@ at_artifacts_window_reset_filter_options_gui = {
 		}
 		set_variable = {
 			name = at_artifacts_window_selected_owner_valid_buyer_or_seller_filter_option
+			value = flag:_all
+		}
+		set_variable = {
+			name = at_artifacts_window_selected_diplomatic_range_filter_option
 			value = flag:_all
 		}
 

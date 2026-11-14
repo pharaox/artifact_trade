@@ -741,6 +741,25 @@ at_artifacts_window_get_filtered_artifacts_effect = {
 			trigger_else = {
 				always = yes
 			}
+
+			# Filter by diplomatic range
+			trigger_if = {
+				limit = { ROOT.var:at_artifacts_window_selected_diplomatic_range_filter_option = flag:_within_diplomatic_range }
+				exists = artifact_owner
+				artifact_owner = {
+					in_diplomatic_range = ROOT
+				}
+			}
+			trigger_else_if = {
+				limit = { ROOT.var:at_artifacts_window_selected_diplomatic_range_filter_option = flag:_outside_diplomatic_range }
+				exists = artifact_owner
+				artifact_owner = {
+					NOT = { in_diplomatic_range = ROOT }
+				}
+			}
+			trigger_else = {
+				always = yes
+			}
 		}
 
 		ROOT = {
