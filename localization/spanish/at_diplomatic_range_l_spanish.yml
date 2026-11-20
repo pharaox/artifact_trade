@@ -1,0 +1,4 @@
+﻿l_spanish:
+ at_diplomatic_range: "$range_filter$"
+ at_within_diplomatic_range: "$in_range_filter$"
+ at_outside_diplomatic_range: "$not_in_range_filter$"
