@@ -56,6 +56,9 @@
  at_wall_small: "$artifact_slot_wall_small$"
  at_throne: "$artifact_slot_throne$"
  at_book: "$artifact_slot_book$"
+ at_library: "$artifact_slot_library$"
+ at_creature: "$artifact_slot_creature$"
+ at_curio: "$artifact_slot_curio$"
  at_not_helmet: "No $artifact_slot_helmet$"
  at_not_regalia: "No $artifact_slot_regalia$"
  at_not_armor: "No $artifact_slot_armor$"
@@ -68,6 +71,9 @@
  at_not_wall_small: "No $artifact_slot_wall_small$"
  at_not_throne: "No $artifact_slot_throne$"
  at_not_book: "No $artifact_slot_book$"
+ at_not_library: "No $artifact_slot_library$"
+ at_not_creature: "No $artifact_slot_creature$"
+ at_not_curio: "No $artifact_slot_curio$"
 
  at_unique: "Único"
  at_not_unique: "No Único"
@@ -98,7 +104,7 @@
  at_different_faith_opinion: "Opinión de Diferente $game_concept_faith$"
  at_same_culture_opinion: "Opinión de la Misma $game_concept_culture$"
  at_different_culture_opinion: "Opinión de Diferente $game_concept_culture$"
- at_county_opinion: "Opinión del $game_concept_county$"
+ at_county_opinion: "$game_concept_popular_opinion$"
  at_religion_opinion: "Opinión de la $game_concept_religion$"
  at_culture_opinion: "Opinión de la $game_concept_culture$"
  # Domain, vassals, income, buildings, development
@@ -107,10 +113,8 @@
  at_monthly_income: "Ingresos Mensuales de $game_concept_income$"
  at_men_at_arms_maintenance: "Mantenimiento de $game_concept_men_at_arms$"
  at_mercenary_hire_cost: "Coste de Contratación de $game_concept_mercenary$"
- at_domain_tax: "$game_concept_domain$ $game_concept_taxes$"
  at_vassal_tax_contribution: "$game_concept_vassal$ $game_concept_tax$ $game_concept_modifier_contribution$"
  at_vassal_levy_contribution: "$game_concept_vassal$ $game_concept_levy$ $game_concept_modifier_contribution$"
- at_development_growth: "Crecimiento de $game_concept_development$"
  at_build_gold_cost: "Coste de Construcción de $game_concept_building$"
  at_build_speed: "Tiempo de Construcción de $game_concept_building$"
  # Scheme
@@ -161,6 +165,8 @@
  at_poet_trait_xp: "Experiencia de $trait_lifestyle_poet$"
  at_confucian_education_trait_xp: "Experiencia de $trait_confucian_education$"
  at_study_confucian_classics_power: "$game_concept_scheme_speed$ de [GetScheme('study_confucian_classics').GetTypeName]"
+ at_trade_competitiveness: "$game_concept_trade_competitiveness$"
+ at_trade_expertise: "$game_concept_trade_expertise$"
 
  at_equipped: "Equipado"
  at_not_equipped: "No Equipado"
@@ -195,6 +201,7 @@
  at_ruler_with_rc: "Gobernante con Corte Real"
  at_ruler_without_rc: "Gobernante sin Corte Real"
  at_not_ruler: "No Gobernante"
+ at_holy_site: "Lugar Sagrado"
 
  at_owner_valid_buyer_or_seller: "El Propietario es Comprador o Vendedor Válido"
  at_valid_buyer_or_seller: "Comprador o Vendedor Válido"

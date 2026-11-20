@@ -1,5 +1,19 @@
 # Changelog
 
+## Version 0.19.0
+
+### UI Improvements
+
+* Added a Holy Site owner filter to the Artifact Finder for relics enshrined at holy sites, which are shown with the holy site as their owner.
+
+### Bug Fixes
+
+* Fixed errors and missing owner names in the Artifact Finder for relics enshrined at holy sites.
+
+### Compatibility
+
+* Adapted to CK3 1.21.0.
+
 ## Version 0.18.1
 
 ### Bug Fixes

@@ -163,7 +163,7 @@ at_set_artifact_quality_or_wealth_effect = {
 	save_scope_value_as = {
 		name = $NAME$
 		value = {
-			value = $LOCATION$.county.development_level
+			value = $LOCATION$.county.prosperity_level
 			if = {
 				limit = {
 					$LOCATION$ = { vls_has_city_like_holding_trigger = yes }
@@ -256,7 +256,7 @@ at_add_scaled_artifact_modifiers_effect = {
 
 at_add_merchant_gold_effect = {
 	add_gold = {
-		value = $LOCATION$.county.development_level
+		value = $LOCATION$.county.prosperity_level
 		if = {
 			limit = {
 				$LOCATION$ = { vls_has_city_like_holding_trigger = yes }

@@ -829,6 +829,13 @@ at_destroy_artifact_gold_value = {
 		}
 		multiply = 0.1
 	}
+	# Nerf it a bit less for Merchants
+	else_if = {
+		limit = {
+			scope:actor = { is_landless_merchant = yes }
+		}
+		multiply = 0.5
+	}
 
 	# Adjust for tribal rulers
 	if = {

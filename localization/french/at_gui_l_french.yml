@@ -56,6 +56,9 @@
  at_wall_small: "$artifact_slot_wall_small$"
  at_throne: "$artifact_slot_throne$"
  at_book: "$artifact_slot_book$"
+ at_library: "$artifact_slot_library$"
+ at_creature: "$artifact_slot_creature$"
+ at_curio: "$artifact_slot_curio$"
  at_not_helmet: "Not $artifact_slot_helmet$"
  at_not_regalia: "Not $artifact_slot_regalia$"
  at_not_armor: "Not $artifact_slot_armor$"
@@ -68,6 +71,9 @@
  at_not_wall_small: "Not $artifact_slot_wall_small$"
  at_not_throne: "Not $artifact_slot_throne$"
  at_not_book: "Not $artifact_slot_book$"
+ at_not_library: "Not $artifact_slot_library$"
+ at_not_creature: "Not $artifact_slot_creature$"
+ at_not_curio: "Not $artifact_slot_curio$"
 
  at_unique: "Unique"
  at_not_unique: "Not Unique"
@@ -98,7 +104,7 @@
  at_different_faith_opinion: "Different $game_concept_faith$ Opinion"
  at_same_culture_opinion: "Same $game_concept_culture$ Opinion"
  at_different_culture_opinion: "Different $game_concept_culture$ Opinion"
- at_county_opinion: "$game_concept_county$ Opinion"
+ at_county_opinion: "$game_concept_popular_opinion$"
  at_religion_opinion: "$game_concept_religion$ Opinion"
  at_culture_opinion: "$game_concept_culture$ Opinion"
  # Domain, vassals, income, buildings, development
@@ -107,10 +113,8 @@
  at_monthly_income: "Monthly $game_concept_income$"
  at_men_at_arms_maintenance: "$game_concept_men_at_arms$ Maintenance"
  at_mercenary_hire_cost: "$game_concept_mercenary$ Hire Cost"
- at_domain_tax: "$game_concept_domain$ $game_concept_taxes$"
  at_vassal_tax_contribution: "$game_concept_vassal$ $game_concept_tax$ $game_concept_modifier_contribution$"
  at_vassal_levy_contribution: "$game_concept_vassal$ $game_concept_levy$ $game_concept_modifier_contribution$"
- at_development_growth: "$game_concept_development$ Growth"
  at_build_gold_cost: "$game_concept_building$ Construction Cost"
  at_build_speed: "$game_concept_building$ Construction Time"
  # Scheme
@@ -151,6 +155,8 @@
  at_legitimacy: "$game_concept_legitimacy$"
  # RtP
  at_travel: "$game_concept_travel$"
+ at_trade_competitiveness: "$game_concept_trade_competitiveness$"
+ at_trade_expertise: "$game_concept_trade_expertise$"
  at_influence: "$game_concept_influence$"
 
  at_equipped: "Equipped"
@@ -186,6 +192,7 @@
  at_ruler_with_rc: "Ruler With Royal Court"
  at_ruler_without_rc: "Ruler Without Royal Court"
  at_not_ruler: "Not Ruler"
+ at_holy_site: "Holy Site"
 
  at_owner_valid_buyer_or_seller: "Owner Is Valid Buyer Or Seller"
  at_valid_buyer_or_seller: "Valid Buyer Or Seller"

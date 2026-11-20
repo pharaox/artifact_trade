@@ -97,6 +97,9 @@
 		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_wall_small }
 		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_throne }
 		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_book }
+		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_library }
+		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_creature }
+		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_curio }
 		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_not_helmet }
 		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_not_regalia }
 		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_not_armor }
@@ -109,6 +112,9 @@
 		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_not_wall_small }
 		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_not_throne }
 		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_not_book }
+		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_not_library }
+		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_not_creature }
+		add_to_global_variable_list = { name = at_artifacts_window_slot_type_filter_options target = flag:_not_curio }
 
 		if = {
 			limit = {
@@ -171,10 +177,8 @@
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_monthly_income }
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_men_at_arms_maintenance }
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_mercenary_hire_cost }
-		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_domain_tax }
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_vassal_tax_contribution }
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_vassal_levy_contribution }
-		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_development_growth }
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_build_gold_cost }
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_build_speed }
 		# Scheme
@@ -225,6 +229,8 @@
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_poet_trait_xp }
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_confucian_education_trait_xp }
 		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_study_confucian_classics_power }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_trade_competitiveness }
+		add_to_global_variable_list = { name = at_artifacts_window_modifier_filter_options target = flag:_trade_expertise }
 
 		if = {
 			limit = {
@@ -350,6 +356,7 @@
 		add_to_global_variable_list = { name = at_artifacts_window_owner_filter_options target = flag:_ruler_with_rc }
 		add_to_global_variable_list = { name = at_artifacts_window_owner_filter_options target = flag:_ruler_without_rc }
 		add_to_global_variable_list = { name = at_artifacts_window_owner_filter_options target = flag:_not_ruler }
+		add_to_global_variable_list = { name = at_artifacts_window_owner_filter_options target = flag:_holy_site }
 
 		if = {
 			limit = {

@@ -47,8 +47,20 @@
 		limit = { artifact_slot_type = book }
 		value = 12
 	}
-	else = {
+	else_if = {
+		limit = { artifact_slot_type = library }
 		value = 13
+	}
+	else_if = {
+		limit = { artifact_slot_type = creature }
+		value = 14
+	}
+	else_if = {
+		limit = { artifact_slot_type = curio }
+		value = 15
+	}
+	else = {
+		value = 16
 	}
 }
 
@@ -328,6 +340,21 @@ at_artifact_type_value = {
 	else_if = {
 		limit = { artifact_type = chronicle }
 		value = 1201
+	}
+	# Library
+	else_if = {
+		limit = { artifact_type = library_item }
+		value = 1300
+	}
+	# Creatures
+	else_if = {
+		limit = { artifact_type = creature }
+		value = 1400
+	}
+	# Curios
+	else_if = {
+		limit = { artifact_type = curio }
+		value = 1500
 	}
 	# Unknown
 	else = {

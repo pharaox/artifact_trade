@@ -8,9 +8,9 @@
 	#The cooldown is set separately, if you only entered and left you shouldn't get punished for it
 
 	is_shown = {
-		has_government = landless_adventurer_government
 		#DLC check.
-		has_ep3_dlc_trigger = yes
+		has_playable_adventurer_dlc_trigger = yes
+		has_government = landless_adventurer_government
 	}
 
 	is_valid_showing_failures_only = {

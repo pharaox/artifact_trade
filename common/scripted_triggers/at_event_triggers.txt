@@ -6,16 +6,19 @@
 				NOT = { has_game_rule = at_craftsmen_holdings_city }
 			}
 			OR = {
-				county ?= { development_level >= at_craftsmen_min_development_level_value }
+				county ?= { prosperity_level >= at_craftsmen_min_development_level_value }
 
+				# Districts
+				province_has_district = guild_district
+				province_has_district = market_district
+				province_has_district = port_district
 				# Buildings
 				# Economy
-				has_building_or_higher = common_tradeport_01
-				has_building_or_higher = caravanserai_01
+				has_building_or_higher = caravanserai_1
 				# Tribal
-				has_building_or_higher = market_villages_01
+				has_building_or_higher = traders_meet_1
 				# Special
-				has_special_building = yes
+				has_special_district = yes
 
 				# Domicile buildings
 				any_province_domicile = {

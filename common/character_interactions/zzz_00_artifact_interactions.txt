@@ -3,7 +3,17 @@
 	common_interaction = yes
 	icon = artifact
 	category = interaction_category_friendly
-	desc = destroy_artifact_interaction_desc
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:actor = { is_landless_merchant = yes }
+				}
+				desc = destroy_artifact_interaction_sell_desc
+			}
+			desc = destroy_artifact_interaction_desc
+		}
+	}
 
 	target_type = artifact
 	target_filter = actor_artifacts
@@ -133,6 +143,30 @@
 	}
 
 	on_accept = {
+		if = {
+			limit = {
+				gdp_menagerie_artifact_has_active_story_trigger = { CHARACTER = scope:actor ARTIFACT = scope:target }
+			}
+			scope:actor = {
+				random_owned_story = {
+					limit = {
+						story_type = story_cycle_menagerie
+						var:artifact_type ?= scope:target
+					}
+					end_story = yes
+				}
+			}
+		}
+		scope:actor = { 
+			if = {
+				limit = { is_landless_merchant = yes }
+				add_trait_xp = {
+					trait = lifestyle_merchant
+					track = artisan
+					value = lifestyle_merchant_xp_gain_miniscule_value
+				}
+			}
+		}
 		if = {
 			limit = {
 				has_game_rule = at_improved_destroy_artifact_enabled

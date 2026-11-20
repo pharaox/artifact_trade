@@ -189,6 +189,18 @@ at_artifacts_window_get_filtered_artifacts_effect = {
 				artifact_slot_type = book
 			}
 			trigger_else_if = {
+				limit = { ROOT.var:at_artifacts_window_selected_slot_type_filter_option = flag:_library }
+				artifact_slot_type = library
+			}
+			trigger_else_if = {
+				limit = { ROOT.var:at_artifacts_window_selected_slot_type_filter_option = flag:_creature }
+				artifact_slot_type = creature
+			}
+			trigger_else_if = {
+				limit = { ROOT.var:at_artifacts_window_selected_slot_type_filter_option = flag:_curio }
+				artifact_slot_type = curio
+			}
+			trigger_else_if = {
 				limit = { ROOT.var:at_artifacts_window_selected_slot_type_filter_option = flag:_not_helmet }
 				NOT = { artifact_slot_type = helmet }
 			}
@@ -235,6 +247,18 @@ at_artifacts_window_get_filtered_artifacts_effect = {
 			trigger_else_if = {
 				limit = { ROOT.var:at_artifacts_window_selected_slot_type_filter_option = flag:_not_book }
 				NOT = { artifact_slot_type = book }
+			}
+			trigger_else_if = {
+				limit = { ROOT.var:at_artifacts_window_selected_slot_type_filter_option = flag:_not_library }
+				NOT = { artifact_slot_type = library }
+			}
+			trigger_else_if = {
+				limit = { ROOT.var:at_artifacts_window_selected_slot_type_filter_option = flag:_not_creature }
+				NOT = { artifact_slot_type = creature }
+			}
+			trigger_else_if = {
+				limit = { ROOT.var:at_artifacts_window_selected_slot_type_filter_option = flag:_not_curio }
+				NOT = { artifact_slot_type = curio }
 			}
 			trigger_else = {
 				always = yes
@@ -382,20 +406,12 @@ at_artifacts_window_get_filtered_artifacts_effect = {
 				at_has_artifact_mercenary_hire_cost_modifier = yes
 			}
 			trigger_else_if = {
-				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_domain_tax }
-				at_has_artifact_domain_tax_modifier = yes
-			}
-			trigger_else_if = {
 				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_vassal_tax_contribution }
 				at_has_artifact_vassal_tax_contribution_modifier = yes
 			}
 			trigger_else_if = {
 				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_vassal_levy_contribution }
 				at_has_artifact_vassal_levy_contribution_modifier = yes
-			}
-			trigger_else_if = {
-				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_development_growth }
-				at_has_artifact_development_growth_modifier = yes
 			}
 			trigger_else_if = {
 				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_build_gold_cost }
@@ -570,6 +586,14 @@ at_artifacts_window_get_filtered_artifacts_effect = {
 				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_study_confucian_classics_power }
 				at_has_artifact_study_confucian_classics_power_modifier = yes
 			}
+			trigger_else_if = {
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_trade_competitiveness }
+				at_has_artifact_trade_competitiveness_modifier = yes
+			}
+			trigger_else_if = {
+				limit = { ROOT.var:at_artifacts_window_selected_modifier_filter_option = flag:_trade_expertise }
+				at_has_artifact_trade_expertise_modifier = yes
+			}
 			trigger_else = {
 				always = yes
 			}
@@ -590,11 +614,17 @@ at_artifacts_window_get_filtered_artifacts_effect = {
 			# Filter by owned
 			trigger_if = {
 				limit = { ROOT.var:at_artifacts_window_selected_owned_filter_option = flag:_owned_by_you }
-				artifact_owner = ROOT
+				artifact_owner ?= ROOT
 			}
 			trigger_else_if = {
 				limit = { ROOT.var:at_artifacts_window_selected_owned_filter_option = flag:_not_owned_by_you }
-				artifact_owner != ROOT
+				trigger_if = {
+					limit = { exists = artifact_owner }
+					artifact_owner != ROOT
+				}
+				trigger_else = {
+					always = yes # Enshrined in a holy site
+				}
 			}
 			trigger_else = {
 				always = yes
@@ -703,23 +733,27 @@ at_artifacts_window_get_filtered_artifacts_effect = {
 			# Filter by owner
 			trigger_if = {
 				limit = { ROOT.var:at_artifacts_window_selected_owner_filter_option = flag:_ruler_with_rc }
-				artifact_owner = {
+				artifact_owner ?= {
 					is_ruler = yes
 					has_royal_court = yes
 				}
 			}
 			trigger_else_if = {
 				limit = { ROOT.var:at_artifacts_window_selected_owner_filter_option = flag:_ruler_without_rc }
-				artifact_owner = {
+				artifact_owner ?= {
 					is_ruler = yes
 					has_royal_court = no
 				}
 			}
 			trigger_else_if = {
 				limit = { ROOT.var:at_artifacts_window_selected_owner_filter_option = flag:_not_ruler }
-				artifact_owner = {
+				artifact_owner ?= {
 					is_ruler = no
 				}
+			}
+			trigger_else_if = {
+				limit = { ROOT.var:at_artifacts_window_selected_owner_filter_option = flag:_holy_site }
+				NOT = { exists = artifact_owner } # Enshrined in a holy site
 			}
 			trigger_else = {
 				always = yes
@@ -728,14 +762,20 @@ at_artifacts_window_get_filtered_artifacts_effect = {
 			# Filter by owner valid buyer or seller
 			trigger_if = {
 				limit = { ROOT.var:at_artifacts_window_selected_owner_valid_buyer_or_seller_filter_option = flag:_valid_buyer_or_seller }
-				artifact_owner = {
+				artifact_owner ?= {
 					at_valid_buyer_or_seller_trigger = { PARTY = ROOT }
 				}
 			}
 			trigger_else_if = {
 				limit = { ROOT.var:at_artifacts_window_selected_owner_valid_buyer_or_seller_filter_option = flag:_not_valid_buyer_or_seller }
-				artifact_owner = {
-					NOT = { at_valid_buyer_or_seller_trigger = { PARTY = ROOT } }
+				trigger_if = {
+					limit = { exists = artifact_owner }
+					artifact_owner = {
+						NOT = { at_valid_buyer_or_seller_trigger = { PARTY = ROOT } }
+					}
+				}
+				trigger_else = {
+					always = yes # Enshrined in a holy site
 				}
 			}
 			trigger_else = {
